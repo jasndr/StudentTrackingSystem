@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4f5ea73a1e4840e5b698fc6fd1a21960" Name="Diagram1">
+        <EntityTypeShape EntityType="GraduateStudentDataModel.Graduate_Class" Width="1.5" PointX="8.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentDataModel.Graduate_CommonFields" Width="1.5" PointX="3.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentDataModel.Graduate_Course" Width="1.5" PointX="10.625" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentDataModel.Graduate_Coursework" Width="1.5" PointX="4.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentDataModel.Graduate_PrevDegree" Width="1.5" PointX="2.875" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentDataModel.Graduate_Semester" Width="1.5" PointX="6.5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentDataModel.Graduate_Student" Width="1.5" PointX="0.875" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Semes__468862B0" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Stude__45943E77" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Conce__4A58F394" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Degre__4964CF5B" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Gende__4870AB22" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Track__4B4D17CD" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Degre__4D35603F" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Class__4F1DA8B1" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Cours__5011CCEA" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Grade__5105F123" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Seaso__4E298478" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
