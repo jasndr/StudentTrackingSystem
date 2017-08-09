@@ -4,11 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Graduate Student Background</h2>
-<br />
+<h2>Details</h2>
 
 <div>
-    <h4>Details for <strong>@Html.ValueFor(model => model.FirstName) @Html.ValueFor(model => model.LastName)</strong></h4>
+    <h4>Graduate_Student</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -68,21 +67,19 @@
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.Graduate_CommonFields2.Name)*@
             @Html.DisplayNameFor(model => model.GenderId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields2.Name)
+            @Html.DisplayFor(model => model.GenderId)
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.Graduate_PrevDegree.Title)*@
             @Html.DisplayNameFor(model => model.DegreeId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_PrevDegree.Title)
+            @Html.DisplayFor(model => model.DegreeId)
         </dd>
 
         <dt>
@@ -102,30 +99,27 @@
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.Graduate_CommonFields1.Name)*@
             @Html.DisplayNameFor(model => model.DegreeProgramId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields1.Name)
+            @Html.DisplayFor(model => model.DegreeProgramId)
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.Graduate_CommonFields.Name)*@
             @Html.DisplayNameFor(model => model.ConcentrationId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields.Name)
+            @Html.DisplayFor(model => model.ConcentrationId)
         </dd>
 
         <dt>
-            @*@Html.DisplayNameFor(model => model.Graduate_CommonFields3.Name)*@
             @Html.DisplayNameFor(model => model.TrackId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields3.Name)
+            @Html.DisplayFor(model => model.TrackId)
         </dd>
 
         <dt>
@@ -133,8 +127,7 @@
         </dt>
 
         <dd>
-            @*@Html.DisplayFor(model => model.DegreeStart*@
-            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeStart))
+            @Html.DisplayFor(model => model.DegreeStart)
         </dd>
 
         <dt>
@@ -142,9 +135,8 @@
         </dt>
 
         <dd>
-            @*@Html.DisplayFor(model => model.DegreeEnd)*@
-            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeEnd))
-        </dd>     
+            @Html.DisplayFor(model => model.DegreeEnd)
+        </dd>
 
     </dl>
 </div>

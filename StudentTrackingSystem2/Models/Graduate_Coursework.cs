@@ -7,26 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StudentTrackingSystem.Models
+namespace StudentTrackingSystem2.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Graduate_Class
+    public partial class Graduate_Coursework
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Graduate_Class()
-        {
-            this.Graduate_Semester = new HashSet<Graduate_Semester>();
-        }
-    
         public int Id { get; set; }
+        public int StudentID { get; set; }
+        public int SemesterID { get; set; }
+        public int Year { get; set; }
         public int CourseID { get; set; }
-        public int GradeID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_Semester> Graduate_Semester { get; set; }
-        public virtual Graduate_Course Graduate_Course { get; set; }
         public virtual Graduate_CommonFields Graduate_CommonFields { get; set; }
+        public virtual Graduate_Course Graduate_Course { get; set; }
+        public virtual Graduate_Student Graduate_Student { get; set; }
     }
 }

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<StudentTrackingSystem.Models.Graduate_Student>
 
 @{
-    ViewBag.Title = "Graduate Student Background";
+    ViewBag.Title = "Index";
 }
 
-<h2>Graduate Student Background</h2>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,29 +15,16 @@
             @Html.DisplayNameFor(model => model.StudentNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        
-        <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SchoolEmail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DegreeProgramId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ConcentrationId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DegreeStart)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DegreeEnd)
-        </th>
-        @*<th>
             @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolEmail)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OtherEmail)
@@ -46,10 +33,25 @@
             @Html.DisplayNameFor(model => model.Phone)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.GenderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DegreeId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.RaceEthnicityId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.RaceOther)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DegreeProgramId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConcentrationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrackId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DegreeStart)
@@ -57,21 +59,6 @@
         <th>
             @Html.DisplayNameFor(model => model.DegreeEnd)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields1.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields2.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields3.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Graduate_PrevDegree.Title)
-        </th>*@
         <th></th>
     </tr>
 
@@ -81,28 +68,16 @@
             @Html.DisplayFor(modelItem => item.StudentNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SchoolEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Graduate_CommonFields1.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Graduate_CommonFields.Name)
-        </td>
-        <td>
-            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", item.DegreeStart))
-        </td>
-        <td>
-            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", item.DegreeEnd))
-        </td>
-       @* <td>
             @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolEmail)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OtherEmail)
@@ -111,10 +86,25 @@
             @Html.DisplayFor(modelItem => item.Phone)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.GenderId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DegreeId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.RaceEthnicityId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RaceOther)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DegreeProgramId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConcentrationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrackId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DegreeStart)
@@ -122,21 +112,6 @@
         <td>
             @Html.DisplayFor(modelItem => item.DegreeEnd)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Graduate_CommonFields.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Graduate_CommonFields1.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Graduate_CommonFields2.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Graduate_CommonFields3.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Graduate_PrevDegree.Title)
-        </td>*@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |

@@ -12,13 +12,12 @@ namespace StudentTrackingSystem.Controllers
 {
     public class StudentController : Controller
     {
-        private BioStatProject_DAEntities db = new BioStatProject_DAEntities();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Student
         public ActionResult Index()
         {
-            var graduate_Student = db.Graduate_Student.Include(g => g.Graduate_CommonFields).Include(g => g.Graduate_CommonFields1).Include(g => g.Graduate_CommonFields2).Include(g => g.Graduate_CommonFields3).Include(g => g.Graduate_PrevDegree);
-            return View(graduate_Student.ToList());
+            return View(db.Graduate_Student.ToList());
         }
 
         // GET: Student/Details/5
@@ -39,11 +38,6 @@ namespace StudentTrackingSystem.Controllers
         // GET: Student/Create
         public ActionResult Create()
         {
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title");
             return View();
         }
 
@@ -61,11 +55,6 @@ namespace StudentTrackingSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.ConcentrationId);
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.DegreeProgramId);
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.GenderId);
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.TrackId);
-            ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", graduate_Student.DegreeId);
             return View(graduate_Student);
         }
 
@@ -81,11 +70,6 @@ namespace StudentTrackingSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.ConcentrationId);
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.DegreeProgramId);
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.GenderId);
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.TrackId);
-            ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", graduate_Student.DegreeId);
             return View(graduate_Student);
         }
 
@@ -102,11 +86,6 @@ namespace StudentTrackingSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.ConcentrationId);
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.DegreeProgramId);
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.GenderId);
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.TrackId);
-            ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", graduate_Student.DegreeId);
             return View(graduate_Student);
         }
 

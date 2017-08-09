@@ -30,21 +30,21 @@ namespace StudentTrackingSystem.Models
         public string Phone { get; set; }
         public Nullable<int> GenderId { get; set; }
         public Nullable<int> DegreeId { get; set; }
+        public Nullable<int> RaceEthnicityId { get; set; }
         public string RaceOther { get; set; }
         public Nullable<int> DegreeProgramId { get; set; }
         public Nullable<int> ConcentrationId { get; set; }
         public Nullable<int> TrackId { get; set; }
         public System.DateTime DegreeStart { get; set; }
         public System.DateTime DegreeEnd { get; set; }
-        public Nullable<int> RaceEthnicityId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_Coursework> Graduate_Coursework { get; set; }
         public virtual Graduate_CommonFields Graduate_CommonFields { get; set; }
         public virtual Graduate_CommonFields Graduate_CommonFields1 { get; set; }
         public virtual Graduate_CommonFields Graduate_CommonFields2 { get; set; }
         public virtual Graduate_CommonFields Graduate_CommonFields3 { get; set; }
-        public virtual Graduate_PrevDegree Graduate_PrevDegree { get; set; }
         public virtual Graduate_CommonFields Graduate_CommonFields4 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Graduate_Coursework> Graduate_Coursework { get; set; }
+        public virtual Graduate_PrevDegree Graduate_PrevDegree { get; set; }
     }
 }

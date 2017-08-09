@@ -17,8 +17,11 @@ namespace StudentTrackingSystem.Models
         public int Id { get; set; }
         public int StudentID { get; set; }
         public int SemesterID { get; set; }
+        public int Year { get; set; }
+        public int CourseID { get; set; }
     
-        public virtual Graduate_Semester Graduate_Semester { get; set; }
+        public virtual Graduate_CommonFields Graduate_CommonFields { get; set; }
+        public virtual Graduate_Course Graduate_Course { get; set; }
         public virtual Graduate_Student Graduate_Student { get; set; }
     }
 }

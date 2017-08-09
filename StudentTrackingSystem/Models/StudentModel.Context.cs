@@ -13,10 +13,10 @@ namespace StudentTrackingSystem.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BioStatProject_DAEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public BioStatProject_DAEntities()
-            : base("name=BioStatProject_DAEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -25,12 +25,10 @@ namespace StudentTrackingSystem.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Graduate_Class> Graduate_Class { get; set; }
         public virtual DbSet<Graduate_CommonFields> Graduate_CommonFields { get; set; }
         public virtual DbSet<Graduate_Course> Graduate_Course { get; set; }
         public virtual DbSet<Graduate_Coursework> Graduate_Coursework { get; set; }
         public virtual DbSet<Graduate_PrevDegree> Graduate_PrevDegree { get; set; }
-        public virtual DbSet<Graduate_Semester> Graduate_Semester { get; set; }
         public virtual DbSet<Graduate_Student> Graduate_Student { get; set; }
     }
 }

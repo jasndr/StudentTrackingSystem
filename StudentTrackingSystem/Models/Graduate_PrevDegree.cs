@@ -30,6 +30,7 @@ namespace StudentTrackingSystem.Models
         public string Minor { get; set; }
         public System.DateTime DateOfAward { get; set; }
     
+        public virtual Graduate_CommonFields Graduate_CommonFields { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student { get; set; }
     }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7160eab8d32a46499f70c713bce9e806" Name="Diagram1">
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_CommonFields" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_Course" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_Coursework" Width="1.5" PointX="6.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_PrevDegree" Width="1.5" PointX="3.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_Student" Width="1.5" PointX="2.375" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Conce__12D3B480" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__00B50445" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__11DF9047" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Gende__0F03239C" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___RaceE__10EB6C0E" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Semes__1C5D1EBA" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Track__13C7D8B9" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Cours__1D5142F3" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Stude__1B68FA81" ManuallyRouted="false" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__0FF747D5" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

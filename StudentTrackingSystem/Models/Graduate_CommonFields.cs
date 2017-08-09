@@ -18,11 +18,11 @@ namespace StudentTrackingSystem.Models
         public Graduate_CommonFields()
         {
             this.Graduate_Student = new HashSet<Graduate_Student>();
+            this.Graduate_PrevDegree = new HashSet<Graduate_PrevDegree>();
             this.Graduate_Student1 = new HashSet<Graduate_Student>();
             this.Graduate_Student2 = new HashSet<Graduate_Student>();
             this.Graduate_Student3 = new HashSet<Graduate_Student>();
-            this.Graduate_Class = new HashSet<Graduate_Class>();
-            this.Graduate_Semester = new HashSet<Graduate_Semester>();
+            this.Graduate_Coursework = new HashSet<Graduate_Coursework>();
             this.Graduate_Student4 = new HashSet<Graduate_Student>();
         }
     
@@ -35,15 +35,15 @@ namespace StudentTrackingSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Graduate_PrevDegree> Graduate_PrevDegree { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student3 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_Class> Graduate_Class { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_Semester> Graduate_Semester { get; set; }
+        public virtual ICollection<Graduate_Coursework> Graduate_Coursework { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student4 { get; set; }
     }

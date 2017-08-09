@@ -29,5 +29,9 @@ namespace StudentTrackingSystem.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<StudentTrackingSystem.Models.Graduate_Student> Graduate_Student { get; set; }
+
+        public System.Data.Entity.DbSet<StudentTrackingSystem.Models.Graduate_Coursework> Graduate_Coursework { get; set; }
     }
 }

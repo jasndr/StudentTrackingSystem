@@ -17,14 +17,14 @@ namespace StudentTrackingSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Graduate_Course()
         {
-            this.Graduate_Class = new HashSet<Graduate_Class>();
+            this.Graduate_Coursework = new HashSet<Graduate_Coursework>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public int Credit { get; set; }
+        public int Credits { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_Class> Graduate_Class { get; set; }
+        public virtual ICollection<Graduate_Coursework> Graduate_Coursework { get; set; }
     }
 }
