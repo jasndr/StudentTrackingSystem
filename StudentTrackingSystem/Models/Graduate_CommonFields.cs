@@ -23,6 +23,7 @@ namespace StudentTrackingSystem.Models
             this.Graduate_Student3 = new HashSet<Graduate_Student>();
             this.Graduate_Class = new HashSet<Graduate_Class>();
             this.Graduate_Semester = new HashSet<Graduate_Semester>();
+            this.Graduate_Student4 = new HashSet<Graduate_Student>();
         }
     
         public int Id { get; set; }
@@ -43,5 +44,7 @@ namespace StudentTrackingSystem.Models
         public virtual ICollection<Graduate_Class> Graduate_Class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Semester> Graduate_Semester { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Graduate_Student> Graduate_Student4 { get; set; }
     }
 }

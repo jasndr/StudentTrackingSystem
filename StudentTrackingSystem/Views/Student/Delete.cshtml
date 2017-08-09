@@ -1,14 +1,14 @@
 ﻿@model StudentTrackingSystem.Models.Graduate_Student
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Graduate Student";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
+<h2>Graduate Student Background</h2>
+<br />
+<h3>Deleting Graduate Student</h3>
 <div>
-    <h4>Graduate_Student</h4>
+    <h4>Are you sure you want to delete <strong>@Html.ValueFor(model => model.FirstName) @Html.ValueFor(model => model.LastName)</strong>?</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -68,11 +68,29 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RaceEthnicityBitSum)
+            @*@Html.DisplayNameFor(model => model.Graduate_CommonFields2.Name)*@
+            @Html.DisplayNameFor(model => model.GenderId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RaceEthnicityBitSum)
+            @Html.DisplayFor(model => model.Graduate_CommonFields2.Name)
+        </dd>
+
+        <dt>
+            @*@Html.DisplayNameFor(model => model.Graduate_PrevDegree.Title)*@
+            @Html.DisplayNameFor(model => model.DegreeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduate_PrevDegree.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceEthnicityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceEthnicityId)
         </dd>
 
         <dt>
@@ -84,31 +102,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DegreeStart)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DegreeStart)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DegreeEnd)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DegreeEnd)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields1.Name)
+            @*@Html.DisplayNameFor(model => model.Graduate_CommonFields1.Name)*@
+            @Html.DisplayNameFor(model => model.DegreeProgramId)
         </dt>
 
         <dd>
@@ -116,15 +111,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields2.Name)
+            @*@Html.DisplayNameFor(model => model.Graduate_CommonFields.Name)*@
+            @Html.DisplayNameFor(model => model.ConcentrationId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields2.Name)
+            @Html.DisplayFor(model => model.Graduate_CommonFields.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields3.Name)
+            @*@Html.DisplayNameFor(model => model.Graduate_CommonFields3.Name)*@
+            @Html.DisplayNameFor(model => model.TrackId)
         </dt>
 
         <dd>
@@ -132,12 +129,22 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Graduate_PrevDegree.Title)
+            @Html.DisplayNameFor(model => model.DegreeStart)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_PrevDegree.Title)
+            @*@Html.DisplayFor(model => model.DegreeStart)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeStart))
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeEnd)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.DegreeEnd)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeEnd))
+        </dd>     
 
     </dl>
 

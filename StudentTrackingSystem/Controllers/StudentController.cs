@@ -52,7 +52,7 @@ namespace StudentTrackingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,DegreeId,RaceEthnicityBitSum,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")] Graduate_Student graduate_Student)
+        public ActionResult Create([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,DegreeId,RaceEthnicityId,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")] Graduate_Student graduate_Student)
         {
             if (ModelState.IsValid)
             {
@@ -94,7 +94,7 @@ namespace StudentTrackingSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,DegreeId,RaceEthnicityBitSum,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")] Graduate_Student graduate_Student)
+        public ActionResult Edit([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,DegreeId,RaceEthnicityId,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")] Graduate_Student graduate_Student)
         {
             if (ModelState.IsValid)
             {

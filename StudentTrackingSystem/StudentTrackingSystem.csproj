@@ -170,7 +170,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CourseworkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
@@ -201,6 +200,8 @@
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Metadata.cs" />
+    <Compile Include="Models\PartialClasses.cs" />
     <Compile Include="Models\StudentModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -296,11 +297,6 @@
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
-    <Content Include="Views\Coursework\Create.cshtml" />
-    <Content Include="Views\Coursework\Delete.cshtml" />
-    <Content Include="Views\Coursework\Details.cshtml" />
-    <Content Include="Views\Coursework\Edit.cshtml" />
-    <Content Include="Views\Coursework\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

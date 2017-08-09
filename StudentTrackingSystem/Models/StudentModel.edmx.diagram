@@ -23,6 +23,7 @@
         <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Cours__5011CCEA" />
         <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Grade__5105F123" />
         <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___Seaso__4E298478" />
+        <AssociationConnector Association="GraduateStudentDataModel.FK__Graduate___RaceE__650CE9D0" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
