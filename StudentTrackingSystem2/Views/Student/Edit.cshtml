@@ -1,18 +1,18 @@
 ﻿@model StudentTrackingSystem2.Models.Graduate_Student
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Student Details";
 }
 
-<h2>Edit</h2>
-
+<h2>Graduate Student Background</h2>
+<br />
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Graduate_Student</h4>
+        <h4>Editing details for <strong>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</strong></h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
