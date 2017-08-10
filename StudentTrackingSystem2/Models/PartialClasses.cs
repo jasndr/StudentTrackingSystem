@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations;
 namespace StudentTrackingSystem2.Models
 {
     [MetadataType(typeof(StudentMetadata))]
-    public partial class Student
+    public partial class Graduate_Student
     {
     }
 
     [MetadataType(typeof(CourseworkMetaData))]
-    public partial class Coursework
+    public partial class Graduate_Coursework
     {
     }
 }

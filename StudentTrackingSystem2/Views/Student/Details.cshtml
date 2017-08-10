@@ -1,13 +1,13 @@
 ﻿@model StudentTrackingSystem2.Models.Graduate_Student
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Graduate Student Details";
 }
 
-<h2>Details</h2>
-
+<h2>Graduate Student Background</h2>
+<br />
 <div>
-    <h4>Graduate_Student</h4>
+    <h4>Details for <strong>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(modelItem => Model.LastName)</strong></h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -67,11 +67,60 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.GenderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduate_CommonFields2.Name)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduate_PrevDegree.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceEthnicityId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduate_CommonFields3.Name)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.RaceOther)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.RaceOther)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeProgramId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduate_CommonFields1.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConcentrationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduate_CommonFields.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduate_CommonFields4.Name)
         </dd>
 
         <dt>
@@ -90,53 +139,6 @@
             @Html.DisplayFor(model => model.DegreeEnd)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields1.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields1.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields2.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields2.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields3.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields3.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduate_CommonFields4.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields4.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Graduate_PrevDegree.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Graduate_PrevDegree.Title)
-        </dd>
 
     </dl>
 </div>

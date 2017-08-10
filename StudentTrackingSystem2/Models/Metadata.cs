@@ -10,7 +10,7 @@ namespace StudentTrackingSystem2.Models
     {
         public int Id { get; set; }
 
-        [Range(10000000, 99999999)]
+        [Range(10000000, 99999999)][Display(Name ="Student ID #")]
         public int StudentNumber { get; set; }
 
         [StringLength(55)][Display(Name ="First Name")]
