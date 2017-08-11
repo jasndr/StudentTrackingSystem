@@ -128,7 +128,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeStart)
+            @*@Html.DisplayFor(model => model.DegreeStart)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeStart))
         </dd>
 
         <dt>
@@ -136,13 +137,14 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeEnd)
+            @*@Html.DisplayFor(model => model.DegreeEnd)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeEnd))
         </dd>
 
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new {@class="btn btn-warning" }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

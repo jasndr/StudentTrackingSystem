@@ -116,9 +116,9 @@
             @Html.DisplayFor(modelItem => item.Graduate_PrevDegree.Title)
         </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new {@class ="btn btn-xs btn-secondary" }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }, new {@class ="btn btn-xs btn-secondary" }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new {@class = "btn btn-xs btn-secondary" })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new {@class ="btn btn-xs btn-warning" }) <br />
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new {@class ="btn btn-xs btn-info" }) <br />
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new {@class = "btn btn-xs btn-danger" })
         </td>
     </tr>
 }

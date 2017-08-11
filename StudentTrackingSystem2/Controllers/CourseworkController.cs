@@ -40,7 +40,7 @@ namespace StudentTrackingSystem2.Controllers
         public ActionResult Create()
         {
             ViewBag.SemesterID = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.CourseID = new SelectList(db.Graduate_Course, "Id", "Name");
+            ViewBag.CourseID = new SelectList(db.Graduate_Course, "Id", "CourseNum");
             ViewBag.StudentID = new SelectList(db.Graduate_Student, "Id", "FirstName");
             return View();
         }
@@ -60,7 +60,7 @@ namespace StudentTrackingSystem2.Controllers
             }
 
             ViewBag.SemesterID = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Coursework.SemesterID);
-            ViewBag.CourseID = new SelectList(db.Graduate_Course, "Id", "Name", graduate_Coursework.CourseID);
+            ViewBag.CourseID = new SelectList(db.Graduate_Course, "Id", "CourseNum", graduate_Coursework.CourseID);
             ViewBag.StudentID = new SelectList(db.Graduate_Student, "Id", "FirstName", graduate_Coursework.StudentID);
             return View(graduate_Coursework);
         }
@@ -78,7 +78,7 @@ namespace StudentTrackingSystem2.Controllers
                 return HttpNotFound();
             }
             ViewBag.SemesterID = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Coursework.SemesterID);
-            ViewBag.CourseID = new SelectList(db.Graduate_Course, "Id", "Name", graduate_Coursework.CourseID);
+            ViewBag.CourseID = new SelectList(db.Graduate_Course, "Id", "CourseNum", graduate_Coursework.CourseID);
             ViewBag.StudentID = new SelectList(db.Graduate_Student, "Id", "FirstName", graduate_Coursework.StudentID);
             return View(graduate_Coursework);
         }
@@ -97,7 +97,7 @@ namespace StudentTrackingSystem2.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.SemesterID = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Coursework.SemesterID);
-            ViewBag.CourseID = new SelectList(db.Graduate_Course, "Id", "Name", graduate_Coursework.CourseID);
+            ViewBag.CourseID = new SelectList(db.Graduate_Course, "Id", "CourseNum", graduate_Coursework.CourseID);
             ViewBag.StudentID = new SelectList(db.Graduate_Student, "Id", "FirstName", graduate_Coursework.StudentID);
             return View(graduate_Coursework);
         }

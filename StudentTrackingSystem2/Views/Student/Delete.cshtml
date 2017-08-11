@@ -129,7 +129,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeStart)
+            @*@Html.DisplayFor(model => model.DegreeStart)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeStart))
         </dd>
 
         <dt>
@@ -137,7 +138,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeEnd)
+            @*@Html.DisplayFor(model => model.DegreeEnd)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeEnd))
         </dd>
 
 
@@ -147,7 +149,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

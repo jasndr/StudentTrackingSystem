@@ -20,7 +20,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="55" Nullable="false" />
+          <Property Name="CourseNum" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="55" Nullable="false" />
           <Property Name="Credits" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Graduate_Coursework">
@@ -81,7 +82,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Graduate___Cours__1D5142F3">
+        <Association Name="FK__Graduate___Cours__30641767">
           <End Role="Graduate_Course" Type="Self.Graduate_Course" Multiplicity="1" />
           <End Role="Graduate_Coursework" Type="Self.Graduate_Coursework" Multiplicity="*" />
           <ReferentialConstraint>
@@ -153,7 +154,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Graduate___Semes__1C5D1EBA">
+        <Association Name="FK__Graduate___Semes__2F6FF32E">
           <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="1" />
           <End Role="Graduate_Coursework" Type="Self.Graduate_Coursework" Multiplicity="*" />
           <ReferentialConstraint>
@@ -165,7 +166,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Graduate___Stude__1B68FA81">
+        <Association Name="FK__Graduate___Stude__2E7BCEF5">
           <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="1" />
           <End Role="Graduate_Coursework" Type="Self.Graduate_Coursework" Multiplicity="*" />
           <ReferentialConstraint>
@@ -199,7 +200,7 @@
             <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
             <End Role="Graduate_Student" EntitySet="Graduate_Student" />
           </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Cours__1D5142F3" Association="Self.FK__Graduate___Cours__1D5142F3">
+          <AssociationSet Name="FK__Graduate___Cours__30641767" Association="Self.FK__Graduate___Cours__30641767">
             <End Role="Graduate_Course" EntitySet="Graduate_Course" />
             <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
           </AssociationSet>
@@ -223,11 +224,11 @@
             <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
             <End Role="Graduate_Student" EntitySet="Graduate_Student" />
           </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Semes__1C5D1EBA" Association="Self.FK__Graduate___Semes__1C5D1EBA">
+          <AssociationSet Name="FK__Graduate___Semes__2F6FF32E" Association="Self.FK__Graduate___Semes__2F6FF32E">
             <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
             <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
           </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Stude__1B68FA81" Association="Self.FK__Graduate___Stude__1B68FA81">
+          <AssociationSet Name="FK__Graduate___Stude__2E7BCEF5" Association="Self.FK__Graduate___Stude__2E7BCEF5">
             <End Role="Graduate_Student" EntitySet="Graduate_Student" />
             <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
           </AssociationSet>
@@ -262,9 +263,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Credits" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Graduate_Coursework" Relationship="Self.FK__Graduate___Cours__1D5142F3" FromRole="Graduate_Course" ToRole="Graduate_Coursework" />
+          <Property Name="CourseNum" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Graduate_Coursework">
           <Key>
@@ -511,8 +513,9 @@
           <EntitySetMapping Name="Graduate_Course">
             <EntityTypeMapping TypeName="GraduateStudentRecordModel.Graduate_Course">
               <MappingFragment StoreEntitySet="Graduate_Course">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseNum" ColumnName="CourseNum" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Credits" ColumnName="Credits" />
               </MappingFragment>
             </EntityTypeMapping>

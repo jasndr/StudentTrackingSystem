@@ -1,18 +1,18 @@
 ﻿@model StudentTrackingSystem2.Models.Graduate_Student
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create New Student";
 }
 
-<h2>Create</h2>
-
+<h2>Graduate Student Background</h2>
+<br />
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Graduate_Student</h4>
+        <h4>Creating new Graduate Student record</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

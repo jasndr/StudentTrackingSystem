@@ -21,8 +21,9 @@ namespace StudentTrackingSystem2.Models
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
         public int Credits { get; set; }
+        public string CourseNum { get; set; }
+        public string CourseName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Coursework> Graduate_Coursework { get; set; }
