@@ -1,0 +1,82 @@
+﻿@model StudentTrackingSystem2.Models.Graduate_PrevDegree
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Graduate_PrevDegree</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GPA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GPA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Major)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Major)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondMajor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondMajor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Minor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Minor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfAward)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfAward)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Graduate_CommonFields.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Graduate_CommonFields.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

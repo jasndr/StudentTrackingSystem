@@ -81,6 +81,28 @@
 
         <dd>
             @Html.DisplayFor(model => model.Graduate_PrevDegree.Title)
+            @*@Html.ActionLink("Add New Degree", "PrevDegree", "Create")
+            <table class="table">
+                <tr>
+                    <th>Degree Type</th>
+                    <th>Title</th>
+                    <th>GPA</th>
+                    <th>School Name</th>
+                    <th>Major</th>
+                    <th>Second Major</th>
+                    <th>Minor</th>
+                    <th>Date of Award</th>
+                </tr>
+                @foreach (var item in Model.Graduate_PrevDegree)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Graduate_CommonFields.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Graduate_Course.CourseNum)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Graduate_Course.CourseName)</td>
+                    </tr>
+                }
+            </table>*@
         </dd>
 
         <dt>
@@ -143,6 +165,26 @@
 
 
     </dl>
+
+
+    <table class="table">
+        <tr>
+            <th>Year</th>
+            <th>Semester</th>
+            <th>Course Number</th>
+            <th>Course Name</th>
+        </tr>
+        @foreach(var item in Model.Graduate_Coursework)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                <td>@Html.DisplayFor(modelItem => item.Graduate_CommonFields.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Graduate_Course.CourseNum)</td>
+                <td>@Html.DisplayFor(modelItem => item.Graduate_Course.CourseName)</td>
+            </tr>
+        }
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new {@class="btn btn-warning" }) |

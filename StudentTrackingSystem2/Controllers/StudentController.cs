@@ -39,11 +39,11 @@ namespace StudentTrackingSystem2.Controllers
         // GET: Student/Create
         public ActionResult Create()
         {
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields, "Id", "Name");
+            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="DegreeProgram"), "Id", "Name");
+            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Gender"), "Id", "Name");
+            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Race/Ethnicity"), "Id", "Name");
+            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Track"), "Id", "Name");
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title");
             return View();
         }
@@ -62,11 +62,11 @@ namespace StudentTrackingSystem2.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.ConcentrationId);
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.DegreeProgramId);
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.GenderId);
-            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.RaceEthnicityId);
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.TrackId);
+            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name", graduate_Student.ConcentrationId);
+            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name", graduate_Student.DegreeProgramId);
+            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Gender"), "Id", "Name", graduate_Student.GenderId);
+            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Race/Ethnicity"), "Id", "Name", graduate_Student.RaceEthnicityId);
+            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Track"), "Id", "Name", graduate_Student.TrackId);
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", graduate_Student.DegreeId);
             return View(graduate_Student);
         }
@@ -83,11 +83,11 @@ namespace StudentTrackingSystem2.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.ConcentrationId);
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.DegreeProgramId);
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.GenderId);
-            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.RaceEthnicityId);
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.TrackId);
+            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name", graduate_Student.ConcentrationId);
+            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name", graduate_Student.DegreeProgramId);
+            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Gender"), "Id", "Name", graduate_Student.GenderId);
+            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Race/Ethnicity"), "Id", "Name", graduate_Student.RaceEthnicityId);
+            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Track"), "Id", "Name", graduate_Student.TrackId);
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", graduate_Student.DegreeId);
             return View(graduate_Student);
         }
@@ -105,11 +105,11 @@ namespace StudentTrackingSystem2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.ConcentrationId);
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.DegreeProgramId);
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.GenderId);
-            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.RaceEthnicityId);
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields, "Id", "Name", graduate_Student.TrackId);
+            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name", graduate_Student.ConcentrationId);
+            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name", graduate_Student.DegreeProgramId);
+            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Gender"), "Id", "Name", graduate_Student.GenderId);
+            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Race/Ethnicity"), "Id", "Name", graduate_Student.RaceEthnicityId);
+            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Track"), "Id", "Name", graduate_Student.TrackId);
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", graduate_Student.DegreeId);
             return View(graduate_Student);
         }
