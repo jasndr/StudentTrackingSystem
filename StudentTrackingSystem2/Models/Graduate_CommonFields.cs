@@ -31,6 +31,7 @@ namespace StudentTrackingSystem2.Models
         public string Category { get; set; }
         public string DisplayOrder { get; set; }
         public Nullable<decimal> GradePoint { get; set; }
+        public bool Selected { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student { get; set; }

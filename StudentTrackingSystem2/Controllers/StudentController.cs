@@ -42,7 +42,7 @@ namespace StudentTrackingSystem2.Controllers
             ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Concentration"), "Id", "Name");
             ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="DegreeProgram"), "Id", "Name");
             ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Gender"), "Id", "Name");
-            ViewBag.RaceEthnicityId = new MultiSelectList(db.Graduate_CommonFields.Where(o => o.Category == "Race/Ethnicity"), "Id", "Name");
+            ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Race/Ethnicity"), "Id", "Name");
             ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Track"), "Id", "Name");
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title");
             return View();

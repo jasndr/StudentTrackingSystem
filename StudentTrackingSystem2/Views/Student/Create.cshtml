@@ -90,8 +90,26 @@
         <div class="form-group">
             @Html.LabelFor(model => model.RaceEthnicityId,  htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("RaceEthnicityId", null, htmlAttributes: new { @class = "form-control" })
+                     
+
+                @foreach (var item in ViewBag.RaceEthnicityId)
+                {
+                   
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="SelectedRaces" value="@item.Selected" id="@item.Id" 
+                                   @{if (Model.Graduate_CommonFields.Name.Contains(item.Value))
+                                       {<text>checked='checked'</text> }}
+                                   />
+                            @item.Text
+                            
+                        </label>
+                    </div>
+
+                }
+               
                 @Html.ValidationMessageFor(model => model.RaceEthnicityId, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
