@@ -12,16 +12,18 @@ namespace StudentTrackingSystem2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Graduate_Coursework
+    public partial class Graduate_Races
     {
-        public int Id { get; set; }
-        public int StudentID { get; set; }
-        public int SemesterID { get; set; }
-        public int Year { get; set; }
-        public int CourseID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Graduate_Races()
+        {
+            this.Graduate_PersonRace = new HashSet<Graduate_PersonRace>();
+        }
     
-        public virtual Graduate_Course Graduate_Course { get; set; }
-        public virtual Graduate_CommonFields Graduate_CommonFields { get; set; }
-        public virtual Graduate_Student Graduate_Student { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Graduate_PersonRace> Graduate_PersonRace { get; set; }
     }
 }

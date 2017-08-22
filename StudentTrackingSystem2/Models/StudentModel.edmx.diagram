@@ -5,21 +5,24 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="7160eab8d32a46499f70c713bce9e806" Name="Diagram1">
-        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_CommonFields" Width="1.5" PointX="6" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_Course" Width="1.5" PointX="9.75" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_Coursework" Width="1.5" PointX="6.5" PointY="7.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_PrevDegree" Width="1.5" PointX="3.875" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_Student" Width="1.5" PointX="2.375" PointY="3.875" IsExpanded="true" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Conce__12D3B480" ManuallyRouted="false" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__00B50445" ManuallyRouted="false" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__11DF9047" ManuallyRouted="false" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Gende__0F03239C" ManuallyRouted="false" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___RaceE__10EB6C0E" ManuallyRouted="false" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Semes__1C5D1EBA" ManuallyRouted="false" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Track__13C7D8B9" ManuallyRouted="false" />
         <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Cours__1D5142F3" ManuallyRouted="false" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Stude__1B68FA81" ManuallyRouted="false" />
-        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__0FF747D5" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_CommonFields" Width="1.5" PointX="1.625" PointY="3.75" />
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_PersonRace" Width="1.5" PointX="9.5" PointY="4.75" />
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_Races" Width="1.5" PointX="7.25" PointY="5" />
+        <EntityTypeShape EntityType="GraduateStudentRecordModel.Graduate_Student" Width="1.5" PointX="4.25" PointY="6" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Conce__12D3B480" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__00B50445" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__11DF9047" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Gende__0F03239C" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Semes__361CF0BD" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Track__13C7D8B9" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Stude__3528CC84" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___RaceI__55959C16" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Stude__54A177DD" />
+        <AssociationConnector Association="GraduateStudentRecordModel.FK__Graduate___Degre__0FF747D5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

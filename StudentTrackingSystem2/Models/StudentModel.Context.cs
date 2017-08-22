@@ -25,10 +25,12 @@ namespace StudentTrackingSystem2.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Graduate_CommonFields> Graduate_CommonFields { get; set; }
         public virtual DbSet<Graduate_Course> Graduate_Course { get; set; }
         public virtual DbSet<Graduate_Coursework> Graduate_Coursework { get; set; }
         public virtual DbSet<Graduate_PrevDegree> Graduate_PrevDegree { get; set; }
+        public virtual DbSet<Graduate_CommonFields> Graduate_CommonFields { get; set; }
+        public virtual DbSet<Graduate_PersonRace> Graduate_PersonRace { get; set; }
+        public virtual DbSet<Graduate_Races> Graduate_Races { get; set; }
         public virtual DbSet<Graduate_Student> Graduate_Student { get; set; }
     }
 }

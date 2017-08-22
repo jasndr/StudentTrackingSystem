@@ -37,8 +37,8 @@ namespace StudentTrackingSystem2.Models
         [Display(Name ="Degree")]
         public Nullable<int> DegreeId { get; set; }
 
-        [Display(Name ="Race/Ethnicity")]
-        public Nullable<int> RaceEthnicityId { get; set; }
+        //[Display(Name ="Race/Ethnicity")]
+        //public Nullable<int> RaceEthnicityId { get; set; }
 
         [Display(Name ="Race/Ethnicity Other")]
         public string RaceOther { get; set; }
@@ -62,7 +62,7 @@ namespace StudentTrackingSystem2.Models
         public virtual Graduate_CommonFields Graduate_CommonFields1 { get; set; }
         public virtual Graduate_CommonFields Graduate_CommonFields2 { get; set; }
         public virtual Graduate_CommonFields Graduate_CommonFields3 { get; set; }
-        public virtual Graduate_CommonFields Graduate_CommonFields4 { get; set; }
+        //public virtual Graduate_CommonFields Graduate_CommonFields4 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Coursework> Graduate_Coursework { get; set; }
         public virtual Graduate_PrevDegree Graduate_PrevDegree { get; set; }

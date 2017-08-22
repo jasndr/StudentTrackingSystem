@@ -21,9 +21,8 @@ namespace StudentTrackingSystem2.Models
             this.Graduate_PrevDegree = new HashSet<Graduate_PrevDegree>();
             this.Graduate_Student1 = new HashSet<Graduate_Student>();
             this.Graduate_Student2 = new HashSet<Graduate_Student>();
-            this.Graduate_Student3 = new HashSet<Graduate_Student>();
             this.Graduate_Coursework = new HashSet<Graduate_Coursework>();
-            this.Graduate_Student4 = new HashSet<Graduate_Student>();
+            this.Graduate_Student3 = new HashSet<Graduate_Student>();
         }
     
         public int Id { get; set; }
@@ -31,7 +30,6 @@ namespace StudentTrackingSystem2.Models
         public string Category { get; set; }
         public string DisplayOrder { get; set; }
         public Nullable<decimal> GradePoint { get; set; }
-        public bool Selected { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student { get; set; }
@@ -42,10 +40,8 @@ namespace StudentTrackingSystem2.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Student> Graduate_Student2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_Student> Graduate_Student3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate_Coursework> Graduate_Coursework { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_Student> Graduate_Student4 { get; set; }
+        public virtual ICollection<Graduate_Student> Graduate_Student3 { get; set; }
     }
 }

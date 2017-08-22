@@ -188,7 +188,13 @@
     <Compile Include="Models\Graduate_Coursework.cs">
       <DependentUpon>StudentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Graduate_PersonRace.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Graduate_PrevDegree.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Graduate_Races.cs">
       <DependentUpon>StudentModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Graduate_Student.cs">

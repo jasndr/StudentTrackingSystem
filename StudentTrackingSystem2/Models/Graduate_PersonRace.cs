@@ -12,16 +12,14 @@ namespace StudentTrackingSystem2.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Graduate_Coursework
+    public partial class Graduate_PersonRace
     {
         public int Id { get; set; }
         public int StudentID { get; set; }
-        public int SemesterID { get; set; }
-        public int Year { get; set; }
-        public int CourseID { get; set; }
+        public int RaceID { get; set; }
+        public bool Selected { get; set; }
     
-        public virtual Graduate_Course Graduate_Course { get; set; }
-        public virtual Graduate_CommonFields Graduate_CommonFields { get; set; }
+        public virtual Graduate_Races Graduate_Races { get; set; }
         public virtual Graduate_Student Graduate_Student { get; set; }
     }
 }

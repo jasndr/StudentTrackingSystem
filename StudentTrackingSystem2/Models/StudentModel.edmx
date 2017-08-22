@@ -14,7 +14,6 @@
           <Property Name="Category" Type="nvarchar" MaxLength="55" Nullable="false" />
           <Property Name="DisplayOrder" Type="nvarchar" MaxLength="55" Nullable="false" />
           <Property Name="GradePoint" Type="decimal" Precision="5" Scale="2" />
-          <Property Name="Selected" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Graduate_Course">
           <Key>
@@ -35,6 +34,15 @@
           <Property Name="Year" Type="int" Nullable="false" />
           <Property Name="CourseID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Graduate_PersonRace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="RaceID" Type="int" Nullable="false" />
+          <Property Name="Selected" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Graduate_PrevDegree">
           <Key>
             <PropertyRef Name="Id" />
@@ -48,6 +56,13 @@
           <Property Name="SecondMajor" Type="nvarchar" MaxLength="55" />
           <Property Name="Minor" Type="nvarchar" MaxLength="55" />
           <Property Name="DateOfAward" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Graduate_Races">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="55" Nullable="false" />
         </EntityType>
         <EntityType Name="Graduate_Student">
           <Key>
@@ -63,7 +78,6 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="55" Nullable="false" />
           <Property Name="GenderId" Type="int" />
           <Property Name="DegreeId" Type="int" />
-          <Property Name="RaceEthnicityId" Type="int" />
           <Property Name="RaceOther" Type="nvarchar" MaxLength="255" />
           <Property Name="DegreeProgramId" Type="int" />
           <Property Name="ConcentrationId" Type="int" />
@@ -143,15 +157,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Graduate___RaceE__10EB6C0E">
-          <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="0..1" />
-          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="*" />
+        <Association Name="FK__Graduate___RaceI__55959C16">
+          <End Role="Graduate_Races" Type="Self.Graduate_Races" Multiplicity="1" />
+          <End Role="Graduate_PersonRace" Type="Self.Graduate_PersonRace" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Graduate_CommonFields">
+            <Principal Role="Graduate_Races">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Graduate_Student">
-              <PropertyRef Name="RaceEthnicityId" />
+            <Dependent Role="Graduate_PersonRace">
+              <PropertyRef Name="RaceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -179,6 +193,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Graduate___Stude__54A177DD">
+          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="1" />
+          <End Role="Graduate_PersonRace" Type="Self.Graduate_PersonRace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_PersonRace">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Graduate___Track__13C7D8B9">
           <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="0..1" />
           <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="*" />
@@ -195,7 +221,9 @@
           <EntitySet Name="Graduate_CommonFields" EntityType="Self.Graduate_CommonFields" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Graduate_Course" EntityType="Self.Graduate_Course" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Graduate_Coursework" EntityType="Self.Graduate_Coursework" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Graduate_PersonRace" EntityType="Self.Graduate_PersonRace" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Graduate_PrevDegree" EntityType="Self.Graduate_PrevDegree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Graduate_Races" EntityType="Self.Graduate_Races" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Graduate_Student" EntityType="Self.Graduate_Student" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Graduate___Conce__12D3B480" Association="Self.FK__Graduate___Conce__12D3B480">
             <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
@@ -221,9 +249,9 @@
             <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
             <End Role="Graduate_Student" EntitySet="Graduate_Student" />
           </AssociationSet>
-          <AssociationSet Name="FK__Graduate___RaceE__10EB6C0E" Association="Self.FK__Graduate___RaceE__10EB6C0E">
-            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
-            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+          <AssociationSet Name="FK__Graduate___RaceI__55959C16" Association="Self.FK__Graduate___RaceI__55959C16">
+            <End Role="Graduate_Races" EntitySet="Graduate_Races" />
+            <End Role="Graduate_PersonRace" EntitySet="Graduate_PersonRace" />
           </AssociationSet>
           <AssociationSet Name="FK__Graduate___Semes__361CF0BD" Association="Self.FK__Graduate___Semes__361CF0BD">
             <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
@@ -232,6 +260,10 @@
           <AssociationSet Name="FK__Graduate___Stude__3528CC84" Association="Self.FK__Graduate___Stude__3528CC84">
             <End Role="Graduate_Student" EntitySet="Graduate_Student" />
             <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Stude__54A177DD" Association="Self.FK__Graduate___Stude__54A177DD">
+            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+            <End Role="Graduate_PersonRace" EntitySet="Graduate_PersonRace" />
           </AssociationSet>
           <AssociationSet Name="FK__Graduate___Track__13C7D8B9" Association="Self.FK__Graduate___Track__13C7D8B9">
             <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
@@ -242,24 +274,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GraduateStudentRecordModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Graduate_CommonFields">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Category" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DisplayOrder" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GradePoint" Type="Decimal" Precision="5" Scale="2" />
-          <NavigationProperty Name="Graduate_Student" Relationship="Self.FK__Graduate___Conce__12D3B480" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
-          <NavigationProperty Name="Graduate_PrevDegree" Relationship="Self.FK__Graduate___Degre__00B50445" FromRole="Graduate_CommonFields" ToRole="Graduate_PrevDegree" />
-          <NavigationProperty Name="Graduate_Student1" Relationship="Self.FK__Graduate___Degre__11DF9047" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
-          <NavigationProperty Name="Graduate_Student2" Relationship="Self.FK__Graduate___Gende__0F03239C" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
-          <NavigationProperty Name="Graduate_Student3" Relationship="Self.FK__Graduate___RaceE__10EB6C0E" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
-          <NavigationProperty Name="Graduate_Coursework" Relationship="Self.FK__Graduate___Semes__1C5D1EBA" FromRole="Graduate_CommonFields" ToRole="Graduate_Coursework" />
-          <NavigationProperty Name="Graduate_Student4" Relationship="Self.FK__Graduate___Track__13C7D8B9" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
-          <Property Name="Selected" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="Graduate_Course">
           <Key>
             <PropertyRef Name="Id" />
@@ -279,9 +293,9 @@
           <Property Name="SemesterID" Type="Int32" Nullable="false" />
           <Property Name="Year" Type="Int32" Nullable="false" />
           <Property Name="CourseID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Graduate_CommonFields" Relationship="Self.FK__Graduate___Semes__1C5D1EBA" FromRole="Graduate_Coursework" ToRole="Graduate_CommonFields" />
           <NavigationProperty Name="Graduate_Course" Relationship="Self.FK__Graduate___Cours__1D5142F3" FromRole="Graduate_Coursework" ToRole="Graduate_Course" />
-          <NavigationProperty Name="Graduate_Student" Relationship="Self.FK__Graduate___Stude__1B68FA81" FromRole="Graduate_Coursework" ToRole="Graduate_Student" />
+          <NavigationProperty Name="Graduate_CommonFields" Relationship="GraduateStudentRecordModel.FK__Graduate___Semes__361CF0BD" FromRole="Graduate_Coursework" ToRole="Graduate_CommonFields" />
+          <NavigationProperty Name="Graduate_Student" Relationship="GraduateStudentRecordModel.FK__Graduate___Stude__3528CC84" FromRole="Graduate_Coursework" ToRole="Graduate_Student" />
         </EntityType>
         <EntityType Name="Graduate_PrevDegree">
           <Key>
@@ -296,122 +310,9 @@
           <Property Name="SecondMajor" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
           <Property Name="Minor" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
           <Property Name="DateOfAward" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Graduate_CommonFields" Relationship="Self.FK__Graduate___Degre__00B50445" FromRole="Graduate_PrevDegree" ToRole="Graduate_CommonFields" />
-          <NavigationProperty Name="Graduate_Student" Relationship="Self.FK__Graduate___Degre__0FF747D5" FromRole="Graduate_PrevDegree" ToRole="Graduate_Student" />
+          <NavigationProperty Name="Graduate_CommonFields" Relationship="GraduateStudentRecordModel.FK__Graduate___Degre__00B50445" FromRole="Graduate_PrevDegree" ToRole="Graduate_CommonFields" />
+          <NavigationProperty Name="Graduate_Student" Relationship="GraduateStudentRecordModel.FK__Graduate___Degre__0FF747D5" FromRole="Graduate_PrevDegree" ToRole="Graduate_Student" />
         </EntityType>
-        <EntityType Name="Graduate_Student">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentNumber" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MiddleName" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="SchoolEmail" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="OtherEmail" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="55" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="GenderId" Type="Int32" />
-          <Property Name="DegreeId" Type="Int32" />
-          <Property Name="RaceEthnicityId" Type="Int32" />
-          <Property Name="RaceOther" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="DegreeProgramId" Type="Int32" />
-          <Property Name="ConcentrationId" Type="Int32" />
-          <Property Name="TrackId" Type="Int32" />
-          <Property Name="DegreeStart" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DegreeEnd" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Graduate_CommonFields" Relationship="Self.FK__Graduate___Conce__12D3B480" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
-          <NavigationProperty Name="Graduate_CommonFields1" Relationship="Self.FK__Graduate___Degre__11DF9047" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
-          <NavigationProperty Name="Graduate_CommonFields2" Relationship="Self.FK__Graduate___Gende__0F03239C" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
-          <NavigationProperty Name="Graduate_CommonFields3" Relationship="Self.FK__Graduate___RaceE__10EB6C0E" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
-          <NavigationProperty Name="Graduate_CommonFields4" Relationship="Self.FK__Graduate___Track__13C7D8B9" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
-          <NavigationProperty Name="Graduate_Coursework" Relationship="Self.FK__Graduate___Stude__1B68FA81" FromRole="Graduate_Student" ToRole="Graduate_Coursework" />
-          <NavigationProperty Name="Graduate_PrevDegree" Relationship="Self.FK__Graduate___Degre__0FF747D5" FromRole="Graduate_Student" ToRole="Graduate_PrevDegree" />
-        </EntityType>
-        <Association Name="FK__Graduate___Conce__12D3B480">
-          <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="0..1" />
-          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Graduate_CommonFields">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graduate_Student">
-              <PropertyRef Name="ConcentrationId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Graduate___Degre__00B50445">
-          <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="1" />
-          <End Role="Graduate_PrevDegree" Type="Self.Graduate_PrevDegree" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Graduate_CommonFields">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graduate_PrevDegree">
-              <PropertyRef Name="DegreeTypeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Graduate___Degre__11DF9047">
-          <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="0..1" />
-          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Graduate_CommonFields">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graduate_Student">
-              <PropertyRef Name="DegreeProgramId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Graduate___Gende__0F03239C">
-          <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="0..1" />
-          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Graduate_CommonFields">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graduate_Student">
-              <PropertyRef Name="GenderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Graduate___RaceE__10EB6C0E">
-          <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="0..1" />
-          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Graduate_CommonFields">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graduate_Student">
-              <PropertyRef Name="RaceEthnicityId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Graduate___Semes__1C5D1EBA">
-          <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="1" />
-          <End Role="Graduate_Coursework" Type="Self.Graduate_Coursework" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Graduate_CommonFields">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graduate_Coursework">
-              <PropertyRef Name="SemesterID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Graduate___Track__13C7D8B9">
-          <End Role="Graduate_CommonFields" Type="Self.Graduate_CommonFields" Multiplicity="0..1" />
-          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Graduate_CommonFields">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Graduate_Student">
-              <PropertyRef Name="TrackId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Graduate___Cours__1D5142F3">
           <End Role="Graduate_Course" Type="Self.Graduate_Course" Multiplicity="1" />
           <End Role="Graduate_Coursework" Type="Self.Graduate_Coursework" Multiplicity="*" />
@@ -424,9 +325,197 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Graduate___Stude__1B68FA81">
-          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="1" />
-          <End Role="Graduate_Coursework" Type="Self.Graduate_Coursework" Multiplicity="*" />
+        <EntityContainer Name="GraduateStudentRecord" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Graduate_Course" EntityType="Self.Graduate_Course" />
+          <EntitySet Name="Graduate_Coursework" EntityType="Self.Graduate_Coursework" />
+          <EntitySet Name="Graduate_PrevDegree" EntityType="Self.Graduate_PrevDegree" />
+          <AssociationSet Name="FK__Graduate___Cours__1D5142F3" Association="Self.FK__Graduate___Cours__1D5142F3">
+            <End Role="Graduate_Course" EntitySet="Graduate_Course" />
+            <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
+          </AssociationSet>
+          <EntitySet Name="Graduate_CommonFields" EntityType="GraduateStudentRecordModel.Graduate_CommonFields" />
+          <EntitySet Name="Graduate_PersonRace" EntityType="GraduateStudentRecordModel.Graduate_PersonRace" />
+          <EntitySet Name="Graduate_Races" EntityType="GraduateStudentRecordModel.Graduate_Races" />
+          <EntitySet Name="Graduate_Student" EntityType="GraduateStudentRecordModel.Graduate_Student" />
+          <AssociationSet Name="FK__Graduate___Conce__12D3B480" Association="GraduateStudentRecordModel.FK__Graduate___Conce__12D3B480">
+            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
+            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Degre__00B50445" Association="GraduateStudentRecordModel.FK__Graduate___Degre__00B50445">
+            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
+            <End Role="Graduate_PrevDegree" EntitySet="Graduate_PrevDegree" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Degre__11DF9047" Association="GraduateStudentRecordModel.FK__Graduate___Degre__11DF9047">
+            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
+            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Gende__0F03239C" Association="GraduateStudentRecordModel.FK__Graduate___Gende__0F03239C">
+            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
+            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Semes__361CF0BD" Association="GraduateStudentRecordModel.FK__Graduate___Semes__361CF0BD">
+            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
+            <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Track__13C7D8B9" Association="GraduateStudentRecordModel.FK__Graduate___Track__13C7D8B9">
+            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
+            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Stude__3528CC84" Association="GraduateStudentRecordModel.FK__Graduate___Stude__3528CC84">
+            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+            <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___RaceI__55959C16" Association="GraduateStudentRecordModel.FK__Graduate___RaceI__55959C16">
+            <End Role="Graduate_Races" EntitySet="Graduate_Races" />
+            <End Role="Graduate_PersonRace" EntitySet="Graduate_PersonRace" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Stude__54A177DD" Association="GraduateStudentRecordModel.FK__Graduate___Stude__54A177DD">
+            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+            <End Role="Graduate_PersonRace" EntitySet="Graduate_PersonRace" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate___Degre__0FF747D5" Association="GraduateStudentRecordModel.FK__Graduate___Degre__0FF747D5">
+            <End Role="Graduate_PrevDegree" EntitySet="Graduate_PrevDegree" />
+            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Graduate_CommonFields">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOrder" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="GradePoint" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="Graduate_Student" Relationship="GraduateStudentRecordModel.FK__Graduate___Conce__12D3B480" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
+          <NavigationProperty Name="Graduate_PrevDegree" Relationship="GraduateStudentRecordModel.FK__Graduate___Degre__00B50445" FromRole="Graduate_CommonFields" ToRole="Graduate_PrevDegree" />
+          <NavigationProperty Name="Graduate_Student1" Relationship="GraduateStudentRecordModel.FK__Graduate___Degre__11DF9047" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
+          <NavigationProperty Name="Graduate_Student2" Relationship="GraduateStudentRecordModel.FK__Graduate___Gende__0F03239C" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
+          <NavigationProperty Name="Graduate_Coursework" Relationship="GraduateStudentRecordModel.FK__Graduate___Semes__361CF0BD" FromRole="Graduate_CommonFields" ToRole="Graduate_Coursework" />
+          <NavigationProperty Name="Graduate_Student3" Relationship="GraduateStudentRecordModel.FK__Graduate___Track__13C7D8B9" FromRole="Graduate_CommonFields" ToRole="Graduate_Student" />
+        </EntityType>
+        <EntityType Name="Graduate_PersonRace">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="RaceID" Type="Int32" Nullable="false" />
+          <Property Name="Selected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Graduate_Races" Relationship="GraduateStudentRecordModel.FK__Graduate___RaceI__55959C16" FromRole="Graduate_PersonRace" ToRole="Graduate_Races" />
+          <NavigationProperty Name="Graduate_Student" Relationship="GraduateStudentRecordModel.FK__Graduate___Stude__54A177DD" FromRole="Graduate_PersonRace" ToRole="Graduate_Student" />
+        </EntityType>
+        <EntityType Name="Graduate_Races">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Graduate_PersonRace" Relationship="GraduateStudentRecordModel.FK__Graduate___RaceI__55959C16" FromRole="Graduate_Races" ToRole="Graduate_PersonRace" />
+        </EntityType>
+        <EntityType Name="Graduate_Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentNumber" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="SchoolEmail" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="OtherEmail" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
+          <Property Name="GenderId" Type="Int32" />
+          <Property Name="DegreeId" Type="Int32" />
+          <Property Name="RaceOther" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DegreeProgramId" Type="Int32" />
+          <Property Name="ConcentrationId" Type="Int32" />
+          <Property Name="TrackId" Type="Int32" />
+          <Property Name="DegreeStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DegreeEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Graduate_CommonFields" Relationship="GraduateStudentRecordModel.FK__Graduate___Conce__12D3B480" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
+          <NavigationProperty Name="Graduate_CommonFields1" Relationship="GraduateStudentRecordModel.FK__Graduate___Degre__11DF9047" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
+          <NavigationProperty Name="Graduate_CommonFields2" Relationship="GraduateStudentRecordModel.FK__Graduate___Gende__0F03239C" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
+          <NavigationProperty Name="Graduate_CommonFields3" Relationship="GraduateStudentRecordModel.FK__Graduate___Track__13C7D8B9" FromRole="Graduate_Student" ToRole="Graduate_CommonFields" />
+          <NavigationProperty Name="Graduate_Coursework" Relationship="GraduateStudentRecordModel.FK__Graduate___Stude__3528CC84" FromRole="Graduate_Student" ToRole="Graduate_Coursework" />
+          <NavigationProperty Name="Graduate_PersonRace" Relationship="GraduateStudentRecordModel.FK__Graduate___Stude__54A177DD" FromRole="Graduate_Student" ToRole="Graduate_PersonRace" />
+          <NavigationProperty Name="Graduate_PrevDegree" Relationship="GraduateStudentRecordModel.FK__Graduate___Degre__0FF747D5" FromRole="Graduate_Student" ToRole="Graduate_PrevDegree" />
+        </EntityType>
+        <Association Name="FK__Graduate___Conce__12D3B480">
+          <End Type="GraduateStudentRecordModel.Graduate_CommonFields" Role="Graduate_CommonFields" Multiplicity="0..1" />
+          <End Type="GraduateStudentRecordModel.Graduate_Student" Role="Graduate_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_CommonFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_Student">
+              <PropertyRef Name="ConcentrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate___Degre__00B50445">
+          <End Type="GraduateStudentRecordModel.Graduate_CommonFields" Role="Graduate_CommonFields" Multiplicity="1" />
+          <End Type="GraduateStudentRecordModel.Graduate_PrevDegree" Role="Graduate_PrevDegree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_CommonFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_PrevDegree">
+              <PropertyRef Name="DegreeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate___Degre__11DF9047">
+          <End Type="GraduateStudentRecordModel.Graduate_CommonFields" Role="Graduate_CommonFields" Multiplicity="0..1" />
+          <End Type="GraduateStudentRecordModel.Graduate_Student" Role="Graduate_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_CommonFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_Student">
+              <PropertyRef Name="DegreeProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate___Gende__0F03239C">
+          <End Type="GraduateStudentRecordModel.Graduate_CommonFields" Role="Graduate_CommonFields" Multiplicity="0..1" />
+          <End Type="GraduateStudentRecordModel.Graduate_Student" Role="Graduate_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_CommonFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_Student">
+              <PropertyRef Name="GenderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate___Semes__361CF0BD">
+          <End Type="GraduateStudentRecordModel.Graduate_CommonFields" Role="Graduate_CommonFields" Multiplicity="1" />
+          <End Type="GraduateStudentRecordModel.Graduate_Coursework" Role="Graduate_Coursework" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_CommonFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_Coursework">
+              <PropertyRef Name="SemesterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate___Track__13C7D8B9">
+          <End Type="GraduateStudentRecordModel.Graduate_CommonFields" Role="Graduate_CommonFields" Multiplicity="0..1" />
+          <End Type="GraduateStudentRecordModel.Graduate_Student" Role="Graduate_Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_CommonFields">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_Student">
+              <PropertyRef Name="TrackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate___Stude__3528CC84">
+          <End Type="GraduateStudentRecordModel.Graduate_Student" Role="Graduate_Student" Multiplicity="1" />
+          <End Type="GraduateStudentRecordModel.Graduate_Coursework" Role="Graduate_Coursework" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Graduate_Student">
               <PropertyRef Name="Id" />
@@ -436,9 +525,33 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Graduate___RaceI__55959C16">
+          <End Type="GraduateStudentRecordModel.Graduate_Races" Role="Graduate_Races" Multiplicity="1" />
+          <End Type="GraduateStudentRecordModel.Graduate_PersonRace" Role="Graduate_PersonRace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_Races">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_PersonRace">
+              <PropertyRef Name="RaceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate___Stude__54A177DD">
+          <End Type="GraduateStudentRecordModel.Graduate_Student" Role="Graduate_Student" Multiplicity="1" />
+          <End Type="GraduateStudentRecordModel.Graduate_PersonRace" Role="Graduate_PersonRace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate_Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate_PersonRace">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Graduate___Degre__0FF747D5">
-          <End Role="Graduate_PrevDegree" Type="Self.Graduate_PrevDegree" Multiplicity="0..1" />
-          <End Role="Graduate_Student" Type="Self.Graduate_Student" Multiplicity="*" />
+          <End Type="GraduateStudentRecordModel.Graduate_PrevDegree" Role="Graduate_PrevDegree" Multiplicity="0..1" />
+          <End Type="GraduateStudentRecordModel.Graduate_Student" Role="Graduate_Student" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Graduate_PrevDegree">
               <PropertyRef Name="Id" />
@@ -448,71 +561,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="GraduateStudentRecord" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Graduate_CommonFields" EntityType="Self.Graduate_CommonFields" />
-          <EntitySet Name="Graduate_Course" EntityType="Self.Graduate_Course" />
-          <EntitySet Name="Graduate_Coursework" EntityType="Self.Graduate_Coursework" />
-          <EntitySet Name="Graduate_PrevDegree" EntityType="Self.Graduate_PrevDegree" />
-          <EntitySet Name="Graduate_Student" EntityType="Self.Graduate_Student" />
-          <AssociationSet Name="FK__Graduate___Conce__12D3B480" Association="Self.FK__Graduate___Conce__12D3B480">
-            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
-            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Degre__00B50445" Association="Self.FK__Graduate___Degre__00B50445">
-            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
-            <End Role="Graduate_PrevDegree" EntitySet="Graduate_PrevDegree" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Degre__11DF9047" Association="Self.FK__Graduate___Degre__11DF9047">
-            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
-            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Gende__0F03239C" Association="Self.FK__Graduate___Gende__0F03239C">
-            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
-            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___RaceE__10EB6C0E" Association="Self.FK__Graduate___RaceE__10EB6C0E">
-            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
-            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Semes__1C5D1EBA" Association="Self.FK__Graduate___Semes__1C5D1EBA">
-            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
-            <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Track__13C7D8B9" Association="Self.FK__Graduate___Track__13C7D8B9">
-            <End Role="Graduate_CommonFields" EntitySet="Graduate_CommonFields" />
-            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Cours__1D5142F3" Association="Self.FK__Graduate___Cours__1D5142F3">
-            <End Role="Graduate_Course" EntitySet="Graduate_Course" />
-            <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Stude__1B68FA81" Association="Self.FK__Graduate___Stude__1B68FA81">
-            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
-            <End Role="Graduate_Coursework" EntitySet="Graduate_Coursework" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Graduate___Degre__0FF747D5" Association="Self.FK__Graduate___Degre__0FF747D5">
-            <End Role="Graduate_PrevDegree" EntitySet="Graduate_PrevDegree" />
-            <End Role="Graduate_Student" EntitySet="Graduate_Student" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="GraduateStudentRecordModelStoreContainer" CdmEntityContainer="GraduateStudentRecord">
-          <EntitySetMapping Name="Graduate_CommonFields">
-            <EntityTypeMapping TypeName="GraduateStudentRecordModel.Graduate_CommonFields">
-              <MappingFragment StoreEntitySet="Graduate_CommonFields">
-                <ScalarProperty Name="Selected" ColumnName="Selected" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-                <ScalarProperty Name="GradePoint" ColumnName="GradePoint" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Graduate_Course">
             <EntityTypeMapping TypeName="GraduateStudentRecordModel.Graduate_Course">
               <MappingFragment StoreEntitySet="Graduate_Course">
@@ -549,26 +603,54 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Graduate_CommonFields">
+            <EntityTypeMapping TypeName="GraduateStudentRecordModel.Graduate_CommonFields">
+              <MappingFragment StoreEntitySet="Graduate_CommonFields">
+                <ScalarProperty Name="GradePoint" ColumnName="GradePoint" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Graduate_PersonRace">
+            <EntityTypeMapping TypeName="GraduateStudentRecordModel.Graduate_PersonRace">
+              <MappingFragment StoreEntitySet="Graduate_PersonRace">
+                <ScalarProperty Name="Selected" ColumnName="Selected" />
+                <ScalarProperty Name="RaceID" ColumnName="RaceID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Graduate_Races">
+            <EntityTypeMapping TypeName="GraduateStudentRecordModel.Graduate_Races">
+              <MappingFragment StoreEntitySet="Graduate_Races">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Graduate_Student">
             <EntityTypeMapping TypeName="GraduateStudentRecordModel.Graduate_Student">
               <MappingFragment StoreEntitySet="Graduate_Student">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="SchoolEmail" ColumnName="SchoolEmail" />
-                <ScalarProperty Name="OtherEmail" ColumnName="OtherEmail" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
-                <ScalarProperty Name="DegreeId" ColumnName="DegreeId" />
-                <ScalarProperty Name="RaceEthnicityId" ColumnName="RaceEthnicityId" />
-                <ScalarProperty Name="RaceOther" ColumnName="RaceOther" />
-                <ScalarProperty Name="DegreeProgramId" ColumnName="DegreeProgramId" />
-                <ScalarProperty Name="ConcentrationId" ColumnName="ConcentrationId" />
-                <ScalarProperty Name="TrackId" ColumnName="TrackId" />
-                <ScalarProperty Name="DegreeStart" ColumnName="DegreeStart" />
                 <ScalarProperty Name="DegreeEnd" ColumnName="DegreeEnd" />
+                <ScalarProperty Name="DegreeStart" ColumnName="DegreeStart" />
+                <ScalarProperty Name="TrackId" ColumnName="TrackId" />
+                <ScalarProperty Name="ConcentrationId" ColumnName="ConcentrationId" />
+                <ScalarProperty Name="DegreeProgramId" ColumnName="DegreeProgramId" />
+                <ScalarProperty Name="RaceOther" ColumnName="RaceOther" />
+                <ScalarProperty Name="DegreeId" ColumnName="DegreeId" />
+                <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="OtherEmail" ColumnName="OtherEmail" />
+                <ScalarProperty Name="SchoolEmail" ColumnName="SchoolEmail" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

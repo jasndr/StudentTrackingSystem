@@ -106,11 +106,20 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.RaceEthnicityId)
+            Race/Ethnicity
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields3.Name)
+           @*@foreach (var item in Model.Graduate_PersonRace)
+                {
+                    @{ if (item.Selected)
+                        {
+                            @Html.DisplayFor(modelItem => item.Graduate_Races.Name)
+                        }
+                    } else {
+                                No Race Selected
+                            }
+                        }*@  
         </dd>
 
         <dt>
@@ -142,7 +151,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Graduate_CommonFields4.Name)
+            @Html.DisplayFor(model => model.Graduate_CommonFields3.Name)
         </dd>
 
         <dt>
