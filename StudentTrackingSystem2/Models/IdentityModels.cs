@@ -29,5 +29,7 @@ namespace StudentTrackingSystem2.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<StudentTrackingSystem2.Models.Graduate_PersonRace> Graduate_PersonRace { get; set; }
     }
 }

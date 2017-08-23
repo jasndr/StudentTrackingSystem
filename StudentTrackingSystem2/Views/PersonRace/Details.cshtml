@@ -1,0 +1,42 @@
+﻿@model StudentTrackingSystem2.Models.Graduate_PersonRace
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Graduate_PersonRace</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Selected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Selected)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

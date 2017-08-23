@@ -87,31 +87,34 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.RaceEthnicityId,  htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            <div class="control-label col-md-2"><strong>Race/Ethnicity</strong></div>
+            
             <div class="col-md-10">
-                     
+           
 
-                @foreach (var item in ViewBag.RaceEthnicityId)
-                {
-                   
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="SelectedRaces" value="@item.Selected" id="@item.Id" 
-                                   @{if (Model.Graduate_CommonFields.Name.Contains(item.Value))
-                                       {<text>checked='checked'</text> }}
-                                   />
-                            @item.Text
-                            
-                        </label>
-                    </div>
+                <table>
+                    @foreach (var item in ViewBag.RaceEthnicity)
+                    {
 
-                }
+                        <tr>
+                            <td>
+                                <label>
+                                    <input type="checkbox" name="SelectedRaces" value="@item.Value"/>
+                                    @item.Text 
+                                </label>
+                            </td>
+                        </tr>        
+
+                    }
+                </table>
+
+                
                
-                @Html.ValidationMessageFor(model => model.RaceEthnicityId, "", new { @class = "text-danger" })
+                @*@Html.ValidationMessageFor(model => model.RaceEthnicityId, "", new { @class = "text-danger" })*@
 
             </div>
-        </div>*@
+        </div>
 
 
         <div class="form-group">

@@ -173,12 +173,14 @@
     <Compile Include="Controllers\CourseworkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PersonRaceController.cs" />
     <Compile Include="Controllers\PrevDegreeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CheckBoxListItem.cs" />
     <Compile Include="Models\Graduate_CommonFields.cs">
       <DependentUpon>StudentModel.tt</DependentUpon>
     </Compile>
@@ -354,6 +356,11 @@
     <Content Include="Views\PrevDegree\Details.cshtml" />
     <Content Include="Views\PrevDegree\Edit.cshtml" />
     <Content Include="Views\PrevDegree\Index.cshtml" />
+    <Content Include="Views\PersonRace\Create.cshtml" />
+    <Content Include="Views\PersonRace\Delete.cshtml" />
+    <Content Include="Views\PersonRace\Details.cshtml" />
+    <Content Include="Views\PersonRace\Edit.cshtml" />
+    <Content Include="Views\PersonRace\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
