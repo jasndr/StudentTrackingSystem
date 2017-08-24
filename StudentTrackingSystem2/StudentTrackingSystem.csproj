@@ -292,6 +292,7 @@
       <DependentUpon>StudentModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\DatePicker.js" />
+    <None Include="Properties\PublishProfiles\Test.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-1.12.4.min.js" />
@@ -361,6 +362,9 @@
     <Content Include="Views\PersonRace\Details.cshtml" />
     <Content Include="Views\PersonRace\Edit.cshtml" />
     <Content Include="Views\PersonRace\Index.cshtml" />
+    <None Include="Web.Test.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
