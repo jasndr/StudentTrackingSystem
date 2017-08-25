@@ -57,12 +57,15 @@
           <Property Name="Minor" Type="nvarchar" MaxLength="55" />
           <Property Name="DateOfAward" Type="date" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'sql_variant' is currently not supported for the target Entity Framework version; the column 'Tags' in the table 'BioStatProject_DA.dbo.Graduate_Races' was excluded.-->
         <EntityType Name="Graduate_Races">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="55" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Graduate_Student">
           <Key>
@@ -412,6 +415,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="55" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Graduate_PersonRace" Relationship="GraduateStudentRecordModel.FK__Graduate___RaceI__55959C16" FromRole="Graduate_Races" ToRole="Graduate_PersonRace" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Graduate_Student">
           <Key>
@@ -627,6 +631,7 @@
           <EntitySetMapping Name="Graduate_Races">
             <EntityTypeMapping TypeName="GraduateStudentRecordModel.Graduate_Races">
               <MappingFragment StoreEntitySet="Graduate_Races">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

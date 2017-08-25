@@ -1,5 +1,4 @@
 ﻿@model StudentTrackingSystem2.Models.Graduate_Student
-
 @{
     ViewBag.Title = "Create New Student";
 }
@@ -109,7 +108,13 @@
                     }
                 </table>
 
-                
+                @*@Html.CheckBoxListFor(model => model.PostedRaces.RaceIDs,
+
+                                      model => model.AvailableRaces,
+                                      item=>item.Id,
+                                      item=>item.Name,
+                                      model=>model.IsSelected,
+                                      MvcCheckBoxList.Model.Position.Vertical)*@
                
                 @*@Html.ValidationMessageFor(model => model.RaceEthnicityId, "", new { @class = "text-danger" })*@
 
