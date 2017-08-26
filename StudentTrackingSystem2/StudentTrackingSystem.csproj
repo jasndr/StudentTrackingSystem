@@ -185,6 +185,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CheckBoxListItem.cs" />
+    <Compile Include="Models\RaceManager.cs" />
     <Compile Include="Models\RacesViewModel.cs" />
     <Compile Include="Models\Graduate_CommonFields.cs">
       <DependentUpon>StudentModel.tt</DependentUpon>
@@ -228,6 +229,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\AddRaceVM.cs" />
+    <Compile Include="ViewModels\UltimateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -369,6 +372,7 @@
     <Content Include="Views\PersonRace\Details.cshtml" />
     <Content Include="Views\PersonRace\Edit.cshtml" />
     <Content Include="Views\PersonRace\Index.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CheckBoxListItem.cshtml" />
     <None Include="Web.Test.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

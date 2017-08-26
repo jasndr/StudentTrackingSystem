@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StudentTrackingSystem2.Models;
+using StudentTrackingSystem2.ViewModels;
 
 namespace StudentTrackingSystem2.Controllers
 {
@@ -47,7 +48,25 @@ namespace StudentTrackingSystem2.Controllers
             ViewBag.RaceEthnicity = new SelectList(db.Graduate_Races, "Id", "Name");
             ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Track"), "Id", "Name");
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title");
-            return View();
+
+            UltimateViewModel ultimate = new UltimateViewModel();
+            AddRaceVM model = new AddRaceVM();
+            var allRaces = db.Graduate_Races.ToList(); 
+            var checkBoxListItems = new List<CheckBoxListItem>();
+            foreach (var race in allRaces)
+            {
+                checkBoxListItems.Add(new CheckBoxListItem()
+                {
+                    ID = race.Id,
+                    Display = race.Name,
+                    IsChecked = false //On the add view, no genres are selected by default
+                });
+            }
+            model.Races = checkBoxListItems;
+
+            ultimate.AddRaceVM = model;
+
+            return View(ultimate);
         }
 
         // POST: Student/Create
