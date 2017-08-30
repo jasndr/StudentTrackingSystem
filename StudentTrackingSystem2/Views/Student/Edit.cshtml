@@ -1,5 +1,4 @@
-﻿@*@model StudentTrackingSystem2.Models.Graduate_Student*@
-@model StudentTrackingSystem2.Models.RacesViewModel
+﻿@model StudentTrackingSystem2.Models.Graduate_Student
 
 @{
     ViewBag.Title = "Edit Student Details";
@@ -95,12 +94,28 @@
 
             <div class="col-md-10">
 
-                @Html.CheckBoxListFor(model => model.PostedRaces.RaceIDs,
+                <table>
+                    @foreach (var item in ViewBag.RaceEthnicity)
+                    {
+
+                        <tr>
+                            <td>
+                                <label>
+                                    <input type="checkbox" name="SelectedRaces" value="@item.Value" />
+                                    @item.Text
+                                </label>
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+
+                @*@Html.CheckBoxListFor(model => model.PostedRaces.RaceIDs,
                                       model => model.AvailableRaces,
                                       item => item.Id,
                                       item => item.Name,
                                       model => model.IsSelected,
-                                      MvcCheckBoxList.Model.Position.Vertical)
+                                      MvcCheckBoxList.Model.Position.Vertical)*@
 
                 @*@Html.ValidationMessageFor(model => model.RaceEthnicityId, "", new { @class = "text-danger" })*@
 
