@@ -93,8 +93,6 @@ namespace StudentTrackingSystem2.Controllers
             return View(graduate_Student);
         }
 
-        
-
         // GET: Student/Edit/5
         public ActionResult Edit(int? id)
         {

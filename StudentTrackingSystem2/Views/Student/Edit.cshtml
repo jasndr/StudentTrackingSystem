@@ -94,6 +94,7 @@
 
             <div class="col-md-10">
 
+
                 <table>
                     @foreach (var item in ViewBag.RaceEthnicity)
                     {
@@ -101,7 +102,7 @@
                         <tr>
                             <td>
                                 <label>
-                                    <input type="checkbox" name="SelectedRaces" value="@item.Value" />
+                                    <input type="checkbox" name="SelectedRaces" value="@item.Value" selected="@item.Selected" />
                                     @item.Text
                                 </label>
                             </td>
@@ -110,12 +111,7 @@
                     }
                 </table>
 
-                @*@Html.CheckBoxListFor(model => model.PostedRaces.RaceIDs,
-                                      model => model.AvailableRaces,
-                                      item => item.Id,
-                                      item => item.Name,
-                                      model => model.IsSelected,
-                                      MvcCheckBoxList.Model.Position.Vertical)*@
+
 
                 @*@Html.ValidationMessageFor(model => model.RaceEthnicityId, "", new { @class = "text-danger" })*@
 
