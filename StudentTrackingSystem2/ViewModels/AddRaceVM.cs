@@ -17,6 +17,7 @@ namespace StudentTrackingSystem2.ViewModels
         {
             Races = new List<CheckBoxListItem>();
         }
+        
 
     }
 }

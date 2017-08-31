@@ -9,8 +9,9 @@ namespace StudentTrackingSystem2.ViewModels
 {
     public class UltimateViewModel
     {
-        public Graduate_Student Graduate_Student { get; set; }
-        public AddRaceVM AddRaceVM { get; set; }
+        public Graduate_Student Graduate_Student_Model { get; set; }
+        public AddRaceVM AddRace_ViewModel { get; set; }
 
     }
+
 }

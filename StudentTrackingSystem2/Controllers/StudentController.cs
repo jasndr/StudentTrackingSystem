@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Data.Entity.Validation;
 using System.Web.Mvc;
 using StudentTrackingSystem2.Models;
 using StudentTrackingSystem2.ViewModels;
@@ -41,17 +42,17 @@ namespace StudentTrackingSystem2.Controllers
         public ActionResult Create()
         {
 
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Concentration"), "Id", "Name");
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="DegreeProgram"), "Id", "Name");
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Gender"), "Id", "Name");
+            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
+            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
             //ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Race/Ethnicity"), "Id", "Name");
             ViewBag.RaceEthnicity = new SelectList(db.Graduate_Races, "Id", "Name");
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o=>o.Category=="Track"), "Id", "Name");
+            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title");
 
             UltimateViewModel ultimate = new UltimateViewModel();
-            AddRaceVM model = new AddRaceVM();
-            var allRaces = db.Graduate_Races.ToList(); 
+            AddRaceVM addRaceModel = new AddRaceVM();
+            var allRaces = db.Graduate_Races.ToList();
             var checkBoxListItems = new List<CheckBoxListItem>();
             foreach (var race in allRaces)
             {
@@ -59,12 +60,12 @@ namespace StudentTrackingSystem2.Controllers
                 {
                     ID = race.Id,
                     Display = race.Name,
-                    IsChecked = false //On the add view, no genres are selected by default
+                    IsChecked = false //On the add view, no races are selected by default
                 });
             }
-            model.Races = checkBoxListItems;
-
-            ultimate.AddRaceVM = model;
+            addRaceModel.Races = checkBoxListItems;
+            ultimate.AddRace_ViewModel = addRaceModel;
+            //ultimate.Graduate_Student_Model = new Graduate_Student();
 
             return View(ultimate);
         }
@@ -74,14 +75,35 @@ namespace StudentTrackingSystem2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,DegreeId,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")] Graduate_Student graduate_Student)
+        public ActionResult Create(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,DegreeId,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")]*/ UltimateViewModel ultimate)
         {
+
+            var graduate_Student = ultimate.Graduate_Student_Model;
+
             if (ModelState.IsValid)
             {
-                db.Graduate_Student.Add(graduate_Student);
-                db.SaveChanges();
+                try
+                {
+                    db.Graduate_Student.Add(graduate_Student);
+                    db.SaveChanges();
+                }
+                
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            Response.Write("Property: " + validationError.PropertyName + "Error: " + validationError.ErrorMessage);
+                            Response.Write("<script>alert('WARNING! THE SYSTEM HAS FOUND A VALIDATION ERROR! Please inspect the validation error!')</script>");
+                        }
+                    }
+                }
                 return RedirectToAction("Index");
             }
+
+            //UltimateViewModel ultimate = new UltimateViewModel();
+            //ultimate.Graduate_Student_Model = graduate_Student;
 
             ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name", graduate_Student.ConcentrationId);
             ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name", graduate_Student.DegreeProgramId);
@@ -90,8 +112,10 @@ namespace StudentTrackingSystem2.Controllers
             ViewBag.RaceEthnicity = new SelectList(db.Graduate_Races, "Id", "Name");
             ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Track"), "Id", "Name", graduate_Student.TrackId);
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", graduate_Student.DegreeId);
-            return View(graduate_Student);
+            return View(ultimate);
         }
+
+
 
         // GET: Student/Edit/5
         public ActionResult Edit(int? id)
