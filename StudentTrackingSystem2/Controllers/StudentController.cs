@@ -51,21 +51,28 @@ namespace StudentTrackingSystem2.Controllers
             ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title");
 
             UltimateViewModel ultimate = new UltimateViewModel();
-            AddRaceVM addRaceModel = new AddRaceVM();
-            var allRaces = db.Graduate_Races.ToList();
-            var checkBoxListItems = new List<CheckBoxListItem>();
-            foreach (var race in allRaces)
-            {
-                checkBoxListItems.Add(new CheckBoxListItem()
-                {
-                    ID = race.Id,
-                    Display = race.Name,
-                    IsChecked = false //On the add view, no races are selected by default
-                });
-            }
-            addRaceModel.Races = checkBoxListItems;
-            ultimate.AddRace_ViewModel = addRaceModel;
- 
+            RacesViewModel rvm = ultimate.Races_ViewModel;  
+
+            rvm.AvailableRaces = db.Graduate_Races.ToList();
+            rvm.SelectedRaces = new List<Graduate_Races>();
+            rvm.PostedRaces = new PostedRaces { RaceIDs = new string[0] };
+
+            //AddRaceVM addRaceModel = new AddRaceVM();
+            //var allRaces = db.Graduate_Races.ToList();
+            //var checkBoxListItems = new List<CheckBoxListItem>();
+            //foreach (var race in allRaces)
+            //{
+            //    checkBoxListItems.Add(new CheckBoxListItem()
+            //    {
+            //        ID = race.Id,
+            //        Display = race.Name,
+            //        IsChecked = false //On the add view, no races are selected by default
+            //    });
+            //}
+            //addRaceModel.Races = checkBoxListItems;
+            //ultimate.AddRace_ViewModel = addRaceModel;
+
+            ultimate.Races_ViewModel = rvm;
 
             return View(ultimate);
         }
@@ -78,13 +85,13 @@ namespace StudentTrackingSystem2.Controllers
         public ActionResult Create(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,DegreeId,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")]*/ UltimateViewModel ultimate)
         {
 
-            var graduate_Student = ultimate.Graduate_Student_Model;
+          
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    db.Graduate_Student.Add(graduate_Student);
+                    db.Graduate_Student.Add(ultimate.Graduate_Student_Model);
                     db.SaveChanges();
                 }
                 
@@ -103,19 +110,15 @@ namespace StudentTrackingSystem2.Controllers
             }
 
 
-            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name", graduate_Student.ConcentrationId);
-            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name", graduate_Student.DegreeProgramId);
-            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Gender"), "Id", "Name", graduate_Student.GenderId);
+            ViewBag.ConcentrationId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name", ultimate.Graduate_Student_Model.ConcentrationId);
+            ViewBag.DegreeProgramId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name", ultimate.Graduate_Student_Model.DegreeProgramId);
+            ViewBag.GenderId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Gender"), "Id", "Name", ultimate.Graduate_Student_Model.GenderId);
             //ViewBag.RaceEthnicityId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Race/Ethnicity"), "Id", "Name", graduate_Student.RaceEthnicityId);
             ViewBag.RaceEthnicity = new SelectList(db.Graduate_Races, "Id", "Name");
-            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Track"), "Id", "Name", graduate_Student.TrackId);
-            ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", graduate_Student.DegreeId);
+            ViewBag.TrackId = new SelectList(db.Graduate_CommonFields.Where(o => o.Category == "Track"), "Id", "Name", ultimate.Graduate_Student_Model.TrackId);
+            ViewBag.DegreeId = new SelectList(db.Graduate_PrevDegree, "Id", "Title", ultimate.Graduate_Student_Model.DegreeId);
 
-            //var selectedRaces = ultimate.AddRace_ViewModel.Races.Where(x => x.IsChecked).Select(x => x.ID).ToList();
-            //----->>SHOULD ADD RACE MANAGER //db.Graduate_PersonRace.Add(ultimate.AddRace_ViewModel.); 
-
-
-            ultimate.Graduate_Student_Model = graduate_Student;
+          
             return View(ultimate);
         }
 

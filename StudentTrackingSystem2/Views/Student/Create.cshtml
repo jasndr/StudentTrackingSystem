@@ -1,5 +1,6 @@
 ﻿@*@model StudentTrackingSystem2.Models.Graduate_Student*@
 @model StudentTrackingSystem2.ViewModels.UltimateViewModel
+ 
 
 @{
     ViewBag.Title = "Create New Student";
@@ -93,8 +94,15 @@
             <div class="control-label col-md-2"><strong>Race/Ethnicity</strong></div>
             
             <div class="col-md-10">
+
+          
+                @Html.CheckBoxListFor(x=>x.Races_ViewModel.PostedRaces.RaceIDs,
+                                      x=>x.Races_ViewModel.AvailableRaces,
+                                      x=>x.Id,
+                                      x=>x.Name,
+                                      x=>x.Races_ViewModel.SelectedRaces)
            
-                @Html.EditorFor(x=>x.AddRace_ViewModel.Races)
+                @*@Html.EditorFor(x=>x.AddRace_ViewModel.Races)*@
 
                 @*<table>
                     @foreach (var item in ViewBag.RaceEthnicity)

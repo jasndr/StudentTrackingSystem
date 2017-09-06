@@ -1,0 +1,156 @@
+﻿@model StudentTrackingSystem3.Models.G_Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>G_Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OtherEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OtherEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GendersId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GendersId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RaceOther)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RaceOther)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeProgramsId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegreeProgramsId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConcentrationsId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConcentrationsId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TracksId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TracksId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegreeStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegreeEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model=>model.Coursework)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>Course Number</th>
+                    <th>Course Title</th>
+                    <th>Grade</th>
+                </tr>
+                @foreach(var item in Model.Coursework)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem=>item.Semesters.Name)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.Year)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.Course.CourseName)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.Course.CourseName)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.Grade)</td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

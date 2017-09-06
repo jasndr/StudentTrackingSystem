@@ -11,11 +11,10 @@ namespace StudentTrackingSystem2.ViewModels
     public class UltimateViewModel
     {
         public Graduate_Student Graduate_Student_Model { get; set; }
-        public AddRaceVM AddRace_ViewModel { get; set; }
 
-        ////
-        public SelectList GendersList { get; set; }
+        public RacesViewModel Races_ViewModel { get; set; }
 
+       
     }
 
 }

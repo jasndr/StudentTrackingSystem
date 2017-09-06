@@ -1,0 +1,111 @@
+﻿@model IEnumerable<StudentTrackingSystem3.Models.G_Student>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SchoolEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtherEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GendersId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RaceOther)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DegreeProgramsId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConcentrationsId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TracksId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DegreeStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DegreeEnd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StudentNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SchoolEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtherEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GendersId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RaceOther)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DegreeProgramsId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ConcentrationsId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TracksId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DegreeStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DegreeEnd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
