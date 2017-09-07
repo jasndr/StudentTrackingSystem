@@ -1,13 +1,14 @@
 ﻿@model StudentTrackingSystem3.Models.G_Student
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Graduate Student Details";
 }
 
-<h2>Details</h2>
+<h2>Graduate Student Background</h2>
+<br />
 
 <div>
-    <h4>G_Student</h4>
+    <h4>Details for <strong>@Html.DisplayFor(model=>model.FirstName) @Html.DisplayFor(model=>model.LastName)</strong></h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -71,7 +72,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GendersId)
+            @Html.DisplayFor(model => model.Genders.Name)
         </dd>
 
         <dt>
@@ -87,7 +88,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeProgramsId)
+            @Html.DisplayFor(model => model.DegreePrograms.Name)
         </dd>
 
         <dt>
@@ -95,7 +96,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ConcentrationsId)
+            @Html.DisplayFor(model => model.Concentrations.Name)
         </dd>
 
         <dt>
@@ -103,7 +104,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TracksId)
+            @Html.DisplayFor(model => model.Tracks.Name)
         </dd>
 
         <dt>
@@ -111,7 +112,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeStart)
+            @*@Html.DisplayFor(model => model.DegreeStart)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeStart))
         </dd>
 
         <dt>
@@ -119,7 +121,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeEnd)
+            @*@Html.DisplayFor(model => model.DegreeEnd)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeEnd))
         </dd>
 
         <dt>

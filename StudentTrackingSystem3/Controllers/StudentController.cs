@@ -39,6 +39,12 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Student/Create
         public ActionResult Create()
         {
+            //View Bags for Dropdowns
+            ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
+            ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
+            ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
+
             return View();
         }
 
@@ -47,18 +53,34 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")] G_Student g_Student)
+        public ActionResult Create([Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Students.Add(g_Student);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Students.Add(g_Student);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
+            catch(DataException /*dex*/)
+            {
+                //Log the error (uncomment dex cariable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, please see your system administrator.");
+            }
+
+            //View Bags for Dropdowns
+            ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
+            ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
+            ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
 
             return View(g_Student);
         }
 
+        [HttpDelete, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
         // GET: Student/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -67,10 +89,31 @@ namespace StudentTrackingSystem3.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_Student g_Student = db.Students.Find(id);
-            if (g_Student == null)
+            if(g_Student == null)
             {
-                return HttpNotFound();
+                try
+                {
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                catch (DataException /* dex */)
+                {
+                    //Log the error (uncomment dex varaible name and add a line here to write a log).
+                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+                }
             }
+            //G_Student g_Student = db.Students.Find(id);
+            //if (g_Student == null)
+            //{
+            //    return HttpNotFound();
+            //}
+
+            //View Bags for Dropdowns
+            ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
+            ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
+            ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
+
             return View(g_Student);
         }
 
@@ -79,7 +122,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GenderId,RaceOther,DegreeProgramId,ConcentrationId,TrackId,DegreeStart,DegreeEnd")] G_Student g_Student)
+        public ActionResult Edit([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +130,13 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            //View Bags for Dropdowns
+            ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
+            ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
+            ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
+
             return View(g_Student);
         }
 
@@ -101,7 +151,7 @@ namespace StudentTrackingSystem3.Controllers
             if (g_Student == null)
             {
                 return HttpNotFound();
-            }
+            }      
             return View(g_Student);
         }
 

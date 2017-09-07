@@ -1,14 +1,14 @@
 ﻿@model StudentTrackingSystem3.Models.G_Student
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Graduate Student";
 }
 
-<h2>Delete</h2>
+<h2>Graduate Student Background</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Deleting Graduate Student</h3>
 <div>
-    <h4>G_Student</h4>
+    <h4>Are you sure you want to delete <strong>@Html.DisplayFor(model=>model.FirstName) @Html.DisplayFor(model=>model.LastName)?</strong></h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -68,11 +68,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.GenderId)
+            @Html.DisplayNameFor(model => model.GendersId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GenderId)
+            @Html.DisplayFor(model => model.Genders.Name)
         </dd>
 
         <dt>
@@ -84,27 +84,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DegreeProgramId)
+            @Html.DisplayNameFor(model => model.DegreeProgramsId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeProgramId)
+            @Html.DisplayFor(model => model.DegreePrograms.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ConcentrationId)
+            @Html.DisplayNameFor(model => model.ConcentrationsId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ConcentrationId)
+            @Html.DisplayFor(model => model.Concentrations.Name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TrackId)
+            @Html.DisplayNameFor(model => model.TracksId)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TrackId)
+            @Html.DisplayFor(model => model.Tracks.Name)
         </dd>
 
         <dt>
@@ -112,7 +112,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeStart)
+            @*@Html.DisplayFor(model => model.DegreeStart)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeStart))
         </dd>
 
         <dt>
@@ -120,8 +121,35 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DegreeEnd)
+            @*@Html.DisplayFor(model => model.DegreeEnd)*@
+            @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeEnd))
         </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Coursework)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Semester</th>
+                    <th>Year</th>
+                    <th>Course Number</th>
+                    <th>Course Title</th>
+                    <th>Grade</th>
+                </tr>
+                @foreach (var item in Model.Coursework)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Semesters.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Course.CourseName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Course.CourseName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Grade)</td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
 
     </dl>
 

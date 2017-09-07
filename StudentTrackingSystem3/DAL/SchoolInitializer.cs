@@ -64,7 +64,9 @@ namespace StudentTrackingSystem3.DAL
                 new G_CommonFields {ID=40, Name="Korean", Category="Race/Ethnicity", DisplayOrder=10 },
                 new G_CommonFields {ID=41, Name="Japanese", Category="Race/Ethnicity", DisplayOrder=11 },
                 new G_CommonFields {ID=42, Name="Other Asian", Category="Race/Ethnicity", DisplayOrder=12 },
-                new G_CommonFields {ID=43, Name="Other", Category="Race/Ethnicity", DisplayOrder=13 }
+                new G_CommonFields {ID=43, Name="Other", Category="Race/Ethnicity", DisplayOrder=13 },
+                new G_CommonFields {ID=44, Name="Male", Category="Gender", DisplayOrder=1 },
+                new G_CommonFields {ID=45, Name="Female", Category="Gender", DisplayOrder=2 }
          
             };
             commonfields.ForEach(s => context.CommonFields.Add(s));
@@ -117,24 +119,23 @@ namespace StudentTrackingSystem3.DAL
 
             var coursework = new List<G_Coursework>
             {
-                new G_Coursework {StudentID=1, SemestersID=1, Year=2005, CourseID=15,Grade=Grade.A},
-            new G_Coursework{StudentID=1,SemestersID=2, Year=2006, CourseID=26,Grade=Grade.C},
-            new G_Coursework{StudentID=1, SemestersID=1, Year=2006, CourseID=1,Grade=Grade.B},
-            new G_Coursework{StudentID=1, SemestersID=2, Year=2007, CourseID=23,Grade=Grade.B},
-            new G_Coursework{StudentID=1, SemestersID=1, Year=2007, CourseID=16,Grade=Grade.F},
-            new G_Coursework{StudentID=2, SemestersID=1, Year=2002, CourseID=20,Grade=Grade.F},
-            new G_Coursework{StudentID=2, SemestersID=2, Year=2003, CourseID=15},
-            new G_Coursework{StudentID=2, SemestersID=1, Year=2003, CourseID=10,},
-            new G_Coursework{StudentID=3, SemestersID=1, Year=2003, CourseID=30,Grade=Grade.F},
-            new G_Coursework{StudentID=3,SemestersID=2, Year=2003, CourseID=1,Grade=Grade.C},
-            new G_Coursework{StudentID=3, SemestersID=1, Year=2003, CourseID=15},
-            new G_Coursework{StudentID=3, SemestersID=2, Year=2004, CourseID=31,Grade=Grade.A}
-            };
+                new G_Coursework {StudentID=1, SemestersID=1, Year=2005, CourseID=15, Grade=Grade.A},
+                new G_Coursework {StudentID=1, SemestersID=2, Year=2006, CourseID=26, Grade=Grade.C},
+                new G_Coursework {StudentID=1, SemestersID=1, Year=2006, CourseID=1,  Grade=Grade.B},
+                new G_Coursework {StudentID=1, SemestersID=2, Year=2007, CourseID=23, Grade=Grade.B},
+                new G_Coursework {StudentID=1, SemestersID=1, Year=2007, CourseID=16, Grade=Grade.F},
+                new G_Coursework {StudentID=2, SemestersID=1, Year=2002, CourseID=20, Grade=Grade.F},
+                new G_Coursework {StudentID=2, SemestersID=2, Year=2003, CourseID=15},
+                new G_Coursework {StudentID=2, SemestersID=1, Year=2003, CourseID=10},
+                new G_Coursework {StudentID=3, SemestersID=1, Year=2003, CourseID=30, Grade=Grade.F},
+                new G_Coursework {StudentID=3, SemestersID=2, Year=2003, CourseID=1,  Grade=Grade.C},
+                new G_Coursework {StudentID=3, SemestersID=1, Year=2003, CourseID=15},
+                new G_Coursework {StudentID=3, SemestersID=2, Year=2004, CourseID=31, Grade=Grade.A}
 
+
+            };
             coursework.ForEach(s => context.Coursework.Add(s));
             context.SaveChanges();
-            //coursework.ForEach(s => context.Coursework.Add(s));
-            //context.SaveChanges();
 
         }
 

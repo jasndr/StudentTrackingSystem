@@ -22,3 +22,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navigation-entire{
+    background-color: #060;
+    color: white;
+}
+
+.navigation-entire a, .navigation-entire a:visited{
+    color: white !important;
+}
+
+.navigation-entire a:hover, .navbuttons a:hover{
+    color:darkgray !important;
+    background-color: #114020 !important;
+}
+
+.navigation-entire a:active{
+    color: darkgoldenrod !important;
+}
+
