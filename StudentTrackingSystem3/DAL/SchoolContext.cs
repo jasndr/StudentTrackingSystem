@@ -19,6 +19,7 @@ namespace StudentTrackingSystem3.DAL
         public DbSet<G_Course> Courses { get; set; }
         public DbSet<G_CommonFields> CommonFields { get; set; }
         public DbSet<G_PrevDegree> PreviousDegrees { get; set; }
+        public DbSet<G_Races> Races { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

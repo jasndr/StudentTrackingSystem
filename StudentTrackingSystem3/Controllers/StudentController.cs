@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using StudentTrackingSystem3.DAL;
 using StudentTrackingSystem3.Models;
+using StudentTrackingSystem3.ViewModels;
 
 namespace StudentTrackingSystem3.Controllers
 {
@@ -36,16 +37,18 @@ namespace StudentTrackingSystem3.Controllers
             return View(g_Student);
         }
 
+        
         // GET: Student/Create
         public ActionResult Create()
         {
+
             //View Bags for Dropdowns
             ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
             ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
             ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
-
-            return View();
+         
+            return View(GetRacesInitialModel());
         }
 
         // POST: Student/Create
@@ -53,13 +56,13 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student)
+        public ActionResult Create(/*[Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student,*/UltimateViewModel ultimate, PostedRaces postedRaces)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Students.Add(g_Student);
+                    db.Students.Add(ultimate.G_Student);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -76,11 +79,13 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
 
-            return View(g_Student);
+            
+
+            return View(/*ultimate.G_Student,*/ GetRacesModel(postedRaces));
         }
 
-        [HttpDelete, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
+        
+
         // GET: Student/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -88,25 +93,15 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            UltimateViewModel ultimate = new UltimateViewModel();
+            
+            
             G_Student g_Student = db.Students.Find(id);
-            if(g_Student == null)
+            if (g_Student == null)
             {
-                try
-                {
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                catch (DataException /* dex */)
-                {
-                    //Log the error (uncomment dex varaible name and add a line here to write a log).
-                    ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
-                }
+                return HttpNotFound();
             }
-            //G_Student g_Student = db.Students.Find(id);
-            //if (g_Student == null)
-            //{
-            //    return HttpNotFound();
-            //}
 
             //View Bags for Dropdowns
             ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
@@ -114,19 +109,21 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
 
-            return View(g_Student);
+            ultimate.G_Student = g_Student;
+
+            return View(GetRacesInitialModel(ultimate));
         }
 
         // POST: Student/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student)
+        public ActionResult Edit(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student*/UltimateViewModel ultimate, PostedRaces postedRaces)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_Student).State = EntityState.Modified;
+                db.Entry(ultimate.G_Student).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -137,7 +134,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
 
-            return View(g_Student);
+            return View(GetRacesModel(ultimate, postedRaces));
         }
 
         // GET: Student/Delete/5
@@ -164,6 +161,120 @@ namespace StudentTrackingSystem3.Controllers
             db.Students.Remove(g_Student);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// Setup view model after post, where user select fruit data (For create view)
+        /// </summary>
+        /// <param name="postedRaces"></param>
+        /// <returns></returns>
+        private UltimateViewModel GetRacesModel(PostedRaces postedRaces)
+        {
+            //Setup properties
+            var model = new UltimateViewModel();
+            var rvm = new RacesViewModel();
+            var selectedRaces = new List<G_Races>();
+            var postedRaceIds = new string[0];
+            if (postedRaces == null) postedRaces = new PostedRaces();
+
+            //Save selected ids (if array of posted exists and not empty)
+            if (postedRaces.RaceIDs != null && postedRaces.RaceIDs.Any())
+            {
+                postedRaceIds = postedRaces.RaceIDs;
+            }
+
+            //Create list of fruits (if any selected ids saved)
+            if (postedRaceIds.Any())
+            {
+                selectedRaces = db.Races.Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+            }
+
+            //Setup view model
+            rvm.AvailableRaces = db.Races.ToList();
+            rvm.SelectedRaces = selectedRaces;
+            rvm.PostedRaces = postedRaces;
+
+            model.RacesViewModel = rvm;
+
+            return model;
+
+        }
+
+        /// <summary>
+        /// Setup view model after post, where user select fruit data (For edit view)
+        /// </summary>
+        /// <param name="postedRaces"></param>
+        /// <returns></returns>
+        private UltimateViewModel GetRacesModel(UltimateViewModel ultimate, PostedRaces postedRaces)
+        {
+            //Setup properties
+            var rvm = ultimate.RacesViewModel;
+            var selectedRaces = rvm.SelectedRaces;
+            var postedRaceIds = new string[0];
+            if (postedRaces == null) postedRaces = new PostedRaces();
+
+            //Save selected ids (if array of posted exists and not empty)
+            if (postedRaces.RaceIDs != null && postedRaces.RaceIDs.Any())
+            {
+                postedRaceIds = postedRaces.RaceIDs;
+            }
+
+            //Create list of fruits (if any selected ids saved)
+            if (postedRaceIds.Any())
+            {
+                selectedRaces = db.Races.Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+            }
+
+            //Setup view model
+            rvm.AvailableRaces = db.Races.ToList();
+            rvm.SelectedRaces = selectedRaces;
+            rvm.PostedRaces = postedRaces;
+
+            ultimate.RacesViewModel = rvm;
+
+            return ultimate;
+
+        }
+
+        /// <summary>
+        /// Initial view model of all races (create view)
+        /// </summary>
+        /// <returns>UltimateViewModel</returns>
+        private UltimateViewModel GetRacesInitialModel()
+        {
+            //setup properties
+            var model = new UltimateViewModel();
+            var rvm = new RacesViewModel();
+            var selectedRaces = new List<G_Races>();
+
+            //setup view model
+            rvm.AvailableRaces = db.Races.ToList();
+            rvm.SelectedRaces = selectedRaces;
+
+            //return everything to model
+            model.RacesViewModel = rvm;
+            return model;
+        }
+
+        /// <summary>
+        /// Initial view model of all races (edit view)
+        /// </summary>
+        /// <param name="ultimate"></param>
+        /// <returns>UltimateViewModel</returns>
+        private UltimateViewModel GetRacesInitialModel(UltimateViewModel ultimate)
+        {
+            //setup properties
+            var rvm = new RacesViewModel();
+            //rvm.SelectedRaces = new List<G_Races>();
+            
+
+            //setup view model
+            rvm.AvailableRaces = db.Races.ToList();
+            rvm.SelectedRaces = db.Races.Where(x => x.IsSelected == true).ToList();
+
+            //return everything to model
+            ultimate.RacesViewModel = rvm;
+            return ultimate;
         }
 
         protected override void Dispose(bool disposing)

@@ -137,6 +137,25 @@ namespace StudentTrackingSystem3.DAL
             coursework.ForEach(s => context.Coursework.Add(s));
             context.SaveChanges();
 
+
+            var races = new List<G_Races>
+            {
+                new G_Races {Id=1, Name="White / Caucasian"},
+                new G_Races {Id=2, Name="Black / African American"},
+                new G_Races {Id=3, Name="Latino / Hispanic"},
+                new G_Races {Id=4, Name="Native Hawaiian" },
+                new G_Races {Id=5, Name="Other Pacific Islander" },
+                new G_Races {Id=6, Name="Native Alaskan"},
+                new G_Races {Id=7, Name="Native American"},
+                new G_Races {Id=8, Name="Chinese" },
+                new G_Races {Id=9, Name="Filipino"},
+                new G_Races {Id=10, Name="Korean"},
+                new G_Races {Id=11, Name="Japanese" },
+                new G_Races {Id=12, Name="Other Asian"},
+                new G_Races {Id=13, Name="Other"}
+            };
+            races.ForEach(s => context.Races.Add(s));
+            context.SaveChanges();
         }
 
     }
