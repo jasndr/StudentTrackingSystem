@@ -23,7 +23,7 @@ textarea {
     max-width: 280px;
 }
 
-.navigation-entire{
+.navigation-entire, .homebtn{
     background-color: #060;
     color: white;
 }

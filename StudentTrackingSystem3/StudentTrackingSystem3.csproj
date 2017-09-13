@@ -184,13 +184,16 @@
     <Compile Include="Models\G_CommonFields.cs" />
     <Compile Include="Models\G_Course.cs" />
     <Compile Include="Models\G_Coursework.cs" />
+    <Compile Include="Models\G_PersonRaces.cs" />
     <Compile Include="Models\G_PrevDegree.cs" />
     <Compile Include="Models\G_Student.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\G_Races.cs" />
+    <Compile Include="Models\RaceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\RaceFormViewModel.cs" />
     <Compile Include="ViewModels\RacesViewModel.cs" />
     <Compile Include="ViewModels\UltimateViewModel.cs" />
   </ItemGroup>

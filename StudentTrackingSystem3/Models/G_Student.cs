@@ -45,7 +45,9 @@ namespace StudentTrackingSystem3.Models
         public virtual G_CommonFields Concentrations { get; set; }
         public virtual G_CommonFields Tracks { get; set; }
 
-        public virtual ICollection<G_CommonFields> Races { get; set; }
+        //public virtual ICollection<G_CommonFields> Races { get; set; }
+        [Display(Name = "Race/Ethnicity")]
+        public virtual ICollection<G_PersonRaces> PersonRaces { get; set; }
         public virtual ICollection<G_Coursework> Coursework { get; set; }
         public virtual ICollection<G_PrevDegree> PreviousDegrees { get; set; }
         

@@ -8,11 +8,10 @@ namespace StudentTrackingSystem3.ViewModels
 {
     public class RacesViewModel
     {
-        public IList<G_Races> AvailableRaces { get; set; }
-        public IList<G_Races> SelectedRaces { get; set; }
+        public IEnumerable<G_Races> AvailableRaces { get; set; }
+        public IEnumerable<G_Races> SelectedRaces { get; set; }
         public PostedRaces PostedRaces { get; set; }
     }
-
     public class PostedRaces
     {
         public string[] RaceIDs { get; set; }

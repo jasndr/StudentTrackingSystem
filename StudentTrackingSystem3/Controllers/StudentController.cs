@@ -56,7 +56,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(/*[Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student,*/UltimateViewModel ultimate, PostedRaces postedRaces)
+        public ActionResult Create(/*[Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student,*/UltimateViewModel ultimate/*, PostedRaces postedRaces*/)
         {
             try
             {
@@ -79,9 +79,11 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
 
+            //set postedRaces
+            //PostedRaces postedRaces = ultimate.RacesViewModel.PostedRaces; 
             
 
-            return View(/*ultimate.G_Student,*/ GetRacesModel(postedRaces));
+            return View(/*ultimate.G_Student,*/ GetRacesModel(ultimate));
         }
 
         
@@ -167,13 +169,14 @@ namespace StudentTrackingSystem3.Controllers
         /// Setup view model after post, where user select fruit data (For create view)
         /// </summary>
         /// <param name="postedRaces"></param>
-        /// <returns></returns>
-        private UltimateViewModel GetRacesModel(PostedRaces postedRaces)
+        /// <returns>UltimateViewModel</returns>
+        private UltimateViewModel GetRacesModel(UltimateViewModel ultimate)
         {
+
             //Setup properties
-            var model = new UltimateViewModel();
-            var rvm = new RacesViewModel();
-            var selectedRaces = new List<G_Races>();
+            var rvm = ultimate.RacesViewModel;
+            var selectedRaces = rvm.SelectedRaces;
+            var postedRaces = rvm.PostedRaces;
             var postedRaceIds = new string[0];
             if (postedRaces == null) postedRaces = new PostedRaces();
 
@@ -183,20 +186,21 @@ namespace StudentTrackingSystem3.Controllers
                 postedRaceIds = postedRaces.RaceIDs;
             }
 
-            //Create list of fruits (if any selected ids saved)
+            //Create list of races (if any selected ids saved)
             if (postedRaceIds.Any())
             {
-                selectedRaces = db.Races.Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+                selectedRaces =  RaceRepository.GetAll().Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+               
             }
 
             //Setup view model
-            rvm.AvailableRaces = db.Races.ToList();
+            rvm.AvailableRaces = RaceRepository.GetAll().ToList();
             rvm.SelectedRaces = selectedRaces;
             rvm.PostedRaces = postedRaces;
 
-            model.RacesViewModel = rvm;
+            ultimate.RacesViewModel = rvm;
 
-            return model;
+            return ultimate;
 
         }
 
@@ -222,11 +226,11 @@ namespace StudentTrackingSystem3.Controllers
             //Create list of fruits (if any selected ids saved)
             if (postedRaceIds.Any())
             {
-                selectedRaces = db.Races.Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+                selectedRaces = RaceRepository.GetAll().Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
             }
 
             //Setup view model
-            rvm.AvailableRaces = db.Races.ToList();
+            rvm.AvailableRaces = RaceRepository.GetAll().ToList();
             rvm.SelectedRaces = selectedRaces;
             rvm.PostedRaces = postedRaces;
 
@@ -248,7 +252,7 @@ namespace StudentTrackingSystem3.Controllers
             var selectedRaces = new List<G_Races>();
 
             //setup view model
-            rvm.AvailableRaces = db.Races.ToList();
+            rvm.AvailableRaces = RaceRepository.GetAll().ToList();
             rvm.SelectedRaces = selectedRaces;
 
             //return everything to model
@@ -265,17 +269,20 @@ namespace StudentTrackingSystem3.Controllers
         {
             //setup properties
             var rvm = new RacesViewModel();
-            //rvm.SelectedRaces = new List<G_Races>();
+            rvm.SelectedRaces = new List<G_Races>();
             
 
             //setup view model
-            rvm.AvailableRaces = db.Races.ToList();
-            rvm.SelectedRaces = db.Races.Where(x => x.IsSelected == true).ToList();
+            rvm.AvailableRaces = RaceRepository.GetAll().ToList();
+            rvm.SelectedRaces = RaceRepository.GetAll().Where(x => x.IsSelected == true).ToList();
 
             //return everything to model
             ultimate.RacesViewModel = rvm;
             return ultimate;
         }
+
+       
+
 
         protected override void Dispose(bool disposing)
         {
