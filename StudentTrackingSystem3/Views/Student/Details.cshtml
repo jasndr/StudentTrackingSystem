@@ -8,7 +8,7 @@
 <br />
 
 <div>
-    <h4>Details for <strong>@Html.DisplayFor(model=>model.FirstName) @Html.DisplayFor(model=>model.LastName)</strong></h4>
+    <h4>Details for <strong>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</strong></h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -75,6 +75,20 @@
             @Html.DisplayFor(model => model.Genders.Name)
         </dd>
 
+        <dt>@Html.DisplayNameFor(model => model.PersonRaces)</dt>
+
+        <dd>
+            <ul>
+                @foreach (var item in Model.PersonRaces)
+                {
+                    <li>
+                        @Html.DisplayFor(modelItem => item.Race.Name)
+                    </li>
+
+                }
+            </ul> 
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.RaceOther)
         </dt>
@@ -126,7 +140,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model=>model.Coursework)
+            @Html.DisplayNameFor(model => model.Coursework)
         </dt>
         <dd>
             <table class="table">
@@ -137,14 +151,14 @@
                     <th>Course Title</th>
                     <th>Grade</th>
                 </tr>
-                @foreach(var item in Model.Coursework)
+                @foreach (var item in Model.Coursework)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem=>item.Semesters.Name)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.Year)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.Course.CourseName)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.Course.CourseName)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.Grade)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Semesters.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Course.CourseName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Course.CourseName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Grade)</td>
                     </tr>
                 }
             </table>

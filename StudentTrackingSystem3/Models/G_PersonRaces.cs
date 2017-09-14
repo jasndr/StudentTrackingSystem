@@ -13,7 +13,7 @@ namespace StudentTrackingSystem3.Models
         public bool IsSelectedPR { get; set; }
 
 
-        public G_Student Student { get; set; }
-        public G_Races Race { get; set; }
+        public virtual G_Student Student { get; set; }
+        public virtual G_Races Race { get; set; }
     }
 }

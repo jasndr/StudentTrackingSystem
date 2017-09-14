@@ -62,7 +62,24 @@ namespace StudentTrackingSystem3.Controllers
             {
                 if (ModelState.IsValid)
                 {
+
+                    //Add recorded student
                     db.Students.Add(ultimate.G_Student);
+
+                    ultimate.RacesViewModel.AvailableRaces = db.Races.ToList();
+
+                    //For current student, add to personRaceTable, student id number and postedRace number
+                    foreach (var item in ultimate.RacesViewModel.PostedRaces.RaceIDs){
+                        var personRace = new G_PersonRaces();
+                        int raceId = Int32.Parse(item);
+                        var race = db.Races.Where(s => s.Id == raceId).ToList().Single();
+                        personRace.Student = ultimate.G_Student;
+                        personRace.Race = race;
+                        personRace.IsSelectedPR = true;
+                        db.PersonRaces.Add(personRace);
+                        db.SaveChanges();               
+                    }
+
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -113,7 +130,7 @@ namespace StudentTrackingSystem3.Controllers
 
             ultimate.G_Student = g_Student;
 
-            return View(GetRacesInitialModel(ultimate));
+            return View(GetRacesInitialModel(ultimate, id));
         }
 
         // POST: Student/Edit/5
@@ -189,12 +206,13 @@ namespace StudentTrackingSystem3.Controllers
             //Create list of races (if any selected ids saved)
             if (postedRaceIds.Any())
             {
-                selectedRaces =  RaceRepository.GetAll().Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
-               
+                //selectedRaces = RaceRepository.GetAll().Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+                selectedRaces = db.Races.Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+
             }
 
             //Setup view model
-            rvm.AvailableRaces = RaceRepository.GetAll().ToList();
+            rvm.AvailableRaces = db.Races.ToList();//RaceRepository.GetAll().ToList();
             rvm.SelectedRaces = selectedRaces;
             rvm.PostedRaces = postedRaces;
 
@@ -226,11 +244,12 @@ namespace StudentTrackingSystem3.Controllers
             //Create list of fruits (if any selected ids saved)
             if (postedRaceIds.Any())
             {
-                selectedRaces = RaceRepository.GetAll().Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+                //selectedRaces = RaceRepository.GetAll().Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
+                selectedRaces = db.Races.Where(x => postedRaceIds.Any(s => x.Id.ToString().Equals(s))).ToList();
             }
 
             //Setup view model
-            rvm.AvailableRaces = RaceRepository.GetAll().ToList();
+            rvm.AvailableRaces = db.Races.ToList();//RaceRepository.GetAll().ToList();
             rvm.SelectedRaces = selectedRaces;
             rvm.PostedRaces = postedRaces;
 
@@ -265,16 +284,17 @@ namespace StudentTrackingSystem3.Controllers
         /// </summary>
         /// <param name="ultimate"></param>
         /// <returns>UltimateViewModel</returns>
-        private UltimateViewModel GetRacesInitialModel(UltimateViewModel ultimate)
+        private UltimateViewModel GetRacesInitialModel(UltimateViewModel ultimate, int? thisId)
         {
             //setup properties
             var rvm = new RacesViewModel();
             rvm.SelectedRaces = new List<G_Races>();
-            
+
 
             //setup view model
-            rvm.AvailableRaces = RaceRepository.GetAll().ToList();
-            rvm.SelectedRaces = RaceRepository.GetAll().Where(x => x.IsSelected == true).ToList();
+            rvm.AvailableRaces = db.Races.ToList();//RaceRepository.GetAll().ToList();
+            rvm.SelectedRaces = db.Races.Where(x => x.IsSelected != true).ToList();//db.Races.Where(x => x.Id == thisId).ToList();
+            //rvm.SelectedRaces = RaceRepository.GetAll().Where(x => x.IsSelected == true).ToList();
 
             //return everything to model
             ultimate.RacesViewModel = rvm;

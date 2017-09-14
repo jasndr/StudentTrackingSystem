@@ -133,10 +133,9 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @*Label*@<strong>Race/Ethnicity</strong>
+                            @Html.LabelFor(model => model.G_Student.PersonRaces)
                         </div>
                         <div class="col-md-10 row">
-                            @*[Checkboxes and validation message, if applicable.]*@
 
                             @Html.CheckBoxListFor(model => model.RacesViewModel.PostedRaces.RaceIDs,
                                                   model => model.RacesViewModel.AvailableRaces,
@@ -144,6 +143,7 @@
                                                    race => race.Name,
                                                   model => model.RacesViewModel.SelectedRaces,
                                                   Position.Vertical)
+
                         </div>
                     </div>
                 </div>
