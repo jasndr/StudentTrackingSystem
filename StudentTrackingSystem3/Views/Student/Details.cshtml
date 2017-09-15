@@ -79,7 +79,7 @@
 
         <dd>
             <ul>
-                @foreach (var item in Model.PersonRaces)
+                @foreach (var item in Model.PersonRaces.Where(s=>s.IsSelectedPR.Equals(true)))
                 {
                     <li>
                         @Html.DisplayFor(modelItem => item.Race.Name)
