@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Data.Entity;
-using StudentTrackingSystem3.Models;
-
-namespace StudentTrackingSystem3.DAL
+namespace StudentTrackingSystem3.Migrations
 {
-    public class SchoolInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<SchoolContext>
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+    using StudentTrackingSystem3.Models;
+    using System.Collections.Generic;
+
+    internal sealed class Configuration : DbMigrationsConfiguration<StudentTrackingSystem3.DAL.SchoolContext>
     {
-        protected override void Seed(SchoolContext context)
+        public Configuration()
         {
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "StudentTrackingSystem3.DAL.SchoolContext";
+        }
 
-
+        protected override void Seed(StudentTrackingSystem3.DAL.SchoolContext context)
+        {
             var commonfields = new List<G_CommonFields>
             {
                 new G_CommonFields {ID=1, Name="Fall", Category="Season", DisplayOrder=1 },
@@ -49,7 +53,7 @@ namespace StudentTrackingSystem3.DAL
                 new G_CommonFields {ID=32, Name="Female", Category="Gender", DisplayOrder=2 }
 
             };
-            commonfields.ForEach(s => context.CommonFields.Add(s));
+            commonfields.ForEach(s => context.CommonFields.AddOrUpdate(p => p.ID, s));
             context.SaveChanges();
 
             var courses = new List<G_Course>
@@ -93,7 +97,7 @@ namespace StudentTrackingSystem3.DAL
                 new G_Course { ID=37, CourseNum="QHS 699", CourseName="Directed Research", Credits=4 },
                 new G_Course { ID=38, CourseNum="QHS 699", CourseName="Directed Research", Credits=5 }
             };
-            courses.ForEach(s => context.Courses.Add(s));
+            courses.ForEach(s => context.Courses.AddOrUpdate(p => p.ID, s));
             context.SaveChanges();
 
             var students = new List<G_Student>
@@ -102,7 +106,7 @@ namespace StudentTrackingSystem3.DAL
                 new G_Student {Id=2, StudentNumber=10000002, FirstName="Meredith", MiddleName="Mary", LastName="Alonso", SchoolEmail="alonsomm@hawaii.edu", OtherEmail="mereditha@yahoo.com", Phone="(808) 942-3333", DegreeStart=DateTime.Parse("2002-08-25"), DegreeEnd=DateTime.Parse("2004-05-13"), ConcentrationsId=20, GendersId=32, DegreeProgramsId=17, TracksId=29},
                 new G_Student {Id=3, StudentNumber=10000003, FirstName="Arturo", MiddleName="Javier", LastName="Anand", SchoolEmail="arturoja@hawaii.edu", OtherEmail="anand_arturo@outlook.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30}
             };
-            students.ForEach(s => context.Students.Add(s));
+            students.ForEach(s => context.Students.AddOrUpdate(p => p.StudentNumber, s));
             context.SaveChanges();
 
 
@@ -123,7 +127,18 @@ namespace StudentTrackingSystem3.DAL
 
 
             };
-            coursework.ForEach(s => context.Coursework.Add(s));
+
+            foreach (G_Coursework c in coursework)
+            {
+                var courseworkInDataBase = context.Coursework.Where(
+                    s =>
+                        s.Student.Id == c.StudentID &&
+                        s.Course.ID == c.CourseID).SingleOrDefault();
+                if (courseworkInDataBase == null)
+                {
+                    context.Coursework.Add(c);
+                }
+            }
             context.SaveChanges();
 
 
@@ -143,7 +158,7 @@ namespace StudentTrackingSystem3.DAL
                 new G_Races {Id=12, Name="Other Asian"},
                 new G_Races {Id=13, Name="Other"}
             };
-            races.ForEach(s => context.Races.Add(s));
+            races.ForEach(s => context.Races.AddOrUpdate(p => p.Name, s));
             context.SaveChanges();
 
             var personRaces = new List<G_PersonRaces>
@@ -156,10 +171,18 @@ namespace StudentTrackingSystem3.DAL
                 new G_PersonRaces {ID=6, StudentID=3, RaceID=2, IsSelectedPR=true}
             };
 
-            races.ForEach(s => context.Races.Add(s));
+            foreach (G_PersonRaces pr in personRaces)
+            {
+                var personRacesInDataBase = context.PersonRaces.Where(
+                    s =>
+                        s.Student.Id == pr.StudentID &&
+                        s.Race.Id == pr.RaceID).SingleOrDefault();
+                if (personRacesInDataBase == null)
+                {
+                    context.PersonRaces.Add(pr);
+                }
+            }
             context.SaveChanges();
-
         }
-
     }
 }
