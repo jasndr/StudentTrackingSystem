@@ -17,9 +17,96 @@ namespace StudentTrackingSystem3.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Student
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            return View(db.Students.ToList());
+            //if sortOrder is empty, then (sort by student num asc), otherwise (sort by student num desc)
+            ViewBag.StudentID_SortParm = String.IsNullOrEmpty(sortOrder) ? "studentID_desc" : "";
+
+            //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+
+            //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+
+            //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
+
+            //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid, should be default)
+            ViewBag.DegreeProgramsId_SortParm = sortOrder == "DegreeProgramsId" ? "DegreeProgramsId_desc" : "DegreeProgramsId";
+
+            //if sortOrder = ConcentrationsId then (sort by concentrationsid desc), otherwise (sort by concentrationsid asc, should be default)
+            ViewBag.ConcentrationsId_SortParm = sortOrder == "ConcentrationsId" ? "ConcentrationsId_desc" : "ConcentrationsId";
+
+            //if sortOrder = DegreeStart then (sort by date new->old), otherwise (sort by date old-new, should be default)
+            ViewBag.DegreeStart_SortParm = sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
+
+            //if sortOrder = DegreeEnd, then (sort by date new->old), otherwise (sort by date old->new, should be default)
+            ViewBag.DegreeEnd_SortParm = sortOrder == "DegreeEnd" ? "DegreeEnd_desc" : "DegreeEnd";
+           
+
+            var students = from s in db.Students
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString)
+                                            || s.FirstName.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "studentID_desc":
+                    students = students.OrderByDescending(s => s.StudentNumber);
+                    break;
+                case "FirstName":
+                    students = students.OrderBy(s => s.FirstName);
+                    break;
+                case "FirstName_desc":
+                    students = students.OrderByDescending(s => s.FirstName);
+                    break;
+                case "LastName":
+                    students = students.OrderBy(s => s.LastName);
+                    break;
+                case "LastName_desc":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "SchoolEmail":
+                    students = students.OrderBy(s => s.SchoolEmail);
+                    break;
+                case "SchoolEmail_desc":
+                    students = students.OrderByDescending(s => s.SchoolEmail);
+                    break;
+                case "DegreeProgramsId":
+                    students = students.OrderBy(s => s.DegreeProgramsId);
+                    break;
+                case "DegreeProgramsId_desc":
+                    students = students.OrderByDescending(s => s.DegreeProgramsId);
+                    break;
+                case "ConcentrationsId":
+                    students = students.OrderBy(s => s.ConcentrationsId);
+                    break;
+                case "ConcentrationsId_desc":
+                    students = students.OrderByDescending(s => s.ConcentrationsId);
+                    break;
+                case "DegreeStart":
+                    students = students.OrderBy(s => s.DegreeStart);
+                    break;
+                case "DegreeStart_desc":
+                    students = students.OrderByDescending(s => s.DegreeStart);
+                    break;
+                case "DegreeEnd":
+                    students = students.OrderBy(s => s.DegreeEnd);
+                    break;
+                case "DegreeEnd_desc":
+                    students = students.OrderByDescending(s => s.DegreeEnd);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.StudentNumber);
+                    break;
+  
+            }
+
+            return View(students.ToList());
         }
 
         // GET: Student/Details/5

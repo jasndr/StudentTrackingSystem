@@ -9,31 +9,46 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+    <p class="form-inline">Find by name: @Html.TextBox("SearchString", null, new { @class="form-control"}) <input type="submit" value="Search" class="btn btn-primary btn-sm homebtn" /></p>
+    <br />
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.StudentNumber)
+            @*@Html.DisplayNameFor(model => model.StudentNumber)*@
+            @Html.ActionLink("Student ID #", "Index", new { sortOrder = ViewBag.StudentID_SortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @*@Html.DisplayNameFor(model => model.FirstName)*@
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstName_SortParm })
         </th>       
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @*@Html.DisplayNameFor(model => model.LastName)*@
+            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastName_SortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SchoolEmail)
+            @*@Html.DisplayNameFor(model => model.SchoolEmail)*@
+            @Html.ActionLink("School Email", "Index", new { sortOrder = ViewBag.SchoolEmail_SortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DegreeProgramsId)
+            @*@Html.DisplayNameFor(model => model.DegreeProgramsId)*@
+            @Html.ActionLink("Degree Program", "Index", new { sortOrder = ViewBag.DegreeProgramsId_SortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ConcentrationsId)
+            @*@Html.DisplayNameFor(model => model.ConcentrationsId)*@
+            @Html.ActionLink("Concentration", "Index", new { sortOrder = ViewBag.ConcentrationsId_SortParm})
         </th> 
         <th>
-            @Html.DisplayNameFor(model => model.DegreeStart)
+            @*@Html.DisplayNameFor(model => model.DegreeStart)*@
+            @Html.ActionLink("Degree Start", "Index", new { sortOrder = ViewBag.DegreeStart_SortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DegreeEnd)
+            @*@Html.DisplayNameFor(model => model.DegreeEnd)*@
+            @Html.ActionLink("Degree End", "Index", new { sortOrder = ViewBag.DegreeEnd_SortParm})
         </th>
         @*<th>
             @Html.DisplayNameFor(model => model.MiddleName)
