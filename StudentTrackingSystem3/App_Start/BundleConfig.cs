@@ -30,6 +30,10 @@ namespace StudentTrackingSystem3
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/Javascript").Include(
+                      "~/Scripts/Javascript.js",
+                      "~/Scripts/InputMask.js"));
+
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                       "~/Content/themes/base/jquery-ui.css",
                       "~/Content/themes/base/jquery.ui.core.css",

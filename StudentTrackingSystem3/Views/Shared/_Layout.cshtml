@@ -24,9 +24,9 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Graduate Students", "Index", "Student")</li>
-                    <li>@Html.ActionLink("Student Coursework", "Index", "Coursework")</li>
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                    @*<li>@Html.ActionLink("Student Coursework", "Index", "Coursework")</li>
+                      <li>@Html.ActionLink("About", "About", "Home")</li>
+                      <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -44,6 +44,7 @@
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/datepicker")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Javascript")
     @RenderSection("scripts", required: false)
 </body>
 </html>

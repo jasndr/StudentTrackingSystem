@@ -108,7 +108,7 @@
                             @Html.LabelFor(model => model.G_Student.Phone, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.EditorFor(model => model.G_Student.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.G_Student.Phone, new { htmlAttributes = new { @class = "form-control phoneNum" } })
                             @Html.ValidationMessageFor(model => model.G_Student.Phone, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                                                    race => race.Id,
                                                    race => race.Name,
                                                   model => model.RacesViewModel.SelectedRaces,
-                                                  Position.Vertical)
+                                                  Position.Vertical, x=> new {@class="race_checkboxlist" })
 
                         </div>
                     </div>
@@ -158,10 +158,10 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.G_Student.RaceOther, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.G_Student.RaceOther, htmlAttributes: new { @class = "control-label col-md-5 raceOther" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.EditorFor(model => model.G_Student.RaceOther, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.G_Student.RaceOther, new { htmlAttributes = new { @class = "form-control raceOther" } })
                             @Html.ValidationMessageFor(model => model.G_Student.RaceOther, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -245,7 +245,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="col-md-10 row">
-                            <input type="submit" value="Create" class="btn btn-default" />
+                            <input type="submit" value="Create" class="btn btn-default createOrEditPost" />
                         </div>
                     </div>
                 </div>
