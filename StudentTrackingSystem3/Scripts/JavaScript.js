@@ -14,7 +14,7 @@
     //Hide other "Other Race" checkbox is "other" is unchecked
     var checkedOther = $(":checkbox[value=13]");
     var raceOtherField = $(".raceOther");
-    if (checkedOther.is(':checked')) {
+    if (!checkedOther.is(':checked')) {
         raceOtherField.hide();
     }
     //raceOtherField.hide();
