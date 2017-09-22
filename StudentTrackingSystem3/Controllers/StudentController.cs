@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using StudentTrackingSystem3.DAL;
 using StudentTrackingSystem3.Models;
 using StudentTrackingSystem3.ViewModels;
+using PagedList;
 
 namespace StudentTrackingSystem3.Controllers
 {
@@ -17,8 +18,10 @@ namespace StudentTrackingSystem3.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Student
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+
             //if sortOrder is empty, then (sort by student num asc), otherwise (sort by student num desc)
             ViewBag.StudentID_SortParm = String.IsNullOrEmpty(sortOrder) ? "studentID_desc" : "";
 
@@ -43,6 +46,16 @@ namespace StudentTrackingSystem3.Controllers
             //if sortOrder = DegreeEnd, then (sort by date new->old), otherwise (sort by date old->new, should be default)
             ViewBag.DegreeEnd_SortParm = sortOrder == "DegreeEnd" ? "DegreeEnd_desc" : "DegreeEnd";
            
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
 
             var students = from s in db.Students
                            select s;
@@ -106,7 +119,9 @@ namespace StudentTrackingSystem3.Controllers
   
             }
 
-            return View(students.ToList());
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Student/Details/5
