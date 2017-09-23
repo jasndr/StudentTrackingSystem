@@ -139,7 +139,7 @@
             @Convert.ToString(string.Format("{0:MM/dd/yyyy}", Model.DegreeEnd))
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Coursework)
         </dt>
         <dd>
@@ -162,12 +162,14 @@
                     </tr>
                 }
             </table>
-        </dd>
+        </dd>*@
 
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="row">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary homebtn" }) 
+    @Html.ActionLink("Back to Student Information", "Info", new {id = Model.Id }, new {@class="btn btn-primary infoNav" } )
+</div>
+
+

@@ -324,6 +324,11 @@
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\Delete.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Info.cshtml" />
+    <Content Include="Views\Shared\_StudentRecordNavigation.cshtml" />
+    <Content Include="Views\Student\Coursework\Create.cshtml" />
+    <Content Include="Views\Student\Coursework\Details.cshtml" />
+    <Content Include="Views\Student\Coursework\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

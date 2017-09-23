@@ -124,6 +124,22 @@ namespace StudentTrackingSystem3.Controllers
             return View(students.ToPagedList(pageNumber, pageSize));
         }
 
+        // [Information page to display them a brief page before proceeding to subsections]
+        // GET : Student/Info/5
+        public ActionResult Info(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            G_Student g_Student = db.Students.Find(id);
+            if (g_Student == null)
+            {
+                return HttpNotFound();
+            }
+            return View(g_Student);
+        }
+
         // GET: Student/Details/5
         public ActionResult Details(int? id)
         {

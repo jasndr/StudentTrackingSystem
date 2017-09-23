@@ -30,7 +30,27 @@ a{
 .navigation-entire, .homebtn{
     background-color: #060;
     color: white;
+    border: 1px solid #060;
 }
+
+.infoNav{
+    background-color: white;
+    color: #060;
+    border: 1px solid #060;
+    margin-left: 1em;
+    margin-right: 1em;
+    white-space: normal;
+    /*overflow: hidden;*/
+}
+
+.infoNav a:hover, .infoNav a:visited{
+    background-color: #060;
+    color: white;
+    border: 1px solid #060;
+}
+
+
+
 
 .navigation-entire a, .navigation-entire a:visited{
     color: white !important;

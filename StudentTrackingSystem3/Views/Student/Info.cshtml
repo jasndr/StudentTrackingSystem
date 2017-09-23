@@ -1,0 +1,64 @@
+﻿@model StudentTrackingSystem3.Models.G_Student
+
+@{
+    ViewBag.Title = "Student Information";
+}
+
+<h2>Graduate Student Information</h2>
+<br />
+
+<div>
+
+    <h4>Information for <strong>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.MiddleName).ToString().Substring(0, 1). @Html.DisplayFor(model => model.LastName)</strong></h4>
+    <hr />  
+
+    <div class="table col-md-1 col-xs-12" style="margin-left: 2em;">
+        <table class="table table-condensed">
+            @*<thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+            
+                </tr>
+            </thead>*@
+            <tbody>
+                <tr>
+                    <td><strong>UH ID</strong></td>
+                    <td>@Html.DisplayFor(model => model.StudentNumber)</td>
+                </tr>
+                <tr>
+                    <td><strong>Student</strong></td>
+                    <td>@Html.DisplayFor(model => model.LastName), @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model=>model.MiddleName).ToString().Substring(0,1).</td>  
+                </tr>
+                <tr>
+                    <td><strong>Email</strong></td>
+                    <td>@Html.DisplayFor(model => model.SchoolEmail)</td>      
+                </tr>
+                <tr>
+                    <td><strong>Degree Pursuing</strong></td>
+                    <td>@Html.DisplayFor(model => model.DegreePrograms.Name) in @Html.DisplayFor(model => model.Concentrations.Name)</td>
+                </tr>
+                <tr>
+                    <td><strong>Duration</strong></td>
+                    <td><em>From</em> @Convert.ToString(string.Format("{0:MMMM yyyy}", Model.DegreeStart)) <em>to</em> @Convert.ToString(string.Format("{0:MMMM yyyy}", Model.DegreeEnd))</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+   
+    <hr />
+
+    @*Background > Courses > Performance Activity > ...*@
+    @Html.Partial("_StudentRecordNavigation")
+    
+
+
+    
+</div>
+@*<p>
+
+
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+</p>*@
