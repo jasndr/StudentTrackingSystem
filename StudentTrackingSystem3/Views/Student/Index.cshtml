@@ -24,11 +24,11 @@
     <tr>
         <th>
             @*@Html.DisplayNameFor(model => model.StudentNumber)*@
-            @Html.ActionLink("Student ID #", "Index", new { sortOrder = ViewBag.StudentID_SortParm, currentFilter=ViewBag.CurrentFilter })
+            @Html.ActionLink("Student ID #", "Index", new { sortOrder = ViewBag.StudentID_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.FirstName)*@
-            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstName_SortParm, currentFilter=ViewBag.CurrentFilter })
+            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstName_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.LastName)*@
@@ -126,10 +126,10 @@
                 </td>*@
             <td>
                 @Html.ActionLink("Information", "Info", new { id = item.Id }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-
+            </td>
             @*<td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #CFC; color: #000; border-color: 5px #000 solid;" })
-            </td>*@
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #CFC; color: #000; border-color: 5px #000 solid;" })
+                </td>*@
             @*<td>
                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
                 </td>*@
@@ -140,4 +140,4 @@
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page=> Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter}))
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

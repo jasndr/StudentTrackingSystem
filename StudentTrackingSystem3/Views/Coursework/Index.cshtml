@@ -1,0 +1,55 @@
+﻿@model IEnumerable<StudentTrackingSystem3.Models.G_Coursework>
+
+@{
+    ViewBag.Title = "Coursework";
+}
+
+<h2>Graduate Student Coursework</h2>
+<br />
+<h4>Coursework for <strong>@ViewBag.CurrentStudent_FirstName @ViewBag.CurrentStudent_LastName</strong></h4>
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Semester
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Course.CourseNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=>model.Course.CourseName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grade)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Semesters.Name) @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.CourseNum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Course.CourseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Grade.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+        </td>
+    </tr>
+}
+
+
+</table>
+<br />
+<p>@Html.ActionLink("Back to Student Information", "Info", "Student", new { id = ViewBag.CurrentStudent_Id }, null)</p>

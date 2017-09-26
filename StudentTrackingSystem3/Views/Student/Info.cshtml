@@ -40,7 +40,7 @@
                 </tr>
                 <tr>
                     <td><strong>Duration</strong></td>
-                    <td><em>From</em> @Convert.ToString(string.Format("{0:MMMM yyyy}", Model.DegreeStart)) <em>to</em> @Convert.ToString(string.Format("{0:MMMM yyyy}", Model.DegreeEnd))</td>
+                    <td><em>From</em> <u>@Convert.ToString(string.Format("{0:MMMM yyyy}", Model.DegreeStart))</u> <em>to</em> <u>@Convert.ToString(string.Format("{0:MMMM yyyy}", Model.DegreeEnd))</u></td>
                 </tr>
             </tbody>
         </table>
@@ -56,6 +56,9 @@
 
     
 </div>
+<br />
+<p>@Html.ActionLink("Back to List of Students", "Index")</p>
+
 @*<p>
 
 

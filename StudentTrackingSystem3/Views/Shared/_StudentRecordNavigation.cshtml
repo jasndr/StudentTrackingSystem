@@ -1,8 +1,8 @@
 ﻿@*Background > Courses > Performance Activity > ...*@
 <div class="row" id="infoNavGroup">
-    @Html.ActionLink("Background", "Details", new { id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+    @Html.ActionLink("Background", "Details", new {  id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
 
-    @Html.ActionLink("Coursework", "Info", new { id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+    @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
 
     @Html.ActionLink("Performance & Activity", "Info", new { id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
 

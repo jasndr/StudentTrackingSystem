@@ -1,29 +1,25 @@
 ﻿@model StudentTrackingSystem3.Models.G_Coursework
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Edit Course";
 }
 
-<h2>View</h2>
+<h2>Graduate Student Coursework</h2>
+<br />
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>G_Coursework</h4>
+        <h4>Editing <strong>@Html.DisplayFor(model=>model.Semesters.Name) @Html.DisplayFor(model=>model.Year) &mdash; @Html.DisplayFor(model=>model.Course.CourseNum)</strong> course for <strong>@Html.DisplayFor(model=>model.Student.FirstName) @Html.DisplayFor(model=>model.Student.LastName)</strong> </h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @Html.HiddenFor(model => model.ID)
 
+       
         <div class="form-group">
-            @Html.LabelFor(model => model.SemestersID, "SemestersID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SemestersID, "Semester", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("SemestersID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.SemestersID, "", new { @class = "text-danger" })
@@ -39,7 +35,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CourseID, "CourseID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CourseID, "Course", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("CourseID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CourseID, "", new { @class = "text-danger" })
@@ -49,14 +45,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Grade, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Grade, htmlAttributes: new { @class = "form-control" })
+                @*@Html.EnumDropDownListFor(model => model.Grade, htmlAttributes: new { @class = "form-control" })*@
+                @Html.DropDownList("GradeID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Grade, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -65,3 +62,7 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

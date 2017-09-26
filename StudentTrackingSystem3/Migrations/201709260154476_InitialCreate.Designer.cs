@@ -13,7 +13,7 @@ namespace StudentTrackingSystem3.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201709190244117_InitialCreate"; }
+            get { return "201709260154476_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source
