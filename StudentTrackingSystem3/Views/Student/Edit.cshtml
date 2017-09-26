@@ -9,7 +9,7 @@
 <h2>Graduate Student Background</h2>
 <br />
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Info", "Student", new { id = Model.G_Student.Id }, FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
