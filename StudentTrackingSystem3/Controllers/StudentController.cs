@@ -328,7 +328,7 @@ namespace StudentTrackingSystem3.Controllers
                     ultimate.RacesViewModel.SelectedRaces = newList;
 
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Info", "Student", new { id = ultimate.G_Student.Id });
                 }
             }
             catch (DataException /*dex*/)

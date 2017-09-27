@@ -136,24 +136,28 @@
 
             <div class="row">
 
-                <div class="col-md-4 col-xs-12">
+                <div class="col-md-8 col-xs-12">
                     <div class="form-group">
                         <div class="row">
                             @*<strong>Race/Ethnicity</strong>*@ @Html.LabelFor(model => model.G_Student.PersonRaces)
                         </div>
-                        <div class="col-md-10 row">
+                        <div class="row">
 
-
-                            @Html.CheckBoxListFor(model => model.RacesViewModel.PostedRaces.RaceIDs,
-                                                  model => model.RacesViewModel.AvailableRaces,
-                                                   race => race.Id,
-                                                   race => race.Name,
-                                                  model => model.RacesViewModel.SelectedRaces,
-                                                  Position.Vertical, x=> new {@class="race_checkboxlist" })
-
+                            @{
+                                var htmlListInfo = new HtmlListInfo(HtmlTag.table, 4, new { @class = "styled_list" }, TextLayout.Default, TemplateIsUsed.Yes);
+                                @Html.CheckBoxListFor(model => model.RacesViewModel.PostedRaces.RaceIDs,
+                                                              model => model.RacesViewModel.AvailableRaces,
+                                                               race => race.Id,
+                                                               race => race.Name,
+                                                              model => model.RacesViewModel.SelectedRaces,
+                                                              htmlListInfo, x => new { @class = "list_chkbx" })
+                            }
                         </div>
+
                     </div>
+
                 </div>
+
 
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
@@ -174,25 +178,12 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.G_Student.DegreeProgramsId, htmlAttributes: new { @class = "control-label col-md-5" })
-                        </div>
-                        <div class="col-md-10 row">
-                            @*@Html.EditorFor(model => model.G_Student.DegreeProgramsId, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @Html.DropDownListFor(m => m.G_Student.DegreeProgramsId, (SelectList)ViewBag.DegreeProgramsIdBag, "-- Select Degree Program --", htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.G_Student.DegreeProgramsId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 col-xs-12">
-                    <div class="form-group">
-                        <div class="row">
                             @Html.LabelFor(model => model.G_Student.ConcentrationsId, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @*@Html.EditorFor(model => model.G_Student.ConcentrationsId, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @Html.DropDownListFor(m => m.G_Student.ConcentrationsId, (SelectList)ViewBag.ConcentrationsIdBag, "-- Select Concentration --", htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.G_Student.ConcentrationsId, "", new { @class = "text-danger" })
+                            @*@Html.EditorFor(model => model.G_Student.DegreeProgramsId, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownListFor(m => m.G_Student.DegreeProgramsId, (SelectList)ViewBag.DegreeProgramsIdBag, "-- Select Concentration --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.G_Student.DegreeProgramsId, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -203,8 +194,22 @@
                             @Html.LabelFor(model => model.G_Student.TracksId, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
+                            @*@Html.EditorFor(model => model.G_Student.ConcentrationsId, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.DropDownListFor(m => m.G_Student.ConcentrationsId, (SelectList)ViewBag.ConcentrationsIdBag, "-- Select Track --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.G_Student.ConcentrationsId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @*@Html.LabelFor(model => model.G_Student.TracksId, htmlAttributes: new { @class = "control-label col-md-5" })*@
+                            <div class="control-label col-md-5"><strong>Plan</strong></div>
+                        </div>
+                        <div class="col-md-10 row">
                             @*@Html.EditorFor(model => model.G_Student.TracksId, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @Html.DropDownListFor(m => m.G_Student.TracksId, (SelectList)ViewBag.TracksIdBag, "-- Select Track --", htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownListFor(m => m.G_Student.TracksId, (SelectList)ViewBag.TracksIdBag, "-- Select Plan --", htmlAttributes: new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.G_Student.TracksId, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -253,7 +258,7 @@
 
         </form>
     </div>
-}
+   }
 
 <div>
     @Html.ActionLink("Back to List", "Index")

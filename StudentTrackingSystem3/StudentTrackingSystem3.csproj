@@ -209,6 +209,11 @@
     <Compile Include="Models\G_Races.cs" />
     <Compile Include="Models\RaceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\MyDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\RaceFormViewModel.cs" />
     <Compile Include="ViewModels\RacesViewModel.cs" />
@@ -270,6 +275,17 @@
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Properties\PublishProfiles\StudentTrackingSystem.pubxml" />
+    <Content Include="Reports\MyDataSet.xsc">
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\MyDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MyDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\MyDataSet.xss">
+      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -332,6 +348,7 @@
     <Content Include="Views\Coursework\Details.cshtml" />
     <Content Include="Views\Coursework\Edit.cshtml" />
     <Content Include="Views\Coursework\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\G_Races.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

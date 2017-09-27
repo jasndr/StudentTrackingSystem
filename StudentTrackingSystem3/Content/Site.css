@@ -65,3 +65,13 @@ a{
     color: darkgoldenrod !important;
 }
 
+
+.styled_list{
+    margin-left: 15px; 
+    margin-right: 0px; padding: 3px 5px 3px 5px; line-height: 25px;
+}
+
+.list_chkbx{
+    font-weight: normal;
+    margin: 0 15px 0 3px; padding: 0px 5px;
+}
