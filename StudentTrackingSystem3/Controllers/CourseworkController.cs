@@ -16,12 +16,54 @@ namespace StudentTrackingSystem3.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Coursework
-        public ActionResult Index(int? id)
+        public ActionResult Index(int? id, string sortOrder)
         {
+            //if sortOrder is empty, then (sort by semester asc), otherwise (sort by semsester desc)
+            ViewBag.Semester_SortParm = String.IsNullOrEmpty(sortOrder) ? "semester_desc" : "";
+
+            //if sortOrder = Course, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.Course_SortParm = sortOrder == "Course" ? "Course_desc" : "Course";
+
+            //if sortOrder = Title, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.Title_SortParm = sortOrder == "Title" ? "Title_desc" : "Title";
+
+            //if sortOrder = Grade = then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.Grade_SortParm = sortOrder == "Grade" ? "Grade_desc" : "Grade";
+
             var coursework = db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g=>g.StudentID == id);
+
+            switch (sortOrder)
+            {
+                case "semester_desc":
+                    coursework = coursework.OrderByDescending(s => s.Year).ThenByDescending(s => s.Semesters.DisplayOrder);
+                    break;
+                case "Course":
+                    coursework = coursework.OrderBy(s => s.Course.CourseNum);
+                    break;
+                case "Course_desc":
+                    coursework = coursework.OrderByDescending(s => s.Course.CourseNum);
+                    break;
+                case "Title":
+                    coursework = coursework.OrderBy(s => s.Course.CourseName);
+                    break;
+                case "Title_desc":
+                    coursework = coursework.OrderByDescending(s => s.Course.CourseName);
+                    break;
+                case "Grade":
+                    coursework = coursework.OrderBy(s => s.Grade.ID);
+                    break;
+                case "Grade_desc":
+                    coursework = coursework.OrderByDescending(s => s.Grade.ID);
+                    break;
+                default:
+                    coursework = coursework.OrderBy(s=>s.Year).ThenBy(s=>s.Semesters.DisplayOrder);
+                    break;
+            }
 
             ViewBag.CurrentStudent_FirstName = db.Students.Find(id).FirstName;
             ViewBag.CurrentStudent_LastName = db.Students.Find(id).LastName;
+            ViewBag.CurrentStudent_DegreeStart = db.Students.Find(id).DegreeStart;
+            ViewBag.CurrentStudent_DegreeEnd = db.Students.Find(id).DegreeEnd;
             ViewBag.CurrentStudent_Id = (int)id;
             return View(coursework.ToList());
         }
@@ -42,8 +84,12 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: Coursework/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+
+            ViewBag.StudentID = db.Students.Find(id).Id;
+            ViewBag.Student_FN = db.Students.Find(id).FirstName;
+            ViewBag.Student_LN = db.Students.Find(id).LastName;
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum");
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name");
@@ -55,18 +101,18 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,SemestersID,Year,CourseID,Grade")] G_Coursework g_Coursework)
+        public ActionResult Create([Bind(Include = "ID,StudentID,SemestersID,Year,CourseID,GradeID")] G_Coursework g_Coursework)
         {
             if (ModelState.IsValid)
             {
                 db.Coursework.Add(g_Coursework);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new { id = g_Coursework.StudentID });
             }
 
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields, "ID", "Name", g_Coursework.SemestersID);
-            ViewBag.StudentID = new SelectList(db.Students, "Id", "FirstName", g_Coursework.StudentID);
+            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name");
             return View(g_Coursework);
         }
 
@@ -83,8 +129,8 @@ namespace StudentTrackingSystem3.Controllers
                 return HttpNotFound();
             }
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
-            ViewBag.SemestersID = new SelectList(db.CommonFields, "ID", "Name", g_Coursework.SemestersID);
-            ViewBag.StudentID = new SelectList(db.Students, "Id", "FirstName", g_Coursework.StudentID);
+            ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);
+            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
             return View(g_Coursework);
         }
 
@@ -93,17 +139,17 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,SemestersID,Year,CourseID,Grade")] G_Coursework g_Coursework)
+        public ActionResult Edit([Bind(Include = "ID, StudentID,SemestersID,Year,CourseID,GradeID")] G_Coursework g_Coursework)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(g_Coursework).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", new {id = g_Coursework.StudentID });
             }
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
-            ViewBag.SemestersID = new SelectList(db.CommonFields, "ID", "Name", g_Coursework.SemestersID);
-            ViewBag.StudentID = new SelectList(db.Students, "Id", "FirstName", g_Coursework.StudentID);
+            ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);
+            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name");
             return View(g_Coursework);
         }
 

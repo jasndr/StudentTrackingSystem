@@ -7,24 +7,29 @@
 <h2>Graduate Student Coursework</h2>
 <br />
 <h4>Coursework for <strong>@ViewBag.CurrentStudent_FirstName @ViewBag.CurrentStudent_LastName</strong></h4>
+<h5>Attending <em><em>from</em> <u>@Convert.ToString(string.Format("{0:MMMM yyyy}", @ViewBag.CurrentStudent_DegreeStart))</u> <em>to</em> <u>@Convert.ToString(string.Format("{0:MMMM yyyy}", @ViewBag.CurrentStudent_DegreeEnd))</u> </em></h5>
 <br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.CurrentStudent_Id})
 </p>
 <table class="table">
     <tr>
         <th>
-            Semester
+            @*Semester*@
+            @Html.ActionLink("Semester", "Index", new { sortOrder = ViewBag.Semester_SortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Course.CourseNum)
+            @*@Html.DisplayNameFor(model => model.Course.CourseNum)*@
+            @Html.ActionLink("Course", "Index", new { sortOrder = ViewBag.Course_SortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model=>model.Course.CourseName)
+            @*@Html.DisplayNameFor(model=>model.Course.CourseName)*@
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.Title_SortParm})
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Grade)
+            @*@Html.DisplayNameFor(model => model.Grade)*@
+            @Html.ActionLink("Grade", "Index", new { sortOrder = ViewBag.Grade_SortParm})
         </th>
         <th></th>
     </tr>
