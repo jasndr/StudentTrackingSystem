@@ -31,9 +31,9 @@ namespace StudentTrackingSystem3.Migrations
 
             var commonfields = new List<G_CommonFields>
             {
-                new G_CommonFields {ID=1, Name="Fall", Category="Season", DisplayOrder=1 },
-                new G_CommonFields {ID=2, Name="Spring", Category="Season", DisplayOrder=2 },
-                new G_CommonFields {ID=3, Name="Summer", Category="Season", DisplayOrder=3 },
+                new G_CommonFields {ID=1, Name="Fall", Category="Season", DisplayOrder=3 },
+                new G_CommonFields {ID=2, Name="Spring", Category="Season", DisplayOrder=1 },
+                new G_CommonFields {ID=3, Name="Summer", Category="Season", DisplayOrder=2 },
                 new G_CommonFields {ID=4, Name="A+", Category="Grade", DisplayOrder=1, GradePoint=Decimal.Parse("4.00")},
                 new G_CommonFields {ID=5, Name="A", Category="Grade", DisplayOrder=2, GradePoint=Decimal.Parse("4.00")},
                 new G_CommonFields {ID=6, Name="A-", Category="Grade", DisplayOrder=3, GradePoint=Decimal.Parse("3.70")},
