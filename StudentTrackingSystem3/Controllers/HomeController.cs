@@ -11,7 +11,16 @@ namespace StudentTrackingSystem3.Controllers
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Student");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            
+            //return View();
         }
 
         public ActionResult About()

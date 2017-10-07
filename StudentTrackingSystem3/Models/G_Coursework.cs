@@ -18,6 +18,7 @@ namespace StudentTrackingSystem3.Models
         public int Year { get; set; }
         public int CourseID { get; set; }
         public int GradeID { get; set; }
+        public string Comments { get; set; }
 
         public virtual G_CommonFields Semesters { get; set; }
         public virtual G_Student Student { get; set; }

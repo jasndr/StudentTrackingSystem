@@ -1,13 +1,13 @@
 ﻿@*Background > Courses > Performance Activity > ...*@
 <div class="row" id="infoNavGroup">
-    @Html.ActionLink("Background", "Details", new {  id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+    @Html.ActionLink("Background", "Edit", "Student", new {  id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
 
     @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
 
-    @Html.ActionLink("Performance & Activity", "Info", new { id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+    @Html.ActionLink("Performance & Activity", "Info", null,  new { id = Model.Id, Href="#" }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
 
-    @Html.ActionLink("Graduation", "Info", new { id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+    @Html.ActionLink("Graduation", "Info", null, new { id = Model.Id, Href="#" }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
 
-    @Html.ActionLink("Post-Graduation", "Info", new { id = Model.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+    @Html.ActionLink("Post-Graduation", "Info", null, new { id = Model.Id, Href="#" }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
 </div>
 @*<hr />*@

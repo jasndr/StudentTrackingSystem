@@ -62,8 +62,8 @@ namespace StudentTrackingSystem3.Controllers
 
             ViewBag.CurrentStudent_FirstName = db.Students.Find(id).FirstName;
             ViewBag.CurrentStudent_LastName = db.Students.Find(id).LastName;
-            ViewBag.CurrentStudent_DegreeStart = db.Students.Find(id).DegreeStart;
-            ViewBag.CurrentStudent_DegreeEnd = db.Students.Find(id).DegreeEnd;
+            //ViewBag.CurrentStudent_DegreeStart = db.Students.Find(id).DegreeStart;
+           // ViewBag.CurrentStudent_DegreeEnd = db.Students.Find(id).DegreeEnd;
             ViewBag.CurrentStudent_Id = (int)id;
             return View(coursework.ToList());
         }
@@ -90,6 +90,13 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
+            var course =
+                db.Courses.AsEnumerable().Select(s => new
+                {
+                    CourseNum = s.CourseNum,
+                    Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
+                }).ToList();
+            ViewBag.Course = new SelectList(course, "CourseNum", "Description");
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum");
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name");
@@ -109,10 +116,17 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", new { id = g_Coursework.StudentID });
             }
+            var course =
+                db.Courses.AsEnumerable().Select(s => new
+                {
+                    CourseNum = s.CourseNum,
+                    Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
+                }).ToList();
 
+            ViewBag.Course = new SelectList(course, "CourseNum", "Description");
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields, "ID", "Name", g_Coursework.SemestersID);
-            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name");
+            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
             return View(g_Coursework);
         }
 
@@ -128,6 +142,15 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
+
+            var course =
+                db.Courses.AsEnumerable().Select(s => new
+                {
+                    CourseNum = s.CourseNum,
+                    Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
+                }).ToList();
+
+            ViewBag.Course = new SelectList(course, "CourseNum", "Description");
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);
             ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
@@ -147,9 +170,16 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", new {id = g_Coursework.StudentID });
             }
+
+            var course =
+                db.Courses.AsEnumerable().Select(s => new
+                {
+                    CourseNum = s.CourseNum,
+                    Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
+                }).ToList();
             ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);
-            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name");
+            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
             return View(g_Coursework);
         }
 

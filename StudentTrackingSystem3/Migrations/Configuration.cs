@@ -5,8 +5,9 @@ namespace StudentTrackingSystem3.Migrations
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
     using System.Linq;
-
+    using System.Text;
     internal sealed class Configuration : DbMigrationsConfiguration<StudentTrackingSystem3.DAL.SchoolContext>
     {
         public Configuration()
@@ -47,10 +48,10 @@ namespace StudentTrackingSystem3.Migrations
                 new G_CommonFields {ID=14, Name="D", Category="Grade", DisplayOrder=11, GradePoint=Decimal.Parse("1.00")},
                 new G_CommonFields {ID=15, Name="D-", Category="Grade", DisplayOrder=12, GradePoint=Decimal.Parse("0.70")},
                 new G_CommonFields {ID=16, Name="F", Category="Grade", DisplayOrder=13, GradePoint=Decimal.Parse("0.00")},
-                new G_CommonFields {ID=17, Name="MS", Category="DegreeProgram", DisplayOrder=1 },
-                new G_CommonFields {ID=18, Name="PhD", Category="DegreeProgram", DisplayOrder=2 },
-                new G_CommonFields {ID=19, Name="Clinical Research (CR)", Category="Concentration", DisplayOrder=1 },
-                new G_CommonFields {ID=20, Name="Quantitative Health Sciences (QHS)", Category="Concentration", DisplayOrder=2 },
+                new G_CommonFields {ID=17, Name="MS", Category="Concentration", DisplayOrder=1 },
+                new G_CommonFields {ID=18, Name="PhD", Category="Concentration", DisplayOrder=2 },
+                new G_CommonFields {ID=19, Name="Clinical Research (CR)", Category="Track", DisplayOrder=1 },
+                new G_CommonFields {ID=20, Name="Quantitative Health Sciences (QHS)", Category="Track", DisplayOrder=2 },
                 new G_CommonFields {ID=21, Name="BA", Category="DegreeType", DisplayOrder=1 },
                 new G_CommonFields {ID=22, Name="BS", Category="DegreeType", DisplayOrder=2 },
                 new G_CommonFields {ID=23, Name="MA", Category="DegreeType", DisplayOrder=3 },
@@ -59,15 +60,15 @@ namespace StudentTrackingSystem3.Migrations
                 new G_CommonFields {ID=26, Name="PhD", Category="DegreeType", DisplayOrder=6 },
                 new G_CommonFields {ID=27, Name="DrPH", Category="DegreeType", DisplayOrder=7 },
                 new G_CommonFields {ID=28, Name="MD", Category="DegreeType", DisplayOrder=8 },
-                new G_CommonFields {ID=29, Name="Plan A", Category="Track", DisplayOrder=1 },
-                new G_CommonFields {ID=30, Name="Plan B", Category="Track", DisplayOrder=2 },
+                new G_CommonFields {ID=29, Name="Plan A", Category="Plan", DisplayOrder=1 },
+                new G_CommonFields {ID=30, Name="Plan B", Category="Plan", DisplayOrder=2 },
                 new G_CommonFields {ID=31, Name="Male", Category="Gender", DisplayOrder=1 },
                 new G_CommonFields {ID=32, Name="Female", Category="Gender", DisplayOrder=2 }
 
             };
             //commonfields.ForEach(s => context.CommonFields.Add(s));
             commonfields.ForEach(s => context.CommonFields.AddOrUpdate(p => p.ID, s));
-            context.SaveChanges();
+            SaveChanges(context);
 
             var courses = new List<G_Course>
             {
@@ -111,35 +112,35 @@ namespace StudentTrackingSystem3.Migrations
                 new G_Course { ID=38, CourseNum="QHS 699", CourseName="Directed Research", Credits=5 }
             };
             courses.ForEach(s => context.Courses.AddOrUpdate(p => p.ID, s));
-            context.SaveChanges();
+            SaveChanges(context);
 
             var students = new List<G_Student>
             {
-                new G_Student {Id=1, StudentNumber=10000001, FirstName="Carson", MiddleName="John", LastName="Alexander", SchoolEmail="carsonja@hawaii.edu", OtherEmail="carson_alexander@gmail.com", Phone="(808) 546-2455", DegreeStart=DateTime.Parse("2005-08-22"), DegreeEnd=DateTime.Parse("2007-05-15"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=18, TracksId=30},
-                new G_Student {Id=2, StudentNumber=10000002, FirstName="Meredith", MiddleName="Mary", LastName="Alonso", SchoolEmail="alonsomm@hawaii.edu", OtherEmail="mereditha@yahoo.com", Phone="(808) 942-3333", DegreeStart=DateTime.Parse("2002-08-25"), DegreeEnd=DateTime.Parse("2004-05-13"), ConcentrationsId=20, GendersId=32, DegreeProgramsId=17, TracksId=29},
-                new G_Student {Id=3, StudentNumber=10000003, FirstName="Arturo", MiddleName="Javier", LastName="Anand", SchoolEmail="arturoja@hawaii.edu", OtherEmail="anand_arturo@outlook.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=4, StudentNumber=10000004, FirstName="Magdalena", MiddleName="Ochorro", LastName="Butelera", SchoolEmail="butelera@hawaii.edu", OtherEmail="lenny_butelera@outlook.com", Phone="(510) 268-5272", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=5, StudentNumber=10000005, FirstName="Angela", MiddleName="Zara", LastName="Amaranda", SchoolEmail="amaranda@hawaii.edu", OtherEmail="angela_amaranda@outlook.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=6, StudentNumber=10000006, FirstName="Faith", MiddleName="Mae", LastName="Ping", SchoolEmail="fmaeping@hawaii.edu", OtherEmail="faithMaePing@outlook.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=7, StudentNumber=10000007, FirstName="Marcus", MiddleName="Wyatt", LastName="O'Neil", SchoolEmail="oneilmw@hawaii.edu", OtherEmail="markoneil@outlook.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=8, StudentNumber=10000008, FirstName="Michael", MiddleName="Gravy", LastName="MacDonald", SchoolEmail="mikemac@hawaii.edu", OtherEmail="gravy@gmail.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=9, StudentNumber=10000009, FirstName="Barry", MiddleName="Christoff", LastName="Smith", SchoolEmail="barrycsm@hawaii.edu", OtherEmail="barrysmith@gmail.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=10, StudentNumber=10000010, FirstName="Chuck", MiddleName="Charles", LastName="Churchill", SchoolEmail="chuckcc@hawaii.edu", OtherEmail="chuckcharles@church.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=11, StudentNumber=10000011, FirstName="Rodolfo", MiddleName="Portrero", LastName="Santos", SchoolEmail="portrero@hawaii.edu", OtherEmail="rodolfo_santos@yahoo.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=12, StudentNumber=10000012, FirstName="Jacques", MiddleName="Jean", LastName="Bordereaux", SchoolEmail="jacquesb@hawaii.edu", OtherEmail="bordereaux@gmail.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=13, StudentNumber=10000013, FirstName="Oliver", MiddleName="Quincy", LastName="Potter", SchoolEmail="oqpotter@hawaii.edu", OtherEmail="olipotter@yahoo.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=14, StudentNumber=10000014, FirstName="Fanasa", MiddleName="Borda", LastName="Marta", SchoolEmail="borda@hawaii.edu", OtherEmail="fanasia_bordamarta@outlook.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=15, StudentNumber=10000015, FirstName="Amy", MiddleName="Kiya", LastName="Novikov", SchoolEmail="amykiyan@hawaii.edu", OtherEmail="amykia@gmail.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=16, StudentNumber=10000016, FirstName="Mary", MiddleName="Margarette", LastName="Marchentero", SchoolEmail="marchente@hawaii.edu", OtherEmail="mmm@ymail.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=17, StudentNumber=10000017, FirstName="Ying", MiddleName="Jie", LastName="Xong", SchoolEmail="yingjiex@hawaii.edu", OtherEmail="yingjie@outlook.com", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=18, StudentNumber=10000018, FirstName="Sakura", MiddleName="Noburi", LastName="Ichiyama", SchoolEmail="sakurani@hawaii.edu", OtherEmail="noburi@yahoo.co.jp", Phone="(919) 546-7562", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=19, StudentNumber=10000019, FirstName="Sayuri", MiddleName="Misa", LastName="Katsumoto", SchoolEmail="sayurimk@hawaii.edu", OtherEmail="katsumoto.sayuri@yahoo.co.jp", Phone="(808) 482-2832", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=20, StudentNumber=10000020, FirstName="Ton", MiddleName="Ton", LastName="Balatong", SchoolEmail="tontonb@hawaii.edu", OtherEmail="ton2balatong@gmail.com.com", Phone="(329) 283-4822", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=21, StudentNumber=10000021, FirstName="Laura", MiddleName="Windham", LastName="Correa", SchoolEmail="lwcorrea@hawaii.edu", OtherEmail="laura_correa@yahoo.com", Phone="(348) 283-2384", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30},
-                new G_Student {Id=22, StudentNumber=10000022, FirstName="Xi", MiddleName="Xang", LastName="Xu", SchoolEmail="xxx@hawaii.edu", OtherEmail="xixangxu@wechat.ch", Phone="(516) 278-5295", DegreeStart=DateTime.Parse("2003-08-24"), DegreeEnd=DateTime.Parse("2005-05-10"), ConcentrationsId=19, GendersId=31, DegreeProgramsId=17, TracksId=30}
+                new G_Student {Id=1, StudentNumber=10000001, FirstName="Carson", MiddleName="John", LastName="Alexander", SchoolEmail="carsonja@hawaii.edu", OtherEmail="carson_alexander@gmail.com", Phone="(808) 546-2455", GendersId=31, ConcentrationsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2009 },
+                new G_Student {Id=2, StudentNumber=10000002, FirstName="Meredith", MiddleName="Mary", LastName="Alonso", SchoolEmail="alonsomm@hawaii.edu", OtherEmail="mereditha@yahoo.com", Phone="(808) 942-3333", GendersId=32, ConcentrationsId=18, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2002},
+                new G_Student {Id=3, StudentNumber=10000003, FirstName="Arturo", MiddleName="Javier", LastName="Anand", SchoolEmail="arturoja@hawaii.edu", OtherEmail="anand_arturo@outlook.com", Phone="(919) 546-7562", GendersId=31, ConcentrationsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2003},
+                new G_Student {Id=4, StudentNumber=10000004, FirstName="Magdalena", MiddleName="Ochorro", LastName="Butelera", SchoolEmail="butelera@hawaii.edu", OtherEmail="lenny_butelera@outlook.com", Phone="(510) 268-5272", GendersId=32, ConcentrationsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2004 },
+                new G_Student {Id=5, StudentNumber=10000005, FirstName="Angela", MiddleName="Zara", LastName="Amaranda", SchoolEmail="amaranda@hawaii.edu", OtherEmail="angela_amaranda@outlook.com", Phone="(919) 546-7562", GendersId=31, ConcentrationsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2005 },
+                new G_Student {Id=6, StudentNumber=10000006, FirstName="Faith", MiddleName="Mae", LastName="Ping", SchoolEmail="fmaeping@hawaii.edu", OtherEmail="faithMaePing@outlook.com", Phone="(929) 526-2051", GendersId=32, ConcentrationsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2004},
+                new G_Student {Id=7, StudentNumber=10000007, FirstName="Marcus", MiddleName="Wyatt", LastName="O'Neil", SchoolEmail="oneilmw@hawaii.edu", OtherEmail="markoneil@outlook.com", Phone="(285) 456-7683", GendersId=31, ConcentrationsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=2, DegreeStartYear=2003},
+                new G_Student {Id=8, StudentNumber=10000008, FirstName="Michael", MiddleName="Gravy", LastName="MacDonald", SchoolEmail="mikemac@hawaii.edu", OtherEmail="gravy@gmail.com", Phone="(808) 649-7632", GendersId=31, ConcentrationsId=18, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2012},
+                new G_Student {Id=9, StudentNumber=10000009, FirstName="Barry", MiddleName="Christoff", LastName="Smith", SchoolEmail="barrycsm@hawaii.edu", OtherEmail="barrysmith@gmail.com", Phone="(808) 686-8532", GendersId=31, ConcentrationsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2013},
+                new G_Student {Id=10, StudentNumber=10000010, FirstName="Chuck", MiddleName="Charles", LastName="Churchill", SchoolEmail="chuckcc@hawaii.edu", OtherEmail="chuckcharles@church.com", Phone="(808) 482-2852", GendersId=31, ConcentrationsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2016},
+                new G_Student {Id=11, StudentNumber=10000011, FirstName="Rodolfo", MiddleName="Portrero", LastName="Santos", SchoolEmail="portrero@hawaii.edu", OtherEmail="rodolfo_santos@yahoo.com", Phone="(919) 356-4124", GendersId=31, ConcentrationsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2015},
+                new G_Student {Id=12, StudentNumber=10000012, FirstName="Jacques", MiddleName="Jean", LastName="Bordereaux", SchoolEmail="jacquesb@hawaii.edu", OtherEmail="bordereaux@gmail.com", Phone="(919) 620-2647", GendersId=31, ConcentrationsId=18, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2017},
+                new G_Student {Id=13, StudentNumber=10000013, FirstName="Oliver", MiddleName="Quincy", LastName="Potter", SchoolEmail="oqpotter@hawaii.edu", OtherEmail="olipotter@yahoo.com", Phone="(853) 371-4224", GendersId=31, ConcentrationsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2015},
+                new G_Student {Id=14, StudentNumber=10000014, FirstName="Fanasa", MiddleName="Borda", LastName="Marta", SchoolEmail="borda@hawaii.edu", OtherEmail="fanasia_bordamarta@outlook.com", Phone="(415) 654-3718", GendersId=32, ConcentrationsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2016},
+                new G_Student {Id=15, StudentNumber=10000015, FirstName="Amy", MiddleName="Kiya", LastName="Novikov", SchoolEmail="amykiyan@hawaii.edu", OtherEmail="amykia@gmail.com", Phone="(808) 421-5284", GendersId=32, ConcentrationsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2018},
+                new G_Student {Id=16, StudentNumber=10000016, FirstName="Mary", MiddleName="Margarette", LastName="Marchentero", SchoolEmail="marchente@hawaii.edu", OtherEmail="mmm@ymail.com", Phone="(825) 213-3547", GendersId=32, ConcentrationsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2017},
+                new G_Student {Id=17, StudentNumber=10000017, FirstName="Ying", MiddleName="Jie", LastName="Xong", SchoolEmail="yingjiex@hawaii.edu", OtherEmail="yingjie@outlook.com", Phone="(459) 210-5241", GendersId=32, ConcentrationsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2016},
+                new G_Student {Id=18, StudentNumber=10000018, FirstName="Sakura", MiddleName="Noburi", LastName="Ichiyama", SchoolEmail="sakurani@hawaii.edu", OtherEmail="noburi@yahoo.co.jp", Phone="(509) 824-4212", GendersId=32, ConcentrationsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2014},
+                new G_Student {Id=19, StudentNumber=10000019, FirstName="Sayuri", MiddleName="Misa", LastName="Katsumoto", SchoolEmail="sayurimk@hawaii.edu", OtherEmail="katsumoto.sayuri@yahoo.co.jp", Phone="(210) 518-8961", GendersId=32, ConcentrationsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2013},
+                new G_Student {Id=20, StudentNumber=10000020, FirstName="Ton", MiddleName="Ton", LastName="Balatong", SchoolEmail="tontonb@hawaii.edu", OtherEmail="ton2balatong@gmail.com.com", Phone="(329) 283-4822", GendersId=31, ConcentrationsId=17, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2012},
+                new G_Student {Id=21, StudentNumber=10000021, FirstName="Laura", MiddleName="Windham", LastName="Correa", SchoolEmail="lwcorrea@hawaii.edu", OtherEmail="laura_correa@yahoo.com", Phone="(348) 283-2384", GendersId=31, ConcentrationsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2010},
+                new G_Student {Id=22, StudentNumber=10000022, FirstName="Xi", MiddleName="Xang", LastName="Xu", SchoolEmail="xxx@hawaii.edu", OtherEmail="xixangxu@wechat.ch", Phone="(516) 278-5295", GendersId=32, ConcentrationsId=17, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2010}
             };
             students.ForEach(s => context.Students.AddOrUpdate(p => p.StudentNumber, s));
-            context.SaveChanges();
+            SaveChanges(context);
 
 
             var coursework = new List<G_Coursework>
@@ -167,7 +168,7 @@ namespace StudentTrackingSystem3.Migrations
                     context.Coursework.Add(c);
                 }
             }
-            context.SaveChanges();
+            SaveChanges(context);
 
 
             var races = new List<G_Races>
@@ -187,16 +188,35 @@ namespace StudentTrackingSystem3.Migrations
                 new G_Races {Id=13, Name="Other"}
             };
             races.ForEach(s => context.Races.AddOrUpdate(p => p.Name, s));
-            context.SaveChanges();
+            SaveChanges(context);
 
             var personRaces = new List<G_PersonRaces>
             {
-                new G_PersonRaces { ID = 1, StudentID = 1, RaceID = 3, IsSelectedPR = true },
-                new G_PersonRaces { ID = 2, StudentID = 1, RaceID = 1, IsSelectedPR = true },
-                new G_PersonRaces { ID = 3, StudentID = 1, RaceID = 7, IsSelectedPR = true },
-                new G_PersonRaces { ID = 4, StudentID = 2, RaceID = 10, IsSelectedPR = true },
-                new G_PersonRaces { ID = 5, StudentID = 3, RaceID = 4, IsSelectedPR = true },
-                new G_PersonRaces { ID = 6, StudentID = 3, RaceID = 2, IsSelectedPR = true }
+                new G_PersonRaces {ID=1, StudentID=1, RaceID=3, IsSelectedPR=true},
+                new G_PersonRaces {ID=2, StudentID=1, RaceID=1, IsSelectedPR=true},
+                new G_PersonRaces {ID=3, StudentID=1, RaceID=7, IsSelectedPR=true},
+                new G_PersonRaces {ID=4, StudentID=2, RaceID=10, IsSelectedPR=true},
+                new G_PersonRaces {ID=5, StudentID=3, RaceID=4, IsSelectedPR=true},
+                new G_PersonRaces {ID=6, StudentID=3, RaceID=2, IsSelectedPR=true},
+                new G_PersonRaces {ID=7, StudentID=4, RaceID=12, IsSelectedPR=true},
+                new G_PersonRaces {ID=8, StudentID=5, RaceID=4, IsSelectedPR=true},
+                new G_PersonRaces {ID=9, StudentID=6, RaceID=5, IsSelectedPR=true},
+                new G_PersonRaces {ID=10, StudentID=7, RaceID=6, IsSelectedPR=true},
+                new G_PersonRaces {ID=11, StudentID=8, RaceID=7, IsSelectedPR=true},
+                new G_PersonRaces {ID=12, StudentID=9, RaceID=5, IsSelectedPR=true},
+                new G_PersonRaces {ID=13, StudentID=10, RaceID=1, IsSelectedPR=true},
+                new G_PersonRaces {ID=14, StudentID=11, RaceID=2, IsSelectedPR=true},
+                new G_PersonRaces {ID=15, StudentID=12, RaceID=5, IsSelectedPR=true},
+                new G_PersonRaces {ID=16, StudentID=13, RaceID=7, IsSelectedPR=true},
+                new G_PersonRaces {ID=17, StudentID=14, RaceID=9, IsSelectedPR=true},
+                new G_PersonRaces {ID=18, StudentID=15, RaceID=10, IsSelectedPR=true},
+                new G_PersonRaces {ID=19, StudentID=16, RaceID=11, IsSelectedPR=true},
+                new G_PersonRaces {ID=20, StudentID=17, RaceID=4, IsSelectedPR=true},
+                new G_PersonRaces {ID=21, StudentID=18, RaceID=1, IsSelectedPR=true},
+                new G_PersonRaces {ID=22, StudentID=19, RaceID=12, IsSelectedPR=true},
+                new G_PersonRaces {ID=23, StudentID=20, RaceID=8, IsSelectedPR=true},
+                new G_PersonRaces {ID=24, StudentID=21, RaceID=4, IsSelectedPR=true},
+                new G_PersonRaces {ID=25, StudentID=22, RaceID=8, IsSelectedPR=true}
             };
 
             foreach (G_PersonRaces pr in personRaces)
@@ -207,7 +227,39 @@ namespace StudentTrackingSystem3.Migrations
                     context.PersonRaces.Add(pr);
                 }
             }
-            context.SaveChanges();
+            SaveChanges(context);
         }
+
+        /// <summary>
+        /// Wrapper for SaveChanges adding the Validation Messages to the generated exception
+        /// </summary>
+        /// <param name="context">The context.</param>
+        private void SaveChanges(DbContext context)
+        {
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                StringBuilder sb = new StringBuilder();
+
+                foreach (var failure in ex.EntityValidationErrors)
+                {
+                    sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                    foreach (var error in failure.ValidationErrors)
+                    {
+                        sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                        sb.AppendLine();
+                    }
+                }
+
+                throw new DbEntityValidationException(
+                    "Entity Validation Failed - errors follow:\n" +
+                    sb.ToString(), ex
+                ); // Add the original exception as the innerException
+            }
+        }
+
     }
 }

@@ -1,0 +1,13 @@
+﻿@*Background > Courses > Performance Activity > ...*@
+<div class="row" id="infoNavGroup">
+    @Html.ActionLink("Background", "Edit", "Student",  new {  id = Model.G_Student.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.G_Student.Id }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Performance & Activity", "Edit", new { id = Model.G_Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Graduation", "Edit", null,  new { id = Model.G_Student.Id, Href="#" }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Post-Graduation", "Edit", new { id = Model.G_Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav col-md-2 col-xs-12" })
+</div>
+@*<hr />*@

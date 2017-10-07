@@ -7,13 +7,13 @@ namespace StudentTrackingSystem3.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class IntialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(IntialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201709260154476_InitialCreate"; }
+            get { return "201710070156574_IntialCreate"; }
         }
         
         string IMigrationMetadata.Source

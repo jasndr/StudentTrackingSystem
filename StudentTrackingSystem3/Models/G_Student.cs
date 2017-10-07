@@ -15,35 +15,36 @@ namespace StudentTrackingSystem3.Models
         public int StudentNumber { get; set; }
         [Required, Display(Name ="First Name")]
         public string FirstName { get; set; }
-        [Required, Display(Name ="Middle Name")]
+        [Display(Name ="Middle Name")]
         public string MiddleName { get; set; }
         [Required, Display(Name ="Last Name")]
         public string LastName { get; set; }
-        [EmailAddress, Display(Name = "School Email")]
+        [Required, EmailAddress, Display(Name = "School Email")]
         public string SchoolEmail { get; set; }
-        [EmailAddress, Display(Name = "Other Email")]
+        [Required, EmailAddress, Display(Name = "Other Email")]
         public string OtherEmail { get; set; }
-        [Phone]
+        [Required, Phone]
         public string Phone { get; set; }
-        [Display(Name="Gender")]//[ForeignKey()]
-        public Nullable<int> GendersId { get; set; }
+        [Required, Display(Name="Gender")]//[ForeignKey()]
+        public int GendersId { get; set; }
         [Display(Name ="Race Other")]
         public string RaceOther { get; set; }
-        [Display(Name ="Degree Program")]//[ForeignKey()]
-        public Nullable<int> DegreeProgramsId { get; set; }
-        [Display(Name ="Concentration")]//[ForeignKey()]
-        public Nullable<int> ConcentrationsId { get; set; }
-        [Display(Name ="Track")]//[ForeignKey()]
-        public Nullable<int> TracksId { get; set; }
-        [Display(Name ="Degree Program Start")]
-        public System.DateTime DegreeStart { get; set; }
-        [Display(Name ="Degree Program End")]
-        public System.DateTime DegreeEnd { get; set; }
+        [Required, Display(Name ="Concentration")]//[ForeignKey()]
+        public int ConcentrationsId { get; set; }
+        [Required, Display(Name ="Track")]//[ForeignKey()]
+        public int TracksId { get; set; }
+        [Required, Display(Name ="Plan")]//[ForeignKey()]
+        public int PlansId { get; set; }
+        [Required, Display(Name ="Degree Program Start Semester")]//[ForeignKey()]
+        public int DegreeStartSemsId { get; set; }
+        [Required, Range(1000, 9999), Display(Name ="Year")]
+        public int DegreeStartYear { get; set; }
 
         public virtual G_CommonFields Genders { get; set; }
-        public virtual G_CommonFields DegreePrograms { get; set; }
         public virtual G_CommonFields Concentrations { get; set; }
         public virtual G_CommonFields Tracks { get; set; }
+        public virtual G_CommonFields Plans { get; set; }
+        public virtual G_CommonFields DegreeStartSems { get; set; }
 
         //public virtual ICollection<G_CommonFields> Races { get; set; }
         [Display(Name = "Race/Ethnicity")]

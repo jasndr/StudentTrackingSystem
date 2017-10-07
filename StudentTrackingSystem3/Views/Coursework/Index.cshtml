@@ -7,17 +7,32 @@
 <h2>Graduate Student Coursework</h2>
 <br />
 <h4>Coursework for <strong>@ViewBag.CurrentStudent_FirstName @ViewBag.CurrentStudent_LastName</strong></h4>
-<h5>Attending <em><em>from</em> <u>@Convert.ToString(string.Format("{0:MMMM yyyy}", @ViewBag.CurrentStudent_DegreeStart))</u> <em>to</em> <u>@Convert.ToString(string.Format("{0:MMMM yyyy}", @ViewBag.CurrentStudent_DegreeEnd))</u> </em></h5>
+@*<h5>Attending <em><em>from</em> <u>@Convert.ToString(string.Format("{0:MMMM yyyy}", @ViewBag.CurrentStudent_DegreeStart))</u> <em>to</em> <u>@Convert.ToString(string.Format("{0:MMMM yyyy}", @ViewBag.CurrentStudent_DegreeEnd))</u> </em></h5>*@
+<br />
+
+<div class="row menuNav" id="menuNav_coursework">
+    @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Performance & Activity", "Index", null, new { id = ViewBag.CurrentStudent_Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Graduation", "Index", null, new { id = ViewBag.CurrentStudent_Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Post-Graduation", "Index", new { id = ViewBag.CurrentStudent_Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+</div>
+
+<hr />
 <br />
 
 <p>
-    @Html.ActionLink("Create New", "Create", new { id = ViewBag.CurrentStudent_Id})
+    @Html.ActionLink("Create New", "Create", new { id = ViewBag.CurrentStudent_Id })
 </p>
 <table class="table">
     <tr>
         <th>
             @*Semester*@
-            @Html.ActionLink("Semester", "Index", new { sortOrder = ViewBag.Semester_SortParm})
+            @Html.ActionLink("Semester", "Index", new { sortOrder = ViewBag.Semester_SortParm })
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.Course.CourseNum)*@
@@ -25,36 +40,37 @@
         </th>
         <th>
             @*@Html.DisplayNameFor(model=>model.Course.CourseName)*@
-            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.Title_SortParm})
+            @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.Title_SortParm })
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.Grade)*@
-            @Html.ActionLink("Grade", "Index", new { sortOrder = ViewBag.Grade_SortParm})
+            @Html.ActionLink("Grade", "Index", new { sortOrder = ViewBag.Grade_SortParm })
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Semesters.Name) @Html.DisplayFor(modelItem => item.Year)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course.CourseNum)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Course.CourseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grade.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-        </td>
-    </tr>
-}
-
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Semesters.Name) @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+            </td>
+        </tr>
+    }
 </table>
-<br />
-<p>@Html.ActionLink("Back to Student Information", "Info", "Student", new { id = ViewBag.CurrentStudent_Id }, null)</p>
+
+
+@*<br />
+<p>@Html.ActionLink("Back to List of Students", "Index", "Student")</p>*@

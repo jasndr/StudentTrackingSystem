@@ -15,7 +15,21 @@
 
     <div>
         <form>
-            <h4>Editing details for <strong>@Html.DisplayFor(model => model.G_Student.FirstName) @Html.DisplayFor(model => model.G_Student.LastName)</strong></h4>
+            <h4>Background details for <strong>@Html.DisplayFor(model => model.G_Student.FirstName) @Html.DisplayFor(model => model.G_Student.LastName)</strong></h4>
+
+            <br />
+            <div class="row menuNav" id="menuNav_background">
+                @Html.ActionLink("Background", "Edit", "Student", new { id = Model.G_Student.Id }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+
+                @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.G_Student.Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+
+                @Html.ActionLink("Performance & Activity", "Edit", new { id = Model.G_Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+
+                @Html.ActionLink("Graduation", "Edit", null, new { id = Model.G_Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+
+                @Html.ActionLink("Post-Graduation", "Edit", new { id = Model.G_Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+            </div>
+
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.G_Student.Id)
@@ -130,15 +144,15 @@
 
             <div class="row">
 
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.G_Student.PersonRaces)
+                            @Html.LabelFor(model => model.G_Student.PersonRaces, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="row">
 
                             @{
-                                var htmlListInfo = new HtmlListInfo(HtmlTag.table, 4, new { @class = "styled_list" }, TextLayout.Default, TemplateIsUsed.Yes);
+                                var htmlListInfo = new HtmlListInfo(HtmlTag.table, 7, new { @class = "styled_list" }, TextLayout.Default, TemplateIsUsed.Yes);
                                 @Html.CheckBoxListFor(model => model.RacesViewModel.PostedRaces.RaceIDs,
                                                               model => model.RacesViewModel.AvailableRaces,
                                                                race => race.Id,
@@ -149,6 +163,10 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+
+            <div class="row">
 
                 <div class="col-md-4">
                     <div class="form-group">
@@ -172,8 +190,8 @@
                             @Html.LabelFor(model => model.G_Student.ConcentrationsId, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.DropDownListFor(m => m.G_Student.DegreeProgramsId, (SelectList)ViewBag.DegreeProgramsIdBag, "-- Select Concentration --", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.G_Student.DegreeProgramsId, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(m => m.G_Student.ConcentrationsId, (SelectList)ViewBag.ConcentrationsIdBag, "-- Select Concentration --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.G_Student.ConcentrationsId, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -183,49 +201,19 @@
                             @Html.LabelFor(model => model.G_Student.TracksId, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.DropDownListFor(m => m.G_Student.ConcentrationsId, (SelectList)ViewBag.ConcentrationsIdBag, "-- Select Track --", new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.G_Student.ConcentrationsId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="form-group">
-                        <div class="row">
-                            @*@Html.LabelFor(model => model.G_Student.TracksId, htmlAttributes: new { @class = "control-label col-md-5" })*@
-                            <div class="control-label col-md-5">Plan</div>
-                        </div>
-                        <div class="col-md-10 row">
-                            @Html.DropDownListFor(m => m.G_Student.TracksId, (SelectList)ViewBag.TracksIdBag, "-- Select Plan --", new { @class = "form-control" })
+                            @Html.DropDownListFor(m => m.G_Student.TracksId, (SelectList)ViewBag.TracksIdBag, "-- Select Track --", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.G_Student.TracksId, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <br />
-
-            <div class="row">
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.G_Student.DegreeStart, htmlAttributes: new { @class = "control-label col-md-10" })
+                            @Html.LabelFor(model => model.G_Student.PlansId, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @*@Html.EditorFor(model => model.G_Student.DegreeStart, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @Html.TextBoxFor(m => m.G_Student.DegreeStart, new { @Value = Model.G_Student.DegreeStart.ToString("MM/dd/yyyy"), @class = "form-control datepicker" })
-                            @Html.ValidationMessageFor(model => model.G_Student.DegreeStart, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="form-group">
-                        <div class="row">
-                            @Html.LabelFor(model => model.G_Student.DegreeEnd, htmlAttributes: new { @class = "control-label col-md-10" })
-                        </div>
-                        <div class="col-md-10 row">
-                            @*@Html.EditorFor(model => model.G_Student.DegreeEnd, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @Html.TextBoxFor(m => m.G_Student.DegreeEnd, new { @Value = Model.G_Student.DegreeEnd.ToString("MM/dd/yyyy"), @class = "form-control datepicker" })
-                            @Html.ValidationMessageFor(model => model.G_Student.DegreeEnd, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(m => m.G_Student.PlansId, (SelectList)ViewBag.PlansIdBag, "-- Select Plan --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.G_Student.PlansId, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -236,8 +224,35 @@
             <div class="row">
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.G_Student.DegreeStartSemsId, htmlAttributes: new { @class = "control-label col-md-10" })
+                        </div>
                         <div class="col-md-10 row">
-                            <input type="submit" value="Save" class="btn btn-default createOrEditPost" />
+                            @Html.DropDownListFor(m => m.G_Student.DegreeStartSemsId, (SelectList)ViewBag.DegreeStartSemsIdBag, "-- Select Semester --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.G_Student.DegreeStartSemsId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.G_Student.DegreeStartYear, htmlAttributes: new { @class = "control-label col-md-10" })
+                        </div>
+                        <div class="col-md-10 row">
+                            @Html.EditorFor(model => model.G_Student.DegreeStartYear, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.G_Student.DegreeStartYear, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="col-md-10 row">
+                            <input type="submit" value="Save" class="btn btn-default createOrEditPost editPost" />
                         </div>
                     </div>
                 </div>
@@ -245,12 +260,17 @@
 
         </form>
     </div>
-}
-
+                                }
+@*<br />
 <div>
-    @Html.ActionLink("Back to Details", "Details", new { id = Model.G_Student.Id })
-</div>
+    @Html.ActionLink("Back to List of Students", "Index", new { id = Model.G_Student.Id })
+</div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+
+@if (TempData["message"] != null)
+{
+    @TempData["message"]
 }

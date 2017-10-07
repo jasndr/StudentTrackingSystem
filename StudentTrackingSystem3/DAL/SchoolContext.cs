@@ -25,6 +25,37 @@ namespace StudentTrackingSystem3.DAL
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<G_Student>()
+                .HasRequired(c => c.DegreeStartSems)
+                .WithMany()
+                .HasForeignKey(d => d.DegreeStartSemsId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<G_Student>()
+                .HasRequired(c => c.Genders)
+                .WithMany()
+                .HasForeignKey(d => d.GendersId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<G_Student>()
+                .HasRequired(c => c.Concentrations)
+                .WithMany()
+                .HasForeignKey(d => d.ConcentrationsId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<G_Student>()
+                .HasRequired(c => c.Tracks)
+                .WithMany()
+                .HasForeignKey(d => d.TracksId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<G_Student>()
+                .HasRequired(c => c.Plans)
+                .WithMany()
+                .HasForeignKey(d => d.PlansId)
+                .WillCascadeOnDelete(false);
+
         }
     }
 }

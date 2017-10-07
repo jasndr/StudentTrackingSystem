@@ -8,7 +8,9 @@
         if (checked < 1) {
             alert('You must select at least one race.  If no races known, please select "Other" and type "Unknown" in the [Race Other] box.');
             e.preventDefault();
-        } 
+        } else {
+            alert('Your entry has been saved.');
+        }
     });
 
     //Hide other "Other Race" checkbox is "other" is unchecked
@@ -38,3 +40,6 @@ $(window).load(function () {
         definitions: { '#': { validator: "[0-9]", cardinality: 1 } }
     });
 });
+
+//Adds tabs functionality
+//$("#TabSet1").tabs();
