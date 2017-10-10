@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -15,6 +16,7 @@ namespace StudentTrackingSystem3.Models
         public int ID { get; set; }
         public int StudentID { get; set; }
         public int? SemestersID { get; set; }
+        [Required, Range(1000,9999)]
         public int Year { get; set; }
         public int CourseID { get; set; }
         public int GradeID { get; set; }

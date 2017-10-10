@@ -91,4 +91,7 @@ a{
     height: 60vh !important;
 }
 
-
+/* Table Row Header for partitioning (like by semester on Coursework Page) */
+.tableRowHeader{
+     background-color: #d3f8d3;
+}

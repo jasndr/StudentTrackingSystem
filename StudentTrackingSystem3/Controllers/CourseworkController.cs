@@ -93,11 +93,12 @@ namespace StudentTrackingSystem3.Controllers
             var course =
                 db.Courses.AsEnumerable().Select(s => new
                 {
+                    ID = s.ID,
                     CourseNum = s.CourseNum,
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
-            ViewBag.Course = new SelectList(course, "CourseNum", "Description");
-            ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum");
+            ViewBag.CourseID = new SelectList(course, "ID", "Description");
+            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name");
             return View();
@@ -108,7 +109,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,SemestersID,Year,CourseID,GradeID")] G_Coursework g_Coursework)
+        public ActionResult Create([Bind(Include = "ID,StudentID,SemestersID,Year,CourseID,GradeID,Comments")] G_Coursework g_Coursework)
         {
             if (ModelState.IsValid)
             {
@@ -116,15 +117,16 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", new { id = g_Coursework.StudentID });
             }
+
             var course =
                 db.Courses.AsEnumerable().Select(s => new
                 {
+                    ID = s.ID,
                     CourseNum = s.CourseNum,
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
-
-            ViewBag.Course = new SelectList(course, "CourseNum", "Description");
-            ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
+            ViewBag.CourseID = new SelectList(course, "ID", "Description", g_Coursework.CourseID);
+            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields, "ID", "Name", g_Coursework.SemestersID);
             ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
             return View(g_Coursework);
@@ -146,12 +148,12 @@ namespace StudentTrackingSystem3.Controllers
             var course =
                 db.Courses.AsEnumerable().Select(s => new
                 {
+                    ID = s.ID,
                     CourseNum = s.CourseNum,
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
-
-            ViewBag.Course = new SelectList(course, "CourseNum", "Description");
-            ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
+            ViewBag.CourseID = new SelectList(course, "ID", "Description", g_Coursework.CourseID);
+            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);
             ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
             return View(g_Coursework);
@@ -162,7 +164,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID, StudentID,SemestersID,Year,CourseID,GradeID")] G_Coursework g_Coursework)
+        public ActionResult Edit([Bind(Include = "ID, StudentID,SemestersID,Year,CourseID,GradeID,Comments")] G_Coursework g_Coursework)
         {
             if (ModelState.IsValid)
             {
@@ -174,10 +176,12 @@ namespace StudentTrackingSystem3.Controllers
             var course =
                 db.Courses.AsEnumerable().Select(s => new
                 {
+                    ID = s.ID,
                     CourseNum = s.CourseNum,
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
-            ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
+            ViewBag.CourseID = new SelectList(course, "ID", "Description", g_Coursework.CourseID);
+            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);
             ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
             return View(g_Coursework);

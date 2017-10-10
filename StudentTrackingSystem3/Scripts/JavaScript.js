@@ -13,6 +13,10 @@
         }
     });
 
+    $('.createOrEditPost2').on('click', function (e) {
+        alert('Your entry has been saved.');
+    });
+
     //Hide other "Other Race" checkbox is "other" is unchecked
     var checkedOther = $(":checkbox[value=13]");
     var raceOtherField = $(".raceOther");

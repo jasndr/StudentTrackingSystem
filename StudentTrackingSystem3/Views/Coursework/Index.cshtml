@@ -31,45 +31,86 @@
 <table class="table">
     <tr>
         <th>
-            @*Semester*@
             @Html.ActionLink("Semester", "Index", new { sortOrder = ViewBag.Semester_SortParm })
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Course.CourseNum)*@
             @Html.ActionLink("Course", "Index", new { sortOrder = ViewBag.Course_SortParm })
         </th>
         <th>
-            @*@Html.DisplayNameFor(model=>model.Course.CourseName)*@
             @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.Title_SortParm })
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.Grade)*@
             @Html.ActionLink("Grade", "Index", new { sortOrder = ViewBag.Grade_SortParm })
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+   
+
+    @{var i = 1; }
+    @foreach (var group in Model.GroupBy(item => item.Semesters.Name + " " + item.Year))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Semesters.Name) @Html.DisplayFor(modelItem => item.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Course.CourseNum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Course.CourseName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Grade.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-            </td>
+       
+
+        <tr class="tableRowHeader">
+            <td><strong>Semester @i &mdash; @group.Key</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
+
+
+        var numOfCourses = 0;
+        var numOfCredits = 0;
+        var gpa = 0.00;
+        var semGpa = 0.00;
+        foreach (var item in group)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Semesters.Name) @Html.DisplayFor(modelItem => item.Year)*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                </td>
+            </tr>
+            numOfCourses++;
+            gpa = gpa + (double)item.Grade.GradePoint;
+            numOfCredits = numOfCredits + item.Course.Credits;
+        }
+        semGpa = (gpa / numOfCourses);
+        string displaySemGpa = semGpa.ToString("0.00");
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td><em class="pull-right">Semester GPA:</em></td>
+            <td><strong>@displaySemGpa</strong></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td><em class="pull-right">Total Number of Credits:</em></td>
+            <td><strong>@numOfCredits</strong></td>
+            <td></td>
+        </tr>
+
+        i++;
     }
+
 </table>
+
 
 
 @*<br />
