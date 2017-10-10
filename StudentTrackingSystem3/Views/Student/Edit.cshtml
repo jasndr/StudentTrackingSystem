@@ -127,7 +127,7 @@
             <br />
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
                             @Html.LabelFor(model => model.G_Student.GendersId, htmlAttributes: new { @class = "control-label col-md-5" })
@@ -135,6 +135,36 @@
                         <div class="col-md-10 row">
                             @Html.DropDownListFor(m => m.G_Student.GendersId, (SelectList)ViewBag.GendersIdBag, "-- Select Gender --", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.G_Student.GendersId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model =>  model.G_Student.PreviousDegrees, htmlAttributes: new { @class = "control-label col-md-5" })
+                        </div>
+                        <div class="col-md-10 row">
+                            <table class="table">
+                                @*<tr>
+                                    <th>Degree</th>
+                                    <th>School</th>
+                                    <th>Year</th>
+                                </tr>*@
+
+                                @foreach (var item in Model.G_Student.PreviousDegrees)
+                                {
+                                    <tr>
+                                        <td>&bull;</td>
+                                        <td></td>
+                                        <td><strong>@Html.DisplayFor(modelItem => item.DegreeTypes.Name)</strong>   @Html.DisplayFor(modelItem=>item.Title)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
+                                        @*<td>&mdash;</td>*@
+                                        <td>@Convert.ToString(string.Format("{0:yyyy}", item.DateOfAward))</td>
+                                    </tr>
+                                }
+                            </table>
+
+
                         </div>
                     </div>
                 </div>

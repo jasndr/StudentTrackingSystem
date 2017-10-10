@@ -50,6 +50,7 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Race/Ethnicity")]
         public virtual ICollection<G_PersonRaces> PersonRaces { get; set; }
         public virtual ICollection<G_Coursework> Coursework { get; set; }
+        [Display(Name = "Degree(s) at Admission")]
         public virtual ICollection<G_PrevDegree> PreviousDegrees { get; set; }
         
     }

@@ -1,0 +1,90 @@
+﻿@model StudentTrackingSystem3.Models.G_PrevDegree
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>G_PrevDegree</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeTypes.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegreeTypes.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CumulativeGPA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CumulativeGPA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Major)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Major)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecondMajor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecondMajor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Minor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Minor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfAward)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfAward)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
