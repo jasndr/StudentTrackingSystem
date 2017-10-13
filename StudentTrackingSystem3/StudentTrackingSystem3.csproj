@@ -209,21 +209,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710102002434_InitialCreate.cs" />
-    <Compile Include="Migrations\201710102002434_InitialCreate.Designer.cs">
-      <DependentUpon>201710102002434_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201710120237385_InitialCreate.cs" />
+    <Compile Include="Migrations\201710120237385_InitialCreate.Designer.cs">
+      <DependentUpon>201710120237385_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710102042072_InitialCreate1.cs" />
-    <Compile Include="Migrations\201710102042072_InitialCreate1.Designer.cs">
-      <DependentUpon>201710102042072_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710102049017_InitialCreate2.cs" />
-    <Compile Include="Migrations\201710102049017_InitialCreate2.Designer.cs">
-      <DependentUpon>201710102049017_InitialCreate2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710102050383_InitialCreate3.cs" />
-    <Compile Include="Migrations\201710102050383_InitialCreate3.Designer.cs">
-      <DependentUpon>201710102050383_InitialCreate3.cs</DependentUpon>
+    <Compile Include="Migrations\201710122007481_InitialCreate1.cs" />
+    <Compile Include="Migrations\201710122007481_InitialCreate1.Designer.cs">
+      <DependentUpon>201710122007481_InitialCreate1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -381,11 +373,8 @@
     <Content Include="Views\Shared\DisplayTemplates\G_Races.cshtml" />
     <Content Include="Views\Student\Report_StudentBackground.cshtml" />
     <Content Include="Views\Shared\_StudentRecordNav.cshtml" />
-    <Content Include="Views\PrevDegree\Create.cshtml" />
-    <Content Include="Views\PrevDegree\Delete.cshtml" />
-    <Content Include="Views\PrevDegree\Details.cshtml" />
     <Content Include="Views\PrevDegree\Edit.cshtml" />
-    <Content Include="Views\PrevDegree\Index.cshtml" />
+    <Content Include="Views\PrevDegree\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -401,17 +390,11 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710102002434_InitialCreate.resx">
-      <DependentUpon>201710102002434_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710120237385_InitialCreate.resx">
+      <DependentUpon>201710120237385_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710102042072_InitialCreate1.resx">
-      <DependentUpon>201710102042072_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710102049017_InitialCreate2.resx">
-      <DependentUpon>201710102049017_InitialCreate2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710102050383_InitialCreate3.resx">
-      <DependentUpon>201710102050383_InitialCreate3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710122007481_InitialCreate1.resx">
+      <DependentUpon>201710122007481_InitialCreate1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

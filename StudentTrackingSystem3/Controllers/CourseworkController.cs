@@ -152,6 +152,7 @@ namespace StudentTrackingSystem3.Controllers
                     CourseNum = s.CourseNum,
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
+            ViewBag.StudentID = g_Coursework.StudentID;
             ViewBag.CourseID = new SelectList(course, "ID", "Description", g_Coursework.CourseID);
             //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);

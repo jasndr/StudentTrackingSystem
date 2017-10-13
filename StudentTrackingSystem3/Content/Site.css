@@ -50,7 +50,8 @@ a{
 }
 /*Main navigation for Student*/
 #menuNav_background .menuNav_background,
-#menuNav_coursework .menuNav_coursework{
+#menuNav_coursework .menuNav_coursework,
+#menuNav_performance .menuNav_performance{
     background-color: #060;
     color: white;
 }

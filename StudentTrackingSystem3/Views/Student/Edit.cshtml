@@ -3,7 +3,7 @@
 @model StudentTrackingSystem3.ViewModels.UltimateViewModel
 
 @{
-    ViewBag.Title = "Edit Student Details";
+    ViewBag.Title = "Student Background";
 }
 
 <h2>Graduate Student Background</h2>
@@ -140,30 +140,37 @@
                 </div>
                 <div class="col-md-8 col-xs-12">
                     <div class="form-group">
+
                         <div class="row">
-                            @Html.LabelFor(model =>  model.G_Student.PreviousDegrees, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.G_Student.PreviousDegrees, htmlAttributes: new { @class = "control-label col-md-5" })
+                            <div class="text-center">
+                                @Html.ActionLink("Add Degree", "Create", "PrevDegree", new {id = Model.G_Student.Id }, null)
+                            </div>
                         </div>
+
                         <div class="col-md-10 row">
-                            <table class="table">
-                                @*<tr>
-                                    <th>Degree</th>
-                                    <th>School</th>
-                                    <th>Year</th>
-                                </tr>*@
-
-                                @foreach (var item in Model.G_Student.PreviousDegrees)
+                            @{if (!object.ReferenceEquals(Model.G_Student.PreviousDegrees.FirstOrDefault(), null))
                                 {
-                                    <tr>
-                                        <td>&bull;</td>
-                                        <td></td>
-                                        <td><strong>@Html.DisplayFor(modelItem => item.DegreeTypes.Name)</strong>   @Html.DisplayFor(modelItem=>item.Title)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
-                                        @*<td>&mdash;</td>*@
-                                        <td>@Convert.ToString(string.Format("{0:yyyy}", item.DateOfAward))</td>
-                                    </tr>
-                                }
-                            </table>
+                                    <table class="table">
 
+                                        @foreach (var item in Model.G_Student.PreviousDegrees.OrderByDescending(s=>s.DateOfAward))
+                                        {
+                                            <tr>
+                                                <td>&bull;</td>
+                                                <td></td>
+                                                <td><strong>@Html.DisplayFor(modelItem => item.DegreeTypes.Name)</strong>   @Html.DisplayFor(modelItem => item.Title)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
+                                                <td>@Convert.ToString(string.Format("{0:yyyy}", item.DateOfAward))</td>
+                                                <td>@Html.ActionLink("Edit", "Edit", "PrevDegree", new { id = item.Id }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                }
+                                else
+                                {
+                                    <p><em>No degrees listed.  Please add a degree.</em></p>
+                                }
+                            }
 
                         </div>
                     </div>
@@ -292,9 +299,9 @@
     </div>
                                 }
 @*<br />
-<div>
-    @Html.ActionLink("Back to List of Students", "Index", new { id = Model.G_Student.Id })
-</div>*@
+    <div>
+        @Html.ActionLink("Back to List of Students", "Index", new { id = Model.G_Student.Id })
+    </div>*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
