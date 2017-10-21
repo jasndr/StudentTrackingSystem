@@ -45,13 +45,15 @@ namespace StudentTrackingSystem3.Models
         public virtual G_CommonFields Tracks { get; set; }
         public virtual G_CommonFields Plans { get; set; }
         public virtual G_CommonFields DegreeStartSems { get; set; }
+        
 
-        //public virtual ICollection<G_CommonFields> Races { get; set; }
         [Display(Name = "Race/Ethnicity")]
         public virtual ICollection<G_PersonRaces> PersonRaces { get; set; }
         public virtual ICollection<G_Coursework> Coursework { get; set; }
         [Display(Name = "Degree(s) at Admission")]
         public virtual ICollection<G_PrevDegree> PreviousDegrees { get; set; }
+        public virtual ICollection<G_Performance> Performances { get; set; }
+        public virtual ICollection<G_Activity> Activities { get; set; }
         
     }
 }

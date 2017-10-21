@@ -48,7 +48,20 @@ namespace StudentTrackingSystem3.DAL
                 new G_CommonFields {ID=29, Name="Plan A", Category="Plan", DisplayOrder=1 },
                 new G_CommonFields {ID=30, Name="Plan B", Category="Plan", DisplayOrder=2 },
                 new G_CommonFields {ID=31, Name="Male", Category="Gender", DisplayOrder=1 },
-                new G_CommonFields {ID=32, Name="Female", Category="Gender", DisplayOrder=2 }
+                new G_CommonFields {ID=32, Name="Female", Category="Gender", DisplayOrder=2 },
+                new G_CommonFields {ID=33, Name="Published", Category="Publication", DisplayOrder=1 },
+                new G_CommonFields {ID=34, Name="Accepted", Category="Publication", DisplayOrder=2 },
+                new G_CommonFields {ID=35, Name="Submitted", Category="Publication", DisplayOrder=3 },
+                new G_CommonFields {ID=36, Name="In Preparation", Category="Publication", DisplayOrder=4 },
+                new G_CommonFields {ID=37, Name="Funded", Category="Proposal", DisplayOrder=1 },
+                new G_CommonFields {ID=38, Name="Submitted", Category="Proposal", DisplayOrder=2 },
+                new G_CommonFields {ID=39, Name="In Preparation", Category="Proposal", DisplayOrder=3 },
+                new G_CommonFields {ID=40, Name="Instructor", Category="Teaching", DisplayOrder=1 },
+                new G_CommonFields {ID=41, Name="TA", Category="Teaching", DisplayOrder=2 },
+                new G_CommonFields {ID=42, Name="Publication", Category="PerformanceCategory", DisplayOrder=1  },
+                new G_CommonFields {ID=43, Name="Abstract", Category="PerformanceCategory", DisplayOrder=1  },
+                new G_CommonFields {ID=44, Name="Proposal", Category="PerformanceCategory", DisplayOrder=3  },
+                new G_CommonFields {ID=45, Name="Teaching", Category="PerformanceCategory", DisplayOrder=4  }
 
             };
             commonfields.ForEach(s => context.CommonFields.Add(s));

@@ -1,0 +1,74 @@
+﻿@model StudentTrackingSystem3.Models.G_Performance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>G_Performance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PerformanceActivityID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PerformanceActivityID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryInfo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PublicationStatID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PublicationStatID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AbstractStatID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AbstractStatID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProposalStatID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProposalStatID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TeachingStatID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TeachingStatID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

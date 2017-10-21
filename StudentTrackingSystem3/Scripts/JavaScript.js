@@ -10,7 +10,9 @@
             e.preventDefault();
         } else {
             var form = $('.createOrEditPost').closest('form');
-            if (!form.valid()) {
+            if (!form) {
+                alert("You have not submitted a valid form.");
+            } else if (!form.valid()) {
                 alert("There are erors in submission. Please view below for details.");
             } else {
                 setTimeout(function () {
@@ -22,7 +24,10 @@
 
     $('.createOrEditPost2').mouseup(function (e) {
         var form = $('.createOrEditPost2').closest('form');
-        if (!form.valid()) {
+        if (!form) {
+            alert("You have not submitted a valid form.");
+        }
+        else if (!form.valid()) {
             alert("There are erors in submission. Please view below for details.");
         } else {
             setTimeout(function () {

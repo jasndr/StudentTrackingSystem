@@ -21,6 +21,9 @@ namespace StudentTrackingSystem3.DAL
         public DbSet<G_PrevDegree> PreviousDegrees { get; set; }
         public DbSet<G_Races> Races { get; set; }
         public DbSet<G_PersonRaces> PersonRaces { get; set; }
+        public DbSet<G_Activity> Activities { get; set; }
+        public DbSet<G_Performance> Performances { get; set; }
+        //public DbSet<G_File> Files { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -55,6 +58,12 @@ namespace StudentTrackingSystem3.DAL
                 .WithMany()
                 .HasForeignKey(d => d.PlansId)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<G_Coursework>()
+               .HasRequired(c => c.Semesters)
+               .WithMany()
+               .HasForeignKey(d => d.SemestersID)
+               .WillCascadeOnDelete(false);
 
         }
     }

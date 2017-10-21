@@ -1,0 +1,109 @@
+﻿@model IEnumerable<StudentTrackingSystem3.Models.G_Performance>
+
+@{
+    ViewBag.Title = "Performance & Activity Summary";
+}
+
+<h2>Performance &amp; Activity Summary</h2>
+<br />
+<h4>Performance &amp; Activity Summary for <strong>@ViewBag.CurrentStudent_FN @ViewBag.CurrentStudent_LN</strong></h4>
+<br />
+
+<div class="row menuNav" id="menuNav_performance">
+    @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Graduation", "Index", null, new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Post-Graduation", "Index", new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+</div>
+
+<hr />
+<br />
+
+<h4 class="alert alert-success text-center">
+    <strong>Performance</strong>
+</h4>
+
+<div class="col-md-offset-1">
+
+    <div class="row">
+        <p>
+            @Html.ActionLink("Add New Performance", "Create", new { id = ViewBag.StudentID }, null)
+        </p>
+    </div>
+
+    <div class="row">
+
+        @{if (!object.ReferenceEquals(Model.FirstOrDefault(), null))
+            {
+                    <table class="table">
+                        <tr>
+                            <th>
+                                <strong>Category</strong>
+                            </th>
+                            <th>
+                                <strong>Information</strong>
+                            </th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CategoryInfo)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+                else
+                {
+                    <p><em>No performance records listed.  Please add a performance record.</em></p>
+                }
+            }
+
+    </div>
+</div>
+
+<h4 class="alert alert-success text-center">
+    <strong>Activity Summary</strong>
+</h4>
+
+<div class="row">
+
+    <div class="form-group">
+        <div class="row">
+            @*@Html.LabelFor(model => model.ActivitySummaryFile, htmlAttributes: new { @class = "control-label" })*@
+        </div>
+        <div class="row">
+            <p>[File upload to be placed here.]</p>
+            @*@Html.EditorFor(model => model.ActivitySummaryFile, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ActivitySummaryFile, "", new { @class = "text-danger" })*@
+        </div>
+    </div>
+
+    @*<div class="col-md-2 col-xs-0"></div>
+
+    <div class="col-md-5 col-xs-12">
+        <div class="form-group">
+            <div class="row">
+                @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label" })
+            </div>
+            <div class="row">
+                @Html.TextAreaFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "form-control" }) <br />
+                @Html.ValidationMessageFor(model => model.ActivitySummaryDesc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>*@
+
+</div>

@@ -23,7 +23,7 @@
 
                 @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.G_Student.Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
 
-                @Html.ActionLink("Performance & Activity", "Edit", new { id = Model.G_Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+                @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = Model.G_Student.Id }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
                 @Html.ActionLink("Graduation", "Edit", null, new { id = Model.G_Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
@@ -144,7 +144,7 @@
                         <div class="row">
                             @Html.LabelFor(model => model.G_Student.PreviousDegrees, htmlAttributes: new { @class = "control-label col-md-5" })
                             <div class="text-center">
-                                @Html.ActionLink("Add Degree", "Create", "PrevDegree", new {id = Model.G_Student.Id }, null)
+                                @Html.ActionLink("Add Degree", "Create", "PrevDegree", new { id = Model.G_Student.Id }, null)
                             </div>
                         </div>
 
@@ -153,7 +153,7 @@
                                 {
                                     <table class="table">
 
-                                        @foreach (var item in Model.G_Student.PreviousDegrees.OrderByDescending(s=>s.DateOfAward))
+                                        @foreach (var item in Model.G_Student.PreviousDegrees.OrderByDescending(s => s.DateOfAward))
                                         {
                                             <tr>
                                                 <td>&bull;</td>

@@ -17,15 +17,15 @@
         <br />
 
         <div class="row menuNav" id="menuNav_coursework">
-            @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+            @Html.ActionLink("Background", "Edit", "Student", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Performance & Activity", "Index", null, new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Graduation", "Index", null, new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+            @Html.ActionLink("Graduation", "Index", null, new { id = Model.Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Post-Graduation", "Index", new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+            @Html.ActionLink("Post-Graduation", "Index", new { id = Model.Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
         </div>
 
         <hr />

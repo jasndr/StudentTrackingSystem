@@ -202,6 +202,8 @@
     <Compile Include="Controllers\CourseworkController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\PerformanceController.cs" />
     <Compile Include="Controllers\PrevDegreeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="DAL\SchoolContext.cs" />
@@ -209,19 +211,37 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710120237385_InitialCreate.cs" />
-    <Compile Include="Migrations\201710120237385_InitialCreate.Designer.cs">
-      <DependentUpon>201710120237385_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201710200240260_ResetDB.cs" />
+    <Compile Include="Migrations\201710200240260_ResetDB.Designer.cs">
+      <DependentUpon>201710200240260_ResetDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710122007481_InitialCreate1.cs" />
-    <Compile Include="Migrations\201710122007481_InitialCreate1.Designer.cs">
-      <DependentUpon>201710122007481_InitialCreate1.cs</DependentUpon>
+    <Compile Include="Migrations\201710202104447_PerfCatg.cs" />
+    <Compile Include="Migrations\201710202104447_PerfCatg.Designer.cs">
+      <DependentUpon>201710202104447_PerfCatg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710202153095_PerfCatg1.cs" />
+    <Compile Include="Migrations\201710202153095_PerfCatg1.Designer.cs">
+      <DependentUpon>201710202153095_PerfCatg1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710202311487_PerfCatg2.cs" />
+    <Compile Include="Migrations\201710202311487_PerfCatg2.Designer.cs">
+      <DependentUpon>201710202311487_PerfCatg2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710202333050_PerfCatg3.cs" />
+    <Compile Include="Migrations\201710202333050_PerfCatg3.Designer.cs">
+      <DependentUpon>201710202333050_PerfCatg3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710210058441_PerfCatg4.cs" />
+    <Compile Include="Migrations\201710210058441_PerfCatg4.Designer.cs">
+      <DependentUpon>201710210058441_PerfCatg4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommonFields.cs" />
     <Compile Include="Models\G_Course.cs" />
     <Compile Include="Models\G_Coursework.cs" />
+    <Compile Include="Models\G_Performance.cs" />
+    <Compile Include="Models\G_Activity.cs" />
     <Compile Include="Models\G_PersonRaces.cs" />
     <Compile Include="Models\G_PrevDegree.cs" />
     <Compile Include="Models\G_Student.cs" />
@@ -325,6 +345,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Performance\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -366,8 +387,6 @@
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Shared\_StudentRecordNavigation.cshtml" />
     <Content Include="Views\Coursework\Create.cshtml" />
-    <Content Include="Views\Coursework\Delete.cshtml" />
-    <Content Include="Views\Coursework\Details.cshtml" />
     <Content Include="Views\Coursework\Edit.cshtml" />
     <Content Include="Views\Coursework\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\G_Races.cshtml" />
@@ -375,6 +394,10 @@
     <Content Include="Views\Shared\_StudentRecordNav.cshtml" />
     <Content Include="Views\PrevDegree\Edit.cshtml" />
     <Content Include="Views\PrevDegree\Create.cshtml" />
+    <Content Include="Views\Activity\Create.cshtml" />
+    <Content Include="Views\Activity\Edit.cshtml" />
+    <Content Include="Views\Performance\Create.cshtml" />
+    <Content Include="Views\Performance\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -390,11 +413,23 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710120237385_InitialCreate.resx">
-      <DependentUpon>201710120237385_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710200240260_ResetDB.resx">
+      <DependentUpon>201710200240260_ResetDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710122007481_InitialCreate1.resx">
-      <DependentUpon>201710122007481_InitialCreate1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710202104447_PerfCatg.resx">
+      <DependentUpon>201710202104447_PerfCatg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710202153095_PerfCatg1.resx">
+      <DependentUpon>201710202153095_PerfCatg1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710202311487_PerfCatg2.resx">
+      <DependentUpon>201710202311487_PerfCatg2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710202333050_PerfCatg3.resx">
+      <DependentUpon>201710202333050_PerfCatg3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710210058441_PerfCatg4.resx">
+      <DependentUpon>201710210058441_PerfCatg4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

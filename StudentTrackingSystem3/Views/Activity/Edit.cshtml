@@ -1,0 +1,142 @@
+﻿@model StudentTrackingSystem3.Models.G_Activity
+
+@{
+    ViewBag.Title = "Edit Performance & Activity Record";
+}
+
+<h2>Performance &amp; Activity Summary</h2>
+<br />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Editing performance &amp activity summary record for <strong>@Model.Student.FirstName @Model.Student.LastName</strong></h4>
+        <br />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="row menuNav" id="menuNav_performance">
+            @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Graduation", "Index", null, new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Post-Graduation", "Index", new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+        </div>
+
+        <hr />
+        <br />
+        <div class="form-group" style="display: none;">
+            @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control", @Value = Model.ID } })
+                @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <h4 class="alert alert-success text-center">
+            <strong>Performance</strong>
+        </h4>
+
+        <div class="col-md-offset-1">
+            <div class="row">
+                <p>
+                    @Html.ActionLink("Add New Performance", "Create", "Performance", new { id = Model.StudentID }, null)
+                </p>
+            </div>
+
+            <div class="row">
+
+                @{if (!object.ReferenceEquals(Model.Performances.FirstOrDefault(), null))
+                {
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    <strong>Performance</strong>
+                                </th>
+                                <th>
+                                    <strong>Category</strong>
+                                </th>
+                                <th>
+                                    <strong>Information</strong>
+                                </th>
+                                <th></th>
+                            </tr>
+                            @foreach (var item in Model.Performances)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.PerformanceActivityID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CategoryID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CategoryInfo)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                    else
+                    {
+                        <p><em>No performance records listed.  Please add a performance record.</em></p>
+                    }
+                }
+
+            </div>
+        </div>
+
+        <h4 class="alert alert-success text-center">
+            <strong>Activity Summary</strong>
+        </h4>
+
+        <div class="row">
+
+            <div class="col-md-offset-1 col-md-5 col-xs-12">
+
+                <div class="form-group">
+                    <div class="row">
+                        @Html.LabelFor(model => model.ActivitySummaryFile, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="row">
+                        <p>[File upload to be placed here.]</p>
+                        @*@Html.EditorFor(model => model.ActivitySummaryFile, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ActivitySummaryFile, "", new { @class = "text-danger" })*@
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-2 col-xs-0"></div>
+
+            <div class="col-md-5 col-xs-12">
+                <div class="form-group">
+                    <div class="row">
+                        @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="row">
+                        @Html.TextAreaFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ActivitySummaryDesc, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Save" class="btn btn-default createOrEditPost2" />
+            </div>
+        </div>
+    </div>
+                }

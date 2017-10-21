@@ -7,13 +7,13 @@ namespace StudentTrackingSystem3.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate1 : IMigrationMetadata
+    public sealed partial class ResetDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ResetDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710122007481_InitialCreate1"; }
+            get { return "201710200240260_ResetDB"; }
         }
         
         string IMigrationMetadata.Source
