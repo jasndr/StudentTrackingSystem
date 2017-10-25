@@ -38,39 +38,69 @@
 
     <div class="row">
 
-        @{if (!object.ReferenceEquals(Model.FirstOrDefault(), null))
+        @{if (!object.ReferenceEquals(Model.Where(g => g.StudentID == ViewBag.StudentID).FirstOrDefault(), null))
             {
-                    <table class="table">
-                        <tr>
-                            <th>
-                                <strong>Category</strong>
-                            </th>
-                            <th>
-                                <strong>Information</strong>
-                            </th>
-                            <th></th>
-                        </tr>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Category.Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CategoryInfo)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-                                </td>
-                            </tr>
-                        }
-                    </table>
-                }
-                else
+
+                foreach (var category in Model.OrderBy(m=>m.CategoryID).GroupBy(m => m.Category.Name))
                 {
-                    <p><em>No performance records listed.  Please add a performance record.</em></p>
+
+                    if (!object.ReferenceEquals(Model.Where(g => g.StudentID == ViewBag.StudentID)
+                                                      .Where(g => g.Category.Name == category.Key)
+                                                      .FirstOrDefault(), null))
+                    {
+                        <h4><strong>@category.Key</strong></h4>
+
+                        <table class="table" style="width: 90%;">
+                            @foreach (var item in Model.Where(g => g.StudentID == ViewBag.StudentID).Where(g => g.Category.Name == category.Key))
+                            {
+                                <tr>
+                                    <th></th>
+                                    <th><strong>Information</strong></th>
+                                    <th><strong>Status</strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td style="width: 75%;margin-left: 25%;">
+                                       &bull; @Html.DisplayFor(modelItem => item.CategoryInfo)
+                                    </td>
+                                    <td>
+                                        @if (category.Key == "Abstract")
+                                        {
+                                            @Html.DisplayFor(modelItem =>item.AbstractStats.Name)
+                                        }
+                                        else if (category.Key == "Publication")
+                                        {
+                                            @Html.DisplayFor(modelItem => item.PublicationStats.Name)
+                                        } else if (category.Key == "Proposal")
+                                        {
+                                            @Html.DisplayFor(modelItem => item.ProposalStats.Name)
+                                        } else if (category.Key == "Teaching")
+                                        {
+                                            @Html.DisplayFor(modelItem => item.TeachingStats.Name)
+                                        } else
+                                        {
+                                            <p>No key found.</p>
+                                        }
+                                    </td>
+                                    <td style="width: 10%">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID}, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+                    }
+                    
+
                 }
             }
+            else
+            {
+                <p><em> No performance records listed. Please add a performance record.</em></p>
+            }
+        }
+
+
 
     </div>
 </div>
@@ -79,7 +109,7 @@
     <strong>Activity Summary</strong>
 </h4>
 
-<div class="row">
+<div class="row col-md-offset-1">
 
     <div class="form-group">
         <div class="row">
@@ -94,16 +124,16 @@
 
     @*<div class="col-md-2 col-xs-0"></div>
 
-    <div class="col-md-5 col-xs-12">
-        <div class="form-group">
-            <div class="row">
-                @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label" })
+        <div class="col-md-5 col-xs-12">
+            <div class="form-group">
+                <div class="row">
+                    @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="row">
+                    @Html.TextAreaFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "form-control" }) <br />
+                    @Html.ValidationMessageFor(model => model.ActivitySummaryDesc, "", new { @class = "text-danger" })
+                </div>
             </div>
-            <div class="row">
-                @Html.TextAreaFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "form-control" }) <br />
-                @Html.ValidationMessageFor(model => model.ActivitySummaryDesc, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>*@
+        </div>*@
 
 </div>

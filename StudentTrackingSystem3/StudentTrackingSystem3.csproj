@@ -235,6 +235,14 @@
     <Compile Include="Migrations\201710210058441_PerfCatg4.Designer.cs">
       <DependentUpon>201710210058441_PerfCatg4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710250040272_ChangeCFStructure.cs" />
+    <Compile Include="Migrations\201710250040272_ChangeCFStructure.Designer.cs">
+      <DependentUpon>201710250040272_ChangeCFStructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710250230436_ChangePerfStructure.cs" />
+    <Compile Include="Migrations\201710250230436_ChangePerfStructure.Designer.cs">
+      <DependentUpon>201710250230436_ChangePerfStructure.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommonFields.cs" />
@@ -430,6 +438,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710210058441_PerfCatg4.resx">
       <DependentUpon>201710210058441_PerfCatg4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710250040272_ChangeCFStructure.resx">
+      <DependentUpon>201710250040272_ChangeCFStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710250230436_ChangePerfStructure.resx">
+      <DependentUpon>201710250230436_ChangePerfStructure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

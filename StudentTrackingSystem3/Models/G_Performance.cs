@@ -15,13 +15,13 @@ namespace StudentTrackingSystem3.Models
         [Required, Display(Name = "Information")]
         public string CategoryInfo { get; set; }
         [Display(Name ="Publication Status")]
-        public Nullable<int> PublicationStatID { get; set; }
+        public Nullable<int> PublicationStatsID { get; set; }
         [Display(Name = "Abstract Status")]
-        public Nullable<int> AbstractStatID { get; set; }
+        public Nullable<int> AbstractStatsID { get; set; }
         [Display(Name = "Proposal Status")]
-        public Nullable<int> ProposalStatID { get; set; }
+        public Nullable<int> ProposalStatsID { get; set; }
         [Display(Name = "Teaching Status")]
-        public Nullable<int> TeachingStatID { get; set; }
+        public Nullable<int> TeachingStatsID { get; set; }
 
         public virtual G_Student Student { get; set; }
         public virtual G_CommonFields Category { get; set; }

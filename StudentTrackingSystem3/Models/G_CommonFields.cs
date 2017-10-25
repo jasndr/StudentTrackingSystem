@@ -23,6 +23,10 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_PrevDegree> ReturnDegreeType { get; set; }
         public virtual ICollection<G_Coursework> ReturnSemester { get; set; }
         public virtual ICollection<G_Coursework> ReturnGrade { get; set; }
+        public virtual ICollection<G_Performance> ReturnPublicationStat { get; set; }
+        public virtual ICollection<G_Performance> ReturnAbstractStat { get; set; }
+        public virtual ICollection<G_Performance> ReturnProposalStat { get; set; }
+        public virtual ICollection<G_Performance> ReturnTeachingStat { get; set; }
 
     }
 }

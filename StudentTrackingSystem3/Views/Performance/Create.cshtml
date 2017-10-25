@@ -20,7 +20,7 @@
 
             @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Performance & Activity", "Index", "PerformanceActivity", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
             @Html.ActionLink("Graduation", "Index", null, new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
@@ -43,7 +43,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CategoryID", null, "-- Select Category --", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownListFor(model=>model.CategoryID, (SelectList)ViewBag.CategoryID, "-- Select Category --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -57,34 +57,34 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PublicationStatID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PublicationStatsID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("PublicationStatID", null, "-- Select Publication Status --", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PublicationStatID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.PublicationStatsID, (SelectList)ViewBag.PublicationStatsID, "-- Select Publication Status --", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PublicationStatsID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AbstractStatID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AbstractStatsID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("AbstractStatID", null, "-- Select Abstract Status --", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.AbstractStatID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.AbstractStatsID, (SelectList)ViewBag.AbstractStatsID, "-- Select Abstract Status --", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.AbstractStatsID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProposalStatID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ProposalStatsID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ProposalStatID", null, "-- Select Proposal Status --", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ProposalStatID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model=>model.ProposalStatsID, (SelectList)ViewBag.ProposalStatsID, "-- Select Proposal Status --", htmlAttributes: new { @class="form-control"})
+                @Html.ValidationMessageFor(model => model.ProposalStatsID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TeachingStatID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TeachingStatsID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("TeachingStatID", null, "-- Select Teaching Status --", htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.TeachingStatID, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.TeachingStatsID, (SelectList)ViewBag.TeachingStatsID, "-- Select Teaching Status --", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TeachingStatsID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -95,6 +95,10 @@
         </div>
     </div>
 }
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = ViewBag.StudentID })
+</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

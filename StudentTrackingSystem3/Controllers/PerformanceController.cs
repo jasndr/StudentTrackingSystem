@@ -22,7 +22,14 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.CurrentStudent_FN = db.Students.Find(id).FirstName;
             ViewBag.CurrentStudent_LN = db.Students.Find(id).LastName;
 
-            return View(db.Performances.ToList());
+           // var coursework = db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g => g.StudentID == id)
+            var performance = db.Performances.Include(p => p.AbstractStats)
+                                             .Include(p => p.PublicationStats)
+                                             .Include(p => p.ProposalStats)
+                                             .Include(p => p.TeachingStats)
+                                             .Include(g=>g.Student).Where(g=>g.StudentID == id);
+
+            return View(performance.ToList());
         }
 
         // GET: Performance/Details/5
@@ -50,10 +57,10 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.CurrentStudent_LN = db.Students.Find(id).LastName;
 
             ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name");
-            ViewBag.PublicationStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
-            ViewBag.AbstractStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
-            ViewBag.ProposalStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name");
-            ViewBag.TeachingStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name");
+            ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
+            ViewBag.AbstractStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
+            ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name");
+            ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name");
 
             return View();
         }
@@ -63,7 +70,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatID,AbstractStatID,ProposalStatID,TeachingStatID")] G_Performance g_Performance)
+        public ActionResult Create([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatsID,AbstractsStatID,ProposalStatsID,TeachingStatsID")] G_Performance g_Performance)
         {
             try
             {
@@ -83,10 +90,10 @@ namespace StudentTrackingSystem3.Controllers
 
             //View Bags for Dropdowns
             ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name");
-            ViewBag.PublicationStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
-            ViewBag.AbstractStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
-            ViewBag.ProposalStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name");
-            ViewBag.TeachingStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name");
+            ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
+            ViewBag.AbstractStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
+            ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name");
+            ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name");
 
             return View(g_Performance);
         }
@@ -104,6 +111,16 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.StudentID = g_Performance.StudentID;
+            ViewBag.CurrentStudent_FN = g_Performance.Student.FirstName;
+            ViewBag.CurrentStudent_LN = g_Performance.Student.LastName;
+
+            ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name", g_Performance.CategoryID);
+            ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.PublicationStatsID);
+            ViewBag.AbstractStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.AbstractStatsID);
+            ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name", g_Performance.ProposalStatsID);
+            ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name", g_Performance.TeachingStatsID);
             return View(g_Performance);
         }
 
@@ -112,7 +129,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatID,AbstractStatID,ProposalStatID,TeachingStatID")] G_Performance g_Performance)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatsID,AbstractStatsID,ProposalStatsID,TeachingStatsID")] G_Performance g_Performance)
         {
             try
             {
@@ -120,7 +137,7 @@ namespace StudentTrackingSystem3.Controllers
                 {
                     db.Entry(g_Performance).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", new { id = g_Performance.StudentID });
                 }
             }
             catch (DataException /*dex*/)
@@ -128,11 +145,11 @@ namespace StudentTrackingSystem3.Controllers
                 //Log the error (uncomment dex cariable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, please see your system administrator.");
             }
-            ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name");
-            ViewBag.PublicationStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
-            ViewBag.AbstractStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
-            ViewBag.ProposalStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name");
-            ViewBag.TeachingStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name");
+            ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name", g_Performance.CategoryID);
+            ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.PublicationStatsID);
+            ViewBag.AbstractsStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.AbstractStatsID);
+            ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name", g_Performance.ProposalStatsID);
+            ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name", g_Performance.TeachingStatsID);
             return View(g_Performance);
         }
 
