@@ -3,10 +3,66 @@ namespace StudentTrackingSystem3.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ResetDB : DbMigration
+    public partial class FilePaths : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.G_Activity",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        PerformanceID = c.Int(nullable: false),
+                        ActivitySummaryFileName = c.String(maxLength: 255),
+                        ActivitySummaryFileType = c.Int(nullable: false),
+                        ActivitySummaryDesc = c.String(),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.G_Performance", t => t.PerformanceID, cascadeDelete: true)
+                .Index(t => t.PerformanceID);
+            
+            CreateTable(
+                "dbo.G_Performance",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        StudentID = c.Int(nullable: false),
+                        CategoryID = c.Int(nullable: false),
+                        CategoryInfo = c.String(nullable: false),
+                        PublicationStatsID = c.Int(),
+                        AbstractStatsID = c.Int(),
+                        ProposalStatsID = c.Int(),
+                        TeachingStatsID = c.Int(),
+                        G_CommonFields_ID = c.Int(),
+                        G_CommonFields_ID1 = c.Int(),
+                        G_CommonFields_ID2 = c.Int(),
+                        G_CommonFields_ID3 = c.Int(),
+                        G_Performance_ID = c.Int(),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID)
+                .ForeignKey("dbo.G_Student", t => t.StudentID, cascadeDelete: true)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID1)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID2)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID3)
+                .ForeignKey("dbo.G_CommonFields", t => t.AbstractStatsID)
+                .ForeignKey("dbo.G_Performance", t => t.G_Performance_ID)
+                .ForeignKey("dbo.G_CommonFields", t => t.CategoryID, cascadeDelete: true)
+                .ForeignKey("dbo.G_CommonFields", t => t.ProposalStatsID)
+                .ForeignKey("dbo.G_CommonFields", t => t.PublicationStatsID)
+                .ForeignKey("dbo.G_CommonFields", t => t.TeachingStatsID)
+                .Index(t => t.StudentID)
+                .Index(t => t.CategoryID)
+                .Index(t => t.PublicationStatsID)
+                .Index(t => t.AbstractStatsID)
+                .Index(t => t.ProposalStatsID)
+                .Index(t => t.TeachingStatsID)
+                .Index(t => t.G_CommonFields_ID)
+                .Index(t => t.G_CommonFields_ID1)
+                .Index(t => t.G_CommonFields_ID2)
+                .Index(t => t.G_CommonFields_ID3)
+                .Index(t => t.G_Performance_ID);
+            
             CreateTable(
                 "dbo.G_CommonFields",
                 c => new
@@ -109,19 +165,6 @@ namespace StudentTrackingSystem3.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.G_PerformanceActivity",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        StudentID = c.Int(nullable: false),
-                        ActivitySummaryFile = c.Binary(),
-                        ActivitySummaryDesc = c.String(),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.G_Student", t => t.StudentID, cascadeDelete: true)
-                .Index(t => t.StudentID);
-            
-            CreateTable(
                 "dbo.G_PersonRaces",
                 c => new
                     {
@@ -167,51 +210,22 @@ namespace StudentTrackingSystem3.Migrations
                 .Index(t => t.StudentID)
                 .Index(t => t.DegreeTypesID);
             
-            CreateTable(
-                "dbo.G_Performance",
-                c => new
-                    {
-                        ID = c.Int(nullable: false, identity: true),
-                        PerformanceActivityID = c.Int(nullable: false),
-                        CategoryID = c.Int(nullable: false),
-                        CategoryInfo = c.String(),
-                        PublicationStatID = c.Int(nullable: false),
-                        AbstractStatID = c.Int(nullable: false),
-                        ProposalStatID = c.Int(nullable: false),
-                        TeachingStatID = c.Int(nullable: false),
-                        AbstractStats_ID = c.Int(),
-                        Categorys_ID = c.Int(),
-                        PerformanceActivitys_ID = c.Int(),
-                        ProposalStats_ID = c.Int(),
-                        PublicationStats_ID = c.Int(),
-                        TeachingStats_ID = c.Int(),
-                    })
-                .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.G_CommonFields", t => t.AbstractStats_ID)
-                .ForeignKey("dbo.G_CommonFields", t => t.Categorys_ID)
-                .ForeignKey("dbo.G_PerformanceActivity", t => t.PerformanceActivitys_ID)
-                .ForeignKey("dbo.G_CommonFields", t => t.ProposalStats_ID)
-                .ForeignKey("dbo.G_CommonFields", t => t.PublicationStats_ID)
-                .ForeignKey("dbo.G_CommonFields", t => t.TeachingStats_ID)
-                .Index(t => t.AbstractStats_ID)
-                .Index(t => t.Categorys_ID)
-                .Index(t => t.PerformanceActivitys_ID)
-                .Index(t => t.ProposalStats_ID)
-                .Index(t => t.PublicationStats_ID)
-                .Index(t => t.TeachingStats_ID);
-            
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.G_Performance", "TeachingStats_ID", "dbo.G_CommonFields");
-            DropForeignKey("dbo.G_Performance", "PublicationStats_ID", "dbo.G_CommonFields");
-            DropForeignKey("dbo.G_Performance", "ProposalStats_ID", "dbo.G_CommonFields");
-            DropForeignKey("dbo.G_Performance", "PerformanceActivitys_ID", "dbo.G_PerformanceActivity");
-            DropForeignKey("dbo.G_Performance", "Categorys_ID", "dbo.G_CommonFields");
-            DropForeignKey("dbo.G_Performance", "AbstractStats_ID", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Activity", "PerformanceID", "dbo.G_Performance");
+            DropForeignKey("dbo.G_Performance", "TeachingStatsID", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Performance", "PublicationStatsID", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Performance", "ProposalStatsID", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Performance", "CategoryID", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Performance", "G_Performance_ID", "dbo.G_Performance");
+            DropForeignKey("dbo.G_Performance", "AbstractStatsID", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Student", "G_CommonFields_ID5", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Performance", "G_CommonFields_ID3", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Coursework", "G_CommonFields_ID1", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Performance", "G_CommonFields_ID2", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Performance", "G_CommonFields_ID1", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Student", "G_CommonFields_ID4", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Student", "G_CommonFields_ID3", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Coursework", "G_CommonFields_ID", "dbo.G_CommonFields");
@@ -224,7 +238,7 @@ namespace StudentTrackingSystem3.Migrations
             DropForeignKey("dbo.G_Student", "PlansId", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_PersonRaces", "StudentID", "dbo.G_Student");
             DropForeignKey("dbo.G_PersonRaces", "RaceID", "dbo.G_Races");
-            DropForeignKey("dbo.G_PerformanceActivity", "StudentID", "dbo.G_Student");
+            DropForeignKey("dbo.G_Performance", "StudentID", "dbo.G_Student");
             DropForeignKey("dbo.G_Student", "GendersId", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Student", "DegreeStartSemsId", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Coursework", "StudentID", "dbo.G_Student");
@@ -232,17 +246,11 @@ namespace StudentTrackingSystem3.Migrations
             DropForeignKey("dbo.G_Coursework", "GradeID", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Coursework", "CourseID", "dbo.G_Course");
             DropForeignKey("dbo.G_Student", "ConcentrationsId", "dbo.G_CommonFields");
-            DropIndex("dbo.G_Performance", new[] { "TeachingStats_ID" });
-            DropIndex("dbo.G_Performance", new[] { "PublicationStats_ID" });
-            DropIndex("dbo.G_Performance", new[] { "ProposalStats_ID" });
-            DropIndex("dbo.G_Performance", new[] { "PerformanceActivitys_ID" });
-            DropIndex("dbo.G_Performance", new[] { "Categorys_ID" });
-            DropIndex("dbo.G_Performance", new[] { "AbstractStats_ID" });
+            DropForeignKey("dbo.G_Performance", "G_CommonFields_ID", "dbo.G_CommonFields");
             DropIndex("dbo.G_PrevDegree", new[] { "DegreeTypesID" });
             DropIndex("dbo.G_PrevDegree", new[] { "StudentID" });
             DropIndex("dbo.G_PersonRaces", new[] { "RaceID" });
             DropIndex("dbo.G_PersonRaces", new[] { "StudentID" });
-            DropIndex("dbo.G_PerformanceActivity", new[] { "StudentID" });
             DropIndex("dbo.G_Coursework", new[] { "G_CommonFields_ID1" });
             DropIndex("dbo.G_Coursework", new[] { "G_CommonFields_ID" });
             DropIndex("dbo.G_Coursework", new[] { "GradeID" });
@@ -260,15 +268,27 @@ namespace StudentTrackingSystem3.Migrations
             DropIndex("dbo.G_Student", new[] { "TracksId" });
             DropIndex("dbo.G_Student", new[] { "ConcentrationsId" });
             DropIndex("dbo.G_Student", new[] { "GendersId" });
-            DropTable("dbo.G_Performance");
+            DropIndex("dbo.G_Performance", new[] { "G_Performance_ID" });
+            DropIndex("dbo.G_Performance", new[] { "G_CommonFields_ID3" });
+            DropIndex("dbo.G_Performance", new[] { "G_CommonFields_ID2" });
+            DropIndex("dbo.G_Performance", new[] { "G_CommonFields_ID1" });
+            DropIndex("dbo.G_Performance", new[] { "G_CommonFields_ID" });
+            DropIndex("dbo.G_Performance", new[] { "TeachingStatsID" });
+            DropIndex("dbo.G_Performance", new[] { "ProposalStatsID" });
+            DropIndex("dbo.G_Performance", new[] { "AbstractStatsID" });
+            DropIndex("dbo.G_Performance", new[] { "PublicationStatsID" });
+            DropIndex("dbo.G_Performance", new[] { "CategoryID" });
+            DropIndex("dbo.G_Performance", new[] { "StudentID" });
+            DropIndex("dbo.G_Activity", new[] { "PerformanceID" });
             DropTable("dbo.G_PrevDegree");
             DropTable("dbo.G_Races");
             DropTable("dbo.G_PersonRaces");
-            DropTable("dbo.G_PerformanceActivity");
             DropTable("dbo.G_Course");
             DropTable("dbo.G_Coursework");
             DropTable("dbo.G_Student");
             DropTable("dbo.G_CommonFields");
+            DropTable("dbo.G_Performance");
+            DropTable("dbo.G_Activity");
         }
     }
 }

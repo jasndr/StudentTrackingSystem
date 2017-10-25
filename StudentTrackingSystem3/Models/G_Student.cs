@@ -53,7 +53,6 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Degree(s) at Admission")]
         public virtual ICollection<G_PrevDegree> PreviousDegrees { get; set; }
         public virtual ICollection<G_Performance> Performances { get; set; }
-        public virtual ICollection<G_Activity> Activities { get; set; }
         
     }
 }
