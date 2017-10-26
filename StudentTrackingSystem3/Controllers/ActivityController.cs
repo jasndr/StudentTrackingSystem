@@ -8,8 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using StudentTrackingSystem3.DAL;
 using StudentTrackingSystem3.Models;
-using System.IO;
-using System.Data.Entity.Infrastructure;
 
 namespace StudentTrackingSystem3.Controllers
 {
@@ -18,28 +16,10 @@ namespace StudentTrackingSystem3.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Activity
-        public ActionResult Index(int? id)
+        public ActionResult Index()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            G_Student g_Student = db.Students.Find(id);
-            if (g_Student == null)
-            {
-                return HttpNotFound();
-            }
-            G_Activity g_Activity = db.Activities.Where(g => g.StudentID == g_Student.Id).FirstOrDefault();
-            if (g_Activity == null)
-            {
-                //return HttpNotFound();
-                return RedirectToAction("Create", new { id = id });
-            }
-            return RedirectToAction("Edit", new { id = id });
-
-
-            //var Activities = db.Activities.Include(g => g.Student);
-            //return View(Activities.ToList());
+            var activities = db.Activities.Include(g => g.Student);
+            return View(activities.ToList());
         }
 
         // GET: Activity/Details/5
@@ -49,6 +29,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            G_Student g_Student = db.Students.Include(s => s.Files).SingleOrDefault(s => s.Id == id);
             G_Activity g_Activity = db.Activities.Find(id);
             if (g_Activity == null)
             {
@@ -60,10 +41,12 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Activity/Create
         public ActionResult Create(int? id)
         {
-            var student = db.Students.Find(id);
-            ViewBag.StudentID = student.Id;
-            ViewBag.Student_FN = student.FirstName;
-            ViewBag.Student_LN = student.LastName;
+            ViewBag.StudentID = db.Students.Find(id).Id;
+            var studentId = db.Students.Find(id).Id;
+            ViewBag.Student_FN = db.Students.Find(studentId).FirstName;
+            ViewBag.Student_LN = db.Students.Find(studentId).LastName;
+
+            //ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo");
             return View();
         }
 
@@ -72,26 +55,34 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID, ActivitySummaryDesc")] G_Activity g_Activity)
+        public ActionResult Create([Bind(Include = "ID,StudentID,ActivitySummaryDesc")] G_Activity g_Activity, HttpPostedFileBase upload)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                
+                G_Student g_Student = db.Students.Find(g_Activity.StudentID);
+
+                if (upload != null && upload.ContentLength > 0)
                 {
-
-                    db.Activities.Add(g_Activity);
-                    db.SaveChanges();
-                    return RedirectToAction("Index", new { id = g_Activity.StudentID });
+                    var document = new G_File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = G_FileType.ActivitySummaryFile,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        document.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    g_Student.Files = new List<G_File> { document };
                 }
-            }
-            catch (DataException /*dex*/)
-            {
-                //Log the error (uncomment dex cariable name and ad a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, please see your system administrator.");
+
+                db.Activities.Add(g_Activity);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Performance", new { id = g_Activity.StudentID});
             }
 
-
-            //ViewBag.StudentID = new SelectList(db.Students, "Id", "FirstName", g_Activity.StudentID);
+            //ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo", g_Activity.StudentID);
             return View(g_Activity);
         }
 
@@ -102,13 +93,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Student g_Student = db.Students.Find(id);
-            G_Activity g_Activity = db.Activities.Where(g => g.StudentID == g_Student.Id).FirstOrDefault();
+            G_Activity g_Activity = db.Activities.Find(id);
             if (g_Activity == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.StudentID = g_Activity.StudentID;
+            ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo", g_Activity.StudentID);
             return View(g_Activity);
         }
 
@@ -117,25 +107,16 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID, ActivitySummaryDesc")] G_Activity g_Activity)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,ActivitySummaryFileName,ActivitySummaryFileType,ActivitySummaryDesc")] G_Activity g_Activity)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(g_Activity).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index", new { id = g_Activity.StudentID });
-                }
+                db.Entry(g_Activity).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (DataException /*dex*/)
-            {
-                //Log the error (uncomment dex cariable name and ad a line here to write a log.
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, please see your system administrator.");
-            }
-            //ViewBag.StudentID = new SelectList(db.Students, "Id", "FirstName", g_Activity.StudentID);
+            ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo", g_Activity.StudentID);
             return View(g_Activity);
-
         }
 
         // GET: Activity/Delete/5

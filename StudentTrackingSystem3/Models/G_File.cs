@@ -15,7 +15,7 @@ namespace StudentTrackingSystem3.Models
         public string ContentType { get; set; }
         public byte[] Content { get; set; }
         public G_FileType FileType { get; set; }
-        public int PerformanceActivityID { get; set; }
-        public virtual G_PerformanceActivity PerformanceActivity { get; set; }
+        public int StudentID { get; set; }
+        public virtual G_Student Student { get; set; }
     }
 }

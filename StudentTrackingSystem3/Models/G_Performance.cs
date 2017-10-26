@@ -24,7 +24,6 @@ namespace StudentTrackingSystem3.Models
         public Nullable<int> TeachingStatsID { get; set; }
 
         public virtual G_Student Student { get; set; }
-        public virtual ICollection<G_Performance> Activity { get; set; }
         public virtual G_CommonFields Category { get; set; }
         public virtual G_CommonFields PublicationStats { get; set; }
         public virtual G_CommonFields AbstractStats { get; set; }

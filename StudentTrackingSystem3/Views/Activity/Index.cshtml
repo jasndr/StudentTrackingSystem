@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StudentTrackingSystem3.Models.G_PerformanceActivity>
+﻿@model IEnumerable<StudentTrackingSystem3.Models.G_Activity>
 
 @{
     ViewBag.Title = "Index";
@@ -12,10 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Student.FirstName)
+            @Html.DisplayNameFor(model => model.Performance.CategoryInfo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ActivitySummaryFile)
+            @Html.DisplayNameFor(model => model.ActivitySummaryFileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActivitySummaryFileType)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ActivitySummaryDesc)
@@ -26,10 +29,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Student.FirstName)
+            @Html.DisplayFor(modelItem => item.Performance.CategoryInfo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ActivitySummaryFile)
+            @Html.DisplayFor(modelItem => item.ActivitySummaryFileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivitySummaryFileType)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ActivitySummaryDesc)

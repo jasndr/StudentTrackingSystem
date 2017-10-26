@@ -1,18 +1,18 @@
 ﻿@model StudentTrackingSystem3.Models.G_Activity
 
 @{
-    ViewBag.Title = "Create Performance & Activity Record";
+    ViewBag.Title = "Adding Activity Summary Page Document";
 }
 
 <h2>Performance &amp; Activity Summary</h2>
 <br />
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "Activity", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Creating performance &amp; activity summary record for <strong>@ViewBag.Student_FN @ViewBag.Student_LN</strong></h4>
+        <h4>Adding activity summary document for <strong>@ViewBag.Student_FN @ViewBag.Student_LN</strong></h4>
         <br />
 
         <div class="row menuNav" id="menuNav_performance">
@@ -27,116 +27,46 @@
             @Html.ActionLink("Post-Graduation", "Index", new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
         </div>
 
-
         <hr />
         <br />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
         <div class="form-group" style="display: none;">
-            @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.StudentID } })
                 @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <h4 class="alert alert-success text-center">
-            <strong>Performance</strong>
-        </h4>
-
-        <div class="col-md-offset-1">
-
-            <div class="row">
-                <p>
-                    @Html.ActionLink("Add New Performance", "Create", "Performance", new { id = ViewBag.PerformanceActivityID }, null)
-                </p>
+        <div class="form-group">
+            @Html.Label("Document", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="Document" name="upload" />
             </div>
-
-            <div class="row">
-
-                @*@{if (!object.ReferenceEquals(Model.Performances.FirstOrDefault(), null))
-                {
-                        <table class="table">
-                            <tr>
-                                <th>
-                                    <strong>Performance</strong>
-                                </th>
-                                <th>
-                                    <strong>Category</strong>
-                                </th>
-                                <th>
-                                    <strong>Information</strong>
-                                </th>
-                                <th></th>
-                            </tr>
-                            @foreach (var item in Model.Performances)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PerformanceActivityID)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CategoryID)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CategoryInfo)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-                                    </td>
-                                </tr>
-                            }
-                        </table>
-                    }
-                    else
-                    {
-                        <p><em>No performance records listed.  Please add a performance record.</em></p>
-                    }
-                }*@
-
-            </div>
-        </div>
-
-        <h4 class="alert alert-success text-center">
-            <strong>Activity Summary</strong>
-        </h4>
-
-        <div class="row">
-
-            <div class="form-group">
-                <div class="row">
-                    @Html.LabelFor(model => model.ActivitySummaryFile, htmlAttributes: new { @class = "control-label" })
-                </div>
-                <div class="row">
-                    <p>[File upload to be placed here.]</p>
-                    @*@Html.EditorFor(model => model.ActivitySummaryFile, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ActivitySummaryFile, "", new { @class = "text-danger" })*@
-                </div>
-            </div>
-
-            <div class="col-md-2 col-xs-0"></div>
-
-            <div class="col-md-5 col-xs-12">
-                <div class="form-group">
-                    <div class="row">
-                        @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label" })
-                    </div>
-                    <div class="row">
-                        @Html.TextAreaFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "form-control" }) <br />
-                        @Html.ValidationMessageFor(model => model.ActivitySummaryDesc, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="submit" value="Create" class="btn btn-default createOrEditPost2" />
+                @Html.TextAreaFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "form-control", @style = "min-height: 10em;" })
+                @Html.ValidationMessageFor(model => model.ActivitySummaryDesc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Upload" class="btn btn-default createOrEditPost2" />
             </div>
         </div>
     </div>
 }
 
-@*<div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>*@
+<div>
+    @Html.ActionLink("Back to Performance & Activity Summary Page", "Index", "Performance", new { id = ViewBag.StudentID }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

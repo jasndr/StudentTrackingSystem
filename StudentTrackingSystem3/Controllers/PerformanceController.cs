@@ -27,7 +27,8 @@ namespace StudentTrackingSystem3.Controllers
                                              .Include(p => p.PublicationStats)
                                              .Include(p => p.ProposalStats)
                                              .Include(p => p.TeachingStats)
-                                             .Include(g=>g.Student).Where(g=>g.StudentID == id);
+                                             .Include(g=>g.Student).Where(g=>g.StudentID == id)
+                                             .Include(s=>s.Student.Files).Where(g => g.StudentID == id);
 
             return View(performance.ToList());
         }

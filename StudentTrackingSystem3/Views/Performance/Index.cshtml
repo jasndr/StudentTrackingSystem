@@ -113,12 +113,22 @@
 
     <div class="form-group">
         <div class="row">
-            @*@Html.LabelFor(model => model.ActivitySummaryFile, htmlAttributes: new { @class = "control-label" })*@
+            <p>@Html.ActionLink("Add Activity Summary Document", "Create", "Activity", new { id = ViewBag.StudentID }, null)</p>
+            <hr />
         </div>
         <div class="row">
-            <p>[File upload to be placed here.]</p>
-            @*@Html.EditorFor(model => model.ActivitySummaryFile, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ActivitySummaryFile, "", new { @class = "text-danger" })*@
+            @foreach (var item in Model)
+            {
+                foreach (var file in item.Student.Files)
+                {
+                    if (file.FileType == StudentTrackingSystem3.Models.G_FileType.ActivitySummaryFile)
+                    {
+                        <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a></p>
+                    }
+                }
+
+                
+            }
         </div>
     </div>
 

@@ -23,6 +23,7 @@ namespace StudentTrackingSystem3.DAL
         public DbSet<G_PersonRaces> PersonRaces { get; set; }
         public DbSet<G_Activity> Activities { get; set; }
         public DbSet<G_Performance> Performances { get; set; }
+        public DbSet<G_File> Files { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

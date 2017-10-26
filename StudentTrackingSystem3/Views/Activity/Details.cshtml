@@ -1,4 +1,4 @@
-﻿@model StudentTrackingSystem3.Models.G_PerformanceActivity
+﻿@model StudentTrackingSystem3.Models.G_Activity
 
 @{
     ViewBag.Title = "Details";
@@ -7,23 +7,31 @@
 <h2>Details</h2>
 
 <div>
-    <h4>G_PerformanceActivity</h4>
+    <h4>G_Activity</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Student.FirstName)
+            @Html.DisplayNameFor(model => model.Performance.CategoryInfo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Student.FirstName)
+            @Html.DisplayFor(model => model.Performance.CategoryInfo)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ActivitySummaryFile)
+            @Html.DisplayNameFor(model => model.ActivitySummaryFileName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ActivitySummaryFile)
+            @Html.DisplayFor(model => model.ActivitySummaryFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActivitySummaryFileType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActivitySummaryFileType)
         </dd>
 
         <dt>

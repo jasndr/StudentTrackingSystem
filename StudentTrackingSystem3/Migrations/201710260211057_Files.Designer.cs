@@ -7,13 +7,13 @@ namespace StudentTrackingSystem3.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class FilePaths : IMigrationMetadata
+    public sealed partial class Files : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FilePaths));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Files));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710250311370_FilePaths"; }
+            get { return "201710260211057_Files"; }
         }
         
         string IMigrationMetadata.Source
