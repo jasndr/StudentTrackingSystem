@@ -117,18 +117,13 @@
             <hr />
         </div>
         <div class="row">
-            @foreach (var item in Model)
-            {
-                foreach (var file in item.Student.Files)
+                @foreach (var file in ViewBag.StudentFiles)
                 {
                     if (file.FileType == StudentTrackingSystem3.Models.G_FileType.ActivitySummaryFile)
                     {
                         <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a></p>
                     }
                 }
-
-                
-            }
         </div>
     </div>
 

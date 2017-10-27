@@ -19,6 +19,8 @@ namespace StudentTrackingSystem3.Controllers
         public ActionResult Index(int? id)
         {
             ViewBag.StudentID = db.Students.Find(id).Id;
+            G_Student student = db.Students.Find(id);
+            ViewBag.StudentFiles = db.Files.Where(g=>g.StudentID == id);
             ViewBag.CurrentStudent_FN = db.Students.Find(id).FirstName;
             ViewBag.CurrentStudent_LN = db.Students.Find(id).LastName;
 
