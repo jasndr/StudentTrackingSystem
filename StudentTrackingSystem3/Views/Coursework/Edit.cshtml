@@ -22,7 +22,7 @@
 
             @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Graduation", "Index", null, new { id = Model.Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+            @Html.ActionLink("Graduation", "Index", "Graduation", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
             @Html.ActionLink("Post-Graduation", "Index", new { id = Model.Student.Id, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
         </div>

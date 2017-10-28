@@ -1,0 +1,168 @@
+﻿@model StudentTrackingSystem3.Models.G_Graduation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>G_Graduation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeEndSems.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegreeEndSems.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Form2Result.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Form2Result.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Form2Type.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Form2Type.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegreeEndYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegreeEndYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QualifierResultId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QualifierResultId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qualifier2ResultId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qualifier2ResultId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfQualification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfQualification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Form2Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Form2Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Form2Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Form2Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CommitteeTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CommitteeTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvisorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdvisorName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvisorEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdvisorEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvisorDepartment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdvisorDepartment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdvisorUniversity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdvisorUniversity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Form3Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Form3Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Form3Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Form3Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Form3Result)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Form3Result)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -16,7 +16,7 @@
 
     @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
-    @Html.ActionLink("Graduation", "Index", null, new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+    @Html.ActionLink("Graduation", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
     @Html.ActionLink("Post-Graduation", "Index", new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
 </div>
@@ -127,18 +127,6 @@
         </div>
     </div>
 
-    @*<div class="col-md-2 col-xs-0"></div>
-
-        <div class="col-md-5 col-xs-12">
-            <div class="form-group">
-                <div class="row">
-                    @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label" })
-                </div>
-                <div class="row">
-                    @Html.TextAreaFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "form-control" }) <br />
-                    @Html.ValidationMessageFor(model => model.ActivitySummaryDesc, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>*@
+  
 
 </div>

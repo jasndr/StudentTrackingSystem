@@ -202,6 +202,7 @@
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\CourseworkController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\GraduationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PerformanceController.cs" />
@@ -216,6 +217,10 @@
     <Compile Include="Migrations\201710260211057_Files.Designer.cs">
       <DependentUpon>201710260211057_Files.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710280045242_Graduation.cs" />
+    <Compile Include="Migrations\201710280045242_Graduation.Designer.cs">
+      <DependentUpon>201710280045242_Graduation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommonFields.cs" />
@@ -223,6 +228,7 @@
     <Compile Include="Models\G_Coursework.cs" />
     <Compile Include="Models\G_File.cs" />
     <Compile Include="Models\G_FileType.cs" />
+    <Compile Include="Models\G_Graduation.cs" />
     <Compile Include="Models\G_Performance.cs" />
     <Compile Include="Models\G_Activity.cs" />
     <Compile Include="Models\G_PersonRaces.cs" />
@@ -380,7 +386,8 @@
     <Content Include="Views\Performance\Create.cshtml" />
     <Content Include="Views\Performance\Edit.cshtml" />
     <Content Include="Views\Activity\Create.cshtml" />
-    <Content Include="Views\Activity\Edit.cshtml" />
+    <Content Include="Views\Graduation\Create.cshtml" />
+    <Content Include="Views\Graduation\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -400,6 +407,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710260211057_Files.resx">
       <DependentUpon>201710260211057_Files.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710280045242_Graduation.resx">
+      <DependentUpon>201710280045242_Graduation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

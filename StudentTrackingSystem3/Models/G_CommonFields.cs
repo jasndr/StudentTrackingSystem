@@ -27,6 +27,12 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_Performance> ReturnAbstractStat { get; set; }
         public virtual ICollection<G_Performance> ReturnProposalStat { get; set; }
         public virtual ICollection<G_Performance> ReturnTeachingStat { get; set; }
+        public virtual ICollection<G_Graduation> ReturnDegreeEndSems { get; set; }
+        public virtual ICollection<G_Graduation> ReturnQualifierResults { get; set; }
+        public virtual ICollection<G_Graduation> ReturnQualifier2Results { get; set; }
+        public virtual ICollection<G_Graduation> ReturnForm2Type { get; set; }
+        public virtual ICollection<G_Graduation> ReturnForm2Result { get; set; }
+
 
     }
 }

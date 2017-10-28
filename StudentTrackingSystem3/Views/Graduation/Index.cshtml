@@ -1,0 +1,135 @@
+﻿@model IEnumerable<StudentTrackingSystem3.Models.G_Graduation>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DegreeEndSems.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Form2Result.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Form2Type.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DegreeEndYear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QualifierResultId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qualifier2ResultId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfQualification)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Form2Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Form2Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CommitteeTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvisorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvisorEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvisorDepartment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdvisorUniversity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Form3Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Form3Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Form3Result)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DegreeEndSems.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Form2Result.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Form2Type.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DegreeEndYear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QualifierResultId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qualifier2ResultId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfQualification)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Form2Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Form2Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommitteeTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdvisorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdvisorEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdvisorDepartment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdvisorUniversity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Form3Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Form3Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Form3Result)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

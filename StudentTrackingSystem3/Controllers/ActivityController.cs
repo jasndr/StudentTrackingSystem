@@ -45,8 +45,7 @@ namespace StudentTrackingSystem3.Controllers
             var studentId = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(studentId).FirstName;
             ViewBag.Student_LN = db.Students.Find(studentId).LastName;
-
-            //ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo");
+            
             return View();
         }
 
@@ -82,7 +81,7 @@ namespace StudentTrackingSystem3.Controllers
                 return RedirectToAction("Index", "Performance", new { id = g_Activity.StudentID});
             }
 
-            //ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo", g_Activity.StudentID);
+           
             return View(g_Activity);
         }
 
@@ -94,11 +93,13 @@ namespace StudentTrackingSystem3.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_Activity g_Activity = db.Activities.Find(id);
+            G_Student g_Student = g_Activity.Student;
             if (g_Activity == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo", g_Activity.StudentID);
+            ViewBag.StudentID = g_Student.Id;
+            ViewBag.FileID = g_Student.Files.FirstOrDefault().G_FileId;
             return View(g_Activity);
         }
 
@@ -107,15 +108,35 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,ActivitySummaryFileName,ActivitySummaryFileType,ActivitySummaryDesc")] G_Activity g_Activity)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,ActivitySummaryFileName,ActivitySummaryFileType,ActivitySummaryDesc")] G_Activity g_Activity, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    if (g_Activity.Student.Files.Any(f=>f.FileType == G_FileType.ActivitySummaryFile))
+                    {
+                        db.Files.Remove(g_Activity.Student.Files.First(f => f.FileType == G_FileType.ActivitySummaryFile));
+                    }
+                    var document = new G_File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = G_FileType.ActivitySummaryFile,
+                        ContentType =  upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        document.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    g_Activity.Student.Files = new List<G_File> { document };
+
+                }
+
                 db.Entry(g_Activity).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Performance", new {id = g_Activity.StudentID });
             }
-            ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo", g_Activity.StudentID);
+           // ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo", g_Activity.StudentID);
             return View(g_Activity);
         }
 
