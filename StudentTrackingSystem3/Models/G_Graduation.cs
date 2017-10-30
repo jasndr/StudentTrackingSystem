@@ -48,8 +48,8 @@ namespace StudentTrackingSystem3.Models
 
         public virtual G_Student Student { get; set; }
         public virtual G_CommonFields DegreeEndSems { get; set; }
-        public virtual G_CommonFields QualifierResults { get; set; }
-        public virtual G_CommonFields Qualifier2Results { get; set; }
+        public virtual G_CommonFields QualifierResult { get; set; }
+        public virtual G_CommonFields Qualifier2Result { get; set; }
         public virtual G_CommonFields Form2Type { get; set; }
         public virtual G_CommonFields Form2Result { get; set; }
 

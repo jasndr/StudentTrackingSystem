@@ -221,6 +221,14 @@
     <Compile Include="Migrations\201710280045242_Graduation.Designer.cs">
       <DependentUpon>201710280045242_Graduation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710300805175_ChangeGrad.cs" />
+    <Compile Include="Migrations\201710300805175_ChangeGrad.Designer.cs">
+      <DependentUpon>201710300805175_ChangeGrad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710300822272_ChangeGrad1.cs" />
+    <Compile Include="Migrations\201710300822272_ChangeGrad1.Designer.cs">
+      <DependentUpon>201710300822272_ChangeGrad1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommonFields.cs" />
@@ -411,6 +419,12 @@
     <EmbeddedResource Include="Migrations\201710280045242_Graduation.resx">
       <DependentUpon>201710280045242_Graduation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710300805175_ChangeGrad.resx">
+      <DependentUpon>201710300805175_ChangeGrad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710300822272_ChangeGrad1.resx">
+      <DependentUpon>201710300822272_ChangeGrad1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>
   <PropertyGroup>
@@ -427,7 +441,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51597</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

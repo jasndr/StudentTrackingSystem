@@ -56,8 +56,10 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
-
+            
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category=="Season"), "ID", "Name");
+            ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
+            ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
             ViewBag.Form2ResultId = new SelectList(db.CommonFields, "ID", "Name");
             ViewBag.Form2TypeId = new SelectList(db.CommonFields, "ID", "Name");
             return View();
