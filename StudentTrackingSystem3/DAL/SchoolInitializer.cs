@@ -63,7 +63,14 @@ namespace StudentTrackingSystem3.DAL
                 new G_CommonFields {ID=44, Name="Proposal", Category="PerformanceCategory", DisplayOrder=3  },
                 new G_CommonFields {ID=45, Name="Teaching", Category="PerformanceCategory", DisplayOrder=4  },
                 new G_CommonFields {ID=46, Name="Pass", Category="QualifierResult", DisplayOrder=1},
-                new G_CommonFields {ID=47, Name="Fail", Category="QualifierResult", DisplayOrder=2}
+                new G_CommonFields {ID=47, Name="Fail", Category="QualifierResult", DisplayOrder=2},
+                new G_CommonFields {ID=48, Name="Comprehensive Exam", Category="Form2Type", DisplayOrder=1 },
+                new G_CommonFields {ID=49, Name="Proposal Presentation", Category="Form2Type", DisplayOrder=2 },
+                new G_CommonFields {ID=50, Name="Pass", Category="Form2Result", DisplayOrder=1 },
+                new G_CommonFields {ID=51, Name="Partial Pass", Category="Form2Result", DisplayOrder=2 },
+                new G_CommonFields {ID=52, Name="Fail", Category="Form2Result", DisplayOrder=3 },
+                new G_CommonFields {ID=53, Name="Thesis", Category="CommitteeType", DisplayOrder=1 },
+                new G_CommonFields {ID=54, Name="Dissertation", Category="CommitteeType", DisplayOrder=2 }
 
             };
             commonfields.ForEach(s => context.CommonFields.Add(s));

@@ -43,7 +43,7 @@ namespace StudentTrackingSystem3.Models
         [Display(Name ="Date")]
         public System.DateTime Form3Date { get; set; }
         [Display(Name ="Result")]
-        public Nullable<int> Form3Result { get; set; }
+        public Nullable<int> Form3ResultId { get; set; }
         
 
         public virtual G_Student Student { get; set; }
@@ -52,6 +52,7 @@ namespace StudentTrackingSystem3.Models
         public virtual G_CommonFields Qualifier2Result { get; set; }
         public virtual G_CommonFields Form2Type { get; set; }
         public virtual G_CommonFields Form2Result { get; set; }
+        public virtual G_CommonFields Form3Result { get; set; }
 
 
     }

@@ -213,21 +213,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710260211057_Files.cs" />
-    <Compile Include="Migrations\201710260211057_Files.Designer.cs">
-      <DependentUpon>201710260211057_Files.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710280045242_Graduation.cs" />
-    <Compile Include="Migrations\201710280045242_Graduation.Designer.cs">
-      <DependentUpon>201710280045242_Graduation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710300805175_ChangeGrad.cs" />
-    <Compile Include="Migrations\201710300805175_ChangeGrad.Designer.cs">
-      <DependentUpon>201710300805175_ChangeGrad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710300822272_ChangeGrad1.cs" />
-    <Compile Include="Migrations\201710300822272_ChangeGrad1.Designer.cs">
-      <DependentUpon>201710300822272_ChangeGrad1.cs</DependentUpon>
+    <Compile Include="Migrations\201710302152284_UpdateDB.cs" />
+    <Compile Include="Migrations\201710302152284_UpdateDB.Designer.cs">
+      <DependentUpon>201710302152284_UpdateDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -413,17 +401,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710260211057_Files.resx">
-      <DependentUpon>201710260211057_Files.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710280045242_Graduation.resx">
-      <DependentUpon>201710280045242_Graduation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710300805175_ChangeGrad.resx">
-      <DependentUpon>201710300805175_ChangeGrad.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710300822272_ChangeGrad1.resx">
-      <DependentUpon>201710300822272_ChangeGrad1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710302152284_UpdateDB.resx">
+      <DependentUpon>201710302152284_UpdateDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

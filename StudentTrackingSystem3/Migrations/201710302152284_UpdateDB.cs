@@ -3,7 +3,7 @@ namespace StudentTrackingSystem3.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Files : DbMigration
+    public partial class UpdateDB : DbMigration
     {
         public override void Up()
         {
@@ -121,6 +121,64 @@ namespace StudentTrackingSystem3.Migrations
                 .Index(t => t.G_CommonFields_ID3);
             
             CreateTable(
+                "dbo.G_Graduation",
+                c => new
+                    {
+                        ID = c.Int(nullable: false, identity: true),
+                        StudentID = c.Int(nullable: false),
+                        DegreeEndSemsId = c.Int(),
+                        DegreeEndYear = c.Int(),
+                        QualifierResultId = c.Int(),
+                        Qualifier2ResultId = c.Int(),
+                        DateOfQualification = c.DateTime(nullable: false),
+                        Form2TypeId = c.Int(),
+                        Form2Title = c.String(),
+                        Form2Date = c.DateTime(nullable: false),
+                        Form2ResultId = c.Int(),
+                        CommitteeTypeID = c.Int(),
+                        AdvisorName = c.String(),
+                        AdvisorEmail = c.String(),
+                        AdvisorDepartment = c.String(),
+                        AdvisorUniversity = c.String(),
+                        Form3Title = c.String(),
+                        Form3Date = c.DateTime(nullable: false),
+                        Form3ResultId = c.Int(),
+                        G_CommonFields_ID = c.Int(),
+                        G_CommonFields_ID1 = c.Int(),
+                        G_CommonFields_ID2 = c.Int(),
+                        G_CommonFields_ID3 = c.Int(),
+                        G_CommonFields_ID4 = c.Int(),
+                        G_CommonFields_ID5 = c.Int(),
+                    })
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.G_CommonFields", t => t.DegreeEndSemsId)
+                .ForeignKey("dbo.G_CommonFields", t => t.Form2ResultId)
+                .ForeignKey("dbo.G_CommonFields", t => t.Form2TypeId)
+                .ForeignKey("dbo.G_CommonFields", t => t.Form3ResultId)
+                .ForeignKey("dbo.G_CommonFields", t => t.Qualifier2ResultId)
+                .ForeignKey("dbo.G_CommonFields", t => t.QualifierResultId)
+                .ForeignKey("dbo.G_Student", t => t.StudentID, cascadeDelete: true)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID1)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID2)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID3)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID4)
+                .ForeignKey("dbo.G_CommonFields", t => t.G_CommonFields_ID5)
+                .Index(t => t.StudentID)
+                .Index(t => t.DegreeEndSemsId)
+                .Index(t => t.QualifierResultId)
+                .Index(t => t.Qualifier2ResultId)
+                .Index(t => t.Form2TypeId)
+                .Index(t => t.Form2ResultId)
+                .Index(t => t.Form3ResultId)
+                .Index(t => t.G_CommonFields_ID)
+                .Index(t => t.G_CommonFields_ID1)
+                .Index(t => t.G_CommonFields_ID2)
+                .Index(t => t.G_CommonFields_ID3)
+                .Index(t => t.G_CommonFields_ID4)
+                .Index(t => t.G_CommonFields_ID5);
+            
+            CreateTable(
                 "dbo.G_PrevDegree",
                 c => new
                     {
@@ -235,6 +293,8 @@ namespace StudentTrackingSystem3.Migrations
             DropForeignKey("dbo.G_Student", "G_CommonFields_ID5", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Performance", "G_CommonFields_ID3", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Coursework", "G_CommonFields_ID1", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "G_CommonFields_ID5", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "G_CommonFields_ID4", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Performance", "G_CommonFields_ID2", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Performance", "G_CommonFields_ID1", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Student", "G_CommonFields_ID4", "dbo.G_CommonFields");
@@ -245,9 +305,20 @@ namespace StudentTrackingSystem3.Migrations
             DropForeignKey("dbo.G_Coursework", "GradeID", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Coursework", "CourseID", "dbo.G_Course");
             DropForeignKey("dbo.G_Student", "G_CommonFields_ID2", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "G_CommonFields_ID3", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "G_CommonFields_ID2", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "G_CommonFields_ID1", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_PrevDegree", "StudentID", "dbo.G_Student");
             DropForeignKey("dbo.G_PrevDegree", "DegreeTypesID", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Student", "G_CommonFields_ID1", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "G_CommonFields_ID", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "StudentID", "dbo.G_Student");
+            DropForeignKey("dbo.G_Graduation", "QualifierResultId", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "Qualifier2ResultId", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "Form3ResultId", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "Form2TypeId", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "Form2ResultId", "dbo.G_CommonFields");
+            DropForeignKey("dbo.G_Graduation", "DegreeEndSemsId", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Student", "G_CommonFields_ID", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Performance", "G_CommonFields_ID", "dbo.G_CommonFields");
             DropForeignKey("dbo.G_Performance", "TeachingStatsID", "dbo.G_CommonFields");
@@ -268,6 +339,19 @@ namespace StudentTrackingSystem3.Migrations
             DropIndex("dbo.G_Coursework", new[] { "StudentID" });
             DropIndex("dbo.G_PrevDegree", new[] { "DegreeTypesID" });
             DropIndex("dbo.G_PrevDegree", new[] { "StudentID" });
+            DropIndex("dbo.G_Graduation", new[] { "G_CommonFields_ID5" });
+            DropIndex("dbo.G_Graduation", new[] { "G_CommonFields_ID4" });
+            DropIndex("dbo.G_Graduation", new[] { "G_CommonFields_ID3" });
+            DropIndex("dbo.G_Graduation", new[] { "G_CommonFields_ID2" });
+            DropIndex("dbo.G_Graduation", new[] { "G_CommonFields_ID1" });
+            DropIndex("dbo.G_Graduation", new[] { "G_CommonFields_ID" });
+            DropIndex("dbo.G_Graduation", new[] { "Form3ResultId" });
+            DropIndex("dbo.G_Graduation", new[] { "Form2ResultId" });
+            DropIndex("dbo.G_Graduation", new[] { "Form2TypeId" });
+            DropIndex("dbo.G_Graduation", new[] { "Qualifier2ResultId" });
+            DropIndex("dbo.G_Graduation", new[] { "QualifierResultId" });
+            DropIndex("dbo.G_Graduation", new[] { "DegreeEndSemsId" });
+            DropIndex("dbo.G_Graduation", new[] { "StudentID" });
             DropIndex("dbo.G_Performance", new[] { "G_CommonFields_ID3" });
             DropIndex("dbo.G_Performance", new[] { "G_CommonFields_ID2" });
             DropIndex("dbo.G_Performance", new[] { "G_CommonFields_ID1" });
@@ -296,6 +380,7 @@ namespace StudentTrackingSystem3.Migrations
             DropTable("dbo.G_Course");
             DropTable("dbo.G_Coursework");
             DropTable("dbo.G_PrevDegree");
+            DropTable("dbo.G_Graduation");
             DropTable("dbo.G_Performance");
             DropTable("dbo.G_CommonFields");
             DropTable("dbo.G_Student");
