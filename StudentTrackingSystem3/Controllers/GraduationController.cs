@@ -73,13 +73,13 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification,Form2TypeId,Form2Title,Form2Date,Form2ResultId,CommitteeTypeID,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3Result")] G_Graduation g_Graduation)
+        public ActionResult Create(/*[Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification,Form2TypeId,Form2Title,Form2Date,Form2ResultId,CommitteeTypeID,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId")]*/ G_Graduation g_Graduation)
         {
             if (ModelState.IsValid)
             {
                 db.Graduations.Add(g_Graduation);
                 db.SaveChanges();
-                return RedirectToAction("Edit", new { id = g_Graduation.StudentID});
+                return RedirectToAction("Edit", "Graduation",  new { id = g_Graduation.StudentID});
             }
 
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name");
@@ -88,7 +88,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Form2TypeId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Type"), "ID", "Name");
             ViewBag.Form2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name");
             ViewBag.Form3ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name");
-            ViewBag.CommitteeTypeId = new SelectList(db.CommonFields.Where(s => s.Category == "CommitteeType"), "ID", "Name");
+            ViewBag.CommitteeTypeID = new SelectList(db.CommonFields.Where(s => s.Category == "CommitteeType"), "ID", "Name");
             return View(g_Graduation);
         }
 
@@ -105,10 +105,18 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields, "ID", "Name", g_Graduation.DegreeEndSemsId);
-            ViewBag.Form2ResultId = new SelectList(db.CommonFields, "ID", "Name", g_Graduation.Form2ResultId);
-            ViewBag.Form2TypeId = new SelectList(db.CommonFields, "ID", "Name", g_Graduation.Form2TypeId);
-            ViewBag.StudentID = new SelectList(db.Students, "Id", "FirstName", g_Graduation.StudentID);
+
+            ViewBag.StudentID = g_Student.Id;
+            ViewBag.Student_FN = g_Student.FirstName;
+            ViewBag.Student_LN = g_Student.LastName;
+
+            ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", g_Graduation.DegreeEndSemsId);
+            ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.QualifierResultId);
+            ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.Qualifier2ResultId);
+            ViewBag.Form2TypeId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Type"), "ID", "Name", g_Graduation.Form2TypeId);
+            ViewBag.Form2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", g_Graduation.Form2ResultId);
+            ViewBag.Form3ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", g_Graduation.Form3ResultId);
+            ViewBag.CommitteeTypeID = new SelectList(db.CommonFields.Where(s => s.Category == "CommitteeType"), "ID", "Name", g_Graduation.CommitteeTypeID);
             return View(g_Graduation);
         }
 
@@ -117,18 +125,21 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification,Form2TypeId,Form2Title,Form2Date,Form2ResultId,CommitteeTypeID,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3Result")] G_Graduation g_Graduation)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification,Form2TypeId,Form2Title,Form2Date,Form2ResultId,CommitteeTypeID,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId")] G_Graduation g_Graduation)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(g_Graduation).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", g_Graduation.StudentID);
+                return RedirectToAction("Edit", "Graduation", g_Graduation.StudentID);
             }
-            ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields, "ID", "Name", g_Graduation.DegreeEndSemsId);
-            ViewBag.Form2ResultId = new SelectList(db.CommonFields, "ID", "Name", g_Graduation.Form2ResultId);
-            ViewBag.Form2TypeId = new SelectList(db.CommonFields, "ID", "Name", g_Graduation.Form2TypeId);
-            ViewBag.StudentID = new SelectList(db.Students, "Id", "FirstName", g_Graduation.StudentID);
+            ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", g_Graduation.DegreeEndSemsId);
+            ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.QualifierResultId);
+            ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.Qualifier2ResultId);
+            ViewBag.Form2TypeId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Type"), "ID", "Name", g_Graduation.Form2TypeId);
+            ViewBag.Form2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", g_Graduation.Form2ResultId);
+            ViewBag.Form3ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", g_Graduation.Form3ResultId);
+            ViewBag.CommitteeTypeId = new SelectList(db.CommonFields.Where(s => s.Category == "CommitteeType"), "ID", "Name", g_Graduation.CommitteeTypeID);
             return View(g_Graduation);
         }
 

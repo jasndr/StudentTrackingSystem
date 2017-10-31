@@ -19,13 +19,13 @@ namespace StudentTrackingSystem3.Models
         [Display(Name ="Result (Second Attempt)")]
         public Nullable<int> Qualifier2ResultId { get; set; }
         [Display(Name = "Date of Qualification Passed")]
-        public System.DateTime DateOfQualification { get; set; }
+        public Nullable<System.DateTime> DateOfQualification { get; set; }
         [Display(Name ="Type")]
         public Nullable<int> Form2TypeId { get; set; }
         [Display(Name="Title")]
         public string Form2Title { get; set; }
         [Display(Name ="Date")]
-        public System.DateTime Form2Date { get; set; }
+        public Nullable<System.DateTime> Form2Date { get; set; }
         [Display(Name ="Result")]
         public Nullable<int> Form2ResultId { get; set; }
         [Display(Name ="Type")]
@@ -41,7 +41,7 @@ namespace StudentTrackingSystem3.Models
         [Display(Name ="Presentation Title")]
         public string Form3Title { get; set; }
         [Display(Name ="Date")]
-        public System.DateTime Form3Date { get; set; }
+        public Nullable<System.DateTime> Form3Date { get; set; }
         [Display(Name ="Result")]
         public Nullable<int> Form3ResultId { get; set; }
         

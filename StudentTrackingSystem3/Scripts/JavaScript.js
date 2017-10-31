@@ -13,7 +13,7 @@
             if (!form) {
                 alert("You have not submitted a valid form.");
             } else if (!form.valid()) {
-                alert("There are erors in submission. Please view below for details.");
+                alert("There are errors in submission. Please view below for details.");
             } else {
                 setTimeout(function () {
                     alert('Your entry has been saved.');
@@ -29,7 +29,7 @@
             alert("You have not submitted a valid form.");
         }
         else if (!form.valid()) {
-            alert("There are erors in submission. Please view below for details.");
+            alert("There are errors in submission. Please view below for details.");
         } else {
             setTimeout(function () {
                 alert('Your entry has been saved.');
@@ -84,6 +84,18 @@
     $('#Qualifier2ResultId').closest('.col-md-3').css('display', 'none');
     $('#DateOfQualification').closest('.col-md-4').css('display', 'none');
 
+    $('#QualifierResultId option:selected').each(function () {
+        if ($(this).val() == 46) {
+            $('#DateOfQualification').closest('.col-md-4').css('display', 'block');
+        } else if ($(this).val() == 47) {
+            $('#Qualifier2ResultId').closest('.col-md-3').css('display', 'block');
+            $('#DateOfQualification').closest('.col-md-4').css('display', 'none');
+        } else {
+            $('#Qualifier2ResultId').closest('.col-md-3').css('display', 'none');
+            $('#DateOfQualification').closest('.col-md-4').css('display', 'none');
+        }
+    });
+
     $("#QualifierResultId").change(function () {
         $('#Qualifier2ResultId').closest('.col-md-3').css('display', 'none');
         $('#DateOfQualification').closest('.col-md-4').css('display', 'none');
@@ -111,9 +123,61 @@
     });
 
 
+    //Display Comprehensive Exam or Proposal Presentation based on selection
+    $('.comprehensiveexam').closest('span').css('display', 'none');
+    $('.proposalpresentation').closest('span').css('display', 'none');
+    $('#Form2TypeId option:selected').each(function () {
+        if ($(this).val() == 48) {
+            $('.comprehensiveexam').closest('span').css('display', 'block');
+            $('.form2type').closest('span').css('display', 'none');
+        } else if ($(this).val() == 49) {
+            $('.proposalpresentation').closest('span').css('display', 'block');
+            $('.form2type').closest('span').css('display', 'none');
+        } else {
+            $('.comprehensiveexam').closest('span').css('display', 'none');
+            $('.proposalpresentation').closest('span').css('display', 'none');
+            $('.form2type').closest('span').css('display', 'block');
+        }
+
+    });
+
+    $("#Form2TypeId").change(function () {
+        $('.comprehensiveexam').closest('span').css('display', 'none');
+        $('.proposalpresentation').closest('span').css('display', 'none');
+        $('#Form2TypeId option:selected').each(function () {
+            if ($(this).val() == 48) {
+                $('.comprehensiveexam').closest('span').css('display', 'block');
+                $('.form2type').closest('span').css('display', 'none');
+            } else if ($(this).val() == 49) {
+                $('.proposalpresentation').closest('span').css('display', 'block');
+                $('.form2type').closest('span').css('display', 'none');
+            } else {
+                $('.comprehensiveexam').closest('span').css('display', 'none');
+                $('.proposalpresentation').closest('span').css('display', 'none');
+                $('.form2type').closest('span').css('display', 'block');
+            }
+
+        });
+    });
+
+
     //Display Thesis or Dissertation based on selection
     $('.thesis').closest('span').css('display', 'none');
     $('.dissertation').closest('span').css('display', 'none');
+    $('#CommitteeTypeID option:selected').each(function () {
+        if ($(this).val() == 53) {
+            $('.thesis').closest('span').css('display', 'block');
+            $('.committeetype').closest('span').css('display', 'none');
+        } else if ($(this).val() == 54) {
+            $('.dissertation').closest('span').css('display', 'block');
+            $('.committeetype').closest('span').css('display', 'none');
+        } else {
+            $('.thesis').closest('span').css('display', 'none');
+            $('.dissertation').closest('span').css('display', 'none');
+            $('.committeetype').closest('span').css('display', 'block');
+        }
+
+    });
 
     $("#CommitteeTypeID").change(function () {
         $('.thesis').closest('span').css('display', 'none');
@@ -134,28 +198,7 @@
         });
     });
 
-    //Display Comprehensive Exam or Proposal Presentation based on selection
-    $('.comprehensiveexam').closest('span').css('display', 'none');
-    $('.proposalpresentation').closest('span').css('display', 'none');
-
-    $("#Form2TypeId").change(function () {
-        $('.comprehensiveexam').closest('span').css('display', 'none');
-        $('.proposalpresentation').closest('span').css('display', 'none');
-        $('#Form2TypeId option:selected').each(function () {
-            if ($(this).val() == 48) {
-                $('.comprehensiveexam').closest('span').css('display', 'block');
-                $('.form2type').closest('span').css('display', 'none');
-            } else if ($(this).val() == 49) {
-                $('.proposalpresentation').closest('span').css('display', 'block');
-                $('.form2type').closest('span').css('display', 'none');
-            } else {
-                $('.comprehensiveexam').closest('span').css('display', 'none');
-                $('.proposalpresentation').closest('span').css('display', 'none');
-                $('.form2type').closest('span').css('display', 'block');
-            }
-
-        });
-    });
+    
 
     
 

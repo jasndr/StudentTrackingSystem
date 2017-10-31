@@ -217,6 +217,14 @@
     <Compile Include="Migrations\201710302152284_UpdateDB.Designer.cs">
       <DependentUpon>201710302152284_UpdateDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710302316075_UpdateDB1.cs" />
+    <Compile Include="Migrations\201710302316075_UpdateDB1.Designer.cs">
+      <DependentUpon>201710302316075_UpdateDB1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201710310054039_UpdateDB2.cs" />
+    <Compile Include="Migrations\201710310054039_UpdateDB2.Designer.cs">
+      <DependentUpon>201710310054039_UpdateDB2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommonFields.cs" />
@@ -403,6 +411,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201710302152284_UpdateDB.resx">
       <DependentUpon>201710302152284_UpdateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710302316075_UpdateDB1.resx">
+      <DependentUpon>201710302316075_UpdateDB1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710310054039_UpdateDB2.resx">
+      <DependentUpon>201710310054039_UpdateDB2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>
