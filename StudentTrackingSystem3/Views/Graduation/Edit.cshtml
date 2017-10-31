@@ -273,7 +273,48 @@
 
         <h4 class="col-md-offset-1"><strong>Committee Members</strong></h4>
 
+        <div class="row">
 
+            <div class="col-md-8 col-xs-12">
+                <div class="form-group">
+
+                    <div class="row">
+                        <div class="col-md-offset-2">
+                            @Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID }, null)
+                        </div>
+                    </div>
+
+                    <div class="col-md-10 row">
+                        @{if (!object.ReferenceEquals(ViewBag.StudentCMsFirstOrDefault, null))
+                            {
+                                <table class="table">
+
+                                    @{IQueryable<G_CommitteeMember> studentCMs = ViewBag.StudentCMs;}
+
+                                    @foreach (var item in studentCMs)
+                                    {
+                                        <tr>
+                                            <td>&bull;</td>
+                                            <td></td>
+                                            <td><strong>@Html.DisplayFor(modelItem => item.Name)</strong></td>
+                                            <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                            <td>@Html.DisplayFor(modelItem => item.University)</td>
+                                            <td>@Html.ActionLink("Edit", "Edit", "PrevDegree", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                        </tr>
+                                    }
+                                </table>
+                                        }
+                                        else
+                                        {
+                                            <p class="col-md-offset-3"><em>No committee members listed.  Please add a committee member.</em></p>
+                                        }
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
         <h4 class="alert alert-success text-center">
             <strong>

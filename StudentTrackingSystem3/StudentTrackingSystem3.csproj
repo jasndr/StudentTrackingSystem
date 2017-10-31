@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ActivityController.cs" />
+    <Compile Include="Controllers\CommitteeMemberController.cs" />
     <Compile Include="Controllers\CourseworkController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GraduationController.cs" />
@@ -225,8 +226,13 @@
     <Compile Include="Migrations\201710310054039_UpdateDB2.Designer.cs">
       <DependentUpon>201710310054039_UpdateDB2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710310154057_UpdateDB3.cs" />
+    <Compile Include="Migrations\201710310154057_UpdateDB3.Designer.cs">
+      <DependentUpon>201710310154057_UpdateDB3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\G_CommitteeMember.cs" />
     <Compile Include="Models\G_CommonFields.cs" />
     <Compile Include="Models\G_Course.cs" />
     <Compile Include="Models\G_Coursework.cs" />
@@ -392,6 +398,8 @@
     <Content Include="Views\Activity\Create.cshtml" />
     <Content Include="Views\Graduation\Create.cshtml" />
     <Content Include="Views\Graduation\Edit.cshtml" />
+    <Content Include="Views\CommitteeMember\Create.cshtml" />
+    <Content Include="Views\CommitteeMember\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -417,6 +425,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710310054039_UpdateDB2.resx">
       <DependentUpon>201710310054039_UpdateDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710310154057_UpdateDB3.resx">
+      <DependentUpon>201710310154057_UpdateDB3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

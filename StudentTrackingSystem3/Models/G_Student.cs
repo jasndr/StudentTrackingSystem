@@ -56,6 +56,8 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_Activity> Activity { get; set; }
         public virtual ICollection<G_File> Files { get; set; }
         public virtual ICollection<G_Graduation> Graduation { get; set; }
+        public virtual ICollection<G_CommitteeMember> CommitteeMembers { get; set; }
+
 
     }
 }

@@ -54,6 +54,8 @@ namespace StudentTrackingSystem3.Controllers
         {
 
             ViewBag.StudentID = db.Students.Find(id).Id;
+            ViewBag.StudentCMsFirstOrDefault = db.CommitteeMembers.Where(g => g.StudentID == id).FirstOrDefault();
+            ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == id);
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
             
@@ -107,6 +109,7 @@ namespace StudentTrackingSystem3.Controllers
             }
 
             ViewBag.StudentID = g_Student.Id;
+            ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == id);
             ViewBag.Student_FN = g_Student.FirstName;
             ViewBag.Student_LN = g_Student.LastName;
 
