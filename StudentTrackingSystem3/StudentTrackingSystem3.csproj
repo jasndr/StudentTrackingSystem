@@ -202,11 +202,13 @@
     <Compile Include="Controllers\ActivityController.cs" />
     <Compile Include="Controllers\CommitteeMemberController.cs" />
     <Compile Include="Controllers\CourseworkController.cs" />
+    <Compile Include="Controllers\CurriculumVitaeController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GraduationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PerformanceController.cs" />
+    <Compile Include="Controllers\PostGraduationController.cs" />
     <Compile Include="Controllers\PrevDegreeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="DAL\SchoolContext.cs" />
@@ -214,21 +216,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710302152284_UpdateDB.cs" />
-    <Compile Include="Migrations\201710302152284_UpdateDB.Designer.cs">
-      <DependentUpon>201710302152284_UpdateDB.cs</DependentUpon>
+    <Compile Include="Migrations\201710312003064_PostGraduation.cs" />
+    <Compile Include="Migrations\201710312003064_PostGraduation.Designer.cs">
+      <DependentUpon>201710312003064_PostGraduation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710302316075_UpdateDB1.cs" />
-    <Compile Include="Migrations\201710302316075_UpdateDB1.Designer.cs">
-      <DependentUpon>201710302316075_UpdateDB1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710310054039_UpdateDB2.cs" />
-    <Compile Include="Migrations\201710310054039_UpdateDB2.Designer.cs">
-      <DependentUpon>201710310054039_UpdateDB2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710310154057_UpdateDB3.cs" />
-    <Compile Include="Migrations\201710310154057_UpdateDB3.Designer.cs">
-      <DependentUpon>201710310154057_UpdateDB3.cs</DependentUpon>
+    <Compile Include="Migrations\201710312132165_CurriculumVitae.cs" />
+    <Compile Include="Migrations\201710312132165_CurriculumVitae.Designer.cs">
+      <DependentUpon>201710312132165_CurriculumVitae.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -236,12 +230,14 @@
     <Compile Include="Models\G_CommonFields.cs" />
     <Compile Include="Models\G_Course.cs" />
     <Compile Include="Models\G_Coursework.cs" />
+    <Compile Include="Models\G_CurriculumVitae.cs" />
     <Compile Include="Models\G_File.cs" />
     <Compile Include="Models\G_FileType.cs" />
     <Compile Include="Models\G_Graduation.cs" />
     <Compile Include="Models\G_Performance.cs" />
     <Compile Include="Models\G_Activity.cs" />
     <Compile Include="Models\G_PersonRaces.cs" />
+    <Compile Include="Models\G_PostGraduation.cs" />
     <Compile Include="Models\G_PrevDegree.cs" />
     <Compile Include="Models\G_Student.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -400,6 +396,10 @@
     <Content Include="Views\Graduation\Edit.cshtml" />
     <Content Include="Views\CommitteeMember\Create.cshtml" />
     <Content Include="Views\CommitteeMember\Edit.cshtml" />
+    <Content Include="Views\PostGraduation\Create.cshtml" />
+    <Content Include="Views\PostGraduation\Edit.cshtml" />
+    <Content Include="Views\CurriculumVitae\Create.cshtml" />
+    <Content Include="Views\CurriculumVitae\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -417,17 +417,11 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710302152284_UpdateDB.resx">
-      <DependentUpon>201710302152284_UpdateDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710312003064_PostGraduation.resx">
+      <DependentUpon>201710312003064_PostGraduation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710302316075_UpdateDB1.resx">
-      <DependentUpon>201710302316075_UpdateDB1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710310054039_UpdateDB2.resx">
-      <DependentUpon>201710310054039_UpdateDB2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710310154057_UpdateDB3.resx">
-      <DependentUpon>201710310154057_UpdateDB3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201710312132165_CurriculumVitae.resx">
+      <DependentUpon>201710312132165_CurriculumVitae.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

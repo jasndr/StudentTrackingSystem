@@ -24,7 +24,7 @@
 
             @Html.ActionLink("Graduation", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Post-Graduation", "Index", new { id = ViewBag.StudentID, Href = "#" }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+            @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
         </div>
 
         <hr />
@@ -105,7 +105,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-1 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-default createOrEditPost2" />
                 </div>
             </div>
         </div>
@@ -116,3 +116,7 @@
 <div>
     @Html.ActionLink("Back to Graduation Requirements", "Index", "Graduation", new { id = Model.StudentID }, null)
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -85,7 +85,19 @@ namespace StudentTrackingSystem3.Migrations
                 new G_CommonFields {ID=51, Name="Partial Pass", Category="Form2Result", DisplayOrder=2 },
                 new G_CommonFields {ID=52, Name="Fail", Category="Form2Result", DisplayOrder=3 },
                 new G_CommonFields {ID=53, Name="Thesis", Category="CommitteeType", DisplayOrder=1 },
-                new G_CommonFields {ID=54, Name="Dissertation", Category="CommitteeType", DisplayOrder=2 }
+                new G_CommonFields {ID=54, Name="Dissertation", Category="CommitteeType", DisplayOrder=2 },
+                new G_CommonFields {ID=55, Name="January", Category="Months", DisplayOrder=1 },
+                new G_CommonFields {ID=56, Name="February", Category="Months", DisplayOrder=2 },
+                new G_CommonFields {ID=57, Name="March", Category="Months", DisplayOrder=3 },
+                new G_CommonFields {ID=58, Name="April", Category="Months", DisplayOrder=4 },
+                new G_CommonFields {ID=59, Name="May", Category="Months", DisplayOrder=5 },
+                new G_CommonFields {ID=60, Name="June", Category="Months", DisplayOrder=6 },
+                new G_CommonFields {ID=61, Name="July", Category="Months", DisplayOrder=7 },
+                new G_CommonFields {ID=62, Name="August", Category="Months", DisplayOrder=8 },
+                new G_CommonFields {ID=63, Name="September", Category="Months", DisplayOrder=9 },
+                new G_CommonFields {ID=64, Name="October", Category="Months", DisplayOrder=10 },
+                new G_CommonFields {ID=65, Name="November", Category="Months", DisplayOrder=11 },
+                new G_CommonFields {ID=66, Name="December", Category="Months", DisplayOrder=12 }
 
             };
             //commonfields.ForEach(s => context.CommonFields.Add(s));

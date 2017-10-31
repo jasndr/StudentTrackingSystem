@@ -33,6 +33,7 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_Graduation> ReturnForm2Type { get; set; }
         public virtual ICollection<G_Graduation> ReturnForm2Result { get; set; }
         public virtual ICollection<G_Graduation> ReturnForm3Result { get; set; }
+        public virtual ICollection<G_PostGraduation> ReturnCurrentStartMonth { get; set; }
 
     }
 }

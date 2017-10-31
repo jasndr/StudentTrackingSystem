@@ -52,7 +52,8 @@ a{
 #menuNav_background .menuNav_background,
 #menuNav_coursework .menuNav_coursework,
 #menuNav_performance .menuNav_performance,
-#menuNav_graduation .menuNav_graduation{
+#menuNav_graduation .menuNav_graduation,
+#menuNav_postgrad .menuNav_postgrad{
     background-color: #060;
     color: white;
 }
