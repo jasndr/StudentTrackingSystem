@@ -105,14 +105,15 @@
 
                         @{IQueryable<G_File> studentCVs = ViewBag.StudentCVs;}
 
-                        @{if (!object.ReferenceEquals(studentCVs.FirstOrDefault(), null))
+                        @{if (!object.ReferenceEquals(studentCVs.Where(g=>g.FileType == G_FileType.CurriculumVitae).FirstOrDefault(), null))
                             {
                                 foreach (var file in studentCVs)
                                 {
                                     if (file.FileType == StudentTrackingSystem3.Models.G_FileType.CurriculumVitae)
                                     {
                                         <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;  
-                                           @Html.ActionLink("Edit", "Edit",  "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" }) </p>
+                                           @Html.ActionLink("Edit", "Edit",  "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" }) 
+                                        </p>
                                     }
                                 }
                             }

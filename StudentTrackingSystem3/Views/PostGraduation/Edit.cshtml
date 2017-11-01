@@ -16,15 +16,15 @@
         <br />
 
         <div class="row menuNav" id="menuNav_postgrad">
-            @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+            @Html.ActionLink("Background", "Edit", "Student", new { id = Model.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = Model.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Graduation", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+            @Html.ActionLink("Graduation", "Index", "Graduation", new { id = Model.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+            @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = Model.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
         </div>
 
         <hr />
@@ -105,7 +105,7 @@
 
                         @{IQueryable<G_File> studentCVs = ViewBag.StudentCVs;}
 
-                        @{if (!object.ReferenceEquals(studentCVs.FirstOrDefault(), null))
+                        @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == G_FileType.CurriculumVitae).FirstOrDefault(), null))
                             {
                                 foreach (var file in studentCVs)
                                 {

@@ -1,18 +1,35 @@
 ﻿@model StudentTrackingSystem3.Models.G_Activity
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editing Activity Summary Document";
 }
 
-<h2>Edit</h2>
+<h2>Performance &amp; Activity Summary</h2>
+<br />
 
-@using (Html.BeginForm("Edit", "Activity", new {id = Model.ID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Activity", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-                @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
-        <h4>G_Activity</h4>
+    <div class="form-horizontal">
+        <h4>Editing activity summary document for <strong>@Model.Student.FirstName @Model.Student.LastName</strong></h4>
+        <br />
+
+        <div class="row menuNav" id="menuNav_performance">
+            @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Graduation", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+        </div>
+
         <hr />
+        <br />
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
 
@@ -24,25 +41,27 @@
             </div>
         </div>
 
-        @if(Model.Student.Files.Any(f=>f.FileType == G_FileType.ActivitySummaryFile))
-        {
-            <div class="form-group">
-                <span class="control-label col-md-2"><strong>Current File</strong></span>
-                <div class="col-md-10">
-                    <a href="~/File?id=@Model.Student.Files.First(f=>f.FileType == G_FileType.ActivitySummaryFile).G_FileId">@Model.Student.Files.First(f=>f.FileType == G_FileType.ActivitySummaryFile).FileName</a>
-                </div>           
-             </div>
-        }
 
         <div class="form-group">
-            @Html.Label("Document", new { @class = "control-label col-md-2" })
+            @Html.Label("Current Activity Summary File", new {@class="control-label" })
+            <br />
+            <div class="col-md-10">
+                <a href="~/File?id=@ViewBag.FileID">@ViewBag.FileName</a>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.Label("Upload New Activity Summary Tab", new { @class = "control-label" })
+            <br />
             <div class="col-md-10">
                 <input type="file" id="Document" name="upload" />
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "control-label" })
+            <br />
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.ActivitySummaryDesc, htmlAttributes: new { @class = "form-control", @style = "min-height: 10em;" })
                 @Html.ValidationMessageFor(model => model.ActivitySummaryDesc, "", new { @class = "text-danger" })
@@ -55,11 +74,11 @@
             </div>
         </div>
     </div>
-    
+
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "Performance", new { id = ViewBag.StudentID } , null)
+    @Html.ActionLink("Back to List", "Index", "Performance", new { id = ViewBag.StudentID }, null)
 </div>
 
 @section Scripts {

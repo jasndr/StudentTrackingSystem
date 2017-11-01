@@ -224,6 +224,14 @@
     <Compile Include="Migrations\201710312132165_CurriculumVitae.Designer.cs">
       <DependentUpon>201710312132165_CurriculumVitae.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711010050266_ChangeActivity.cs" />
+    <Compile Include="Migrations\201711010050266_ChangeActivity.Designer.cs">
+      <DependentUpon>201711010050266_ChangeActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711010302279_ChangeActivity1.cs" />
+    <Compile Include="Migrations\201711010302279_ChangeActivity1.Designer.cs">
+      <DependentUpon>201711010302279_ChangeActivity1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommitteeMember.cs" />
@@ -400,6 +408,7 @@
     <Content Include="Views\PostGraduation\Edit.cshtml" />
     <Content Include="Views\CurriculumVitae\Create.cshtml" />
     <Content Include="Views\CurriculumVitae\Edit.cshtml" />
+    <Content Include="Views\Activity\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -422,6 +431,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710312132165_CurriculumVitae.resx">
       <DependentUpon>201710312132165_CurriculumVitae.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010050266_ChangeActivity.resx">
+      <DependentUpon>201711010050266_ChangeActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711010302279_ChangeActivity1.resx">
+      <DependentUpon>201711010302279_ChangeActivity1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

@@ -112,7 +112,7 @@
 <div class="row col-md-offset-1">
 
     <div class="form-group">
-        <div class="row">
+        @*<div class="row">
             <p>@Html.ActionLink("Add Activity Summary Document", "Create", "Activity", new { id = ViewBag.StudentID }, null)</p>
             <hr />
         </div>
@@ -124,7 +124,32 @@
                         <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a></p>
                     }
                 }
+        </div>*@
+
+        <div class="row">
+
+            @{ IQueryable<G_File> studentASFs = ViewBag.StudentFiles;}
+            @{ if (!object.ReferenceEquals(studentASFs.Where(g=>g.FileType == G_FileType.ActivitySummaryFile).FirstOrDefault(), null)) {
+
+                    foreach(var file in studentASFs)
+                    {
+                        if (file.FileType == G_FileType.ActivitySummaryFile)
+                        {
+                            <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
+                               @Html.ActionLink("Edit", "Edit", "Activity", new {id = file.G_FileId }, new {@class="btn btn-xs navbuttons", @style="background-color: #060; color: #FFF" })
+                            </p>
+                        }
+                    }
+
+                }
+                else
+                {
+                    <p>@Html.ActionLink("Add Activity Summary File", "Create", "Activity", new {id = ViewBag.StudentID }, null)</p>
+                }
+            }
+
         </div>
+
     </div>
 
   

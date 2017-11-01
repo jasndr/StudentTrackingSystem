@@ -7,7 +7,7 @@
 <h2>Post-Graduation Student Tracking</h2>
 <br />
 
-@using (Html.BeginForm("Edit", "CurriculumVitae", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "CurriculumVitae", new { id = ViewBag.FileID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 

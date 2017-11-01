@@ -92,14 +92,17 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Activity g_Activity = db.Activities.Find(id);
-            G_Student g_Student = g_Activity.Student;
+            G_File g_File = db.Files.Find(id);
+            G_Student g_Student = g_File.Student;
+            G_Activity g_Activity = g_Student.Activity.FirstOrDefault();
             if (g_Activity == null)
             {
                 return HttpNotFound();
             }
             ViewBag.StudentID = g_Student.Id;
-            ViewBag.FileID = g_Student.Files.FirstOrDefault().G_FileId;
+            ViewBag.FileID = id;
+            ViewBag.FileName = db.Files.Find(id).FileName;
+            ViewBag.File = db.Files.Find(id);
             return View(g_Activity);
         }
 
@@ -108,16 +111,23 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,ActivitySummaryFileName,ActivitySummaryFileType,ActivitySummaryDesc")] G_Activity g_Activity, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,ActivitySummaryDesc")] G_Activity g_Activity, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    if (g_Activity.Student.Files.Any(f=>f.FileType == G_FileType.ActivitySummaryFile))
+                    G_Student g_Student = db.Students.Find(g_Activity.StudentID);
+
+                    if (g_Student.Files.Any(f=>f.FileType == G_FileType.ActivitySummaryFile))
                     {
-                        db.Files.Remove(g_Activity.Student.Files.First(f => f.FileType == G_FileType.ActivitySummaryFile));
+                        db.Files.Remove(g_Student.Files.First(f => f.FileType == G_FileType.ActivitySummaryFile));
+
+                        db.Entry(g_Activity).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
+                    
                     var document = new G_File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
@@ -128,15 +138,15 @@ namespace StudentTrackingSystem3.Controllers
                     {
                         document.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Activity.Student.Files = new List<G_File> { document };
+                    g_Student.Files = new List<G_File> { document };
 
+                    g_Activity.Student = g_Student;
+                   
                 }
-
                 db.Entry(g_Activity).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Performance", new {id = g_Activity.StudentID });
             }
-           // ViewBag.StudentID = new SelectList(db.Performances, "ID", "CategoryInfo", g_Activity.StudentID);
             return View(g_Activity);
         }
 
