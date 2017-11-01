@@ -112,20 +112,10 @@
 <div class="row col-md-offset-1">
 
     <div class="form-group">
-        @*<div class="row">
-            <p>@Html.ActionLink("Add Activity Summary Document", "Create", "Activity", new { id = ViewBag.StudentID }, null)</p>
-            <hr />
-        </div>
         <div class="row">
-                @foreach (var file in ViewBag.StudentFiles)
-                {
-                    if (file.FileType == StudentTrackingSystem3.Models.G_FileType.ActivitySummaryFile)
-                    {
-                        <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a></p>
-                    }
-                }
-        </div>*@
-
+        @Html.Label("Activity Summary Tab from Student/Mentor", htmlAttributes: new { @class = "control-label" })
+        </div>
+    
         <div class="row">
 
             @{ IQueryable<G_File> studentASFs = ViewBag.StudentFiles;}
@@ -135,7 +125,7 @@
                     {
                         if (file.FileType == G_FileType.ActivitySummaryFile)
                         {
-                            <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
+                            <p style="margin-left: 20px;">&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
                                @Html.ActionLink("Edit", "Edit", "Activity", new {id = file.G_FileId }, new {@class="btn btn-xs navbuttons", @style="background-color: #060; color: #FFF" })
                             </p>
                         }

@@ -101,6 +101,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.FileID = id;
             ViewBag.FileName = db.Files.Find(id).FileName;
             ViewBag.File = db.Files.Find(id);
+            ViewBag.CurriculumVitaeID = g_CurriculumVitae.ID;
             return View(g_CurriculumVitae);
         }
 
@@ -113,17 +114,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (ModelState.IsValid)
             {
+                G_Student g_Student = db.Students.Find(g_CurriculumVitae.StudentID);
+                G_File g_File = g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.CurriculumVitae && f.StudentID == g_CurriculumVitae.StudentID);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    
-                    G_Student g_Student = db.Students.Find(g_CurriculumVitae.StudentID);
                   
-                    if (g_Student.Files.Any(f => f.FileType == G_FileType.CurriculumVitae))
+                    if (g_File != null)
                     {
-                        db.Files.Remove(g_Student.Files.First(f => f.FileType == G_FileType.CurriculumVitae));
-                        db.Entry(g_CurriculumVitae).State = EntityState.Modified;
-                        db.SaveChanges();
+                        db.Files.Remove(g_File);
+                        db.Entry(g_File).State = EntityState.Deleted;
+                        //db.SaveChanges();
                         
                     }
                     var cv = new G_File
@@ -136,11 +137,11 @@ namespace StudentTrackingSystem3.Controllers
                     {
                         cv.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Student.Files = new List<G_File> { cv };
-
-                    g_CurriculumVitae.Student = g_Student;
+                    g_Student.Files.Add(cv);
+                    db.Entry(g_Student).State = EntityState.Modified;
+                    //db.SaveChanges();   
                 }
-
+                g_CurriculumVitae.Student = g_Student;
                 db.Entry(g_CurriculumVitae).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "PostGraduation", new {id = g_CurriculumVitae.StudentID });

@@ -31,7 +31,7 @@
         <br />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.ID, new { @Value = ViewBag.CurriculumVitaeID })
 
         <div class="form-group" style="display: none;">
             @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })

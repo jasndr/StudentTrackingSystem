@@ -103,6 +103,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.FileID = id;
             ViewBag.FileName = db.Files.Find(id).FileName;
             ViewBag.File = db.Files.Find(id);
+            ViewBag.ActivityID = g_Activity.ID;
             return View(g_Activity);
         }
 
@@ -115,17 +116,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (ModelState.IsValid)
             {
+                G_Student g_Student = db.Students.Find(g_Activity.StudentID);
+                G_File g_File = g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.ActivitySummaryFile && f.StudentID == g_Activity.StudentID);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    G_Student g_Student = db.Students.Find(g_Activity.StudentID);
 
-                    if (g_Student.Files.Any(f=>f.FileType == G_FileType.ActivitySummaryFile))
+                    if (g_File != null)
                     {
-                        db.Files.Remove(g_Student.Files.First(f => f.FileType == G_FileType.ActivitySummaryFile));
-
-                        db.Entry(g_Activity).State = EntityState.Modified;
-                        db.SaveChanges();
+                        db.Files.Remove(g_File);
+                        db.Entry(g_File).State = EntityState.Deleted;
+                        //db.SaveChanges();
                     }
                     
                     var document = new G_File
@@ -134,15 +135,16 @@ namespace StudentTrackingSystem3.Controllers
                         FileType = G_FileType.ActivitySummaryFile,
                         ContentType =  upload.ContentType
                     };
+                    
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         document.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Student.Files = new List<G_File> { document };
-
-                    g_Activity.Student = g_Student;
-                   
+                    g_Student.Files.Add(document);
+                    db.Entry(g_Student).State = EntityState.Modified;
+                    //db.SaveChanges();   
                 }
+                g_Activity.Student = g_Student;
                 db.Entry(g_Activity).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Performance", new {id = g_Activity.StudentID });
