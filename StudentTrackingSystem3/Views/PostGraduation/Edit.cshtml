@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Editing post-graduation student record for <strong>@Model.Student.FirstName @Model.Student.LastName</strong></h4>
         <br />
@@ -50,7 +50,7 @@
                     @Html.LabelFor(model => model.Student.StudentNumber, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Student.StudentNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = Model.Student.StudentNumber  } })
+                        @Html.EditorFor(model => model.Student.StudentNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = Model.Student.StudentNumber } })
                         @Html.ValidationMessageFor(model => model.Student.StudentNumber, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     @Html.LabelFor(model => model.Student.Phone, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Student.Phone, new { htmlAttributes = new { @class = "form-control phoneNum", @readonly = "readonly", @Value = Model.Student.Phone} })
+                        @Html.EditorFor(model => model.Student.Phone, new { htmlAttributes = new { @class = "form-control phoneNum", @readonly = "readonly", @Value = Model.Student.Phone } })
                         @Html.ValidationMessageFor(model => model.Student.Phone, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -154,7 +154,7 @@
             <div class="col-md-2 col-xs-12">
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.CurrentStartMonthId,  htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.CurrentStartMonthId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
                         @Html.DropDownList("CurrentStartMonthId", null, htmlAttributes: new { @class = "form-control" })
@@ -340,10 +340,184 @@
 
         <br />
 
-        <h4><strong><u>Total Number of Publications, Grants, and Honors/Awards </u></strong></h4>
+        <h4 class="alert alert-success text-center">
+            <strong>Total Number of Publications, Grants, and Honors &amp; Awards </strong>
+        </h4>
+
+        @{
+            @functions{
+                /// <summary>
+                /// Change semester value to month.
+                /// </summary>
+                /// <param name="semesterVal">semester value</param>
+                /// <returns></returns>
+                public static int monthVal(int semesterVal)
+                {
+                    if (semesterVal == 1)
+                    {
+                        return 12;
+                    }
+                    else if (semesterVal == 2)
+                    {
+                        return 05;
+                    }
+                    else if (semesterVal == 3)
+                    {
+                        return 08;
+                    }
+                    else
+                    {
+                        return 01;
+                    }
+                }
+            }
+
+            int startMonth = monthVal(Model.Student.DegreeStartSems.DisplayOrder);
+            DateTime startDate = new DateTime(Model.Student.DegreeStartYear, startMonth, 31);
+            int endMonth = monthVal(Model.Student.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
+            DateTime endDate = new DateTime(Model.Student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault(), endMonth, 31);
+            DateTime now = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+
+        }
+
+        <div class="row">
+
+            <div class="col-md-4 col-xs-12">
+                <h4><strong>Publications</strong></h4>
+
+                <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+                    @{
+                        var beforeDuring = 0;
+                        var year1 = 0; var year1Val = new DateTime(Model.Student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 1, endMonth, 31);
+                        var year2 = 0; var year2Val = new DateTime(Model.Student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 2, endMonth, 31);
+                        var year3 = 0; var year3Val = new DateTime(Model.Student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 3, endMonth, 31);
+                        var year4 = 0; var year4Val = new DateTime(Model.Student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 4, endMonth, 31);
+                        var year5 = 0; var year5Val = new DateTime(Model.Student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 5, endMonth, 31);
+                        var postFuture = false;
+                        if (Model.Student.Publications.FirstOrDefault() != null)
+                        {
+                            foreach (var item in Model.Student.Publications)
+                            {
+                                var pubDate = new DateTime(item.PubYear, item.PubMonth.DisplayOrder, 15);
+                                if (endDate > startDate) //check if endDate is not null (set to 0)
+                                {
+                                    postFuture = true;
+                                    if (pubDate < endDate)
+                                    {
+                                        beforeDuring++;
+                                    } else if (pubDate > endDate && pubDate < year1Val)
+                                    {
+                                        year1++;
+                                    } else if (pubDate > year1Val && pubDate < year2Val)
+                                    {
+                                        year2++;
+                                    } else if (pubDate > year2Val && pubDate < year3Val)
+                                    {
+                                        year3++;
+                                    } else if (pubDate > year3Val && pubDate < year4Val)
+                                    {
+                                        year4++;
+                                    } else if (pubDate > year4Val && pubDate < year5Val)
+                                    {
+                                        year5++;
+                                    }
+
+                                }
+                            }
+                        }
+                        <tr>
+                            <td>Before &amp; During Program</td>
+                            <td>@beforeDuring</td>
+                        </tr>
+                        var total = beforeDuring + year1 + year2 + year3 + year4 + year5;
+                        if (postFuture == true)
+                        {
+                            <tr>
+                                <td>@year1Val.Year</td>
+                                <td>@year1</td>
+                            </tr>
+                            <tr>
+                                <td>@year2Val.Year</td>
+                                <td>@year2</td>
+                            </tr>
+                            <tr>
+                                <td>@year3Val.Year</td>
+                                <td>@year3</td>
+                            </tr>
+                            <tr>
+                                <td>@year4Val.Year</td>
+                                <td>@year4</td>
+                            </tr>
+                            <tr>
+                                <td>@year5Val.Year</td>
+                                <td>@year5</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>@total</strong></td>
+                        </tr>
+
+                    }
+                </table>
+
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <h4><strong>Grants</strong></h4>
+
+                <table class="table table-bordered table-hover table-striped col-md-offset-0">
+                    <tr>
+                        <td>Before Program</td>
+                        <td>[Total]</td>
+                    </tr>
+                    <tr>
+                        <td>During Program</td>
+                        <td>[Total]</td>
+                    </tr>
+                    <tr>
+                        <td>After Program</td>
+                        <td>[Total]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>[Total]</strong></td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <h4><strong>Honors &amp; Awards</strong></h4>
+
+                <table class="table table-bordered table-hover table-striped col-md-offset-0">
+                    <tr>
+                        <td>Before Program</td>
+                        <td>[Total]</td>
+                    </tr>
+                    <tr>
+                        <td>During Program</td>
+                        <td>[Total]</td>
+                    </tr>
+                    <tr>
+                        <td>After Program</td>
+                        <td>[Total]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>[Total]</strong></td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+
+
 
         <br />
-        
+
         <div class="row">
 
             <div class="form-group">
@@ -354,9 +528,9 @@
 
         </div>
 
-        
+
     </div>
-}
+                                }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
