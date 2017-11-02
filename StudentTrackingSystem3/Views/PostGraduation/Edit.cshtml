@@ -221,6 +221,43 @@
         <br />
 
         <h4><strong><u>Publications Peer-Reviewed Journal (only Published)</u></strong></h4>
+
+        <div class="row">
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-md-offset-1">
+                        @Html.ActionLink("Add Publication", "Create", "Publications", new { id = Model.StudentID }, null)
+                    </div>
+                </div>
+
+                <div class="col-md-10 row col-md-offset-1">
+                    @{if (!object.ReferenceEquals(Model.Student.Publications.FirstOrDefault(), null))
+                        {
+                            <table class="table">
+
+                                @foreach (var item in Model.Student.Publications.OrderByDescending(s => s.PubYear).ThenByDescending(s => s.PubMonth.DisplayOrder))
+                                {
+                                    <tr>
+                                        <td>&bull;</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PublicationInformation)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.PubMonth.Name) @Html.DisplayFor(modelItem => item.PubYear)</td>
+                                        <td>@Html.ActionLink("Edit", "Edit", "Publications", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                        else
+                        {
+                            <p><em>No publications listed.  Please add a publication record.</em></p>
+                        }
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
         <br />
 
         <h4><strong><u>Honors and Awards</u></strong></h4>
