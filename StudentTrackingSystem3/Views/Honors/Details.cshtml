@@ -1,0 +1,50 @@
+﻿@model StudentTrackingSystem3.Models.G_Honors
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>G_Honors</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HonorMonth.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HonorMonth.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HonorInformation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HonorInformation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HonorYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HonorYear)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

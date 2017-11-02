@@ -301,6 +301,43 @@
         <br />
 
         <h4><strong><u>Honors and Awards</u></strong></h4>
+
+        <div class="row">
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-md-offset-1">
+                        @Html.ActionLink("Add Honor or Award", "Create", "Honors", new { id = Model.StudentID }, null)
+                    </div>
+                </div>
+
+                <div class="col-md-8 row col-md-offset-1">
+                    @{if (!object.ReferenceEquals(Model.Student.Honors.FirstOrDefault(), null))
+                        {
+                            <table class="table">
+
+                                @foreach (var item in Model.Student.Honors.OrderByDescending(s => s.HonorYear).ThenByDescending(s => s.HonorMonth.DisplayOrder))
+                                {
+                                    <tr>
+                                        <td>&bull;</td>
+                                        <td>@Html.DisplayFor(modelItem => item.HonorInformation)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.HonorMonth.Name) @Html.DisplayFor(modelItem => item.HonorYear)</td>
+                                        <td>@Html.ActionLink("Edit", "Edit", "Honors", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                        else
+                        {
+                            <p><em>No honors or awards listed.  Please add an honor or award record.</em></p>
+                        }
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
         <br />
 
         <h4><strong><u>Total Number of Publications, Grants, and Honors/Awards </u></strong></h4>

@@ -1,0 +1,56 @@
+﻿@model StudentTrackingSystem3.Models.G_Honors
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>G_Honors</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HonorMonth.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HonorMonth.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HonorInformation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HonorInformation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HonorYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HonorYear)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
