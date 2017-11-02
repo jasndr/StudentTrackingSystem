@@ -35,7 +35,7 @@
             @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label" })
             <br />
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control",  @Value = ViewBag.StudentID } })
+                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.StudentID } })
                 @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -105,14 +105,14 @@
 
                         @{IQueryable<G_File> studentCVs = ViewBag.StudentCVs;}
 
-                        @{if (!object.ReferenceEquals(studentCVs.Where(g=>g.FileType == G_FileType.CurriculumVitae).FirstOrDefault(), null))
+                        @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == G_FileType.CurriculumVitae).FirstOrDefault(), null))
                             {
                                 foreach (var file in studentCVs)
                                 {
                                     if (file.FileType == StudentTrackingSystem3.Models.G_FileType.CurriculumVitae)
                                     {
                                         <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;  
-                                           @Html.ActionLink("Edit", "Edit",  "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" }) 
+                                           @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" }) 
                                         </p>
                                     }
                                 }
@@ -180,10 +180,48 @@
         </div>
         <br />
 
-
-
         <h4><strong><u>Previous Employment</u></strong></h4>
-        <br />
+ 
+        <div class="row">
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-md-offset-1">
+                        @Html.ActionLink("Add Previous Employment History", "Create", "PreviousEmployment", new { id = ViewBag.StudentID }, null)
+                    </div>
+                </div>
+
+                <div class="col-md-6 row col-md-offset-1">
+                    @{ IQueryable<G_PreviousEmployment> PrevEmployments = ViewBag.StudentPrevEmpl;}
+
+                    @{if (!object.ReferenceEquals(PrevEmployments.FirstOrDefault(), null))
+                        {
+                            <table class="table">
+
+                                @foreach (var item in PrevEmployments.OrderByDescending(s => s.EndYear).ThenByDescending(s => s.EndMonth.DisplayOrder))
+                                {
+                                    <tr>
+                                        <td>&bull;</td>
+                                        <td><strong>@Html.DisplayFor(modelItem => item.Position)</strong></td>
+                                        <td>@Html.DisplayFor(modelItem => item.StartMonth.Name) @Html.DisplayFor(modelItem => item.StartYear) - @Html.DisplayFor(modelItem => item.EndMonth.Name) @Html.DisplayFor(modelItem => item.EndYear)</td>
+                                        <td>@Html.ActionLink("Edit", "Edit", "PreviousEmployment", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                        else
+                        {
+                            <p class="col-md-offset-2"><em>No employment history listed.  Please add previous employement history.</em></p>
+                        }
+                    }
+
+                </div>
+            </div>
+
+
+
+        </div>
+
 
         <h4><strong><u>Publications Peer-Reviewed Journal (only Published)</u></strong></h4>
         <br />

@@ -210,6 +210,7 @@
     <Compile Include="Controllers\PerformanceController.cs" />
     <Compile Include="Controllers\PostGraduationController.cs" />
     <Compile Include="Controllers\PrevDegreeController.cs" />
+    <Compile Include="Controllers\PreviousEmploymentController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="DAL\SchoolContext.cs" />
     <Compile Include="DAL\SchoolInitializer.cs" />
@@ -232,6 +233,10 @@
     <Compile Include="Migrations\201711010302279_ChangeActivity1.Designer.cs">
       <DependentUpon>201711010302279_ChangeActivity1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711012216124_PreviousEmployment.cs" />
+    <Compile Include="Migrations\201711012216124_PreviousEmployment.Designer.cs">
+      <DependentUpon>201711012216124_PreviousEmployment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommitteeMember.cs" />
@@ -247,6 +252,7 @@
     <Compile Include="Models\G_PersonRaces.cs" />
     <Compile Include="Models\G_PostGraduation.cs" />
     <Compile Include="Models\G_PrevDegree.cs" />
+    <Compile Include="Models\G_PreviousEmployment.cs" />
     <Compile Include="Models\G_Student.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -409,6 +415,8 @@
     <Content Include="Views\CurriculumVitae\Create.cshtml" />
     <Content Include="Views\CurriculumVitae\Edit.cshtml" />
     <Content Include="Views\Activity\Edit.cshtml" />
+    <Content Include="Views\PreviousEmployment\Create.cshtml" />
+    <Content Include="Views\PreviousEmployment\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -437,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711010302279_ChangeActivity1.resx">
       <DependentUpon>201711010302279_ChangeActivity1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711012216124_PreviousEmployment.resx">
+      <DependentUpon>201711012216124_PreviousEmployment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

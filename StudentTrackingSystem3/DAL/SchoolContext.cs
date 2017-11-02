@@ -26,8 +26,9 @@ namespace StudentTrackingSystem3.DAL
         public DbSet<G_File> Files { get; set; }
         public DbSet<G_Graduation> Graduations { get; set; }
         public DbSet<G_CommitteeMember> CommitteeMembers { get; set; }
-        //public DbSet<G_PostGraduation> PostGraduations { get; set; }
+        public DbSet<G_PostGraduation> PostGraduation { get; set; }
         public DbSet<G_CurriculumVitae> CurriculumVitaes { get; set; }
+        public DbSet<G_PreviousEmployment> PreviousEmployment { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -69,8 +70,16 @@ namespace StudentTrackingSystem3.DAL
                .HasForeignKey(d => d.SemestersID)
                .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<G_PreviousEmployment>()
+                .HasRequired(c => c.StartMonth)
+                .WithMany()
+                .HasForeignKey(d => d.StartMonthId)
+                .WillCascadeOnDelete(false);
+
         }
 
-        public System.Data.Entity.DbSet<StudentTrackingSystem3.Models.G_PostGraduation> G_PostGraduation { get; set; }
+        
+
+       
     }
 }

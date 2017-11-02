@@ -59,7 +59,7 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_CommitteeMember> CommitteeMembers { get; set; }
         public virtual ICollection<G_PostGraduation> PostGraduation { get; set; }
         public virtual ICollection<G_CurriculumVitae> CurriculumVitae { get; set; }
-
+        public virtual ICollection<G_PreviousEmployment> PreviousEmployment { get; set; }
 
     }
 }

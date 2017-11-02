@@ -39,7 +39,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PostGraduation g_PostGraduation = db.G_PostGraduation.Find(id);
+            G_PostGraduation g_PostGraduation = db.PostGraduation.Find(id);
             if (g_PostGraduation == null)
             {
                 return HttpNotFound();
@@ -51,6 +51,7 @@ namespace StudentTrackingSystem3.Controllers
         public ActionResult Create(int? id)
         {
             ViewBag.StudentID = db.Students.Find(id).Id;
+            ViewBag.StudentPrevEmpl = db.PreviousEmployment.Where(g => g.StudentID == id);
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
             ViewBag.StudentCVs = db.Files.Where(g => g.StudentID == id);
@@ -71,7 +72,7 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.G_PostGraduation.Add(g_PostGraduation);
+                db.PostGraduation.Add(g_PostGraduation);
                 db.SaveChanges();
                 return RedirectToAction("Index", "PostGraduation", new {id = g_PostGraduation.StudentID });
             }
@@ -124,7 +125,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PostGraduation g_PostGraduation = db.G_PostGraduation.Find(id);
+            G_PostGraduation g_PostGraduation = db.PostGraduation.Find(id);
             if (g_PostGraduation == null)
             {
                 return HttpNotFound();
@@ -137,8 +138,8 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_PostGraduation g_PostGraduation = db.G_PostGraduation.Find(id);
-            db.G_PostGraduation.Remove(g_PostGraduation);
+            G_PostGraduation g_PostGraduation = db.PostGraduation.Find(id);
+            db.PostGraduation.Remove(g_PostGraduation);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

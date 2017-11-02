@@ -1,0 +1,66 @@
+﻿@model StudentTrackingSystem3.Models.G_PreviousEmployment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>G_PreviousEmployment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EndMonth.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndMonth.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartMonth.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartMonth.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndYear)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
