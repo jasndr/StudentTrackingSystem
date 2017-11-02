@@ -260,6 +260,46 @@
 
         <br />
 
+        <h4><strong><u>Grants</u></strong></h4>
+
+        <div class="row">
+            <div class="form-group">
+
+                <div class="row">
+                    <div class="col-md-offset-1">
+                        @Html.ActionLink("Add Grant", "Create", "Grants", new { id = Model.StudentID }, null)
+                    </div>
+                </div>
+
+                <div class="col-md-8 row col-md-offset-1">
+                    @{if (!object.ReferenceEquals(Model.Student.Grants.FirstOrDefault(), null))
+                        {
+                            <table class="table">
+
+                                @foreach (var item in Model.Student.Grants.OrderByDescending(s => s.GrantYear).ThenByDescending(s => s.GrantMonth.DisplayOrder))
+                                {
+                                    <tr>
+                                        <td>&bull;</td>
+                                        <td>@Html.DisplayFor(modelItem => item.GrantInformation)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.GrantMonth.Name) @Html.DisplayFor(modelItem => item.GrantYear)</td>
+                                        <td>@Html.ActionLink("Edit", "Edit", "Grants", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                        else
+                        {
+                            <p><em>No grants listed.  Please add a grant record.</em></p>
+                        }
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+        <br />
+
         <h4><strong><u>Honors and Awards</u></strong></h4>
         <br />
 

@@ -61,6 +61,7 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_CurriculumVitae> CurriculumVitae { get; set; }
         public virtual ICollection<G_PreviousEmployment> PreviousEmployment { get; set; }
         public virtual ICollection<G_Publications> Publications { get; set; }
+        public virtual ICollection<G_Grants> Grants { get; set; }
 
     }
 }

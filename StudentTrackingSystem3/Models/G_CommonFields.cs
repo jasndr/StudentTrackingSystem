@@ -37,6 +37,7 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_PreviousEmployment> ReturnStartMonth { get; set; }
         public virtual ICollection<G_PreviousEmployment> ReturnEndMonth { get; set; }
         public virtual ICollection<G_Publications> ReturnPubMonth { get; set; }
+        public virtual ICollection<G_Grants> ReturnGrantMonth { get; set; }
 
     }
 }

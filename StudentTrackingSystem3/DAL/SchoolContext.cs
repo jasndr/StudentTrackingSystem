@@ -30,6 +30,7 @@ namespace StudentTrackingSystem3.DAL
         public DbSet<G_CurriculumVitae> CurriculumVitaes { get; set; }
         public DbSet<G_PreviousEmployment> PreviousEmployment { get; set; }
         public DbSet<G_Publications> Publications { get; set; }
+        public DbSet<G_Grants> Grants { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

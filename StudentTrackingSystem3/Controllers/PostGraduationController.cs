@@ -53,6 +53,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.StudentPrevEmpl = db.PreviousEmployment.Where(g => g.StudentID == id);
             ViewBag.StudentPublications = db.Publications.Where(g => g.StudentID == id);
+            ViewBag.StudentGrants = db.Grants.Where(g => g.StudentID == id);
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
             ViewBag.StudentCVs = db.Files.Where(g => g.StudentID == id);

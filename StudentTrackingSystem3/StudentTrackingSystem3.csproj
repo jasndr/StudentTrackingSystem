@@ -205,6 +205,7 @@
     <Compile Include="Controllers\CurriculumVitaeController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GraduationController.cs" />
+    <Compile Include="Controllers\GrantsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PerformanceController.cs" />
@@ -242,6 +243,10 @@
     <Compile Include="Migrations\201711020105577_Publications.Designer.cs">
       <DependentUpon>201711020105577_Publications.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711020145108_Grants.cs" />
+    <Compile Include="Migrations\201711020145108_Grants.Designer.cs">
+      <DependentUpon>201711020145108_Grants.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommitteeMember.cs" />
@@ -252,6 +257,7 @@
     <Compile Include="Models\G_File.cs" />
     <Compile Include="Models\G_FileType.cs" />
     <Compile Include="Models\G_Graduation.cs" />
+    <Compile Include="Models\G_Grants.cs" />
     <Compile Include="Models\G_Performance.cs" />
     <Compile Include="Models\G_Activity.cs" />
     <Compile Include="Models\G_PersonRaces.cs" />
@@ -425,6 +431,8 @@
     <Content Include="Views\PreviousEmployment\Edit.cshtml" />
     <Content Include="Views\Publications\Create.cshtml" />
     <Content Include="Views\Publications\Edit.cshtml" />
+    <Content Include="Views\Grants\Create.cshtml" />
+    <Content Include="Views\Grants\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -459,6 +467,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711020105577_Publications.resx">
       <DependentUpon>201711020105577_Publications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711020145108_Grants.resx">
+      <DependentUpon>201711020145108_Grants.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>
