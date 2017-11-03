@@ -211,7 +211,7 @@
                         }
                         else
                         {
-                            <p class="col-md-offset-2"><em>No employment history listed.  Please add previous employement history.</em></p>
+                            <p><em>No employment history listed.  Please add previous employement history.</em></p>
                         }
                     }
 
@@ -230,7 +230,7 @@
 
                 <div class="row">
                     <div class="col-md-offset-1">
-                        @Html.ActionLink("Add Publication", "Create", "Publications", new { id = Model.StudentID }, null)
+                        @Html.ActionLink("Add Publication", "Create", "Publications", new { id = ViewBag.StudentID }, null)
                     </div>
                 </div>
 
@@ -272,7 +272,7 @@
 
                 <div class="row">
                     <div class="col-md-offset-1">
-                        @Html.ActionLink("Add Publication", "Create", "Grants", new { id = Model.StudentID }, null)
+                        @Html.ActionLink("Add Publication", "Create", "Grants", new { id = ViewBag.StudentID }, null)
                     </div>
                 </div>
 
@@ -314,7 +314,7 @@
 
                 <div class="row">
                     <div class="col-md-offset-1">
-                        @Html.ActionLink("Add Honor or Award", "Create", "Honors", new { id = Model.StudentID }, null)
+                        @Html.ActionLink("Add Honor or Award", "Create", "Honors", new { id = ViewBag.StudentID }, null)
                     </div>
                 </div>
 
@@ -350,6 +350,255 @@
         <br />
 
         <h4><strong><u>Total Number of Publications, Grants, and Honors/Awards </u></strong></h4>
+
+        @{
+            @functions{
+                /// <summary>
+                /// Change semester value to month.
+                /// </summary>
+                /// <param name="semesterVal">semester value</param>
+                /// <returns></returns>
+                public static int monthVal(int? semesterVal)
+                {
+                    if (semesterVal == 1)
+                    {
+                        return 12;
+                    }
+                    else if (semesterVal == 2)
+                    {
+                        return 05;
+                    }
+                    else if (semesterVal == 3)
+                    {
+                        return 08;
+                    }
+                    else
+                    {
+                        return 01;
+                    }
+                }
+            }
+
+            G_Student student = ViewBag.Student;
+            G_CommonFields degreeEndSem = ViewBag.StudentDegreeEndSem;
+            int? degreeEndSemId = degreeEndSem.DisplayOrder;
+            int? degreeEndYear = ViewBag.StudentDegreeEndYear;
+
+            int startMonth = monthVal(student.DegreeStartSems.DisplayOrder);
+            DateTime startDate = new DateTime(student.DegreeStartYear, startMonth, 31);
+
+            int endMonth =  monthVal(degreeEndSemId.GetValueOrDefault(01));
+            DateTime endDate = new DateTime(degreeEndYear.GetValueOrDefault(1000), endMonth, 31);
+            DateTime now = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+
+        }
+
+        <div class="row">
+
+            <div class="col-md-4 col-xs-12">
+                <h4><strong>Publications</strong></h4>
+
+                <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+                    @{
+                        
+                        var beforeDuring = 0;
+                        var year1 = 0; var year1Val = new DateTime(student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 1, endMonth, 31);
+                        var year2 = 0; var year2Val = new DateTime(student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 2, endMonth, 31);
+                        var year3 = 0; var year3Val = new DateTime(student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 3, endMonth, 31);
+                        var year4 = 0; var year4Val = new DateTime(student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 4, endMonth, 31);
+                        var year5 = 0; var year5Val = new DateTime(student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault() + 5, endMonth, 31);
+                        var postFuture = false;
+                        if (Publications.FirstOrDefault() != null)
+                        {
+                            foreach (var item in Publications)
+                            {
+                                var pubDate = new DateTime(item.PubYear, item.PubMonth.DisplayOrder, 15);
+                                if (endDate > startDate) //check if endDate is not null (set to 0)
+                                {
+                                    postFuture = true;
+                                    if (pubDate < endDate)
+                                    {
+                                        beforeDuring++;
+                                    }
+                                    else if (pubDate > endDate && pubDate < year1Val)
+                                    {
+                                        year1++;
+                                    }
+                                    else if (pubDate > year1Val && pubDate < year2Val)
+                                    {
+                                        year2++;
+                                    }
+                                    else if (pubDate > year2Val && pubDate < year3Val)
+                                    {
+                                        year3++;
+                                    }
+                                    else if (pubDate > year3Val && pubDate < year4Val)
+                                    {
+                                        year4++;
+                                    }
+                                    else if (pubDate > year4Val && pubDate < year5Val)
+                                    {
+                                        year5++;
+                                    }
+
+                                }
+                            }
+                        }
+                        <tr>
+                            <td>Before &amp; During Program</td>
+                            <td>@beforeDuring</td>
+                        </tr>
+                        var total = beforeDuring + year1 + year2 + year3 + year4 + year5;
+                        if (postFuture == true)
+                        {
+                            <tr>
+                                <td>@year1Val.Year</td>
+                                <td>@year1</td>
+                            </tr>
+                            <tr>
+                                <td>@year2Val.Year</td>
+                                <td>@year2</td>
+                            </tr>
+                            <tr>
+                                <td>@year3Val.Year</td>
+                                <td>@year3</td>
+                            </tr>
+                            <tr>
+                                <td>@year4Val.Year</td>
+                                <td>@year4</td>
+                            </tr>
+                            <tr>
+                                <td>@year5Val.Year</td>
+                                <td>@year5</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td><strong>Total</strong></td>
+                            <td><strong>@total</strong></td>
+                        </tr>
+
+                    }
+                </table>
+
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <h4><strong>Grants</strong></h4>
+
+                <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+                    @{
+
+                        var grantBefore = 0;
+                        var grantDuring = 0;
+                        var grantAfter = 0;
+                        if (Grants.FirstOrDefault() != null)
+                        {
+                            foreach (var item in Grants)
+                            {
+                                var grantDate = new DateTime(item.GrantYear, item.GrantMonth.DisplayOrder, 15);
+                                if (endDate > startDate) //check if endDate is not null (set to 0)
+                                {
+                                    if (grantDate < startDate)
+                                    {
+                                        grantBefore++;
+                                    }
+                                    else if (grantDate >= startDate && grantDate <= endDate)
+                                    {
+                                        grantDuring++;
+                                    }
+                                    else if (grantDate > endDate)
+                                    {
+                                        grantAfter++;
+                                    }
+
+                                }
+                            }
+                        }
+
+                        int grantTotal = grantBefore + grantDuring + grantAfter;
+                    }
+
+                    <tr>
+                        <td>Before Program</td>
+                        <td>@grantBefore</td>
+                    </tr>
+                    <tr>
+                        <td>During Program</td>
+                        <td>@grantDuring</td>
+                    </tr>
+                    <tr>
+                        <td>After Program</td>
+                        <td>@grantAfter</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>@grantTotal</strong></td>
+                    </tr>
+                </table>
+
+
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+                <h4><strong>Honors &amp; Awards</strong></h4>
+
+                <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+                    @{
+
+                        var honorsBefore = 0;
+                        var honorsDuring = 0;
+                        var honorsAfter = 0;
+                        if (Honors != null)
+                        {
+                            foreach (var item in Honors)
+                            {
+                                var honorDate = new DateTime(item.HonorYear, item.HonorMonth.DisplayOrder, 15);
+                                if (endDate > startDate) //check if endDate is not null (set to 0)
+                                {
+                                    if (honorDate < startDate)
+                                    {
+                                        honorsBefore++;
+                                    }
+                                    else if (honorDate >= startDate && honorDate <= endDate)
+                                    {
+                                        honorsDuring++;
+                                    }
+                                    else if (honorDate > endDate)
+                                    {
+                                        honorsAfter++;
+                                    }
+
+                                }
+                            }
+                        }
+
+                        int honorTotal = honorsBefore + honorsDuring + honorsAfter;
+                    }
+
+                    <tr>
+                        <td>Before Program</td>
+                        <td>@honorsBefore</td>
+                    </tr>
+                    <tr>
+                        <td>During Program</td>
+                        <td>@honorsDuring</td>
+                    </tr>
+                    <tr>
+                        <td>After Program</td>
+                        <td>@honorsAfter</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td><strong>@honorTotal</strong></td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
 
         <br />
 

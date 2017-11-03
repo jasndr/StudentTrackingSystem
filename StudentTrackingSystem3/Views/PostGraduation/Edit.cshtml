@@ -434,23 +434,23 @@
                         if (postFuture == true)
                         {
                             <tr>
-                                <td>@year1Val.Year</td>
+                                <td>Year 1 &mdash; @year1Val.Year</td>
                                 <td>@year1</td>
                             </tr>
                             <tr>
-                                <td>@year2Val.Year</td>
+                                <td>Year 2 &mdash; @year2Val.Year</td>
                                 <td>@year2</td>
                             </tr>
                             <tr>
-                                <td>@year3Val.Year</td>
+                                <td>Year 3 &mdash; @year3Val.Year</td>
                                 <td>@year3</td>
                             </tr>
                             <tr>
-                                <td>@year4Val.Year</td>
+                                <td>Year 4 &mdash; @year4Val.Year</td>
                                 <td>@year4</td>
                             </tr>
                             <tr>
-                                <td>@year5Val.Year</td>
+                                <td>Year 5 &mdash; @year5Val.Year</td>
                                 <td>@year5</td>
                             </tr>
                         }
@@ -468,23 +468,56 @@
                 <h4><strong>Grants</strong></h4>
 
                 <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+                    @{
+                        var grantBefore = 0;
+                        var grantDuring = 0;
+                        var grantAfter = 0;
+                        if (Model.Student.Grants.FirstOrDefault() != null)
+                        {
+                            foreach (var item in Model.Student.Grants)
+                            {
+                                var grantDate = new DateTime(item.GrantYear, item.GrantMonth.DisplayOrder, 15);
+                                if (endDate > startDate) //check if endDate is not null (set to 0)
+                                {
+                                    if (grantDate < startDate)
+                                    {
+                                        grantBefore++;
+                                    }
+                                    else if (grantDate >= startDate && grantDate <= endDate)
+                                    {
+                                        grantDuring++;
+                                    }
+                                    else if (grantDate > endDate)
+                                    {
+                                        grantAfter++;
+                                    }
+
+                                }
+                            }
+                        }
+
+                        int grantTotal = grantBefore + grantDuring + grantAfter;
+                    }
+
                     <tr>
                         <td>Before Program</td>
-                        <td>[Total]</td>
+                        <td>@grantBefore</td>
                     </tr>
                     <tr>
                         <td>During Program</td>
-                        <td>[Total]</td>
+                        <td>@grantDuring</td>
                     </tr>
                     <tr>
                         <td>After Program</td>
-                        <td>[Total]</td>
+                        <td>@grantAfter</td>
                     </tr>
                     <tr>
                         <td><strong>Total</strong></td>
-                        <td><strong>[Total]</strong></td>
+                        <td><strong>@grantTotal</strong></td>
                     </tr>
                 </table>
+
 
             </div>
 
@@ -492,21 +525,53 @@
                 <h4><strong>Honors &amp; Awards</strong></h4>
 
                 <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+                    @{
+                        var honorsBefore = 0;
+                        var honorsDuring = 0;
+                        var honorsAfter = 0;
+                        if (Model.Student.Honors.FirstOrDefault() != null)
+                        {
+                            foreach (var item in Model.Student.Honors)
+                            {
+                                var honorDate = new DateTime(item.HonorYear, item.HonorMonth.DisplayOrder, 15);
+                                if (endDate > startDate) //check if endDate is not null (set to 0)
+                                {
+                                    if (honorDate < startDate)
+                                    {
+                                        honorsBefore++;
+                                    }
+                                    else if (honorDate >= startDate && honorDate <= endDate)
+                                    {
+                                        honorsDuring++;
+                                    }
+                                    else if (honorDate > endDate)
+                                    {
+                                        honorsAfter++;
+                                    }
+
+                                }
+                            }
+                        }
+
+                        int honorTotal = honorsBefore + honorsDuring + honorsAfter;
+                    }
+
                     <tr>
                         <td>Before Program</td>
-                        <td>[Total]</td>
+                        <td>@honorsBefore</td>
                     </tr>
                     <tr>
                         <td>During Program</td>
-                        <td>[Total]</td>
+                        <td>@honorsDuring</td>
                     </tr>
                     <tr>
                         <td>After Program</td>
-                        <td>[Total]</td>
+                        <td>@honorsAfter</td>
                     </tr>
                     <tr>
                         <td><strong>Total</strong></td>
-                        <td><strong>[Total]</strong></td>
+                        <td><strong>@honorTotal</strong></td>
                     </tr>
                 </table>
 

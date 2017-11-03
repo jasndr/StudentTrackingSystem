@@ -50,11 +50,15 @@ namespace StudentTrackingSystem3.Controllers
         // GET: PostGraduation/Create
         public ActionResult Create(int? id)
         {
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.StudentPrevEmpl = db.PreviousEmployment.Where(g => g.StudentID == id);
             ViewBag.StudentPublications = db.Publications.Where(g => g.StudentID == id);
             ViewBag.StudentGrants = db.Grants.Where(g => g.StudentID == id);
             ViewBag.StudentHonors = db.Honors.Where(g=>g.StudentID == id);
+            ViewBag.StudentGrad = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault();
+            ViewBag.StudentDegreeEndSem = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault().DegreeEndSems;
+            ViewBag.StudentDegreeEndYear = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault().DegreeEndYear;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
             ViewBag.StudentCVs = db.Files.Where(g => g.StudentID == id);
