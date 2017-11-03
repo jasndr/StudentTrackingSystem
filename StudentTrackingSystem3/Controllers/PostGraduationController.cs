@@ -57,7 +57,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentGrants = db.Grants.Where(g => g.StudentID == id);
             ViewBag.StudentHonors = db.Honors.Where(g=>g.StudentID == id);
             ViewBag.StudentGrad = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault();
-            ViewBag.StudentDegreeEndSem = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault().DegreeEndSems;
+            ViewBag.StudentDegreeEndSem = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault().DegreeEndSemsId;
             ViewBag.StudentDegreeEndYear = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault().DegreeEndYear;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;

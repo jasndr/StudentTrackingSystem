@@ -380,8 +380,7 @@
             }
 
             G_Student student = ViewBag.Student;
-            G_CommonFields degreeEndSem = ViewBag.StudentDegreeEndSem;
-            int? degreeEndSemId = degreeEndSem.DisplayOrder;
+            int? degreeEndSemId = ViewBag.StudentDegreeEndSemr;
             int? degreeEndYear = ViewBag.StudentDegreeEndYear;
 
             int startMonth = monthVal(student.DegreeStartSems.DisplayOrder);
