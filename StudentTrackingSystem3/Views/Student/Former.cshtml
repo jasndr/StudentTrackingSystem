@@ -2,17 +2,17 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Current Students";
+    ViewBag.Title = "Former Students";
 }
 
-<h2>Current Students</h2>
+<h2>Former Students</h2>
 <br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm("Index", "Student", FormMethod.Get))
+@using (Html.BeginForm("Former", "Student", FormMethod.Get))
 {
     <p class="form-inline">
         Find by name, student ID #, or school email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
@@ -44,7 +44,10 @@
         <th>
             @Html.ActionLink("Degree Start", "Index", new { sortOrder = ViewBag.DegreeStart_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
-       
+        <th>
+            @Html.ActionLink("Degree End", "Index", new {sortOrder = ViewBag.DegreeEnd_SportParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+
         <th></th>
        
     </tr>
@@ -73,7 +76,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DegreeStartSems.Name) @Html.DisplayFor(modelItem => item.DegreeStartYear)
             </td>
-            
+            <td>
+                @Html.DisplayFor(modelItem => item.Graduation.FirstOrDefault().DegreeEndSems.Name) @Html.DisplayFor(modelItem => item.Graduation.FirstOrDefault().DegreeEndYear)
+            </td>
             <td>
                 @Html.ActionLink("Information", "Edit", new { id = item.Id }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
             </td>

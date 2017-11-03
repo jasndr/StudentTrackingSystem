@@ -347,19 +347,19 @@
         @{
             @functions{
                 /// <summary>
-                /// Change semester value to month.
+                /// Change start semester value to month.
                 /// </summary>
                 /// <param name="semesterVal">semester value</param>
                 /// <returns></returns>
-                public static int monthVal(int semesterVal)
+                public static int startMonthVal(int? semesterVal)
                 {
                     if (semesterVal == 1)
                     {
-                        return 12;
+                        return 01;
                     }
                     else if (semesterVal == 2)
                     {
-                        return 05;
+                        return 06;
                     }
                     else if (semesterVal == 3)
                     {
@@ -370,11 +370,36 @@
                         return 01;
                     }
                 }
+
+                /// <summary>
+                /// Change end semester value to month.
+                /// </summary>
+                /// <param name="semesterVal">semester value</param>
+                /// <returns></returns>
+                public static int endMonthVal(int? semesterVal)
+                {
+                    if (semesterVal == 1)
+                    {
+                        return 05;
+                    }
+                    else if (semesterVal == 2)
+                    {
+                        return 08;
+                    }
+                    else if (semesterVal == 3)
+                    {
+                        return 12;
+                    }
+                    else
+                    {
+                        return 01;
+                    }
+                }
             }
 
-            int startMonth = monthVal(Model.Student.DegreeStartSems.DisplayOrder);
+            int startMonth = startMonthVal(Model.Student.DegreeStartSems.DisplayOrder);
             DateTime startDate = new DateTime(Model.Student.DegreeStartYear, startMonth, 31);
-            int endMonth = monthVal(Model.Student.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
+            int endMonth = endMonthVal(Model.Student.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
             DateTime endDate = new DateTime(Model.Student.Graduation.FirstOrDefault().DegreeEndYear.GetValueOrDefault(), endMonth, 31);
             DateTime now = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
@@ -423,6 +448,10 @@
                                         year5++;
                                     }
 
+                                }
+                                else 
+                                {
+                                    beforeDuring++;
                                 }
                             }
                         }
@@ -494,6 +523,14 @@
                                     }
 
                                 }
+                                else if (grantDate < startDate)
+                                {
+                                    grantBefore++;
+                                }
+                                else if (grantDate > startDate)
+                                {
+                                    grantDuring++;
+                                }
                             }
                         }
 
@@ -550,6 +587,13 @@
                                         honorsAfter++;
                                     }
 
+                                } else if (honorDate < startDate)
+                                {
+                                    honorsBefore++;
+                                }
+                                else if (honorDate > startDate)
+                                {
+                                    honorsDuring++;
                                 }
                             }
                         }

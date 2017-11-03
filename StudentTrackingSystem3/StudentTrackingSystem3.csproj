@@ -445,6 +445,7 @@
     <Content Include="Views\Grants\Edit.cshtml" />
     <Content Include="Views\Honors\Create.cshtml" />
     <Content Include="Views\Honors\Edit.cshtml" />
+    <Content Include="Views\Student\Former.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

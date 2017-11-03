@@ -29,22 +29,16 @@ namespace StudentTrackingSystem3.Controllers
 
             //if sortOrder is empty, then (sort by student num asc), otherwise (sort by student num desc)
             ViewBag.StudentID_SortParm = String.IsNullOrEmpty(sortOrder) ? "studentID_desc" : "";
-
             //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
             ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
-
             //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
             ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
-
             //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
             ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";  
-
             //if sortOrder = ConcentrationsId then (sort by concentrationsid desc), otherwise (sort by concentrationsid asc, should be default)
             ViewBag.ConcentrationsId_SortParm = sortOrder == "ConcentrationsId" ? "ConcentrationsId_desc" : "ConcentrationsId";
-
             //if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
             ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
-
             //if sortOrder = DegreeStartSem then (sort by date new->old), otherwise (sort by date old-new, should be default)
             ViewBag.DegreeStart_SortParm = sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
             
@@ -61,6 +55,15 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.CurrentFilter = searchString;
 
             var students = from s in db.Students
+                           where s.Graduation.FirstOrDefault() == null 
+                                 || (s.Graduation.FirstOrDefault() != null && s.Graduation.FirstOrDefault().DegreeEndYear == null)
+                                 || (s.Graduation.FirstOrDefault() != null && s.Graduation.FirstOrDefault().DegreeEndYear != null 
+                                     && s.Graduation.FirstOrDefault().DegreeEndYear > DateTime.Now.Year)
+                                 ||(s.Graduation.FirstOrDefault() != null 
+                                      && s.Graduation.FirstOrDefault().DegreeEndYear != null && s.Graduation.FirstOrDefault().DegreeEndSems != null
+                                      && (s.Graduation.FirstOrDefault().DegreeEndYear > DateTime.Now.Year
+                                           || s.Graduation.FirstOrDefault().DegreeEndYear == DateTime.Now.Year &&
+                                          s.Graduation.FirstOrDefault().DegreeEndSemsId * 4 > DateTime.Now.Month))
                            select s;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -122,9 +125,121 @@ namespace StudentTrackingSystem3.Controllers
             return View(students.ToPagedList(pageNumber, pageSize));
         }
 
-        MyDataSet ds = new MyDataSet();
+        // GET: Former (Students)
+        public ActionResult Former(string sortOrder, string currentFilter, string searchString, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+
+            //if sortOrder is empty, then (sort by student num asc), otherwise (sort by student num desc)
+            ViewBag.StudentID_SortParm = String.IsNullOrEmpty(sortOrder) ? "studentID_desc" : "";
+            //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+            //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+            //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
+            //if sortOrder = ConcentrationsId then (sort by concentrationsid desc), otherwise (sort by concentrationsid asc, should be default)
+            ViewBag.ConcentrationsId_SortParm = sortOrder == "ConcentrationsId" ? "ConcentrationsId_desc" : "ConcentrationsId";
+            //if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
+            ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
+            //if sortOrder = DegreeStartSem then (sort by date new->old), otherwise (sort by date old-new, should be default)
+            ViewBag.DegreeStart_SortParm = sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
+            //if sortOrder = DegreeStartEnd then (sort by date new->old), otherwise (sort by date old-new, should be default)
+            ViewBag.DegreeEnd_SportParm = sortOrder == "DegreeEnd" ? "DegreeEnd_desc" : "DegreeEnd";
+
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+
+            var formerStudents = from s in db.Students
+                                 where s.Graduation.FirstOrDefault() != null
+                                    && s.Graduation.FirstOrDefault().DegreeEndSems != null
+                                    && s.Graduation.FirstOrDefault().DegreeEndYear != null
+                                    && (s.Graduation.FirstOrDefault().DegreeEndYear < DateTime.Now.Year 
+                                       || s.Graduation.FirstOrDefault().DegreeEndYear == DateTime.Now.Year && 
+                                          s.Graduation.FirstOrDefault().DegreeEndSemsId * 4 < DateTime.Now.Month)
+                                 select s;
+            
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                formerStudents = formerStudents.Where(s => s.LastName.Contains(searchString)
+                                            || s.FirstName.Contains(searchString)
+                                            || s.SchoolEmail.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "studentID_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.StudentNumber);
+                    break;
+                case "FirstName":
+                    formerStudents = formerStudents.OrderBy(s => s.FirstName);
+                    break;
+                case "FirstName_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.FirstName);
+                    break;
+                case "LastName":
+                    formerStudents = formerStudents.OrderBy(s => s.LastName);
+                    break;
+                case "LastName_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.LastName);
+                    break;
+                case "SchoolEmail":
+                    formerStudents = formerStudents.OrderBy(s => s.SchoolEmail);
+                    break;
+                case "SchoolEmail_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.SchoolEmail);
+                    break;
+                case "ConcentrationsId":
+                    formerStudents = formerStudents.OrderBy(s => s.ConcentrationsId);
+                    break;
+                case "ConcentrationsId_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.ConcentrationsId);
+                    break;
+                case "TracksId":
+                    formerStudents = formerStudents.OrderBy(s => s.TracksId);
+                    break;
+                case "TracksId_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.TracksId);
+                    break;
+                case "DegreeStart":
+                    formerStudents = formerStudents.OrderBy(s => s.DegreeStartYear).ThenBy(s => s.DegreeStartSems.DisplayOrder);
+                    break;
+                case "DegreeStart_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSems.DisplayOrder);
+                    break;
+                case "DegreeEnd":
+                    formerStudents = formerStudents.OrderBy(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenBy(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
+                    break;
+                case "DegreeEnd_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenByDescending(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
+                    break;
+                default:
+                    formerStudents = formerStudents.OrderBy(s => s.StudentNumber);
+                    break;
+
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(formerStudents.ToPagedList(pageNumber, pageSize));
+        }
+
+        
         public ActionResult Report_StudentBackground()
         {
+            MyDataSet ds = new MyDataSet();
+
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
             reportViewer.SizeToReportContent = true;
@@ -515,8 +630,30 @@ namespace StudentTrackingSystem3.Controllers
             return ultimate;
         }
 
-
-
+        /// <summary>
+        /// Return end month value
+        /// </summary>
+        /// <param name="semesterVal"></param>
+        /// <returns></returns>
+        public int endMonthVal(int? semesterVal)
+        {
+            if (semesterVal == 1)
+            {
+                return 05;
+            }
+            else if (semesterVal == 2)
+            {
+                return 08;
+            }
+            else if (semesterVal == 3)
+            {
+                return 12;
+            }
+            else
+            {
+                return 01;
+            }
+        }
 
         protected override void Dispose(bool disposing)
         {

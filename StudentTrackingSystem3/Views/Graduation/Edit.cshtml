@@ -50,7 +50,7 @@
                     @Html.LabelFor(model => model.DegreeEndSemsId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("DegreeEndSemsId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("DegreeEndSemsId", null, "-- Select Semester --" , htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.DegreeEndSemsId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     @Html.LabelFor(model => model.QualifierResultId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("QualifierResultId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("QualifierResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.QualifierResultId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                     @Html.LabelFor(model => model.Qualifier2ResultId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("Qualifier2ResultId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("Qualifier2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Qualifier2ResultId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -132,7 +132,7 @@
                     @Html.LabelFor(model => model.Form2TypeId,  htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("Form2TypeId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("Form2TypeId", null, "-- Select Form II Type --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Form2TypeId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -175,7 +175,7 @@
                     @Html.LabelFor(model => model.Form2ResultId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("Form2ResultId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("Form2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Form2ResultId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -200,7 +200,7 @@
                     @Html.LabelFor(model => model.CommitteeTypeID, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("CommitteeTypeID", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("CommitteeTypeID", null, "-- Select Committee Type --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.CommitteeTypeID, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -284,7 +284,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-offset-1 col-md-10 row">
+                    <div class="col-md-offset-2 col-md-10 row">
 
                         @{IQueryable<G_CommitteeMember> studentCMs = ViewBag.StudentCMs;}
 
@@ -359,7 +359,7 @@
                     @Html.LabelFor(model => model.Form3ResultId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("Form3ResultId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("Form3ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Form3Result, "", new { @class = "text-danger" })
                     </div>
                 </div>

@@ -50,7 +50,7 @@
                     @Html.LabelFor(model => model.GrantInformation, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div>
-                        @Html.EditorFor(model => model.GrantInformation, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 65%;" } })
+                        @Html.TextAreaFor(model => model.GrantInformation, htmlAttributes: new { @class = "form-control", @style = "max-width: 65%;" })
                         @Html.ValidationMessageFor(model => model.GrantInformation, "", new { @class = "text-danger" })
                     </div>
                 </div>
