@@ -176,6 +176,13 @@ namespace StudentTrackingSystem3.Migrations
             students.ForEach(s => context.Students.AddOrUpdate(p => p.StudentNumber, s));
             SaveChanges(context);
 
+            var prevdegree = new List<G_PrevDegree>
+            {
+                new G_PrevDegree {StudentID = 1, DegreeTypesID=2, Title="Biology", CumulativeGPA=3.32M, SchoolName="Ohio State University", Major="Biology", DateOfAward=Convert.ToDateTime("11/12/2009") },
+                new G_PrevDegree {StudentID = 2, DegreeTypesID=4, Title="Agriculture", CumulativeGPA=3.95M, SchoolName="University of Central Florida", Major="Agricultural Sciences", DateOfAward=Convert.ToDateTime("05/17/2017") }
+            };
+            prevdegree.ForEach(s => context.PreviousDegrees.AddOrUpdate(p => p.Id, s));
+            SaveChanges(context);
 
             var coursework = new List<G_Coursework>
             {

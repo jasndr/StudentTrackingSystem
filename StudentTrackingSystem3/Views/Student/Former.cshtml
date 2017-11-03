@@ -24,28 +24,28 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Student ID #", "Index", new { sortOrder = ViewBag.StudentID_SortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Student ID #", "Former", new { sortOrder = ViewBag.StudentID_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("First Name", "Index", new { sortOrder = ViewBag.FirstName_SortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("First Name", "Former", new { sortOrder = ViewBag.FirstName_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.LastName_SortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Last Name", "Former", new { sortOrder = ViewBag.LastName_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("School Email", "Index", new { sortOrder = ViewBag.SchoolEmail_SortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("School Email", "Former", new { sortOrder = ViewBag.SchoolEmail_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Concentration", "Index", new { sortOrder = ViewBag.ConcentrationsId_SortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Concentration", "Former", new { sortOrder = ViewBag.ConcentrationsId_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Degree Program", "Index", new { sortOrder = ViewBag.TracksId_SortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Degree Program", "Former", new { sortOrder = ViewBag.TracksId_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Degree Start", "Index", new { sortOrder = ViewBag.DegreeStart_SortParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Degree Start", "Former", new { sortOrder = ViewBag.DegreeStart_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
-            @Html.ActionLink("Degree End", "Index", new {sortOrder = ViewBag.DegreeEnd_SportParm, currentFilter = ViewBag.CurrentFilter })
+            @Html.ActionLink("Degree End", "Former", new {sortOrder = ViewBag.DegreeEnd_SportParm, currentFilter = ViewBag.CurrentFilter })
         </th>
 
         <th></th>
@@ -90,4 +90,4 @@
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
-@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+@Html.PagedListPager(Model, page => Url.Action("Former", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
