@@ -163,8 +163,8 @@ namespace StudentTrackingSystem3.DAL
 
             var prevdegree = new List<G_PrevDegree>
             {
-                new G_PrevDegree {StudentID = 1, DegreeTypesID=2, Title="Biology", CumulativeGPA=3.32M, SchoolName="Ohio State University", Major="Biology", DateOfAward=Convert.ToDateTime("11/12/2009") },
-                new G_PrevDegree {StudentID = 2, DegreeTypesID=4, Title="Agriculture", CumulativeGPA=3.95M, SchoolName="University of Central Florida", Major="Agricultural Sciences", DateOfAward=Convert.ToDateTime("05/17/2017") }
+                new G_PrevDegree {StudentID = 1, DegreeTypesID=22, Title="Biology", CumulativeGPA=3.32M, SchoolName="Ohio State University", Major="Biology", DateOfAward=Convert.ToDateTime("11/12/2009") },
+                new G_PrevDegree {StudentID = 2, DegreeTypesID=24, Title="Agriculture", CumulativeGPA=3.95M, SchoolName="University of Central Florida", Major="Agricultural Sciences", DateOfAward=Convert.ToDateTime("05/17/2017") }
             };
             prevdegree.ForEach(s => context.PreviousDegrees.Add(s));
             SaveChanges(context);
