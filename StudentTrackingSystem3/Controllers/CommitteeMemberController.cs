@@ -45,11 +45,11 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Student_LN = db.Students.Find(id).LastName;
 
             var committeeType = "";
-            var concentration = db.Students.Find(id).Concentrations.Name;
-            if (concentration == "MS")
+            var degreeProgram = db.Students.Find(id).DegreePrograms.Name;
+            if (degreeProgram == "MS")
             {
                 committeeType = "thesis";
-            } else if (concentration == "PhD")
+            } else if (degreeProgram == "PhD")
             {
                 committeeType = "dissertation";
             } else
@@ -101,12 +101,12 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Student_LN = g_Student.LastName;
 
             var committeeType = "";
-            var concentration = g_Student.Concentrations.Name;
-            if (concentration == "MS")
+            var degreeProgram = g_Student.DegreePrograms.Name;
+            if (degreeProgram == "MS")
             {
                 committeeType = "thesis";
             }
-            else if (concentration == "PhD")
+            else if (degreeProgram == "PhD")
             {
                 committeeType = "dissertation";
             }

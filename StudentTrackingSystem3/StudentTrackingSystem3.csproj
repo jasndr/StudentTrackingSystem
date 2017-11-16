@@ -256,6 +256,18 @@
     <Compile Include="Migrations\201711030321233_GrandTotals.Designer.cs">
       <DependentUpon>201711030321233_GrandTotals.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711152046363_GrandTotals1.cs" />
+    <Compile Include="Migrations\201711152046363_GrandTotals1.Designer.cs">
+      <DependentUpon>201711152046363_GrandTotals1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711152157108_GrandTotals2.cs" />
+    <Compile Include="Migrations\201711152157108_GrandTotals2.Designer.cs">
+      <DependentUpon>201711152157108_GrandTotals2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711152205480_GrandTotals3.cs" />
+    <Compile Include="Migrations\201711152205480_GrandTotals3.Designer.cs">
+      <DependentUpon>201711152205480_GrandTotals3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommitteeMember.cs" />
@@ -489,6 +501,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711030321233_GrandTotals.resx">
       <DependentUpon>201711030321233_GrandTotals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711152046363_GrandTotals1.resx">
+      <DependentUpon>201711152046363_GrandTotals1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711152157108_GrandTotals2.resx">
+      <DependentUpon>201711152157108_GrandTotals2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711152205480_GrandTotals3.resx">
+      <DependentUpon>201711152205480_GrandTotals3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

@@ -10,9 +10,9 @@ namespace StudentTrackingSystem3.Models
     {
         public int ID { get; set; }
         public int StudentID { get; set; }
-        [Display(Name ="Expected Graduation Semester")]
+        [Display(Name ="Degree Awarded Semester")]
         public Nullable<int> DegreeEndSemsId { get; set; }
-        [Range(1000, 9999), Display(Name = "Year")]
+        [Range(1000, 9999), Display(Name = "Degree Awarded Year")]
         public Nullable<int> DegreeEndYear { get; set; }
         [Display(Name ="Result")]
         public Nullable<int> QualifierResultId { get; set; }

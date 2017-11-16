@@ -35,8 +35,8 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
             //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
             ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";  
-            //if sortOrder = ConcentrationsId then (sort by concentrationsid desc), otherwise (sort by concentrationsid asc, should be default)
-            ViewBag.ConcentrationsId_SortParm = sortOrder == "ConcentrationsId" ? "ConcentrationsId_desc" : "ConcentrationsId";
+            //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
+            ViewBag.DegreeProgramsId_SortParm = sortOrder == "DegreeProgramsId" ? "DegreeProgramsId_desc" : "DegreeProgramsId";
             //if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
             ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
             //if sortOrder = DegreeStartSem then (sort by date new->old), otherwise (sort by date old-new, should be default)
@@ -96,11 +96,11 @@ namespace StudentTrackingSystem3.Controllers
                 case "SchoolEmail_desc":
                     students = students.OrderByDescending(s => s.SchoolEmail);
                     break;
-                case "ConcentrationsId":
-                    students = students.OrderBy(s => s.ConcentrationsId);
+                case "DegreeProgramsId":
+                    students = students.OrderBy(s => s.DegreeProgramsId);
                     break;
-                case "ConcentrationsId_desc":
-                    students = students.OrderByDescending(s => s.ConcentrationsId);
+                case "DegreeProgramsId_desc":
+                    students = students.OrderByDescending(s => s.DegreeProgramsId);
                     break;
                 case "TracksId":
                     students = students.OrderBy(s => s.TracksId);
@@ -138,8 +138,8 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
             //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
             ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
-            //if sortOrder = ConcentrationsId then (sort by concentrationsid desc), otherwise (sort by concentrationsid asc, should be default)
-            ViewBag.ConcentrationsId_SortParm = sortOrder == "ConcentrationsId" ? "ConcentrationsId_desc" : "ConcentrationsId";
+            //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
+            ViewBag.DegreeProgramsId_SortParm = sortOrder == "DegreeProgramsId" ? "DegreeProgramsId_desc" : "DegreeProgramsId";
             //if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
             ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
             //if sortOrder = DegreeStartSem then (sort by date new->old), otherwise (sort by date old-new, should be default)
@@ -200,11 +200,11 @@ namespace StudentTrackingSystem3.Controllers
                 case "SchoolEmail_desc":
                     formerStudents = formerStudents.OrderByDescending(s => s.SchoolEmail);
                     break;
-                case "ConcentrationsId":
-                    formerStudents = formerStudents.OrderBy(s => s.ConcentrationsId);
+                case "DegreeProgramsId":
+                    formerStudents = formerStudents.OrderBy(s => s.DegreeProgramsId);
                     break;
-                case "ConcentrationsId_desc":
-                    formerStudents = formerStudents.OrderByDescending(s => s.ConcentrationsId);
+                case "DegreeProgramsId_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.DegreeProgramsId);
                     break;
                 case "TracksId":
                     formerStudents = formerStudents.OrderBy(s => s.TracksId);
@@ -250,7 +250,7 @@ namespace StudentTrackingSystem3.Controllers
 
             //private SchoolContext db = new SchoolContext();
             SqlConnection conx = new SqlConnection(connectionString);
-            SqlDataAdapter adp = new SqlDataAdapter("SELECT DISTINCT s.StudentNumber      ,s.FirstName	  ,s.MiddleName	  ,s.LastName	  ,s.SchoolEmail	  ,s.OtherEmail	  ,s.Phone	  ,gen.Name [Gender]	  ,STUFF((	    SELECT ', ' + r2.Name 	    FROM G_Races r2 		INNER JOIN G_PersonRaces pr2 ON pr2.RaceID = r2.Id		INNER JOIN G_Student s2 ON pr2.StudentID = s2.Id		WHERE  s2.Id = s.Id		FOR XML PATH ('')), 1, 1, '') [RaceEthnicity]	  ,deg.Name [DegreeProgram]	  ,tra.Name [Track]	  ,pla.Name [Plan]	  ,CONVERT(varchar(10), cast(s.DegreeStart as date), 101) [DegreeStart]	  ,CONVERT(varchar(10), cast(s.DegreeEnd as date), 101) [DegreeEnd]FROM G_Student sINNER JOIN G_PersonRaces pr ON s.Id = pr.StudentID INNER JOIN G_Races r ON pr.RaceID = r.Id INNER JOIN G_CommonFields gen ON s.GendersId = gen.ID INNER JOIN G_CommonFields deg ON s.DegreeProgramsId = deg.ID INNER JOIN G_CommonFields tra ON s.ConcentrationsId = tra.ID INNER JOIN G_CommonFields pla ON s.TracksId = pla.ID", conx);
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT DISTINCT s.StudentNumber      ,s.FirstName	  ,s.MiddleName	  ,s.LastName	  ,s.SchoolEmail	  ,s.OtherEmail	  ,s.Phone	  ,gen.Name [Gender]	  ,STUFF((	    SELECT ', ' + r2.Name 	    FROM G_Races r2 		INNER JOIN G_PersonRaces pr2 ON pr2.RaceID = r2.Id		INNER JOIN G_Student s2 ON pr2.StudentID = s2.Id		WHERE  s2.Id = s.Id		FOR XML PATH ('')), 1, 1, '') [RaceEthnicity]	  ,deg.Name [DegreeProgram]	  ,tra.Name [Track]	  ,pla.Name [Plan]	  ,CONVERT(varchar(10), cast(s.DegreeStart as date), 101) [DegreeStart]	  ,CONVERT(varchar(10), cast(s.DegreeEnd as date), 101) [DegreeEnd]FROM G_Student sINNER JOIN G_PersonRaces pr ON s.Id = pr.StudentID INNER JOIN G_Races r ON pr.RaceID = r.Id INNER JOIN G_CommonFields gen ON s.GendersId = gen.ID INNER JOIN G_CommonFields deg ON s.DegreeProgramsId = deg.ID INNER JOIN G_CommonFields tra ON s.DegreeProgramsId = tra.ID INNER JOIN G_CommonFields pla ON s.TracksId = pla.ID", conx);
             adp.Fill(ds, ds.DataTable1.TableName);
 
             reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Background-Rpt.rdlc";
@@ -299,7 +299,7 @@ namespace StudentTrackingSystem3.Controllers
 
             //View Bags for Dropdowns
             ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
-            ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
             ViewBag.PlansIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Plan"), "Id", "Name");
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
@@ -312,7 +312,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(/*[Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student,*/UltimateViewModel ultimate)
+        public ActionResult Create(/*[Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student,*/UltimateViewModel ultimate)
         {
             try
             {
@@ -350,7 +350,7 @@ namespace StudentTrackingSystem3.Controllers
 
             //View Bags for Dropdowns
             ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
-            ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
             ViewBag.PlansIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Plan"), "Id", "Name");
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
@@ -381,7 +381,7 @@ namespace StudentTrackingSystem3.Controllers
 
             //View Bags for Dropdowns
             ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
-            ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
             ViewBag.PlansIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Plan"), "Id", "Name");
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
@@ -406,7 +406,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,ConcentrationsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student*/UltimateViewModel ultimate, PostedRaces postedRaces)
+        public ActionResult Edit(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student*/UltimateViewModel ultimate, PostedRaces postedRaces)
         {
             try
             {
@@ -480,7 +480,7 @@ namespace StudentTrackingSystem3.Controllers
 
             //View Bags for Dropdowns
             ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
-            ViewBag.ConcentrationsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Concentration"), "Id", "Name");
+            ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");

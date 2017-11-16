@@ -50,9 +50,9 @@ namespace StudentTrackingSystem3.DAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<G_Student>()
-                .HasRequired(c => c.Concentrations)
+                .HasRequired(c => c.DegreePrograms)
                 .WithMany()
-                .HasForeignKey(d => d.ConcentrationsId)
+                .HasForeignKey(d => d.DegreeProgramsId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<G_Student>()

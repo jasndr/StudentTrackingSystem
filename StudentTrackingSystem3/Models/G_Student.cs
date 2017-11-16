@@ -29,19 +29,19 @@ namespace StudentTrackingSystem3.Models
         public int GendersId { get; set; }
         [Display(Name ="Race Other")]
         public string RaceOther { get; set; }
-        [Required, Display(Name ="Concentration")]//[ForeignKey()]
-        public int ConcentrationsId { get; set; }
+        [Required, Display(Name ="Degree Program")]//[ForeignKey()]
+        public int DegreeProgramsId { get; set; }
         [Required, Display(Name ="Track")]//[ForeignKey()]
         public int TracksId { get; set; }
         [Required, Display(Name ="Plan")]//[ForeignKey()]
         public int PlansId { get; set; }
         [Required, Display(Name ="Degree Program Start Semester")]//[ForeignKey()]
         public int DegreeStartSemsId { get; set; }
-        [Required, Range(1000, 9999), Display(Name ="Year")]
+        [Required, Range(1000, 9999), Display(Name ="Degree Program Start Year")]
         public int DegreeStartYear { get; set; }
 
         public virtual G_CommonFields Genders { get; set; }
-        public virtual G_CommonFields Concentrations { get; set; }
+        public virtual G_CommonFields DegreePrograms { get; set; }
         public virtual G_CommonFields Tracks { get; set; }
         public virtual G_CommonFields Plans { get; set; }
         public virtual G_CommonFields DegreeStartSems { get; set; }
