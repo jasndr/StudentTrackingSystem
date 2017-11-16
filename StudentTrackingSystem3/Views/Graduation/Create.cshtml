@@ -41,7 +41,9 @@
 
 
         <h4 class="alert alert-success text-center">
-            <strong>Qualifying Exam Passed (Form I)</strong>
+            <strong>
+                <span>Pre-Candidacy Progress (Form I)</span>
+            </strong>
         </h4>
 
         <div class="row">
@@ -87,10 +89,7 @@
 
         <h4 class="alert alert-success text-center">
             <strong>
-                <span class="form2type">Comprehensive Exam / Proposal Presentation (Form II)</span>
-                <span class="comprehensiveexam">Comprehensive Exam (Form II)</span>
-                <span class="proposalpresentation">Proposal Presentation (Form II)</span>
-                
+                <span>Advance to Candidacy (Form II)</span>
             </strong>
         </h4>
 
@@ -154,13 +153,11 @@
 
         </div>
 
-        <h4 class="alert alert-success text-center">
+        <h5 class="alert alert-success text-center narrowAlert">
             <strong>
-                <span class="committeetype">Thesis / Dissertation Committee Members</span>
-                <span class="thesis">Thesis Committee Members</span>
-                <span class="dissertation">Dissertation Committee Members</span>
+                Committee Members
             </strong>
-        </h4>
+        </h5>
 
         <div class="row">
 
@@ -259,10 +256,10 @@
 
                         @{IQueryable<G_CommitteeMember> studentCMs = ViewBag.StudentCMs;}
 
-                        @{if (!object.ReferenceEquals(studentCMs.FirstOrDefault(),  null))
+                        @{if (!object.ReferenceEquals(studentCMs.FirstOrDefault(), null))
                             {
                                 <table class="table">
-                   
+
                                     @foreach (var item in studentCMs)
                                     {
                                         <tr>
@@ -271,7 +268,7 @@
                                             <td><strong>@Html.DisplayFor(modelItem => item.Name)</strong></td>
                                             <td>@Html.DisplayFor(modelItem => item.Department)</td>
                                             <td>@Html.DisplayFor(modelItem => item.University)</td>
-                                            <td>@Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID}, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                            <td>@Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
                                         </tr>
                                     }
                                 </table>
@@ -292,9 +289,29 @@
 
         <h4 class="alert alert-success text-center">
             <strong>
-                <span class="committeetype">Thesis / Dissertation Presentation (Form III)</span>
-                <span class="thesis">Thesis Presentation (Form III)</span>
-                <span class="dissertation">Dissertation Presentation (Form III)</span>
+
+                @{
+
+                    string degreeProgram = ViewBag.DegreeProgramName;
+                    string plan = ViewBag.Plan;
+
+                    if (degreeProgram == "MS" && plan == "Plan A")
+                    {
+                        <span class="msPlanA">Thesis Evaluation (Form III)</span>
+                    }
+                    else if (degreeProgram == "MS" && plan == "Plan B")
+                    {
+                        <span class="msPlanB">Capstone Project/Final Examination (Form III)</span>
+                    }
+                    else if (degreeProgram == "PhD")
+                    {
+                        <span class="dissertation">Dissertation Evaluation (Form III)</span>
+                    }
+                    else
+                    {
+                        <span class="noPlan">Form III</span>
+                    }
+                }
             </strong>
         </h4>
 
@@ -338,8 +355,42 @@
         <br />
 
         <h4 class="alert alert-success text-center">
-            <strong>Degree Awarded</strong>
+            <strong>
+
+                @{
+                    if (degreeProgram == "MS" && plan == "Plan A")
+                    {
+                        <span class="msPlanA">Thesis Submission (Form IV)</span>
+                    }
+                    else if (degreeProgram == "MS" && plan == "Plan B")
+                    {
+                        <span class="msPlanB">Capstone Project Paper Submission (Form IV)</span>
+                    }
+                    else if (degreeProgram == "PhD")
+                    {
+                        <span class="dissertation">Dissertation Evaluation (Form IV)</span>
+                    }
+                    else
+                    {
+                        <span class="noPlan">Form IV</span>
+                    }
+                }
+
+
+            </strong>
         </h4>
+
+        <div class="row">
+            [Insert file upload here!]
+        </div>
+
+        <br />
+
+        <h5 class="alert alert-success text-center narrowAlert">
+            <strong>
+                Degree Awarded
+            </strong>
+        </h5>
 
         <div class="row">
 
@@ -385,7 +436,7 @@
 
 
     </div>
-}
+                    }
 
 
 @section Scripts {

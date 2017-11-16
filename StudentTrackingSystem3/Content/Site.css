@@ -98,3 +98,8 @@ a{
 .tableRowHeader{
      background-color: #d3f8d3;
 }
+
+.narrowAlert {
+    padding: 5px 5px 5px 5px;
+    width: 14%;
+}

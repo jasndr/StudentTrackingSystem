@@ -58,6 +58,10 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == id);
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
+            int degreeProgramId = db.Students.Find(id).DegreeProgramsId;
+            ViewBag.DegreeProgramName = db.CommonFields.Find(degreeProgramId).Name;
+            int planId = db.Students.Find(id).PlansId;
+            ViewBag.Plan = db.CommonFields.Find(planId).Name;
             
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category=="Season"), "ID", "Name");
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
