@@ -220,53 +220,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201710312003064_PostGraduation.cs" />
-    <Compile Include="Migrations\201710312003064_PostGraduation.Designer.cs">
-      <DependentUpon>201710312003064_PostGraduation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710312132165_CurriculumVitae.cs" />
-    <Compile Include="Migrations\201710312132165_CurriculumVitae.Designer.cs">
-      <DependentUpon>201710312132165_CurriculumVitae.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711010050266_ChangeActivity.cs" />
-    <Compile Include="Migrations\201711010050266_ChangeActivity.Designer.cs">
-      <DependentUpon>201711010050266_ChangeActivity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711010302279_ChangeActivity1.cs" />
-    <Compile Include="Migrations\201711010302279_ChangeActivity1.Designer.cs">
-      <DependentUpon>201711010302279_ChangeActivity1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711012216124_PreviousEmployment.cs" />
-    <Compile Include="Migrations\201711012216124_PreviousEmployment.Designer.cs">
-      <DependentUpon>201711012216124_PreviousEmployment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711020105577_Publications.cs" />
-    <Compile Include="Migrations\201711020105577_Publications.Designer.cs">
-      <DependentUpon>201711020105577_Publications.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711020145108_Grants.cs" />
-    <Compile Include="Migrations\201711020145108_Grants.Designer.cs">
-      <DependentUpon>201711020145108_Grants.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711020241483_Honors.cs" />
-    <Compile Include="Migrations\201711020241483_Honors.Designer.cs">
-      <DependentUpon>201711020241483_Honors.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711030321233_GrandTotals.cs" />
-    <Compile Include="Migrations\201711030321233_GrandTotals.Designer.cs">
-      <DependentUpon>201711030321233_GrandTotals.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711152046363_GrandTotals1.cs" />
-    <Compile Include="Migrations\201711152046363_GrandTotals1.Designer.cs">
-      <DependentUpon>201711152046363_GrandTotals1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711152157108_GrandTotals2.cs" />
-    <Compile Include="Migrations\201711152157108_GrandTotals2.Designer.cs">
-      <DependentUpon>201711152157108_GrandTotals2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711152205480_GrandTotals3.cs" />
-    <Compile Include="Migrations\201711152205480_GrandTotals3.Designer.cs">
-      <DependentUpon>201711152205480_GrandTotals3.cs</DependentUpon>
+    <Compile Include="Migrations\201711180236118_UpdateForms.cs" />
+    <Compile Include="Migrations\201711180236118_UpdateForms.Designer.cs">
+      <DependentUpon>201711180236118_UpdateForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -475,41 +431,8 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710312003064_PostGraduation.resx">
-      <DependentUpon>201710312003064_PostGraduation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710312132165_CurriculumVitae.resx">
-      <DependentUpon>201710312132165_CurriculumVitae.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711010050266_ChangeActivity.resx">
-      <DependentUpon>201711010050266_ChangeActivity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711010302279_ChangeActivity1.resx">
-      <DependentUpon>201711010302279_ChangeActivity1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711012216124_PreviousEmployment.resx">
-      <DependentUpon>201711012216124_PreviousEmployment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711020105577_Publications.resx">
-      <DependentUpon>201711020105577_Publications.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711020145108_Grants.resx">
-      <DependentUpon>201711020145108_Grants.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711020241483_Honors.resx">
-      <DependentUpon>201711020241483_Honors.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711030321233_GrandTotals.resx">
-      <DependentUpon>201711030321233_GrandTotals.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711152046363_GrandTotals1.resx">
-      <DependentUpon>201711152046363_GrandTotals1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711152157108_GrandTotals2.resx">
-      <DependentUpon>201711152157108_GrandTotals2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711152205480_GrandTotals3.resx">
-      <DependentUpon>201711152205480_GrandTotals3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711180236118_UpdateForms.resx">
+      <DependentUpon>201711180236118_UpdateForms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

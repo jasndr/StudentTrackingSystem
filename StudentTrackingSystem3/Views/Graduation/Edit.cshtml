@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
 
         <h4>Editing graduation requirements record for <strong>@ViewBag.Student_FN @ViewBag.Student_LN</strong></h4>
@@ -25,7 +25,7 @@
 
             @Html.ActionLink("Requirements", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID}, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+            @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
         </div>
 
         <hr />
@@ -49,7 +49,15 @@
                 <span>Pre-Candidacy Progress (Form I)</span>
             </strong>
         </h4>
-        
+
+        <div class="row">
+
+            <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                <strong>Qualifying Examination</strong>
+            </h5>
+
+        </div>
+
         <div class="row">
 
             <div class="col-md-offset-1 col-md-4 col-xs-12">
@@ -65,7 +73,25 @@
 
             </div>
 
-            <div class="col-md-3 col-xs-12">
+            <div class="col-md-4 col-xs-12">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed1 control-label" })
+                    @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed1 control-label" })
+                    <br />
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.DateOfQualification, new { @Value = Model.DateOfQualification?.ToString("MM/dd/yyyy"), @class = "form-control datepicker", placeholder = "MM/DD/YYYY" })
+                        @Html.ValidationMessageFor(model => model.DateOfQualification, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-offset-1 col-md-4 col-xs-12">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Qualifier2ResultId, htmlAttributes: new { @class = "control-label" })
@@ -81,11 +107,12 @@
             <div class="col-md-4 col-xs-12">
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.DateOfQualification, htmlAttributes: new { @class = "control-label" })
+                    @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed2 control-label" })
+                    @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed2 control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DateOfQualification, new { @Value = Model.DateOfQualification?.ToString("MM/dd/yyyy"), @class = "form-control datepicker" })
-                        @Html.ValidationMessageFor(model => model.DateOfQualification, "", new { @class = "text-danger" })
+                        @Html.TextBoxFor(model => model.DateOfQualification2, new { @Value = Model.DateOfQualification2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker", placeholder = "MM/DD/YYYY" })
+                        @Html.ValidationMessageFor(model => model.DateOfQualification2, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -99,22 +126,130 @@
             </strong>
         </h4>
 
-        <div class="row">
 
-            <div class="col-md-offset-1 col-md-3 col-xs-12">
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Form2TypeId,  htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.DropDownList("Form2TypeId", null, "-- Select Form II Type --", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Form2TypeId, "", new { @class = "text-danger" })
+        @{
+            if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                 || Model.Student.DegreePrograms.Name == "PhD")
+            {
+                <div class="row">
+                    <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                        <strong>
+                            <span class="msPlanA dissertation">Proposal Presentation</span>
+                        </strong>
+                    </h5>
+                </div>
+                <div class="col-md-offset-1 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Form2ResultId, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownList("Form2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Form2ResultId, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Form2Date, htmlAttributes: new { @class = "control-label" })
+                            <br />
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Form2Date, new { @Value = Model.Form2Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker" })
+                                @Html.ValidationMessageFor(model => model.Form2Date, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
 
-            </div>
+
+
+            if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                 || Model.Student.DegreePrograms.Name == "PhD")
+            {
+                <div class="row">
+                    <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                        <strong>
+                            <span class="msPlanB dissertation">Comprehensive Exam</span>
+                        </strong>
+                    </h5>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CompExamResultId, htmlAttributes: new { @class = "control-label" })
+                            <br />
+                            <div class="col-md-10">
+                                @Html.DropDownList("CompExamResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CompExamResultId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Passed", htmlAttributes: new { @class = "dateOfCompExamPassed1 control-label" })
+                            @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed1 control-label" })
+                            <br />
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.DateOfCompExam, new { @Value = Model.DateOfCompExam?.ToString("MM/dd/yyyy"), @class = "form-control datepicker", placeholder = "MM/DD/YYYY" })
+                                @Html.ValidationMessageFor(model => model.DateOfCompExam, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-1 col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CompExam2ResultId, htmlAttributes: new { @class = "control-label" })
+                            <br />
+                            <div class="col-md-10">
+                                @Html.DropDownList("CompExam2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.CompExam2ResultId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Passed", htmlAttributes: new { @class = "dateOfCompExamPassed2 control-label" })
+                            @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed2 control-label" })
+                            <br />
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.DateOfCompExam2, new { @Value = Model.DateOfCompExam2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker", placeholder = "MM/DD/YYYY" })
+                                @Html.ValidationMessageFor(model => model.DateOfCompExam2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+            }
+        }
+        <div class="row">
+
+            <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                <strong>
+                    @{
+                        if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                             || Model.Student.DegreePrograms.Name == "PhD")
+                        {
+                            <spam class="msPlanA dissertation">Research Topic</spam>
+                        }
+                        else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                        {
+                            <span class="msPlanB">Capstone Project Topic</span>
+                        }
+                        else
+                        {
+                            <span class="noPlan">Research Topic</span>
+                        }
+                    }
+                </strong>
+            </h5>
 
         </div>
+
 
         <div class="row">
 
@@ -124,63 +259,44 @@
                     @Html.LabelFor(model => model.Form2Title, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control", @style="max-width: 480px;" } })
+                        @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
                         @Html.ValidationMessageFor(model => model.Form2Title, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
             </div>
 
-            <div class="col-md-2 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Form2Date, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Form2Date, new { @Value = Model.Form2Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker" })
-                        @Html.ValidationMessageFor(model => model.Form2Date, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-3 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Form2ResultId, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.DropDownList("Form2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.Form2ResultId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
         </div>
 
-        <h5 class="alert alert-success text-center narrowAlert">
-            <strong>
-                Committee Members
-            </strong>
-        </h5>
+        <br />
 
         <div class="row">
 
-            <div class="col-md-offset-1 col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.CommitteeTypeID, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.DropDownList("CommitteeTypeID", null, "-- Select Committee Type --", htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.CommitteeTypeID, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
+            <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                <strong>
+                    @{
+                        if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                        {
+                            <spam class="msPlanA">Appointment of Thesis Committee Members</spam>
+                        }
+                        else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                        {
+                            <span class="msPlanB">Appointment of Program Committee Members</span>
+                        }
+                        else if (Model.Student.DegreePrograms.Name == "PhD")
+                        {
+                            <span class="dissertation">Appointment of Dissertation Committee Members</span>
+                        }
+                        else
+                        {
+                            <span class="noPlan">Research Topic</span>
+                        }
+                    }
+                </strong>
+            </h5>
 
         </div>
+
 
         <h4 class="col-md-offset-1"><strong>Advisor</strong></h4>
 
@@ -210,14 +326,14 @@
                     </div>
                 </div>
 
-            </div>  
+            </div>
 
         </div>
 
         <div class="row">
 
             <div class="col-md-offset-2 col-md-4 col-xs-12">
-                
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.AdvisorDepartment, htmlAttributes: new { @class = "control-label" })
                     <br />
@@ -251,10 +367,8 @@
             <div class="col-md-8 col-xs-12">
                 <div class="form-group">
 
-                    <div class="row">
-                        <div class="col-md-offset-2">
-                            @Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID }, null)
-                        </div>
+                    <div class="col-md-offset-2 row col-md-10">
+                        @Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of entered data." })
                     </div>
 
                     <div class="col-md-offset-2 col-md-10 row">
@@ -277,11 +391,11 @@
                                         </tr>
                                     }
                                 </table>
-                                        }
-                                        else
-                                        {
-                                            <p><em>No committee members listed.  Please add a committee member.</em></p>
-                                        }
+                            }
+                            else
+                            {
+                                <p><em>No committee members listed.  Please add a committee member.</em></p>
+                            }
                         }
 
                     </div>
@@ -316,13 +430,40 @@
 
         <div class="row">
 
+            <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                <strong>
+                    @{
+                        if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                        {
+                            <spam class="msPlanA">Thesis Defense</spam>
+                        }
+                        else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                        {
+                            <span class="msPlanB">Capstone Project Presentation</span>
+                        }
+                        else if (Model.Student.DegreePrograms.Name == "PhD")
+                        {
+                            <span class="dissertation">Dissertation Defense</span>
+                        }
+                        else
+                        {
+                            <span class="noPlan">Final Presentation</span>
+                        }
+                    }
+                </strong>
+            </h5>
+
+        </div>
+
+        <div class="row">
+
             <div class="col-md-offset-1 col-md-6 col-xs-12">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Form3Title, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Form3Title, new { htmlAttributes = new { @class = "form-control", @style="max-width: 480px;" } })
+                        @Html.EditorFor(model => model.Form3Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
                         @Html.ValidationMessageFor(model => model.Form3Title, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -359,6 +500,64 @@
 
         <br />
 
+        @{
+            if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+            {
+                <div class="row">
+                    <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                        <strong>Final Examination</strong>
+                    </h5>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FinalExamResultId, htmlAttributes: new { @class = "control-label" })
+                            <br />
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.FinalExamResultId, (SelectList)ViewBag.FinalExamResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.FinalExamResultId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed1 control-label" })
+                            @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed1 control-label" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DateOfFinalExam, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                                @Html.ValidationMessageFor(model => model.DateOfFinalExam, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-offset-2 col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FinalExam2ResultId, htmlAttributes: new { @class = "control-label" })
+                            <div class="col-md-10">
+                                @Html.DropDownListFor(model => model.FinalExam2ResultId, (SelectList)ViewBag.FinalExam2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.FinalExam2ResultId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed2 control-label" })
+                            @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed2 control-label" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.DateOfFinalExam2, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                                @Html.ValidationMessageFor(model => model.DateOfFinalExam2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+
+            }
+        }
+
         <h4 class="alert alert-success text-center">
             <strong>
 
@@ -373,29 +572,58 @@
                     }
                     else if (Model.Student.DegreePrograms.Name == "PhD")
                     {
-                        <span class="dissertation">Dissertation Evaluation  (Form IV)</span>
+                        <span class="dissertation">Dissertation Submission  (Form IV)</span>
                     }
                     else
                     {
                         <span class="noPlan">Form IV</span>
                     }
                 }
-                
-                
+
+
             </strong>
         </h4>
 
         <div class="row">
-            [Insert file upload here!]
+
+            <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                <strong>
+                    @{
+                        if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                        {
+                            <span class="msPlanA">Copy of Manuscript (Thesis)</span>
+                        }
+                        else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                        {
+                            <span class="msPlanB">Copy of Capstone Project Paper</span>
+                        }
+                        else if (Model.Student.DegreePrograms.Name == "PhD")
+                        {
+                            <span class="dissertation">Copy of Manuscript</span>
+                        }
+                        else
+                        {
+                            <span class="noPlan">Copy of Paper</span>
+                        }
+                    }
+                </strong>
+            </h5>
+
+        </div>
+
+        <div class="row">
+            <span class="col-md-offset-2">[Insert file upload here!]</span>
         </div>
 
         <br />
 
-        <h5 class="alert alert-success text-center narrowAlert">
-            <strong>
-                Degree Awarded
-            </strong>
-        </h5>
+        <div class="row">
+
+            <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                <strong>Degree Awarded</strong>
+            </h5>
+
+        </div>
 
         <div class="row">
 
@@ -433,10 +661,11 @@
                 </div>
             </div>
 
-        </div>    
-        
+        </div>
+
     </div>
-}
+
+                    }
 
 
 @section Scripts {

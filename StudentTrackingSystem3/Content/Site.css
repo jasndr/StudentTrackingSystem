@@ -101,5 +101,8 @@ a{
 
 .narrowAlert {
     padding: 5px 5px 5px 5px;
-    width: 14%;
+    margin-right: 0px;
+    color: darkgreen;
+    background-color: #d6eebe;
+    border-radius: 5px;
 }

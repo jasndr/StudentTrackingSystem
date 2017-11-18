@@ -7,13 +7,13 @@ namespace StudentTrackingSystem3.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class PostGraduation : IMigrationMetadata
+    public sealed partial class UpdateForms : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PostGraduation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateForms));
         
         string IMigrationMetadata.Id
         {
-            get { return "201710312003064_PostGraduation"; }
+            get { return "201711180236118_UpdateForms"; }
         }
         
         string IMigrationMetadata.Source

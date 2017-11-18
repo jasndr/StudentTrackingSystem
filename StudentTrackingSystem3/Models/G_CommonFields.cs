@@ -30,6 +30,10 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_Graduation> ReturnDegreeEndSems { get; set; }
         public virtual ICollection<G_Graduation> ReturnQualifierResults { get; set; }
         public virtual ICollection<G_Graduation> ReturnQualifier2Results { get; set; }
+        public virtual ICollection<G_Graduation> ReturnCompExamResults { get; set; }
+        public virtual ICollection<G_Graduation> ReturnQCompExam2Results { get; set; }
+        public virtual ICollection<G_Graduation> ReturnFinalExamResults { get; set; }
+        public virtual ICollection<G_Graduation> ReturnFinalExam2Results { get; set; }
         public virtual ICollection<G_Graduation> ReturnForm2Type { get; set; }
         public virtual ICollection<G_Graduation> ReturnForm2Result { get; set; }
         public virtual ICollection<G_Graduation> ReturnForm3Result { get; set; }
