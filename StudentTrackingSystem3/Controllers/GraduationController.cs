@@ -62,6 +62,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeProgramName = db.CommonFields.Find(degreeProgramId).Name;
             int planId = db.Students.Find(id).PlansId;
             ViewBag.Plan = db.CommonFields.Find(planId).Name;
+            ViewBag.StudentManuscripts = db.Files.Where(g => g.StudentID == id);
             
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category=="Season"), "ID", "Name");
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
@@ -121,6 +122,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == id);
             ViewBag.Student_FN = g_Student.FirstName;
             ViewBag.Student_LN = g_Student.LastName;
+            ViewBag.StudentManuscripts = db.Files.Where(g => g.StudentID == id);
 
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", g_Graduation.DegreeEndSemsId);
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.QualifierResultId);

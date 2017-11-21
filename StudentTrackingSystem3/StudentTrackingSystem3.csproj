@@ -209,6 +209,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HonorsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ManuscriptController.cs" />
     <Compile Include="Controllers\PerformanceController.cs" />
     <Compile Include="Controllers\PostGraduationController.cs" />
     <Compile Include="Controllers\PrevDegreeController.cs" />
@@ -224,12 +225,17 @@
     <Compile Include="Migrations\201711180236118_UpdateForms.Designer.cs">
       <DependentUpon>201711180236118_UpdateForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711210150329_ManuscriptUpload.cs" />
+    <Compile Include="Migrations\201711210150329_ManuscriptUpload.Designer.cs">
+      <DependentUpon>201711210150329_ManuscriptUpload.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommitteeMember.cs" />
     <Compile Include="Models\G_CommonFields.cs" />
     <Compile Include="Models\G_Course.cs" />
     <Compile Include="Models\G_Coursework.cs" />
+    <Compile Include="Models\G_Manuscript.cs" />
     <Compile Include="Models\G_CurriculumVitae.cs" />
     <Compile Include="Models\G_File.cs" />
     <Compile Include="Models\G_FileType.cs" />
@@ -414,6 +420,8 @@
     <Content Include="Views\Honors\Create.cshtml" />
     <Content Include="Views\Honors\Edit.cshtml" />
     <Content Include="Views\Student\Former.cshtml" />
+    <Content Include="Views\Manuscript\Create.cshtml" />
+    <Content Include="Views\Manuscript\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -433,6 +441,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201711180236118_UpdateForms.resx">
       <DependentUpon>201711180236118_UpdateForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711210150329_ManuscriptUpload.resx">
+      <DependentUpon>201711210150329_ManuscriptUpload.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

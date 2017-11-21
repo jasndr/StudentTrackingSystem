@@ -100,26 +100,58 @@
             <div class="col-md-offset-1">
 
                 <div class="form-group">
-                    
+
                     <div class="row">
+
+                        <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = ViewBag.StudentID }, null)</p>
 
                         @{IQueryable<G_File> studentCVs = ViewBag.StudentCVs;}
 
                         @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == G_FileType.CurriculumVitae).FirstOrDefault(), null))
                             {
-                                foreach (var file in studentCVs)
+                                var count = 1;
+                                foreach (var file in studentCVs.OrderByDescending(g => g.G_FileId))
                                 {
                                     if (file.FileType == StudentTrackingSystem3.Models.G_FileType.CurriculumVitae)
                                     {
-                                        <p>&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;  
-                                           @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" }) 
-                                        </p>
+                                        if (count == 1)
+                                        {
+
+                                            <div class="col-md-offset-1">
+                                                <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                                    <em><strong>Current CV</strong></em>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
+                                                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            
+                                        }
+                                        else
+                                        {
+                                            if (count == 2)
+                                            {
+                                                <p class="col-md-offset-1"><em><strong>CV History</strong></em></p>
+
+                                            }
+                                            <div class="col-md-offset-1">
+                                                <ul>
+                                                    <li>
+                                                        
+                                                            <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
+                                                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                        
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        }
                                     }
+                                    count++;
                                 }
-                            }
-                            else
-                            {
-                                <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = ViewBag.StudentID }, null)</p>
                             }
                         }
 
@@ -181,7 +213,7 @@
         <br />
 
         <h4><strong><u>Previous Employment</u></strong></h4>
- 
+
         <div class="row">
             <div class="form-group">
 
@@ -419,7 +451,7 @@
             int startMonth = startMonthVal(student.DegreeStartSems.DisplayOrder);
             DateTime startDate = new DateTime(student.DegreeStartYear, startMonth, 31);
 
-            int endMonth =  endMonthVal(degreeEndSemId.GetValueOrDefault(01));
+            int endMonth = endMonthVal(degreeEndSemId.GetValueOrDefault(01));
             DateTime endDate = new DateTime(degreeEndYear.GetValueOrDefault(1000), endMonth, 31);
             DateTime now = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
@@ -549,7 +581,8 @@
                                         grantAfter++;
                                     }
 
-                                } else if (grantDate < startDate)
+                                }
+                                else if (grantDate < startDate)
                                 {
                                     grantBefore++;
                                 }
@@ -614,7 +647,8 @@
                                         honorsAfter++;
                                     }
 
-                                } else if (honorDate < startDate)
+                                }
+                                else if (honorDate < startDate)
                                 {
                                     honorsBefore++;
                                 }
@@ -665,7 +699,7 @@
 
 
     </div>
-}
+                        }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

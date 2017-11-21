@@ -612,7 +612,66 @@
         </div>
 
         <div class="row">
-            <span class="col-md-offset-2">[Insert file upload here!]</span>
+            
+            <div class="col-md-offset-2">
+
+                <div class="form-group">
+
+                    <div class="row">
+
+                        <p>@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = Model.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })</p>
+                        @{IQueryable<G_File> studentManuscripts = ViewBag.StudentManuscripts; }
+
+                        @{ if (!object.ReferenceEquals(studentManuscripts.Where(g=>g.FileType == G_FileType.Manuscript).FirstOrDefault(), null))
+                            {
+                                var count = 1;
+                                foreach(var file in studentManuscripts.OrderByDescending(g => g.G_FileId))
+                                {
+                                    if (file.FileType == G_FileType.Manuscript)
+                                    {
+                                        if (count == 1)
+                                        {
+                                            <div class="col-md-offset-1">
+                                                <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                                    <em><strong>Current Manuscript</strong></em>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="~/File?id=@file.G_FileId">@file.FileName</a> &mdash;
+                                                            @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <br />
+                                        }
+                                        else
+                                        {
+                                            if (count == 2)
+                                            {
+                                                <p class="col-md-offset-1"><em><strong>Manuscript History</strong></em></p>
+                                            }
+                                            <div class="col-md-offset-1">
+                                                <ul>
+                                                    <li>
+                                                        <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
+                                                        @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.G_FileId }, new { @class="btn btn-xs navbuttons", @style="background-color: #060; color: #FFF"})
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        }
+                                    }
+                                    count++;
+                                }
+                            }
+
+                         }
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
         <br />

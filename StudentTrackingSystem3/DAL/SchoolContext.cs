@@ -32,6 +32,7 @@ namespace StudentTrackingSystem3.DAL
         public DbSet<G_Publications> Publications { get; set; }
         public DbSet<G_Grants> Grants { get; set; }
         public DbSet<G_Honors> Honors { get; set; }
+        public DbSet<G_Manuscript> Manuscripts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

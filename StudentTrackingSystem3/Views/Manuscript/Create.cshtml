@@ -1,21 +1,20 @@
-﻿@model StudentTrackingSystem3.Models.G_CurriculumVitae
+﻿@model StudentTrackingSystem3.Models.G_Manuscript
 
 @{
-    ViewBag.Title = "Editing Curriculum Vitae";
+    ViewBag.Title = "Adding Manuscript";
 }
 
-<h2>Post-Graduation Student Tracking</h2>
-<br />
+<h2>Graduation Program Requirements</h2>
 
-@using (Html.BeginForm("Edit", "CurriculumVitae", new { id = ViewBag.FileID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Manuscript", null, FormMethod.Post, new {enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        <h4>Editing curriculum vitae file for <strong>@Model.Student.FirstName @Model.Student.LastName</strong></h4>
+        <h4>Adding manuscript document for <strong>@ViewBag.Student_FN @ViewBag.Student_LN</strong></h4>
         <br />
 
-        <div class="row menuNav" id="menuNav_postgrad">
+        <div class="row menuNav" id="menuNav_graduation">
             @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
             @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
@@ -31,26 +30,24 @@
         <br />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID, new { @Value = ViewBag.CurriculumVitaeID })
-
         <div class="form-group" style="display: none;">
             @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label" })
             <br />
             <div class="col-md-10">
-                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control", @Value = Model.StudentID } })
+                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.StudentID } })
                 @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="row">
 
-            <div class="col-md-offset-1 col-md-4 col-xs-12">
+            <div class="col-md-offset-2 col-md-4 col-xs-12">
 
                 <div class="form-group">
-                    @Html.Label("Current CV", new { @class = "control-label" })
+                    @Html.Label("Manuscript", new {@class="control-label" })
                     <br />
                     <div class="col-md-10">
-                        <a href="~/File?id=@ViewBag.FileID">@ViewBag.FileName</a>
+                        <input type="file" id="Manuscirpt" name="upload" />
                     </div>
                 </div>
 
@@ -59,48 +56,36 @@
             <div class="col-md-4 col-xs-12">
 
                 <div class="form-group">
-                    @Html.Label("Upload New CV", new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        <input type="file" id="CV" name="upload" />
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-2 col-xs-12">
-
-                <div class="form-group">
                     @Html.LabelFor(model => model.ReceivedDate, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.ReceivedDate, new { @Value = Model.ReceivedDate.ToString("MM/dd/yyyy"), @class = "form-control datepicker" })
+                        @Html.EditorFor(model => model.ReceivedDate, new { htmlAttributes = new { @class = "form-control datepicker", placeholder="MM/DD/YYYY" } })
                         @Html.ValidationMessageFor(model => model.ReceivedDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
             </div>
 
-
         </div>
 
         <div class="row">
 
             <div class="form-group">
-                <div class="col-md-offset-0 col-md-10">
+                <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Save" class="btn btn-default createOrEditPost2" />
                 </div>
             </div>
 
         </div>
 
+        
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to Post-Graduation Student Record", "Index", "PostGraduation", new { id = Model.StudentID }, null)
+    @Html.ActionLink("Back to Graduation Program Requirements", "Index", "Graduation", new {id=ViewBag.StudentID }, null)
 </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")    
 }
