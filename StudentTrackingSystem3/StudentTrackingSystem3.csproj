@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201711210150329_ManuscriptUpload.Designer.cs">
       <DependentUpon>201711210150329_ManuscriptUpload.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711212038457_AddEmployerField.cs" />
+    <Compile Include="Migrations\201711212038457_AddEmployerField.Designer.cs">
+      <DependentUpon>201711212038457_AddEmployerField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\G_CommitteeMember.cs" />
@@ -422,6 +426,7 @@
     <Content Include="Views\Student\Former.cshtml" />
     <Content Include="Views\Manuscript\Create.cshtml" />
     <Content Include="Views\Manuscript\Edit.cshtml" />
+    <Content Include="Views\PostGraduation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -444,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711210150329_ManuscriptUpload.resx">
       <DependentUpon>201711210150329_ManuscriptUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711212038457_AddEmployerField.resx">
+      <DependentUpon>201711212038457_AddEmployerField.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
   </ItemGroup>

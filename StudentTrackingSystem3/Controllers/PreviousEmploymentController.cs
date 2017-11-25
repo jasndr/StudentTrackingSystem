@@ -54,7 +54,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,Position,StartMonthId,StartYear,EndMonthId,EndYear")] G_PreviousEmployment g_PreviousEmployment)
+        public ActionResult Create([Bind(Include = "ID,StudentID,Position, Employer, StartMonthId,StartYear,EndMonthId,EndYear")] G_PreviousEmployment g_PreviousEmployment)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,Position,StartMonthId,StartYear,EndMonthId,EndYear")] G_PreviousEmployment g_PreviousEmployment)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,Position, Employer, StartMonthId,StartYear,EndMonthId,EndYear")] G_PreviousEmployment g_PreviousEmployment)
         {
             if (ModelState.IsValid)
             {

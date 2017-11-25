@@ -32,7 +32,7 @@
 
     <div class="row">
         <p>
-            @Html.ActionLink("Add New Performance", "Create", new { id = ViewBag.StudentID }, null)
+            @Html.ActionLink("Add New Performance (Publication, Abstract, Proposal, or Teaching)", "Create", new { id = ViewBag.StudentID }, null)
         </p>
     </div>
 
@@ -93,10 +93,6 @@
                     
 
                 }
-            }
-            else
-            {
-                <p><em> No performance records listed. Please add a performance record.</em></p>
             }
         }
 

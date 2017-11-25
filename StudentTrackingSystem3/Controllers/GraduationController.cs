@@ -27,7 +27,7 @@ namespace StudentTrackingSystem3.Controllers
             }
             else
             {
-                return RedirectToAction("Edit", new { id = id });
+                return RedirectToAction("Edit", new { id = g_Graduation.ID });
             }
 
            // var graduations = db.Graduations.Include(g => g.DegreeEndSems).Include(g => g.Form2Result).Include(g => g.Form2Type).Include(g => g.Student);
@@ -89,7 +89,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 db.Graduations.Add(g_Graduation);
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Graduation",  new { id = g_Graduation.StudentID});
+                return RedirectToAction("Edit", "Graduation",  new { id = g_Graduation.ID});
             }
 
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name");
@@ -111,13 +111,14 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Student g_Student = db.Students.Find(id);
-            G_Graduation g_Graduation = db.Graduations.Find(g_Student.Graduation.FirstOrDefault().ID);
+            G_Graduation g_Graduation = db.Graduations.Find(id);
+            G_Student g_Student = g_Graduation.Student;
             if (g_Graduation == null)
             {
                 return HttpNotFound();
             }
 
+            ViewBag.FormID = g_Graduation.ID;
             ViewBag.StudentID = g_Student.Id;
             ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == id);
             ViewBag.Student_FN = g_Student.FirstName;
@@ -141,13 +142,13 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification, DateofQualification2,Form2Title,Form2Date,Form2ResultId,CompExamResultId, DateOfCompExam, CompExam2ResultId, DateOfCompExam2,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId, FinalExamResultId, FinalExam2ResultId")] G_Graduation g_Graduation)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification, DateofQualification2,Form2Title,Form2Date,Form2ResultId,CompExamResultId, DateOfCompExam, CompExam2ResultId, DateOfCompExam2,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId, FinalExamResultId, DateOfFinalExam,  FinalExam2ResultId, DateOfFinalExam2")] G_Graduation g_Graduation)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(g_Graduation).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Graduation", g_Graduation.StudentID);
+                return RedirectToAction("Edit", "Graduation", g_Graduation.ID);
             }
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", g_Graduation.DegreeEndSemsId);
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.QualifierResultId);

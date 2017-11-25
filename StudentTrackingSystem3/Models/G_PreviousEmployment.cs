@@ -13,6 +13,8 @@ namespace StudentTrackingSystem3.Models
         public int StudentID { get; set; }
         [Required]
         public string Position { get; set; }
+        [Required]
+        public string Employer { get; set; }
         [Required, Display(Name ="Start Month")]
         public int StartMonthId { get; set; }
         [Required, Range(1000, 9999, ErrorMessage ="Please enter a valid year value."), Display(Name ="Start Year")]

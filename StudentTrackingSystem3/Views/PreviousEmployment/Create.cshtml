@@ -42,7 +42,7 @@
 
         <div class="row">
 
-            <div class="col-md-offset-2">
+            <div class="col-md-offset-2 col-md-4 col-xs-12">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label" })
@@ -55,11 +55,24 @@
 
             </div>
 
+            <div class="col-md-4 col-xs-12">
+
+                <div class="form-group">
+                    @Html.LabelFor(model=>model.Employer, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Employer, new {htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model=>model.Position, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
         <div class="row">
 
-            <div class="col-md-offset-2 col-md-3 col-xs-12">
+            <div class="col-md-offset-3 col-md-3 col-xs-12">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.StartMonthId,  htmlAttributes: new { @class = "control-label" })
@@ -89,7 +102,7 @@
         
         <div class="row">
 
-            <div class="col-md-offset-2 col-md-3 col-xs-12">
+            <div class="col-md-offset-3 col-md-3 col-xs-12">
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.EndMonthId, htmlAttributes: new { @class = "control-label" })

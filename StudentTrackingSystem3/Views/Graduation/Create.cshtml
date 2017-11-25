@@ -345,7 +345,7 @@
                     @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control", @Value = "University of Hawaii at Manoa" } })
                         @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
                     </div>
                 </div>

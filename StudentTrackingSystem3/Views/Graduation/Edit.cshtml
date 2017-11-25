@@ -32,7 +32,8 @@
         <br />
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model=>model.ID)
+      
 
         <div class="form-group" style="display: none;">
             @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label" })
@@ -351,7 +352,7 @@
                     @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control", @Value = "University of Hawaii at Manoa" } })
                         @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -391,10 +392,6 @@
                                         </tr>
                                     }
                                 </table>
-                            }
-                            else
-                            {
-                                <p><em>No committee members listed.  Please add a committee member.</em></p>
                             }
                         }
 
