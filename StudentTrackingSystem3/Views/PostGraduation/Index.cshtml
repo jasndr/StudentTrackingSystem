@@ -175,7 +175,7 @@
                             if (count == 1)
                             {
                                 <tr>
-                                    <td></td>
+                                    <td class="pull-right"></td>
                                     <td><u>Position</u></td>
                                     <td><u>Employer</u></td>
                                     <td><u>Period</u></td>
@@ -211,7 +211,7 @@
                                 }
 
                                 <tr>
-                                    <td>&bull; </td>
+                                    <td class="pull-right">&bull; </td>
                                     <td><strong>@Html.DisplayFor(modelItem => item.Position)</strong></td>
                                     <td>@Html.DisplayFor(modelItem => item.Employer)</td>
                                     <td>@startMonthName @Html.DisplayFor(modelItem => item.StartYear) - @endMonthName @Html.DisplayFor(modelItem => item.EndYear)</td>
@@ -248,6 +248,8 @@
 
             @{if (!object.ReferenceEquals(Publications.FirstOrDefault(), null))
                 {
+                    var pubMonthName = Publications.FirstOrDefault().PubMonth.Name;
+
                     <table class="table">
 
                         @foreach (var item in Publications.OrderByDescending(s => s.PubYear).ThenByDescending(s => s.PubMonth.DisplayOrder))
@@ -255,7 +257,7 @@
                             <tr>
                                 <td>&bull;</td>
                                 <td><strong>@Html.DisplayFor(modelItem => item.PublicationInformation)</strong></td>
-                                <td>@Html.DisplayFor(modelItem => item.PubMonth.Name) @Html.DisplayFor(modelItem => item.PubYear)</td>
+                                <td>@Html.DisplayFor(modelItem => pubMonthName) @Html.DisplayFor(modelItem => item.PubYear)</td>
                                 <td>@Html.ActionLink("Edit", "Edit", "Publication", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
                             </tr>
                         }
@@ -405,22 +407,18 @@
     G_Student student = ViewBag.Student;
     G_Graduation studentGrad = ViewBag.StudentGrad;
 
-    int? degreeEndSemId = 01;
-    int? degreeEndYear = 1000;
+    string degreeEndSemName = studentGrad?.DegreeEndSems?.Name;
+    int? degreeEndSemId = studentGrad?.DegreeEndSemsId;
+    int? degreeEndYear = studentGrad?.DegreeEndYear;
 
-    if (studentGrad != null)
-    {
-        degreeEndSemId = studentGrad.DegreeEndSemsId;
-        degreeEndYear = studentGrad.DegreeEndYear;
-    }
 
     int startMonth = startMonthVal(student.DegreeStartSems.DisplayOrder);
     DateTime startDate = new DateTime(student.DegreeStartYear, startMonth, 31);
 
     int endMonth = endMonthVal(degreeEndSemId.GetValueOrDefault(01));
     DateTime endDate = new DateTime(degreeEndYear.GetValueOrDefault(1000), endMonth, 31);
-    DateTime now = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-
+    string endMonthName2Before = endDate.AddMonths(-1).ToString("MMM");
+    string endMonthName2 = endDate.ToString("MMM");
 }
 
 <div class="row">
@@ -432,7 +430,9 @@
 
             @{
 
-                var beforeDuring = 0;
+                var pubBefore = 0;
+                var pubDuring = 0;
+                               var year0Val = new DateTime(degreeEndYear.GetValueOrDefault(1000)    , endMonth, 31);
                 var year1 = 0; var year1Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 1, endMonth, 31);
                 var year2 = 0; var year2Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 2, endMonth, 31);
                 var year3 = 0; var year3Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 3, endMonth, 31);
@@ -447,9 +447,13 @@
                         if (endDate > startDate) //check if endDate is not null (set to 0)
                         {
                             postFuture = true;
-                            if (pubDate < endDate)
+                            if (pubDate < startDate)
                             {
-                                beforeDuring++;
+                                pubBefore++;
+                            }
+                            else if (pubDate >= startDate && pubDate <= endDate)
+                            {
+                                pubDuring++;
                             }
                             else if (pubDate > endDate && pubDate < year1Val)
                             {
@@ -473,37 +477,38 @@
                             }
 
                         }
-                        else
-                        {
-                            beforeDuring++;
-                        }
+
                     }
                 }
                 <tr>
-                    <td>Before &amp; During Program</td>
-                    <td>@beforeDuring</td>
+                    <td>Before Program</td>
+                    <td>@pubBefore</td>
                 </tr>
-                var total = beforeDuring + year1 + year2 + year3 + year4 + year5;
+                <tr>
+                    <td>During Program</td>
+                    <td>@pubDuring</td>
+                </tr>
+                var total = pubBefore + pubDuring + year1 + year2 + year3 + year4 + year5;
                 if (postFuture == true)
                 {
                     <tr>
-                        <td>@year1Val.Year</td>
+                        <td>Year 1: @endDate.AddMonths(1).ToString("MMM") @endDate.AddMonths(1).Year &mdash; @endDate.AddYears(1).ToString("MMM") @endDate.AddYears(1).Year</td>
                         <td>@year1</td>
                     </tr>
                             <tr>
-                                <td>@year2Val.Year</td>
+                                <td>Year 2: @endDate.AddMonths(1).AddYears(1).ToString("MMM") @endDate.AddMonths(1).AddYears(1).Year &mdash; @endDate.AddYears(2).ToString("MMM") @endDate.AddYears(2).Year</td>
                                 <td>@year2</td>
                             </tr>
                             <tr>
-                                <td>@year3Val.Year</td>
+                                <td>Year 3: @endDate.AddMonths(1).AddYears(2).ToString("MMM") @endDate.AddMonths(1).AddYears(2).Year &mdash; @endDate.AddYears(3).ToString("MMM") @endDate.AddYears(3).Year</td>
                                 <td>@year3</td>
                             </tr>
                             <tr>
-                                <td>@year4Val.Year</td>
+                                <td>Year 4: @endDate.AddMonths(1).AddYears(3).ToString("MMM") @endDate.AddMonths(1).AddYears(3).Year &mdash; @endDate.AddYears(4).ToString("MMM") @endDate.AddYears(4).Year</td>
                                 <td>@year4</td>
                             </tr>
                             <tr>
-                                <td>@year5Val.Year</td>
+                                <td>Year 5: @endDate.AddMonths(1).AddYears(4).ToString("MMM") @endDate.AddMonths(1).AddYears(4).Year &mdash; @endDate.AddYears(5).ToString("MMM") @endDate.AddYears(5).Year</td>
                                 <td>@year5</td>
                             </tr>
                 }
