@@ -394,13 +394,12 @@
     <Content Include="Views\Student\Create.cshtml" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
-    <Content Include="Views\Shared\_StudentRecordNavigation.cshtml" />
     <Content Include="Views\Coursework\Create.cshtml" />
     <Content Include="Views\Coursework\Edit.cshtml" />
     <Content Include="Views\Coursework\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\G_Races.cshtml" />
     <Content Include="Views\Student\Report_StudentBackground.cshtml" />
-    <Content Include="Views\Shared\_StudentRecordNav.cshtml" />
+    <Content Include="Views\Shared\_CF-Sidebar.cshtml" />
     <Content Include="Views\PrevDegree\Edit.cshtml" />
     <Content Include="Views\PrevDegree\Create.cshtml" />
     <Content Include="Views\Performance\Create.cshtml" />

@@ -1,0 +1,16 @@
+﻿@* Sidebar navigation to distiguish between current and former students *@
+
+
+
+
+<div class="sidenav" id="cf_sidebar">
+
+    <p class="sidenavtext"><em><strong>Students</strong></em></p>
+
+    @Html.ActionLink("Current", "Index", "Student", null, htmlAttributes: new { @class="currentStudent" })
+
+    @Html.ActionLink("Former", "Former", "Student", null, htmlAttributes: new { @class="formerStudent" })
+
+</div>
+
+

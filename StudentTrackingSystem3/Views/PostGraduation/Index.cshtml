@@ -413,7 +413,7 @@
 
 
     int startMonth = startMonthVal(student.DegreeStartSems.DisplayOrder);
-    DateTime startDate = new DateTime(student.DegreeStartYear, startMonth, 31);
+    DateTime startDate = new DateTime(student.DegreeStartYear, startMonth, 30);
 
     int endMonth = endMonthVal(degreeEndSemId.GetValueOrDefault(01));
     DateTime endDate = new DateTime(degreeEndYear.GetValueOrDefault(1000), endMonth, 31);

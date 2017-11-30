@@ -106,3 +106,73 @@ a{
     background-color: #d6eebe;
     border-radius: 5px;
 }
+
+/*Sidebar navigation for current/former students*/
+.sidenav{
+    height: 100%;
+    /*width: 20%; max-width: 200px;*/
+    /*position: fixed;*/
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #FFF; /*#B3FFB3*/
+    overflow-x: hidden;
+    padding-top: 100px;
+    /*display: inline-block;*/
+}
+
+.sidenav a{
+    margin-top: 40px;
+    margin-bottom: 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    color: #030;
+    display: block;
+    border-top: 1px solid #030;
+    border-bottom: 1px solid #030;
+}
+
+.sidenavtext{
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px; /*2.5vw;*/
+    color: #030;
+    display: block;
+}
+
+.sidenav a:hover, #highlight:hover{
+    color: #FFF;
+    background: #CFC;
+    text-shadow: -1px 0 #000, 0, 1px #000, 1px 0 #000, 0, -1px #000;
+}
+
+.highlight,
+#currentStudent .currentStudent,
+#formerStudent .formerStudent{
+    font-weight: bold;
+    color: #030;
+    background: #B3FFB3;
+}
+
+@media screen and (max-height: 450px){
+    .sidenav {padding-top: 15px;}
+    .sidenav a{font-size: 18px;}
+}
+
+/**Split left and right sides of screen*/
+
+.bothSides{
+    overflow: hidden;
+}
+
+.leftSide{
+    float: left;
+    width: 10%; 
+    height: 100%;
+}
+
+.rightSide{
+    float: right;
+    width: 86%;
+}
