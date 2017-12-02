@@ -14,14 +14,14 @@
 
 @using (Html.BeginForm("Former", "Student", FormMethod.Get))
 {
-    <p class="form-inline" id="formerStudent">
+    <p class="form-inline">
         Find by name, student ID #, or school email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
         <input type="submit" value="Search" class="btn btn-primary btn-sm homebtn" />
     </p>
     <br />
 }
 
-<table class="table">
+<table class="table"  id="formerStudent">
     <tr>
         <th>
             @Html.ActionLink("Student ID #", "Former", new { sortOrder = ViewBag.StudentID_SortParm, currentFilter = ViewBag.CurrentFilter })

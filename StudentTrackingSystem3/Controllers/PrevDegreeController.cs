@@ -41,6 +41,7 @@ namespace StudentTrackingSystem3.Controllers
         // GET: PrevDegree/Create
         public ActionResult Create(int? id)
         {
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
@@ -62,8 +63,8 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Edit", "Student", new { id = g_PrevDegree.StudentID });
             }
-
             ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z=>z.Category=="DegreeType"), "ID", "Name", g_PrevDegree.DegreeTypesID);
+            ViewBag.Student = g_PrevDegree.Student;
             //ViewBag.StudentID = g_PrevDegree.StudentID;
             return View(g_PrevDegree);
         }
@@ -81,6 +82,7 @@ namespace StudentTrackingSystem3.Controllers
                 return HttpNotFound();
             }
             ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z=>z.Category == "DegreeType"), "ID", "Name", g_PrevDegree.DegreeTypesID);
+            ViewBag.Student = g_PrevDegree.Student;
             ViewBag.StudentID = g_PrevDegree.StudentID;
             return View(g_PrevDegree);
         }

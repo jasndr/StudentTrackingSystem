@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="~/Logo_cim-01.png" />
     <title>@ViewBag.Title - Student Tracking System</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/themes/base/css")
@@ -34,39 +35,23 @@
         </div>
     </div>
 
+    <div class="leftSide" id="leftSide">
+        @Html.Partial("_CF-Sidebar")
+    </div>
 
+    <div class="body-content container" id="rightSide">
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year &mdash; Department of Complementary &amp; Integrative Medicine &ndash; University of Hawaii John A. Burns School of Medicine</p>
+        </footer>
+
+    </div>
 
     @{
-        //int? studentID_model = Model.StudentID;
-        int? studentID_viewbag = ViewBag.StudentID;
-        if (studentID_viewbag != null)
-        {
-            <div class="body-content bothSides">
-                <div class="leftSide">
-                    @Html.Partial("_CF-Sidebar")
-                </div>
-                <div class="rightSide">
-                    @RenderBody()
-                    <hr />
-                    <footer>
-                        <p>&copy; @DateTime.Now.Year &mdash; Department of Complementary &amp; Integrative Medicine &ndash; University of Hawaii John A. Burns School of Medicine</p>
-                    </footer>
-                </div>
-            </div>
-        }
-        else
-        {
-            <div class="body-content">
-                @RenderBody()
-                <hr />
-                <footer>
-                    <p>&copy; @DateTime.Now.Year &mdash; Department of Complementary &amp; Integrative Medicine &ndash; University of Hawaii John A. Burns School of Medicine</p>
-                </footer>
-            </div>
-        }
+
     }
-
-
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")

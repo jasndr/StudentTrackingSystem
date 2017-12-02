@@ -18,6 +18,7 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Performance
         public ActionResult Index(int? id)
         {
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             G_Student student = db.Students.Find(id);
             ViewBag.StudentFiles = db.Files.Where(g=>g.StudentID == id);
@@ -54,7 +55,7 @@ namespace StudentTrackingSystem3.Controllers
         [HttpGet]
         public ActionResult Create(int? id)
         {
-
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.CurrentStudent_FN = db.Students.Find(id).FirstName;
             ViewBag.CurrentStudent_LN = db.Students.Find(id).LastName;
@@ -97,7 +98,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.AbstractStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
             ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name");
             ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name");
-
+            ViewBag.Student = g_Performance.Student;
             return View(g_Performance);
         }
 
@@ -114,7 +115,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
-
+            ViewBag.Student = g_Performance.Student;
             ViewBag.StudentID = g_Performance.StudentID;
             ViewBag.CurrentStudent_FN = g_Performance.Student.FirstName;
             ViewBag.CurrentStudent_LN = g_Performance.Student.LastName;
@@ -124,6 +125,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.AbstractStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.AbstractStatsID);
             ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name", g_Performance.ProposalStatsID);
             ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name", g_Performance.TeachingStatsID);
+
             return View(g_Performance);
         }
 
@@ -148,6 +150,7 @@ namespace StudentTrackingSystem3.Controllers
                 //Log the error (uncomment dex cariable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, please see your system administrator.");
             }
+            ViewBag.Student = g_Performance.Student;
             ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name", g_Performance.CategoryID);
             ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.PublicationStatsID);
             ViewBag.AbstractsStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.AbstractStatsID);

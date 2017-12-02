@@ -40,25 +40,27 @@ namespace StudentTrackingSystem3.Controllers
         // GET: CommitteeMember/Create
         public ActionResult Create(int? id)
         {
-            ViewBag.StudentID = db.Students.Find(id).Id;
-            ViewBag.Student_FN = db.Students.Find(id).FirstName;
-            ViewBag.Student_LN = db.Students.Find(id).LastName;
-
+            var student = db.Students.Find(id);
             var committeeType = "";
             var degreeProgram = db.Students.Find(id).DegreePrograms.Name;
             if (degreeProgram == "MS")
             {
                 committeeType = "thesis";
-            } else if (degreeProgram == "PhD")
+            }
+            else if (degreeProgram == "PhD")
             {
                 committeeType = "dissertation";
-            } else
+            }
+            else
             {
                 committeeType = "[thesis/dissertation]";
             }
 
+            ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
+            ViewBag.Student_FN = student.FirstName;
+            ViewBag.Student_LN = student.LastName;
             ViewBag.CommitteeType = committeeType;
-
             
             return View();
         }
@@ -76,7 +78,7 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Graduation", new { id = g_CommitteeMember.StudentID });
             }
-
+            ViewBag.Student = g_CommitteeMember.Student;
             ViewBag.StudentID = g_CommitteeMember.StudentID;
             ViewBag.Student_FN = g_CommitteeMember.Student.FirstName;
             ViewBag.Student_LN = g_CommitteeMember.Student.LastName;
@@ -96,6 +98,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Student = g_Student;
             ViewBag.StudentID = g_Student.Id;
             ViewBag.Student_FN = g_Student.FirstName;
             ViewBag.Student_LN = g_Student.LastName;
@@ -132,6 +135,7 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Graduation", new { id = g_CommitteeMember.StudentID });
             }
+            ViewBag.Student = g_CommitteeMember.Student;
             ViewBag.StudentID = g_CommitteeMember.StudentID;
             return View(g_CommitteeMember);
         }

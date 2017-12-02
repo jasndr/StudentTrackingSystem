@@ -261,21 +261,7 @@ namespace StudentTrackingSystem3.Controllers
             return View();
     }
 
-        // [Information page to display them a brief page before proceeding to subsections]
-        // GET : Student/Info/5
-        public ActionResult Info(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            G_Student g_Student = db.Students.Find(id);
-            if (g_Student == null)
-            {
-                return HttpNotFound();
-            }
-            return View(g_Student);
-        }
+       
 
         // GET: Student/Details/5
         public ActionResult Details(int? id)
@@ -385,6 +371,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
             ViewBag.PlansIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Plan"), "Id", "Name");
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
+            ViewBag.Student = g_Student;
 
             //Initialize selectedRaces
             var racesToPost = new List<G_Races>();

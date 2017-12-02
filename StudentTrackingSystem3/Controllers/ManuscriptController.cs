@@ -40,6 +40,7 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Manuscript/Create
         public ActionResult Create(int? id)
         {
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
@@ -77,7 +78,7 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Graduation", new { id = g_Manuscript.StudentID});
             }
-
+            ViewBag.Student = g_Manuscript.Student;
             ViewBag.StudentID = g_Manuscript.StudentID;
             return View(g_Manuscript);
         }
@@ -97,6 +98,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Student = g_Student;
             ViewBag.StudentID = g_Student.Id;
             ViewBag.FileID = id;
             ViewBag.FileName = db.Files.Find(id).FileName;
@@ -143,6 +145,7 @@ namespace StudentTrackingSystem3.Controllers
                 return RedirectToAction("Index", "Graduation", new { id = g_Manuscript.StudentID });
                     
             }
+            ViewBag.Student = g_Manuscript.Student;
             ViewBag.StudentID = g_Manuscript.StudentID;
             return View(g_Manuscript);
         }

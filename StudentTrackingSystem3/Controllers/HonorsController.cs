@@ -41,6 +41,7 @@ namespace StudentTrackingSystem3.Controllers
         public ActionResult Create(int? id)
         {
             ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name");
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
@@ -62,6 +63,7 @@ namespace StudentTrackingSystem3.Controllers
             }
 
             ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Honors.HonorMonthId);
+            ViewBag.Student = g_Honors.Student;
             ViewBag.StudentID = g_Honors.StudentID;
             return View(g_Honors);
         }
@@ -79,6 +81,7 @@ namespace StudentTrackingSystem3.Controllers
                 return HttpNotFound();
             }
             ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Honors.HonorMonthId);
+            ViewBag.Student = g_Honors.Student;
             ViewBag.StudentID = g_Honors.StudentID;
             return View(g_Honors);
         }
@@ -97,6 +100,7 @@ namespace StudentTrackingSystem3.Controllers
                 return RedirectToAction("Index", "PostGraduation", new {id = g_Honors.StudentID });
             }
             ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o => o.Category == "Months"), "ID", "Name", g_Honors.HonorMonthId);
+            ViewBag.Student = g_Honors.Student;
             ViewBag.StudentID = g_Honors.StudentID;
             return View(g_Honors);
         }

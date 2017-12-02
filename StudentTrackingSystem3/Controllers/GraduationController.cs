@@ -52,7 +52,7 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Graduation/Create
         public ActionResult Create(int? id)
         {
-
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.StudentCMsFirstOrDefault = db.CommitteeMembers.Where(g => g.StudentID == id).FirstOrDefault();
             ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == id);
@@ -91,7 +91,7 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Edit", "Graduation",  new { id = g_Graduation.ID});
             }
-
+            ViewBag.Student = g_Graduation.Student;
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name");
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
             ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
@@ -119,6 +119,7 @@ namespace StudentTrackingSystem3.Controllers
             }
 
             ViewBag.FormID = g_Graduation.ID;
+            ViewBag.Student = g_Student;
             ViewBag.StudentID = g_Student.Id;
             ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == id);
             ViewBag.Student_FN = g_Student.FirstName;
@@ -150,6 +151,7 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Edit", "Graduation", g_Graduation.ID);
             }
+            ViewBag.Student = g_Graduation.Student;
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", g_Graduation.DegreeEndSemsId);
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.QualifierResultId);
             ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.Qualifier2ResultId);

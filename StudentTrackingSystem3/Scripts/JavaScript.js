@@ -369,7 +369,17 @@
     });
 
 
+    //If menuNav exists (or current home page), shows leftSide navigation 
+    //if ($('.menuNav').length != 0 || $('#formerStudent').length != 0 || $('#currentStudent').length != 0) {
+    //    $('.leftSide').show(); $('#rightSide').addClass('rightSide');
+    //}
+    if ($('.menuNav').length == 0 && $('#formerStudent').length == 0 && $('#currentStudent').length == 0) {
+        $('.leftSide').hide(); $('#rightSide').removeClass('rightSide');
+    }
+
 });
+
+
 
 //Automatically put parentheses and dash for phone number fields
 $(window).load(function () {

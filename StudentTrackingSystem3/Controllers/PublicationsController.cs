@@ -41,6 +41,7 @@ namespace StudentTrackingSystem3.Controllers
         public ActionResult Create(int? id)
         {
             ViewBag.PubMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name");
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
@@ -80,6 +81,7 @@ namespace StudentTrackingSystem3.Controllers
                 return HttpNotFound();
             }
             ViewBag.PubMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Publications.PubMonthId);
+            ViewBag.Student = g_Student;
             ViewBag.StudentID = g_Student.Id;
             return View(g_Publications);
         }

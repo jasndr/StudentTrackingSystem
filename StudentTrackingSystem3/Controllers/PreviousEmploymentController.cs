@@ -42,6 +42,7 @@ namespace StudentTrackingSystem3.Controllers
         {
             ViewBag.EndMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name");
             ViewBag.StartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name");
+            ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
@@ -84,6 +85,7 @@ namespace StudentTrackingSystem3.Controllers
             }
             ViewBag.EndMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PreviousEmployment.EndMonthId);
             ViewBag.StartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PreviousEmployment.StartMonthId);
+            ViewBag.Student = g_PreviousEmployment.Student;
             ViewBag.StudentID =  g_PreviousEmployment.StudentID;
             return View(g_PreviousEmployment);
         }

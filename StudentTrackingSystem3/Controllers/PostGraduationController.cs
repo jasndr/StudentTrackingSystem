@@ -100,6 +100,7 @@ namespace StudentTrackingSystem3.Controllers
             }
 
             ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PostGraduation.CurrentStartMonthId);
+            ViewBag.Student = g_PostGraduation.Student;
             ViewBag.StudentID = g_PostGraduation.StudentID;
             return View(g_PostGraduation);
         }
@@ -117,6 +118,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Student = g_Student;
             ViewBag.StudentCVs = db.Files.Where(g => g.StudentID == id);
             ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g => g.Category == "Months"), "ID", "Name", g_PostGraduation.CurrentStartMonthId);
             return View(g_PostGraduation);

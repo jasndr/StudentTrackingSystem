@@ -41,10 +41,13 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Activity/Create
         public ActionResult Create(int? id)
         {
-            ViewBag.StudentID = db.Students.Find(id).Id;
-            var studentId = db.Students.Find(id).Id;
-            ViewBag.Student_FN = db.Students.Find(studentId).FirstName;
-            ViewBag.Student_LN = db.Students.Find(studentId).LastName;
+            var student = db.Students.Find(id);
+            var studentId = student.Id;
+
+            ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
+            ViewBag.Student_FN = student.FirstName;
+            ViewBag.Student_LN = student.LastName;
             
             return View();
         }
@@ -99,6 +102,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Student = g_Student;
             ViewBag.StudentID = g_Student.Id;
             ViewBag.FileID = id;
             ViewBag.FileName = db.Files.Find(id).FileName;
