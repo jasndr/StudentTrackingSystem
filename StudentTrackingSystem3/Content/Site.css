@@ -168,6 +168,7 @@ a{
 
 .leftSide{
     position: relative;
+    display: inline-block;
     float: left;
     width: 10%; 
     height: 100%;
