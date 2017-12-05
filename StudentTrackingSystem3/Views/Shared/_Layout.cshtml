@@ -35,17 +35,20 @@
         </div>
     </div>
 
-    <div class="leftSide" id="leftSide">
-        @Html.Partial("_CF-Sidebar")
-    </div>
+    <div class="bothSides">
+        <div class="leftSide" id="leftSide">
+            @Html.Partial("_CF-Sidebar")
+        </div>
 
-    <div class="body-content container" id="rightSide">
+        <div class="body-content container rightSide" id="rightSide">
 
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year &mdash; Department of Complementary &amp; Integrative Medicine &ndash; University of Hawaii John A. Burns School of Medicine</p>
-        </footer>
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year &mdash; Department of Complementary &amp; Integrative Medicine &ndash; University of Hawaii John A. Burns School of Medicine</p>
+            </footer>
+
+        </div>
 
     </div>
 

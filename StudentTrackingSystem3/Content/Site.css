@@ -110,15 +110,17 @@ a{
 /*Sidebar navigation for current/former students*/
 .sidenav{
     height: 100%;
-    /*width: 20%; max-width: 200px;*/
-    /*position: fixed;*/
-    z-index: 1;
+    position: relative;
+    /*z-index: 1;*/
     top: 0;
     left: 0;
+    width: 80%;
+    margin: 0 auto;
     background-color: #FFF; /*#B3FFB3*/
-    overflow-x: hidden;
+    /*overflow-x: hidden;*/
     padding-top: 100px;
-    /*display: inline-block;*/
+    display: block;
+    word-wrap: break-word;
 }
 
 .sidenav a{
@@ -162,21 +164,19 @@ a{
 
 /**Split left and right sides of screen*/
 
-/*.bothSides{
+.bothSides{
     overflow: hidden;
-}*/
+}
 
 .leftSide{
-    position: relative;
-    display: inline-block;
     float: left;
-    width: 10%; 
+    width: 13%; 
     height: 100%;
 }
 
 .rightSide{
     /*float: left;*/
-    /*position: absolute;*/
+    width: 86%;
     overflow: hidden;
 }
 
