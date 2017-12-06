@@ -238,7 +238,7 @@ namespace StudentTrackingSystem3.Controllers
         
         public ActionResult Report_StudentBackground()
         {
-            MyDataSet ds = new MyDataSet();
+            DataSet1 ds = new DataSet1();
 
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
@@ -250,10 +250,10 @@ namespace StudentTrackingSystem3.Controllers
 
             //private SchoolContext db = new SchoolContext();
             SqlConnection conx = new SqlConnection(connectionString);
-            SqlDataAdapter adp = new SqlDataAdapter("SELECT DISTINCT s.StudentNumber      ,s.FirstName	  ,s.MiddleName	  ,s.LastName	  ,s.SchoolEmail	  ,s.OtherEmail	  ,s.Phone	  ,gen.Name [Gender]	  ,STUFF((	    SELECT ', ' + r2.Name 	    FROM G_Races r2 		INNER JOIN G_PersonRaces pr2 ON pr2.RaceID = r2.Id		INNER JOIN G_Student s2 ON pr2.StudentID = s2.Id		WHERE  s2.Id = s.Id		FOR XML PATH ('')), 1, 1, '') [RaceEthnicity]	  ,deg.Name [DegreeProgram]	  ,tra.Name [Track]	  ,pla.Name [Plan]	  ,CONVERT(varchar(10), cast(s.DegreeStart as date), 101) [DegreeStart]	  ,CONVERT(varchar(10), cast(s.DegreeEnd as date), 101) [DegreeEnd]FROM G_Student sINNER JOIN G_PersonRaces pr ON s.Id = pr.StudentID INNER JOIN G_Races r ON pr.RaceID = r.Id INNER JOIN G_CommonFields gen ON s.GendersId = gen.ID INNER JOIN G_CommonFields deg ON s.DegreeProgramsId = deg.ID INNER JOIN G_CommonFields tra ON s.DegreeProgramsId = tra.ID INNER JOIN G_CommonFields pla ON s.TracksId = pla.ID", conx);
-            adp.Fill(ds, ds.DataTable1.TableName);
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM G_Student s 		LEFT JOIN  G_PrevDegree pd ON pd.StudentID = s.Id 		INNER JOIN G_CommonFields gender ON gender.Id = s.GendersId 		INNER JOIN G_CommonFields degreeProgram ON degreeProgram.Id = s.DegreeProgramsId 		INNER JOIN G_CommonFields track ON track.ID = s.TracksId 		INNER JOIN G_CommonFields plans ON plans.Id = s.PlansId 		INNER JOIN G_CommonFields degreeStartSem on degreeStartSem.Id = s.DegreeStartSemsId 		LEFT JOIN G_Graduation grad on grad.StudentID = s.Id 		LEFT JOIN G_CommonFields gradSem on gradSem.Id = grad.DegreeEndSemsId", conx);
+            adp.Fill(ds, ds.Background.TableName);
 
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Background-Rpt.rdlc";
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Report1.rdlc";
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", ds.Tables[0]));
 
             ViewBag.ReportViewer = reportViewer;

@@ -259,13 +259,10 @@
     <Compile Include="Models\G_Races.cs" />
     <Compile Include="Models\RaceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\MyDataSet.cs">
-      <DependentUpon>MyDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\MyDataSet.Designer.cs">
+    <Compile Include="Reports\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MyDataSet.xsd</DependentUpon>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\RaceFormViewModel.cs" />
@@ -330,16 +327,16 @@
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Properties\PublishProfiles\StudentTrackingSystem.pubxml" />
-    <Content Include="Reports\MyDataSet.xsc">
-      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    <Content Include="Reports\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
-    <None Include="Reports\MyDataSet.xsd">
+    <None Include="Reports\DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>MyDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="Reports\MyDataSet.xss">
-      <DependentUpon>MyDataSet.xsd</DependentUpon>
+    <Content Include="Reports\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
@@ -453,7 +450,7 @@
     <EmbeddedResource Include="Migrations\201711212038457_AddEmployerField.resx">
       <DependentUpon>201711212038457_AddEmployerField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Background-Rpt.rdlc" />
+    <EmbeddedResource Include="Reports\Report1.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
