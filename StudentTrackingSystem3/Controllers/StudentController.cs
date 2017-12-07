@@ -236,7 +236,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         
-        public ActionResult Report_StudentBackground()
+        public ActionResult Report(string button)
         {
             DataSet1 ds = new DataSet1();
 
@@ -250,11 +250,19 @@ namespace StudentTrackingSystem3.Controllers
 
             //private SchoolContext db = new SchoolContext();
             SqlConnection conx = new SqlConnection(connectionString);
-            SqlDataAdapter adp = new SqlDataAdapter("SELECT * FROM G_Student s 		LEFT JOIN  G_PrevDegree pd ON pd.StudentID = s.Id 		INNER JOIN G_CommonFields gender ON gender.Id = s.GendersId 		INNER JOIN G_CommonFields degreeProgram ON degreeProgram.Id = s.DegreeProgramsId 		INNER JOIN G_CommonFields track ON track.ID = s.TracksId 		INNER JOIN G_CommonFields plans ON plans.Id = s.PlansId 		INNER JOIN G_CommonFields degreeStartSem on degreeStartSem.Id = s.DegreeStartSemsId 		LEFT JOIN G_Graduation grad on grad.StudentID = s.Id 		LEFT JOIN G_CommonFields gradSem on gradSem.Id = grad.DegreeEndSemsId", conx);
+            SqlDataAdapter adp = new SqlDataAdapter("SELECT DISTINCT s.Id                 ,s.StudentNumber [StudentID] 				,s.FirstName 				,s.MiddleName 				,s.LastName 				,s.SchoolEmail 				,s.OtherEmail 				,s.Phone 				,gender.Name [Gender] 				,DegreeAtAdmission = (STUFF(( 					SELECT 						CASE WHEN pv2.DegreeTypesID IS NULL THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' 						     ELSE '; ' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward) AS nvarchar(4)) + ')'  END 					FROM G_PrevDegree pv2 					INNER JOIN G_Student s2 					ON s.Id = s2.Id AND s2.Id = pv2.StudentID 					LEFT JOIN G_CommonFields degTypes on degTypes.Id = pv2.DegreeTypesID 					FOR XML PATH('')), 1,1,'')) 				,RaceEthnicity = (STUFF(( 					SELECT 						CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' 						     ELSE '; ' + r2.Name  END 					FROM G_Races r2 					INNER JOIN G_PersonRaces pr2 on pr2.RaceID = r2.Id 					INNER JOIN G_Student s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID 					FOR XML PATH('')), 1,1,'')) 				,s.RaceOther 				,degreeProgram.Name [DegreeProgram] 				,track.Name [Track] 				,plans.Name [Plan] 				,degreeStartSem.Name [DegreeStartSemester] 				,degreeStartYear [DegreeStartYear] 				,gradSem.Name [DegreeAwardedSemester] 				,grad.DegreeEndYear [DegreeAwardedYear] 		FROM G_Student s 		LEFT JOIN  G_PrevDegree pd ON pd.StudentID = s.Id 		INNER JOIN G_CommonFields gender ON gender.Id = s.GendersId 		INNER JOIN G_CommonFields degreeProgram ON degreeProgram.Id = s.DegreeProgramsId 		INNER JOIN G_CommonFields track ON track.ID = s.TracksId 		INNER JOIN G_CommonFields plans ON plans.Id = s.PlansId 		INNER JOIN G_CommonFields degreeStartSem on degreeStartSem.Id = s.DegreeStartSemsId 		LEFT JOIN G_Graduation grad on grad.StudentID = s.Id 		LEFT JOIN G_CommonFields gradSem on gradSem.Id = grad.DegreeEndSemsId", conx);
             adp.Fill(ds, ds.Background.TableName);
 
             reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Report1.rdlc";
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", ds.Tables[0]));
+
+            var students =
+                db.Students.AsEnumerable().Select(s => new
+                {
+                    ID = s.Id,
+                    FullName = string.Format("{0} {1}", s.FirstName, s.LastName)
+                }).OrderBy(s=>s.FullName).ToList();
+            ViewBag.ListOfStudents = new SelectList(students, "ID", "FullName");
 
             ViewBag.ReportViewer = reportViewer;
 

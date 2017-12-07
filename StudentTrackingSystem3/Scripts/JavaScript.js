@@ -377,6 +377,14 @@
         $('.leftSide').hide(); $('#rightSide').removeClass('rightSide');
     }
 
+    //Add select picker functionality to make student list searchable
+    $('.selectpicker').selectpicker(
+        {
+            liveSearch: true,
+            showSubtext: true
+        }
+    );
+
 });
 
 

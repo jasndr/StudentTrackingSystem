@@ -21,7 +21,6 @@ namespace StudentTrackingSystem3
             bundles.Add(new ScriptBundle("~/bundles/datepicker").Include(
                         "~/Scripts/DatePicker.js"));
 
-
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
@@ -29,6 +28,8 @@ namespace StudentTrackingSystem3
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/bootstrap-select.js",
+                      "~/Scripts/bootstrap-select.min.js",
                       "~/Scripts/respond.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/Javascript").Include(
@@ -52,7 +53,9 @@ namespace StudentTrackingSystem3
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/bootstrap-select.css",
+                      "~/content/bootstrap-select.min.css"));
         }
     }
 }

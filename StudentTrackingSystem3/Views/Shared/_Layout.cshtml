@@ -23,6 +23,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Report", "Report", "Student", null, null)</li>
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("Current Students", "Index", "Student")</li>
                         <li>@Html.ActionLink("Former Students", "Former", "Student")</li>
@@ -55,12 +56,11 @@
     @{
 
     }
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/datepicker")
-    @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/Javascript")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
 </body>

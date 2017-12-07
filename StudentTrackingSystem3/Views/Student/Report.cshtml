@@ -1,0 +1,86 @@
+﻿@using ReportViewerForMvc;
+@{
+    ViewBag.Title = "Reports";
+}
+
+<h2>Reports</h2>
+<br />
+
+<hr />
+<div class="row">
+    <div class="col-md-offset-1 col-md-10 col-xs-12">
+        <div class="form-group">
+            @Html.Label("Report Type:", htmlAttributes: new { @class = "control-label", @style = "margin-right: 10px;" })
+            @Html.RadioButton("ReportType", "Background") <span style="margin-right: 5px;">Background</span>
+            @Html.RadioButton("ReportType", "Coursework") <span style="margin-right: 5px;">Coursework</span>
+            @Html.RadioButton("ReportType", "Performance") <span style="margin-right: 5px;">Performance</span>
+            @Html.RadioButton("ReportType", "Requirements") <span style="margin-right: 5px;">Requirements</span>
+            @Html.RadioButton("ReportType", "PostGraduation") <span style="margin-right: 5px;">Post-Graduation</span>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-offset-1 col-md-4 col-xs-12">
+        <div class="form-group">
+            <div class="row">
+                @Html.Label("Student", htmlAttributes: new { @class = "control-label col-md-5" })
+            </div>
+            <div class="col-md-10 row">
+                @Html.DropDownList("ListOfStudents", null, "-- All --", htmlAttributes: new { @class = "form-control selectpicker" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div class="form-group">
+            <div class="row">
+                @Html.Label("Status", htmlAttributes: new { @class = "control-label col-md-7" })
+            </div>
+            <div class="col-md-10 row">
+                @Html.DropDownList("CurrentFormer", new List<SelectListItem>
+                  {
+                      new SelectListItem { Text="Current Student", Value="Current"},
+                      new SelectListItem { Text="Former Student", Value="Former"}
+                  }
+                 , "-- All Students --", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-offset-1 col-md-4 col-xs-12">
+        <div class="form-group">
+            <div class="row">
+                @Html.Label("From", htmlAttributes: new { @class = "control-label col-md-5" })
+            </div>
+            <div class="col-md-10 row">
+                @Html.Editor("FromDateParam", new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+        <div class="form-group">
+            <div class="row">
+                @Html.Label("To", htmlAttributes: new { @class = "control-label col-md-5" })
+            </div>
+            <div class="col-md-10 row">
+                @Html.Editor("ToDateParam", new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-xs-12">
+        <div class="form-group">
+            <div class="row">
+                <input id="GetReport" type="submit" value="Get Report" class="btn btn-default navbuttons" style="background-color: #060; color: #FFF" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<hr />
+<h4>Graduate Student Background Report</h4>
+@Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { scrolling = "yes", id = "report" })
+

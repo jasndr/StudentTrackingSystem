@@ -272,6 +272,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\themes\base\jquery-ui.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -320,6 +322,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Logo_cim-01.png" />
     <Content Include="ReportViewerWebForm.aspx" />
+    <Content Include="Scripts\bootstrap-select.js" />
+    <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DatePicker.js" />
@@ -396,7 +400,7 @@
     <Content Include="Views\Coursework\Edit.cshtml" />
     <Content Include="Views\Coursework\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\G_Races.cshtml" />
-    <Content Include="Views\Student\Report_StudentBackground.cshtml" />
+    <Content Include="Views\Student\Report.cshtml" />
     <Content Include="Views\Shared\_CF-Sidebar.cshtml" />
     <Content Include="Views\PrevDegree\Edit.cshtml" />
     <Content Include="Views\PrevDegree\Create.cshtml" />

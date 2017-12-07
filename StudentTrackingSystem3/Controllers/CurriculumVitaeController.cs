@@ -42,7 +42,7 @@ namespace StudentTrackingSystem3.Controllers
         {
             var student = db.Students.Find(id);
 
-            ViewBag.Student = student.Id;
+            ViewBag.Student = student;
             ViewBag.StudentID = student.Id;
             ViewBag.Student_FN = student.FirstName;
             ViewBag.Student_LN = student.LastName;
