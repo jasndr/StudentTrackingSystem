@@ -385,6 +385,11 @@
         }
     );
 
+    //Display Report on button click
+    //$('#GetReport').onclick(function () {
+    //    $('.reportSection').show();
+    //});
+
 });
 
 

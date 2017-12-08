@@ -76,7 +76,8 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="From: " &amp; Parameters!FromDateParam.Value &amp; "     To: " &amp; Parameters!ToDateParam.Value &amp; "         " &amp; Count(Fields!Id.Value, "DataSet1") &amp; " records"</Value>
+                <Value>="From: &lt;u&gt;" &amp; Parameters!FromDateParam.Value &amp; "&lt;/u&gt;     To: &lt;u&gt;" &amp; Parameters!ToDateParam.Value &amp; "&lt;/u&gt;  &amp;nbsp; &amp;nbsp; &amp;nbsp; &lt;strong class='text-center'&gt;" &amp; Count(Fields!Id.Value, "DataSet1") &amp; "&lt;/strong&gt; records"</Value>
+                <MarkupType>HTML</MarkupType>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -87,7 +88,7 @@
         <Top>0.5925in</Top>
         <Left>1.75917in</Left>
         <Height>0.25in</Height>
-        <Width>3.24083in</Width>
+        <Width>7.24083in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>

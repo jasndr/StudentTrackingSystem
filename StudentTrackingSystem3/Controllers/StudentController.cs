@@ -15,6 +15,7 @@ using StudentTrackingSystem3.Reports;
 using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
+using StudentTrackingSystem3.Reports.DataSet1TableAdapters;
 
 namespace StudentTrackingSystem3.Controllers
 {
@@ -235,9 +236,25 @@ namespace StudentTrackingSystem3.Controllers
             return View(formerStudents.ToPagedList(pageNumber, pageSize));
         }
 
-        
-        public ActionResult Report(string button)
+        [HttpGet]
+        public ActionResult Report()
         {
+            var students =
+                db.Students.AsEnumerable().Select(s => new
+                {
+                    ID = s.Id,
+                    FullName = string.Format("{0} {1}", s.FirstName, s.LastName)
+                }).OrderBy(s => s.FullName).ToList();
+            ViewBag.ListOfStudents = new SelectList(students, "ID", "FullName");
+            ViewBag.ReportViewer = new ReportViewer();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Report(string ListOfStudents, string CurrentFormer, string FromDateParam, string ToDateParam)
+        {
+
             DataSet1 ds = new DataSet1();
 
             ReportViewer reportViewer = new ReportViewer();
@@ -248,13 +265,62 @@ namespace StudentTrackingSystem3.Controllers
 
             var connectionString = ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
 
+            ReportParameter[] paramsArray = new ReportParameter[2];
+            //paramsArray[0] = new ReportParameter("Student", ListOfStudents);
+            //paramsArray[0] = new ReportParameter("CurrentFormer", CurrentFormer);
+            paramsArray[0] = new ReportParameter("FromDateParam", FromDateParam);
+            paramsArray[1] = new ReportParameter("ToDateParam", ToDateParam);
+
             //private SchoolContext db = new SchoolContext();
             SqlConnection conx = new SqlConnection(connectionString);
-            SqlDataAdapter adp = new SqlDataAdapter("SELECT DISTINCT s.Id                 ,s.StudentNumber [StudentID] 				,s.FirstName 				,s.MiddleName 				,s.LastName 				,s.SchoolEmail 				,s.OtherEmail 				,s.Phone 				,gender.Name [Gender] 				,DegreeAtAdmission = (STUFF(( 					SELECT 						CASE WHEN pv2.DegreeTypesID IS NULL THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' 						     ELSE '; ' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward) AS nvarchar(4)) + ')'  END 					FROM G_PrevDegree pv2 					INNER JOIN G_Student s2 					ON s.Id = s2.Id AND s2.Id = pv2.StudentID 					LEFT JOIN G_CommonFields degTypes on degTypes.Id = pv2.DegreeTypesID 					FOR XML PATH('')), 1,1,'')) 				,RaceEthnicity = (STUFF(( 					SELECT 						CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' 						     ELSE '; ' + r2.Name  END 					FROM G_Races r2 					INNER JOIN G_PersonRaces pr2 on pr2.RaceID = r2.Id 					INNER JOIN G_Student s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID 					FOR XML PATH('')), 1,1,'')) 				,s.RaceOther 				,degreeProgram.Name [DegreeProgram] 				,track.Name [Track] 				,plans.Name [Plan] 				,degreeStartSem.Name [DegreeStartSemester] 				,degreeStartYear [DegreeStartYear] 				,gradSem.Name [DegreeAwardedSemester] 				,grad.DegreeEndYear [DegreeAwardedYear] 		FROM G_Student s 		LEFT JOIN  G_PrevDegree pd ON pd.StudentID = s.Id 		INNER JOIN G_CommonFields gender ON gender.Id = s.GendersId 		INNER JOIN G_CommonFields degreeProgram ON degreeProgram.Id = s.DegreeProgramsId 		INNER JOIN G_CommonFields track ON track.ID = s.TracksId 		INNER JOIN G_CommonFields plans ON plans.Id = s.PlansId 		INNER JOIN G_CommonFields degreeStartSem on degreeStartSem.Id = s.DegreeStartSemsId 		LEFT JOIN G_Graduation grad on grad.StudentID = s.Id 		LEFT JOIN G_CommonFields gradSem on gradSem.Id = grad.DegreeEndSemsId", conx);
+            SqlDataAdapter adp = new SqlDataAdapter(
+                "SELECT DISTINCT s.Id"
+                 +",s.StudentNumber [StudentID] "
+                 +",s.FirstName "
+                 +",s.MiddleName"
+                 +",s.LastName"
+                 +",s.SchoolEmail"
+                 +",s.OtherEmail"
+                 +",s.Phone"
+                 +",gender.Name [Gender]"
+                 +",DegreeAtAdmission = (STUFF(( 					SELECT 						CASE WHEN pv2.DegreeTypesID IS NULL THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' 						     ELSE '; ' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward) AS nvarchar(4)) + ')'  END 					FROM G_PrevDegree pv2 					INNER JOIN G_Student s2 					ON s.Id = s2.Id AND s2.Id = pv2.StudentID 					LEFT JOIN G_CommonFields degTypes on degTypes.Id = pv2.DegreeTypesID 					FOR XML PATH('')), 1,1,'')) "
+                 +",RaceEthnicity = (STUFF(( 					SELECT 						CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' 						     ELSE '; ' + r2.Name  END 					FROM G_Races r2 					INNER JOIN G_PersonRaces pr2 on pr2.RaceID = r2.Id 					INNER JOIN G_Student s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID 					FOR XML PATH('')), 1,1,'')) "
+                 +",s.RaceOther "
+                 +",degreeProgram.Name [DegreeProgram] "
+                 +",track.Name [Track] "
+                 +",plans.Name [Plan] "
+                 +",degreeStartSem.Name [DegreeStartSemester] "
+                 +",degreeStartYear [DegreeStartYear] "
+                 +",gradSem.Name [DegreeAwardedSemester] "
+                 +",grad.DegreeEndYear [DegreeAwardedYear] "
+                 +"FROM G_Student s "
+                 +"LEFT JOIN  G_PrevDegree pd ON pd.StudentID = s.Id "
+                 +"INNER JOIN G_CommonFields gender ON gender.Id = s.GendersId "
+                 +"INNER JOIN G_CommonFields degreeProgram ON degreeProgram.Id = s.DegreeProgramsId "
+                 +"INNER JOIN G_CommonFields track ON track.ID = s.TracksId "
+                 +"INNER JOIN G_CommonFields plans ON plans.Id = s.PlansId "
+                 +"INNER JOIN G_CommonFields degreeStartSem on degreeStartSem.Id = s.DegreeStartSemsId "
+                 +"LEFT JOIN G_Graduation grad on grad.StudentID = s.Id "
+                 +"LEFT JOIN G_CommonFields gradSem on gradSem.Id = grad.DegreeEndSemsId "
+                 +"WHERE( "
+                 +"      ( "
+                 +"       ( "
+                 +"        ( "
+                 +"          (DATEFROMPARTS(s.DegreeStartYear, 01, 01) < '"+FromDateParam+ "' AND NOT DATEFROMPARTS(grad.DegreeEndYear, 1, 1) < '" + FromDateParam + "' ) "
+                 +"             OR(DATEFROMPARTS(s.DegreeStartYear, 01, 01) < '" + FromDateParam + "' AND grad.DegreeEndYear IS NULL) "
+                 +"        ) "
+                 +"        OR(DATEFROMPARTS(s.DegreeStartYear, 01, 01) >= '" + FromDateParam + "' AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) <= '" + ToDateParam + "' ) "
+                 +"       ) "
+		         +"AND NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) > '" + ToDateParam + "' )) OR(ISNULL( '" + FromDateParam + "' , '') = '') OR(ISNULL(" + ToDateParam + ", '') = '')) "
+                 , conx);
             adp.Fill(ds, ds.Background.TableName);
+           
 
             reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Report1.rdlc";
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", ds.Tables[0]));
+
+            reportViewer.LocalReport.SetParameters(paramsArray);
+
 
             var students =
                 db.Students.AsEnumerable().Select(s => new
@@ -262,6 +328,7 @@ namespace StudentTrackingSystem3.Controllers
                     ID = s.Id,
                     FullName = string.Format("{0} {1}", s.FirstName, s.LastName)
                 }).OrderBy(s=>s.FullName).ToList();
+
             ViewBag.ListOfStudents = new SelectList(students, "ID", "FullName");
 
             ViewBag.ReportViewer = reportViewer;
