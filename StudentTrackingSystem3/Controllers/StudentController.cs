@@ -35,15 +35,15 @@ namespace StudentTrackingSystem3.Controllers
             //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
             ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
             //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";  
+            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
             //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
             ViewBag.DegreeProgramsId_SortParm = sortOrder == "DegreeProgramsId" ? "DegreeProgramsId_desc" : "DegreeProgramsId";
             //if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
             ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
             //if sortOrder = DegreeStartSem then (sort by date new->old), otherwise (sort by date old-new, should be default)
             ViewBag.DegreeStart_SortParm = sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
-            
-           
+
+
             if (searchString != null)
             {
                 page = 1;
@@ -56,11 +56,11 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.CurrentFilter = searchString;
 
             var students = from s in db.Students
-                           where s.Graduation.FirstOrDefault() == null 
+                           where s.Graduation.FirstOrDefault() == null
                                  || (s.Graduation.FirstOrDefault() != null && s.Graduation.FirstOrDefault().DegreeEndYear == null)
-                                 || (s.Graduation.FirstOrDefault() != null && s.Graduation.FirstOrDefault().DegreeEndYear != null 
+                                 || (s.Graduation.FirstOrDefault() != null && s.Graduation.FirstOrDefault().DegreeEndYear != null
                                      && s.Graduation.FirstOrDefault().DegreeEndYear > DateTime.Now.Year)
-                                 ||(s.Graduation.FirstOrDefault() != null 
+                                 || (s.Graduation.FirstOrDefault() != null
                                       && s.Graduation.FirstOrDefault().DegreeEndYear != null && s.Graduation.FirstOrDefault().DegreeEndSems != null
                                       && (s.Graduation.FirstOrDefault().DegreeEndYear > DateTime.Now.Year
                                            || s.Graduation.FirstOrDefault().DegreeEndYear == DateTime.Now.Year &&
@@ -110,7 +110,7 @@ namespace StudentTrackingSystem3.Controllers
                     students = students.OrderByDescending(s => s.TracksId);
                     break;
                 case "DegreeStart":
-                    students = students.OrderBy(s => s.DegreeStartYear).ThenBy(s=>s.DegreeStartSems.DisplayOrder);
+                    students = students.OrderBy(s => s.DegreeStartYear).ThenBy(s => s.DegreeStartSems.DisplayOrder);
                     break;
                 case "DegreeStart_desc":
                     students = students.OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSems.DisplayOrder);
@@ -118,7 +118,7 @@ namespace StudentTrackingSystem3.Controllers
                 default:
                     students = students.OrderBy(s => s.StudentNumber);
                     break;
-  
+
             }
 
             int pageSize = 10;
@@ -165,11 +165,11 @@ namespace StudentTrackingSystem3.Controllers
                                  where s.Graduation.FirstOrDefault() != null
                                     && s.Graduation.FirstOrDefault().DegreeEndSems != null
                                     && s.Graduation.FirstOrDefault().DegreeEndYear != null
-                                    && (s.Graduation.FirstOrDefault().DegreeEndYear < DateTime.Now.Year 
-                                       || s.Graduation.FirstOrDefault().DegreeEndYear == DateTime.Now.Year && 
+                                    && (s.Graduation.FirstOrDefault().DegreeEndYear < DateTime.Now.Year
+                                       || s.Graduation.FirstOrDefault().DegreeEndYear == DateTime.Now.Year &&
                                           s.Graduation.FirstOrDefault().DegreeEndSemsId * 4 < DateTime.Now.Month)
                                  select s;
-            
+
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -252,10 +252,12 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Report(string ListOfStudents, string CurrentFormer, string FromDateParam, string ToDateParam)
+        public ActionResult Report(string FromDateParam, string ToDateParam)
         {
 
             DataSet1 ds = new DataSet1();
+            DataTable1TableAdapter ta = new DataTable1TableAdapter();
+            ta.Fill(ds.DataTable1, FromDateParam, ToDateParam, "", "");
 
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
@@ -268,58 +270,18 @@ namespace StudentTrackingSystem3.Controllers
             ReportParameter[] paramsArray = new ReportParameter[2];
             //paramsArray[0] = new ReportParameter("Student", ListOfStudents);
             //paramsArray[0] = new ReportParameter("CurrentFormer", CurrentFormer);
-            paramsArray[0] = new ReportParameter("FromDateParam", FromDateParam);
-            paramsArray[1] = new ReportParameter("ToDateParam", ToDateParam);
+            paramsArray[0] = new ReportParameter("FromDateParam", FromDateParam.ToString());
+            paramsArray[1] = new ReportParameter("ToDateParam", ToDateParam.ToString());
 
-            //private SchoolContext db = new SchoolContext();
-            SqlConnection conx = new SqlConnection(connectionString);
-            SqlDataAdapter adp = new SqlDataAdapter(
-                "SELECT DISTINCT s.Id"
-                 +",s.StudentNumber [StudentID] "
-                 +",s.FirstName "
-                 +",s.MiddleName"
-                 +",s.LastName"
-                 +",s.SchoolEmail"
-                 +",s.OtherEmail"
-                 +",s.Phone"
-                 +",gender.Name [Gender]"
-                 +",DegreeAtAdmission = (STUFF(( 					SELECT 						CASE WHEN pv2.DegreeTypesID IS NULL THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' 						     ELSE '; ' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward) AS nvarchar(4)) + ')'  END 					FROM G_PrevDegree pv2 					INNER JOIN G_Student s2 					ON s.Id = s2.Id AND s2.Id = pv2.StudentID 					LEFT JOIN G_CommonFields degTypes on degTypes.Id = pv2.DegreeTypesID 					FOR XML PATH('')), 1,1,'')) "
-                 +",RaceEthnicity = (STUFF(( 					SELECT 						CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' 						     ELSE '; ' + r2.Name  END 					FROM G_Races r2 					INNER JOIN G_PersonRaces pr2 on pr2.RaceID = r2.Id 					INNER JOIN G_Student s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID 					FOR XML PATH('')), 1,1,'')) "
-                 +",s.RaceOther "
-                 +",degreeProgram.Name [DegreeProgram] "
-                 +",track.Name [Track] "
-                 +",plans.Name [Plan] "
-                 +",degreeStartSem.Name [DegreeStartSemester] "
-                 +",degreeStartYear [DegreeStartYear] "
-                 +",gradSem.Name [DegreeAwardedSemester] "
-                 +",grad.DegreeEndYear [DegreeAwardedYear] "
-                 +"FROM G_Student s "
-                 +"LEFT JOIN  G_PrevDegree pd ON pd.StudentID = s.Id "
-                 +"INNER JOIN G_CommonFields gender ON gender.Id = s.GendersId "
-                 +"INNER JOIN G_CommonFields degreeProgram ON degreeProgram.Id = s.DegreeProgramsId "
-                 +"INNER JOIN G_CommonFields track ON track.ID = s.TracksId "
-                 +"INNER JOIN G_CommonFields plans ON plans.Id = s.PlansId "
-                 +"INNER JOIN G_CommonFields degreeStartSem on degreeStartSem.Id = s.DegreeStartSemsId "
-                 +"LEFT JOIN G_Graduation grad on grad.StudentID = s.Id "
-                 +"LEFT JOIN G_CommonFields gradSem on gradSem.Id = grad.DegreeEndSemsId "
-                 +"WHERE( "
-                 +"      ( "
-                 +"       ( "
-                 +"        ( "
-                 +"          (DATEFROMPARTS(s.DegreeStartYear, 01, 01) < '"+FromDateParam+ "' AND NOT DATEFROMPARTS(grad.DegreeEndYear, 1, 1) < '" + FromDateParam + "' ) "
-                 +"             OR(DATEFROMPARTS(s.DegreeStartYear, 01, 01) < '" + FromDateParam + "' AND grad.DegreeEndYear IS NULL) "
-                 +"        ) "
-                 +"        OR(DATEFROMPARTS(s.DegreeStartYear, 01, 01) >= '" + FromDateParam + "' AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) <= '" + ToDateParam + "' ) "
-                 +"       ) "
-		         +"AND NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) > '" + ToDateParam + "' )) OR(ISNULL( '" + FromDateParam + "' , '') = '') OR(ISNULL(" + ToDateParam + ", '') = '')) "
-                 , conx);
-            adp.Fill(ds, ds.Background.TableName);
-           
+
+            reportViewer.LocalReport.DataSources.Clear();
 
             reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Report1.rdlc";
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", ds.Tables[0]));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", ds.Tables[0]));
 
             reportViewer.LocalReport.SetParameters(paramsArray);
+
+            reportViewer.LocalReport.Refresh();
 
 
             var students =
@@ -327,16 +289,16 @@ namespace StudentTrackingSystem3.Controllers
                 {
                     ID = s.Id,
                     FullName = string.Format("{0} {1}", s.FirstName, s.LastName)
-                }).OrderBy(s=>s.FullName).ToList();
+                }).OrderBy(s => s.FullName).ToList();
 
             ViewBag.ListOfStudents = new SelectList(students, "ID", "FullName");
 
             ViewBag.ReportViewer = reportViewer;
 
             return View();
-    }
+        }
 
-       
+
 
         // GET: Student/Details/5
         public ActionResult Details(int? id)

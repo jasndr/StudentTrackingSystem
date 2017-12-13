@@ -7,7 +7,7 @@
 <br />
 
 <hr />
-@using (Html.BeginForm())
+@using (Html.BeginForm("Report", "Student", FormMethod.Post))
 {
     <div>
         <form>
@@ -87,7 +87,7 @@
             <hr />
             <div class="reportSection">
                 <h4>Graduate Student Background Report</h4>
-                @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { scrolling = "yes", id = "report" })
+                @Html.ReportViewer(ViewBag.ReportViewer as Microsoft.Reporting.WebForms.ReportViewer, new { scrolling = "yes", id = "report"})
             </div>
 
         </form>

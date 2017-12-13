@@ -24,7 +24,7 @@ namespace StudentTrackingSystem3.Reports {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DataSet1 : global::System.Data.DataSet {
         
-        private BackgroundDataTable tableBackground;
+        private DataTable1DataTable tableDataTable1;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace StudentTrackingSystem3.Reports {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Background"] != null)) {
-                    base.Tables.Add(new BackgroundDataTable(ds.Tables["Background"]));
+                if ((ds.Tables["DataTable1"] != null)) {
+                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace StudentTrackingSystem3.Reports {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public BackgroundDataTable Background {
+        public DataTable1DataTable DataTable1 {
             get {
-                return this.tableBackground;
+                return this.tableDataTable1;
             }
         }
         
@@ -152,8 +152,8 @@ namespace StudentTrackingSystem3.Reports {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Background"] != null)) {
-                    base.Tables.Add(new BackgroundDataTable(ds.Tables["Background"]));
+                if ((ds.Tables["DataTable1"] != null)) {
+                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace StudentTrackingSystem3.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableBackground = ((BackgroundDataTable)(base.Tables["Background"]));
+            this.tableDataTable1 = ((DataTable1DataTable)(base.Tables["DataTable1"]));
             if ((initTable == true)) {
-                if ((this.tableBackground != null)) {
-                    this.tableBackground.InitVars();
+                if ((this.tableDataTable1 != null)) {
+                    this.tableDataTable1.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace StudentTrackingSystem3.Reports {
             this.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableBackground = new BackgroundDataTable();
-            base.Tables.Add(this.tableBackground);
+            this.tableDataTable1 = new DataTable1DataTable();
+            base.Tables.Add(this.tableDataTable1);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeBackground() {
+        private bool ShouldSerializeDataTable1() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void BackgroundRowChangeEventHandler(object sender, BackgroundRowChangeEvent e);
+        public delegate void DataTable1RowChangeEventHandler(object sender, DataTable1RowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class BackgroundDataTable : global::System.Data.TypedTableBase<BackgroundRow> {
+        public partial class DataTable1DataTable : global::System.Data.TypedTableBase<DataTable1Row> {
             
             private global::System.Data.DataColumn columnId;
             
@@ -319,8 +319,8 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BackgroundDataTable() {
-                this.TableName = "Background";
+            public DataTable1DataTable() {
+                this.TableName = "DataTable1";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -328,7 +328,7 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal BackgroundDataTable(global::System.Data.DataTable table) {
+            internal DataTable1DataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -345,7 +345,7 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected BackgroundDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DataTable1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -513,33 +513,33 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BackgroundRow this[int index] {
+            public DataTable1Row this[int index] {
                 get {
-                    return ((BackgroundRow)(this.Rows[index]));
+                    return ((DataTable1Row)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event BackgroundRowChangeEventHandler BackgroundRowChanging;
+            public event DataTable1RowChangeEventHandler DataTable1RowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event BackgroundRowChangeEventHandler BackgroundRowChanged;
+            public event DataTable1RowChangeEventHandler DataTable1RowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event BackgroundRowChangeEventHandler BackgroundRowDeleting;
+            public event DataTable1RowChangeEventHandler DataTable1RowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event BackgroundRowChangeEventHandler BackgroundRowDeleted;
+            public event DataTable1RowChangeEventHandler DataTable1RowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddBackgroundRow(BackgroundRow row) {
+            public void AddDataTable1Row(DataTable1Row row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BackgroundRow AddBackgroundRow(
+            public DataTable1Row AddDataTable1Row(
                         int StudentID, 
                         string FirstName, 
                         string MiddleName, 
@@ -558,7 +558,7 @@ namespace StudentTrackingSystem3.Reports {
                         int DegreeStartYear, 
                         string DegreeAwardedSemester, 
                         int DegreeAwardedYear) {
-                BackgroundRow rowBackgroundRow = ((BackgroundRow)(this.NewRow()));
+                DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         StudentID,
@@ -579,22 +579,22 @@ namespace StudentTrackingSystem3.Reports {
                         DegreeStartYear,
                         DegreeAwardedSemester,
                         DegreeAwardedYear};
-                rowBackgroundRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowBackgroundRow);
-                return rowBackgroundRow;
+                rowDataTable1Row.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataTable1Row);
+                return rowDataTable1Row;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BackgroundRow FindById(int Id) {
-                return ((BackgroundRow)(this.Rows.Find(new object[] {
+            public DataTable1Row FindById(int Id) {
+                return ((DataTable1Row)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                BackgroundDataTable cln = ((BackgroundDataTable)(base.Clone()));
+                DataTable1DataTable cln = ((DataTable1DataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -602,7 +602,7 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new BackgroundDataTable();
+                return new DataTable1DataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -673,6 +673,8 @@ namespace StudentTrackingSystem3.Reports {
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
                 this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
@@ -704,28 +706,28 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BackgroundRow NewBackgroundRow() {
-                return ((BackgroundRow)(this.NewRow()));
+            public DataTable1Row NewDataTable1Row() {
+                return ((DataTable1Row)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new BackgroundRow(builder);
+                return new DataTable1Row(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(BackgroundRow);
+                return typeof(DataTable1Row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.BackgroundRowChanged != null)) {
-                    this.BackgroundRowChanged(this, new BackgroundRowChangeEvent(((BackgroundRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowChanged != null)) {
+                    this.DataTable1RowChanged(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -733,8 +735,8 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.BackgroundRowChanging != null)) {
-                    this.BackgroundRowChanging(this, new BackgroundRowChangeEvent(((BackgroundRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowChanging != null)) {
+                    this.DataTable1RowChanging(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -742,8 +744,8 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.BackgroundRowDeleted != null)) {
-                    this.BackgroundRowDeleted(this, new BackgroundRowChangeEvent(((BackgroundRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowDeleted != null)) {
+                    this.DataTable1RowDeleted(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
@@ -751,14 +753,14 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.BackgroundRowDeleting != null)) {
-                    this.BackgroundRowDeleting(this, new BackgroundRowChangeEvent(((BackgroundRow)(e.Row)), e.Action));
+                if ((this.DataTable1RowDeleting != null)) {
+                    this.DataTable1RowDeleting(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveBackgroundRow(BackgroundRow row) {
+            public void RemoveDataTable1Row(DataTable1Row row) {
                 this.Rows.Remove(row);
             }
             
@@ -785,7 +787,7 @@ namespace StudentTrackingSystem3.Reports {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "BackgroundDataTable";
+                attribute2.FixedValue = "DataTable1DataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -829,25 +831,25 @@ namespace StudentTrackingSystem3.Reports {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class BackgroundRow : global::System.Data.DataRow {
+        public partial class DataTable1Row : global::System.Data.DataRow {
             
-            private BackgroundDataTable tableBackground;
+            private DataTable1DataTable tableDataTable1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal BackgroundRow(global::System.Data.DataRowBuilder rb) : 
+            internal DataTable1Row(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableBackground = ((BackgroundDataTable)(this.Table));
+                this.tableDataTable1 = ((DataTable1DataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Id {
                 get {
-                    return ((int)(this[this.tableBackground.IdColumn]));
+                    return ((int)(this[this.tableDataTable1.IdColumn]));
                 }
                 set {
-                    this[this.tableBackground.IdColumn] = value;
+                    this[this.tableDataTable1.IdColumn] = value;
                 }
             }
             
@@ -855,10 +857,10 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int StudentID {
                 get {
-                    return ((int)(this[this.tableBackground.StudentIDColumn]));
+                    return ((int)(this[this.tableDataTable1.StudentIDColumn]));
                 }
                 set {
-                    this[this.tableBackground.StudentIDColumn] = value;
+                    this[this.tableDataTable1.StudentIDColumn] = value;
                 }
             }
             
@@ -866,10 +868,10 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string FirstName {
                 get {
-                    return ((string)(this[this.tableBackground.FirstNameColumn]));
+                    return ((string)(this[this.tableDataTable1.FirstNameColumn]));
                 }
                 set {
-                    this[this.tableBackground.FirstNameColumn] = value;
+                    this[this.tableDataTable1.FirstNameColumn] = value;
                 }
             }
             
@@ -878,14 +880,14 @@ namespace StudentTrackingSystem3.Reports {
             public string MiddleName {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.MiddleNameColumn]));
+                        return ((string)(this[this.tableDataTable1.MiddleNameColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MiddleName\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'MiddleName\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.MiddleNameColumn] = value;
+                    this[this.tableDataTable1.MiddleNameColumn] = value;
                 }
             }
             
@@ -893,10 +895,10 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string LastName {
                 get {
-                    return ((string)(this[this.tableBackground.LastNameColumn]));
+                    return ((string)(this[this.tableDataTable1.LastNameColumn]));
                 }
                 set {
-                    this[this.tableBackground.LastNameColumn] = value;
+                    this[this.tableDataTable1.LastNameColumn] = value;
                 }
             }
             
@@ -904,10 +906,10 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string SchoolEmail {
                 get {
-                    return ((string)(this[this.tableBackground.SchoolEmailColumn]));
+                    return ((string)(this[this.tableDataTable1.SchoolEmailColumn]));
                 }
                 set {
-                    this[this.tableBackground.SchoolEmailColumn] = value;
+                    this[this.tableDataTable1.SchoolEmailColumn] = value;
                 }
             }
             
@@ -915,10 +917,10 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string OtherEmail {
                 get {
-                    return ((string)(this[this.tableBackground.OtherEmailColumn]));
+                    return ((string)(this[this.tableDataTable1.OtherEmailColumn]));
                 }
                 set {
-                    this[this.tableBackground.OtherEmailColumn] = value;
+                    this[this.tableDataTable1.OtherEmailColumn] = value;
                 }
             }
             
@@ -926,10 +928,10 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Phone {
                 get {
-                    return ((string)(this[this.tableBackground.PhoneColumn]));
+                    return ((string)(this[this.tableDataTable1.PhoneColumn]));
                 }
                 set {
-                    this[this.tableBackground.PhoneColumn] = value;
+                    this[this.tableDataTable1.PhoneColumn] = value;
                 }
             }
             
@@ -938,14 +940,14 @@ namespace StudentTrackingSystem3.Reports {
             public string Gender {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.GenderColumn]));
+                        return ((string)(this[this.tableDataTable1.GenderColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Gender\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Gender\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.GenderColumn] = value;
+                    this[this.tableDataTable1.GenderColumn] = value;
                 }
             }
             
@@ -954,14 +956,14 @@ namespace StudentTrackingSystem3.Reports {
             public string DegreeAtAdmission {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.DegreeAtAdmissionColumn]));
+                        return ((string)(this[this.tableDataTable1.DegreeAtAdmissionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeAtAdmission\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeAtAdmission\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.DegreeAtAdmissionColumn] = value;
+                    this[this.tableDataTable1.DegreeAtAdmissionColumn] = value;
                 }
             }
             
@@ -970,14 +972,14 @@ namespace StudentTrackingSystem3.Reports {
             public string RaceEthnicity {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.RaceEthnicityColumn]));
+                        return ((string)(this[this.tableDataTable1.RaceEthnicityColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RaceEthnicity\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RaceEthnicity\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.RaceEthnicityColumn] = value;
+                    this[this.tableDataTable1.RaceEthnicityColumn] = value;
                 }
             }
             
@@ -986,14 +988,14 @@ namespace StudentTrackingSystem3.Reports {
             public string RaceOther {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.RaceOtherColumn]));
+                        return ((string)(this[this.tableDataTable1.RaceOtherColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'RaceOther\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RaceOther\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.RaceOtherColumn] = value;
+                    this[this.tableDataTable1.RaceOtherColumn] = value;
                 }
             }
             
@@ -1002,14 +1004,14 @@ namespace StudentTrackingSystem3.Reports {
             public string DegreeProgram {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.DegreeProgramColumn]));
+                        return ((string)(this[this.tableDataTable1.DegreeProgramColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeProgram\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeProgram\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.DegreeProgramColumn] = value;
+                    this[this.tableDataTable1.DegreeProgramColumn] = value;
                 }
             }
             
@@ -1018,14 +1020,14 @@ namespace StudentTrackingSystem3.Reports {
             public string Track {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.TrackColumn]));
+                        return ((string)(this[this.tableDataTable1.TrackColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Track\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Track\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.TrackColumn] = value;
+                    this[this.tableDataTable1.TrackColumn] = value;
                 }
             }
             
@@ -1034,14 +1036,14 @@ namespace StudentTrackingSystem3.Reports {
             public string Plan {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.PlanColumn]));
+                        return ((string)(this[this.tableDataTable1.PlanColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Plan\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Plan\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.PlanColumn] = value;
+                    this[this.tableDataTable1.PlanColumn] = value;
                 }
             }
             
@@ -1050,14 +1052,14 @@ namespace StudentTrackingSystem3.Reports {
             public string DegreeStartSemester {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.DegreeStartSemesterColumn]));
+                        return ((string)(this[this.tableDataTable1.DegreeStartSemesterColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeStartSemester\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeStartSemester\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.DegreeStartSemesterColumn] = value;
+                    this[this.tableDataTable1.DegreeStartSemesterColumn] = value;
                 }
             }
             
@@ -1065,10 +1067,10 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int DegreeStartYear {
                 get {
-                    return ((int)(this[this.tableBackground.DegreeStartYearColumn]));
+                    return ((int)(this[this.tableDataTable1.DegreeStartYearColumn]));
                 }
                 set {
-                    this[this.tableBackground.DegreeStartYearColumn] = value;
+                    this[this.tableDataTable1.DegreeStartYearColumn] = value;
                 }
             }
             
@@ -1077,14 +1079,14 @@ namespace StudentTrackingSystem3.Reports {
             public string DegreeAwardedSemester {
                 get {
                     try {
-                        return ((string)(this[this.tableBackground.DegreeAwardedSemesterColumn]));
+                        return ((string)(this[this.tableDataTable1.DegreeAwardedSemesterColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeAwardedSemester\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeAwardedSemester\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.DegreeAwardedSemesterColumn] = value;
+                    this[this.tableDataTable1.DegreeAwardedSemesterColumn] = value;
                 }
             }
             
@@ -1093,147 +1095,147 @@ namespace StudentTrackingSystem3.Reports {
             public int DegreeAwardedYear {
                 get {
                     try {
-                        return ((int)(this[this.tableBackground.DegreeAwardedYearColumn]));
+                        return ((int)(this[this.tableDataTable1.DegreeAwardedYearColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeAwardedYear\' in table \'Background\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DegreeAwardedYear\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBackground.DegreeAwardedYearColumn] = value;
+                    this[this.tableDataTable1.DegreeAwardedYearColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsMiddleNameNull() {
-                return this.IsNull(this.tableBackground.MiddleNameColumn);
+                return this.IsNull(this.tableDataTable1.MiddleNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMiddleNameNull() {
-                this[this.tableBackground.MiddleNameColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.MiddleNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsGenderNull() {
-                return this.IsNull(this.tableBackground.GenderColumn);
+                return this.IsNull(this.tableDataTable1.GenderColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetGenderNull() {
-                this[this.tableBackground.GenderColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.GenderColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDegreeAtAdmissionNull() {
-                return this.IsNull(this.tableBackground.DegreeAtAdmissionColumn);
+                return this.IsNull(this.tableDataTable1.DegreeAtAdmissionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDegreeAtAdmissionNull() {
-                this[this.tableBackground.DegreeAtAdmissionColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.DegreeAtAdmissionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRaceEthnicityNull() {
-                return this.IsNull(this.tableBackground.RaceEthnicityColumn);
+                return this.IsNull(this.tableDataTable1.RaceEthnicityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRaceEthnicityNull() {
-                this[this.tableBackground.RaceEthnicityColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.RaceEthnicityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsRaceOtherNull() {
-                return this.IsNull(this.tableBackground.RaceOtherColumn);
+                return this.IsNull(this.tableDataTable1.RaceOtherColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetRaceOtherNull() {
-                this[this.tableBackground.RaceOtherColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.RaceOtherColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDegreeProgramNull() {
-                return this.IsNull(this.tableBackground.DegreeProgramColumn);
+                return this.IsNull(this.tableDataTable1.DegreeProgramColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDegreeProgramNull() {
-                this[this.tableBackground.DegreeProgramColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.DegreeProgramColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTrackNull() {
-                return this.IsNull(this.tableBackground.TrackColumn);
+                return this.IsNull(this.tableDataTable1.TrackColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTrackNull() {
-                this[this.tableBackground.TrackColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.TrackColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPlanNull() {
-                return this.IsNull(this.tableBackground.PlanColumn);
+                return this.IsNull(this.tableDataTable1.PlanColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPlanNull() {
-                this[this.tableBackground.PlanColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.PlanColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDegreeStartSemesterNull() {
-                return this.IsNull(this.tableBackground.DegreeStartSemesterColumn);
+                return this.IsNull(this.tableDataTable1.DegreeStartSemesterColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDegreeStartSemesterNull() {
-                this[this.tableBackground.DegreeStartSemesterColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.DegreeStartSemesterColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDegreeAwardedSemesterNull() {
-                return this.IsNull(this.tableBackground.DegreeAwardedSemesterColumn);
+                return this.IsNull(this.tableDataTable1.DegreeAwardedSemesterColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDegreeAwardedSemesterNull() {
-                this[this.tableBackground.DegreeAwardedSemesterColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.DegreeAwardedSemesterColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDegreeAwardedYearNull() {
-                return this.IsNull(this.tableBackground.DegreeAwardedYearColumn);
+                return this.IsNull(this.tableDataTable1.DegreeAwardedYearColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetDegreeAwardedYearNull() {
-                this[this.tableBackground.DegreeAwardedYearColumn] = global::System.Convert.DBNull;
+                this[this.tableDataTable1.DegreeAwardedYearColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1241,22 +1243,22 @@ namespace StudentTrackingSystem3.Reports {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class BackgroundRowChangeEvent : global::System.EventArgs {
+        public class DataTable1RowChangeEvent : global::System.EventArgs {
             
-            private BackgroundRow eventRow;
+            private DataTable1Row eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BackgroundRowChangeEvent(BackgroundRow row, global::System.Data.DataRowAction action) {
+            public DataTable1RowChangeEvent(DataTable1Row row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BackgroundRow Row {
+            public DataTable1Row Row {
                 get {
                     return this.eventRow;
                 }
@@ -1284,7 +1286,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class BackgroundTableAdapter : global::System.ComponentModel.Component {
+    public partial class DataTable1TableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -1298,7 +1300,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public BackgroundTableAdapter() {
+        public DataTable1TableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -1395,7 +1397,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Background";
+            tableMapping.DataSetTable = "DataTable1";
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("StudentID", "StudentID");
             tableMapping.ColumnMappings.Add("FirstName", "FirstName");
@@ -1431,44 +1433,86 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "dbo.Background";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CurrentFormer", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].CommandText = "SELECT DISTINCT \r\n                         s.Id, s.StudentNumber AS StudentID, s." +
+                "FirstName, s.MiddleName, s.LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gende" +
+                "r.Name AS Gender, STUFF\r\n                             ((SELECT        CASE WHEN " +
+                "pv2.DegreeTypesID IS NULL \r\n                                                    " +
+                "      THEN \'N/A\' WHEN pv2.DegreeTypesID = \'\' THEN \'N/A\' ELSE \'; \' + degTypes.Nam" +
+                "e + \' in \' + pv2.Title + \' (\' + pv2.SchoolName + \', \' + CAST(YEAR(pv2.DateOfAwar" +
+                "d)\r\n                                                           AS nvarchar(4)) +" +
+                " \')\' END AS Expr1\r\n                                 FROM            G_PrevDegree" +
+                " AS pv2 INNER JOIN\r\n                                                          G_" +
+                "Student AS s2 ON s.Id = s2.Id AND s2.Id = pv2.StudentID LEFT OUTER JOIN\r\n       " +
+                "                                                   G_CommonFields AS degTypes ON" +
+                " degTypes.ID = pv2.DegreeTypesID FOR XML PATH(\'\')), 1, 1, \'\') AS DegreeAtAdmissi" +
+                "on, STUFF\r\n                             ((SELECT        CASE WHEN r2.Name IS NUL" +
+                "L THEN \'N/A\' WHEN r2.Name = \'\' THEN \'N/A\' ELSE \'; \' + r2.Name END AS Expr1\r\n    " +
+                "                             FROM            G_Races AS r2 INNER JOIN\r\n         " +
+                "                                                 G_PersonRaces AS pr2 ON pr2.Rac" +
+                "eID = r2.Id INNER JOIN\r\n                                                        " +
+                "  G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH(\'\')), 1" +
+                ", 1, \'\') AS RaceEthnicity, s.RaceOther, \r\n                         degreeProgram" +
+                ".Name AS DegreeProgram, track.Name AS Track, plans.Name AS [Plan], degreeStartSe" +
+                "m.Name AS DegreeStartSemester, s.DegreeStartYear, \r\n                         gra" +
+                "dSem.Name AS DegreeAwardedSemester, grad.DegreeEndYear AS DegreeAwardedYear\r\nFRO" +
+                "M            G_Student AS s LEFT OUTER JOIN\r\n                         G_PrevDegr" +
+                "ee AS pd ON pd.StudentID = s.Id INNER JOIN\r\n                         G_CommonFie" +
+                "lds AS gender ON gender.ID = s.GendersId INNER JOIN\r\n                         G_" +
+                "CommonFields AS degreeProgram ON degreeProgram.ID = s.DegreeProgramsId INNER JOI" +
+                "N\r\n                         G_CommonFields AS track ON track.ID = s.TracksId INN" +
+                "ER JOIN\r\n                         G_CommonFields AS plans ON plans.ID = s.PlansI" +
+                "d INNER JOIN\r\n                         G_CommonFields AS degreeStartSem ON degre" +
+                "eStartSem.ID = s.DegreeStartSemsId LEFT OUTER JOIN\r\n                         G_G" +
+                "raduation AS grad ON grad.StudentID = s.Id LEFT OUTER JOIN\r\n                    " +
+                "     G_CommonFields AS gradSem ON gradSem.ID = grad.DegreeEndSemsId\r\nWHERE      " +
+                "  ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @FromDate AND NOT (DATEFROMPARTS(" +
+                "grad.DegreeEndYear, 1, 1) < @FromDate) OR\r\n                         DATEFROMPART" +
+                "S(s.DegreeStartYear, 01, 01) < @FromDate AND grad.DegreeEndYear IS NULL OR\r\n    " +
+                "                     DATEFROMPARTS(s.DegreeStartYear, 01, 01) >= @FromDate AND D" +
+                "ATEFROMPARTS(s.DegreeStartYear, 01, 01) <= @ToDate) AND \r\n                      " +
+                "   NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) > @ToDate) OR\r\n                " +
+                "         ISNULL(@FromDate, \'\') = \'\' OR\r\n                         ISNULL(@ToDate," +
+                " \'\') = \'\') AND (s.FirstName + \' \' + s.LastName = @Student OR\r\n                  " +
+                "       ISNULL(@Student, \'\') = \'\') AND ((CASE WHEN (gradSem.Name IS NULL AND grad" +
+                ".DegreeEndYear IS NULL) THEN \'Current\' ELSE \'Former\' END) = @CurrentFormer OR\r\n " +
+                "                        ISNULL(@CurrentFormer, \'\') = \'\')\r\nORDER BY s.DegreeStart" +
+                "Year DESC";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CurrentFormer", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet1.BackgroundDataTable dataTable, string Student, string CurrentFormer, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+        public virtual int Fill(DataSet1.DataTable1DataTable dataTable, string FromDate, string ToDate, string Student, string CurrentFormer) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Student == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            if ((FromDate == null)) {
+                throw new global::System.ArgumentNullException("FromDate");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Student));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(FromDate));
+            }
+            if ((ToDate == null)) {
+                throw new global::System.ArgumentNullException("ToDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(ToDate));
+            }
+            if ((Student == null)) {
+                throw new global::System.ArgumentNullException("Student");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Student));
             }
             if ((CurrentFormer == null)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("CurrentFormer");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(CurrentFormer));
-            }
-            if ((FromDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((System.DateTime)(FromDate.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((ToDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[4].Value = ((System.DateTime)(ToDate.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(CurrentFormer));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1481,33 +1525,33 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet1.BackgroundDataTable GetData(string Student, string CurrentFormer, global::System.Nullable<global::System.DateTime> FromDate, global::System.Nullable<global::System.DateTime> ToDate) {
+        public virtual DataSet1.DataTable1DataTable GetData(string FromDate, string ToDate, string Student, string CurrentFormer) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((Student == null)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            if ((FromDate == null)) {
+                throw new global::System.ArgumentNullException("FromDate");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Student));
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(FromDate));
+            }
+            if ((ToDate == null)) {
+                throw new global::System.ArgumentNullException("ToDate");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(ToDate));
+            }
+            if ((Student == null)) {
+                throw new global::System.ArgumentNullException("Student");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(Student));
             }
             if ((CurrentFormer == null)) {
-                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("CurrentFormer");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[2].Value = ((string)(CurrentFormer));
+                this.Adapter.SelectCommand.Parameters[3].Value = ((string)(CurrentFormer));
             }
-            if ((FromDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[3].Value = ((System.DateTime)(FromDate.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            if ((ToDate.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[4].Value = ((System.DateTime)(ToDate.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[4].Value = global::System.DBNull.Value;
-            }
-            DataSet1.BackgroundDataTable dataTable = new DataSet1.BackgroundDataTable();
+            DataSet1.DataTable1DataTable dataTable = new DataSet1.DataTable1DataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

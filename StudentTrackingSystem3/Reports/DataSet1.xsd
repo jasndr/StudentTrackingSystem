@@ -2,23 +2,54 @@
 <xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SchoolContext_DatabasePublish" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SchoolContext_DatabasePublish (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SchoolContext_DatabasePublish.ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SchoolContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SchoolContext (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SchoolContext.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BackgroundTableAdapter" GeneratorDataComponentClassName="BackgroundTableAdapter" Name="Background" UserDataComponentName="BackgroundTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SchoolContext_DatabasePublish (Web.config)" DbObjectName="SchoolContext.dbo.Background" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SchoolContext_DatabasePublish (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
-                  <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
-                    <CommandText>dbo.Background</CommandText>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT 
+                         s.Id, s.StudentNumber AS StudentID, s.FirstName, s.MiddleName, s.LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gender.Name AS Gender, STUFF
+                             ((SELECT        CASE WHEN pv2.DegreeTypesID IS NULL 
+                                                          THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' ELSE '; ' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward)
+                                                           AS nvarchar(4)) + ')' END AS Expr1
+                                 FROM            G_PrevDegree AS pv2 INNER JOIN
+                                                          G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pv2.StudentID LEFT OUTER JOIN
+                                                          G_CommonFields AS degTypes ON degTypes.ID = pv2.DegreeTypesID FOR XML PATH('')), 1, 1, '') AS DegreeAtAdmission, STUFF
+                             ((SELECT        CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' ELSE '; ' + r2.Name END AS Expr1
+                                 FROM            G_Races AS r2 INNER JOIN
+                                                          G_PersonRaces AS pr2 ON pr2.RaceID = r2.Id INNER JOIN
+                                                          G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH('')), 1, 1, '') AS RaceEthnicity, s.RaceOther, 
+                         degreeProgram.Name AS DegreeProgram, track.Name AS Track, plans.Name AS [Plan], degreeStartSem.Name AS DegreeStartSemester, s.DegreeStartYear, 
+                         gradSem.Name AS DegreeAwardedSemester, grad.DegreeEndYear AS DegreeAwardedYear
+FROM            G_Student AS s LEFT OUTER JOIN
+                         G_PrevDegree AS pd ON pd.StudentID = s.Id INNER JOIN
+                         G_CommonFields AS gender ON gender.ID = s.GendersId INNER JOIN
+                         G_CommonFields AS degreeProgram ON degreeProgram.ID = s.DegreeProgramsId INNER JOIN
+                         G_CommonFields AS track ON track.ID = s.TracksId INNER JOIN
+                         G_CommonFields AS plans ON plans.ID = s.PlansId INNER JOIN
+                         G_CommonFields AS degreeStartSem ON degreeStartSem.ID = s.DegreeStartSemsId LEFT OUTER JOIN
+                         G_Graduation AS grad ON grad.StudentID = s.Id LEFT OUTER JOIN
+                         G_CommonFields AS gradSem ON gradSem.ID = grad.DegreeEndSemsId
+WHERE        ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (DATEFROMPARTS(grad.DegreeEndYear, 1, 1) &lt; @FromDate) OR
+                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND grad.DegreeEndYear IS NULL OR
+                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt;= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt;= @ToDate) AND 
+                         NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt; @ToDate) OR
+                         ISNULL(@FromDate, '') = '' OR
+                         ISNULL(@ToDate, '') = '') AND (s.FirstName + ' ' + s.LastName = @Student OR
+                         ISNULL(@Student, '') = '') AND ((CASE WHEN (gradSem.Name IS NULL AND grad.DegreeEndYear IS NULL) THEN 'Current' ELSE 'Former' END) = @CurrentFormer OR
+                         ISNULL(@CurrentFormer, '') = '')
+ORDER BY s.DegreeStartYear DESC</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="int" DbType="Int32" Direction="ReturnValue" ParameterName="@RETURN_VALUE" Precision="10" ProviderType="Int" Scale="0" Size="4" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="nvarchar" DbType="String" Direction="Input" ParameterName="@CurrentFormer" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@FromDate" Precision="23" ProviderType="DateTime" Scale="3" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@ToDate" Precision="23" ProviderType="DateTime" Scale="3" Size="8" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="FromDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@FromDate" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ToDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@ToDate" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CurrentFormer" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@CurrentFormer" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -55,10 +86,10 @@
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Background" msprop:Generator_TableClassName="BackgroundDataTable" msprop:Generator_TableVarName="tableBackground" msprop:Generator_TablePropName="Background" msprop:Generator_RowDeletingName="BackgroundRowDeleting" msprop:Generator_RowChangingName="BackgroundRowChanging" msprop:Generator_RowEvHandlerName="BackgroundRowChangeEventHandler" msprop:Generator_RowDeletedName="BackgroundRowDeleted" msprop:Generator_UserTableName="Background" msprop:Generator_RowChangedName="BackgroundRowChanged" msprop:Generator_RowEvArgName="BackgroundRowChangeEvent" msprop:Generator_RowClassName="BackgroundRow">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
+              <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
               <xs:element name="StudentID" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_UserColumnName="StudentID" type="xs:int" />
               <xs:element name="FirstName" msprop:Generator_ColumnVarNameInTable="columnFirstName" msprop:Generator_ColumnPropNameInRow="FirstName" msprop:Generator_ColumnPropNameInTable="FirstNameColumn" msprop:Generator_UserColumnName="FirstName">
                 <xs:simpleType>
@@ -173,7 +204,7 @@
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:Background" />
+      <xs:selector xpath=".//mstns:DataTable1" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
   </xs:element>
