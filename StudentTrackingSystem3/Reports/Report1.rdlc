@@ -175,7 +175,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Id</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -205,7 +207,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Student ID #</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -235,7 +239,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>First Name</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -265,7 +271,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Middle Name</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -295,7 +303,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Last Name</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -325,7 +335,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>School Email</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -355,7 +367,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Other Email</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -385,7 +399,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Phone</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -415,7 +431,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Gender</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -445,7 +463,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Degree(s) At Admission</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -475,7 +495,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Race/Ethnicity</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -505,7 +527,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Race Other</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -535,7 +559,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Degree Program</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -565,7 +591,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Track</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -595,7 +623,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Plan</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -625,7 +655,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Degree Start Semester</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -655,7 +687,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Degree Start Year</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -685,7 +719,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Degree Awarded Semester</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -715,7 +751,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>Degree Awarded Year</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -1020,6 +1058,7 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!DegreeAtAdmission.Value</Value>
+                              <MarkupType>HTML</MarkupType>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -2068,6 +2107,17 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="ToDateParam">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Student">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CurrentFormer">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>

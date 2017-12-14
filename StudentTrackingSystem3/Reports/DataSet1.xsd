@@ -10,23 +10,25 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SchoolContext_DatabasePublish (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT DISTINCT 
-                         s.Id, s.StudentNumber AS StudentID, s.FirstName, s.MiddleName, s.LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gender.Name AS Gender, STUFF
+                         s.Id, s.StudentNumber AS StudentID, s.FirstName, s.MiddleName, s.LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gender.Name AS Gender, 
+                         REPLACE(REPLACE(REPLACE('&lt;' + STUFF
                              ((SELECT        CASE WHEN pv2.DegreeTypesID IS NULL 
-                                                          THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' ELSE '; ' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward)
+                                                          THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' ELSE '; -' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward)
                                                            AS nvarchar(4)) + ')' END AS Expr1
                                  FROM            G_PrevDegree AS pv2 INNER JOIN
                                                           G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pv2.StudentID LEFT OUTER JOIN
-                                                          G_CommonFields AS degTypes ON degTypes.ID = pv2.DegreeTypesID FOR XML PATH('')), 1, 1, '') AS DegreeAtAdmission, STUFF
-                             ((SELECT        CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' ELSE '; ' + r2.Name END AS Expr1
+                                                          G_CommonFields AS degTypes ON degTypes.ID = pv2.DegreeTypesID FOR XML PATH('')), 1, 1, ''), '&lt;Expr1&gt;', ''), '&lt;/Expr1&gt;', ''), ';', '') 
+                         AS DegreeAtAdmission, REPLACE(REPLACE(REPLACE('&lt;' + STUFF
+                             ((SELECT        CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' ELSE '; -' + r2.Name END AS Expr1
                                  FROM            G_Races AS r2 INNER JOIN
                                                           G_PersonRaces AS pr2 ON pr2.RaceID = r2.Id INNER JOIN
-                                                          G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH('')), 1, 1, '') AS RaceEthnicity, s.RaceOther, 
-                         degreeProgram.Name AS DegreeProgram, track.Name AS Track, plans.Name AS [Plan], degreeStartSem.Name AS DegreeStartSemester, s.DegreeStartYear, 
-                         gradSem.Name AS DegreeAwardedSemester, grad.DegreeEndYear AS DegreeAwardedYear
+                                                          G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH('')), 1, 1, ''), '&lt;Expr1&gt;', ''), '&lt;/Expr1&gt;', ''), ';', '') AS RaceEthnicity, 
+                         s.RaceOther, degreeProgram.Name AS DegreeProgram, track.Name AS Track, plans.Name AS [Plan], degreeStartSem.Name AS DegreeStartSemester, 
+                         s.DegreeStartYear, gradSem.Name AS DegreeAwardedSemester, grad.DegreeEndYear AS DegreeAwardedYear
 FROM            G_Student AS s LEFT OUTER JOIN
                          G_PrevDegree AS pd ON pd.StudentID = s.Id INNER JOIN
                          G_CommonFields AS gender ON gender.ID = s.GendersId INNER JOIN
@@ -86,7 +88,7 @@ ORDER BY s.DegreeStartYear DESC</CommandText>
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />

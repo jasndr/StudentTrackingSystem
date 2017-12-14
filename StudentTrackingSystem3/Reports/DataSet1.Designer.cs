@@ -1424,7 +1424,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolContext_DatabasePublish"].ConnectionString;
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1435,48 +1435,50 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT DISTINCT \r\n                         s.Id, s.StudentNumber AS StudentID, s." +
                 "FirstName, s.MiddleName, s.LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gende" +
-                "r.Name AS Gender, STUFF\r\n                             ((SELECT        CASE WHEN " +
-                "pv2.DegreeTypesID IS NULL \r\n                                                    " +
-                "      THEN \'N/A\' WHEN pv2.DegreeTypesID = \'\' THEN \'N/A\' ELSE \'; \' + degTypes.Nam" +
-                "e + \' in \' + pv2.Title + \' (\' + pv2.SchoolName + \', \' + CAST(YEAR(pv2.DateOfAwar" +
-                "d)\r\n                                                           AS nvarchar(4)) +" +
-                " \')\' END AS Expr1\r\n                                 FROM            G_PrevDegree" +
-                " AS pv2 INNER JOIN\r\n                                                          G_" +
-                "Student AS s2 ON s.Id = s2.Id AND s2.Id = pv2.StudentID LEFT OUTER JOIN\r\n       " +
-                "                                                   G_CommonFields AS degTypes ON" +
-                " degTypes.ID = pv2.DegreeTypesID FOR XML PATH(\'\')), 1, 1, \'\') AS DegreeAtAdmissi" +
-                "on, STUFF\r\n                             ((SELECT        CASE WHEN r2.Name IS NUL" +
-                "L THEN \'N/A\' WHEN r2.Name = \'\' THEN \'N/A\' ELSE \'; \' + r2.Name END AS Expr1\r\n    " +
-                "                             FROM            G_Races AS r2 INNER JOIN\r\n         " +
-                "                                                 G_PersonRaces AS pr2 ON pr2.Rac" +
-                "eID = r2.Id INNER JOIN\r\n                                                        " +
-                "  G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH(\'\')), 1" +
-                ", 1, \'\') AS RaceEthnicity, s.RaceOther, \r\n                         degreeProgram" +
-                ".Name AS DegreeProgram, track.Name AS Track, plans.Name AS [Plan], degreeStartSe" +
-                "m.Name AS DegreeStartSemester, s.DegreeStartYear, \r\n                         gra" +
-                "dSem.Name AS DegreeAwardedSemester, grad.DegreeEndYear AS DegreeAwardedYear\r\nFRO" +
-                "M            G_Student AS s LEFT OUTER JOIN\r\n                         G_PrevDegr" +
-                "ee AS pd ON pd.StudentID = s.Id INNER JOIN\r\n                         G_CommonFie" +
-                "lds AS gender ON gender.ID = s.GendersId INNER JOIN\r\n                         G_" +
-                "CommonFields AS degreeProgram ON degreeProgram.ID = s.DegreeProgramsId INNER JOI" +
-                "N\r\n                         G_CommonFields AS track ON track.ID = s.TracksId INN" +
-                "ER JOIN\r\n                         G_CommonFields AS plans ON plans.ID = s.PlansI" +
-                "d INNER JOIN\r\n                         G_CommonFields AS degreeStartSem ON degre" +
-                "eStartSem.ID = s.DegreeStartSemsId LEFT OUTER JOIN\r\n                         G_G" +
-                "raduation AS grad ON grad.StudentID = s.Id LEFT OUTER JOIN\r\n                    " +
-                "     G_CommonFields AS gradSem ON gradSem.ID = grad.DegreeEndSemsId\r\nWHERE      " +
-                "  ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @FromDate AND NOT (DATEFROMPARTS(" +
-                "grad.DegreeEndYear, 1, 1) < @FromDate) OR\r\n                         DATEFROMPART" +
-                "S(s.DegreeStartYear, 01, 01) < @FromDate AND grad.DegreeEndYear IS NULL OR\r\n    " +
-                "                     DATEFROMPARTS(s.DegreeStartYear, 01, 01) >= @FromDate AND D" +
-                "ATEFROMPARTS(s.DegreeStartYear, 01, 01) <= @ToDate) AND \r\n                      " +
-                "   NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) > @ToDate) OR\r\n                " +
-                "         ISNULL(@FromDate, \'\') = \'\' OR\r\n                         ISNULL(@ToDate," +
-                " \'\') = \'\') AND (s.FirstName + \' \' + s.LastName = @Student OR\r\n                  " +
-                "       ISNULL(@Student, \'\') = \'\') AND ((CASE WHEN (gradSem.Name IS NULL AND grad" +
-                ".DegreeEndYear IS NULL) THEN \'Current\' ELSE \'Former\' END) = @CurrentFormer OR\r\n " +
-                "                        ISNULL(@CurrentFormer, \'\') = \'\')\r\nORDER BY s.DegreeStart" +
-                "Year DESC";
+                "r.Name AS Gender, \r\n                         REPLACE(REPLACE(REPLACE(\'<\' + STUFF" +
+                "\r\n                             ((SELECT        CASE WHEN pv2.DegreeTypesID IS NU" +
+                "LL \r\n                                                          THEN \'N/A\' WHEN p" +
+                "v2.DegreeTypesID = \'\' THEN \'N/A\' ELSE \'; -\' + degTypes.Name + \' in \' + pv2.Title" +
+                " + \' (\' + pv2.SchoolName + \', \' + CAST(YEAR(pv2.DateOfAward)\r\n                  " +
+                "                                         AS nvarchar(4)) + \')\' END AS Expr1\r\n   " +
+                "                              FROM            G_PrevDegree AS pv2 INNER JOIN\r\n  " +
+                "                                                        G_Student AS s2 ON s.Id " +
+                "= s2.Id AND s2.Id = pv2.StudentID LEFT OUTER JOIN\r\n                             " +
+                "                             G_CommonFields AS degTypes ON degTypes.ID = pv2.Deg" +
+                "reeTypesID FOR XML PATH(\'\')), 1, 1, \'\'), \'<Expr1>\', \'\'), \'</Expr1>\', \'\'), \';\', \'" +
+                "\') \r\n                         AS DegreeAtAdmission, REPLACE(REPLACE(REPLACE(\'<\' " +
+                "+ STUFF\r\n                             ((SELECT        CASE WHEN r2.Name IS NULL " +
+                "THEN \'N/A\' WHEN r2.Name = \'\' THEN \'N/A\' ELSE \'; -\' + r2.Name END AS Expr1\r\n     " +
+                "                            FROM            G_Races AS r2 INNER JOIN\r\n          " +
+                "                                                G_PersonRaces AS pr2 ON pr2.Race" +
+                "ID = r2.Id INNER JOIN\r\n                                                         " +
+                " G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH(\'\')), 1," +
+                " 1, \'\'), \'<Expr1>\', \'\'), \'</Expr1>\', \'\'), \';\', \'\') AS RaceEthnicity, \r\n         " +
+                "                s.RaceOther, degreeProgram.Name AS DegreeProgram, track.Name AS " +
+                "Track, plans.Name AS [Plan], degreeStartSem.Name AS DegreeStartSemester, \r\n     " +
+                "                    s.DegreeStartYear, gradSem.Name AS DegreeAwardedSemester, gr" +
+                "ad.DegreeEndYear AS DegreeAwardedYear\r\nFROM            G_Student AS s LEFT OUTER" +
+                " JOIN\r\n                         G_PrevDegree AS pd ON pd.StudentID = s.Id INNER " +
+                "JOIN\r\n                         G_CommonFields AS gender ON gender.ID = s.Genders" +
+                "Id INNER JOIN\r\n                         G_CommonFields AS degreeProgram ON degre" +
+                "eProgram.ID = s.DegreeProgramsId INNER JOIN\r\n                         G_CommonFi" +
+                "elds AS track ON track.ID = s.TracksId INNER JOIN\r\n                         G_Co" +
+                "mmonFields AS plans ON plans.ID = s.PlansId INNER JOIN\r\n                        " +
+                " G_CommonFields AS degreeStartSem ON degreeStartSem.ID = s.DegreeStartSemsId LEF" +
+                "T OUTER JOIN\r\n                         G_Graduation AS grad ON grad.StudentID = " +
+                "s.Id LEFT OUTER JOIN\r\n                         G_CommonFields AS gradSem ON grad" +
+                "Sem.ID = grad.DegreeEndSemsId\r\nWHERE        ((DATEFROMPARTS(s.DegreeStartYear, 0" +
+                "1, 01) < @FromDate AND NOT (DATEFROMPARTS(grad.DegreeEndYear, 1, 1) < @FromDate)" +
+                " OR\r\n                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @FromDa" +
+                "te AND grad.DegreeEndYear IS NULL OR\r\n                         DATEFROMPARTS(s.D" +
+                "egreeStartYear, 01, 01) >= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01" +
+                ") <= @ToDate) AND \r\n                         NOT (DATEFROMPARTS(s.DegreeStartYea" +
+                "r, 01, 01) > @ToDate) OR\r\n                         ISNULL(@FromDate, \'\') = \'\' OR" +
+                "\r\n                         ISNULL(@ToDate, \'\') = \'\') AND (s.FirstName + \' \' + s." +
+                "LastName = @Student OR\r\n                         ISNULL(@Student, \'\') = \'\') AND " +
+                "((CASE WHEN (gradSem.Name IS NULL AND grad.DegreeEndYear IS NULL) THEN \'Current\'" +
+                " ELSE \'Former\' END) = @CurrentFormer OR\r\n                         ISNULL(@Curren" +
+                "tFormer, \'\') = \'\')\r\nORDER BY s.DegreeStartYear DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));

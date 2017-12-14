@@ -242,22 +242,22 @@ namespace StudentTrackingSystem3.Controllers
             var students =
                 db.Students.AsEnumerable().Select(s => new
                 {
-                    ID = s.Id,
+                    //ID = s.Id,
                     FullName = string.Format("{0} {1}", s.FirstName, s.LastName)
                 }).OrderBy(s => s.FullName).ToList();
-            ViewBag.ListOfStudents = new SelectList(students, "ID", "FullName");
+            ViewBag.ListOfStudents = new SelectList(students, "FullName", "FullName");
             ViewBag.ReportViewer = new ReportViewer();
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult Report(string FromDateParam, string ToDateParam)
+        public ActionResult Report(string ListOfStudents, string CurrentFormer, string FromDateParam, string ToDateParam)
         {
 
             DataSet1 ds = new DataSet1();
             DataTable1TableAdapter ta = new DataTable1TableAdapter();
-            ta.Fill(ds.DataTable1, FromDateParam, ToDateParam, "", "");
+            ta.Fill(ds.DataTable1, FromDateParam, ToDateParam, ListOfStudents, CurrentFormer);
 
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
@@ -265,13 +265,13 @@ namespace StudentTrackingSystem3.Controllers
             reportViewer.Width = Unit.Percentage(100);
             reportViewer.Height = Unit.Percentage(100);
 
-            var connectionString = ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
+            //var connectionString = ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
 
-            ReportParameter[] paramsArray = new ReportParameter[2];
-            //paramsArray[0] = new ReportParameter("Student", ListOfStudents);
-            //paramsArray[0] = new ReportParameter("CurrentFormer", CurrentFormer);
+            ReportParameter[] paramsArray = new ReportParameter[4];
             paramsArray[0] = new ReportParameter("FromDateParam", FromDateParam.ToString());
             paramsArray[1] = new ReportParameter("ToDateParam", ToDateParam.ToString());
+            paramsArray[2] = new ReportParameter("Student", ListOfStudents.ToString());
+            paramsArray[3] = new ReportParameter("CurrentFormer", CurrentFormer.ToString());
 
 
             reportViewer.LocalReport.DataSources.Clear();
@@ -287,11 +287,11 @@ namespace StudentTrackingSystem3.Controllers
             var students =
                 db.Students.AsEnumerable().Select(s => new
                 {
-                    ID = s.Id,
+                    //ID = s.Id,
                     FullName = string.Format("{0} {1}", s.FirstName, s.LastName)
                 }).OrderBy(s => s.FullName).ToList();
 
-            ViewBag.ListOfStudents = new SelectList(students, "ID", "FullName");
+            ViewBag.ListOfStudents = new SelectList(students, "FullName", "FullName");
 
             ViewBag.ReportViewer = reportViewer;
 
