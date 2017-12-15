@@ -454,7 +454,8 @@
     <EmbeddedResource Include="Migrations\201711212038457_AddEmployerField.resx">
       <DependentUpon>201711212038457_AddEmployerField.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\Report1.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

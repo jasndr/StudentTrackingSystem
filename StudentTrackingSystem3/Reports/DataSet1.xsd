@@ -8,7 +8,7 @@
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SchoolContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SchoolContext (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SchoolContext.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BackgroundTableAdapter" GeneratorDataComponentClassName="BackgroundTableAdapter" Name="Background" UserDataComponentName="BackgroundTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
@@ -80,6 +80,70 @@ ORDER BY s.DegreeStartYear DESC</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CourseworkTableAdapter" GeneratorDataComponentClassName="CourseworkTableAdapter" Name="Coursework" UserDataComponentName="CourseworkTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, '.................' AS Course, '.....................................' AS Title, '................................' AS Grade, '.............' AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        StudentID, Name, Semester, Course, Title, Grade, Credits
+FROM            (SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, 
+                                                    '.................' AS Course, '.....................................' AS Title, '................................' AS Grade, '.............' AS Credits
+                          FROM            G_Student AS s RIGHT OUTER JOIN
+                                                    G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
+                                                    G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
+                                                    G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
+                                                    G_CommonFields AS grade ON grade.ID = cw.GradeID
+                          UNION ALL
+                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, 
+                                                   c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, 
+                                                   CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits
+                          FROM            G_Student AS s RIGHT OUTER JOIN
+                                                   G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
+                                                   G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
+                                                   G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
+                                                   G_CommonFields AS grade ON grade.ID = cw.GradeID
+                          UNION
+                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL 
+                                                   AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) 
+                                                   AS nvarchar(10)) AS Credits
+                          FROM            G_Student AS s RIGHT OUTER JOIN
+                                                   G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
+                                                   G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
+                                                   G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
+                                                   G_CommonFields AS grade ON grade.ID = cw.GradeID
+                          GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName
+                          UNION
+                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL 
+                                                   AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) 
+                                                   AS nvarchar(10)) AS Credits
+                          FROM            G_Student AS s RIGHT OUTER JOIN
+                                                   G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
+                                                   G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
+                                                   G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
+                                                   G_CommonFields AS grade ON grade.ID = cw.GradeID
+                          GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName) AS a
+WHERE        (Name = @Student) OR
+                         (ISNULL(@Student, '') = '')
+ORDER BY StudentID, Semester DESC, 
+                         CASE WHEN [Grade] = '................................' THEN 1 WHEN [Grade] = 'Total Number of Credits' THEN 3 WHEN [Grade] = 'Semester GPA' THEN 4 ELSE 2 END</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="Name" DataSourceName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, '.................' AS Course, '.....................................' AS Title, '................................' AS Grade, '.............' AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StudentID" DataSetColumn="StudentID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Semester" DataSetColumn="Semester" />
+              <Mapping SourceColumn="Course" DataSetColumn="Course" />
+              <Mapping SourceColumn="Title" DataSetColumn="Title" />
+              <Mapping SourceColumn="Grade" DataSetColumn="Grade" />
+              <Mapping SourceColumn="Credits" DataSetColumn="Credits" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -88,7 +152,7 @@ ORDER BY s.DegreeStartYear DESC</CommandText>
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent">
+        <xs:element name="Background" msprop:Generator_TableClassName="BackgroundDataTable" msprop:Generator_TableVarName="tableBackground" msprop:Generator_TablePropName="Background" msprop:Generator_RowDeletingName="BackgroundRowDeleting" msprop:Generator_RowChangingName="BackgroundRowChanging" msprop:Generator_RowEvHandlerName="BackgroundRowChangeEventHandler" msprop:Generator_RowDeletedName="BackgroundRowDeleted" msprop:Generator_UserTableName="Background" msprop:Generator_RowChangedName="BackgroundRowChanged" msprop:Generator_RowEvArgName="BackgroundRowChangeEvent" msprop:Generator_RowClassName="BackgroundRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -203,10 +267,59 @@ ORDER BY s.DegreeStartYear DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Coursework" msprop:Generator_TableClassName="CourseworkDataTable" msprop:Generator_TableVarName="tableCoursework" msprop:Generator_TablePropName="Coursework" msprop:Generator_RowDeletingName="CourseworkRowDeleting" msprop:Generator_RowChangingName="CourseworkRowChanging" msprop:Generator_RowEvHandlerName="CourseworkRowChangeEventHandler" msprop:Generator_RowDeletedName="CourseworkRowDeleted" msprop:Generator_UserTableName="Coursework" msprop:Generator_RowChangedName="CourseworkRowChanged" msprop:Generator_RowEvArgName="CourseworkRowChangeEvent" msprop:Generator_RowClassName="CourseworkRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StudentID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_UserColumnName="StudentID" type="xs:int" minOccurs="0" />
+              <xs:element name="Name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Semester" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSemester" msprop:Generator_ColumnPropNameInRow="Semester" msprop:Generator_ColumnPropNameInTable="SemesterColumn" msprop:Generator_UserColumnName="Semester" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Course" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCourse" msprop:Generator_ColumnPropNameInRow="Course" msprop:Generator_ColumnPropNameInTable="CourseColumn" msprop:Generator_UserColumnName="Course" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Title" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTitle" msprop:Generator_ColumnPropNameInRow="Title" msprop:Generator_ColumnPropNameInTable="TitleColumn" msprop:Generator_UserColumnName="Title" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Grade" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGrade" msprop:Generator_ColumnPropNameInRow="Grade" msprop:Generator_ColumnPropNameInTable="GradeColumn" msprop:Generator_UserColumnName="Grade" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Credits" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCredits" msprop:Generator_ColumnPropNameInRow="Credits" msprop:Generator_ColumnPropNameInTable="CreditsColumn" msprop:Generator_UserColumnName="Credits" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:DataTable1" />
+      <xs:selector xpath=".//mstns:Background" />
       <xs:field xpath="mstns:Id" />
     </xs:unique>
   </xs:element>

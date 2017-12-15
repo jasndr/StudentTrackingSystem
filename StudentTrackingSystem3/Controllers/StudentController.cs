@@ -252,12 +252,12 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         [HttpPost]
-        public ActionResult Report(string ListOfStudents, string CurrentFormer, string FromDateParam, string ToDateParam)
+        public ActionResult Report(string ReportType, string ListOfStudents, string CurrentFormer, string FromDateParam, string ToDateParam)
         {
 
             DataSet1 ds = new DataSet1();
-            DataTable1TableAdapter ta = new DataTable1TableAdapter();
-            ta.Fill(ds.DataTable1, FromDateParam, ToDateParam, ListOfStudents, CurrentFormer);
+
+            ReportParameter[] paramsArray;
 
             ReportViewer reportViewer = new ReportViewer();
             reportViewer.ProcessingMode = ProcessingMode.Local;
@@ -265,24 +265,56 @@ namespace StudentTrackingSystem3.Controllers
             reportViewer.Width = Unit.Percentage(100);
             reportViewer.Height = Unit.Percentage(100);
 
-            //var connectionString = ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
+            switch (ReportType)
+            {
+                case "Background":
 
-            ReportParameter[] paramsArray = new ReportParameter[4];
-            paramsArray[0] = new ReportParameter("FromDateParam", FromDateParam.ToString());
-            paramsArray[1] = new ReportParameter("ToDateParam", ToDateParam.ToString());
-            paramsArray[2] = new ReportParameter("Student", ListOfStudents.ToString());
-            paramsArray[3] = new ReportParameter("CurrentFormer", CurrentFormer.ToString());
+                    paramsArray = new ReportParameter[4];
+                    paramsArray[0] = new ReportParameter("FromDateParam", FromDateParam.ToString());
+                    paramsArray[1] = new ReportParameter("ToDateParam", ToDateParam.ToString());
+                    paramsArray[2] = new ReportParameter("Student", ListOfStudents.ToString());
+                    paramsArray[3] = new ReportParameter("CurrentFormer", CurrentFormer.ToString());
 
 
-            reportViewer.LocalReport.DataSources.Clear();
+                    BackgroundTableAdapter bta = new BackgroundTableAdapter();
+                    bta.Fill(ds.Background, FromDateParam, ToDateParam, ListOfStudents, CurrentFormer);
 
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Report1.rdlc";
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", ds.Tables[0]));
+                    reportViewer.LocalReport.DataSources.Clear();
 
-            reportViewer.LocalReport.SetParameters(paramsArray);
+                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Rpt1-Background.rdlc";
+                    reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Background", ds.Tables[0]));
 
-            reportViewer.LocalReport.Refresh();
+                    reportViewer.LocalReport.SetParameters(paramsArray);
 
+                    reportViewer.LocalReport.Refresh();
+
+                    break;
+                case "Coursework":
+
+                    paramsArray = new ReportParameter[1];
+                    paramsArray[0] = new ReportParameter("Student", ListOfStudents.ToString());
+
+
+                    CourseworkTableAdapter cta = new CourseworkTableAdapter();
+                    cta.Fill(ds.Coursework, ListOfStudents);
+
+                    reportViewer.LocalReport.DataSources.Clear();
+
+                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Rpt2-Coursework.rdlc";
+                    reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Coursework", ds.Tables[1]));
+
+                    reportViewer.LocalReport.SetParameters(paramsArray);
+
+                    reportViewer.LocalReport.Refresh();
+
+                    break;
+                case "Performance":
+                    break;
+                case "Requirements":
+                    break;
+                case "PostGraduation":
+                    break;
+            }
 
             var students =
                 db.Students.AsEnumerable().Select(s => new

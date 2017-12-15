@@ -385,10 +385,62 @@
         }
     );
 
+    //Hide or show report based on button click
+
+
     //Display Report on button click
-    //$('#GetReport').onclick(function () {
-    //    $('.reportSection').show();
-    //});
+
+    if ($("input[name='ReportType']:checked").val()) {
+        $('.reportSection').show();
+    } else {
+        $('.reportSection').hide();
+    }
+
+
+    //$('#ListOfStudents').closest('.col-md-4').hide();
+    //$('#CurrentFormer').closest('.col-md-4').hide();
+    //$('#FromDateParam').closest('.col-md-4').hide();
+    //$('#ToDateParam').closest('.col-md-4').hide();
+    $("input:radio[name='ReportType']").click(function () {
+
+        //alert($("input:radio[name='ReportType']:checked").val());
+
+        //Display report fields based on report type selection
+        if ($("input:radio[name='ReportType']:checked").val() == 'Background') {
+            //show student, status, from, to
+            $('#ListOfStudents').closest('.col-md-4').show();
+            $('#CurrentFormer').closest('.col-md-4').show();
+            $('#FromDateParam').closest('.col-md-4').show();
+            $('#ToDateParam').closest('.col-md-4').show();
+          
+        } else if (($("input:radio[name='ReportType']:checked").val() == 'Coursework')
+                    || ($("input:radio[name='ReportType']:checked").val() == 'Performance')
+                    || ($("input:radio[name='ReportType']:checked").val() == 'Requirements')
+                    || ($("input:radio[name='ReportType']:checked").val() == 'PostGraduation')) {
+            //show only student
+            $('#ListOfStudents').closest('.col-md-4').show();
+            $('#CurrentFormer').closest('.col-md-4').hide();
+            $('#FromDateParam').closest('.col-md-4').hide();
+            $('#ToDateParam').closest('.col-md-4').hide();
+        } else {
+            //everything hidden
+            $('#ListOfStudents').closest('.col-md-4').hide();
+            $('#CurrentFormer').closest('.col-md-4').hide();
+            $('#FromDateParam').closest('.col-md-4').hide();
+            $('#ToDateParam').closest('.col-md-4').hide();
+        }
+
+    });
+    
+    // Prompts users to select a type of report before proceeding
+    $("#GetReport").mouseup(function (e) {
+        if (!$("input[name='ReportType']:checked").val()) {
+            alert('Please select a report type to obtain a report.');
+            e.preventDefault();
+        }
+    });
+
+   
 
 });
 
