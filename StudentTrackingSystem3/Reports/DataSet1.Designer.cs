@@ -2329,60 +2329,59 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT        StudentID, Name, Semester, Course, Title, Grade, Credits\r\nFROM     " +
                 "       (SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastNa" +
-                "me AS Name, sem.Name + \' \' + CONVERT(nvarchar(4), cw.Year) AS Semester, \r\n      " +
-                "                                              \'.................\' AS Course, \'.." +
-                "...................................\' AS Title, \'................................" +
-                "\' AS Grade, \'.............\' AS Credits\r\n                          FROM          " +
-                "  G_Student AS s RIGHT OUTER JOIN\r\n                                             " +
-                "       G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN\r\n              " +
-                "                                      G_CommonFields AS sem ON sem.ID = cw.Semes" +
-                "tersID LEFT OUTER JOIN\r\n                                                    G_Co" +
-                "urse AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n                               " +
-                "                     G_CommonFields AS grade ON grade.ID = cw.GradeID\r\n         " +
-                "                 UNION ALL\r\n                          SELECT        s.StudentNum" +
-                "ber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \' + CONVE" +
-                "RT(nvarchar(4), cw.Year) AS Semester, \r\n                                        " +
-                "           c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, \r\n" +
-                "                                                   CAST(CASE WHEN grade.GradePoi" +
-                "nt < 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits\r\n                  " +
-                "        FROM            G_Student AS s RIGHT OUTER JOIN\r\n                       " +
-                "                            G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER" +
-                " JOIN\r\n                                                   G_CommonFields AS sem " +
-                "ON sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                                    " +
-                "               G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n            " +
-                "                                       G_CommonFields AS grade ON grade.ID = cw." +
-                "GradeID\r\n                          UNION\r\n                          SELECT      " +
-                "  s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name" +
-                " + \' \' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL \r\n                     " +
-                "                              AS Course, NULL AS Title, \'Total Number of Credits" +
-                "\' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint < 2 THEN 0 ELSE c.Credits END) \r" +
-                "\n                                                   AS nvarchar(10)) AS Credits\r" +
-                "\n                          FROM            G_Student AS s RIGHT OUTER JOIN\r\n    " +
-                "                                               G_Coursework AS cw ON cw.StudentI" +
-                "D = s.Id LEFT OUTER JOIN\r\n                                                   G_C" +
-                "ommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                 " +
-                "                                  G_Course AS c ON c.ID = cw.CourseID LEFT OUTER" +
-                " JOIN\r\n                                                   G_CommonFields AS grad" +
-                "e ON grade.ID = cw.GradeID\r\n                          GROUP BY sem.Name + \' \' + " +
-                "CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + \' \' + s.LastName\r\n" +
-                "                          UNION\r\n                          SELECT        s.Stude" +
-                "ntNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \' + " +
-                "CONVERT(nvarchar(4), cw.Year) AS Semester, NULL \r\n                              " +
-                "                     AS Course, NULL AS Title, \'Semester GPA\' AS Grade, CAST(CON" +
-                "VERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) \r\n        " +
-                "                                           AS nvarchar(10)) AS Credits\r\n        " +
-                "                  FROM            G_Student AS s RIGHT OUTER JOIN\r\n             " +
-                "                                      G_Coursework AS cw ON cw.StudentID = s.Id " +
-                "LEFT OUTER JOIN\r\n                                                   G_CommonFiel" +
-                "ds AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                          " +
-                "                         G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n  " +
-                "                                                 G_CommonFields AS grade ON grad" +
-                "e.ID = cw.GradeID\r\n                          GROUP BY sem.Name + \' \' + CONVERT(n" +
-                "varchar(4), cw.Year), s.StudentNumber, s.FirstName + \' \' + s.LastName) AS a\r\nWHE" +
-                "RE        (Name = @Student) OR\r\n                         (ISNULL(@Student, \'\') =" +
-                " \'\')\r\nORDER BY StudentID, Semester DESC, \r\n                         CASE WHEN [G" +
-                "rade] = \'................................\' THEN 1 WHEN [Grade] = \'Total Number o" +
-                "f Credits\' THEN 3 WHEN [Grade] = \'Semester GPA\' THEN 4 ELSE 2 END";
+                "me AS Name, sem.Name + \' \' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL \r\n " +
+                "                                                   AS Course, NULL AS Title, NUL" +
+                "L AS Grade, NULL AS Credits\r\n                          FROM            G_Student" +
+                " AS s RIGHT OUTER JOIN\r\n                                                    G_Co" +
+                "ursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN\r\n                         " +
+                "                           G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT" +
+                " OUTER JOIN\r\n                                                    G_Course AS c O" +
+                "N c.ID = cw.CourseID LEFT OUTER JOIN\r\n                                          " +
+                "          G_CommonFields AS grade ON grade.ID = cw.GradeID\r\n                    " +
+                "      UNION ALL\r\n                          SELECT        s.StudentNumber AS Stud" +
+                "entID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \' + CONVERT(nvarchar" +
+                "(4), cw.Year) AS Semester, \r\n                                                   " +
+                "c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, \r\n           " +
+                "                                        CAST(CASE WHEN grade.GradePoint < 2 THEN" +
+                " 0 ELSE c.Credits END AS nvarchar(10)) AS Credits\r\n                          FRO" +
+                "M            G_Student AS s RIGHT OUTER JOIN\r\n                                  " +
+                "                 G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN\r\n    " +
+                "                                               G_CommonFields AS sem ON sem.ID =" +
+                " cw.SemestersID LEFT OUTER JOIN\r\n                                               " +
+                "    G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n                       " +
+                "                            G_CommonFields AS grade ON grade.ID = cw.GradeID\r\n  " +
+                "                        UNION\r\n                          SELECT        s.Student" +
+                "Number AS StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \' + CO" +
+                "NVERT(nvarchar(4), cw.Year) AS Semester, NULL \r\n                                " +
+                "                   AS Course, NULL AS Title, \'Total Number of Credits\' AS Grade," +
+                " CAST(SUM(CASE WHEN grade.GradePoint < 2 THEN 0 ELSE c.Credits END) \r\n          " +
+                "                                         AS nvarchar(10)) AS Credits\r\n          " +
+                "                FROM            G_Student AS s RIGHT OUTER JOIN\r\n               " +
+                "                                    G_Coursework AS cw ON cw.StudentID = s.Id LE" +
+                "FT OUTER JOIN\r\n                                                   G_CommonFields" +
+                " AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                            " +
+                "                       G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n    " +
+                "                                               G_CommonFields AS grade ON grade." +
+                "ID = cw.GradeID\r\n                          GROUP BY sem.Name + \' \' + CONVERT(nva" +
+                "rchar(4), cw.Year), s.StudentNumber, s.FirstName + \' \' + s.LastName\r\n           " +
+                "               UNION\r\n                          SELECT        s.StudentNumber AS" +
+                " StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \' + CONVERT(nva" +
+                "rchar(4), cw.Year) AS Semester, NULL \r\n                                         " +
+                "          AS Course, NULL AS Title, \'Semester GPA\' AS Grade, CAST(CONVERT(DECIMA" +
+                "L(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) \r\n                   " +
+                "                                AS nvarchar(10)) AS Credits\r\n                   " +
+                "       FROM            G_Student AS s RIGHT OUTER JOIN\r\n                        " +
+                "                           G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER " +
+                "JOIN\r\n                                                   G_CommonFields AS sem O" +
+                "N sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                                     " +
+                "              G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n             " +
+                "                                      G_CommonFields AS grade ON grade.ID = cw.G" +
+                "radeID\r\n                          GROUP BY sem.Name + \' \' + CONVERT(nvarchar(4)," +
+                " cw.Year), s.StudentNumber, s.FirstName + \' \' + s.LastName) AS a\r\nWHERE        (" +
+                "Name = @Student) OR\r\n                         (ISNULL(@Student, \'\') = \'\')\r\nORDER" +
+                " BY StudentID, Semester DESC, CASE WHEN [Grade] IS NULL \r\n                      " +
+                "   THEN 1 WHEN [Grade] = \'Total Number of Credits\' THEN 3 WHEN [Grade] = \'Semest" +
+                "er GPA\' THEN 4 ELSE 2 END";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

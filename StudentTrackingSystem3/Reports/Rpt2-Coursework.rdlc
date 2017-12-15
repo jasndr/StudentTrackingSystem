@@ -55,6 +55,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -87,6 +91,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -116,8 +124,13 @@
                       <rd:DefaultName>Textbox7</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -147,8 +160,13 @@
                       <rd:DefaultName>Textbox9</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -178,15 +196,19 @@
                       <rd:DefaultName>Textbox11</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -210,8 +232,13 @@
                       <rd:DefaultName>Textbox13</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -241,8 +268,13 @@
                       <rd:DefaultName>Textbox15</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Style>None</Style>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
                         </Border>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -266,7 +298,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!StudentID.Value</Value>
-                              <Style />
+                              <Style>
+                                <Color>=IIF(Fields!StudentID.Value = Previous(Fields!StudentID.Value), "White", "Black")</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -278,6 +312,13 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
+      OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
+                          <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
+      OR Fields!Name.Value = First(Fields!Name.Value, "Coursework"), "1pt", "2pt")</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -296,7 +337,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Name.Value</Value>
-                              <Style />
+                              <Style>
+                                <FontWeight>=IIF(Fields!Name.Value = Previous(Fields!Name.Value), "Normal", "Bold")</FontWeight>
+                                <Color>=IIF(Fields!Name.Value = Previous(Fields!Name.Value), "White", "Black")</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -308,6 +352,13 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
+      OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
+                          <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
+      OR Fields!Name.Value = First(Fields!Name.Value, "Coursework"), "1pt", "2pt")</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -326,7 +377,10 @@
                           <TextRuns>
                             <TextRun>
                               <Value>=Fields!Semester.Value</Value>
-                              <Style />
+                              <Style>
+                                <TextDecoration>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Default", "Underline")</TextDecoration>
+                                <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "White", "Black")</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -338,6 +392,13 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
+      OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
+                          <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
+      OR Fields!Name.Value = First(Fields!Name.Value, "Coursework"), "1pt", "2pt")</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -369,6 +430,13 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
+      OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
+                          <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
+      OR Fields!Name.Value = First(Fields!Name.Value, "Coursework"), "1pt", "2pt")</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -400,6 +468,13 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
+      OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
+                          <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
+      OR Fields!Name.Value = First(Fields!Name.Value, "Coursework"), "1pt", "2pt")</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -419,7 +494,10 @@
                             <TextRun>
                               <Value>=Fields!Grade.Value</Value>
                               <MarkupType>HTML</MarkupType>
-                              <Style />
+                              <Style>
+                                <FontStyle>=IIF(Fields!Grade.Value = "Total Number of Credits" OR
+     Fields!Grade.Value = "Semester GPA", "Italic", "Normal")</FontStyle>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -431,6 +509,13 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
+      OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
+                          <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
+      OR Fields!Name.Value = First(Fields!Name.Value, "Coursework"), "1pt", "2pt")</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -462,6 +547,13 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
+      OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
+                          <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
+      OR Fields!Name.Value = First(Fields!Name.Value, "Coursework"), "1pt", "2pt")</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -499,6 +591,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -530,6 +626,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -561,6 +661,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -591,6 +695,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -621,6 +729,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -651,6 +763,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -681,6 +797,10 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Width>2pt</Width>
+                        </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
