@@ -309,6 +309,25 @@ namespace StudentTrackingSystem3.Controllers
 
                     break;
                 case "Performance":
+
+                    paramsArray = new ReportParameter[1];
+                    paramsArray[0] = new ReportParameter("Student", ListOfStudents.ToString());
+
+
+                    PerformanceTableAdapter pta = new PerformanceTableAdapter();
+                    pta.Fill(ds.Performance, ListOfStudents);
+
+                    reportViewer.LocalReport.DataSources.Clear();
+
+                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Rpt3-Performance.rdlc";
+                    reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Performance", ds.Tables[2]));
+
+                    reportViewer.LocalReport.SetParameters(paramsArray);
+
+                    reportViewer.LocalReport.Refresh();
+
+
+
                     break;
                 case "Requirements":
                     break;

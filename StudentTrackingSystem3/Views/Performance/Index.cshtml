@@ -51,14 +51,16 @@
                         <h4><strong>@category.Key</strong></h4>
 
                         <table class="table" style="width: 90%;">
+
+                            <tr>
+                                <th></th>
+                                <th><strong>Information</strong></th>
+                                <th><strong>Status</strong></th>
+                                <th></th>
+                            </tr>
+
                             @foreach (var item in Model.Where(g => g.StudentID == ViewBag.StudentID).Where(g => g.Category.Name == category.Key))
                             {
-                                <tr>
-                                    <th></th>
-                                    <th><strong>Information</strong></th>
-                                    <th><strong>Status</strong></th>
-                                    <th></th>
-                                </tr>
                                 <tr>
                                     <td></td>
                                     <td style="width: 75%;margin-left: 25%;">
