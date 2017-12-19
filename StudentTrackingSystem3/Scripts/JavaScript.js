@@ -396,38 +396,63 @@
         $('.reportSection').hide();
     }
 
+    // Hide or show report parameters based on selected Report Type
 
-    //$('#ListOfStudents').closest('.col-md-4').hide();
-    //$('#CurrentFormer').closest('.col-md-4').hide();
-    //$('#FromDateParam').closest('.col-md-4').hide();
-    //$('#ToDateParam').closest('.col-md-4').hide();
-    $("input:radio[name='ReportType']").click(function () {
+    $('#ListOfStudents').closest('.form-group').hide();
+    $('#CurrentFormer').closest('.form-group').hide();
+    $('#FromDateParam').closest('.form-group').hide();
+    $('#ToDateParam').closest('.form-group').hide();
 
-        //alert($("input:radio[name='ReportType']:checked").val());
+    $("input:radio[name='ReportType']:checked").each(function () {
+        if ($(this).val() == 'Background')
+        {
+            $('#ListOfStudents').closest('.form-group').show();
+            $('#CurrentFormer').closest('.form-group').show();
+            $('#FromDateParam').closest('.form-group').show();
+            $('#ToDateParam').closest('.form-group').show();
+        }
+        else if ($(this).val() == 'Coursework'
+                || $(this).val() == 'Performance' 
+                || $(this).val() == 'Requirements' 
+                || $(this).val() == 'PostGraduation')
+        {
+            $('#ListOfStudents').closest('.form-group').show();
+        }
+        else
+        {
+            $('#ListOfStudents').closest('.form-group').hide();
+            $('#CurrentFormer').closest('.form-group').hide();
+            $('#FromDateParam').closest('.form-group').hide();
+            $('#ToDateParam').closest('.form-group').hide();
+        }
 
-        //Display report fields based on report type selection
-        if ($("input:radio[name='ReportType']:checked").val() == 'Background') {
-            //show student, status, from, to
-            $('#ListOfStudents').closest('.col-md-4').show();
-            $('#CurrentFormer').closest('.col-md-4').show();
-            $('#FromDateParam').closest('.col-md-4').show();
-            $('#ToDateParam').closest('.col-md-4').show();
-          
-        } else if (($("input:radio[name='ReportType']:checked").val() == 'Coursework')
-                    || ($("input:radio[name='ReportType']:checked").val() == 'Performance')
-                    || ($("input:radio[name='ReportType']:checked").val() == 'Requirements')
-                    || ($("input:radio[name='ReportType']:checked").val() == 'PostGraduation')) {
-            //show only student
-            $('#ListOfStudents').closest('.col-md-4').show();
-            $('#CurrentFormer').closest('.col-md-4').hide();
-            $('#FromDateParam').closest('.col-md-4').hide();
-            $('#ToDateParam').closest('.col-md-4').hide();
-        } else {
-            //everything hidden
-            $('#ListOfStudents').closest('.col-md-4').hide();
-            $('#CurrentFormer').closest('.col-md-4').hide();
-            $('#FromDateParam').closest('.col-md-4').hide();
-            $('#ToDateParam').closest('.col-md-4').hide();
+    });
+
+    
+    $("input:radio[name='ReportType']").change(function () {
+
+        $('#ListOfStudents').closest('.form-group').hide();
+        $('#CurrentFormer').closest('.form-group').hide();
+        $('#FromDateParam').closest('.form-group').hide();
+        $('#ToDateParam').closest('.form-group').hide();
+
+        if ($(this).val() == 'Background') {
+            $('#ListOfStudents').closest('.form-group').show();
+            $('#CurrentFormer').closest('.form-group').show();
+            $('#FromDateParam').closest('.form-group').show();
+            $('#ToDateParam').closest('.form-group').show();
+        }
+        else if ($(this).val() == 'Coursework'
+                || $(this).val() == 'Performance'
+                || $(this).val() == 'Requirements'
+                || $(this).val() == 'PostGraduation') {
+            $('#ListOfStudents').closest('.form-group').show();
+        }
+        else {
+            $('#ListOfStudents').closest('.form-group').hide();
+            $('#CurrentFormer').closest('.form-group').hide();
+            $('#FromDateParam').closest('.form-group').hide();
+            $('#ToDateParam').closest('.form-group').hide();
         }
 
     });

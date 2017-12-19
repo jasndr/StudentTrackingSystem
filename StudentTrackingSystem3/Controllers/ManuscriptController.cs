@@ -18,7 +18,7 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Manuscript
         public ActionResult Index()
         {
-            var manuscripts = db.Manuscripts.Include(g => g.Student);
+            var manuscripts = db.Manuscripts.Include(g => g.File);
             return View(manuscripts.ToList());
         }
 
@@ -53,11 +53,11 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,ReceivedDate")] G_Manuscript g_Manuscript, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "ID, FileID, ReceivedDate")] G_Manuscript g_Manuscript, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                G_Student g_Student = db.Students.Find(g_Manuscript.StudentID);
+                G_Student g_Student = db.Students.Find(g_Manuscript.File.Student);
 
                 if (upload != null & upload.ContentLength > 0)
                 {
@@ -72,14 +72,16 @@ namespace StudentTrackingSystem3.Controllers
                         manuscript.Content = reader.ReadBytes(upload.ContentLength);
                     }
                     g_Student.Files = new List<G_File> { manuscript };
-                }
 
+                    g_Manuscript.File = manuscript;
+                }
+                
                 db.Manuscripts.Add(g_Manuscript);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Graduation", new { id = g_Manuscript.StudentID});
+                return RedirectToAction("Index", "Graduation", new { id = g_Manuscript.File.StudentID});
             }
-            ViewBag.Student = g_Manuscript.Student;
-            ViewBag.StudentID = g_Manuscript.StudentID;
+            ViewBag.Student = g_Manuscript.File.Student;
+            ViewBag.StudentID = g_Manuscript.File.StudentID;
             return View(g_Manuscript);
         }
 
@@ -93,7 +95,7 @@ namespace StudentTrackingSystem3.Controllers
             G_File g_File = db.Files.Find(id);
             G_Student g_Student = g_File.Student;
 
-            G_Manuscript g_Manuscript = g_Student.Manuscripts.FirstOrDefault();
+            G_Manuscript g_Manuscript = g_File.Manuscript;
             if (g_Manuscript == null)
             {
                 return HttpNotFound();
@@ -112,12 +114,13 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,ReceivedDate")] G_Manuscript g_Manuscript, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "ID, FileID, ReceivedDate")] G_Manuscript g_Manuscript, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                G_Student g_Student = db.Students.Find(g_Manuscript.StudentID);
-                G_File g_File = g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.Manuscript && f.StudentID == g_Manuscript.StudentID);
+                G_Student g_Student = db.Students.Find(g_Manuscript.File.StudentID);
+                //G_File g_File = g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.Manuscript && f.StudentID == g_Manuscript.StudentID);
+                G_File g_File = g_Manuscript.File;
 
                 if (upload != null && upload.ContentLength > 0)
                 {
@@ -136,17 +139,18 @@ namespace StudentTrackingSystem3.Controllers
                     {
                         manuscript.Content = reader.ReadBytes(upload.ContentLength);
                     }
+                    g_Manuscript.File = manuscript;
                     g_Student.Files.Add(manuscript);
                     db.Entry(g_Student).State = EntityState.Modified;
                 }
-                g_Manuscript.Student = g_Student;
+                g_Manuscript.File.Student = g_Student;
                 db.Entry(g_Manuscript).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Graduation", new { id = g_Manuscript.StudentID });
+                return RedirectToAction("Index", "Graduation", new { id = g_Manuscript.File.StudentID });
                     
             }
-            ViewBag.Student = g_Manuscript.Student;
-            ViewBag.StudentID = g_Manuscript.StudentID;
+            ViewBag.Student = g_Manuscript.File.Student;
+            ViewBag.StudentID = g_Manuscript.File.StudentID;
             return View(g_Manuscript);
         }
 

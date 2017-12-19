@@ -1257,11 +1257,9 @@ namespace StudentTrackingSystem3.Reports {
             
             private global::System.Data.DataColumn columnInformation;
             
-            private global::System.Data.DataColumn columnStatus;
+            private global::System.Data.DataColumn columnStatusType;
             
-            private global::System.Data.DataColumn columnFileName;
-            
-            private global::System.Data.DataColumn columnFileDescription;
+            private global::System.Data.DataColumn columnStatusDescription;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1330,25 +1328,17 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn StatusColumn {
+            public global::System.Data.DataColumn StatusTypeColumn {
                 get {
-                    return this.columnStatus;
+                    return this.columnStatusType;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FileNameColumn {
+            public global::System.Data.DataColumn StatusDescriptionColumn {
                 get {
-                    return this.columnFileName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FileDescriptionColumn {
-                get {
-                    return this.columnFileDescription;
+                    return this.columnStatusDescription;
                 }
             }
             
@@ -1389,16 +1379,15 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PerformanceRow AddPerformanceRow(int StudentID, string Name, string Category, string Information, string Status, string FileName, string FileDescription) {
+            public PerformanceRow AddPerformanceRow(int StudentID, string Name, string Category, string Information, string StatusType, string StatusDescription) {
                 PerformanceRow rowPerformanceRow = ((PerformanceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         StudentID,
                         Name,
                         Category,
                         Information,
-                        Status,
-                        FileName,
-                        FileDescription};
+                        StatusType,
+                        StatusDescription};
                 rowPerformanceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPerformanceRow);
                 return rowPerformanceRow;
@@ -1425,9 +1414,8 @@ namespace StudentTrackingSystem3.Reports {
                 this.columnName = base.Columns["Name"];
                 this.columnCategory = base.Columns["Category"];
                 this.columnInformation = base.Columns["Information"];
-                this.columnStatus = base.Columns["Status"];
-                this.columnFileName = base.Columns["FileName"];
-                this.columnFileDescription = base.Columns["FileDescription"];
+                this.columnStatusType = base.Columns["StatusType"];
+                this.columnStatusDescription = base.Columns["StatusDescription"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1441,12 +1429,10 @@ namespace StudentTrackingSystem3.Reports {
                 base.Columns.Add(this.columnCategory);
                 this.columnInformation = new global::System.Data.DataColumn("Information", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInformation);
-                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStatus);
-                this.columnFileName = new global::System.Data.DataColumn("FileName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFileName);
-                this.columnFileDescription = new global::System.Data.DataColumn("FileDescription", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFileDescription);
+                this.columnStatusType = new global::System.Data.DataColumn("StatusType", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatusType);
+                this.columnStatusDescription = new global::System.Data.DataColumn("StatusDescription", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStatusDescription);
                 this.columnStudentID.ReadOnly = true;
                 this.columnName.ReadOnly = true;
                 this.columnName.MaxLength = 2147483647;
@@ -1454,12 +1440,10 @@ namespace StudentTrackingSystem3.Reports {
                 this.columnCategory.MaxLength = 2147483647;
                 this.columnInformation.ReadOnly = true;
                 this.columnInformation.MaxLength = 2147483647;
-                this.columnStatus.ReadOnly = true;
-                this.columnStatus.MaxLength = 2147483647;
-                this.columnFileName.ReadOnly = true;
-                this.columnFileName.MaxLength = 255;
-                this.columnFileDescription.ReadOnly = true;
-                this.columnFileDescription.MaxLength = 2147483647;
+                this.columnStatusType.ReadOnly = true;
+                this.columnStatusType.MaxLength = 16;
+                this.columnStatusDescription.ReadOnly = true;
+                this.columnStatusDescription.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2288,49 +2272,33 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Status {
+            public string StatusType {
                 get {
                     try {
-                        return ((string)(this[this.tablePerformance.StatusColumn]));
+                        return ((string)(this[this.tablePerformance.StatusTypeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'Performance\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'StatusType\' in table \'Performance\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePerformance.StatusColumn] = value;
+                    this[this.tablePerformance.StatusTypeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FileName {
+            public string StatusDescription {
                 get {
                     try {
-                        return ((string)(this[this.tablePerformance.FileNameColumn]));
+                        return ((string)(this[this.tablePerformance.StatusDescriptionColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FileName\' in table \'Performance\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'StatusDescription\' in table \'Performance\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePerformance.FileNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FileDescription {
-                get {
-                    try {
-                        return ((string)(this[this.tablePerformance.FileDescriptionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'FileDescription\' in table \'Performance\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tablePerformance.FileDescriptionColumn] = value;
+                    this[this.tablePerformance.StatusDescriptionColumn] = value;
                 }
             }
             
@@ -2384,38 +2352,26 @@ namespace StudentTrackingSystem3.Reports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsStatusNull() {
-                return this.IsNull(this.tablePerformance.StatusColumn);
+            public bool IsStatusTypeNull() {
+                return this.IsNull(this.tablePerformance.StatusTypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetStatusNull() {
-                this[this.tablePerformance.StatusColumn] = global::System.Convert.DBNull;
+            public void SetStatusTypeNull() {
+                this[this.tablePerformance.StatusTypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFileNameNull() {
-                return this.IsNull(this.tablePerformance.FileNameColumn);
+            public bool IsStatusDescriptionNull() {
+                return this.IsNull(this.tablePerformance.StatusDescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFileNameNull() {
-                this[this.tablePerformance.FileNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFileDescriptionNull() {
-                return this.IsNull(this.tablePerformance.FileDescriptionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFileDescriptionNull() {
-                this[this.tablePerformance.FileDescriptionColumn] = global::System.Convert.DBNull;
+            public void SetStatusDescriptionNull() {
+                this[this.tablePerformance.StatusDescriptionColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3172,9 +3128,8 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Category", "Category");
             tableMapping.ColumnMappings.Add("Information", "Information");
-            tableMapping.ColumnMappings.Add("Status", "Status");
-            tableMapping.ColumnMappings.Add("FileName", "FileName");
-            tableMapping.ColumnMappings.Add("FileDescription", "FileDescription");
+            tableMapping.ColumnMappings.Add("StatusType", "StatusType");
+            tableMapping.ColumnMappings.Add("StatusDescription", "StatusDescription");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -3191,83 +3146,67 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        StudentID, Name, Category, Information, Status, FileName, FileDescr" +
-                "iption\r\nFROM            (SELECT        s.StudentNumber AS StudentID, s.FirstName" +
-                " + \' \' + s.LastName AS Name, \'Performance\' AS Category, NULL AS Information, NUL" +
-                "L AS Status, NULL \r\n                                                    AS FileN" +
-                "ame, NULL AS FileDescription\r\n                          FROM            G_Perfor" +
-                "mance AS p LEFT OUTER JOIN\r\n                                                    " +
-                "G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN\r\n                          " +
-                "                          G_CommonFields AS categ ON categ.ID = p.CategoryID LEF" +
-                "T OUTER JOIN\r\n                                                    G_CommonFields" +
-                " AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN\r\n                    " +
-                "                                G_CommonFields AS abstract ON abstract.ID = p.Ab" +
-                "stractStatsID LEFT OUTER JOIN\r\n                                                 " +
-                "   G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN\r\n    " +
-                "                                                G_CommonFields AS teach ON teach" +
-                ".ID = p.TeachingStatsID\r\n                          UNION\r\n                      " +
-                "    SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName A" +
-                "S Name, categ.Name AS Category, p.CategoryInfo AS Information, \r\n               " +
-                "                                    CASE WHEN categ.Name = \'Publication\' THEN pu" +
-                "bs.Name WHEN categ.Name = \'Abstract\' THEN abstract.Name WHEN categ.Name = \'Propo" +
-                "sal\' THEN props.Name\r\n                                                    WHEN c" +
-                "ateg.Name = \'Teaching\' THEN teach.Name END AS Status, NULL AS FileName, NULL AS " +
-                "FileDescription\r\n                          FROM            G_Performance AS p LE" +
-                "FT OUTER JOIN\r\n                                                   G_Student AS s" +
-                " ON s.Id = p.StudentID LEFT OUTER JOIN\r\n                                        " +
-                "           G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN\r\n " +
-                "                                                  G_CommonFields AS pubs ON pubs" +
-                ".ID = p.PublicationStatsID LEFT OUTER JOIN\r\n                                    " +
-                "               G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEF" +
-                "T OUTER JOIN\r\n                                                   G_CommonFields " +
-                "AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN\r\n                      " +
-                "                             G_CommonFields AS teach ON teach.ID = p.TeachingSta" +
-                "tsID\r\n                          UNION\r\n                          SELECT        s" +
-                ".StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, NULL AS Cat" +
-                "egory, \'Number of Performance Items\' AS Information, \r\n                         " +
-                "                          CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS Status" +
-                ", NULL AS FileName, NULL AS FileDescription\r\n                          FROM     " +
-                "       G_Performance AS p LEFT OUTER JOIN\r\n                                     " +
-                "              G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN\r\n            " +
-                "                                       G_CommonFields AS categ ON categ.ID = p.C" +
-                "ategoryID LEFT OUTER JOIN\r\n                                                   G_" +
-                "CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN\r\n        " +
-                "                                           G_CommonFields AS abstract ON abstrac" +
-                "t.ID = p.AbstractStatsID LEFT OUTER JOIN\r\n                                      " +
-                "             G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER " +
-                "JOIN\r\n                                                   G_CommonFields AS teach" +
-                " ON teach.ID = p.TeachingStatsID\r\n                          GROUP BY s.StudentNu" +
-                "mber, s.FirstName, s.LastName\r\n                          UNION ALL\r\n            " +
-                "              SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s." +
-                "LastName AS Name, NULL AS Category, NULL AS Information, NULL AS Status, \r\n     " +
-                "                                              \'Activity Summary\' AS FileName, NU" +
-                "LL AS FileDescription\r\n                          FROM            G_Student AS s " +
-                "RIGHT OUTER JOIN\r\n                                                   G_Activity " +
-                "AS a ON s.Id = a.StudentID RIGHT OUTER JOIN\r\n                                   " +
-                "                G_File AS g ON s.Id = g.StudentID\r\n                          WHE" +
-                "RE        (g.FileType = 0)\r\n                          UNION ALL\r\n               " +
-                "           SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.Las" +
-                "tName AS Name, NULL AS Category, NULL AS Information, NULL AS Status, g.FileName" +
-                ", \r\n                                                   a.ActivitySummaryDesc AS " +
-                "FileDescription\r\n                          FROM            G_Student AS s RIGHT " +
-                "OUTER JOIN\r\n                                                   G_Activity AS a O" +
-                "N s.Id = a.StudentID RIGHT OUTER JOIN\r\n                                         " +
-                "          G_File AS g ON s.Id = g.StudentID\r\n                          WHERE    " +
-                "    (g.FileType = 0)\r\n                          UNION ALL\r\n                     " +
-                "     SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName " +
-                "AS Name, NULL AS Category, NULL AS Information, NULL AS Status, \r\n              " +
-                "                                     \'Number of Activity Summary Documents\' AS F" +
-                "ileName, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS FileDescription" +
-                "\r\n                          FROM            G_Student AS s RIGHT OUTER JOIN\r\n   " +
-                "                                                G_Activity AS a ON s.Id = a.Stud" +
-                "entID RIGHT OUTER JOIN\r\n                                                   G_Fil" +
-                "e AS g ON s.Id = g.StudentID\r\n                          WHERE        (g.FileType" +
-                " = 0)\r\n                          GROUP BY s.StudentNumber, s.FirstName, s.LastNa" +
-                "me) AS Performance\r\nWHERE        (Name = @Student) OR\r\n                         " +
-                "(ISNULL(@Student, \'\') = \'\')\r\nORDER BY Name, \r\n                         CASE WHEN" +
-                " [Category] = \'Performance\' THEN 1 WHEN [Category] = \'Publication\' THEN 2 WHEN [" +
-                "Category] = \'Abstract\' THEN 3 WHEN [Category] = \'Proposal\' THEN 4\r\n             " +
-                "             WHEN [Category] = \'Teaching\' THEN 5 ELSE 6 END";
+            this._commandCollection[0].CommandText = "SELECT        StudentID, Name, StatusType, Category, Information, StatusDescripti" +
+                "on\r\nFROM            (SELECT        s.StudentNumber AS StudentID, s.FirstName + \'" +
+                " \' + s.LastName AS Name, \'Performance\' AS StatusType, categ.Name AS Category, \r\n" +
+                "                                                    p.CategoryInfo AS Informatio" +
+                "n, \r\n                                                    CASE WHEN categ.Name = " +
+                "\'Publication\' THEN pubs.Name WHEN categ.Name = \'Abstract\' THEN abstract.Name WHE" +
+                "N categ.Name = \'Proposal\' THEN props.Name\r\n                                     " +
+                "                WHEN categ.Name = \'Teaching\' THEN teach.Name END AS StatusDescri" +
+                "ption\r\n                          FROM            G_Performance AS p LEFT OUTER J" +
+                "OIN\r\n                                                    G_Student AS s ON s.Id " +
+                "= p.StudentID LEFT OUTER JOIN\r\n                                                 " +
+                "   G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN\r\n         " +
+                "                                           G_CommonFields AS pubs ON pubs.ID = p" +
+                ".PublicationStatsID LEFT OUTER JOIN\r\n                                           " +
+                "         G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTE" +
+                "R JOIN\r\n                                                    G_CommonFields AS pr" +
+                "ops ON props.ID = p.ProposalStatsID LEFT OUTER JOIN\r\n                           " +
+                "                         G_CommonFields AS teach ON teach.ID = p.TeachingStatsID" +
+                "\r\n                          UNION\r\n                          SELECT        s.Stu" +
+                "dentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, NULL AS StatusT" +
+                "ype, NULL AS Category, \r\n                                                   \'Num" +
+                "ber of Performance Items\' AS Information, CONVERT(nvarchar(20), COUNT(p.Category" +
+                "Info)) AS StatusDescription\r\n                          FROM            G_Perform" +
+                "ance AS p LEFT OUTER JOIN\r\n                                                   G_" +
+                "Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN\r\n                            " +
+                "                       G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT O" +
+                "UTER JOIN\r\n                                                   G_CommonFields AS " +
+                "pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN\r\n                        " +
+                "                           G_CommonFields AS abstract ON abstract.ID = p.Abstrac" +
+                "tStatsID LEFT OUTER JOIN\r\n                                                   G_C" +
+                "ommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN\r\n          " +
+                "                                         G_CommonFields AS teach ON teach.ID = p" +
+                ".TeachingStatsID\r\n                          GROUP BY s.StudentNumber, s.FirstNam" +
+                "e, s.LastName\r\n                          UNION ALL\r\n                          SE" +
+                "LECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name" +
+                ", \'Activity Summary\' AS StatusType, NULL AS Category, \r\n                        " +
+                "                           g.FileName AS Information, a.ActivitySummaryDesc AS S" +
+                "tatusDescription\r\n                          FROM            G_Student AS s RIGHT" +
+                " OUTER JOIN\r\n                                                   G_Activity AS a " +
+                "ON s.Id = a.StudentID RIGHT OUTER JOIN\r\n                                        " +
+                "           G_File AS g ON s.Id = g.StudentID\r\n                          WHERE   " +
+                "     (g.FileType = 0)\r\n                          UNION ALL\r\n                    " +
+                "      SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName" +
+                " AS Name, NULL AS StatusType, NULL AS Category, \r\n                              " +
+                "                     \'Number of Activity Summary Documents\' AS Information, CONV" +
+                "ERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription\r\n         " +
+                "                 FROM            G_Student AS s RIGHT OUTER JOIN\r\n              " +
+                "                                     G_Activity AS a ON s.Id = a.StudentID RIGHT" +
+                " OUTER JOIN\r\n                                                   G_File AS g ON s" +
+                ".Id = g.StudentID\r\n                          WHERE        (g.FileType = 0)\r\n    " +
+                "                      GROUP BY s.StudentNumber, s.FirstName, s.LastName) AS Perf" +
+                "ormance\r\nWHERE        (Name = @Student) OR\r\n                         (ISNULL(@St" +
+                "udent, \'\') = \'\')\r\nORDER BY Name, CASE WHEN [StatusType] = \'Performance\' THEN 1 W" +
+                "HEN [StatusType] IS NULL AND \r\n                         [Information] = \'Number " +
+                "of Performance Items\' THEN 2 WHEN [StatusType] = \'Activity Summary\' THEN 3 WHEN " +
+                "[StatusType] IS NULL AND \r\n                         [Information] = \'Number of A" +
+                "ctivity Summary Documents\' THEN 4 ELSE 5 END, \r\n                         CASE WH" +
+                "EN [Category] = \'Performance\' THEN 1 WHEN [Category] = \'Publication\' THEN 2 WHEN" +
+                " [Category] = \'Abstract\' THEN 3 WHEN [Category] = \'Proposal\' THEN 4\r\n           " +
+                "               WHEN [Category] = \'Teaching\' THEN 5 WHEN [Category] IS NULL AND [" +
+                "Information] = \'Number of Performance Items\' THEN 6 ELSE 7 END";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

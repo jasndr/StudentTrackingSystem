@@ -9,11 +9,10 @@ namespace StudentTrackingSystem3.Models
     public class G_Manuscript
     {
         public int ID { get; set; }
-        [Required]
-        public int StudentID { get; set; }
+        public int FileID { get; set; }
         [Required, Display(Name = "Received Date")]
         public System.DateTime ReceivedDate {get;set;}
-        public virtual G_Student Student { get; set; }
+        public virtual G_File File { get; set; }
 
     }
 }

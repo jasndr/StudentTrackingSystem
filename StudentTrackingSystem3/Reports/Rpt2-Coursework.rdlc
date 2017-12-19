@@ -313,7 +313,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Grey", "Black")</Color>
                           <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
       OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
                           <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
@@ -353,7 +353,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Grey", "Black")</Color>
                           <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
       OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
                           <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
@@ -393,7 +393,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Grey", "Black")</Color>
                           <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
       OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
                           <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
@@ -431,7 +431,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Grey", "Black")</Color>
                           <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
       OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
                           <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
@@ -469,7 +469,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Grey", "Black")</Color>
                           <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
       OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
                           <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
@@ -510,7 +510,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Grey", "Black")</Color>
                           <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
       OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
                           <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
@@ -548,7 +548,7 @@
                           <Style>Solid</Style>
                         </Border>
                         <TopBorder>
-                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Gray", "Black")</Color>
+                          <Color>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value), "Light Grey", "Black")</Color>
                           <Style>=IIF(Fields!Semester.Value = Previous(Fields!Semester.Value)
       OR Fields!Semester.Value = First(Fields!Semester.Value, "Coursework"), "None", "Solid")</Style>
                           <Width>=IIF(Fields!Name.Value = Previous(Fields!Name.Value)
