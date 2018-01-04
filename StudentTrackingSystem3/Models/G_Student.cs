@@ -54,7 +54,6 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_PrevDegree> PreviousDegrees { get; set; }
         public virtual ICollection<G_Performance> Performances { get; set; }
         public virtual ICollection<G_Activity> Activity { get; set; }
-        public virtual ICollection<G_File> Files { get; set; }
         public virtual ICollection<G_Graduation> Graduation { get; set; }
         public virtual ICollection<G_CommitteeMember> CommitteeMembers { get; set; }
         public virtual ICollection<G_PostGraduation> PostGraduation { get; set; }
@@ -63,6 +62,8 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<G_Publications> Publications { get; set; }
         public virtual ICollection<G_Grants> Grants { get; set; }
         public virtual ICollection<G_Honors> Honors { get; set; }
+        public virtual ICollection<G_Manuscript> Manuscripts { get; set; }
+        //public virtual ICollection<G_File> Files { get; set; }
 
     }
 }

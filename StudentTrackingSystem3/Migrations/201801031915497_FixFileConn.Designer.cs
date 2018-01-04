@@ -7,13 +7,13 @@ namespace StudentTrackingSystem3.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddEmployerField : IMigrationMetadata
+    public sealed partial class FixFileConn : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddEmployerField));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FixFileConn));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711212038457_AddEmployerField"; }
+            get { return "201801031915497_FixFileConn"; }
         }
         
         string IMigrationMetadata.Source

@@ -117,7 +117,7 @@
         <div class="row">
 
             @{ IQueryable<G_File> studentASFs = ViewBag.StudentFiles;}
-            @{ if (!object.ReferenceEquals(studentASFs.Where(g=>g.FileType == G_FileType.ActivitySummaryFile).FirstOrDefault(), null)) {
+            @{ if (!object.ReferenceEquals(studentASFs.Where(g=>g.FileType == g.FileType).FirstOrDefault(), null)) {
 
                     foreach(var file in studentASFs)
                     {

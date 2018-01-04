@@ -80,6 +80,24 @@ namespace StudentTrackingSystem3.DAL
                 .HasForeignKey(d => d.StartMonthId)
                 .WillCascadeOnDelete(false);
 
+            //modelBuilder.Entity<G_File>()
+            //    .HasRequired(c => c.Manuscript)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.ManuscriptID)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<G_File>()
+            //    .HasRequired(c => c.CurriculumVitae)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.CurriculumVitaeID)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<G_File>()
+            //    .HasRequired(c => c.Activity)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.ActivityID)
+            //    .WillCascadeOnDelete(false);
+
         }
 
         

@@ -15,9 +15,12 @@ namespace StudentTrackingSystem3.Models
         public string ContentType { get; set; }
         public byte[] Content { get; set; }
         public G_FileType FileType { get; set; }
-        public int StudentID { get; set; }
-        public int ManuscriptID { get; set; }
-        public virtual G_Student Student { get; set; }
+        public Nullable<int> ManuscriptID { get; set; }
+        public Nullable<int> ActivityID { get; set; }
+        public Nullable<int> CurriculumVitaeID { get; set; }
+       
         public virtual G_Manuscript Manuscript { get; set; }
+        public virtual G_Activity Activity { get; set; }
+        public virtual G_CurriculumVitae CurriculumVitae { get; set; }
     }
 }

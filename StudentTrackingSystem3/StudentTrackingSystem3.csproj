@@ -221,17 +221,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711180236118_UpdateForms.cs" />
-    <Compile Include="Migrations\201711180236118_UpdateForms.Designer.cs">
-      <DependentUpon>201711180236118_UpdateForms.cs</DependentUpon>
+    <Compile Include="Migrations\201801031915497_FixFileConn.cs" />
+    <Compile Include="Migrations\201801031915497_FixFileConn.Designer.cs">
+      <DependentUpon>201801031915497_FixFileConn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711210150329_ManuscriptUpload.cs" />
-    <Compile Include="Migrations\201711210150329_ManuscriptUpload.Designer.cs">
-      <DependentUpon>201711210150329_ManuscriptUpload.cs</DependentUpon>
+    <Compile Include="Migrations\201801031931462_FixFileConn1.cs" />
+    <Compile Include="Migrations\201801031931462_FixFileConn1.Designer.cs">
+      <DependentUpon>201801031931462_FixFileConn1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201711212038457_AddEmployerField.cs" />
-    <Compile Include="Migrations\201711212038457_AddEmployerField.Designer.cs">
-      <DependentUpon>201711212038457_AddEmployerField.cs</DependentUpon>
+    <Compile Include="Migrations\201801031956154_FixFileConn2.cs" />
+    <Compile Include="Migrations\201801031956154_FixFileConn2.Designer.cs">
+      <DependentUpon>201801031956154_FixFileConn2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -445,14 +445,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711180236118_UpdateForms.resx">
-      <DependentUpon>201711180236118_UpdateForms.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801031915497_FixFileConn.resx">
+      <DependentUpon>201801031915497_FixFileConn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711210150329_ManuscriptUpload.resx">
-      <DependentUpon>201711210150329_ManuscriptUpload.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801031931462_FixFileConn1.resx">
+      <DependentUpon>201801031931462_FixFileConn1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711212038457_AddEmployerField.resx">
-      <DependentUpon>201711212038457_AddEmployerField.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801031956154_FixFileConn2.resx">
+      <DependentUpon>201801031956154_FixFileConn2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />

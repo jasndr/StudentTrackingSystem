@@ -39,7 +39,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentGrad = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault();
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
-            ViewBag.StudentCVs = db.Files.Where(g => g.StudentID == id);
+            ViewBag.StudentCVs = db.Files.Where(g => g.CurriculumVitae.StudentID == id);
             ViewBag.StudentNumber = db.Students.Find(id).StudentNumber;
             ViewBag.StudentEmail = db.Students.Find(id).OtherEmail;
             ViewBag.StudentPhone = db.Students.Find(id).Phone;
@@ -76,7 +76,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentGrad = db.Graduations.Where(g => g.StudentID == id).FirstOrDefault();
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
-            ViewBag.StudentCVs = db.Files.Where(g => g.StudentID == id);
+            ViewBag.StudentCVs = db.Files.Where(g => g.CurriculumVitae.StudentID == id);
             ViewBag.StudentNumber = db.Students.Find(id).StudentNumber;
             ViewBag.StudentEmail = db.Students.Find(id).OtherEmail;
             ViewBag.StudentPhone = db.Students.Find(id).Phone;
@@ -119,7 +119,7 @@ namespace StudentTrackingSystem3.Controllers
                 return HttpNotFound();
             }
             ViewBag.Student = g_Student;
-            ViewBag.StudentCVs = db.Files.Where(g => g.StudentID == id);
+            ViewBag.StudentCVs = db.Files.Where(g => g.CurriculumVitae.StudentID == id);
             ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g => g.Category == "Months"), "ID", "Name", g_PostGraduation.CurrentStartMonthId);
             return View(g_PostGraduation);
         }

@@ -21,17 +21,17 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
             G_Student student = db.Students.Find(id);
-            ViewBag.StudentFiles = db.Files.Where(g=>g.StudentID == id);
+            ViewBag.StudentFiles = db.Files.Where(g=>g.Activity.StudentID == id);
             ViewBag.CurrentStudent_FN = db.Students.Find(id).FirstName;
             ViewBag.CurrentStudent_LN = db.Students.Find(id).LastName;
 
-           // var coursework = db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g => g.StudentID == id)
+            // var coursework = db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g => g.StudentID == id)
             var performance = db.Performances.Include(p => p.AbstractStats)
                                              .Include(p => p.PublicationStats)
                                              .Include(p => p.ProposalStats)
                                              .Include(p => p.TeachingStats)
-                                             .Include(g=>g.Student).Where(g=>g.StudentID == id)
-                                             .Include(s=>s.Student.Files).Where(g => g.StudentID == id);
+                                             .Include(g => g.Student).Where(g => g.StudentID == id);
+                                            // .Include(s=>s.Studen.Files).Where(g => g.StudentID == id);
 
             return View(performance.ToList());
         }

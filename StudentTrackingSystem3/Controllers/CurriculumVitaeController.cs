@@ -62,17 +62,20 @@ namespace StudentTrackingSystem3.Controllers
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    var cv = new G_File
+                    var cvFile = new G_File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = G_FileType.CurriculumVitae,
-                        ContentType = upload.ContentType
+                        ContentType = upload.ContentType,
+                        CurriculumVitae = g_CurriculumVitae
                     };
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
-                        cv.Content = reader.ReadBytes(upload.ContentLength);
+                        cvFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Student.Files = new List<G_File> { cv };
+                    g_CurriculumVitae.Files = new List<G_File> { cvFile };
+
+                    //g_Student.Files = new List<G_File> { cv };
                 }
 
 
@@ -94,13 +97,15 @@ namespace StudentTrackingSystem3.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_File g_File = db.Files.Find(id);
-            G_Student g_Student = g_File.Student;
+            
 
-            G_CurriculumVitae g_CurriculumVitae = g_Student.CurriculumVitae.FirstOrDefault();
+            G_CurriculumVitae g_CurriculumVitae = g_File.CurriculumVitae;
             if (g_CurriculumVitae == null)
             {
                 return HttpNotFound();
             }
+
+            G_Student g_Student = g_CurriculumVitae.Student;
 
             ViewBag.Student = g_Student;
             ViewBag.StudentID = g_Student.Id;
@@ -121,7 +126,7 @@ namespace StudentTrackingSystem3.Controllers
             if (ModelState.IsValid)
             {
                 G_Student g_Student = db.Students.Find(g_CurriculumVitae.StudentID);
-                G_File g_File = g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.CurriculumVitae && f.StudentID == g_CurriculumVitae.StudentID);
+                G_File g_File = g_CurriculumVitae.Files.LastOrDefault();//g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.CurriculumVitae && f.StudentID == g_CurriculumVitae.StudentID);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
@@ -133,17 +138,19 @@ namespace StudentTrackingSystem3.Controllers
                         //db.SaveChanges();
                         
                     }
-                    var cv = new G_File
+                    var cvFile = new G_File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = G_FileType.CurriculumVitae,
-                        ContentType = upload.ContentType
+                        ContentType = upload.ContentType,
+                        CurriculumVitae = g_CurriculumVitae
                     };
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
-                        cv.Content = reader.ReadBytes(upload.ContentLength);
+                        cvFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Student.Files.Add(cv);
+                    g_CurriculumVitae.Files =  new List<G_File> { cvFile };
+                    //g_Student.Files.Add(cv);
                     db.Entry(g_Student).State = EntityState.Modified;
                     //db.SaveChanges();   
                 }

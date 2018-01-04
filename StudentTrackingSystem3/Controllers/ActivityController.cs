@@ -29,7 +29,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Student g_Student = db.Students.Include(s => s.Files).SingleOrDefault(s => s.Id == id);
+            G_Student g_Student = db.Students.Include(s => s.Activity) .SingleOrDefault(s => s.Id == id);
             G_Activity g_Activity = db.Activities.Find(id);
             if (g_Activity == null)
             {
@@ -66,17 +66,19 @@ namespace StudentTrackingSystem3.Controllers
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    var document = new G_File
+                    var documentFile = new G_File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = G_FileType.ActivitySummaryFile,
-                        ContentType = upload.ContentType
+                        ContentType = upload.ContentType,
+                        Activity = g_Activity
                     };
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
-                        document.Content = reader.ReadBytes(upload.ContentLength);
+                        documentFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Student.Files = new List<G_File> { document };
+                    g_Activity.Files = new List<G_File> { documentFile };
+                    //g_Student.Files = new List<G_File> { document };
                 }
 
                 db.Activities.Add(g_Activity);
@@ -96,12 +98,13 @@ namespace StudentTrackingSystem3.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_File g_File = db.Files.Find(id);
-            G_Student g_Student = g_File.Student;
-            G_Activity g_Activity = g_Student.Activity.FirstOrDefault();
+            G_Activity g_Activity = g_File.Activity;
             if (g_Activity == null)
             {
                 return HttpNotFound();
             }
+            G_Student g_Student = g_Activity.Student;
+
             ViewBag.Student = g_Student;
             ViewBag.StudentID = g_Student.Id;
             ViewBag.FileID = id;
@@ -121,7 +124,8 @@ namespace StudentTrackingSystem3.Controllers
             if (ModelState.IsValid)
             {
                 G_Student g_Student = db.Students.Find(g_Activity.StudentID);
-                G_File g_File = g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.ActivitySummaryFile && f.StudentID == g_Activity.StudentID);
+                //G_File g_File = g_Activity.Files.FirstOrDefault(f => f.FileType == G_FileType.ActivitySummaryFile && f.Activity.StudentID == g_Activity.StudentID);
+                G_File g_File = g_Activity.Files.FirstOrDefault();
 
                 if (upload != null && upload.ContentLength > 0)
                 {
@@ -133,18 +137,21 @@ namespace StudentTrackingSystem3.Controllers
                         //db.SaveChanges();
                     }
                     
-                    var document = new G_File
+                    var documentFile = new G_File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = G_FileType.ActivitySummaryFile,
-                        ContentType =  upload.ContentType
+                        ContentType =  upload.ContentType,
+                        Activity = g_Activity
                     };
                     
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
-                        document.Content = reader.ReadBytes(upload.ContentLength);
+                        documentFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Student.Files.Add(document);
+                    g_Activity.Files = new List<G_File> { documentFile };
+
+                   // g_Student.Files.Add(document);
                     db.Entry(g_Student).State = EntityState.Modified;
                     //db.SaveChanges();   
                 }
