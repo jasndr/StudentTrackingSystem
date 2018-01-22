@@ -432,7 +432,7 @@
 
                 var pubBefore = 0;
                 var pubDuring = 0;
-                               var year0Val = new DateTime(degreeEndYear.GetValueOrDefault(1000)    , endMonth, 31);
+                var year0Val = new DateTime(degreeEndYear.GetValueOrDefault(1000)    , endMonth, 31);
                 var year1 = 0; var year1Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 1, endMonth, 31);
                 var year2 = 0; var year2Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 2, endMonth, 31);
                 var year3 = 0; var year3Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 3, endMonth, 31);
@@ -441,9 +441,11 @@
                 var postFuture = false;
                 if (Publications.FirstOrDefault() != null)
                 {
+                    //////////////////DON'T FORGET TO UNCOMMENT THIS OUT!!!!!////////////////////////
                     foreach (var item in Publications)
                     {
-                        var pubDate = new DateTime(item.PubYear, item.PubMonth.DisplayOrder, 15);
+
+                        var pubDate = new DateTime(item.PubYear, 5/*item.PubMonth.DisplayOrder*/, 15);
                         if (endDate > startDate) //check if endDate is not null (set to 0)
                         {
                             postFuture = true;

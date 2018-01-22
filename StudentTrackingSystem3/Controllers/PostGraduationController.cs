@@ -45,7 +45,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentPhone = db.Students.Find(id).Phone;
 
             //var g_PostGraduation = db.G_PostGraduation.Include(g => g.CurrentStartMonth).Include(g => g.Student);
-            var postGraduation = db.PostGraduation.Include(g=>g.Student.PreviousEmployment).ToList();//db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g => g.StudentID == id)
+            var postGraduation = db.PostGraduation.Include(g=>g.Student.Publications).Include(g=>g.Student.Publications).ToList();//db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g => g.StudentID == id)
             return View(postGraduation);
         }
 

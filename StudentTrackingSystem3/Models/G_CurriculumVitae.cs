@@ -16,5 +16,6 @@ namespace StudentTrackingSystem3.Models
         public virtual G_Student Student { get; set; }
         public virtual ICollection<G_File> Files { get; set; }
 
+
     }
 }
