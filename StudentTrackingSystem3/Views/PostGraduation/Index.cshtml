@@ -243,7 +243,7 @@
             </div>
         </div>
 
-        <div class="col-md-12 row col-md-offset-1">
+        <div class="col-md-11 row col-md-offset-1">
             @{ IQueryable<G_Publications> Publications = ViewBag.StudentPublications;}
 
             @{if (!object.ReferenceEquals(Publications.FirstOrDefault(), null))
@@ -257,8 +257,8 @@
                             <tr>
                                 <td>&bull;</td>
                                 <td><strong>@Html.DisplayFor(modelItem => item.PublicationInformation)</strong></td>
-                                <td>@Html.DisplayFor(modelItem => pubMonthName) @Html.DisplayFor(modelItem => item.PubYear)</td>
-                                <td>@Html.ActionLink("Edit", "Edit", "Publication", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                <td>@Html.DisplayFor(modelItem => item.PubMonth.Name) @Html.DisplayFor(modelItem => item.PubYear)</td>
+                                <td>@Html.ActionLink("Edit", "Edit", "Publications", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
                             </tr>
                         }
                     </table>
@@ -296,7 +296,7 @@
                             <tr>
                                 <td>&bull;</td>
                                 <td><strong>@Html.DisplayFor(modelItem => item.GrantInformation)</strong></td>
-                                <td>@Html.DisplayFor(modelItem => item.GrantMonth.Name) @Html.DisplayFor(modelItem => item.GrantYear)</td>
+                                <td>@*@Html.DisplayFor(modelItem => item.GrantMonth.Name)*@ @Html.DisplayFor(modelItem => item.GrantYear)</td>
                                 <td>@Html.ActionLink("Edit", "Edit", "Grants", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
                             </tr>
                         }
@@ -441,11 +441,10 @@
                 var postFuture = false;
                 if (Publications.FirstOrDefault() != null)
                 {
-                    //////////////////DON'T FORGET TO UNCOMMENT THIS OUT!!!!!////////////////////////
                     foreach (var item in Publications)
                     {
 
-                        var pubDate = new DateTime(item.PubYear, 5/*item.PubMonth.DisplayOrder*/, 15);
+                        var pubDate = new DateTime(item.PubYear, item.PubMonth.DisplayOrder, 15);
                         if (endDate > startDate) //check if endDate is not null (set to 0)
                         {
                             postFuture = true;
