@@ -121,10 +121,10 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.FormID = g_Graduation.ID;
             ViewBag.Student = g_Student;
             ViewBag.StudentID = g_Student.Id;
-            ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == id);
+            ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == g_Student.Id);
             ViewBag.Student_FN = g_Student.FirstName;
             ViewBag.Student_LN = g_Student.LastName;
-            ViewBag.StudentManuscripts = db.Files.Where(g => g.Manuscript.StudentID == id);
+            ViewBag.StudentManuscripts = db.Files.Where(g => g.Manuscript.StudentID == g_Student.Id);
 
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", g_Graduation.DegreeEndSemsId);
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.QualifierResultId);

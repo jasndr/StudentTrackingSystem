@@ -296,7 +296,7 @@
                             <tr>
                                 <td>&bull;</td>
                                 <td><strong>@Html.DisplayFor(modelItem => item.GrantInformation)</strong></td>
-                                <td>@*@Html.DisplayFor(modelItem => item.GrantMonth.Name)*@ @Html.DisplayFor(modelItem => item.GrantYear)</td>
+                                <td>@Html.DisplayFor(modelItem => item.GrantMonth.Name) @Html.DisplayFor(modelItem => item.GrantYear)</td>
                                 <td>@Html.ActionLink("Edit", "Edit", "Grants", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
                             </tr>
                         }

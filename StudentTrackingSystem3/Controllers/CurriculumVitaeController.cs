@@ -126,7 +126,7 @@ namespace StudentTrackingSystem3.Controllers
             if (ModelState.IsValid)
             {
                 G_Student g_Student = db.Students.Find(g_CurriculumVitae.StudentID);
-                G_File g_File = g_CurriculumVitae.Files.LastOrDefault();//g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.CurriculumVitae && f.StudentID == g_CurriculumVitae.StudentID);
+                G_File g_File = db.Files.Where(f=>f.CurriculumVitae.ID == g_CurriculumVitae.ID).FirstOrDefault();//g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.CurriculumVitae && f.StudentID == g_CurriculumVitae.StudentID);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
@@ -135,11 +135,13 @@ namespace StudentTrackingSystem3.Controllers
                     {
                         db.Files.Remove(g_File);
                         db.Entry(g_File).State = EntityState.Deleted;
+                        db.Entry(g_CurriculumVitae).State = EntityState.Modified;
                         //db.SaveChanges();
                         
                     }
                     var cvFile = new G_File
                     {
+                      
                         FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = G_FileType.CurriculumVitae,
                         ContentType = upload.ContentType,

@@ -123,8 +123,7 @@ namespace StudentTrackingSystem3.Controllers
             if (ModelState.IsValid)
             {
                 G_Student g_Student = db.Students.Find(g_Manuscript.StudentID);
-                //G_File g_File = g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.Manuscript && f.StudentID == g_Manuscript.StudentID);
-                G_File g_File = g_Manuscript.Files.LastOrDefault();
+                G_File g_File = db.Files.Where(f => f.Manuscript.ID == g_Manuscript.ID).FirstOrDefault();
 
                 if (upload != null && upload.ContentLength > 0)
                 {
@@ -132,6 +131,7 @@ namespace StudentTrackingSystem3.Controllers
                     {
                         db.Files.Remove(g_File);
                         db.Entry(g_File).State = EntityState.Deleted;
+                        db.Entry(g_Manuscript).State = EntityState.Modified;
                     }
                     var manuscript = new G_File
                     {

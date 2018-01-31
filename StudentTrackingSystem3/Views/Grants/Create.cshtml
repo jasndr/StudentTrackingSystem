@@ -65,7 +65,7 @@
                     @Html.LabelFor(model => model.GrantMonthId,  htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("GrantMonthId", null, "-- Select Month", htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("GrantMonthId", null, "-- Select Month --", htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.GrantMonthId, "", new { @class = "text-danger" })
                     </div>
                 </div>

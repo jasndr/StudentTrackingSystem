@@ -124,8 +124,7 @@ namespace StudentTrackingSystem3.Controllers
             if (ModelState.IsValid)
             {
                 G_Student g_Student = db.Students.Find(g_Activity.StudentID);
-                //G_File g_File = g_Activity.Files.FirstOrDefault(f => f.FileType == G_FileType.ActivitySummaryFile && f.Activity.StudentID == g_Activity.StudentID);
-                G_File g_File = db.Files.FirstOrDefault(f => f.ActivityID == g_Activity.ID && f.FileType == G_FileType.ActivitySummaryFile);
+                G_File g_File = db.Files.Where(f => f.Activity.ID == g_Activity.ID).FirstOrDefault();
 
                 if (upload != null && upload.ContentLength > 0)
                 {
@@ -134,6 +133,7 @@ namespace StudentTrackingSystem3.Controllers
                     {
                         db.Files.Remove(g_File);
                         db.Entry(g_File).State = EntityState.Deleted;
+                        db.Entry(g_Activity).State = EntityState.Modified;
                         //db.SaveChanges();
                     }
                     
@@ -142,15 +142,16 @@ namespace StudentTrackingSystem3.Controllers
                         FileName = System.IO.Path.GetFileName(upload.FileName),
                         FileType = G_FileType.ActivitySummaryFile,
                         ContentType =  upload.ContentType,
-                        Activity = g_Activity,
-                        ActivityID = g_Activity.ID
+                        Activity = g_Activity/*,
+                        ActivityID = g_Activity.ID*/
                     };
                     
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         documentFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Activity.Files.Add(documentFile);
+                    g_Activity.Files = new List<G_File> { documentFile };
+                    //g_Activity.Files.Add(documentFile);
                     db.Entry(g_Activity).State = EntityState.Modified;
                 }
                 g_Activity.Student = g_Student;
