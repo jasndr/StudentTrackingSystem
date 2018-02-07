@@ -140,6 +140,7 @@ namespace StudentTrackingSystem3.Controllers
                         ContentType = upload.ContentType,
                         Manuscript = g_Manuscript
                     };
+
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         manuscript.Content = reader.ReadBytes(upload.ContentLength);

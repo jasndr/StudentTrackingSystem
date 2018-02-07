@@ -369,7 +369,7 @@
                 <div class="form-group">
 
                     <div class="col-md-offset-2 row col-md-10">
-                        @Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of entered data." })
+                        @Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "NOTE: If you have entered data on this page, please dont forget to click 'Save' before proceeding." })
                     </div>
 
                     <div class="col-md-offset-2 col-md-10 row">
@@ -616,7 +616,7 @@
 
                     <div class="row">
 
-                        <p>@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = Model.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })</p>
+                        <p>@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = Model.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "NOTE: If you have entered data on this page, please dont forget to click 'Save' before proceeding." })</p>
                         @{IQueryable<G_File> studentManuscripts = ViewBag.StudentManuscripts; }
 
                         @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == G_FileType.Manuscript).FirstOrDefault(), null))
