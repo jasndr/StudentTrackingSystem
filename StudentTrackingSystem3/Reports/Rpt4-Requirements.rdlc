@@ -72,7 +72,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -108,7 +107,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -144,7 +142,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -180,7 +177,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -216,7 +212,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -252,7 +247,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -288,7 +282,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -324,7 +317,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -360,7 +352,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -396,7 +387,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -415,7 +405,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Manuscript File</Value>
+                              <Value>Manuscript File(s)</Value>
                               <Style>
                                 <TextDecoration>Underline</TextDecoration>
                               </Style>
@@ -432,7 +422,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -468,7 +457,6 @@
                         </Border>
                         <BottomBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </BottomBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -746,9 +734,13 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!CommitteeMembers.Value</Value>
+                              <Value>=(IIF(LEFT(Fields!CommitteeMembers.Value.ToString(), 8) = "Expr1&gt;; ",
+	 RIGHT(Fields!CommitteeMembers.Value.ToString(), LEN(Fields!CommitteeMembers.Value.ToString()) -8),
+	 Fields!CommitteeMembers.Value.ToString()))</Value>
                               <MarkupType>HTML</MarkupType>
-                              <Style />
+                              <Style>
+                                <Color>=IIF(Fields!CommitteeMembers.Value IS NOTHING, "White", "Black")</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -855,9 +847,15 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ManuscriptFile.Value</Value>
+                              <Value>=IIF (Fields!ManuscriptFile.Value IS NOTHING, 
+      Fields!ManuscriptFile.Value,
+	  (IIF(LEFT(Fields!ManuscriptFile.Value, 8) = "Expr1&gt;; ",
+	 RIGHT(Fields!ManuscriptFile.Value, LEN(Fields!ManuscriptFile.Value) -8),
+	 Fields!ManuscriptFile.Value)))</Value>
                               <MarkupType>HTML</MarkupType>
-                              <Style />
+                              <Style>
+                                <Color>=IIF(Fields!ManuscriptFile.Value IS NOTHING, "White", "Black")</Color>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style />
@@ -950,7 +948,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -985,7 +982,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1019,7 +1015,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1053,7 +1048,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1087,7 +1081,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1121,7 +1114,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1155,7 +1147,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1189,7 +1180,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1223,7 +1213,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1257,7 +1246,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1291,7 +1279,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1325,7 +1312,6 @@
                         </Border>
                         <TopBorder>
                           <Color>Black</Color>
-                          <Width>2pt</Width>
                         </TopBorder>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -1385,10 +1371,10 @@
     <Height>0.77431in</Height>
     <Style />
   </Body>
-  <Width>12in</Width>
+  <Width>12.01042in</Width>
   <Page>
     <PageHeader>
-      <Height>0.75in</Height>
+      <Height>0.76389in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1445,7 +1431,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Left>2.07354in</Left>
+          <Left>4.14708in</Left>
           <Height>0.41667in</Height>
           <Width>3.09375in</Width>
           <Style>
@@ -1474,7 +1460,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox22</rd:DefaultName>
-          <Top>0.45834in</Top>
+          <Top>0.44445in</Top>
+          <Left>3.60471in</Left>
           <Height>0.29166in</Height>
           <Width>7.24083in</Width>
           <ZIndex>1</ZIndex>
