@@ -415,6 +415,7 @@
     <Content Include="Views\Manuscript\Create.cshtml" />
     <Content Include="Views\Manuscript\Edit.cshtml" />
     <Content Include="Views\PostGraduation\Index.cshtml" />
+    <Content Include="Views\Account\DisplayEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -438,6 +439,7 @@
     <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />
     <EmbeddedResource Include="Reports\Rpt3-Performance.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt4-Requirements.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

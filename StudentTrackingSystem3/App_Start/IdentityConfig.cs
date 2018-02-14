@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using StudentTrackingSystem3.Models;
+using System.Net.Mail;
 
 namespace StudentTrackingSystem3
 {
@@ -19,7 +20,56 @@ namespace StudentTrackingSystem3
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            //return Task.FromResult(0);
+
+            // Credentials:
+            var credentialUserName = "bqhspt@hawaii.edu";
+            var sentFrom = "bqhspt@hawaii.edu";
+            var pwd = "abcdefg";
+
+            // Configure the client:
+            System.Net.Mail.SmtpClient client =
+                new System.Net.Mail.SmtpClient("smtp.gmail.com");
+
+            client.Port = 587; //25;
+            client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+
+            // Create the credentials:
+            System.Net.NetworkCredential credentials =
+                new System.Net.NetworkCredential(credentialUserName, pwd);
+
+            client.EnableSsl = true;
+            client.Credentials = credentials;
+
+            // Create the message:
+            var mail =
+                new System.Net.Mail.MailMessage(sentFrom, message.Destination);
+
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+            mail.IsBodyHtml = true;
+
+            //tracking Email
+            string trackingEmail = System.Configuration.ConfigurationManager.AppSettings["trackingEmail"];
+            MailAddress replyTo = new MailAddress(trackingEmail);
+
+            if(!String.Equals(message.Destination, replyTo.Address, StringComparison.OrdinalIgnoreCase))
+            {
+                string superAdminEmail = System.Configuration.ConfigurationManager.AppSettings["superAdminEmail"];
+                MailAddress superAdmin = new MailAddress(superAdminEmail);
+                mail.ReplyToList.Add(superAdmin);
+                mail.Bcc.Add(superAdmin);
+            }
+            else
+            {
+                mail.ReplyToList.Add(replyTo);
+            }
+
+            // Send:
+            return client.SendMailAsync(mail);
+
+
         }
     }
 
@@ -35,6 +85,12 @@ namespace StudentTrackingSystem3
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
+
+        public ApplicationUserManager()
+            : base (new UserStore<ApplicationUser>(new ApplicationDbContext()))
+        {
+        }
+
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
@@ -59,12 +115,7 @@ namespace StudentTrackingSystem3
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
-
-            // Configure user lockout defaults
-            manager.UserLockoutEnabledByDefault = true;
-            manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
-            manager.MaxFailedAccessAttemptsBeforeLockout = 5;
-
+            
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
             manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
@@ -76,6 +127,12 @@ namespace StudentTrackingSystem3
                 Subject = "Security Code",
                 BodyFormat = "Your security code is {0}"
             });
+
+            // Configure user lockout defaults
+            manager.UserLockoutEnabledByDefault = true;
+            manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
+            manager.MaxFailedAccessAttemptsBeforeLockout = 5;
+
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
             var dataProtectionProvider = options.DataProtectionProvider;

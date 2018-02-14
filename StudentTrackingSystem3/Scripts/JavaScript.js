@@ -404,7 +404,7 @@
     $('#ToDateParam').closest('.form-group').hide();
 
     $("input:radio[name='ReportType']:checked").each(function () {
-        if ($(this).val() == 'Background')
+        if ($(this).val() == 'Background' || $(this).val() == 'Requirements')
         {
             $('#ListOfStudents').closest('.form-group').show();
             $('#CurrentFormer').closest('.form-group').show();
@@ -413,7 +413,7 @@
         }
         else if ($(this).val() == 'Coursework'
                 || $(this).val() == 'Performance' 
-                || $(this).val() == 'Requirements' 
+              //  || $(this).val() == 'Requirements' 
                 || $(this).val() == 'PostGraduation')
         {
             $('#ListOfStudents').closest('.form-group').show();
@@ -436,7 +436,7 @@
         $('#FromDateParam').closest('.form-group').hide();
         $('#ToDateParam').closest('.form-group').hide();
 
-        if ($(this).val() == 'Background') {
+        if ($(this).val() == 'Background' || $(this).val() == 'Requirements') {
             $('#ListOfStudents').closest('.form-group').show();
             $('#CurrentFormer').closest('.form-group').show();
             $('#FromDateParam').closest('.form-group').show();
@@ -444,7 +444,7 @@
         }
         else if ($(this).val() == 'Coursework'
                 || $(this).val() == 'Performance'
-                || $(this).val() == 'Requirements'
+                //|| $(this).val() == 'Requirements'
                 || $(this).val() == 'PostGraduation') {
             $('#ListOfStudents').closest('.form-group').show();
         }

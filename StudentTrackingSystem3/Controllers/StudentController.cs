@@ -326,10 +326,28 @@ namespace StudentTrackingSystem3.Controllers
 
                     reportViewer.LocalReport.Refresh();
 
-
-
                     break;
                 case "Requirements":
+
+                    paramsArray = new ReportParameter[4];
+                    paramsArray[0] = new ReportParameter("Student", ListOfStudents.ToString());
+                    paramsArray[1] = new ReportParameter("CurrentFormer", CurrentFormer.ToString());
+                    paramsArray[2] = new ReportParameter("FromDateParam", FromDateParam.ToString());
+                    paramsArray[3] = new ReportParameter("ToDateParam", ToDateParam.ToString());
+                    
+
+                    RequirementsTableAdapter rta = new RequirementsTableAdapter();
+                    rta.Fill(ds.Requirements, FromDateParam, ToDateParam, ListOfStudents, CurrentFormer);
+
+                    reportViewer.LocalReport.DataSources.Clear();
+
+                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Rpt4-Requirements.rdlc";
+                    reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Requirements", ds.Tables[3]));
+
+                    reportViewer.LocalReport.SetParameters(paramsArray);
+
+                    reportViewer.LocalReport.Refresh();
+
                     break;
                 case "PostGraduation":
                     break;

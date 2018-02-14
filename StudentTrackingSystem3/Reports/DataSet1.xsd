@@ -146,7 +146,7 @@ ORDER BY StudentID, Semester DESC, CASE WHEN [Grade] IS NULL
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PerformanceTableAdapter" GeneratorDataComponentClassName="PerformanceTableAdapter" Name="Performance" UserDataComponentName="PerformanceTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID GROUP BY s.StudentNumber, s.FirstName, s.LastName UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON s.Id = g.StudentID WHERE (g.FileType = 0) UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON s.Id = g.StudentID WHERE (g.FileType = 0) GROUP BY s.StudentNumber, s.FirstName, s.LastName" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID GROUP BY s.StudentNumber, s.FirstName, s.LastName UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON g.ActivityID = a.ID WHERE (g.FileType = 0) UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON g.ActivityID = a.ID WHERE (g.FileType = 0) GROUP BY s.StudentNumber, s.FirstName, s.LastName" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        StudentID, Name, StatusType, Category, Information, StatusDescription
@@ -177,14 +177,14 @@ FROM            (SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' +
                                                    g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription
                           FROM            G_Student AS s RIGHT OUTER JOIN
                                                    G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN
-                                                   G_File AS g ON s.Id = g.StudentID
+                                                   G_File AS g ON g.ActivityID = a.ID
                           WHERE        (g.FileType = 0)
                           UNION ALL
                           SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 
                                                    'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription
                           FROM            G_Student AS s RIGHT OUTER JOIN
                                                    G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN
-                                                   G_File AS g ON s.Id = g.StudentID
+                                                   G_File AS g ON g.ActivityID = a.ID
                           WHERE        (g.FileType = 0)
                           GROUP BY s.StudentNumber, s.FirstName, s.LastName) AS Performance
 WHERE        (Name = @Student) OR
@@ -195,7 +195,7 @@ ORDER BY Name, CASE WHEN [StatusType] = 'Performance' THEN 1 WHEN [StatusType] I
                          CASE WHEN [Category] = 'Performance' THEN 1 WHEN [Category] = 'Publication' THEN 2 WHEN [Category] = 'Abstract' THEN 3 WHEN [Category] = 'Proposal' THEN 4
                           WHEN [Category] = 'Teaching' THEN 5 WHEN [Category] IS NULL AND [Information] = 'Number of Performance Items' THEN 6 ELSE 7 END</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="Name" DataSourceName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID GROUP BY s.StudentNumber, s.FirstName, s.LastName UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON s.Id = g.StudentID WHERE (g.FileType = 0) UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON s.Id = g.StudentID WHERE (g.FileType = 0) GROUP BY s.StudentNumber, s.FirstName, s.LastName" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="Name" DataSourceName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID GROUP BY s.StudentNumber, s.FirstName, s.LastName UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON g.ActivityID = a.ID WHERE (g.FileType = 0) UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON g.ActivityID = a.ID WHERE (g.FileType = 0) GROUP BY s.StudentNumber, s.FirstName, s.LastName" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -208,6 +208,73 @@ ORDER BY Name, CASE WHEN [StatusType] = 'Performance' THEN 1 WHEN [StatusType] I
               <Mapping SourceColumn="Information" DataSetColumn="Information" />
               <Mapping SourceColumn="StatusType" DataSetColumn="StatusType" />
               <Mapping SourceColumn="StatusDescription" DataSetColumn="StatusDescription" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RequirementsTableAdapter" GeneratorDataComponentClassName="RequirementsTableAdapter" Name="Requirements" UserDataComponentName="RequirementsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT DISTINCT 
+                         s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, qr.Name + 'ed - ' + CONVERT(CHAR(10), g.DateOfQualification, 101) 
+                         + CASE WHEN qr2.ID IS NULL THEN '' ELSE '; ' + qr2.Name + 'ed - ' + CONVERT(CHAR(10), g.DateOfQualification2, 101) END AS QualifiyingExamination, 
+                         g.Form2Title AS ResearchTopic, fr.Name + 'ed -  ' + CONVERT(CHAR(10), g.Form2Date, 101) AS ProposalPresentation, cer.Name + 'ed - ' + CONVERT(CHAR(10), 
+                         g.DateOfCompExam, 101) + CASE WHEN cer2.ID IS NULL THEN '' ELSE '; ' + cer2.Name + 'ed - ' + CONVERT(CHAR(10), g.DateOfCompExam2, 101) 
+                         END AS ComprehensiveExam, g.AdvisorName + ' - ' + g.AdvisorDepartment + ' (' + g.AdvisorUniversity + ')' AS Advisor, STUFF
+                             ((SELECT DISTINCT '; ' + cm2.Name + ' - ' + cm2.Department + ' (' + cm2.University + ')' AS Expr1
+                                 FROM            G_CommitteeMember AS cm2 LEFT OUTER JOIN
+                                                          G_Student AS s2 ON cm2.StudentID = s2.Id
+                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS CommitteeMembers, g.Form3Title AS FinalDefenseTitle, fdr.Name + 'ed - ' + CONVERT(CHAR(10), 
+                         g.Form3Date, 101) AS FinalDefenseResult, STUFF
+                             ((SELECT DISTINCT '; ' + mFile2.FileName AS Expr1
+                                 FROM            G_File AS mFile2 RIGHT OUTER JOIN
+                                                          G_Manuscript AS m2 ON m2.ID = mFile2.ManuscriptID LEFT OUTER JOIN
+                                                          G_Student AS s2 ON m2.StudentID = s2.Id
+                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS ManuscriptFile, degreeEnd.Name + ' ' + CONVERT(NVARCHAR(4), g.DegreeEndYear) 
+                         AS DegreeAwarded
+FROM            G_Graduation AS g LEFT OUTER JOIN
+                         G_Student AS s ON g.StudentID = s.Id LEFT OUTER JOIN
+                         G_CommonFields AS qr ON g.QualifierResultId = qr.ID LEFT OUTER JOIN
+                         G_CommonFields AS qr2 ON g.Qualifier2ResultId = qr2.ID LEFT OUTER JOIN
+                         G_CommonFields AS fr ON g.Form2ResultId = fr.ID LEFT OUTER JOIN
+                         G_CommonFields AS cer ON g.CompExamResultId = cer.ID LEFT OUTER JOIN
+                         G_CommonFields AS cer2 ON g.CompExam2ResultId = cer2.ID LEFT OUTER JOIN
+                         G_CommonFields AS fdr ON g.Form3ResultId = fdr.ID LEFT OUTER JOIN
+                         G_Manuscript AS m ON m.StudentID = s.Id LEFT OUTER JOIN
+                         G_File AS mFile ON mFile.ManuscriptID = m.ID LEFT OUTER JOIN
+                         G_CommonFields AS degreeEnd ON degreeEnd.ID = g.DegreeEndSemsId
+WHERE        ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (DATEFROMPARTS(g.DegreeEndYear, 1, 1) &lt; @FromDate) OR
+                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND g.DegreeEndYear IS NULL OR
+                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt;= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt;= @ToDate) AND 
+                         NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt; @ToDate) OR
+                         ISNULL(@FromDate, '') = '' OR
+                         ISNULL(@ToDate, '') = '') AND (s.FirstName + ' ' + s.LastName = @Student OR
+                         ISNULL(@Student, '') = '') AND ((CASE WHEN (degreeEnd.Name IS NULL AND g.DegreeEndYear IS NULL) THEN 'Current' ELSE 'Former' END) = @CurrentFormer OR
+                         ISNULL(@CurrentFormer, '') = '')</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="FromDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@FromDate" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ToDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@ToDate" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="CurrentFormer" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@CurrentFormer" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Advisor" DataSetColumn="Advisor" />
+              <Mapping SourceColumn="StudentID" DataSetColumn="StudentID" />
+              <Mapping SourceColumn="QualifiyingExamination" DataSetColumn="QualifiyingExamination" />
+              <Mapping SourceColumn="ResearchTopic" DataSetColumn="ResearchTopic" />
+              <Mapping SourceColumn="ProposalPresentation" DataSetColumn="ProposalPresentation" />
+              <Mapping SourceColumn="ComprehensiveExam" DataSetColumn="ComprehensiveExam" />
+              <Mapping SourceColumn="CommitteeMembers" DataSetColumn="CommitteeMembers" />
+              <Mapping SourceColumn="FinalDefenseTitle" DataSetColumn="FinalDefenseTitle" />
+              <Mapping SourceColumn="FinalDefenseResult" DataSetColumn="FinalDefenseResult" />
+              <Mapping SourceColumn="ManuscriptFile" DataSetColumn="ManuscriptFile" />
+              <Mapping SourceColumn="DegreeAwarded" DataSetColumn="DegreeAwarded" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -416,6 +483,90 @@ ORDER BY Name, CASE WHEN [StatusType] = 'Performance' THEN 1 WHEN [StatusType] I
                 </xs:simpleType>
               </xs:element>
               <xs:element name="StatusDescription" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnStatusDescription" msprop:Generator_ColumnPropNameInRow="StatusDescription" msprop:Generator_ColumnPropNameInTable="StatusDescriptionColumn" msprop:Generator_UserColumnName="StatusDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Requirements" msprop:Generator_TableClassName="RequirementsDataTable" msprop:Generator_TableVarName="tableRequirements" msprop:Generator_RowChangedName="RequirementsRowChanged" msprop:Generator_TablePropName="Requirements" msprop:Generator_RowDeletingName="RequirementsRowDeleting" msprop:Generator_RowChangingName="RequirementsRowChanging" msprop:Generator_RowEvHandlerName="RequirementsRowChangeEventHandler" msprop:Generator_RowDeletedName="RequirementsRowDeleted" msprop:Generator_RowClassName="RequirementsRow" msprop:Generator_UserTableName="Requirements" msprop:Generator_RowEvArgName="RequirementsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Advisor" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnAdvisor" msprop:Generator_ColumnPropNameInRow="Advisor" msprop:Generator_ColumnPropNameInTable="AdvisorColumn" msprop:Generator_UserColumnName="Advisor" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="StudentID" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_UserColumnName="StudentID" type="xs:int" minOccurs="0" />
+              <xs:element name="QualifiyingExamination" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQualifiyingExamination" msprop:Generator_ColumnPropNameInRow="QualifiyingExamination" msprop:Generator_ColumnPropNameInTable="QualifiyingExaminationColumn" msprop:Generator_UserColumnName="QualifiyingExamination" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ResearchTopic" msprop:Generator_ColumnVarNameInTable="columnResearchTopic" msprop:Generator_ColumnPropNameInRow="ResearchTopic" msprop:Generator_ColumnPropNameInTable="ResearchTopicColumn" msprop:Generator_UserColumnName="ResearchTopic" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ProposalPresentation" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnProposalPresentation" msprop:Generator_ColumnPropNameInRow="ProposalPresentation" msprop:Generator_ColumnPropNameInTable="ProposalPresentationColumn" msprop:Generator_UserColumnName="ProposalPresentation" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ComprehensiveExam" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnComprehensiveExam" msprop:Generator_ColumnPropNameInRow="ComprehensiveExam" msprop:Generator_ColumnPropNameInTable="ComprehensiveExamColumn" msprop:Generator_UserColumnName="ComprehensiveExam" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CommitteeMembers" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCommitteeMembers" msprop:Generator_ColumnPropNameInRow="CommitteeMembers" msprop:Generator_ColumnPropNameInTable="CommitteeMembersColumn" msprop:Generator_UserColumnName="CommitteeMembers" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FinalDefenseTitle" msprop:Generator_ColumnVarNameInTable="columnFinalDefenseTitle" msprop:Generator_ColumnPropNameInRow="FinalDefenseTitle" msprop:Generator_ColumnPropNameInTable="FinalDefenseTitleColumn" msprop:Generator_UserColumnName="FinalDefenseTitle" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FinalDefenseResult" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFinalDefenseResult" msprop:Generator_ColumnPropNameInRow="FinalDefenseResult" msprop:Generator_ColumnPropNameInTable="FinalDefenseResultColumn" msprop:Generator_UserColumnName="FinalDefenseResult" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ManuscriptFile" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnManuscriptFile" msprop:Generator_ColumnPropNameInRow="ManuscriptFile" msprop:Generator_ColumnPropNameInTable="ManuscriptFileColumn" msprop:Generator_UserColumnName="ManuscriptFile" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DegreeAwarded" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnDegreeAwarded" msprop:Generator_ColumnPropNameInRow="DegreeAwarded" msprop:Generator_ColumnPropNameInTable="DegreeAwardedColumn" msprop:Generator_UserColumnName="DegreeAwarded" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
