@@ -463,6 +463,17 @@
             alert('Please select a report type to obtain a report.');
             e.preventDefault();
         }
+        $("input:radio[name='ReportType']:checked").each(function () {
+            if ($(this).val() == 'PostGraduation' && ($('#ListOfStudents').val() == ''
+                                                      || $('#ListOfStudents').val() == null)) {
+                e.preventDefault();
+                e.stopPropagation();
+                alert('WARNING: Due to the amount of information provided, all students can NOT be'
+                       + ' loaded.  Please select a student.');
+                
+            }
+        });
+
     });
 
    

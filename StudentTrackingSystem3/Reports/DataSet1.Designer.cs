@@ -32,6 +32,8 @@ namespace StudentTrackingSystem3.Reports {
         
         private RequirementsDataTable tableRequirements;
         
+        private PostgraduationDataTable tablePostgraduation;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -71,6 +73,9 @@ namespace StudentTrackingSystem3.Reports {
                 }
                 if ((ds.Tables["Requirements"] != null)) {
                     base.Tables.Add(new RequirementsDataTable(ds.Tables["Requirements"]));
+                }
+                if ((ds.Tables["Postgraduation"] != null)) {
+                    base.Tables.Add(new PostgraduationDataTable(ds.Tables["Postgraduation"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -127,6 +132,16 @@ namespace StudentTrackingSystem3.Reports {
         public RequirementsDataTable Requirements {
             get {
                 return this.tableRequirements;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public PostgraduationDataTable Postgraduation {
+            get {
+                return this.tablePostgraduation;
             }
         }
         
@@ -209,6 +224,9 @@ namespace StudentTrackingSystem3.Reports {
                 if ((ds.Tables["Requirements"] != null)) {
                     base.Tables.Add(new RequirementsDataTable(ds.Tables["Requirements"]));
                 }
+                if ((ds.Tables["Postgraduation"] != null)) {
+                    base.Tables.Add(new PostgraduationDataTable(ds.Tables["Postgraduation"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -266,6 +284,12 @@ namespace StudentTrackingSystem3.Reports {
                     this.tableRequirements.InitVars();
                 }
             }
+            this.tablePostgraduation = ((PostgraduationDataTable)(base.Tables["Postgraduation"]));
+            if ((initTable == true)) {
+                if ((this.tablePostgraduation != null)) {
+                    this.tablePostgraduation.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -284,6 +308,8 @@ namespace StudentTrackingSystem3.Reports {
             base.Tables.Add(this.tablePerformance);
             this.tableRequirements = new RequirementsDataTable();
             base.Tables.Add(this.tableRequirements);
+            this.tablePostgraduation = new PostgraduationDataTable();
+            base.Tables.Add(this.tablePostgraduation);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -307,6 +333,12 @@ namespace StudentTrackingSystem3.Reports {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeRequirements() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializePostgraduation() {
             return false;
         }
         
@@ -376,6 +408,9 @@ namespace StudentTrackingSystem3.Reports {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void RequirementsRowChangeEventHandler(object sender, RequirementsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void PostgraduationRowChangeEventHandler(object sender, PostgraduationRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2027,6 +2062,430 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class PostgraduationDataTable : global::System.Data.TypedTableBase<PostgraduationRow> {
+            
+            private global::System.Data.DataColumn columnStudentID;
+            
+            private global::System.Data.DataColumn columnName;
+            
+            private global::System.Data.DataColumn columnEmail;
+            
+            private global::System.Data.DataColumn columnPhone;
+            
+            private global::System.Data.DataColumn columnCVs;
+            
+            private global::System.Data.DataColumn columnEmploymentHistory;
+            
+            private global::System.Data.DataColumn columnPublicationsPeerReviewedJournalonlyPublished;
+            
+            private global::System.Data.DataColumn columnTotalNumberofPublications;
+            
+            private global::System.Data.DataColumn columnGrants;
+            
+            private global::System.Data.DataColumn columnTotalNumberofGrants;
+            
+            private global::System.Data.DataColumn columnHonorsAwards;
+            
+            private global::System.Data.DataColumn columnTotalNumberofHonorsAwards;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PostgraduationDataTable() {
+                this.TableName = "Postgraduation";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal PostgraduationDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected PostgraduationDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn StudentIDColumn {
+                get {
+                    return this.columnStudentID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EmailColumn {
+                get {
+                    return this.columnEmail;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PhoneColumn {
+                get {
+                    return this.columnPhone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CVsColumn {
+                get {
+                    return this.columnCVs;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EmploymentHistoryColumn {
+                get {
+                    return this.columnEmploymentHistory;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PublicationsPeerReviewedJournalonlyPublishedColumn {
+                get {
+                    return this.columnPublicationsPeerReviewedJournalonlyPublished;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalNumberofPublicationsColumn {
+                get {
+                    return this.columnTotalNumberofPublications;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GrantsColumn {
+                get {
+                    return this.columnGrants;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalNumberofGrantsColumn {
+                get {
+                    return this.columnTotalNumberofGrants;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HonorsAwardsColumn {
+                get {
+                    return this.columnHonorsAwards;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TotalNumberofHonorsAwardsColumn {
+                get {
+                    return this.columnTotalNumberofHonorsAwards;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PostgraduationRow this[int index] {
+                get {
+                    return ((PostgraduationRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PostgraduationRowChangeEventHandler PostgraduationRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PostgraduationRowChangeEventHandler PostgraduationRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PostgraduationRowChangeEventHandler PostgraduationRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event PostgraduationRowChangeEventHandler PostgraduationRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddPostgraduationRow(PostgraduationRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PostgraduationRow AddPostgraduationRow(int StudentID, string Name, string Email, string Phone, string CVs, string EmploymentHistory, string PublicationsPeerReviewedJournalonlyPublished, string TotalNumberofPublications, string Grants, string TotalNumberofGrants, string HonorsAwards, string TotalNumberofHonorsAwards) {
+                PostgraduationRow rowPostgraduationRow = ((PostgraduationRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        StudentID,
+                        Name,
+                        Email,
+                        Phone,
+                        CVs,
+                        EmploymentHistory,
+                        PublicationsPeerReviewedJournalonlyPublished,
+                        TotalNumberofPublications,
+                        Grants,
+                        TotalNumberofGrants,
+                        HonorsAwards,
+                        TotalNumberofHonorsAwards};
+                rowPostgraduationRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPostgraduationRow);
+                return rowPostgraduationRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                PostgraduationDataTable cln = ((PostgraduationDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new PostgraduationDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnStudentID = base.Columns["StudentID"];
+                this.columnName = base.Columns["Name"];
+                this.columnEmail = base.Columns["Email"];
+                this.columnPhone = base.Columns["Phone"];
+                this.columnCVs = base.Columns["CVs"];
+                this.columnEmploymentHistory = base.Columns["EmploymentHistory"];
+                this.columnPublicationsPeerReviewedJournalonlyPublished = base.Columns["PublicationsPeerReviewedJournalonlyPublished"];
+                this.columnTotalNumberofPublications = base.Columns["TotalNumberofPublications"];
+                this.columnGrants = base.Columns["Grants"];
+                this.columnTotalNumberofGrants = base.Columns["TotalNumberofGrants"];
+                this.columnHonorsAwards = base.Columns["HonorsAwards"];
+                this.columnTotalNumberofHonorsAwards = base.Columns["TotalNumberofHonorsAwards"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnStudentID = new global::System.Data.DataColumn("StudentID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStudentID);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
+                this.columnEmail = new global::System.Data.DataColumn("Email", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmail);
+                this.columnPhone = new global::System.Data.DataColumn("Phone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPhone);
+                this.columnCVs = new global::System.Data.DataColumn("CVs", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCVs);
+                this.columnEmploymentHistory = new global::System.Data.DataColumn("EmploymentHistory", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEmploymentHistory);
+                this.columnPublicationsPeerReviewedJournalonlyPublished = new global::System.Data.DataColumn("PublicationsPeerReviewedJournalonlyPublished", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPublicationsPeerReviewedJournalonlyPublished);
+                this.columnTotalNumberofPublications = new global::System.Data.DataColumn("TotalNumberofPublications", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalNumberofPublications);
+                this.columnGrants = new global::System.Data.DataColumn("Grants", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGrants);
+                this.columnTotalNumberofGrants = new global::System.Data.DataColumn("TotalNumberofGrants", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalNumberofGrants);
+                this.columnHonorsAwards = new global::System.Data.DataColumn("HonorsAwards", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHonorsAwards);
+                this.columnTotalNumberofHonorsAwards = new global::System.Data.DataColumn("TotalNumberofHonorsAwards", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotalNumberofHonorsAwards);
+                this.columnStudentID.AllowDBNull = false;
+                this.columnName.ReadOnly = true;
+                this.columnName.MaxLength = 2147483647;
+                this.columnEmail.AllowDBNull = false;
+                this.columnEmail.MaxLength = 2147483647;
+                this.columnPhone.AllowDBNull = false;
+                this.columnPhone.MaxLength = 2147483647;
+                this.columnCVs.ReadOnly = true;
+                this.columnCVs.MaxLength = 2147483647;
+                this.columnEmploymentHistory.ReadOnly = true;
+                this.columnEmploymentHistory.MaxLength = 2147483647;
+                this.columnPublicationsPeerReviewedJournalonlyPublished.ReadOnly = true;
+                this.columnPublicationsPeerReviewedJournalonlyPublished.MaxLength = 2147483647;
+                this.columnTotalNumberofPublications.ReadOnly = true;
+                this.columnTotalNumberofPublications.MaxLength = 376;
+                this.columnGrants.ReadOnly = true;
+                this.columnGrants.MaxLength = 2147483647;
+                this.columnTotalNumberofGrants.ReadOnly = true;
+                this.columnTotalNumberofGrants.MaxLength = 133;
+                this.columnHonorsAwards.ReadOnly = true;
+                this.columnHonorsAwards.MaxLength = 2147483647;
+                this.columnTotalNumberofHonorsAwards.ReadOnly = true;
+                this.columnTotalNumberofHonorsAwards.MaxLength = 133;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PostgraduationRow NewPostgraduationRow() {
+                return ((PostgraduationRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new PostgraduationRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(PostgraduationRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.PostgraduationRowChanged != null)) {
+                    this.PostgraduationRowChanged(this, new PostgraduationRowChangeEvent(((PostgraduationRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.PostgraduationRowChanging != null)) {
+                    this.PostgraduationRowChanging(this, new PostgraduationRowChangeEvent(((PostgraduationRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.PostgraduationRowDeleted != null)) {
+                    this.PostgraduationRowDeleted(this, new PostgraduationRowChangeEvent(((PostgraduationRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.PostgraduationRowDeleting != null)) {
+                    this.PostgraduationRowDeleting(this, new PostgraduationRowChangeEvent(((PostgraduationRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemovePostgraduationRow(PostgraduationRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DataSet1 ds = new DataSet1();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "PostgraduationDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class BackgroundRow : global::System.Data.DataRow {
@@ -3183,6 +3642,309 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class PostgraduationRow : global::System.Data.DataRow {
+            
+            private PostgraduationDataTable tablePostgraduation;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal PostgraduationRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablePostgraduation = ((PostgraduationDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int StudentID {
+                get {
+                    return ((int)(this[this.tablePostgraduation.StudentIDColumn]));
+                }
+                set {
+                    this[this.tablePostgraduation.StudentIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.NameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Postgraduation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Email {
+                get {
+                    return ((string)(this[this.tablePostgraduation.EmailColumn]));
+                }
+                set {
+                    this[this.tablePostgraduation.EmailColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Phone {
+                get {
+                    return ((string)(this[this.tablePostgraduation.PhoneColumn]));
+                }
+                set {
+                    this[this.tablePostgraduation.PhoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string CVs {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.CVsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CVs\' in table \'Postgraduation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.CVsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EmploymentHistory {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.EmploymentHistoryColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EmploymentHistory\' in table \'Postgraduation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.EmploymentHistoryColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PublicationsPeerReviewedJournalonlyPublished {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.PublicationsPeerReviewedJournalonlyPublishedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PublicationsPeerReviewedJournalonlyPublished\' in table \'Pos" +
+                                "tgraduation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.PublicationsPeerReviewedJournalonlyPublishedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalNumberofPublications {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.TotalNumberofPublicationsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalNumberofPublications\' in table \'Postgraduation\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.TotalNumberofPublicationsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Grants {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.GrantsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Grants\' in table \'Postgraduation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.GrantsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalNumberofGrants {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.TotalNumberofGrantsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalNumberofGrants\' in table \'Postgraduation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.TotalNumberofGrantsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HonorsAwards {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.HonorsAwardsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HonorsAwards\' in table \'Postgraduation\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.HonorsAwardsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TotalNumberofHonorsAwards {
+                get {
+                    try {
+                        return ((string)(this[this.tablePostgraduation.TotalNumberofHonorsAwardsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TotalNumberofHonorsAwards\' in table \'Postgraduation\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePostgraduation.TotalNumberofHonorsAwardsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNameNull() {
+                return this.IsNull(this.tablePostgraduation.NameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNameNull() {
+                this[this.tablePostgraduation.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCVsNull() {
+                return this.IsNull(this.tablePostgraduation.CVsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCVsNull() {
+                this[this.tablePostgraduation.CVsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEmploymentHistoryNull() {
+                return this.IsNull(this.tablePostgraduation.EmploymentHistoryColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEmploymentHistoryNull() {
+                this[this.tablePostgraduation.EmploymentHistoryColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPublicationsPeerReviewedJournalonlyPublishedNull() {
+                return this.IsNull(this.tablePostgraduation.PublicationsPeerReviewedJournalonlyPublishedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPublicationsPeerReviewedJournalonlyPublishedNull() {
+                this[this.tablePostgraduation.PublicationsPeerReviewedJournalonlyPublishedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalNumberofPublicationsNull() {
+                return this.IsNull(this.tablePostgraduation.TotalNumberofPublicationsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalNumberofPublicationsNull() {
+                this[this.tablePostgraduation.TotalNumberofPublicationsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGrantsNull() {
+                return this.IsNull(this.tablePostgraduation.GrantsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGrantsNull() {
+                this[this.tablePostgraduation.GrantsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalNumberofGrantsNull() {
+                return this.IsNull(this.tablePostgraduation.TotalNumberofGrantsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalNumberofGrantsNull() {
+                this[this.tablePostgraduation.TotalNumberofGrantsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHonorsAwardsNull() {
+                return this.IsNull(this.tablePostgraduation.HonorsAwardsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHonorsAwardsNull() {
+                this[this.tablePostgraduation.HonorsAwardsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTotalNumberofHonorsAwardsNull() {
+                return this.IsNull(this.tablePostgraduation.TotalNumberofHonorsAwardsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTotalNumberofHonorsAwardsNull() {
+                this[this.tablePostgraduation.TotalNumberofHonorsAwardsColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3304,6 +4066,40 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RequirementsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class PostgraduationRowChangeEvent : global::System.EventArgs {
+            
+            private PostgraduationRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PostgraduationRowChangeEvent(PostgraduationRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public PostgraduationRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4362,6 +5158,503 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
                 this.Adapter.SelectCommand.Parameters[3].Value = ((string)(CurrentFormer));
             }
             DataSet1.RequirementsDataTable dataTable = new DataSet1.RequirementsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class PostgraduationTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public PostgraduationTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Postgraduation";
+            tableMapping.ColumnMappings.Add("StudentID", "StudentID");
+            tableMapping.ColumnMappings.Add("Name", "Name");
+            tableMapping.ColumnMappings.Add("Email", "Email");
+            tableMapping.ColumnMappings.Add("Phone", "Phone");
+            tableMapping.ColumnMappings.Add("CVs", "CVs");
+            tableMapping.ColumnMappings.Add("EmploymentHistory", "EmploymentHistory");
+            tableMapping.ColumnMappings.Add("PublicationsPeerReviewedJournalonlyPublished", "PublicationsPeerReviewedJournalonlyPublished");
+            tableMapping.ColumnMappings.Add("TotalNumberofPublications", "TotalNumberofPublications");
+            tableMapping.ColumnMappings.Add("Grants", "Grants");
+            tableMapping.ColumnMappings.Add("TotalNumberofGrants", "TotalNumberofGrants");
+            tableMapping.ColumnMappings.Add("HonorsAwards", "HonorsAwards");
+            tableMapping.ColumnMappings.Add("TotalNumberofHonorsAwards", "TotalNumberofHonorsAwards");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Nam" +
+                "e, s.OtherEmail AS Email, s.Phone, STUFF\r\n                             ((SELECT " +
+                "DISTINCT \'; \' + cvFile2.FileName AS Expr1\r\n                                 FROM" +
+                "            G_File AS cvFile2 LEFT OUTER JOIN\r\n                                 " +
+                "                         G_CurriculumVitae AS cv2 ON cvFile2.CurriculumVitaeID =" +
+                " cv2.ID LEFT OUTER JOIN\r\n                                                       " +
+                "   G_Student AS s2 ON cv2.StudentID = s2.Id\r\n                                 WH" +
+                "ERE        (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS CVs, STUFF\r\n          " +
+                "                   ((SELECT DISTINCT \r\n                                         " +
+                "                 \'; \' + pe2.Position + \'-\' + pe2.Employer + \' (\' + sm2.Name + \' " +
+                "\' + CONVERT(nvarchar(4), pe2.StartYear) + \'-\' + em2.Name + \' \' + CONVERT(nvarcha" +
+                "r(4), \r\n                                                          pe2.EndYear) +" +
+                " \')\' AS Expr1\r\n                                 FROM            G_PreviousEmploy" +
+                "ment AS pe2 LEFT OUTER JOIN\r\n                                                   " +
+                "       G_Student AS s2 ON pe2.StudentID = s2.Id LEFT OUTER JOIN\r\n               " +
+                "                                           G_CommonFields AS sm2 ON pe2.StartMon" +
+                "thId = sm2.ID LEFT OUTER JOIN\r\n                                                 " +
+                "         G_CommonFields AS em2 ON pe2.EndMonthId = em2.ID\r\n                     " +
+                "            WHERE        (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS Employme" +
+                "ntHistory, STUFF\r\n                             ((SELECT DISTINCT \'; \' + pub2.Pub" +
+                "licationInformation + \' (\' + pm2.Name + \' \' + CONVERT(nvarchar(4), pub2.PubYear)" +
+                " + \')\' AS Expr1\r\n                                 FROM            G_Publications" +
+                " AS pub2 LEFT OUTER JOIN\r\n                                                      " +
+                "    G_Student AS s2 ON pub2.StudentID = s2.Id LEFT OUTER JOIN\r\n                 " +
+                "                                         G_CommonFields AS pm2 ON pub2.PubMonthI" +
+                "d = pm2.ID\r\n                                 WHERE        (s2.Id = s.Id) FOR XML" +
+                " PATH(\'\')), 1, 1, \'\') AS PublicationsPeerReviewedJournalonlyPublished, publ.Tota" +
+                "lNumberofPublications, STUFF\r\n                             ((SELECT DISTINCT \'; " +
+                "\' + grt2.GrantInformation + \' (\' + gm2.Name + \' \' + CONVERT(nvarchar(4), grt2.Gr" +
+                "antYear) + \')\' AS Expr1\r\n                                 FROM            G_Gran" +
+                "ts AS grt2 LEFT OUTER JOIN\r\n                                                    " +
+                "      G_CommonFields AS gm2 ON grt2.GrantMonthId = gm2.ID LEFT OUTER JOIN\r\n     " +
+                "                                                     G_Student AS s2 ON grt2.Stu" +
+                "dentID = s2.Id\r\n                                 WHERE        (s2.Id = s.Id) FOR" +
+                " XML PATH(\'\')), 1, 1, \'\') AS Grants, grants.TotalNumberofGrants, STUFF\r\n        " +
+                "                     ((SELECT DISTINCT \'; \' + h2.HonorInformation + \' (\' + hm2.N" +
+                "ame + \' \' + CONVERT(nvarchar(4), h2.HonorYear) + \')\' AS Expr1\r\n                 " +
+                "                FROM            G_Honors AS h2 LEFT OUTER JOIN\r\n                " +
+                "                                          G_CommonFields AS hm2 ON h2.HonorMonth" +
+                "Id = hm2.ID LEFT OUTER JOIN\r\n                                                   " +
+                "       G_Student AS s2 ON h2.StudentID = s2.Id\r\n                                " +
+                " WHERE        (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS HonorsAwards, honor" +
+                "s.TotalNumberofHonorsAwards\r\nFROM            G_Student AS s LEFT OUTER JOIN\r\n   " +
+                "                      G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN\r\n " +
+                "                            (SELECT        s.Id, \'<u>Total: <strong>\' + CONVERT(" +
+                "nvarchar(4), COUNT(*)) + \'</strong></u>\' + CHAR(13) + \'<br /><br />Before Progra" +
+                "m: \' + CONVERT(nvarchar(4), \r\n                                                  " +
+                "       COUNT(before.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN" +
+                " (\'<br /><br />During Program: \' + CONVERT(nvarchar(4), \r\n                      " +
+                "                                   COUNT(during_2.ID)) + CHAR(13) + \'<br /><br /" +
+                ">Year 1 (\' + CONVERT(nvarchar(30), \r\n                                           " +
+                "              CASE WHEN g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4)" +
+                ", g.DegreeEndYear) + \' - May \' + CONVERT(nvarchar(4), \r\n                        " +
+                "                                 g.DegreeEndYear + 1) + \'): \' WHEN g.DegreeEndSe" +
+                "msId = 3 THEN \'September\' + CONVERT(nvarchar(4), g.DegreeEndYear) \r\n            " +
+                "                                             + \' - August\' + CONVERT(nvarchar(4)" +
+                ", g.DegreeEndYear + 1) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.DegreeEnd" +
+                "Year + 1) \r\n                                                         + \' - Decem" +
+                "ber\' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + \'): \' END) + CONVERT(nvarchar" +
+                "(4), COUNT(year_1.ID)) + CHAR(13) \r\n                                            " +
+                "             + \'<br /><br />Year 2 (\' + CONVERT(nvarchar(30), CASE WHEN g.Degree" +
+                "EndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) \r\n       " +
+                "                                                  + \' - May \' + CONVERT(nvarchar" +
+                "(4), g.DegreeEndYear + 2) + \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'September\' + " +
+                "CONVERT(nvarchar(4), \r\n                                                         " +
+                "g.DegreeEndYear + 1) + \' - August\' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) +" +
+                " \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)\r\n             " +
+                "                                             + \' - December\' + CONVERT(nvarchar(" +
+                "4), g.DegreeEndYear + 2) + \'): \' END) + CONVERT(nvarchar(4), COUNT(year_2.ID)) +" +
+                " CHAR(13) \r\n                                                         + \'<br /><b" +
+                "r />Year 3 (\' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN \'June" +
+                " \' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) \r\n                               " +
+                "                          + \' - May \' + CONVERT(nvarchar(4), g.DegreeEndYear + 3" +
+                ") + \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'September\' + CONVERT(nvarchar(4), \r\n " +
+                "                                                        g.DegreeEndYear + 2) + \'" +
+                " - August\' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + \'): \' ELSE \'January\' + " +
+                "CONVERT(nvarchar(4), g.DegreeEndYear + 3)\r\n                                     " +
+                "                     + \' - December\' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)" +
+                " + \'): \' END) + CONVERT(nvarchar(4), COUNT(year_3.ID)) + CHAR(13) \r\n            " +
+                "                                             + \'<br /><br />Year 4 (\' + CONVERT(" +
+                "nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4)" +
+                ", g.DegreeEndYear + 3) \r\n                                                       " +
+                "  + \' - May \' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + \'): \' WHEN g.DegreeE" +
+                "ndSemsId = 3 THEN \'September\' + CONVERT(nvarchar(4), \r\n                         " +
+                "                                g.DegreeEndYear + 3) + \' - August\' + CONVERT(nva" +
+                "rchar(4), g.DegreeEndYear + 4) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.D" +
+                "egreeEndYear + 4)\r\n                                                          + \'" +
+                " - December\' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + \'): \' END) + CONVERT(" +
+                "nvarchar(4), COUNT(year_4.ID)) + CHAR(13) \r\n                                    " +
+                "                     + \'<br /><br />Year 5 (\' + CONVERT(nvarchar(30), CASE WHEN " +
+                "g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) \r" +
+                "\n                                                         + \' - May \' + CONVERT(" +
+                "nvarchar(4), g.DegreeEndYear + 5) + \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'Septe" +
+                "mber\' + CONVERT(nvarchar(4), \r\n                                                 " +
+                "        g.DegreeEndYear + 4) + \' - August\' + CONVERT(nvarchar(4), g.DegreeEndYea" +
+                "r + 5) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)\r\n     " +
+                "                                                     + \' - December\' + CONVERT(n" +
+                "varchar(4), g.DegreeEndYear + 5) + \'): \' END) + CONVERT(nvarchar(4), COUNT(year_" +
+                "5.ID))) \r\n                                                         ELSE \'<br /><" +
+                "br />During Program: \' + CONVERT(nvarchar(4), COUNT(during_1.ID)) END AS TotalNu" +
+                "mberofPublications\r\n                               FROM            G_Publication" +
+                "s AS pub INNER JOIN\r\n                                                         G_" +
+                "Student AS s ON pub.StudentID = s.Id LEFT OUTER JOIN\r\n                          " +
+                "                               G_Graduation AS g ON g.StudentID = s.Id LEFT OUTE" +
+                "R JOIN\r\n                                                         G_CommonFields " +
+                "AS pubMonth ON pub.PubMonthId = pubMonth.ID LEFT OUTER JOIN\r\n                   " +
+                "                                      G_Publications AS before ON before.ID = pu" +
+                "b.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n       " +
+                "                                                  + \'/15/\' + CONVERT(nvarchar(4)" +
+                ", before.PubYear)) < CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                  " +
+                "                                       CASE WHEN s.DegreeStartSemsId = 1 THEN 5 " +
+                "WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4)," +
+                " \r\n                                                         s.DegreeStartYear)) " +
+                "LEFT OUTER JOIN\r\n                                                         G_Publ" +
+                "ications AS during_1 ON during_1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarc" +
+                "har(2), pubMonth.DisplayOrder) \r\n                                               " +
+                "          + \'/15/\' + CONVERT(nvarchar(4), during_1.PubYear)) > CONVERT(DATETIME," +
+                " CONVERT(nvarchar(2), \r\n                                                        " +
+                " CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 EL" +
+                "SE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                                   " +
+                "                      s.DegreeStartYear)) LEFT OUTER JOIN\r\n                     " +
+                "                                    G_Publications AS during_2 ON during_2.ID = " +
+                "pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n     " +
+                "                                                    + \'/15/\' + CONVERT(nvarchar(" +
+                "4), during_2.PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n              " +
+                "                                           CASE WHEN s.DegreeStartSemsId = 1 THE" +
+                "N 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar" +
+                "(4), \r\n                                                         s.DegreeStartYea" +
+                "r)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' +" +
+                " CONVERT(nvarchar(4), during_2.PubYear)) \r\n                                     " +
+                "                    <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.Degree" +
+                "EndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n          " +
+                "                                               + \'/31/\' + CONVERT(nvarchar(4), g" +
+                ".DegreeEndYear)) LEFT OUTER JOIN\r\n                                              " +
+                "           G_Publications AS year_1 ON year_1.ID = pub.ID AND CONVERT(DATETIME, " +
+                "CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n                                  " +
+                "                       + \'/15/\' + CONVERT(nvarchar(4), year_1.PubYear)) > CONVER" +
+                "T(DATETIME, CONVERT(nvarchar(2), \r\n                                             " +
+                "            CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 TH" +
+                "EN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                            " +
+                "                             g.DegreeEndYear)) AND CONVERT(DATETIME, CONVERT(nva" +
+                "rchar(2), pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), year_1.PubYear)" +
+                ") \r\n                                                         <= CONVERT(DATETIME" +
+                ", CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSe" +
+                "msId = 3 THEN 8 ELSE 12 END) \r\n                                                 " +
+                "        + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 1)) LEFT OUTER JOIN\r\n " +
+                "                                                        G_Publications AS year_2" +
+                " ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.Displ" +
+                "ayOrder) \r\n                                                         + \'/15/\' + C" +
+                "ONVERT(nvarchar(4), year_2.PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n" +
+                "                                                         CASE WHEN g.DegreeEndSe" +
+                "msId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVER" +
+                "T(nvarchar(4), \r\n                                                         g.Degr" +
+                "eeEndYear + 1)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder" +
+                ") + \'/15/\' + CONVERT(nvarchar(4), year_1.PubYear)) \r\n                           " +
+                "                              <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHE" +
+                "N g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n" +
+                "                                                         + \'/31/\' + CONVERT(nvar" +
+                "char(4), g.DegreeEndYear + 2)) LEFT OUTER JOIN\r\n                                " +
+                "                         G_Publications AS year_3 ON year_3.ID = pub.ID AND CONV" +
+                "ERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n                    " +
+                "                                     + \'/15/\' + CONVERT(nvarchar(4), year_3.PubY" +
+                "ear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                               " +
+                "                          CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEn" +
+                "dSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n              " +
+                "                                           g.DegreeEndYear + 2)) AND CONVERT(DAT" +
+                "ETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4" +
+                "), year_3.PubYear)) \r\n                                                         <" +
+                "= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 " +
+                "WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n                               " +
+                "                          + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)) " +
+                "LEFT OUTER JOIN\r\n                                                         G_Publ" +
+                "ications AS year_4 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(" +
+                "2), pubMonth.DisplayOrder) \r\n                                                   " +
+                "      + \'/15/\' + CONVERT(nvarchar(4), year_4.PubYear)) > CONVERT(DATETIME, CONVE" +
+                "RT(nvarchar(2), \r\n                                                         CASE " +
+                "WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END)" +
+                " + \'/31/\' + CONVERT(nvarchar(4), \r\n                                             " +
+                "            g.DegreeEndYear + 4)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pub" +
+                "Month.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), year_4.PubYear)) \r\n         " +
+                "                                                <= CONVERT(DATETIME, CONVERT(nva" +
+                "rchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN" +
+                " 8 ELSE 12 END) \r\n                                                         + \'/3" +
+                "1/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)) LEFT OUTER JOIN\r\n              " +
+                "                                           G_Publications AS year_5 ON year_2.ID" +
+                " = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n  " +
+                "                                                       + \'/15/\' + CONVERT(nvarch" +
+                "ar(4), year_5.PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n             " +
+                "                                            CASE WHEN g.DegreeEndSemsId = 1 THEN" +
+                " 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4)" +
+                ", \r\n                                                         g.DegreeEndYear + 5" +
+                ")) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' + " +
+                "CONVERT(nvarchar(4), year_5.PubYear)) \r\n                                        " +
+                "                 <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEnd" +
+                "SemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n             " +
+                "                                            + \'/31/\' + CONVERT(nvarchar(4), g.De" +
+                "greeEndYear + 6))\r\n                               GROUP BY s.Id, s.FirstName, g." +
+                "DegreeEndYear, g.DegreeEndSemsId) AS publ ON publ.Id = s.Id LEFT OUTER JOIN\r\n   " +
+                "                          (SELECT        s.Id, \'<u>Total: <strong>\' + CONVERT(nv" +
+                "archar(4), COUNT(*)) + \'</strong></u>\' + CHAR(13) + \'<br /><br />Before Program:" +
+                " \' + CONVERT(nvarchar(4), \r\n                                                    " +
+                "     COUNT(grBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN" +
+                " (\'<br /><br />During Program: \' + CONVERT(nvarchar(4), \r\n                      " +
+                "                                   COUNT(grDuring_2.ID)) + CHAR(13) + \'<br /><br" +
+                " />After Program: \' + CONVERT(nvarchar(4), COUNT(grAfter.ID))) \r\n               " +
+                "                                          ELSE \'<br /><br />During Program: \' + " +
+                "CONVERT(nvarchar(4), COUNT(grDuring_1.ID)) END AS TotalNumberofGrants\r\n         " +
+                "                      FROM            G_Grants AS gr INNER JOIN\r\n               " +
+                "                                          G_Student AS s ON gr.StudentID = s.Id " +
+                "LEFT OUTER JOIN\r\n                                                         G_Grad" +
+                "uation AS g ON g.StudentID = s.Id LEFT OUTER JOIN\r\n                             " +
+                "                            G_CommonFields AS grantMonth ON gr.GrantMonthId = gr" +
+                "antMonth.ID LEFT OUTER JOIN\r\n                                                   " +
+                "      G_Grants AS grBefore ON grBefore.ID = gr.ID AND CONVERT(DATETIME, CONVERT(" +
+                "nvarchar(2), grantMonth.DisplayOrder) \r\n                                        " +
+                "                 + \'/15/\' + CONVERT(nvarchar(4), grBefore.GrantYear)) < CONVERT(" +
+                "DATETIME, CONVERT(nvarchar(2), \r\n                                               " +
+                "          CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 " +
+                "THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                          " +
+                "                               s.DegreeStartYear)) LEFT OUTER JOIN\r\n            " +
+                "                                             G_Grants AS grDuring_1 ON grDuring_" +
+                "1.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder)" +
+                " \r\n                                                         + \'/15/\' + CONVERT(n" +
+                "varchar(4), grDuring_1.GrantYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n  " +
+                "                                                       CASE WHEN s.DegreeStartSe" +
+                "msId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONV" +
+                "ERT(nvarchar(4), \r\n                                                         s.De" +
+                "greeStartYear)) LEFT OUTER JOIN\r\n                                               " +
+                "          G_Grants AS grDuring_2 ON grDuring_2.ID = gr.ID AND CONVERT(DATETIME, " +
+                "CONVERT(nvarchar(2), grantMonth.DisplayOrder) \r\n                                " +
+                "                         + \'/15/\' + CONVERT(nvarchar(4), grDuring_2.GrantYear)) " +
+                "> CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                                     " +
+                "                    CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartS" +
+                "emsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                " +
+                "                                         s.DegreeStartYear)) AND CONVERT(DATETIM" +
+                "E, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4)," +
+                " \r\n                                                         grDuring_2.GrantYear" +
+                ")) <= CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                                 " +
+                "                        CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndS" +
+                "emsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                " +
+                "                                         g.DegreeEndYear)) LEFT OUTER JOIN\r\n    " +
+                "                                                     G_Grants AS grAfter ON grAf" +
+                "ter.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrde" +
+                "r) + \'/15/\' + CONVERT(nvarchar(4), \r\n                                           " +
+                "              grAfter.GrantYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n   " +
+                "                                                      CASE WHEN g.DegreeEndSemsI" +
+                "d = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(n" +
+                "varchar(4), \r\n                                                         g.DegreeE" +
+                "ndYear))\r\n                               GROUP BY s.Id, s.FirstName, g.DegreeEnd" +
+                "Year, g.DegreeEndSemsId) AS grants ON grants.Id = s.Id LEFT OUTER JOIN\r\n        " +
+                "                     (SELECT        s.Id, \'<u>Total: <strong>\' + CONVERT(nvarcha" +
+                "r(4), COUNT(*)) + \'</strong></u>\' + CHAR(13) + \'<br /><br />Before Program: \' + " +
+                "CONVERT(nvarchar(4), \r\n                                                         " +
+                "COUNT(honBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN (\'<" +
+                "br /><br />During Program: \' + CONVERT(nvarchar(4), \r\n                          " +
+                "                               COUNT(honDuring_2.ID)) + CHAR(13) + \'<br /><br />" +
+                "After Program: \' + CONVERT(nvarchar(4), COUNT(honAfter.ID))) \r\n                 " +
+                "                                        ELSE \'<br /><br />During Program: \' + CO" +
+                "NVERT(nvarchar(4), COUNT(honDuring_1.ID)) END AS TotalNumberofHonorsAwards\r\n    " +
+                "                           FROM            G_Honors AS hon INNER JOIN\r\n         " +
+                "                                                G_Student AS s ON hon.StudentID " +
+                "= s.Id LEFT OUTER JOIN\r\n                                                        " +
+                " G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN\r\n                      " +
+                "                                   G_CommonFields AS honorMonth ON hon.HonorMont" +
+                "hId = honorMonth.ID LEFT OUTER JOIN\r\n                                           " +
+                "              G_Honors AS honBefore ON honBefore.ID = hon.ID AND CONVERT(DATETIM" +
+                "E, CONVERT(nvarchar(2), honorMonth.DisplayOrder) \r\n                             " +
+                "                            + \'/15/\' + CONVERT(nvarchar(4), honBefore.HonorYear)" +
+                ") < CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                                   " +
+                "                      CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStar" +
+                "tSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n              " +
+                "                                           s.DegreeStartYear)) LEFT OUTER JOIN\r\n" +
+                "                                                         G_Honors AS honDuring_1" +
+                " ON honDuring_1.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMont" +
+                "h.DisplayOrder) \r\n                                                         + \'/1" +
+                "5/\' + CONVERT(nvarchar(4), honDuring_1.HonorYear)) > CONVERT(DATETIME, CONVERT(n" +
+                "varchar(2), \r\n                                                         CASE WHEN" +
+                " s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END)" +
+                " + \'/31/\' + CONVERT(nvarchar(4), \r\n                                             " +
+                "            s.DegreeStartYear)) LEFT OUTER JOIN\r\n                               " +
+                "                          G_Honors AS honDuring_2 ON honDuring_2.ID = hon.ID AND" +
+                " CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) \r\n             " +
+                "                                            + \'/15/\' + CONVERT(nvarchar(4), honD" +
+                "uring_2.HonorYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                 " +
+                "                                        CASE WHEN s.DegreeStartSemsId = 1 THEN 5" +
+                " WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4)" +
+                ", \r\n                                                         s.DegreeStartYear))" +
+                " AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + \'/15/\' + " +
+                "CONVERT(nvarchar(4), \r\n                                                         " +
+                "honDuring_2.HonorYear)) <= CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n            " +
+                "                                             CASE WHEN g.DegreeEndSemsId = 1 THE" +
+                "N 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4" +
+                "), \r\n                                                         g.DegreeEndYear)) " +
+                "LEFT OUTER JOIN\r\n                                                         G_Hono" +
+                "rs AS honAfter ON honAfter.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2)" +
+                ", honorMonth.DisplayOrder) \r\n                                                   " +
+                "      + \'/15/\' + CONVERT(nvarchar(4), honAfter.HonorYear)) > CONVERT(DATETIME, C" +
+                "ONVERT(nvarchar(2), \r\n                                                         C" +
+                "ASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 " +
+                "END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                                         " +
+                "                g.DegreeEndYear))\r\n                               GROUP BY s.Id," +
+                " s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS honors ON honors.Id = s.Id\r" +
+                "\nWHERE        (@Student = s.FirstName + \' \' + s.LastName) OR\r\n                  " +
+                "       (@Student IS NULL)\r\nGROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastNa" +
+                "me, s.OtherEmail, s.Phone, g.DegreeEndYear, g.DegreeEndSemsId, publ.TotalNumbero" +
+                "fPublications, \r\n                         grants.TotalNumberofGrants, honors.Tot" +
+                "alNumberofHonorsAwards";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DataSet1.PostgraduationDataTable dataTable, string Student) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Student == null)) {
+                throw new global::System.ArgumentNullException("Student");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Student));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DataSet1.PostgraduationDataTable GetData(string Student) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((Student == null)) {
+                throw new global::System.ArgumentNullException("Student");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(Student));
+            }
+            DataSet1.PostgraduationDataTable dataTable = new DataSet1.PostgraduationDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }

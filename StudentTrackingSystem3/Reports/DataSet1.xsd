@@ -278,6 +278,198 @@ WHERE        ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (
             </Mappings>
             <Sources />
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PostgraduationTableAdapter" GeneratorDataComponentClassName="PostgraduationTableAdapter" Name="Postgraduation" UserDataComponentName="PostgraduationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, s.OtherEmail AS Email, s.Phone, STUFF
+                             ((SELECT DISTINCT '; ' + cvFile2.FileName AS Expr1
+                                 FROM            G_File AS cvFile2 LEFT OUTER JOIN
+                                                          G_CurriculumVitae AS cv2 ON cvFile2.CurriculumVitaeID = cv2.ID LEFT OUTER JOIN
+                                                          G_Student AS s2 ON cv2.StudentID = s2.Id
+                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS CVs, STUFF
+                             ((SELECT DISTINCT 
+                                                          '; ' + pe2.Position + '-' + pe2.Employer + ' (' + sm2.Name + ' ' + CONVERT(nvarchar(4), pe2.StartYear) + '-' + em2.Name + ' ' + CONVERT(nvarchar(4), 
+                                                          pe2.EndYear) + ')' AS Expr1
+                                 FROM            G_PreviousEmployment AS pe2 LEFT OUTER JOIN
+                                                          G_Student AS s2 ON pe2.StudentID = s2.Id LEFT OUTER JOIN
+                                                          G_CommonFields AS sm2 ON pe2.StartMonthId = sm2.ID LEFT OUTER JOIN
+                                                          G_CommonFields AS em2 ON pe2.EndMonthId = em2.ID
+                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS EmploymentHistory, STUFF
+                             ((SELECT DISTINCT '; ' + pub2.PublicationInformation + ' (' + pm2.Name + ' ' + CONVERT(nvarchar(4), pub2.PubYear) + ')' AS Expr1
+                                 FROM            G_Publications AS pub2 LEFT OUTER JOIN
+                                                          G_Student AS s2 ON pub2.StudentID = s2.Id LEFT OUTER JOIN
+                                                          G_CommonFields AS pm2 ON pub2.PubMonthId = pm2.ID
+                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS PublicationsPeerReviewedJournalonlyPublished, publ.TotalNumberofPublications, STUFF
+                             ((SELECT DISTINCT '; ' + grt2.GrantInformation + ' (' + gm2.Name + ' ' + CONVERT(nvarchar(4), grt2.GrantYear) + ')' AS Expr1
+                                 FROM            G_Grants AS grt2 LEFT OUTER JOIN
+                                                          G_CommonFields AS gm2 ON grt2.GrantMonthId = gm2.ID LEFT OUTER JOIN
+                                                          G_Student AS s2 ON grt2.StudentID = s2.Id
+                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS Grants, grants.TotalNumberofGrants, STUFF
+                             ((SELECT DISTINCT '; ' + h2.HonorInformation + ' (' + hm2.Name + ' ' + CONVERT(nvarchar(4), h2.HonorYear) + ')' AS Expr1
+                                 FROM            G_Honors AS h2 LEFT OUTER JOIN
+                                                          G_CommonFields AS hm2 ON h2.HonorMonthId = hm2.ID LEFT OUTER JOIN
+                                                          G_Student AS s2 ON h2.StudentID = s2.Id
+                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS HonorsAwards, honors.TotalNumberofHonorsAwards
+FROM            G_Student AS s LEFT OUTER JOIN
+                         G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
+                             (SELECT        s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), 
+                                                         COUNT(before.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), 
+                                                         COUNT(during_2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Year 1 (' + CONVERT(nvarchar(30), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear) + ' - May ' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 1) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), g.DegreeEndYear) 
+                                                         + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) 
+                                                         + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_1.ID)) + CHAR(13) 
+                                                         + '&lt;br /&gt;&lt;br /&gt;Year 2 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) 
+                                                         + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 1) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)
+                                                          + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_2.ID)) + CHAR(13) 
+                                                         + '&lt;br /&gt;&lt;br /&gt;Year 3 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) 
+                                                         + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 2) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)
+                                                          + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_3.ID)) + CHAR(13) 
+                                                         + '&lt;br /&gt;&lt;br /&gt;Year 4 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) 
+                                                         + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 3) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 4)
+                                                          + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_4.ID)) + CHAR(13) 
+                                                         + '&lt;br /&gt;&lt;br /&gt;Year 5 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) 
+                                                         + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 4) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)
+                                                          + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_5.ID))) 
+                                                         ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(during_1.ID)) END AS TotalNumberofPublications
+                               FROM            G_Publications AS pub INNER JOIN
+                                                         G_Student AS s ON pub.StudentID = s.Id LEFT OUTER JOIN
+                                                         G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
+                                                         G_CommonFields AS pubMonth ON pub.PubMonthId = pubMonth.ID LEFT OUTER JOIN
+                                                         G_Publications AS before ON before.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), before.PubYear)) &lt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) LEFT OUTER JOIN
+                                                         G_Publications AS during_1 ON during_1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), during_1.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) LEFT OUTER JOIN
+                                                         G_Publications AS during_2 ON during_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), during_2.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), during_2.PubYear)) 
+                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear)) LEFT OUTER JOIN
+                                                         G_Publications AS year_1 ON year_1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) 
+                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 1)) LEFT OUTER JOIN
+                                                         G_Publications AS year_2 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), year_2.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 1)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) 
+                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)) LEFT OUTER JOIN
+                                                         G_Publications AS year_3 ON year_3.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), year_3.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 2)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_3.PubYear)) 
+                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)) LEFT OUTER JOIN
+                                                         G_Publications AS year_4 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), year_4.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 4)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_4.PubYear)) 
+                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)) LEFT OUTER JOIN
+                                                         G_Publications AS year_5 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), year_5.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear + 5)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_5.PubYear)) 
+                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 6))
+                               GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS publ ON publ.Id = s.Id LEFT OUTER JOIN
+                             (SELECT        s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), 
+                                                         COUNT(grBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), 
+                                                         COUNT(grDuring_2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;After Program: ' + CONVERT(nvarchar(4), COUNT(grAfter.ID))) 
+                                                         ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(grDuring_1.ID)) END AS TotalNumberofGrants
+                               FROM            G_Grants AS gr INNER JOIN
+                                                         G_Student AS s ON gr.StudentID = s.Id LEFT OUTER JOIN
+                                                         G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
+                                                         G_CommonFields AS grantMonth ON gr.GrantMonthId = grantMonth.ID LEFT OUTER JOIN
+                                                         G_Grants AS grBefore ON grBefore.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), grBefore.GrantYear)) &lt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) LEFT OUTER JOIN
+                                                         G_Grants AS grDuring_1 ON grDuring_1.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), grDuring_1.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) LEFT OUTER JOIN
+                                                         G_Grants AS grDuring_2 ON grDuring_2.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), grDuring_2.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), 
+                                                         grDuring_2.GrantYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear)) LEFT OUTER JOIN
+                                                         G_Grants AS grAfter ON grAfter.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), 
+                                                         grAfter.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear))
+                               GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS grants ON grants.Id = s.Id LEFT OUTER JOIN
+                             (SELECT        s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), 
+                                                         COUNT(honBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), 
+                                                         COUNT(honDuring_2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;After Program: ' + CONVERT(nvarchar(4), COUNT(honAfter.ID))) 
+                                                         ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(honDuring_1.ID)) END AS TotalNumberofHonorsAwards
+                               FROM            G_Honors AS hon INNER JOIN
+                                                         G_Student AS s ON hon.StudentID = s.Id LEFT OUTER JOIN
+                                                         G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
+                                                         G_CommonFields AS honorMonth ON hon.HonorMonthId = honorMonth.ID LEFT OUTER JOIN
+                                                         G_Honors AS honBefore ON honBefore.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), honBefore.HonorYear)) &lt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) LEFT OUTER JOIN
+                                                         G_Honors AS honDuring_1 ON honDuring_1.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), honDuring_1.HonorYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) LEFT OUTER JOIN
+                                                         G_Honors AS honDuring_2 ON honDuring_2.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), honDuring_2.HonorYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         s.DegreeStartYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), 
+                                                         honDuring_2.HonorYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear)) LEFT OUTER JOIN
+                                                         G_Honors AS honAfter ON honAfter.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) 
+                                                         + '/15/' + CONVERT(nvarchar(4), honAfter.HonorYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
+                                                         g.DegreeEndYear))
+                               GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS honors ON honors.Id = s.Id
+WHERE        (@Student = s.FirstName + ' ' + s.LastName) OR
+                         (@Student IS NULL)
+GROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastName, s.OtherEmail, s.Phone, g.DegreeEndYear, g.DegreeEndSemsId, publ.TotalNumberofPublications, 
+                         grants.TotalNumberofGrants, honors.TotalNumberofHonorsAwards</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="StudentID" DataSetColumn="StudentID" />
+              <Mapping SourceColumn="Name" DataSetColumn="Name" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+              <Mapping SourceColumn="Phone" DataSetColumn="Phone" />
+              <Mapping SourceColumn="CVs" DataSetColumn="CVs" />
+              <Mapping SourceColumn="EmploymentHistory" DataSetColumn="EmploymentHistory" />
+              <Mapping SourceColumn="PublicationsPeerReviewedJournalonlyPublished" DataSetColumn="PublicationsPeerReviewedJournalonlyPublished" />
+              <Mapping SourceColumn="TotalNumberofPublications" DataSetColumn="TotalNumberofPublications" />
+              <Mapping SourceColumn="Grants" DataSetColumn="Grants" />
+              <Mapping SourceColumn="TotalNumberofGrants" DataSetColumn="TotalNumberofGrants" />
+              <Mapping SourceColumn="HonorsAwards" DataSetColumn="HonorsAwards" />
+              <Mapping SourceColumn="TotalNumberofHonorsAwards" DataSetColumn="TotalNumberofHonorsAwards" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -570,6 +762,90 @@ WHERE        ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Postgraduation" msprop:Generator_TableClassName="PostgraduationDataTable" msprop:Generator_TableVarName="tablePostgraduation" msprop:Generator_TablePropName="Postgraduation" msprop:Generator_RowDeletingName="PostgraduationRowDeleting" msprop:Generator_RowChangingName="PostgraduationRowChanging" msprop:Generator_RowEvHandlerName="PostgraduationRowChangeEventHandler" msprop:Generator_RowDeletedName="PostgraduationRowDeleted" msprop:Generator_UserTableName="Postgraduation" msprop:Generator_RowChangedName="PostgraduationRowChanged" msprop:Generator_RowEvArgName="PostgraduationRowChangeEvent" msprop:Generator_RowClassName="PostgraduationRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StudentID" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_UserColumnName="StudentID" type="xs:int" />
+              <xs:element name="Name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Phone" msprop:Generator_ColumnVarNameInTable="columnPhone" msprop:Generator_ColumnPropNameInRow="Phone" msprop:Generator_ColumnPropNameInTable="PhoneColumn" msprop:Generator_UserColumnName="Phone">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CVs" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCVs" msprop:Generator_ColumnPropNameInRow="CVs" msprop:Generator_ColumnPropNameInTable="CVsColumn" msprop:Generator_UserColumnName="CVs" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EmploymentHistory" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnEmploymentHistory" msprop:Generator_ColumnPropNameInRow="EmploymentHistory" msprop:Generator_ColumnPropNameInTable="EmploymentHistoryColumn" msprop:Generator_UserColumnName="EmploymentHistory" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PublicationsPeerReviewedJournalonlyPublished" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPublicationsPeerReviewedJournalonlyPublished" msprop:Generator_ColumnPropNameInRow="PublicationsPeerReviewedJournalonlyPublished" msprop:Generator_ColumnPropNameInTable="PublicationsPeerReviewedJournalonlyPublishedColumn" msprop:Generator_UserColumnName="PublicationsPeerReviewedJournalonlyPublished" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalNumberofPublications" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotalNumberofPublications" msprop:Generator_ColumnPropNameInRow="TotalNumberofPublications" msprop:Generator_ColumnPropNameInTable="TotalNumberofPublicationsColumn" msprop:Generator_UserColumnName="TotalNumberofPublications" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="376" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Grants" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGrants" msprop:Generator_ColumnPropNameInRow="Grants" msprop:Generator_ColumnPropNameInTable="GrantsColumn" msprop:Generator_UserColumnName="Grants" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalNumberofGrants" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotalNumberofGrants" msprop:Generator_ColumnPropNameInRow="TotalNumberofGrants" msprop:Generator_ColumnPropNameInTable="TotalNumberofGrantsColumn" msprop:Generator_UserColumnName="TotalNumberofGrants" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="133" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="HonorsAwards" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnHonorsAwards" msprop:Generator_ColumnPropNameInRow="HonorsAwards" msprop:Generator_ColumnPropNameInTable="HonorsAwardsColumn" msprop:Generator_UserColumnName="HonorsAwards" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TotalNumberofHonorsAwards" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTotalNumberofHonorsAwards" msprop:Generator_ColumnPropNameInRow="TotalNumberofHonorsAwards" msprop:Generator_ColumnPropNameInTable="TotalNumberofHonorsAwardsColumn" msprop:Generator_UserColumnName="TotalNumberofHonorsAwards" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="133" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

@@ -350,6 +350,25 @@ namespace StudentTrackingSystem3.Controllers
 
                     break;
                 case "PostGraduation":
+
+                    paramsArray = new ReportParameter[1];
+                    paramsArray[0] = new ReportParameter("Student", ListOfStudents.ToString());
+
+                    PostgraduationTableAdapter pgta = new PostgraduationTableAdapter();
+                    pgta.Fill(ds.Postgraduation, ListOfStudents);
+
+                    reportViewer.LocalReport.DataSources.Clear();
+
+                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reports\Rpt5-Postgraduation.rdlc";
+                    reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Postgraduation", ds.Tables[4]));
+
+                    reportViewer.LocalReport.SetParameters(paramsArray);
+
+                    reportViewer.LocalReport.Refresh();
+
+                    break;
+
+                default:
                     break;
             }
 

@@ -321,6 +321,8 @@
     <Content Include="Reports\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\VED-HP %28Local Setup%29 Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\YONGJUN-HP %28Sandbox%29 Web Deploy.pubxml" />
     <None Include="Reports\DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -440,6 +442,7 @@
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />
     <EmbeddedResource Include="Reports\Rpt3-Performance.rdlc" />
     <EmbeddedResource Include="Reports\Rpt4-Requirements.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt5-Postgraduation.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

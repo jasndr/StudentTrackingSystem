@@ -168,17 +168,17 @@ namespace StudentTrackingSystem3.Controllers
                      var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, 
                                                                                     protocol: Request.Url.Scheme);
 
-                    string sendTo = ConfigurationManager.AppSettings["trackingEmail"];
+                    string sendTo = user.Email;//ConfigurationManager.AppSettings["trackingEmail"];
 
-                    string subject = String.Format("Email Confirmation - JABSOM Clinical & Translation Research "
+                    string subject = String.Format("Email Confirmation - JABSOM CTR "
                                                      + "Graduate Program Database");
 
-                    string body = string.Format("Dear {0}" +
+                    string body = string.Format("Dear {0}," +
                                                 "<br /><br />Thank you for your registration on the " +
-                                                "JABSOM Clinical & Translational Research Graduate Program Database. " +
-                                                "Please click on the following link " +
-                                                "to completete your registration: " +
-                                                "<a href=\"{1}\" title=\"Confirm Email\">{1}</a>:",
+                                                "<strong>JABSOM Clinical & Translational Research (CTR) Graduate Program Database</strong>. " +
+                                                "Please <a href=\"{1}\" title=\"Confirm Email\">click here</a> " +
+                                                "to completete your registration. " +
+                                                "<br /><br/ >Mahalo!",
                                     user.UserName, callbackUrl);
 
                     IdentityMessage im = new IdentityMessage()
@@ -219,6 +219,14 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         //
+        // GET: /Account/DisplayEmail
+        [AllowAnonymous]
+        public ActionResult DisplayEmail()
+        {
+            return View();
+        }
+
+        //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
@@ -252,8 +260,8 @@ namespace StudentTrackingSystem3.Controllers
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", 
                     new { UserId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Reset Password",
-                    "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                await UserManager.SendEmailAsync(user.Id, "Reset CTR Graduate Program Database Password",
+                    "Aloha " + user.UserName + ",<br /><br />Please reset your <strong>CTR Graduate Program Database</strong> password by clicking here: <a href=\"" + callbackUrl + "\">link</a><br /><br />Mahalo!");
                 return View("ForgotPasswordConfirmation");
 
             }
@@ -289,7 +297,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
