@@ -56,7 +56,7 @@
                                 <th></th>
                                 <th><strong>Information</strong></th>
                                 <th><strong>Status</strong></th>
-                                <th></th>
+                                <th colspan="2"></th>
                             </tr>
 
                             @foreach (var item in Model.Where(g => g.StudentID == ViewBag.StudentID).Where(g => g.Category.Name == category.Key))
@@ -87,6 +87,11 @@
                                     </td>
                                     <td style="width: 10%">
                                         @Html.ActionLink("Edit", "Edit", new { id = item.ID}, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                    </td>
+                                    <td>
+                                        <a title="Delete" href="@Url.Action("Delete", "Performance", new {id = item.ID})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
                                     </td>
                                 </tr>
                             }
@@ -125,6 +130,9 @@
                         {
                             <p style="margin-left: 20px;">&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
                                @Html.ActionLink("Edit", "Edit", "Activity", new {id = file.G_FileId }, new {@class="btn btn-xs navbuttons", @style="background-color: #060; color: #FFF" })
+                                <a style="margin-left: 5px;" title="Delete" href="@Url.Action("Delete", "Activity", new {id = file.G_FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </a>
                             </p>
                         }
                     }
@@ -143,3 +151,5 @@
   
 
 </div>
+
+@Html.Raw(TempData["msg"])

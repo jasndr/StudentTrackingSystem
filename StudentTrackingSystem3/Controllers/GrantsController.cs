@@ -110,14 +110,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! NO record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_Grants g_Grants = db.Grants.Find(id);
             if (g_Grants == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_Grants);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: Grants/Delete/5
@@ -128,7 +131,8 @@ namespace StudentTrackingSystem3.Controllers
             G_Grants g_Grants = db.Grants.Find(id);
             db.Grants.Remove(g_Grants);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This grant record has been successfuly deleted.')</script>";
+            return RedirectToAction("Index", "PostGraduation", new { id = g_Grants.StudentID });
         }
 
         protected override void Dispose(bool disposing)

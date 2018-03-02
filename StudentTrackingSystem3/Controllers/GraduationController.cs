@@ -169,14 +169,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_Graduation g_Graduation = db.Graduations.Find(id);
             if (g_Graduation == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_Graduation);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: Graduation/Delete/5

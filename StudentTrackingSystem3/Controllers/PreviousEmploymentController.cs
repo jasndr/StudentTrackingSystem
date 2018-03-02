@@ -114,14 +114,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_PreviousEmployment g_PreviousEmployment = db.PreviousEmployment.Find(id);
             if (g_PreviousEmployment == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_PreviousEmployment);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: PreviousEmployment/Delete/5
@@ -132,7 +135,8 @@ namespace StudentTrackingSystem3.Controllers
             G_PreviousEmployment g_PreviousEmployment = db.PreviousEmployment.Find(id);
             db.PreviousEmployment.Remove(g_PreviousEmployment);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This employment history entry has been successfully deleted.')</script>";
+            return RedirectToAction("Index", "PostGraduation", new {id = g_PreviousEmployment.StudentID });
         }
 
         protected override void Dispose(bool disposing)

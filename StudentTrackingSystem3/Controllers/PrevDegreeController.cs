@@ -19,7 +19,7 @@ namespace StudentTrackingSystem3.Controllers
         // GET: PrevDegree
         public ActionResult Index()
         {
-            var previousDegrees = db.PreviousDegrees.OrderBy(g=>g.DateOfAward).Include(g => g.DegreeTypes).Include(g => g.Student);
+            var previousDegrees = db.PreviousDegrees.OrderBy(g => g.DateOfAward).Include(g => g.DegreeTypes).Include(g => g.Student);
             return View(previousDegrees.ToList());
         }
 
@@ -45,7 +45,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentID = db.Students.Find(id).Id;
             ViewBag.Student_FN = db.Students.Find(id).FirstName;
             ViewBag.Student_LN = db.Students.Find(id).LastName;
-            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z=>z.Category=="DegreeType"), "ID", "Name");
+            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z => z.Category == "DegreeType"), "ID", "Name");
             //ViewBag.StudentID = new SelectList(db.Students, "Id", "FirstName");
             return View();
         }
@@ -63,7 +63,7 @@ namespace StudentTrackingSystem3.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Edit", "Student", new { id = g_PrevDegree.StudentID });
             }
-            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z=>z.Category=="DegreeType"), "ID", "Name", g_PrevDegree.DegreeTypesID);
+            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z => z.Category == "DegreeType"), "ID", "Name", g_PrevDegree.DegreeTypesID);
             ViewBag.Student = g_PrevDegree.Student;
             //ViewBag.StudentID = g_PrevDegree.StudentID;
             return View(g_PrevDegree);
@@ -81,7 +81,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z=>z.Category == "DegreeType"), "ID", "Name", g_PrevDegree.DegreeTypesID);
+            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z => z.Category == "DegreeType"), "ID", "Name", g_PrevDegree.DegreeTypesID);
             ViewBag.Student = g_PrevDegree.Student;
             ViewBag.StudentID = g_PrevDegree.StudentID;
             return View(g_PrevDegree);
@@ -108,17 +108,21 @@ namespace StudentTrackingSystem3.Controllers
         // GET: PrevDegree/Delete/5
         public ActionResult Delete(int? id)
         {
-           
+
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry!  No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_PrevDegree g_PrevDegree = db.PreviousDegrees.Find(id);
             if (g_PrevDegree == null)
             {
+                TempData["msg"] = "<script>alert('Sorry!  No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_PrevDegree);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
+
         }
 
         // POST: PrevDegree/Delete/5
@@ -129,8 +133,8 @@ namespace StudentTrackingSystem3.Controllers
             G_PrevDegree g_PrevDegree = db.PreviousDegrees.Find(id);
             db.PreviousDegrees.Remove(g_PrevDegree);
             db.SaveChanges();
-            TempData["Msg"] = "Data has been deleted successfully.";
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This degree has been successfully deleted.')</script>";
+            return RedirectToAction("Edit", "Student", new { id = g_PrevDegree.StudentID });
         }
 
         protected override void Dispose(bool disposing)

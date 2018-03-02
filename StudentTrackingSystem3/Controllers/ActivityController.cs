@@ -167,14 +167,18 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Activity g_Activity = db.Activities.Find(id);
+            G_File g_File = db.Files.Find(id);
+            G_Activity g_Activity = db.Activities.Find(g_File.ActivityID);
             if (g_Activity == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_Activity);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: Activity/Delete/5
@@ -182,10 +186,13 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Activity g_Activity = db.Activities.Find(id);
+            G_File g_File = db.Files.Find(id);
+            G_Activity g_Activity = db.Activities.Find(g_File.ActivityID);
             db.Activities.Remove(g_Activity);
+            db.Files.Remove(g_File);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This activity summary document has been successfully deleted.')</script>";
+            return RedirectToAction("Index", "Performance", new { id = g_Activity.StudentID });
         }
 
         protected override void Dispose(bool disposing)

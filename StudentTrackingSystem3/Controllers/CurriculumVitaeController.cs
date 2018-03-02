@@ -171,14 +171,18 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_CurriculumVitae g_CurriculumVitae = db.CurriculumVitaes.Find(id);
+            G_File g_File = db.Files.Find(id);
+            G_CurriculumVitae g_CurriculumVitae = db.CurriculumVitaes.Find(g_File.CurriculumVitaeID);
             if (g_CurriculumVitae == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_CurriculumVitae);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: CurriculumVitae/Delete/5
@@ -186,10 +190,13 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_CurriculumVitae g_CurriculumVitae = db.CurriculumVitaes.Find(id);
+            G_File g_File = db.Files.Find(id); 
+            G_CurriculumVitae g_CurriculumVitae = db.CurriculumVitaes.Find(g_File.CurriculumVitaeID);
             db.CurriculumVitaes.Remove(g_CurriculumVitae);
+            db.Files.Remove(g_File);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This CV has been successfully deleted.')</script>";
+            return RedirectToAction("Index", "PostGraduation", new { id = g_CurriculumVitae.StudentID });
         }
 
         protected override void Dispose(bool disposing)

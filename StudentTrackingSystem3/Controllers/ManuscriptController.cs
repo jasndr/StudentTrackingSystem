@@ -165,14 +165,18 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Manuscript g_Manuscript = db.Manuscripts.Find(id);
+            G_File g_File = db.Files.Find(id);
+            G_Manuscript g_Manuscript = db.Manuscripts.Find(g_File.ManuscriptID);
             if (g_Manuscript == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_Manuscript);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: Manuscript/Delete/5
@@ -180,10 +184,14 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Manuscript g_Manuscript = db.Manuscripts.Find(id);
+            G_File g_File = db.Files.Find(id);
+            G_Manuscript g_Manuscript = db.Manuscripts.Find(g_File.ManuscriptID);
+            G_Graduation g_Graduation = db.Graduations.Find(g_Manuscript.Student.Graduation.FirstOrDefault().ID);
             db.Manuscripts.Remove(g_Manuscript);
+            db.Files.Remove(g_File);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This manuscript has been successfully deleted.')</script>";
+            return RedirectToAction("Edit", "Graduation", new { id = g_Graduation.ID });
         }
 
         protected override void Dispose(bool disposing)

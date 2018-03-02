@@ -162,6 +162,9 @@
                                                 <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
                                                 <td>@Convert.ToString(string.Format("{0:yyyy}", item.DateOfAward))</td>
                                                 <td>@Html.ActionLink("Edit", "Edit", "PrevDegree", new { id = item.Id }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                                @*<td>@Html.ActionLink("Delete", "Delete", "PrevDegree", new { id = item.Id }, new {@class="btn btn-xs navbuttons", @style= "background-color: #F22; color: #FFF" }) <i class="material-icons">delete_forever</i></td>*@
+                                                <td><a title="Delete" href="@Url.Action("Delete", "PrevDegree", new {id = item.Id})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                        <span class="glyphicon glyphicon-trash"></span></a></td>
                                             </tr>
                                         }
                                     </table>
@@ -347,7 +350,9 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
-@if (TempData["message"] != null)
+@*@if (TempData["msg"] != null)
 {
-    @TempData["message"]
-}
+    @TempData["msg"]
+}*@
+
+@Html.Raw(TempData["msg"])

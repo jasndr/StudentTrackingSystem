@@ -164,14 +164,18 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry!  No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_Performance g_Performance = db.Performances.Find(id);
             if (g_Performance == null)
             {
+                TempData["msg"] = "<script>alert('Sorry!  No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_Performance);
+         
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: Performance/Delete/5
@@ -182,7 +186,8 @@ namespace StudentTrackingSystem3.Controllers
             G_Performance g_Performance = db.Performances.Find(id);
             db.Performances.Remove(g_Performance);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This performance record has been successfully deleted.')</script>";
+            return RedirectToAction("Index", "Performance", new { id = g_Performance.StudentID });
         }
 
         protected override void Dispose(bool disposing)

@@ -30,7 +30,7 @@ namespace StudentTrackingSystem3.Controllers
             //if sortOrder = Grade = then (sort z->a), otherwise (sort a->z, should be default)
             ViewBag.Grade_SortParm = sortOrder == "Grade" ? "Grade_desc" : "Grade";
 
-            var coursework = db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g=>g.StudentID == id);
+            var coursework = db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g => g.StudentID == id);
 
             switch (sortOrder)
             {
@@ -56,7 +56,7 @@ namespace StudentTrackingSystem3.Controllers
                     coursework = coursework.OrderByDescending(s => s.Grade.ID);
                     break;
                 default:
-                    coursework = coursework.OrderBy(s=>s.Year).ThenBy(s=>s.Semesters.DisplayOrder);
+                    coursework = coursework.OrderBy(s => s.Year).ThenBy(s => s.Semesters.DisplayOrder);
                     break;
             }
 
@@ -178,7 +178,7 @@ namespace StudentTrackingSystem3.Controllers
             {
                 db.Entry(g_Coursework).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", new {id = g_Coursework.StudentID });
+                return RedirectToAction("Index", new { id = g_Coursework.StudentID });
             }
 
             var course =
@@ -201,14 +201,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_Coursework g_Coursework = db.Coursework.Find(id);
             if (g_Coursework == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_Coursework);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: Coursework/Delete/5
@@ -219,7 +222,8 @@ namespace StudentTrackingSystem3.Controllers
             G_Coursework g_Coursework = db.Coursework.Find(id);
             db.Coursework.Remove(g_Coursework);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This course has been successfully deleted.')</script>";
+            return RedirectToAction("Index", "Coursework", new { id = g_Coursework.StudentID });
         }
 
         protected override void Dispose(bool disposing)

@@ -109,14 +109,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_Publications g_Publications = db.Publications.Find(id);
             if (g_Publications == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_Publications);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: Publications/Delete/5
@@ -127,7 +130,8 @@ namespace StudentTrackingSystem3.Controllers
             G_Publications g_Publications = db.Publications.Find(id);
             db.Publications.Remove(g_Publications);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This publication record has been successfully deleted.')</script>";
+            return RedirectToAction("Index", "PostGraduation", new { id = g_Publications.StudentID });
         }
 
         protected override void Dispose(bool disposing)

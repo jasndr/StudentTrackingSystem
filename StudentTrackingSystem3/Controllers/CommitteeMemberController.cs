@@ -145,14 +145,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_CommitteeMember g_CommitteeMember = db.CommitteeMembers.Find(id);
             if (g_CommitteeMember == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_CommitteeMember);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: CommitteeMember/Delete/5
@@ -161,9 +164,11 @@ namespace StudentTrackingSystem3.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             G_CommitteeMember g_CommitteeMember = db.CommitteeMembers.Find(id);
+            G_Graduation g_Graduation = db.Graduations.Find(g_CommitteeMember.Student.Graduation.FirstOrDefault().ID);
             db.CommitteeMembers.Remove(g_CommitteeMember);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This commitee member has been successfully deleted.')</script>";
+            return RedirectToAction("Edit", "Graduation", new { id = g_Graduation.ID });
         }
 
         protected override void Dispose(bool disposing)

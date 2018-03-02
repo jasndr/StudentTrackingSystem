@@ -110,14 +110,17 @@ namespace StudentTrackingSystem3.Controllers
         {
             if (id == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             G_Honors g_Honors = db.Honors.Find(id);
             if (g_Honors == null)
             {
+                TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
             }
-            return View(g_Honors);
+            int sendId = (int)id;
+            return DeleteConfirmed(sendId);
         }
 
         // POST: Honors/Delete/5
@@ -128,7 +131,8 @@ namespace StudentTrackingSystem3.Controllers
             G_Honors g_Honors = db.Honors.Find(id);
             db.Honors.Remove(g_Honors);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            TempData["msg"] = "<script>alert('This honor/award entry has been successfully deleted.')</script>";
+            return RedirectToAction("Index", "PostGraduation", new { id = g_Honors.StudentID });
         }
 
         protected override void Dispose(bool disposing)

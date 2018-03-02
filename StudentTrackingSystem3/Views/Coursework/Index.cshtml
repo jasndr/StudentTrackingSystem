@@ -15,11 +15,11 @@
 
     @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
 
-    @Html.ActionLink("Performance & Activity", "Index", "Performance" , new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+    @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
     @Html.ActionLink("Requirements", "Index", "Graduation", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
-    @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.CurrentStudent_Id  }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+    @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
 </div>
 
 <hr />
@@ -43,17 +43,19 @@
             @Html.ActionLink("Grade", "Index", new { sortOrder = ViewBag.Grade_SortParm })
         </th>
         <th></th>
+        <th></th>
     </tr>
 
-   
+
 
     @{var i = 1; }
     @foreach (var group in Model.GroupBy(item => item.Semesters.Name + " " + item.Year))
     {
-       
+
 
         <tr class="tableRowHeader">
             <td><strong>Semester @i &mdash; @group.Key</strong></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -83,6 +85,11 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
                 </td>
+                <td>
+                    <a title="Delete" href="@Url.Action("Delete", "Coursework", new {id = item.ID})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </td>
             </tr>
             numOfCourses++;
             gpa = gpa + (double)item.Grade.GradePoint;
@@ -96,13 +103,14 @@
             <td></td>
             <td><em class="pull-right">Semester GPA:</em></td>
             <td><strong>@displaySemGpa</strong></td>
-            <td></td>
+            <td colspan="2"></td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td><em class="pull-right">Total Number of Credits:</em></td>
             <td><strong>@numOfCredits</strong></td>
+            <td></td>
             <td></td>
         </tr>
 
@@ -111,7 +119,7 @@
 
 </table>
 
-
+@Html.Raw(TempData["msg"])
 
 @*<br />
-<p>@Html.ActionLink("Back to List of Students", "Index", "Student")</p>*@
+    <p>@Html.ActionLink("Back to List of Students", "Index", "Student")</p>*@
