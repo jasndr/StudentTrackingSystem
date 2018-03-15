@@ -419,6 +419,8 @@
     <Content Include="Views\PostGraduation\Index.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\PrevDegree\Delete.cshtml" />
+    <Content Include="Views\Account\AssignRole.cshtml" />
+    <Content Include="Views\Account\AssignRoleConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -446,9 +446,9 @@ namespace StudentTrackingSystem3.Controllers
                         personRace.IsSelectedPR = true;
                         db.PersonRaces.Add(personRace);
                         db.SaveChanges();
+                        
                     }
                     db.SaveChanges();
-
                     return RedirectToAction("Edit", "Student", new { id = ultimate.G_Student.Id });
                     //return RedirectToAction("Index");
                 }
@@ -580,7 +580,6 @@ namespace StudentTrackingSystem3.Controllers
                     ultimate.RacesViewModel.SelectedRaces = newList;
 
                     db.SaveChanges();
-
                     return RedirectToAction("Edit", "Student", new { id = ultimate.G_Student.Id });
                 }
             }

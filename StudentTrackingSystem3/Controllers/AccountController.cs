@@ -11,12 +11,15 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using StudentTrackingSystem3.Models;
 using System.Text;
+using System.Web.Security;
 
 namespace StudentTrackingSystem3.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -82,7 +85,18 @@ namespace StudentTrackingSystem3.Controllers
             {
                 case SignInStatus.Success:
                     //return RedirectToLocal(returnUrl);
-                    return RedirectToAction("Index", "Student");
+
+                    //Added verification that user has confirmed their email.
+                    var user = await UserManager.FindByNameAsync(model.UserName);
+                    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                    {
+                        ModelState.AddModelError("", "Please wait for admin to confirm your email.");
+                        return View(model);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Student");
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -160,26 +174,70 @@ namespace StudentTrackingSystem3.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
                     // await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                     string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, 
-                                                                                    protocol: Request.Url.Scheme);
+                    //-------------------------------------------------------------------------------------------\\
+                    //// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    //// Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, 
+                    //                                                                protocol: Request.Url.Scheme);
 
-                    string sendTo = user.Email;//ConfigurationManager.AppSettings["trackingEmail"];
+                    //string sendTo = user.Email;//ConfigurationManager.AppSettings["trackingEmail"];
 
-                    string subject = String.Format("Email Confirmation - JABSOM CTR "
-                                                     + "Graduate Program Database");
+                    //string subject = String.Format("Email Confirmation - JABSOM CTR "
+                    //                                 + "Graduate Program Database");
 
-                    string body = string.Format("Dear {0}," +
-                                                "<br /><br />Thank you for your registration on the " +
-                                                "<strong>JABSOM Clinical & Translational Research (CTR) Graduate Program Database</strong>. " +
-                                                "Please <a href=\"{1}\" title=\"Confirm Email\">click here</a> " +
-                                                "to completete your registration. " +
+                    //string body = string.Format("Dear {0}," +
+                    //                            "<br /><br />Thank you for your registration on the " +
+                    //                            "<strong>JABSOM Clinical & Translational Research (CTR) Graduate Program Database</strong>. " +
+                    //                            "Please <a href=\"{1}\" title=\"Confirm Email\">click here</a> " +
+                    //                            "to completete your registration. " +
+                    //                            "<br /><br/ >Mahalo!",
+                    //                user.UserName, callbackUrl);
+
+                    //IdentityMessage im = new IdentityMessage()
+                    //{
+                    //    Subject = subject,
+                    //    Destination = sendTo,
+                    //    Body = body.ToString()
+                    //};
+
+                    //EmailService emailService = new EmailService();
+
+                    //emailService.Send(im);
+
+                    //return RedirectToAction("DisplayEmail");
+                    ////return RedirectToAction("Index", "Home");
+                    ////return RedirectToAction("Confirm", "Account", new { Email = user.Email });
+                    //-------------------------------------------------------------------------------------------\\
+
+                    // https://stackoverflow.com/questions/21734345/how-to-create-roles-and-add-users-to-roles-in-asp-net-mvc-web-api
+
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code },
+                    //                                                               protocol: Request.Url.Scheme);
+
+                    var assignRoleUrl = Url.Action("AssignRole", "Account", new { userName = user.UserName },
+                                                                                    protocol: Request.Url.Scheme );
+
+                    string sendTo = ConfigurationManager.AppSettings["superAdminEmail"];
+                    string subject = String.Format("Please approve new user account ({0}) - JABSOM CTR "
+                                                     + "Graduate Program Database", user.UserName);
+
+                    string body = string.Format("Dear QHS Admin," +
+                                                "<br /><br />New user, <strong>{0}</strong>, has created an account on the " +
+                                                "<em>JABSOM Clinical & Translational Research Graduate Program Database</em>. " +
+                                                "<br /><br />To <u>approve</u> access for {0}, please go to <a href=\"{1}\">this link</a> " +
+                                                "and select a role below for the new user. <br/><ul>" +
+                                                "<li>Super User (View, write, edit, and delete)</li>" +
+                                                "<li>Admin (View, write, and edit)</li>" +
+                                                "<li>Faculty/Staff (View and write, no edit)</li>" +
+                                                "<li>Guest (View only)</li></ul>" +
+                                                "<br />To <u>deny</u> access for {0}, you may simply ignore this email." +  
                                                 "<br /><br/ >Mahalo!",
-                                    user.UserName, callbackUrl);
+                                    user.UserName, assignRoleUrl);
 
                     IdentityMessage im = new IdentityMessage()
                     {
@@ -193,9 +251,7 @@ namespace StudentTrackingSystem3.Controllers
                     emailService.Send(im);
 
                     return RedirectToAction("DisplayEmail");
-                    //return RedirectToAction("Index", "Home");
-                    //return RedirectToAction("Confirm", "Account", new { Email = user.Email });
-                    
+
 
                 }
                 AddErrors(result);
@@ -225,6 +281,130 @@ namespace StudentTrackingSystem3.Controllers
         {
             return View();
         }
+
+
+        //
+        // GET: /Account/AssignRole
+        [HttpGet]
+        [Authorize(Roles = "Admin, Super")]
+        public ActionResult AssignRole(string userName)
+        {
+            //ViewBag.User = user;
+            //ViewBag.Email = user.Email;
+
+            //var user = UserManager.FindByName(userName);
+
+            ViewBag.UserName = userName;
+            ViewBag.ListOfRoles = new SelectList(db.Roles.OrderBy(x=>x.Name == "Super" ? "1" : x.Name), "Name", "Name");// db.Roles;
+
+
+            return View();
+
+            // var result = await UserManager.ConfirmEmailAsync(userId, code);
+            // return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+        //
+        // POST: /Account/AssignRole
+        [HttpPost]
+        [Authorize(Roles = "Admin, Super")]
+        public async Task<ActionResult> AssignRole(AssignRoleViewModel model)
+        {
+
+            ViewBag.UserName = model.Username;
+            ViewBag.ListOfRoles = new SelectList(db.Roles.OrderBy(x => x.Name == "Super" ? "1" : x.Name), "Name", "Name");// db.Roles;
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            // Assign role to user
+            var user = await UserManager.FindByNameAsync(model.Username);
+            var userId = user.Id;
+            var result = await UserManager.AddToRoleAsync(userId, model.RoleName);
+            string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
+            var result2 = await UserManager.ConfirmEmailAsync(userId, code);
+            if (result.Succeeded && result2.Succeeded)
+            {
+                //.........................................................................................//
+                //var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());                   //
+                //if (user != null)                                                                        //
+                //{                                                                                        //
+                //    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);  //
+                //}                                                                                        //
+                //.........................................................................................//
+
+                // Confirm user account.
+                user.EmailConfirmed = true;
+                
+
+                // Email user that they are able to login to their account.
+                var homePageUrl = Url.Action("Student", "Index");
+
+                string sendTo = user.Email;
+                string subject = String.Format("Account approved; {0}, you have been assigned: {1} - JABSOM CTR "
+                                                 + "Graduate Program Database", model.Username, model.RoleName);
+
+                string privileges = "";
+
+                switch (model.RoleName)
+                {
+                    case "Super":
+                        privileges = "view, create, edit, and delete";
+                        break;
+                    case "Admin":
+                        privileges = "view, create, and edit";
+                        break;
+                    case "Biostat":
+                        privileges = "view and create";
+                        break;
+                    case "Guest":
+                        privileges = "view only";
+                        break;
+                    default:
+                        privileges = "no";
+                        break;
+                }
+
+
+                string body = string.Format("Aloha {0}," +
+                                            "<br /><br />Your account on the <em>JABSOM Clinical & Translational Research Graduate Program Database</em> " +
+                                            "has been approved and you have been given <u>{1}</u> privileges on the database.   You may now <a href=\"{2}\">log in</a> to your account." +
+                                            "<br /><br />For questions about your account access, please email qhs@hawaii.edu." +
+                                            "<br /><br/ >Mahalo,<br />QHS Admin",
+                                user.UserName, privileges,  homePageUrl);
+
+                IdentityMessage im = new IdentityMessage()
+                {
+                    Subject = subject,
+                    Destination = sendTo,
+                    Body = body.ToString()
+                };
+
+                EmailService emailService = new EmailService();
+
+                emailService.Send(im);
+
+
+                // Redirect admin to "Assign Role to User Success" page.
+                return RedirectToAction("AssignRoleConfirmation", new { userName = model.Username, roleName = model.RoleName } );//View(model);
+                //return RedirectToAction("Index"/*, new { Message = ManageMessageId.ChangePasswordSuccess }*/);
+            }
+            AddErrors(result);
+            return View();
+        }
+
+        //
+        // GET: /Account/AssignRoleConfirmation
+        [Authorize(Roles = "Admin, Super")]
+        public ActionResult AssignRoleConfirmation(string userName, string roleName)
+        {
+            ViewBag.Username = userName;
+            ViewBag.Rolename = roleName;
+            return View();
+        }
+
 
         //
         // GET: /Account/ForgotPassword

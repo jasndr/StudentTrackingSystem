@@ -178,6 +178,9 @@
 
                         @foreach (var item in PrevEmployments.OrderByDescending(s => s.EndYear).ThenByDescending(s => s.EndMonth.DisplayOrder))
                         {
+                            startMonthName = item.StartMonth.Name;
+                            endMonthName = item.EndMonth.Name;
+
                             if (count == 1)
                             {
                                 <tr>
@@ -541,10 +544,10 @@
                         <td>Year 2: @endDate.AddMonths(1).AddYears(1).ToString("MMM") @endDate.AddMonths(1).AddYears(1).Year &mdash; @endDate.AddYears(2).ToString("MMM") @endDate.AddYears(2).Year</td>
                         <td>@year2</td>
                     </tr>
-                            <tr>
-                                <td>Year 3: @endDate.AddMonths(1).AddYears(2).ToString("MMM") @endDate.AddMonths(1).AddYears(2).Year &mdash; @endDate.AddYears(3).ToString("MMM") @endDate.AddYears(3).Year</td>
-                                <td>@year3</td>
-                            </tr>
+                    <tr>
+                        <td>Year 3: @endDate.AddMonths(1).AddYears(2).ToString("MMM") @endDate.AddMonths(1).AddYears(2).Year &mdash; @endDate.AddYears(3).ToString("MMM") @endDate.AddYears(3).Year</td>
+                        <td>@year3</td>
+                    </tr>
                             <tr>
                                 <td>Year 4: @endDate.AddMonths(1).AddYears(3).ToString("MMM") @endDate.AddMonths(1).AddYears(3).Year &mdash; @endDate.AddYears(4).ToString("MMM") @endDate.AddYears(4).Year</td>
                                 <td>@year4</td>

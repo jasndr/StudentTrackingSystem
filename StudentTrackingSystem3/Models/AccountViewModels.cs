@@ -117,4 +117,19 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class AssignRoleViewModel
+    {
+        [Required]
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
+        [Required]
+        [Display(Name = "Role")]
+        public string RoleName { get; set; }
+
+    }
+
+
 }
+

@@ -14,10 +14,12 @@
                 alert("You have not submitted a valid form.");
             } else if (!form.valid()) {
                 alert("There are errors in submission. Please view below for details.");
-            } else {
+            } 
+            else {
                 setTimeout(function () {
                     alert('Your entry has been saved.');
                 }, 100);
+                setTimeout(100);
             }
         }
     });
@@ -362,6 +364,49 @@
 
     });
 
+
+    // If "Current" checkbox checked, applies today's month and year. 
+    // (Employment History / Previous Employment)
+    var currentDateCheckbox = $("#currentDateCheckbox");
+    var currentMonthNumber = 55 + (new Date).getMonth();
+    var currentYear = (new Date).getFullYear();
+
+    //Disables end month / year and checks current checkbox
+    //if end month / year is the same as the current month and year.
+    if ($("#EndMonthId").val() == currentMonthNumber
+            && 
+        $("#EndYear").val() == currentYear)
+    {
+       $("#EndMonthId").prop("disabled", true);
+       $("#EndYear").prop("readonly", true);
+       currentDateCheckbox.prop('checked', true);
+    }
+            
+    //Locks end month / year to current value if "current" year 
+    //checkbox is checked.
+    currentDateCheckbox.on('click', function () {
+
+        if ($(this).is(':checked')) {
+            //EndMonthId is current month
+            $("#EndMonthId").val(currentMonthNumber);
+            $("#EndMonthId").prop("disabled", true);
+            //EndYear is current year
+            $("#EndYear").val(currentYear);
+            $("#EndYear").prop("readonly", true);
+        } else {
+            $("#EndMonthId").prop("disabled", false);
+            $("#EndYear").prop("readonly", false);
+            //alert(currentMonth);
+        }
+    });
+   
+    // Removes "disabled" from "EndMonthId" field
+    // (doesn't allow to post values if set to "disabled") 
+    // before posting in order to post.
+    $("form").submit(function () {
+        $("#EndMonthId").prop("disabled", false);
+    });
+        
 
     //Adds tooltip functionality
     $(document).ready(function () {

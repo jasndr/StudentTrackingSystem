@@ -130,6 +130,19 @@
 
             </div>
 
+            <div class="col-md-3 col-xs-12">
+
+                <div class="form-group">
+                    @Html.Label("or", new { @class = "control-label", @style = "margin-right: 5px;" })
+                    @Html.Label("Current", new { @class = "control-label" })
+                    <br />
+                    <div class="col-md-10">
+                        @Html.CheckBox("currentDateCheckbox", new { @style = "margin-top: 10px;", @data_toggle = "tooltip", @title = "This will populate the end month/year with the current date." })
+                    </div>
+                </div>
+
+            </div>
+
         </div>
         
         <div class="row">
