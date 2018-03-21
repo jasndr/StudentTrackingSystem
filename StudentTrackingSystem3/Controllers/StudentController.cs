@@ -391,23 +391,25 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Student/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            G_Student g_Student = db.Students.Find(id);
-            if (g_Student == null)
-            {
-                return HttpNotFound();
-            }
-            return View(g_Student);
+            return RedirectToAction("AccessDenied", "Account");
+
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //G_Student g_Student = db.Students.Find(id);
+            //if (g_Student == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(g_Student);
         }
 
 
         // GET: Student/Create
+        [Authorize(Roles ="Super, Admin, Biostat")]
         public ActionResult Create()
         {
-
             //View Bags for Dropdowns
             ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
             ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
@@ -422,6 +424,7 @@ namespace StudentTrackingSystem3.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = "Super, Admin, Biostat")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(/*[Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student,*/UltimateViewModel ultimate)
         {
@@ -475,6 +478,7 @@ namespace StudentTrackingSystem3.Controllers
         // GET: Student/Edit/5
         public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

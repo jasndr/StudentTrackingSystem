@@ -370,10 +370,10 @@ namespace StudentTrackingSystem3.Controllers
 
                 string body = string.Format("Aloha {0}," +
                                             "<br /><br />Your account on the <em>JABSOM Clinical & Translational Research Graduate Program Database</em> " +
-                                            "has been approved and you have been given <u>{1}</u> privileges on the database.   You may now <a href=\"{2}\">log in</a> to your account." +
+                                            "has been approved and you have been given <u><strong>{1} (<em>{2}</em>)</u> privileges on the database.   You may now <a href=\"{3}\">log in</a> to your account." +
                                             "<br /><br />For questions about your account access, please email qhs@hawaii.edu." +
                                             "<br /><br/ >Mahalo,<br />QHS Admin",
-                                user.UserName, privileges,  homePageUrl);
+                                user.UserName, model.RoleName, privileges,  homePageUrl);
 
                 IdentityMessage im = new IdentityMessage()
                 {
@@ -628,6 +628,14 @@ namespace StudentTrackingSystem3.Controllers
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
+        {
+            return View();
+        }
+
+        //
+        // GET: /Account/AccessDenied
+        [AllowAnonymous]
+        public ActionResult AccessDenied()
         {
             return View();
         }
