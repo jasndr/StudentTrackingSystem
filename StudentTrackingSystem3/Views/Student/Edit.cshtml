@@ -34,27 +34,7 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.G_Student.Id)
 
-            @{
-                //string readOnly = "";
-                //string disabled = "";
-                //string style = "";
-
-                if (User.IsInRole("Guest"))
-                {
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $(".guestReadOnly").attr("readonly", true);
-                            $(".guestDisabled").attr("disabled", true);
-                            $(".guestHidden").attr("style", "display: none;")
-                        });
-                    </script>
-                }
-              
-            }
-
-          
-
-            
+           
 
             <div class="row">
                 <div class="col-md-4">
@@ -183,8 +163,8 @@
                                                 <td><strong>@Html.DisplayFor(modelItem => item.DegreeTypes.Name)</strong>   @Html.DisplayFor(modelItem => item.Title)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
                                                 <td>@Convert.ToString(string.Format("{0:yyyy}", item.DateOfAward))</td>
-                                                <td>@Html.ActionLink("Edit", "Edit", "PrevDegree", new { id = item.Id }, new { @class = "btn btn-xs navbuttons guestHidden", @style = "background-color: #060; color: #FFF;" })</td>
-                                                <td><a title="Delete" href="@Url.Action("Delete", "PrevDegree", new {id = item.Id})"  class="guestHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                <td>@Html.ActionLink("Edit", "Edit", "PrevDegree", new { id = item.Id }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF;" })</td>
+                                                <td><a title="Delete" href="@Url.Action("Delete", "PrevDegree", new {id = item.Id})"  class="guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
                                                         <span class="glyphicon glyphicon-trash"></span></a></td>
                                             </tr>
                                         }
@@ -251,7 +231,7 @@
                             @Html.LabelFor(model => model.G_Student.DegreeProgramsId, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.DropDownListFor(m => m.G_Student.DegreeProgramsId, (SelectList)ViewBag.DegreeProgramsIdBag, "-- Select Degree Program --", new { @class = "form-control guestReadOnly" })
+                            @Html.DropDownListFor(m => m.G_Student.DegreeProgramsId, (SelectList)ViewBag.DegreeProgramsIdBag, "-- Select Degree Program --", new { @class = "form-control guestDisabled" })
                             @Html.ValidationMessageFor(model => model.G_Student.DegreeProgramsId, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -353,7 +333,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="col-md-10 row">
-                            <input type="submit" value="Save" class="btn btn-default guestHide createOrEditPost editPost" />
+                            <input type="submit" value="Save" class="btn btn-default guestHidden createOrEditPost editPost" />
                         </div>
                     </div>
                 </div>

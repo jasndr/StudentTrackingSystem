@@ -16,6 +16,7 @@ namespace StudentTrackingSystem3.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Activity
+        [Authorize]
         public ActionResult Index()
         {
             var activities = db.Activities.Include(g => g.Student);
@@ -23,6 +24,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: Activity/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,6 +41,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: Activity/Create
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Create(int? id)
         {
             var student = db.Students.Find(id);
@@ -57,6 +60,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Create([Bind(Include = "ID,StudentID,ActivitySummaryDesc")] G_Activity g_Activity, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
@@ -91,6 +95,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: Activity/Edit/5
+        [Authorize(Roles = "Admin, Super")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -119,6 +124,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Edit([Bind(Include = "ID,StudentID,ActivitySummaryDesc")] G_Activity g_Activity, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
@@ -163,6 +169,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: Activity/Delete/5
+        [Authorize(Roles = "Super")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -184,6 +191,7 @@ namespace StudentTrackingSystem3.Controllers
         // POST: Activity/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Super")]
         public ActionResult DeleteConfirmed(int id)
         {
             G_File g_File = db.Files.Find(id);

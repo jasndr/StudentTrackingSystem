@@ -18,6 +18,43 @@
 
 </head>
 <body>
+
+    @{
+
+        string readOnly = "";
+        string disabled = "";
+        string hidden = "";
+
+        if (User.IsInRole("Guest"))
+        {
+            readOnly = ".guestReadOnly";
+            disabled = ".guestDisabled";
+            hidden = ".guestHidden";
+        }
+        if (User.IsInRole("Biostat"))
+        {
+            readOnly = ".biostatReadOnly";
+            disabled = ".biostatDisabled";
+            hidden = ".biostatHidden";
+        }
+        if (User.IsInRole("Admin"))
+        {
+            readOnly = ".adminReadOnly";
+            disabled = ".adminDisabled";
+            hidden = ".adminHidden";
+        }
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("@readOnly").attr("readonly", true);
+                $("@disabled").attr("disabled", true);
+                $("@hidden").attr("style", "display: none;");
+            });
+        </script>
+        
+    }
+   
+
     <div class="navbar navbar-inverse navbar-fixed-top navigation-entire">
         <div class="container">
             <div class="navbar-header">
@@ -64,11 +101,11 @@
 
     }
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/datepicker")
-    @Scripts.Render("~/bundles/Javascript")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)*@
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/datepicker")
+        @Scripts.Render("~/bundles/Javascript")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
 
 </body>
 </html>

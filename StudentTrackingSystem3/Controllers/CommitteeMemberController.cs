@@ -16,6 +16,7 @@ namespace StudentTrackingSystem3.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: CommitteeMember
+        [Authorize]
         public ActionResult Index()
         {
             var committeeMembers = db.CommitteeMembers.Include(g => g.Student);
@@ -23,6 +24,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: CommitteeMember/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: CommitteeMember/Create
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Create(int? id)
         {
             var student = db.Students.Find(id);
@@ -70,6 +73,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Create([Bind(Include = "ID,StudentID,Name,Email,Department,University")] G_CommitteeMember g_CommitteeMember)
         {
             if (ModelState.IsValid)
@@ -86,6 +90,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: CommitteeMember/Edit/5
+        [Authorize(Roles = "Admin, Super")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -127,6 +132,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Super")]
         public ActionResult Edit([Bind(Include = "ID,StudentID,Name,Email,Department,University")] G_CommitteeMember g_CommitteeMember)
         {
             if (ModelState.IsValid)
@@ -141,6 +147,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: CommitteeMember/Delete/5
+        [Authorize(Roles = "Super")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -161,6 +168,7 @@ namespace StudentTrackingSystem3.Controllers
         // POST: CommitteeMember/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Super")]
         public ActionResult DeleteConfirmed(int id)
         {
             G_CommitteeMember g_CommitteeMember = db.CommitteeMembers.Find(id);

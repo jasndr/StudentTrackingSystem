@@ -17,6 +17,7 @@ namespace StudentTrackingSystem3.Controllers
 
 
         // GET: PrevDegree
+        [Authorize]
         public ActionResult Index()
         {
             var previousDegrees = db.PreviousDegrees.OrderBy(g => g.DateOfAward).Include(g => g.DegreeTypes).Include(g => g.Student);
@@ -24,6 +25,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: PrevDegree/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -39,6 +41,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: PrevDegree/Create
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Create(int? id)
         {
             ViewBag.Student = db.Students.Find(id);
@@ -55,6 +58,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Create([Bind(Include = "Id,StudentID,DegreeTypesID,Title,CumulativeGPA,SchoolName,Major,SecondMajor,Minor,DateOfAward")] G_PrevDegree g_PrevDegree)
         {
             if (ModelState.IsValid)
@@ -70,6 +74,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: PrevDegree/Edit/5
+        [Authorize(Roles ="Admin, Super")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -92,6 +97,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Super")]
         public ActionResult Edit([Bind(Include = "Id,StudentID,DegreeTypesID,Title,CumulativeGPA,SchoolName,Major,SecondMajor,Minor,DateOfAward")] G_PrevDegree g_PrevDegree)
         {
             if (ModelState.IsValid)
@@ -106,6 +112,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: PrevDegree/Delete/5
+        [Authorize(Roles ="Super")]
         public ActionResult Delete(int? id)
         {
 
@@ -128,6 +135,7 @@ namespace StudentTrackingSystem3.Controllers
         // POST: PrevDegree/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Super")]
         public ActionResult DeleteConfirmed(int id)
         {
             G_PrevDegree g_PrevDegree = db.PreviousDegrees.Find(id);

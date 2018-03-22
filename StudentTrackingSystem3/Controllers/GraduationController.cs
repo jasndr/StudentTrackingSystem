@@ -19,7 +19,6 @@ namespace StudentTrackingSystem3.Controllers
         public ActionResult Index(int? id)
         {
             //Create new entry if not can't find a graduation record for studentid
-
             G_Graduation g_Graduation = db.Students.Find(id).Graduation.FirstOrDefault();
             if (g_Graduation == null)
             {
@@ -165,6 +164,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: Graduation/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -185,6 +185,7 @@ namespace StudentTrackingSystem3.Controllers
         // POST: Graduation/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
             G_Graduation g_Graduation = db.Graduations.Find(id);

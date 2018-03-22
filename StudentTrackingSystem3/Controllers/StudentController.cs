@@ -389,6 +389,7 @@ namespace StudentTrackingSystem3.Controllers
 
 
         // GET: Student/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             return RedirectToAction("AccessDenied", "Account");
@@ -522,6 +523,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles ="Admin, Super")]
         public ActionResult Edit(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student*/UltimateViewModel ultimate, PostedRaces postedRaces)
         {
             try
@@ -603,7 +605,9 @@ namespace StudentTrackingSystem3.Controllers
             return View(GetRacesModel(ultimate, postedRaces));
         }
 
+        
         // GET: Student/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -619,6 +623,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // POST: Student/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

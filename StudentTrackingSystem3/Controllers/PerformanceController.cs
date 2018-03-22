@@ -37,6 +37,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: Performance/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -53,6 +54,7 @@ namespace StudentTrackingSystem3.Controllers
 
         // GET: Performance/Create
         [HttpGet]
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Create(int? id)
         {
             ViewBag.Student = db.Students.Find(id);
@@ -74,6 +76,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Biostat, Admin, Super")]
         public ActionResult Create([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatsID,AbstractsStatID,ProposalStatsID,TeachingStatsID")] G_Performance g_Performance)
         {
             try
@@ -104,6 +107,7 @@ namespace StudentTrackingSystem3.Controllers
 
         // GET: Performance/Edit/5
         [HttpGet]
+        [Authorize(Roles = "Admin, Super")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -134,6 +138,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Super")]
         public ActionResult Edit([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatsID,AbstractStatsID,ProposalStatsID,TeachingStatsID")] G_Performance g_Performance)
         {
             try
@@ -160,6 +165,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: Performance/Delete/5
+        [Authorize(Roles = "Super")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -178,6 +184,7 @@ namespace StudentTrackingSystem3.Controllers
             return DeleteConfirmed(sendId);
         }
 
+        [Authorize(Roles = "Super")]
         // POST: Performance/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

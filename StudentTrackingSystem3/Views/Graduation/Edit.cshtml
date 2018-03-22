@@ -67,7 +67,7 @@
                     @Html.LabelFor(model => model.QualifierResultId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("QualifierResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("QualifierResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
                         @Html.ValidationMessageFor(model => model.QualifierResultId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                     @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed1 control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DateOfQualification, new { @Value = Model.DateOfQualification?.ToString("MM/dd/yyyy"), @class = "form-control datepicker", placeholder = "MM/DD/YYYY" })
+                        @Html.TextBoxFor(model => model.DateOfQualification, new { @Value = Model.DateOfQualification?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
                         @Html.ValidationMessageFor(model => model.DateOfQualification, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                     @Html.LabelFor(model => model.Qualifier2ResultId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("Qualifier2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("Qualifier2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
                         @Html.ValidationMessageFor(model => model.Qualifier2ResultId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                     @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed2 control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DateOfQualification2, new { @Value = Model.DateOfQualification2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker", placeholder = "MM/DD/YYYY" })
+                        @Html.TextBoxFor(model => model.DateOfQualification2, new { @Value = Model.DateOfQualification2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
                         @Html.ValidationMessageFor(model => model.DateOfQualification2, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                         @Html.LabelFor(model => model.Form2ResultId, htmlAttributes: new { @class = "control-label" })
                         <br />
                         <div class="col-md-10">
-                            @Html.DropDownList("Form2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                            @Html.DropDownList("Form2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
                             @Html.ValidationMessageFor(model => model.Form2ResultId, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                             @Html.LabelFor(model => model.Form2Date, htmlAttributes: new { @class = "control-label" })
                             <br />
                             <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Form2Date, new { @Value = Model.Form2Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker" })
+                                @Html.TextBoxFor(model => model.Form2Date, new { @Value = Model.Form2Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly" })
                                 @Html.ValidationMessageFor(model => model.Form2Date, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -183,7 +183,7 @@
                             @Html.LabelFor(model => model.CompExamResultId, htmlAttributes: new { @class = "control-label" })
                             <br />
                             <div class="col-md-10">
-                                @Html.DropDownList("CompExamResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                                @Html.DropDownList("CompExamResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestReadOnly biostatReadOnly" })
                                 @Html.ValidationMessageFor(model => model.CompExamResultId, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                             @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed1 control-label" })
                             <br />
                             <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.DateOfCompExam, new { @Value = Model.DateOfCompExam?.ToString("MM/dd/yyyy"), @class = "form-control datepicker", placeholder = "MM/DD/YYYY" })
+                                @Html.TextBoxFor(model => model.DateOfCompExam, new { @Value = Model.DateOfCompExam?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
                                 @Html.ValidationMessageFor(model => model.DateOfCompExam, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                             @Html.LabelFor(model => model.CompExam2ResultId, htmlAttributes: new { @class = "control-label" })
                             <br />
                             <div class="col-md-10">
-                                @Html.DropDownList("CompExam2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                                @Html.DropDownList("CompExam2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
                                 @Html.ValidationMessageFor(model => model.CompExam2ResultId, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -217,7 +217,7 @@
                             @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed2 control-label" })
                             <br />
                             <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.DateOfCompExam2, new { @Value = Model.DateOfCompExam2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker", placeholder = "MM/DD/YYYY" })
+                                @Html.TextBoxFor(model => model.DateOfCompExam2, new { @Value = Model.DateOfCompExam2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
                                 @Html.ValidationMessageFor(model => model.DateOfCompExam2, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -260,7 +260,7 @@
                     @Html.LabelFor(model => model.Form2Title, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
+                        @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @style = "max-width: 480px;" } })
                         @Html.ValidationMessageFor(model => model.Form2Title, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -309,7 +309,7 @@
                     @Html.LabelFor(model => model.AdvisorName, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.AdvisorName, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
                         @Html.ValidationMessageFor(model => model.AdvisorName, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -322,7 +322,7 @@
                     @Html.LabelFor(model => model.AdvisorEmail, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.AdvisorEmail, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
                         @Html.ValidationMessageFor(model => model.AdvisorEmail, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -339,7 +339,7 @@
                     @Html.LabelFor(model => model.AdvisorDepartment, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorDepartment, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.AdvisorDepartment, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
                         @Html.ValidationMessageFor(model => model.AdvisorDepartment, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -352,7 +352,7 @@
                     @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control", @Value = "University of Hawaii at Manoa" } })
+                        @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @Value = "University of Hawaii at Manoa" } })
                         @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -371,6 +371,7 @@
                     <div class="col-md-offset-2 row col-md-10">
                         @Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID },
                                                                                                     htmlAttributes: new {
+                                                                                                        @class = "guestHidden",
                                                                                                         data_toggle = "tooltip",
                                                                                                         title = "NOTE: If you have entered data on this page, please dont forget to click 'Save' before proceeding.",
                                                                                                         onclick="return confirm('NOTE: You must save this page first to prevent losing newly entered data.\\n\\nDo you wish to proceed?')"})
@@ -393,10 +394,10 @@
                                             <td>@Html.DisplayFor(modelItem => item.Department)</td>
                                             <td>@Html.DisplayFor(modelItem => item.University)</td>
                                             <td>
-                                                @Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                @Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
                                             </td>
                                             <td>
-                                                <a style="margin-left: 5px;" title="Delete" href="@Url.Action("Delete", "CommitteeMember", new {id = item.ID})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                <a style="margin-left: 5px;" title="Delete" href="@Url.Action("Delete", "CommitteeMember", new {id = item.ID})" class="btn-btn-warning guestHidden biostatHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
                                             </td>
@@ -471,7 +472,7 @@
                     @Html.LabelFor(model => model.Form3Title, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Form3Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
+                        @Html.EditorFor(model => model.Form3Title, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @style = "max-width: 480px;" } })
                         @Html.ValidationMessageFor(model => model.Form3Title, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -484,7 +485,7 @@
                     @Html.LabelFor(model => model.Form3Date, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Form3Date, new { @Value = Model.Form3Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker" })
+                        @Html.TextBoxFor(model => model.Form3Date, new { @Value = Model.Form3Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly" })
                         @Html.ValidationMessageFor(model => model.Form3Date, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -497,7 +498,7 @@
                     @Html.LabelFor(model => model.Form3ResultId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("Form3ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("Form3ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
                         @Html.ValidationMessageFor(model => model.Form3Result, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -522,7 +523,7 @@
                             @Html.LabelFor(model => model.FinalExamResultId, htmlAttributes: new { @class = "control-label" })
                             <br />
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.FinalExamResultId, (SelectList)ViewBag.FinalExamResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.FinalExamResultId, (SelectList)ViewBag.FinalExamResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
                                 @Html.ValidationMessageFor(model => model.FinalExamResultId, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -532,7 +533,7 @@
                             @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed1 control-label" })
                             @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed1 control-label" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.DateOfFinalExam, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                                @Html.EditorFor(model => model.DateOfFinalExam, new { htmlAttributes = new { @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" } })
                                 @Html.ValidationMessageFor(model => model.DateOfFinalExam, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -543,7 +544,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.FinalExam2ResultId, htmlAttributes: new { @class = "control-label" })
                             <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.FinalExam2ResultId, (SelectList)ViewBag.FinalExam2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                                @Html.DropDownListFor(model => model.FinalExam2ResultId, (SelectList)ViewBag.FinalExam2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
                                 @Html.ValidationMessageFor(model => model.FinalExam2ResultId, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -553,7 +554,7 @@
                             @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed2 control-label" })
                             @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed2 control-label" })
                             <div class="col-md-10">
-                                @Html.EditorFor(model => model.DateOfFinalExam2, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                                @Html.EditorFor(model => model.DateOfFinalExam2, new { htmlAttributes = new { @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" } })
                                 @Html.ValidationMessageFor(model => model.DateOfFinalExam2, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -629,6 +630,7 @@
 
                         <p>@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = Model.StudentID },
                                                                                             htmlAttributes: new {
+                                                                                                @class = "guestHidden",
                                                                                                 data_toggle = "tooltip",
                                                                                                 title = "NOTE: If you have entered data on this page, please dont forget to click 'Save' before proceeding.",
                                                                                                 onclick = "return confirm('NOTE: You must save this page first to prevent losing newly entered data.\\n\\nDo you wish to proceed?')"
@@ -647,9 +649,9 @@
                                                 <em><strong>Current Manuscript</strong></em>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/File?id=@file.G_FileId">@file.FileName</a> &mdash;
-                                                        @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-                                                        <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Manuscript", new {id = file.G_FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                        <a href="~/File?id=@file.G_FileId">@file.FileName</a> <span class="guestHidden biostatHidden">&mdash;</span>
+                                                        @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
+                                                        <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Manuscript", new {id = file.G_FileId})" class="btn-btn-warning guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
                                                             <span class="glyphicon glyphicon-trash"></span>
                                                         </a>
                                                     </li>
@@ -667,9 +669,9 @@
                                         <div class="col-md-offset-1">
                                             <ul>
                                                 <li>
-                                                    <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
-                                                    @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-                                                    <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Manuscript", new {id = file.G_FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                    <a href="~/File?id=@file.G_FileId">@file.FileName</a>  <span class="guestHidden biostatHidden">&mdash;</span>
+                                                    @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
+                                                    <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Manuscript", new {id = file.G_FileId})" class="btn-btn-warning guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
                                                         <span class="glyphicon glyphicon-trash"></span>
                                                     </a>
                                                 </li>
@@ -708,7 +710,7 @@
                     @Html.LabelFor(model => model.DegreeEndSemsId, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.DropDownList("DegreeEndSemsId", null, "-- Select Semester --", htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownList("DegreeEndSemsId", null, "-- Select Semester --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
                         @Html.ValidationMessageFor(model => model.DegreeEndSemsId, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -719,7 +721,7 @@
                     @Html.LabelFor(model => model.DegreeEndYear, htmlAttributes: new { @class = "control-label" })
                     <br />
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.DegreeEndYear, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.DegreeEndYear, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
                         @Html.ValidationMessageFor(model => model.DegreeEndYear, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -733,7 +735,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-1 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default createOrEditPost2" />
+                    <input type="submit" value="Save" class="btn btn-default createOrEditPost2 guestHidden biostatHidden" />
                 </div>
             </div>
 
