@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_Publications
+    public class Publications
     {
         public int ID { get; set; }
         [Required]
@@ -18,8 +18,8 @@ namespace StudentTrackingSystem3.Models
         [Required, Display(Name ="Year")]
         public int PubYear { get; set; }
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_CommonFields PubMonth { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual CommonFields PubMonth { get; set; }
         
     }
 }

@@ -31,13 +31,13 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Student g_Student = db.Students.Include(s => s.Activity) .SingleOrDefault(s => s.Id == id);
-            G_Activity g_Activity = db.Activities.Find(id);
-            if (g_Activity == null)
+            Student student = db.Students.Include(s => s.Activity) .SingleOrDefault(s => s.Id == id);
+            Activity activity = db.Activities.Find(id);
+            if (activity == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Activity);
+            return View(activity);
         }
 
         // GET: Activity/Create
@@ -61,37 +61,37 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Biostat, Admin, Super")]
-        public ActionResult Create([Bind(Include = "ID,StudentID,ActivitySummaryDesc")] G_Activity g_Activity, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "ID,StudentID,ActivitySummaryDesc")] Activity activity, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
                 
-                G_Student g_Student = db.Students.Find(g_Activity.StudentID);
+                Student student = db.Students.Find(activity.StudentID);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    var documentFile = new G_File
+                    var documentFile = new File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
-                        FileType = G_FileType.ActivitySummaryFile,
+                        FileType = FileType.ActivitySummaryFile,
                         ContentType = upload.ContentType,
-                        Activity = g_Activity
+                        Activity = activity
                     };
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         documentFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Activity.Files = new List<G_File> { documentFile };
-                    //g_Student.Files = new List<G_File> { document };
+                    activity.Files = new List<File> { documentFile };
+                    //student.Files = new List<File> { document };
                 }
 
-                db.Activities.Add(g_Activity);
+                db.Activities.Add(activity);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Performance", new { id = g_Activity.StudentID});
+                return RedirectToAction("Index", "Performance", new { id = activity.StudentID});
             }
 
            
-            return View(g_Activity);
+            return View(activity);
         }
 
         // GET: Activity/Edit/5
@@ -102,21 +102,21 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_File g_File = db.Files.Find(id);
-            G_Activity g_Activity = g_File.Activity;
-            if (g_Activity == null)
+            File file = db.Files.Find(id);
+            Activity activity = file.Activity;
+            if (activity == null)
             {
                 return HttpNotFound();
             }
-            G_Student g_Student = g_Activity.Student;
+            Student student = activity.Student;
 
-            ViewBag.Student = g_Student;
-            ViewBag.StudentID = g_Student.Id;
+            ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
             ViewBag.FileID = id;
             ViewBag.FileName = db.Files.Find(id).FileName;
             ViewBag.File = db.Files.Find(id);
-            ViewBag.ActivityID = g_Activity.ID;
-            return View(g_Activity);
+            ViewBag.ActivityID = activity.ID;
+            return View(activity);
         }
 
         // POST: Activity/Edit/5
@@ -125,47 +125,47 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Biostat, Admin, Super")]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,ActivitySummaryDesc")] G_Activity g_Activity, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,ActivitySummaryDesc")] Activity activity, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                G_Student g_Student = db.Students.Find(g_Activity.StudentID);
-                G_File g_File = db.Files.Where(f => f.Activity.ID == g_Activity.ID).FirstOrDefault();
+                Student student = db.Students.Find(activity.StudentID);
+                File file = db.Files.Where(f => f.Activity.ID == activity.ID).FirstOrDefault();
 
                 if (upload != null && upload.ContentLength > 0)
                 {
 
-                    if (g_File != null)
+                    if (file != null)
                     {
-                        db.Files.Remove(g_File);
-                        db.Entry(g_File).State = EntityState.Deleted;
-                        db.Entry(g_Activity).State = EntityState.Modified;
+                        db.Files.Remove(file);
+                        db.Entry(file).State = EntityState.Deleted;
+                        db.Entry(activity).State = EntityState.Modified;
                         //db.SaveChanges();
                     }
                     
-                    var documentFile = new G_File
+                    var documentFile = new File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
-                        FileType = G_FileType.ActivitySummaryFile,
+                        FileType = FileType.ActivitySummaryFile,
                         ContentType =  upload.ContentType,
-                        Activity = g_Activity/*,
-                        ActivityID = g_Activity.ID*/
+                        Activity = activity/*,
+                        ActivityID = activity.ID*/
                     };
                     
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         documentFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Activity.Files = new List<G_File> { documentFile };
-                    //g_Activity.Files.Add(documentFile);
-                    db.Entry(g_Activity).State = EntityState.Modified;
+                    activity.Files = new List<File> { documentFile };
+                    //activity.Files.Add(documentFile);
+                    db.Entry(activity).State = EntityState.Modified;
                 }
-                g_Activity.Student = g_Student;
-                db.Entry(g_Activity).State = EntityState.Modified;
+                activity.Student = student;
+                db.Entry(activity).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Performance", new {id = g_Activity.StudentID });
+                return RedirectToAction("Index", "Performance", new {id = activity.StudentID });
             }
-            return View(g_Activity);
+            return View(activity);
         }
 
         // GET: Activity/Delete/5
@@ -177,9 +177,9 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_File g_File = db.Files.Find(id);
-            G_Activity g_Activity = db.Activities.Find(g_File.ActivityID);
-            if (g_Activity == null)
+            File file = db.Files.Find(id);
+            Activity activity = db.Activities.Find(file.ActivityId);
+            if (activity == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -194,13 +194,13 @@ namespace StudentTrackingSystem3.Controllers
         [Authorize(Roles = "Super")]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_File g_File = db.Files.Find(id);
-            G_Activity g_Activity = db.Activities.Find(g_File.ActivityID);
-            db.Activities.Remove(g_Activity);
-            db.Files.Remove(g_File);
+            File file = db.Files.Find(id);
+            Activity activity = db.Activities.Find(file.ActivityId);
+            db.Activities.Remove(activity);
+            db.Files.Remove(file);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This activity summary document has been successfully deleted.')</script>";
-            return RedirectToAction("Index", "Performance", new { id = g_Activity.StudentID });
+            return RedirectToAction("Index", "Performance", new { id = activity.StudentID });
         }
 
         protected override void Dispose(bool disposing)

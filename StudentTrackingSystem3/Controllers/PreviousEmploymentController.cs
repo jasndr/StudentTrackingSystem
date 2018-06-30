@@ -29,12 +29,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PreviousEmployment g_PreviousEmployment = db.PreviousEmployment.Find(id);
-            if (g_PreviousEmployment == null)
+            PreviousEmployment previousEmployment = db.PreviousEmployment.Find(id);
+            if (previousEmployment == null)
             {
                 return HttpNotFound();
             }
-            return View(g_PreviousEmployment);
+            return View(previousEmployment);
         }
 
         // GET: PreviousEmployment/Create
@@ -55,19 +55,19 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,Position, Employer, StartMonthId,StartYear,EndMonthId,EndYear")] G_PreviousEmployment g_PreviousEmployment)
+        public ActionResult Create([Bind(Include = "ID,StudentID,Position, Employer, StartMonthId,StartYear,EndMonthId,EndYear")] PreviousEmployment previousEmployment)
         {
             if (ModelState.IsValid)
             {
-                db.PreviousEmployment.Add(g_PreviousEmployment);
+                db.PreviousEmployment.Add(previousEmployment);
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new {id = g_PreviousEmployment.StudentID });
+                return RedirectToAction("Index", "PostGraduation", new {id = previousEmployment.StudentID });
             }
 
-            ViewBag.EndMonthId = new SelectList(db.CommonFields.Where(g => g.Category == "Months"), "ID", "Name", g_PreviousEmployment.EndMonthId);
-            ViewBag.StartMonthId = new SelectList(db.CommonFields.Where(g => g.Category == "Months"), "ID", "Name", g_PreviousEmployment.StartMonthId);
-            ViewBag.StudentID = db.Students.Find(g_PreviousEmployment.StudentID).Id;
-            return View(g_PreviousEmployment);
+            ViewBag.EndMonthId = new SelectList(db.CommonFields.Where(g => g.Category == "Months"), "ID", "Name", previousEmployment.EndMonthId);
+            ViewBag.StartMonthId = new SelectList(db.CommonFields.Where(g => g.Category == "Months"), "ID", "Name", previousEmployment.StartMonthId);
+            ViewBag.StudentID = db.Students.Find(previousEmployment.StudentID).Id;
+            return View(previousEmployment);
         }
 
         // GET: PreviousEmployment/Edit/5
@@ -77,17 +77,17 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PreviousEmployment g_PreviousEmployment = db.PreviousEmployment.Find(id);
-            G_Student g_Student = g_PreviousEmployment.Student;
-            if (g_PreviousEmployment == null)
+            PreviousEmployment previousEmployment = db.PreviousEmployment.Find(id);
+            Student student = previousEmployment.Student;
+            if (previousEmployment == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EndMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PreviousEmployment.EndMonthId);
-            ViewBag.StartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PreviousEmployment.StartMonthId);
-            ViewBag.Student = g_PreviousEmployment.Student;
-            ViewBag.StudentID =  g_PreviousEmployment.StudentID;
-            return View(g_PreviousEmployment);
+            ViewBag.EndMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", previousEmployment.EndMonthId);
+            ViewBag.StartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", previousEmployment.StartMonthId);
+            ViewBag.Student = previousEmployment.Student;
+            ViewBag.StudentID =  previousEmployment.StudentID;
+            return View(previousEmployment);
         }
 
         // POST: PreviousEmployment/Edit/5
@@ -95,18 +95,18 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,Position, Employer, StartMonthId,StartYear,EndMonthId,EndYear")] G_PreviousEmployment g_PreviousEmployment)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,Position, Employer, StartMonthId,StartYear,EndMonthId,EndYear")] PreviousEmployment previousEmployment)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_PreviousEmployment).State = EntityState.Modified;
+                db.Entry(previousEmployment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new {id = g_PreviousEmployment.StudentID });
+                return RedirectToAction("Index", "PostGraduation", new {id = previousEmployment.StudentID });
             }
-            ViewBag.EndMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PreviousEmployment.EndMonthId);
-            ViewBag.StartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PreviousEmployment.StartMonthId);
-            ViewBag.StudentID = g_PreviousEmployment.StudentID;
-            return View(g_PreviousEmployment);
+            ViewBag.EndMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", previousEmployment.EndMonthId);
+            ViewBag.StartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", previousEmployment.StartMonthId);
+            ViewBag.StudentID = previousEmployment.StudentID;
+            return View(previousEmployment);
         }
 
         // GET: PreviousEmployment/Delete/5
@@ -117,8 +117,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PreviousEmployment g_PreviousEmployment = db.PreviousEmployment.Find(id);
-            if (g_PreviousEmployment == null)
+            PreviousEmployment previousEmployment = db.PreviousEmployment.Find(id);
+            if (previousEmployment == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -132,11 +132,11 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_PreviousEmployment g_PreviousEmployment = db.PreviousEmployment.Find(id);
-            db.PreviousEmployment.Remove(g_PreviousEmployment);
+            PreviousEmployment previousEmployment = db.PreviousEmployment.Find(id);
+            db.PreviousEmployment.Remove(previousEmployment);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This employment history entry has been successfully deleted.')</script>";
-            return RedirectToAction("Index", "PostGraduation", new {id = g_PreviousEmployment.StudentID });
+            return RedirectToAction("Index", "PostGraduation", new {id = previousEmployment.StudentID });
         }
 
         protected override void Dispose(bool disposing)

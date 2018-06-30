@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StudentTrackingSystem3.Models.G_Performance>
+﻿@model IEnumerable<StudentTrackingSystem3.Models.Performance>
 
 @{
     ViewBag.Title = "Performance & Activity Summary";
@@ -121,16 +121,16 @@
     
         <div class="row">
 
-            @{ IQueryable<G_File> studentASFs = ViewBag.StudentFiles;}
+            @{ IQueryable <StudentTrackingSystem3.Models.File> studentASFs = ViewBag.StudentFiles;}
             @{ if (!object.ReferenceEquals(studentASFs.Where(g=>g.FileType == g.FileType).FirstOrDefault(), null)) {
 
                     foreach(var file in studentASFs)
                     {
-                        if (file.FileType == G_FileType.ActivitySummaryFile)
+                        if (file.FileType == FileType.ActivitySummaryFile)
                         {
-                            <p style="margin-left: 20px;">&bull; <a href="~/File?id=@file.G_FileId">@file.FileName</a>  <span class="guestHidden biostatHidden"> &mdash; </span>
-                               @Html.ActionLink("Edit", "Edit", "Activity", new {id = file.G_FileId }, new {@class="btn btn-xs navbuttons guestHidden biostatHidden", @style="background-color: #060; color: #FFF" })
-                                <a style="margin-left: 5px;" title="Delete" href="@Url.Action("Delete", "Activity", new {id = file.G_FileId})" class="btn-btn-warning guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
+                            <p style="margin-left: 20px;">&bull; <a href="~/File?id=@file.FileId">@file.FileName</a>  <span class="guestHidden biostatHidden"> &mdash; </span>
+                               @Html.ActionLink("Edit", "Edit", "Activity", new {id = file.FileId }, new {@class="btn btn-xs navbuttons guestHidden biostatHidden", @style="background-color: #060; color: #FFF" })
+                                <a style="margin-left: 5px;" title="Delete" href="@Url.Action("Delete", "Activity", new {id = file.FileId})" class="btn-btn-warning guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
                                     <span class="glyphicon glyphicon-trash"></span>
                                 </a>
                             </p>

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_Course
+    public class Course
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
@@ -17,7 +17,7 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Title")]
         public string CourseName { get; set; }
 
-        public virtual ICollection<G_Coursework> Coursework { get; set; }
+        public virtual ICollection<Coursework> Coursework { get; set; }
 
     }
 }

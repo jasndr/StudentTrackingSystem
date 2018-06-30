@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_PostGraduation
+    public class PostGraduation
     {
         public int ID { get; set; }
         [Required]
@@ -18,8 +18,8 @@ namespace StudentTrackingSystem3.Models
         [Required, Display(Name = "Start Year")]
         public int CurrentStartYear { get; set; }
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_CommonFields CurrentStartMonth { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual CommonFields CurrentStartMonth { get; set; }
 
     }
 }

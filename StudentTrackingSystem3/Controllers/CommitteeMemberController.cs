@@ -31,12 +31,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_CommitteeMember g_CommitteeMember = db.CommitteeMembers.Find(id);
-            if (g_CommitteeMember == null)
+            CommitteeMember committeeMember = db.CommitteeMembers.Find(id);
+            if (committeeMember == null)
             {
                 return HttpNotFound();
             }
-            return View(g_CommitteeMember);
+            return View(committeeMember);
         }
 
         // GET: CommitteeMember/Create
@@ -74,19 +74,19 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Biostat, Admin, Super")]
-        public ActionResult Create([Bind(Include = "ID,StudentID,Name,Email,Department,University")] G_CommitteeMember g_CommitteeMember)
+        public ActionResult Create([Bind(Include = "ID,StudentID,Name,Email,Department,University")] CommitteeMember committeeMember)
         {
             if (ModelState.IsValid)
             {
-                db.CommitteeMembers.Add(g_CommitteeMember);
+                db.CommitteeMembers.Add(committeeMember);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Graduation", new { id = g_CommitteeMember.StudentID });
+                return RedirectToAction("Index", "Graduation", new { id = committeeMember.StudentID });
             }
-            ViewBag.Student = g_CommitteeMember.Student;
-            ViewBag.StudentID = g_CommitteeMember.StudentID;
-            ViewBag.Student_FN = g_CommitteeMember.Student.FirstName;
-            ViewBag.Student_LN = g_CommitteeMember.Student.LastName;
-            return View(g_CommitteeMember);
+            ViewBag.Student = committeeMember.Student;
+            ViewBag.StudentID = committeeMember.StudentID;
+            ViewBag.Student_FN = committeeMember.Student.FirstName;
+            ViewBag.Student_LN = committeeMember.Student.LastName;
+            return View(committeeMember);
         }
 
         // GET: CommitteeMember/Edit/5
@@ -97,19 +97,19 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_CommitteeMember g_CommitteeMember = db.CommitteeMembers.Find(id);
-            G_Student g_Student = g_CommitteeMember.Student;
-            if (g_CommitteeMember == null)
+            CommitteeMember committeeMember = db.CommitteeMembers.Find(id);
+            Student student = committeeMember.Student;
+            if (committeeMember == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Student = g_Student;
-            ViewBag.StudentID = g_Student.Id;
-            ViewBag.Student_FN = g_Student.FirstName;
-            ViewBag.Student_LN = g_Student.LastName;
+            ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
+            ViewBag.Student_FN = student.FirstName;
+            ViewBag.Student_LN = student.LastName;
 
             var committeeType = "";
-            var degreeProgram = g_Student.DegreePrograms.Name;
+            var degreeProgram = student.DegreePrograms.Name;
             if (degreeProgram == "MS")
             {
                 committeeType = "thesis";
@@ -124,7 +124,7 @@ namespace StudentTrackingSystem3.Controllers
             }
             ViewBag.CommitteeType = committeeType;
 
-            return View(g_CommitteeMember);
+            return View(committeeMember);
         }
 
         // POST: CommitteeMember/Edit/5
@@ -133,17 +133,17 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Super")]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,Name,Email,Department,University")] G_CommitteeMember g_CommitteeMember)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,Name,Email,Department,University")] CommitteeMember committeeMember)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_CommitteeMember).State = EntityState.Modified;
+                db.Entry(committeeMember).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Graduation", new { id = g_CommitteeMember.StudentID });
+                return RedirectToAction("Index", "Graduation", new { id = committeeMember.StudentID });
             }
-            ViewBag.Student = g_CommitteeMember.Student;
-            ViewBag.StudentID = g_CommitteeMember.StudentID;
-            return View(g_CommitteeMember);
+            ViewBag.Student = committeeMember.Student;
+            ViewBag.StudentID = committeeMember.StudentID;
+            return View(committeeMember);
         }
 
         // GET: CommitteeMember/Delete/5
@@ -155,8 +155,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_CommitteeMember g_CommitteeMember = db.CommitteeMembers.Find(id);
-            if (g_CommitteeMember == null)
+            CommitteeMember committeeMember = db.CommitteeMembers.Find(id);
+            if (committeeMember == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -171,12 +171,12 @@ namespace StudentTrackingSystem3.Controllers
         [Authorize(Roles = "Super")]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_CommitteeMember g_CommitteeMember = db.CommitteeMembers.Find(id);
-            G_Graduation g_Graduation = db.Graduations.Find(g_CommitteeMember.Student.Graduation.FirstOrDefault().ID);
-            db.CommitteeMembers.Remove(g_CommitteeMember);
+            CommitteeMember committeeMember = db.CommitteeMembers.Find(id);
+            Graduation graduation = db.Graduations.Find(committeeMember.Student.Graduation.FirstOrDefault().ID);
+            db.CommitteeMembers.Remove(committeeMember);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This commitee member has been successfully deleted.')</script>";
-            return RedirectToAction("Edit", "Graduation", new { id = g_Graduation.ID });
+            return RedirectToAction("Edit", "Graduation", new { id = graduation.ID });
         }
 
         protected override void Dispose(bool disposing)

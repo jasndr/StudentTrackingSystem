@@ -1,8 +1,8 @@
 ﻿@* Sidebar navigation to distiguish between current and former students *@
 
 @{ 
-    G_Student student = ViewBag.Student;
-    G_Graduation studentGrad = student?.Graduation?.FirstOrDefault();
+    Student student = ViewBag.Student;
+    Graduation studentGrad = student?.Graduation?.FirstOrDefault();
     int? degreeEndSems = studentGrad?.DegreeEndSemsId;
     int? degreeEndYear = studentGrad?.DegreeEndYear;
 }

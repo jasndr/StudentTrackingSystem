@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_CommitteeMember
+    public class CommitteeMember
     {
         public int ID { get; set; }
         [Required]
@@ -21,7 +21,7 @@ namespace StudentTrackingSystem3.Models
         public string University { get; set; }
 
 
-        public virtual G_Student Student { get; set; }
+        public virtual Student Student { get; set; }
 
 
     }

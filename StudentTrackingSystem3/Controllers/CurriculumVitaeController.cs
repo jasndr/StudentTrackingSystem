@@ -29,12 +29,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_CurriculumVitae g_CurriculumVitae = db.CurriculumVitaes.Find(id);
-            if (g_CurriculumVitae == null)
+            CurriculumVitae curriculumVitae = db.CurriculumVitaes.Find(id);
+            if (curriculumVitae == null)
             {
                 return HttpNotFound();
             }
-            return View(g_CurriculumVitae);
+            return View(curriculumVitae);
         }
 
         // GET: CurriculumVitae/Create
@@ -54,39 +54,39 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,ReceivedDate")] G_CurriculumVitae g_CurriculumVitae, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "ID,StudentID,ReceivedDate")] CurriculumVitae curriculumVitae, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                G_Student g_Student = db.Students.Find(g_CurriculumVitae.StudentID);
+                Student student = db.Students.Find(curriculumVitae.StudentID);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    var cvFile = new G_File
+                    var cvFile = new File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
-                        FileType = G_FileType.CurriculumVitae,
+                        FileType = FileType.CurriculumVitae,
                         ContentType = upload.ContentType,
-                        CurriculumVitae = g_CurriculumVitae
+                        CurriculumVitae = curriculumVitae
                     };
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         cvFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_CurriculumVitae.Files = new List<G_File> { cvFile };
+                    curriculumVitae.Files = new List<File> { cvFile };
 
-                    //g_Student.Files = new List<G_File> { cv };
+                    //student.Files = new List<file> { cv };
                 }
 
 
-                db.CurriculumVitaes.Add(g_CurriculumVitae);
+                db.CurriculumVitaes.Add(curriculumVitae);
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new { id = g_CurriculumVitae.StudentID});
+                return RedirectToAction("Index", "PostGraduation", new { id = curriculumVitae.StudentID});
             }
 
-            ViewBag.Student = g_CurriculumVitae.Student;
-            ViewBag.StudentID = g_CurriculumVitae.StudentID;
-            return View(g_CurriculumVitae);
+            ViewBag.Student = curriculumVitae.Student;
+            ViewBag.StudentID = curriculumVitae.StudentID;
+            return View(curriculumVitae);
         }
 
         // GET: CurriculumVitae/Edit/5
@@ -96,24 +96,24 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_File g_File = db.Files.Find(id);
+            File file = db.Files.Find(id);
             
 
-            G_CurriculumVitae g_CurriculumVitae = g_File.CurriculumVitae;
-            if (g_CurriculumVitae == null)
+            CurriculumVitae curriculumVitae = file.CurriculumVitae;
+            if (curriculumVitae == null)
             {
                 return HttpNotFound();
             }
 
-            G_Student g_Student = g_CurriculumVitae.Student;
+            Student student = curriculumVitae.Student;
 
-            ViewBag.Student = g_Student;
-            ViewBag.StudentID = g_Student.Id;
+            ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
             ViewBag.FileID = id;
             ViewBag.FileName = db.Files.Find(id).FileName;
             ViewBag.File = db.Files.Find(id);
-            ViewBag.CurriculumVitaeID = g_CurriculumVitae.ID;
-            return View(g_CurriculumVitae);
+            ViewBag.CurriculumVitaeID = curriculumVitae.ID;
+            return View(curriculumVitae);
         }
 
         // POST: CurriculumVitae/Edit/5
@@ -121,49 +121,49 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,ReceivedDate")] G_CurriculumVitae g_CurriculumVitae, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,ReceivedDate")] CurriculumVitae curriculumVitae, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                G_Student g_Student = db.Students.Find(g_CurriculumVitae.StudentID);
-                G_File g_File = db.Files.Where(f=>f.CurriculumVitae.ID == g_CurriculumVitae.ID).FirstOrDefault();//g_Student.Files.FirstOrDefault(f => f.FileType == G_FileType.CurriculumVitae && f.StudentID == g_CurriculumVitae.StudentID);
+                Student student = db.Students.Find(curriculumVitae.StudentID);
+                File file = db.Files.Where(f=>f.CurriculumVitae.ID == curriculumVitae.ID).FirstOrDefault();//student.Files.FirstOrDefault(f => f.FileType == fileType.CurriculumVitae && f.StudentID == curriculumVitae.StudentID);
 
                 if (upload != null && upload.ContentLength > 0)
                 {
                   
-                    if (g_File != null)
+                    if (file != null)
                     {
-                        db.Files.Remove(g_File);
-                        db.Entry(g_File).State = EntityState.Deleted;
-                        db.Entry(g_CurriculumVitae).State = EntityState.Modified;
+                        db.Files.Remove(file);
+                        db.Entry(file).State = EntityState.Deleted;
+                        db.Entry(curriculumVitae).State = EntityState.Modified;
                         //db.SaveChanges();
                         
                     }
-                    var cvFile = new G_File
+                    var cvFile = new File
                     {
                       
                         FileName = System.IO.Path.GetFileName(upload.FileName),
-                        FileType = G_FileType.CurriculumVitae,
+                        FileType = FileType.CurriculumVitae,
                         ContentType = upload.ContentType,
-                        CurriculumVitae = g_CurriculumVitae
+                        CurriculumVitae = curriculumVitae
                     };
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         cvFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_CurriculumVitae.Files =  new List<G_File> { cvFile };
-                    //g_Student.Files.Add(cv);
-                    db.Entry(g_Student).State = EntityState.Modified;
+                    curriculumVitae.Files =  new List<File> { cvFile };
+                    //student.Files.Add(cv);
+                    db.Entry(student).State = EntityState.Modified;
                     //db.SaveChanges();   
                 }
-                g_CurriculumVitae.Student = g_Student;
-                db.Entry(g_CurriculumVitae).State = EntityState.Modified;
+                curriculumVitae.Student = student;
+                db.Entry(curriculumVitae).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new {id = g_CurriculumVitae.StudentID });
+                return RedirectToAction("Index", "PostGraduation", new {id = curriculumVitae.StudentID });
             }
-            ViewBag.Student = g_CurriculumVitae.Student;
-            ViewBag.StudentID =  g_CurriculumVitae.StudentID;
-            return View(g_CurriculumVitae);
+            ViewBag.Student = curriculumVitae.Student;
+            ViewBag.StudentID =  curriculumVitae.StudentID;
+            return View(curriculumVitae);
         }
 
         // GET: CurriculumVitae/Delete/5
@@ -174,9 +174,9 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_File g_File = db.Files.Find(id);
-            G_CurriculumVitae g_CurriculumVitae = db.CurriculumVitaes.Find(g_File.CurriculumVitaeID);
-            if (g_CurriculumVitae == null)
+            File file = db.Files.Find(id);
+            CurriculumVitae curriculumVitae = db.CurriculumVitaes.Find(file.CurriculumVitaeId);
+            if (curriculumVitae == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -190,13 +190,13 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_File g_File = db.Files.Find(id); 
-            G_CurriculumVitae g_CurriculumVitae = db.CurriculumVitaes.Find(g_File.CurriculumVitaeID);
-            db.CurriculumVitaes.Remove(g_CurriculumVitae);
-            db.Files.Remove(g_File);
+            File file = db.Files.Find(id); 
+            CurriculumVitae curriculumVitae = db.CurriculumVitaes.Find(file.CurriculumVitaeId);
+            db.CurriculumVitaes.Remove(curriculumVitae);
+            db.Files.Remove(file);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This CV has been successfully deleted.')</script>";
-            return RedirectToAction("Index", "PostGraduation", new { id = g_CurriculumVitae.StudentID });
+            return RedirectToAction("Index", "PostGraduation", new { id = curriculumVitae.StudentID });
         }
 
         protected override void Dispose(bool disposing)

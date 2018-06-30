@@ -18,10 +18,10 @@ namespace StudentTrackingSystem3.Controllers
         // GET: PostGraduation
         public ActionResult Index(int? id)
         {
-            //G_PostGraduation g_PostGraduation = db.Students.Find(id).PostGraduation.FirstOrDefault();
+            //PostGraduation postGraduation = db.Students.Find(id).PostGraduation.FirstOrDefault();
 
             //var postGraduation = db.PostGraduation.Where(g => g.StudentID == id).ToList();//db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g => g.StudentID == id)
-            //if (g_PostGraduation == null)
+            //if (postGraduation == null)
             //{
             //    return RedirectToAction("Create", new { id = id });
             //}
@@ -44,7 +44,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentEmail = db.Students.Find(id).OtherEmail;
             ViewBag.StudentPhone = db.Students.Find(id).Phone;
 
-            //var g_PostGraduation = db.G_PostGraduation.Include(g => g.CurrentStartMonth).Include(g => g.Student);
+            //var postGraduation = db.PostGraduation.Include(g => g.CurrentStartMonth).Include(g => g.Student);
             var postGraduation = db.PostGraduation.Include(g=>g.Student).Include(g=>g.Student.Publications).Include(g=>g.Student.Grants).ToList();//db.Coursework.Include(g => g.Course).Include(g => g.Semesters).Include(g => g.Student).Where(g => g.StudentID == id)
             return View(postGraduation);
         }
@@ -56,12 +56,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PostGraduation g_PostGraduation = db.PostGraduation.Find(id);
-            if (g_PostGraduation == null)
+            PostGraduation postGraduation = db.PostGraduation.Find(id);
+            if (postGraduation == null)
             {
                 return HttpNotFound();
             }
-            return View(g_PostGraduation);
+            return View(postGraduation);
         }
 
         // GET: PostGraduation/Create
@@ -90,19 +90,19 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,CurrentPosition,CurrentStartMonthId,CurrentStartYear")] G_PostGraduation g_PostGraduation)
+        public ActionResult Create([Bind(Include = "ID,StudentID,CurrentPosition,CurrentStartMonthId,CurrentStartYear")] PostGraduation postGraduation)
         {
             if (ModelState.IsValid)
             {
-                db.PostGraduation.Add(g_PostGraduation);
+                db.PostGraduation.Add(postGraduation);
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new {id = g_PostGraduation.StudentID });
+                return RedirectToAction("Index", "PostGraduation", new {id = postGraduation.StudentID });
             }
 
-            ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PostGraduation.CurrentStartMonthId);
-            ViewBag.Student = g_PostGraduation.Student;
-            ViewBag.StudentID = g_PostGraduation.StudentID;
-            return View(g_PostGraduation);
+            ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", postGraduation.CurrentStartMonthId);
+            ViewBag.Student = postGraduation.Student;
+            ViewBag.StudentID = postGraduation.StudentID;
+            return View(postGraduation);
         }
 
         // GET: PostGraduation/Edit/5
@@ -112,16 +112,16 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Student g_Student = db.Students.Find(id);
-            G_PostGraduation g_PostGraduation = g_Student.PostGraduation.FirstOrDefault();
-            if (g_PostGraduation == null)
+            Student student = db.Students.Find(id);
+            PostGraduation postGraduation = student.PostGraduation.FirstOrDefault();
+            if (postGraduation == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Student = g_Student;
+            ViewBag.Student = student;
             ViewBag.StudentCVs = db.Files.Where(g => g.CurriculumVitae.StudentID == id);
-            ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g => g.Category == "Months"), "ID", "Name", g_PostGraduation.CurrentStartMonthId);
-            return View(g_PostGraduation);
+            ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g => g.Category == "Months"), "ID", "Name", postGraduation.CurrentStartMonthId);
+            return View(postGraduation);
         }
 
         // POST: PostGraduation/Edit/5
@@ -129,17 +129,17 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,CurrentPosition,CurrentStartMonthId,CurrentStartYear")] G_PostGraduation g_PostGraduation)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,CurrentPosition,CurrentStartMonthId,CurrentStartYear")] PostGraduation postGraduation)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_PostGraduation).State = EntityState.Modified;
+                db.Entry(postGraduation).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new { id = g_PostGraduation.StudentID});
+                return RedirectToAction("Index", "PostGraduation", new { id = postGraduation.StudentID});
             }
-            ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", g_PostGraduation.CurrentStartMonthId);
-            ViewBag.StudentID =  g_PostGraduation.StudentID;
-            return View(g_PostGraduation);
+            ViewBag.CurrentStartMonthId = new SelectList(db.CommonFields.Where(g=>g.Category == "Months"), "ID", "Name", postGraduation.CurrentStartMonthId);
+            ViewBag.StudentID =  postGraduation.StudentID;
+            return View(postGraduation);
         }
 
         // GET: PostGraduation/Delete/5
@@ -149,12 +149,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PostGraduation g_PostGraduation = db.PostGraduation.Find(id);
-            if (g_PostGraduation == null)
+            PostGraduation postGraduation = db.PostGraduation.Find(id);
+            if (postGraduation == null)
             {
                 return HttpNotFound();
             }
-            return View(g_PostGraduation);
+            return View(postGraduation);
         }
 
         // POST: PostGraduation/Delete/5
@@ -162,8 +162,8 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_PostGraduation g_PostGraduation = db.PostGraduation.Find(id);
-            db.PostGraduation.Remove(g_PostGraduation);
+            PostGraduation postGraduation = db.PostGraduation.Find(id);
+            db.PostGraduation.Remove(postGraduation);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

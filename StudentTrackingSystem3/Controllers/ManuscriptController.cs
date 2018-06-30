@@ -31,12 +31,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Manuscript g_Manuscript = db.Manuscripts.Find(id);
-            if (g_Manuscript == null)
+            Manuscript manuscript = db.Manuscripts.Find(id);
+            if (manuscript == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Manuscript);
+            return View(manuscript);
         }
 
         // GET: Manuscript/Create
@@ -57,38 +57,38 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Biostat, Admin, Super")]
-        public ActionResult Create([Bind(Include = "ID, StudentID, ReceivedDate")] G_Manuscript g_Manuscript, HttpPostedFileBase upload)
+        public ActionResult Create([Bind(Include = "ID, StudentID, ReceivedDate")] Manuscript manuscript, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                G_Student g_Student = db.Students.Find(g_Manuscript.StudentID);
+                Student student = db.Students.Find(manuscript.StudentID);
 
                 if (upload != null & upload.ContentLength > 0)
                 {
-                    var manuscriptFile = new G_File
+                    var manuscriptFile = new File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
-                        FileType = G_FileType.Manuscript,
+                        FileType = FileType.Manuscript,
                         ContentType = upload.ContentType,
-                        Manuscript = g_Manuscript
+                        Manuscript = manuscript
                     };
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
                         manuscriptFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Manuscript.Files = new List<G_File> { manuscriptFile };
+                    manuscript.Files = new List<File> { manuscriptFile };
 
-                    //g_Student.Files = new List<G_File> { manuscriptFile };
+                    //student.Files = new List<File> { manuscriptFile };
 
                 }
                 
-                db.Manuscripts.Add(g_Manuscript);
+                db.Manuscripts.Add(manuscript);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Graduation", new { id = g_Student.Id});
+                return RedirectToAction("Index", "Graduation", new { id = student.Id});
             }
-            ViewBag.Student = g_Manuscript.Student;
-            ViewBag.StudentID = g_Manuscript.StudentID;
-            return View(g_Manuscript);
+            ViewBag.Student = manuscript.Student;
+            ViewBag.StudentID = manuscript.StudentID;
+            return View(manuscript);
         }
 
         // GET: Manuscript/Edit/5
@@ -99,23 +99,23 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_File g_File = db.Files.Find(id);
+            File file = db.Files.Find(id);
             
-            G_Manuscript g_Manuscript = g_File.Manuscript;
-            if (g_Manuscript == null)
+            Manuscript manuscript = file.Manuscript;
+            if (manuscript == null)
             {
                 return HttpNotFound();
             }
 
-            G_Student g_Student = g_Manuscript.Student;
+            Student student = manuscript.Student;
 
-            ViewBag.Student = g_Student;
-            ViewBag.StudentID = g_Student.Id;
+            ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
             ViewBag.FileID = id;
             ViewBag.FileName = db.Files.Find(id).FileName;
             ViewBag.File = db.Files.Find(id);
-            ViewBag.ManuscriptID = g_Manuscript.ID;
-            return View(g_Manuscript);
+            ViewBag.ManuscriptID = manuscript.ID;
+            return View(manuscript);
         }
 
         // POST: Manuscript/Edit/5
@@ -124,46 +124,46 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Super")]
-        public ActionResult Edit([Bind(Include = "ID, StudentID, ReceivedDate")] G_Manuscript g_Manuscript, HttpPostedFileBase upload)
+        public ActionResult Edit([Bind(Include = "ID, StudentID, ReceivedDate")] Manuscript manuscript, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                G_Student g_Student = db.Students.Find(g_Manuscript.StudentID);
-                G_File g_File = db.Files.Where(f => f.Manuscript.ID == g_Manuscript.ID).FirstOrDefault();
+                Student student = db.Students.Find(manuscript.StudentID);
+                File file = db.Files.Where(f => f.Manuscript.ID == manuscript.ID).FirstOrDefault();
 
                 if (upload != null && upload.ContentLength > 0)
                 {
-                    if (g_File != null)
+                    if (file != null)
                     {
-                        db.Files.Remove(g_File);
-                        db.Entry(g_File).State = EntityState.Deleted;
-                        db.Entry(g_Manuscript).State = EntityState.Modified;
+                        db.Files.Remove(file);
+                        db.Entry(file).State = EntityState.Deleted;
+                        db.Entry(manuscript).State = EntityState.Modified;
                     }
-                    var manuscript = new G_File
+                    var manuscriptFile = new File
                     {
                         FileName = System.IO.Path.GetFileName(upload.FileName),
-                        FileType = G_FileType.Manuscript,
+                        FileType = FileType.Manuscript,
                         ContentType = upload.ContentType,
-                        Manuscript = g_Manuscript
+                        Manuscript = manuscript
                     };
 
                     using (var reader = new System.IO.BinaryReader(upload.InputStream))
                     {
-                        manuscript.Content = reader.ReadBytes(upload.ContentLength);
+                        manuscriptFile.Content = reader.ReadBytes(upload.ContentLength);
                     }
-                    g_Manuscript.Files = new List<G_File> { manuscript };
-                   // g_Student.Files.Add(manuscript);
-                    db.Entry(g_Student).State = EntityState.Modified;
+                    manuscript.Files = new List<File> { manuscriptFile };
+                   // student.Files.Add(manuscriptFile);
+                    db.Entry(student).State = EntityState.Modified;
                 }
-                g_Manuscript.Student = g_Student;
-                db.Entry(g_Manuscript).State = EntityState.Modified;
+                manuscript.Student = student;
+                db.Entry(manuscript).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "Graduation", new { id = g_Manuscript.StudentID });
+                return RedirectToAction("Index", "Graduation", new { id = manuscript.StudentID });
                     
             }
-            ViewBag.Student = g_Manuscript.Student;
-            ViewBag.StudentID = g_Manuscript.StudentID;
-            return View(g_Manuscript);
+            ViewBag.Student = manuscript.Student;
+            ViewBag.StudentID = manuscript.StudentID;
+            return View(manuscript);
         }
 
         // GET: Manuscript/Delete/5
@@ -175,9 +175,9 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_File g_File = db.Files.Find(id);
-            G_Manuscript g_Manuscript = db.Manuscripts.Find(g_File.ManuscriptID);
-            if (g_Manuscript == null)
+            File file = db.Files.Find(id);
+            Manuscript manuscript = db.Manuscripts.Find(file.ManuscriptId);
+            if (manuscript == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -192,14 +192,14 @@ namespace StudentTrackingSystem3.Controllers
         [Authorize(Roles = "Super")]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_File g_File = db.Files.Find(id);
-            G_Manuscript g_Manuscript = db.Manuscripts.Find(g_File.ManuscriptID);
-            G_Graduation g_Graduation = db.Graduations.Find(g_Manuscript.Student.Graduation.FirstOrDefault().ID);
-            db.Manuscripts.Remove(g_Manuscript);
-            db.Files.Remove(g_File);
+            File file = db.Files.Find(id);
+            Manuscript manuscript = db.Manuscripts.Find(file.ManuscriptId);
+            Graduation graduation = db.Graduations.Find(manuscript.Student.Graduation.FirstOrDefault().ID);
+            db.Manuscripts.Remove(manuscript);
+            db.Files.Remove(file);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This manuscript has been successfully deleted.')</script>";
-            return RedirectToAction("Edit", "Graduation", new { id = g_Graduation.ID });
+            return RedirectToAction("Edit", "Graduation", new { id = graduation.ID });
         }
 
         protected override void Dispose(bool disposing)

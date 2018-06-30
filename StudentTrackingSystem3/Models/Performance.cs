@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_Performance
+    public class Performance
     {
         public int ID { get; set; }
         public int StudentID { get; set; }
@@ -23,11 +23,11 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Teaching Status")]
         public Nullable<int> TeachingStatsID { get; set; }
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_CommonFields Category { get; set; }
-        public virtual G_CommonFields PublicationStats { get; set; }
-        public virtual G_CommonFields AbstractStats { get; set; }
-        public virtual G_CommonFields ProposalStats { get; set; }
-        public virtual G_CommonFields TeachingStats { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual CommonFields Category { get; set; }
+        public virtual CommonFields PublicationStats { get; set; }
+        public virtual CommonFields AbstractStats { get; set; }
+        public virtual CommonFields ProposalStats { get; set; }
+        public virtual CommonFields TeachingStats { get; set; }
     }
 }

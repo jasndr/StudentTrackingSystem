@@ -29,12 +29,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Grants g_Grants = db.Grants.Find(id);
-            if (g_Grants == null)
+            Grants grants = db.Grants.Find(id);
+            if (grants == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Grants);
+            return View(grants);
         }
 
         // GET: Grants/Create
@@ -53,19 +53,19 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,GrantInformation,GrantMonthId,GrantYear")] G_Grants g_Grants)
+        public ActionResult Create([Bind(Include = "ID,StudentID,GrantInformation,GrantMonthId,GrantYear")] Grants grants)
         {
             if (ModelState.IsValid)
             {
-                db.Grants.Add(g_Grants);
+                db.Grants.Add(grants);
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new {id = g_Grants.StudentID });
+                return RedirectToAction("Index", "PostGraduation", new {id = grants.StudentID });
             }
 
-            ViewBag.GrantMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Grants.GrantMonthId);
-            ViewBag.Student = db.Students.Find(g_Grants.StudentID);
-            ViewBag.StudentID = db.Students.Find(g_Grants.StudentID).Id;
-            return View(g_Grants);
+            ViewBag.GrantMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", grants.GrantMonthId);
+            ViewBag.Student = db.Students.Find(grants.StudentID);
+            ViewBag.StudentID = db.Students.Find(grants.StudentID).Id;
+            return View(grants);
         }
 
         // GET: Grants/Edit/5
@@ -75,15 +75,15 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Grants g_Grants = db.Grants.Find(id);
-            if (g_Grants == null)
+            Grants grants = db.Grants.Find(id);
+            if (grants == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.GrantMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Grants.GrantMonthId);
-            ViewBag.Student = g_Grants.Student;
-            ViewBag.StudentID =  g_Grants.StudentID;
-            return View(g_Grants);
+            ViewBag.GrantMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", grants.GrantMonthId);
+            ViewBag.Student = grants.Student;
+            ViewBag.StudentID =  grants.StudentID;
+            return View(grants);
         }
 
         // POST: Grants/Edit/5
@@ -91,18 +91,18 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,GrantInformation,GrantMonthId,GrantYear")] G_Grants g_Grants)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,GrantInformation,GrantMonthId,GrantYear")] Grants grants)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_Grants).State = EntityState.Modified;
+                db.Entry(grants).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new {id = g_Grants.StudentID });
+                return RedirectToAction("Index", "PostGraduation", new {id = grants.StudentID });
             }
-            ViewBag.GrantMonthId = new SelectList(db.CommonFields.Where(o => o.Category == "Months"), "ID", "Name", g_Grants.GrantMonthId);
-            ViewBag.Student = g_Grants.Student;
-            ViewBag.StudentID = g_Grants.StudentID;
-            return View(g_Grants);
+            ViewBag.GrantMonthId = new SelectList(db.CommonFields.Where(o => o.Category == "Months"), "ID", "Name", grants.GrantMonthId);
+            ViewBag.Student = grants.Student;
+            ViewBag.StudentID = grants.StudentID;
+            return View(grants);
         }
 
         // GET: Grants/Delete/5
@@ -113,8 +113,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! NO record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Grants g_Grants = db.Grants.Find(id);
-            if (g_Grants == null)
+            Grants grants = db.Grants.Find(id);
+            if (grants == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -128,11 +128,11 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Grants g_Grants = db.Grants.Find(id);
-            db.Grants.Remove(g_Grants);
+            Grants grants = db.Grants.Find(id);
+            db.Grants.Remove(grants);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This grant record has been successfuly deleted.')</script>";
-            return RedirectToAction("Index", "PostGraduation", new { id = g_Grants.StudentID });
+            return RedirectToAction("Index", "PostGraduation", new { id = grants.StudentID });
         }
 
         protected override void Dispose(bool disposing)

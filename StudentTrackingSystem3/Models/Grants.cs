@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_Grants
+    public class Grants
     {
         public int ID { get; set; }
         [Required]
@@ -19,7 +19,7 @@ namespace StudentTrackingSystem3.Models
         public int GrantYear { get; set; }
 
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_CommonFields GrantMonth { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual CommonFields GrantMonth { get; set; }
     }
 }

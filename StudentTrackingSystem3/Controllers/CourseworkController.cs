@@ -79,12 +79,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Coursework g_Coursework = db.Coursework.Find(id);
-            if (g_Coursework == null)
+            Coursework coursework = db.Coursework.Find(id);
+            if (coursework == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Coursework);
+            return View(coursework);
         }
 
         // GET: Coursework/Create
@@ -105,7 +105,7 @@ namespace StudentTrackingSystem3.Controllers
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
             ViewBag.CourseID = new SelectList(course, "ID", "Description");
-            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
+            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", coursework.CourseID);
             ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name");
             return View();
@@ -117,13 +117,13 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Biostat, Admin, Super")]
-        public ActionResult Create([Bind(Include = "ID,StudentID,SemestersID,Year,CourseID,GradeID,Comments")] G_Coursework g_Coursework)
+        public ActionResult Create([Bind(Include = "ID,StudentID,SemestersID,Year,CourseID,GradeID,Comments")] Coursework coursework)
         {
             if (ModelState.IsValid)
             {
-                db.Coursework.Add(g_Coursework);
+                db.Coursework.Add(coursework);
                 db.SaveChanges();
-                return RedirectToAction("Index", new { id = g_Coursework.StudentID });
+                return RedirectToAction("Index", new { id = coursework.StudentID });
             }
 
             var course =
@@ -133,12 +133,12 @@ namespace StudentTrackingSystem3.Controllers
                     CourseNum = s.CourseNum,
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
-            ViewBag.CourseID = new SelectList(course, "ID", "Description", g_Coursework.CourseID);
-            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
-            ViewBag.SemestersID = new SelectList(db.CommonFields, "ID", "Name", g_Coursework.SemestersID);
-            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
-            ViewBag.Student = g_Coursework.Student;
-            return View(g_Coursework);
+            ViewBag.CourseID = new SelectList(course, "ID", "Description", coursework.CourseID);
+            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", coursework.CourseID);
+            ViewBag.SemestersID = new SelectList(db.CommonFields, "ID", "Name", coursework.SemestersID);
+            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", coursework.GradeID);
+            ViewBag.Student = coursework.Student;
+            return View(coursework);
         }
 
         // GET: Coursework/Edit/5
@@ -149,8 +149,8 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Coursework g_Coursework = db.Coursework.Find(id);
-            if (g_Coursework == null)
+            Coursework coursework = db.Coursework.Find(id);
+            if (coursework == null)
             {
                 return HttpNotFound();
             }
@@ -162,13 +162,13 @@ namespace StudentTrackingSystem3.Controllers
                     CourseNum = s.CourseNum,
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
-            ViewBag.Student = g_Coursework.Student;
-            ViewBag.StudentID = g_Coursework.StudentID;
-            ViewBag.CourseID = new SelectList(course, "ID", "Description", g_Coursework.CourseID);
-            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
-            ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);
-            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
-            return View(g_Coursework);
+            ViewBag.Student = coursework.Student;
+            ViewBag.StudentID = coursework.StudentID;
+            ViewBag.CourseID = new SelectList(course, "ID", "Description", coursework.CourseID);
+            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", coursework.CourseID);
+            ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", coursework.SemestersID);
+            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", coursework.GradeID);
+            return View(coursework);
         }
 
         // POST: Coursework/Edit/5
@@ -177,13 +177,13 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Super")]
-        public ActionResult Edit([Bind(Include = "ID, StudentID,SemestersID,Year,CourseID,GradeID,Comments")] G_Coursework g_Coursework)
+        public ActionResult Edit([Bind(Include = "ID, StudentID,SemestersID,Year,CourseID,GradeID,Comments")] Coursework coursework)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_Coursework).State = EntityState.Modified;
+                db.Entry(coursework).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", new { id = g_Coursework.StudentID });
+                return RedirectToAction("Index", new { id = coursework.StudentID });
             }
 
             var course =
@@ -193,12 +193,12 @@ namespace StudentTrackingSystem3.Controllers
                     CourseNum = s.CourseNum,
                     Description = string.Format("{0} - {1} ({2} credits)", s.CourseNum, s.CourseName, s.Credits)
                 }).ToList();
-            ViewBag.Student = g_Coursework.Student;
-            ViewBag.CourseID = new SelectList(course, "ID", "Description", g_Coursework.CourseID);
-            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", g_Coursework.CourseID);
-            ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", g_Coursework.SemestersID);
-            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", g_Coursework.GradeID);
-            return View(g_Coursework);
+            ViewBag.Student = coursework.Student;
+            ViewBag.CourseID = new SelectList(course, "ID", "Description", coursework.CourseID);
+            //ViewBag.CourseID = new SelectList(db.Courses, "ID", "CourseNum", coursework.CourseID);
+            ViewBag.SemestersID = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "ID", "Name", coursework.SemestersID);
+            ViewBag.GradeID = new SelectList(db.CommonFields.Where(o => o.Category == "Grade"), "Id", "Name", coursework.GradeID);
+            return View(coursework);
         }
 
         // GET: Coursework/Delete/5
@@ -210,8 +210,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Coursework g_Coursework = db.Coursework.Find(id);
-            if (g_Coursework == null)
+            Coursework coursework = db.Coursework.Find(id);
+            if (coursework == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -226,11 +226,11 @@ namespace StudentTrackingSystem3.Controllers
         [Authorize(Roles ="Super")]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Coursework g_Coursework = db.Coursework.Find(id);
-            db.Coursework.Remove(g_Coursework);
+            Coursework coursework = db.Coursework.Find(id);
+            db.Coursework.Remove(coursework);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This course has been successfully deleted.')</script>";
-            return RedirectToAction("Index", "Coursework", new { id = g_Coursework.StudentID });
+            return RedirectToAction("Index", "Coursework", new { id = coursework.StudentID });
         }
 
         protected override void Dispose(bool disposing)

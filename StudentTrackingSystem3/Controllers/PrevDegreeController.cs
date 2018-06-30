@@ -32,12 +32,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PrevDegree g_PrevDegree = db.PreviousDegrees.Find(id);
-            if (g_PrevDegree == null)
+            PrevDegree prevDegree = db.PreviousDegrees.Find(id);
+            if (prevDegree == null)
             {
                 return HttpNotFound();
             }
-            return View(g_PrevDegree);
+            return View(prevDegree);
         }
 
         // GET: PrevDegree/Create
@@ -59,18 +59,18 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Biostat, Admin, Super")]
-        public ActionResult Create([Bind(Include = "Id,StudentID,DegreeTypesID,Title,CumulativeGPA,SchoolName,Major,SecondMajor,Minor,DateOfAward")] G_PrevDegree g_PrevDegree)
+        public ActionResult Create([Bind(Include = "Id,StudentID,DegreeTypesID,Title,CumulativeGPA,SchoolName,Major,SecondMajor,Minor,DateOfAward")] PrevDegree prevDegree)
         {
             if (ModelState.IsValid)
             {
-                db.PreviousDegrees.Add(g_PrevDegree);
+                db.PreviousDegrees.Add(prevDegree);
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Student", new { id = g_PrevDegree.StudentID });
+                return RedirectToAction("Edit", "Student", new { id = prevDegree.StudentID });
             }
-            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z => z.Category == "DegreeType"), "ID", "Name", g_PrevDegree.DegreeTypesID);
-            ViewBag.Student = g_PrevDegree.Student;
-            //ViewBag.StudentID = g_PrevDegree.StudentID;
-            return View(g_PrevDegree);
+            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z => z.Category == "DegreeType"), "ID", "Name", prevDegree.DegreeTypesID);
+            ViewBag.Student = prevDegree.Student;
+            //ViewBag.StudentID = prevDegree.StudentID;
+            return View(prevDegree);
         }
 
         // GET: PrevDegree/Edit/5
@@ -81,15 +81,15 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PrevDegree g_PrevDegree = db.PreviousDegrees.Find(id);
-            if (g_PrevDegree == null)
+            PrevDegree prevDegree = db.PreviousDegrees.Find(id);
+            if (prevDegree == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z => z.Category == "DegreeType"), "ID", "Name", g_PrevDegree.DegreeTypesID);
-            ViewBag.Student = g_PrevDegree.Student;
-            ViewBag.StudentID = g_PrevDegree.StudentID;
-            return View(g_PrevDegree);
+            ViewBag.DegreeTypesID = new SelectList(db.CommonFields.Where(z => z.Category == "DegreeType"), "ID", "Name", prevDegree.DegreeTypesID);
+            ViewBag.Student = prevDegree.Student;
+            ViewBag.StudentID = prevDegree.StudentID;
+            return View(prevDegree);
         }
 
         // POST: PrevDegree/Edit/5
@@ -98,17 +98,17 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Super")]
-        public ActionResult Edit([Bind(Include = "Id,StudentID,DegreeTypesID,Title,CumulativeGPA,SchoolName,Major,SecondMajor,Minor,DateOfAward")] G_PrevDegree g_PrevDegree)
+        public ActionResult Edit([Bind(Include = "Id,StudentID,DegreeTypesID,Title,CumulativeGPA,SchoolName,Major,SecondMajor,Minor,DateOfAward")] PrevDegree prevDegree)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_PrevDegree).State = EntityState.Modified;
+                db.Entry(prevDegree).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Student", new { id = g_PrevDegree.StudentID });
+                return RedirectToAction("Edit", "Student", new { id = prevDegree.StudentID });
             }
-            ViewBag.DegreeTypesID = new SelectList(db.CommonFields, "ID", "Name", g_PrevDegree.DegreeTypesID);
-            ViewBag.StudentID = g_PrevDegree.StudentID;//new SelectList(db.Students, "Id", "FirstName", g_PrevDegree.StudentID);
-            return View(g_PrevDegree);
+            ViewBag.DegreeTypesID = new SelectList(db.CommonFields, "ID", "Name", prevDegree.DegreeTypesID);
+            ViewBag.StudentID = prevDegree.StudentID;//new SelectList(db.Students, "Id", "FirstName", prevDegree.StudentID);
+            return View(prevDegree);
         }
 
         // GET: PrevDegree/Delete/5
@@ -121,8 +121,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry!  No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_PrevDegree g_PrevDegree = db.PreviousDegrees.Find(id);
-            if (g_PrevDegree == null)
+            PrevDegree prevDegree = db.PreviousDegrees.Find(id);
+            if (prevDegree == null)
             {
                 TempData["msg"] = "<script>alert('Sorry!  No record found to delete.')</script>";
                 return HttpNotFound();
@@ -138,11 +138,11 @@ namespace StudentTrackingSystem3.Controllers
         [Authorize(Roles = "Super")]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_PrevDegree g_PrevDegree = db.PreviousDegrees.Find(id);
-            db.PreviousDegrees.Remove(g_PrevDegree);
+            PrevDegree prevDegree = db.PreviousDegrees.Find(id);
+            db.PreviousDegrees.Remove(prevDegree);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This degree has been successfully deleted.')</script>";
-            return RedirectToAction("Edit", "Student", new { id = g_PrevDegree.StudentID });
+            return RedirectToAction("Edit", "Student", new { id = prevDegree.StudentID });
         }
 
         protected override void Dispose(bool disposing)

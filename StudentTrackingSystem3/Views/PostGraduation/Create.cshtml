@@ -1,4 +1,4 @@
-﻿@model StudentTrackingSystem3.Models.G_PostGraduation
+﻿@model StudentTrackingSystem3.Models.PostGraduation
 
 @{
     ViewBag.Title = "Creating Post-Graduation Student Record";
@@ -105,12 +105,12 @@
 
                         <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = ViewBag.StudentID }, null)</p>
 
-                        @{IQueryable<G_File> studentCVs = ViewBag.StudentCVs;}
+                        @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;}
 
-                        @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == G_FileType.CurriculumVitae).FirstOrDefault(), null))
+                        @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).FirstOrDefault(), null))
                             {
                                 var count = 1;
-                                foreach (var file in studentCVs.Where(g => g.FileType == G_FileType.CurriculumVitae).OrderByDescending(g => g.G_FileId))
+                                foreach (var file in studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).OrderByDescending(g => g.FileId))
                                 {
 
                                     if (count == 1)
@@ -121,8 +121,8 @@
                                                 <em><strong>Current CV</strong></em>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
-                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                        <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
                                                     </li>
                                                 </ul>
                                             </div>
@@ -141,8 +141,8 @@
                                             <ul>
                                                 <li>
 
-                                                    <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
-                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
 
                                                 </li>
                                             </ul>
@@ -223,7 +223,7 @@
                 </div>
 
                 <div class="col-md-6 row col-md-offset-1">
-                    @{ IQueryable<G_PreviousEmployment> PrevEmployments = ViewBag.StudentPrevEmpl;}
+                    @{ IQueryable<PreviousEmployment> PrevEmployments = ViewBag.StudentPrevEmpl;}
 
                     @{if (!object.ReferenceEquals(PrevEmployments.FirstOrDefault(), null))
                         {
@@ -262,7 +262,7 @@
                 </div>
 
                 <div class="col-md-12 row col-md-offset-1">
-                    @{ IQueryable<G_Publications> Publications = ViewBag.StudentPublications;}
+                    @{ IQueryable<Publications> Publications = ViewBag.StudentPublications;}
 
                     @{if (!object.ReferenceEquals(Publications.FirstOrDefault(), null))
                         {
@@ -300,7 +300,7 @@
                 </div>
 
                 <div class="col-md-8 row col-md-offset-1">
-                    @{ IQueryable<G_Grants> Grants = ViewBag.StudentGrants;}
+                    @{ IQueryable<Grants> Grants = ViewBag.StudentGrants;}
 
                     @{if (!object.ReferenceEquals(Grants.FirstOrDefault(), null))
                         {
@@ -338,7 +338,7 @@
                 </div>
 
                 <div class="col-md-8 row col-md-offset-1">
-                    @{ IQueryable<G_Honors> Honors = ViewBag.StudentHonors;}
+                    @{ IQueryable<Honors> Honors = ViewBag.StudentHonors;}
 
                     @{if (!object.ReferenceEquals(Honors.FirstOrDefault(), null))
                         {
@@ -419,8 +419,8 @@
                 }
             }
 
-            G_Student student = ViewBag.Student;
-            G_Graduation studentGrad = ViewBag.StudentGrad;
+            Student student = ViewBag.Student;
+            Graduation studentGrad = ViewBag.StudentGrad;
 
             int? degreeEndSemId = 01;
             int? degreeEndYear = 1000;

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_PrevDegree
+    public class PrevDegree
     {
         public int Id { get; set; }
         [Required]
@@ -27,8 +27,8 @@ namespace StudentTrackingSystem3.Models
         [Required(ErrorMessage = "You must enter the expected or awarded date of this degree."), Display(Name = "Date Awarded / To Be Awarded")]
         public System.DateTime DateOfAward { get; set; }
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_CommonFields DegreeTypes { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual CommonFields DegreeTypes { get; set; }
 
     }
 }

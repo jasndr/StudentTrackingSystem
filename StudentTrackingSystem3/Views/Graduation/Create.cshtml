@@ -1,4 +1,4 @@
-﻿@model StudentTrackingSystem3.Models.G_Graduation
+﻿@model StudentTrackingSystem3.Models.Graduation
 
 @{
     ViewBag.Title = "Creating Graduation Program Requirements Record";
@@ -368,7 +368,7 @@
 
                     <div class="col-md-10 row col-md-offset-3">
 
-                        @{IQueryable<G_CommitteeMember> studentCMs = ViewBag.StudentCMs;}
+                        @{IQueryable<CommitteeMember> studentCMs = ViewBag.StudentCMs;}
 
                         @{if (!object.ReferenceEquals(studentCMs.FirstOrDefault(), null))
                             {
@@ -611,12 +611,12 @@
                         <a data-toggle="tooltip" title="Note: In order to prevent the loss of previously entered data, you must save this page before continuing in order to start adding committee members.">Add Manuscript</a>
                     </p>
 
-                    @{ IQueryable<G_File> studentManuscripts = ViewBag.StudentManuscripts;}
+                    @{ IQueryable<StudentTrackingSystem3.Models.File> studentManuscripts = ViewBag.StudentManuscripts;}
 
-                    @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == G_FileType.Manuscript).FirstOrDefault(), null))
+                    @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == FileType.Manuscript).FirstOrDefault(), null))
                         {
                             var count = 1;
-                            foreach (var file in studentManuscripts.Where(g => g.FileType == G_FileType.Manuscript).OrderByDescending(g => g.G_FileId))
+                            foreach (var file in studentManuscripts.Where(g => g.FileType == FileType.Manuscript).OrderByDescending(g => g.FileId))
                             {
                                 if (count == 1)
                                 {
@@ -625,8 +625,8 @@
                                             <em><strong>Current Manuscript</strong></em>
                                             <ul>
                                                 <li>
-                                                    <a href="~/File?id=@file.G_FileId">@file.FileName</a> &mdash;
-                                                    @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    <a href="~/File?id=@file.FileId">@file.FileName</a> &mdash;
+                                                    @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
                                                 </li>
                                             </ul>
                                         </div>
@@ -644,8 +644,8 @@
                                     <div class="col-md-offset-1">
                                         <ul>
                                             <li>
-                                                <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
-                                                @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
 
                                             </li>
                                         </ul>

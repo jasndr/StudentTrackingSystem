@@ -14,79 +14,79 @@ namespace StudentTrackingSystem3.DAL
         {
 
         }
-        public DbSet<G_Student> Students { get; set; }
-        public DbSet<G_Coursework> Coursework { get; set; }
-        public DbSet<G_Course> Courses { get; set; }
-        public DbSet<G_CommonFields> CommonFields { get; set; }
-        public DbSet<G_PrevDegree> PreviousDegrees { get; set; }
-        public DbSet<G_Races> Races { get; set; }
-        public DbSet<G_PersonRaces> PersonRaces { get; set; }
-        public DbSet<G_Activity> Activities { get; set; }
-        public DbSet<G_Performance> Performances { get; set; }
-        public DbSet<G_File> Files { get; set; }
-        public DbSet<G_Graduation> Graduations { get; set; }
-        public DbSet<G_CommitteeMember> CommitteeMembers { get; set; }
-        public DbSet<G_PostGraduation> PostGraduation { get; set; }
-        public DbSet<G_CurriculumVitae> CurriculumVitaes { get; set; }
-        public DbSet<G_PreviousEmployment> PreviousEmployment { get; set; }
-        public DbSet<G_Publications> Publications { get; set; }
-        public DbSet<G_Grants> Grants { get; set; }
-        public DbSet<G_Honors> Honors { get; set; }
-        public DbSet<G_Manuscript> Manuscripts { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Coursework> Coursework { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<CommonFields> CommonFields { get; set; }
+        public DbSet<PrevDegree> PreviousDegrees { get; set; }
+        public DbSet<Races> Races { get; set; }
+        public DbSet<PersonRaces> PersonRaces { get; set; }
+        public DbSet<Activity> Activities { get; set; }
+        public DbSet<Performance> Performances { get; set; }
+        public DbSet<File> Files { get; set; }
+        public DbSet<Graduation> Graduations { get; set; }
+        public DbSet<CommitteeMember> CommitteeMembers { get; set; }
+        public DbSet<PostGraduation> PostGraduation { get; set; }
+        public DbSet<CurriculumVitae> CurriculumVitaes { get; set; }
+        public DbSet<PreviousEmployment> PreviousEmployment { get; set; }
+        public DbSet<Publications> Publications { get; set; }
+        public DbSet<Grants> Grants { get; set; }
+        public DbSet<Honors> Honors { get; set; }
+        public DbSet<Manuscript> Manuscripts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            modelBuilder.Entity<G_Student>()
+            modelBuilder.Entity<Student>()
                 .HasRequired(c => c.DegreeStartSems)
                 .WithMany()
                 .HasForeignKey(d => d.DegreeStartSemsId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<G_Student>()
+            modelBuilder.Entity<Student>()
                 .HasRequired(c => c.Genders)
                 .WithMany()
                 .HasForeignKey(d => d.GendersId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<G_Student>()
+            modelBuilder.Entity<Student>()
                 .HasRequired(c => c.DegreePrograms)
                 .WithMany()
                 .HasForeignKey(d => d.DegreeProgramsId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<G_Student>()
+            modelBuilder.Entity<Student>()
                 .HasRequired(c => c.Tracks)
                 .WithMany()
                 .HasForeignKey(d => d.TracksId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<G_Student>()
+            modelBuilder.Entity<Student>()
                 .HasRequired(c => c.Plans)
                 .WithMany()
                 .HasForeignKey(d => d.PlansId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<G_Coursework>()
+            modelBuilder.Entity<Coursework>()
                .HasRequired(c => c.Semesters)
                .WithMany()
                .HasForeignKey(d => d.SemestersID)
                .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<G_PreviousEmployment>()
+            modelBuilder.Entity<PreviousEmployment>()
                 .HasRequired(c => c.StartMonth)
                 .WithMany()
                 .HasForeignKey(d => d.StartMonthId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<G_Publications>()
+            modelBuilder.Entity<Publications>()
                 .HasRequired(c => c.PubMonth)
                 .WithMany()
                 .HasForeignKey(d => d.PubMonthId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<G_Grants>()
+            modelBuilder.Entity<Grants>()
                 .HasRequired(c => c.GrantMonth)
                 .WithMany()
                 .HasForeignKey(d => d.GrantMonthId)

@@ -29,12 +29,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Publications g_Publications = db.Publications.Find(id);
-            if (g_Publications == null)
+            Publications publications = db.Publications.Find(id);
+            if (publications == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Publications);
+            return View(publications);
         }
 
         // GET: Publications/Create
@@ -53,18 +53,18 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,PublicationInformation,PubMonthId,PubYear")] G_Publications g_Publications)
+        public ActionResult Create([Bind(Include = "ID,StudentID,PublicationInformation,PubMonthId,PubYear")] Publications publications)
         {
             if (ModelState.IsValid)
             {
-                db.Publications.Add(g_Publications);
+                db.Publications.Add(publications);
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new { id = g_Publications.StudentID });
+                return RedirectToAction("Index", "PostGraduation", new { id = publications.StudentID });
             }
 
-            ViewBag.PubMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Publications.PubMonthId);
-            ViewBag.StudentID = g_Publications.StudentID;
-            return View(g_Publications);
+            ViewBag.PubMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", publications.PubMonthId);
+            ViewBag.StudentID = publications.StudentID;
+            return View(publications);
         }
 
         // GET: Publications/Edit/5
@@ -74,16 +74,16 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Publications g_Publications = db.Publications.Find(id);
-            G_Student g_Student = g_Publications.Student;
-            if (g_Publications == null)
+            Publications publications = db.Publications.Find(id);
+            Student student = publications.Student;
+            if (publications == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PubMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Publications.PubMonthId);
-            ViewBag.Student = g_Student;
-            ViewBag.StudentID = g_Student.Id;
-            return View(g_Publications);
+            ViewBag.PubMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", publications.PubMonthId);
+            ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
+            return View(publications);
         }
 
         // POST: Publications/Edit/5
@@ -91,17 +91,17 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,PublicationInformation,PubMonthId,PubYear")] G_Publications g_Publications)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,PublicationInformation,PubMonthId,PubYear")] Publications publications)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_Publications).State = EntityState.Modified;
+                db.Entry(publications).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new { id = g_Publications.StudentID});
+                return RedirectToAction("Index", "PostGraduation", new { id = publications.StudentID});
             }
-            ViewBag.PubMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Publications.PubMonthId);
-            ViewBag.StudentID = g_Publications.StudentID;
-            return View(g_Publications);
+            ViewBag.PubMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", publications.PubMonthId);
+            ViewBag.StudentID = publications.StudentID;
+            return View(publications);
         }
 
         // GET: Publications/Delete/5
@@ -112,8 +112,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Publications g_Publications = db.Publications.Find(id);
-            if (g_Publications == null)
+            Publications publications = db.Publications.Find(id);
+            if (publications == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -127,11 +127,11 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Publications g_Publications = db.Publications.Find(id);
-            db.Publications.Remove(g_Publications);
+            Publications publications = db.Publications.Find(id);
+            db.Publications.Remove(publications);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This publication record has been successfully deleted.')</script>";
-            return RedirectToAction("Index", "PostGraduation", new { id = g_Publications.StudentID });
+            return RedirectToAction("Index", "PostGraduation", new { id = publications.StudentID });
         }
 
         protected override void Dispose(bool disposing)

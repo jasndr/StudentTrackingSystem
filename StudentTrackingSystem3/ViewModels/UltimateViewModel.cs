@@ -8,7 +8,7 @@ namespace StudentTrackingSystem3.ViewModels
 {
     public class UltimateViewModel
     {
-        public G_Student G_Student { get; set; }
+        public Student Student { get; set; }
 
         public RacesViewModel RacesViewModel { get; set;}
     }

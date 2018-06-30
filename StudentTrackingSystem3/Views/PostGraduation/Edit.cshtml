@@ -1,4 +1,4 @@
-﻿@model StudentTrackingSystem3.Models.G_PostGraduation
+﻿@model StudentTrackingSystem3.Models.PostGraduation
 
 @{
     ViewBag.Title = "Editing Post-Graduation Student Record";
@@ -105,12 +105,12 @@
 
                         <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = Model.StudentID }, null)</p>
 
-                        @{IQueryable<G_File> studentCVs = ViewBag.StudentCVs;}
+                        @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;}
 
-                        @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == G_FileType.CurriculumVitae).FirstOrDefault(), null))
+                        @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).FirstOrDefault(), null))
                             {
                                 var count = 1;
-                                foreach (var file in studentCVs.Where(g => g.FileType == G_FileType.CurriculumVitae).OrderByDescending(g => g.G_FileId))
+                                foreach (var file in studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).OrderByDescending(g => g.FileId))
                                 {
                                     if (count == 1)
                                     {
@@ -119,8 +119,8 @@
                                                 <em><strong>Current CV</strong></em>
                                                 <ul>
                                                     <li>
-                                                        <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
-                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                        <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
                                                     </li>
                                                 </ul>
                                             </div>
@@ -137,8 +137,8 @@
                                             <ul>
                                                 <li>
 
-                                                    <a href="~/File?id=@file.G_FileId">@file.FileName</a>  &mdash;
-                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.G_FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
 
                                                 </li>
                                             </ul>

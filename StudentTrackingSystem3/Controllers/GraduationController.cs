@@ -19,14 +19,14 @@ namespace StudentTrackingSystem3.Controllers
         public ActionResult Index(int? id)
         {
             //Create new entry if not can't find a graduation record for studentid
-            G_Graduation g_Graduation = db.Students.Find(id).Graduation.FirstOrDefault();
-            if (g_Graduation == null)
+            Graduation graduation = db.Students.Find(id).Graduation.FirstOrDefault();
+            if (graduation == null)
             {
                 return RedirectToAction("Create", new { id = id });
             }
             else
             {
-                return RedirectToAction("Edit", new { id = g_Graduation.ID });
+                return RedirectToAction("Edit", new { id = graduation.ID });
             }
 
            // var graduations = db.Graduations.Include(g => g.DegreeEndSems).Include(g => g.Form2Result).Include(g => g.Form2Type).Include(g => g.Student);
@@ -40,12 +40,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Graduation g_Graduation = db.Graduations.Find(id);
-            if (g_Graduation == null)
+            Graduation graduation = db.Graduations.Find(id);
+            if (graduation == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Graduation);
+            return View(graduation);
         }
 
         // GET: Graduation/Create
@@ -82,15 +82,15 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(/*[Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification,Form2TypeId,Form2Title,Form2Date,Form2ResultId,CommitteeTypeID,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId")]*/ G_Graduation g_Graduation)
+        public ActionResult Create(/*[Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification,Form2TypeId,Form2Title,Form2Date,Form2ResultId,CommitteeTypeID,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId")]*/ Graduation graduation)
         {
             if (ModelState.IsValid)
             {
-                db.Graduations.Add(g_Graduation);
+                db.Graduations.Add(graduation);
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Graduation",  new { id = g_Graduation.ID});
+                return RedirectToAction("Edit", "Graduation",  new { id = graduation.ID});
             }
-            ViewBag.Student = g_Graduation.Student;
+            ViewBag.Student = graduation.Student;
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name");
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
             ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
@@ -100,7 +100,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Form3ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name");
             ViewBag.FinalExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
             ViewBag.FinalExam2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
-            return View(g_Graduation);
+            return View(graduation);
         }
 
         // GET: Graduation/Edit/5
@@ -110,31 +110,31 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Graduation g_Graduation = db.Graduations.Find(id);
-            G_Student g_Student = g_Graduation.Student;
-            if (g_Graduation == null)
+            Graduation graduation = db.Graduations.Find(id);
+            Student student = graduation.Student;
+            if (graduation == null)
             {
                 return HttpNotFound();
             }
 
-            ViewBag.FormID = g_Graduation.ID;
-            ViewBag.Student = g_Student;
-            ViewBag.StudentID = g_Student.Id;
-            ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == g_Student.Id);
-            ViewBag.Student_FN = g_Student.FirstName;
-            ViewBag.Student_LN = g_Student.LastName;
-            ViewBag.StudentManuscripts = db.Files.Where(g => g.Manuscript.StudentID == g_Student.Id);
+            ViewBag.FormID = graduation.ID;
+            ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
+            ViewBag.StudentCMs = db.CommitteeMembers.Where(g => g.StudentID == student.Id);
+            ViewBag.Student_FN = student.FirstName;
+            ViewBag.Student_LN = student.LastName;
+            ViewBag.StudentManuscripts = db.Files.Where(g => g.Manuscript.StudentID == student.Id);
 
-            ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", g_Graduation.DegreeEndSemsId);
-            ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.QualifierResultId);
-            ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.Qualifier2ResultId);
-            ViewBag.CompExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.CompExamResultId);
-            ViewBag.CompExam2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.CompExam2ResultId);
-            ViewBag.Form2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", g_Graduation.Form2ResultId);
-            ViewBag.Form3ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", g_Graduation.Form3ResultId);
-            ViewBag.FinalExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.FinalExamResultId);
-            ViewBag.FinalExam2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.FinalExam2ResultId);
-            return View(g_Graduation);
+            ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", graduation.DegreeEndSemsId);
+            ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.QualifierResultId);
+            ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.Qualifier2ResultId);
+            ViewBag.CompExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.CompExamResultId);
+            ViewBag.CompExam2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.CompExam2ResultId);
+            ViewBag.Form2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", graduation.Form2ResultId);
+            ViewBag.Form3ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", graduation.Form3ResultId);
+            ViewBag.FinalExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.FinalExamResultId);
+            ViewBag.FinalExam2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.FinalExam2ResultId);
+            return View(graduation);
         }
 
         // POST: Graduation/Edit/5
@@ -142,25 +142,25 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification, DateofQualification2,Form2Title,Form2Date,Form2ResultId,CompExamResultId, DateOfCompExam, CompExam2ResultId, DateOfCompExam2,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId, FinalExamResultId, DateOfFinalExam,  FinalExam2ResultId, DateOfFinalExam2")] G_Graduation g_Graduation)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification, DateofQualification2,Form2Title,Form2Date,Form2ResultId,CompExamResultId, DateOfCompExam, CompExam2ResultId, DateOfCompExam2,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId, FinalExamResultId, DateOfFinalExam,  FinalExam2ResultId, DateOfFinalExam2")] Graduation graduation)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_Graduation).State = EntityState.Modified;
+                db.Entry(graduation).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Edit", "Graduation", g_Graduation.ID);
+                return RedirectToAction("Edit", "Graduation", graduation.ID);
             }
-            ViewBag.Student = g_Graduation.Student;
-            ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", g_Graduation.DegreeEndSemsId);
-            ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.QualifierResultId);
-            ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.Qualifier2ResultId);
-            ViewBag.CompExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.CompExamResultId);
-            ViewBag.CompExam2ResultID = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.CompExam2ResultId);
-            ViewBag.Form2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", g_Graduation.Form2ResultId);
-            ViewBag.Form3ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", g_Graduation.Form3ResultId);
-            ViewBag.FinalExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.FinalExamResultId);
-            ViewBag.FinalExam2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", g_Graduation.FinalExam2ResultId);
-            return View(g_Graduation);
+            ViewBag.Student = graduation.Student;
+            ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", graduation.DegreeEndSemsId);
+            ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.QualifierResultId);
+            ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.Qualifier2ResultId);
+            ViewBag.CompExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.CompExamResultId);
+            ViewBag.CompExam2ResultID = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.CompExam2ResultId);
+            ViewBag.Form2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", graduation.Form2ResultId);
+            ViewBag.Form3ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "Form2Result"), "ID", "Name", graduation.Form3ResultId);
+            ViewBag.FinalExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.FinalExamResultId);
+            ViewBag.FinalExam2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.FinalExam2ResultId);
+            return View(graduation);
         }
 
         // GET: Graduation/Delete/5
@@ -172,8 +172,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Graduation g_Graduation = db.Graduations.Find(id);
-            if (g_Graduation == null)
+            Graduation graduation = db.Graduations.Find(id);
+            if (graduation == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -188,8 +188,8 @@ namespace StudentTrackingSystem3.Controllers
         [Authorize]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Graduation g_Graduation = db.Graduations.Find(id);
-            db.Graduations.Remove(g_Graduation);
+            Graduation graduation = db.Graduations.Find(id);
+            db.Graduations.Remove(graduation);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

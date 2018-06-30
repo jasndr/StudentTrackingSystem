@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_Honors
+    public class Honors
     {
         public int ID { get; set; }
         [Required]
@@ -19,8 +19,8 @@ namespace StudentTrackingSystem3.Models
         public int HonorYear { get; set; }
 
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_CommonFields HonorMonth { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual CommonFields HonorMonth { get; set; }
 
     }
 }

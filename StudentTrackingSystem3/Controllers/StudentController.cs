@@ -398,12 +398,12 @@ namespace StudentTrackingSystem3.Controllers
             //{
             //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             //}
-            //G_Student g_Student = db.Students.Find(id);
-            //if (g_Student == null)
+            //Student student = db.Students.Find(id);
+            //if (student == null)
             //{
             //    return HttpNotFound();
             //}
-            //return View(g_Student);
+            //return View(student);
         }
 
 
@@ -427,7 +427,7 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [Authorize(Roles = "Super, Admin, Biostat")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(/*[Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student,*/UltimateViewModel ultimate)
+        public ActionResult Create(/*[Bind(Include = "StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] Student student,*/UltimateViewModel ultimate)
         {
             try
             {
@@ -435,17 +435,17 @@ namespace StudentTrackingSystem3.Controllers
                 {
 
                     //Add recorded student
-                    db.Students.Add(ultimate.G_Student);
+                    db.Students.Add(ultimate.Student);
 
                     ultimate.RacesViewModel.AvailableRaces = db.Races.ToList();
 
                     //For current student, add to personRaceTable, student id number and postedRace number
                     foreach (var item in ultimate.RacesViewModel.PostedRaces.RaceIDs)
                     {
-                        var personRace = new G_PersonRaces();
+                        var personRace = new PersonRaces();
                         int raceId = Int32.Parse(item);
                         var race = db.Races.Where(s => s.Id == raceId).ToList().Single();
-                        personRace.Student = ultimate.G_Student;
+                        personRace.Student = ultimate.Student;
                         personRace.Race = race;
                         personRace.IsSelectedPR = true;
                         db.PersonRaces.Add(personRace);
@@ -453,7 +453,7 @@ namespace StudentTrackingSystem3.Controllers
                         
                     }
                     db.SaveChanges();
-                    return RedirectToAction("Edit", "Student", new { id = ultimate.G_Student.Id });
+                    return RedirectToAction("Edit", "Student", new { id = ultimate.Student.Id });
                     //return RedirectToAction("Index");
                 }
             }
@@ -487,10 +487,10 @@ namespace StudentTrackingSystem3.Controllers
 
             UltimateViewModel ultimate = new UltimateViewModel();
             var rvm = new RacesViewModel();
-            rvm.SelectedRaces = new List<G_Races>();
+            rvm.SelectedRaces = new List<Races>();
 
-            G_Student g_Student = db.Students.Find(id);
-            if (g_Student == null)
+            Student student = db.Students.Find(id);
+            if (student == null)
             {
                 return HttpNotFound();
             }
@@ -501,11 +501,11 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
             ViewBag.PlansIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Plan"), "Id", "Name");
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
-            ViewBag.Student = g_Student;
+            ViewBag.Student = student;
 
             //Initialize selectedRaces
-            var racesToPost = new List<G_Races>();
-            foreach (var item in g_Student.PersonRaces.Where(x => x.StudentID == id && x.IsSelectedPR.Equals(true)))
+            var racesToPost = new List<Races>();
+            foreach (var item in student.PersonRaces.Where(x => x.StudentID == id && x.IsSelectedPR.Equals(true)))
             {
                 racesToPost.Add(item.Race);
             }
@@ -513,7 +513,7 @@ namespace StudentTrackingSystem3.Controllers
             //setup ultimate view model
             rvm.SelectedRaces = racesToPost;
             ultimate.RacesViewModel = rvm;
-            ultimate.G_Student = g_Student;
+            ultimate.Student = student;
 
             return View(GetRacesInitialModel(ultimate, id));
         }
@@ -524,27 +524,27 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles ="Admin, Super")]
-        public ActionResult Edit(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] G_Student g_Student*/UltimateViewModel ultimate, PostedRaces postedRaces)
+        public ActionResult Edit(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] Student student*/UltimateViewModel ultimate, PostedRaces postedRaces)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(ultimate.G_Student).State = EntityState.Modified;
+                    db.Entry(ultimate.Student).State = EntityState.Modified;
 
                     //Initiate postedRaces;
                     postedRaces = ultimate.RacesViewModel.PostedRaces;
 
                     //Create current/previously-checked race list
-                    var currPRList = db.PersonRaces.Where(s => s.StudentID == ultimate.G_Student.Id && s.IsSelectedPR.Equals(true)).ToList();
-                    var currRaceList = new List<G_Races>();
+                    var currPRList = db.PersonRaces.Where(s => s.StudentID == ultimate.Student.Id && s.IsSelectedPR.Equals(true)).ToList();
+                    var currRaceList = new List<Races>();
                     foreach (var item in currPRList)
                     {
                         currRaceList.Add(item.Race);
 
                     }
                     //Create new checked race list
-                    var newList = new List<G_Races>();
+                    var newList = new List<Races>();
                     foreach (var item in postedRaces.RaceIDs)
                     {
                         int raceId = Int32.Parse(item);
@@ -557,10 +557,10 @@ namespace StudentTrackingSystem3.Controllers
                     {
                         if (!currRaceList.Contains(nItem))
                         {
-                            var personRace = new G_PersonRaces();
+                            var personRace = new PersonRaces();
                             int raceId = nItem.Id;
                             var race = db.Races.Where(s => s.Id == raceId).ToList().Single();
-                            personRace.Student = ultimate.G_Student;
+                            personRace.Student = ultimate.Student;
                             personRace.Race = race;
                             personRace.IsSelectedPR = true;
                             db.PersonRaces.Add(personRace);
@@ -575,7 +575,7 @@ namespace StudentTrackingSystem3.Controllers
                         {
                             var race = db.Races.Where(s => s.Id == cItem.Id).ToList().Single();
 
-                            var prEntity = db.PersonRaces.SingleOrDefault(s => s.StudentID == ultimate.G_Student.Id && s.RaceID == cItem.Id && s.IsSelectedPR.Equals(true));
+                            var prEntity = db.PersonRaces.SingleOrDefault(s => s.StudentID == ultimate.Student.Id && s.RaceID == cItem.Id && s.IsSelectedPR.Equals(true));
                             prEntity.IsSelectedPR = false;
 
                             db.SaveChanges();
@@ -586,7 +586,7 @@ namespace StudentTrackingSystem3.Controllers
                     ultimate.RacesViewModel.SelectedRaces = newList;
 
                     db.SaveChanges();
-                    return RedirectToAction("Edit", "Student", new { id = ultimate.G_Student.Id });
+                    return RedirectToAction("Edit", "Student", new { id = ultimate.Student.Id });
                 }
             }
             catch (DataException /*dex*/)
@@ -614,12 +614,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Student g_Student = db.Students.Find(id);
-            if (g_Student == null)
+            Student student = db.Students.Find(id);
+            if (student == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Student);
+            return View(student);
         }
 
         // POST: Student/Delete/5
@@ -628,8 +628,8 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Student g_Student = db.Students.Find(id);
-            db.Students.Remove(g_Student);
+            Student student = db.Students.Find(id);
+            db.Students.Remove(student);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -720,7 +720,7 @@ namespace StudentTrackingSystem3.Controllers
             //setup properties
             var model = new UltimateViewModel();
             var rvm = new RacesViewModel();
-            var selectedRaces = new List<G_Races>();
+            var selectedRaces = new List<Races>();
 
             //setup view model
             rvm.AvailableRaces = RaceRepository.GetAll().ToList();

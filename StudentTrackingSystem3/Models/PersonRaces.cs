@@ -5,7 +5,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_PersonRaces
+    public class PersonRaces
     {
         public int ID { get; set; }
         public int StudentID { get; set; }
@@ -13,7 +13,7 @@ namespace StudentTrackingSystem3.Models
         public bool IsSelectedPR { get; set; }
 
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_Races Race { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual Races Race { get; set; }
     }
 }

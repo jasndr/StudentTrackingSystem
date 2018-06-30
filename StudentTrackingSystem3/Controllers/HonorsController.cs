@@ -29,12 +29,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Honors g_Honors = db.Honors.Find(id);
-            if (g_Honors == null)
+            Honors honors = db.Honors.Find(id);
+            if (honors == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Honors);
+            return View(honors);
         }
 
         // GET: Honors/Create
@@ -53,19 +53,19 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,StudentID,HonorInformation,HonorMonthId,HonorYear")] G_Honors g_Honors)
+        public ActionResult Create([Bind(Include = "ID,StudentID,HonorInformation,HonorMonthId,HonorYear")] Honors honors)
         {
             if (ModelState.IsValid)
             {
-                db.Honors.Add(g_Honors);
+                db.Honors.Add(honors);
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new { id = g_Honors.StudentID});
+                return RedirectToAction("Index", "PostGraduation", new { id = honors.StudentID});
             }
 
-            ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Honors.HonorMonthId);
-            ViewBag.Student = g_Honors.Student;
-            ViewBag.StudentID = g_Honors.StudentID;
-            return View(g_Honors);
+            ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", honors.HonorMonthId);
+            ViewBag.Student = honors.Student;
+            ViewBag.StudentID = honors.StudentID;
+            return View(honors);
         }
 
         // GET: Honors/Edit/5
@@ -75,15 +75,15 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Honors g_Honors = db.Honors.Find(id);
-            if (g_Honors == null)
+            Honors honors = db.Honors.Find(id);
+            if (honors == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", g_Honors.HonorMonthId);
-            ViewBag.Student = g_Honors.Student;
-            ViewBag.StudentID = g_Honors.StudentID;
-            return View(g_Honors);
+            ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o=>o.Category == "Months"), "ID", "Name", honors.HonorMonthId);
+            ViewBag.Student = honors.Student;
+            ViewBag.StudentID = honors.StudentID;
+            return View(honors);
         }
 
         // POST: Honors/Edit/5
@@ -91,18 +91,18 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,HonorInformation,HonorMonthId,HonorYear")] G_Honors g_Honors)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,HonorInformation,HonorMonthId,HonorYear")] Honors honors)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(g_Honors).State = EntityState.Modified;
+                db.Entry(honors).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index", "PostGraduation", new {id = g_Honors.StudentID });
+                return RedirectToAction("Index", "PostGraduation", new {id = honors.StudentID });
             }
-            ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o => o.Category == "Months"), "ID", "Name", g_Honors.HonorMonthId);
-            ViewBag.Student = g_Honors.Student;
-            ViewBag.StudentID = g_Honors.StudentID;
-            return View(g_Honors);
+            ViewBag.HonorMonthId = new SelectList(db.CommonFields.Where(o => o.Category == "Months"), "ID", "Name", honors.HonorMonthId);
+            ViewBag.Student = honors.Student;
+            ViewBag.StudentID = honors.StudentID;
+            return View(honors);
         }
 
         // GET: Honors/Delete/5
@@ -113,8 +113,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Honors g_Honors = db.Honors.Find(id);
-            if (g_Honors == null)
+            Honors honors = db.Honors.Find(id);
+            if (honors == null)
             {
                 TempData["msg"] = "<script>alert('Sorry! No record found to delete.')</script>";
                 return HttpNotFound();
@@ -128,11 +128,11 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Honors g_Honors = db.Honors.Find(id);
-            db.Honors.Remove(g_Honors);
+            Honors honors = db.Honors.Find(id);
+            db.Honors.Remove(honors);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This honor/award entry has been successfully deleted.')</script>";
-            return RedirectToAction("Index", "PostGraduation", new { id = g_Honors.StudentID });
+            return RedirectToAction("Index", "PostGraduation", new { id = honors.StudentID });
         }
 
         protected override void Dispose(bool disposing)

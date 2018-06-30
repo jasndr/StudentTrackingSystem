@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_PreviousEmployment
+    public class PreviousEmployment
     {
         public int ID { get; set; }
         [Required]
@@ -24,9 +24,9 @@ namespace StudentTrackingSystem3.Models
         [Required, Range(1000, 9999, ErrorMessage = "Please enter a valid year value.") , Display(Name ="End Year")]
         public int EndYear { get; set; }  
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_CommonFields StartMonth { get; set; }
-        public virtual G_CommonFields EndMonth { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual CommonFields StartMonth { get; set; }
+        public virtual CommonFields EndMonth { get; set; }
 
     }
 }

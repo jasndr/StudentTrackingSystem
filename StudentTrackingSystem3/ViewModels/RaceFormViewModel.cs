@@ -10,6 +10,6 @@ namespace StudentTrackingSystem3.ViewModels
     {
         public int StudentID { get; set; }
         public string StudentFirstName { get; set; }
-        public List<G_Races> Races { get; set; } 
+        public List<Races> Races { get; set; } 
     }
 }

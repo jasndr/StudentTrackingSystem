@@ -6,7 +6,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public class G_Graduation
+    public class Graduation
     {
         public int ID { get; set; }
         public int StudentID { get; set; }
@@ -60,17 +60,17 @@ namespace StudentTrackingSystem3.Models
         public Nullable<System.DateTime> DateOfFinalExam2 { get; set; }
 
 
-        public virtual G_Student Student { get; set; }
-        public virtual G_CommonFields DegreeEndSems { get; set; }
-        public virtual G_CommonFields QualifierResult { get; set; }
-        public virtual G_CommonFields Qualifier2Result { get; set; }
-        public virtual G_CommonFields CompExamResult { get; set; }
-        public virtual G_CommonFields CompExam2Result { get; set; }
-        public virtual G_CommonFields FinalExamResult { get; set; }
-        public virtual G_CommonFields FinalExam2Result { get; set; }
-        public virtual G_CommonFields Form2Type { get; set; }
-        public virtual G_CommonFields Form2Result { get; set; }
-        public virtual G_CommonFields Form3Result { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual CommonFields DegreeEndSems { get; set; }
+        public virtual CommonFields QualifierResult { get; set; }
+        public virtual CommonFields Qualifier2Result { get; set; }
+        public virtual CommonFields CompExamResult { get; set; }
+        public virtual CommonFields CompExam2Result { get; set; }
+        public virtual CommonFields FinalExamResult { get; set; }
+        public virtual CommonFields FinalExam2Result { get; set; }
+        public virtual CommonFields Form2Type { get; set; }
+        public virtual CommonFields Form2Result { get; set; }
+        public virtual CommonFields Form3Result { get; set; }
 
 
     }

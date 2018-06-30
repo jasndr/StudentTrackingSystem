@@ -5,7 +5,7 @@ using System.Web;
 
 namespace StudentTrackingSystem3.Models
 {
-    public enum G_FileType
+    public enum FileType
     {
         ActivitySummaryFile, CurriculumVitae, Manuscript
     }

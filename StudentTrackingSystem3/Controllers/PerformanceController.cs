@@ -20,7 +20,7 @@ namespace StudentTrackingSystem3.Controllers
         {
             ViewBag.Student = db.Students.Find(id);
             ViewBag.StudentID = db.Students.Find(id).Id;
-            G_Student student = db.Students.Find(id);
+            Student student = db.Students.Find(id);
             ViewBag.StudentFiles = db.Files.Where(g=>g.Activity.StudentID == id);
             ViewBag.CurrentStudent_FN = db.Students.Find(id).FirstName;
             ViewBag.CurrentStudent_LN = db.Students.Find(id).LastName;
@@ -44,12 +44,12 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Performance g_Performance = db.Performances.Find(id);
-            if (g_Performance == null)
+            Performance performance = db.Performances.Find(id);
+            if (performance == null)
             {
                 return HttpNotFound();
             }
-            return View(g_Performance);
+            return View(performance);
         }
 
         // GET: Performance/Create
@@ -77,15 +77,15 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Biostat, Admin, Super")]
-        public ActionResult Create([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatsID,AbstractsStatID,ProposalStatsID,TeachingStatsID")] G_Performance g_Performance)
+        public ActionResult Create([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatsID,AbstractsStatID,ProposalStatsID,TeachingStatsID")] Performance performance)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Performances.Add(g_Performance);
+                    db.Performances.Add(performance);
                     db.SaveChanges();
-                    return RedirectToAction("Index", new { id = g_Performance.StudentID });
+                    return RedirectToAction("Index", new { id = performance.StudentID });
                 }
             }
             catch (DataException /*dex*/)
@@ -101,8 +101,8 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.AbstractStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name");
             ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name");
             ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name");
-            ViewBag.Student = g_Performance.Student;
-            return View(g_Performance);
+            ViewBag.Student = performance.Student;
+            return View(performance);
         }
 
         // GET: Performance/Edit/5
@@ -114,23 +114,23 @@ namespace StudentTrackingSystem3.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Performance g_Performance = db.Performances.Find(id);
-            if (g_Performance == null)
+            Performance performance = db.Performances.Find(id);
+            if (performance == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Student = g_Performance.Student;
-            ViewBag.StudentID = g_Performance.StudentID;
-            ViewBag.CurrentStudent_FN = g_Performance.Student.FirstName;
-            ViewBag.CurrentStudent_LN = g_Performance.Student.LastName;
+            ViewBag.Student = performance.Student;
+            ViewBag.StudentID = performance.StudentID;
+            ViewBag.CurrentStudent_FN = performance.Student.FirstName;
+            ViewBag.CurrentStudent_LN = performance.Student.LastName;
 
-            ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name", g_Performance.CategoryID);
-            ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.PublicationStatsID);
-            ViewBag.AbstractStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.AbstractStatsID);
-            ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name", g_Performance.ProposalStatsID);
-            ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name", g_Performance.TeachingStatsID);
+            ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name", performance.CategoryID);
+            ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", performance.PublicationStatsID);
+            ViewBag.AbstractStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", performance.AbstractStatsID);
+            ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name", performance.ProposalStatsID);
+            ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name", performance.TeachingStatsID);
 
-            return View(g_Performance);
+            return View(performance);
         }
 
         // POST: Performance/Edit/5
@@ -139,15 +139,15 @@ namespace StudentTrackingSystem3.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin, Super")]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatsID,AbstractStatsID,ProposalStatsID,TeachingStatsID")] G_Performance g_Performance)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,CategoryID,CategoryInfo,PublicationStatsID,AbstractStatsID,ProposalStatsID,TeachingStatsID")] Performance performance)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Entry(g_Performance).State = EntityState.Modified;
+                    db.Entry(performance).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index", new { id = g_Performance.StudentID });
+                    return RedirectToAction("Index", new { id = performance.StudentID });
                 }
             }
             catch (DataException /*dex*/)
@@ -155,13 +155,13 @@ namespace StudentTrackingSystem3.Controllers
                 //Log the error (uncomment dex cariable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists, please see your system administrator.");
             }
-            ViewBag.Student = g_Performance.Student;
-            ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name", g_Performance.CategoryID);
-            ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.PublicationStatsID);
-            ViewBag.AbstractsStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", g_Performance.AbstractStatsID);
-            ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name", g_Performance.ProposalStatsID);
-            ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name", g_Performance.TeachingStatsID);
-            return View(g_Performance);
+            ViewBag.Student = performance.Student;
+            ViewBag.CategoryID = new SelectList(db.CommonFields.Where(o => o.Category == "PerformanceCategory"), "Id", "Name", performance.CategoryID);
+            ViewBag.PublicationStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", performance.PublicationStatsID);
+            ViewBag.AbstractsStatID = new SelectList(db.CommonFields.Where(o => o.Category == "Publication"), "Id", "Name", performance.AbstractStatsID);
+            ViewBag.ProposalStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Proposal"), "Id", "Name", performance.ProposalStatsID);
+            ViewBag.TeachingStatsID = new SelectList(db.CommonFields.Where(o => o.Category == "Teaching"), "Id", "Name", performance.TeachingStatsID);
+            return View(performance);
         }
 
         // GET: Performance/Delete/5
@@ -173,8 +173,8 @@ namespace StudentTrackingSystem3.Controllers
                 TempData["msg"] = "<script>alert('Sorry!  No record found to delete.')</script>";
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            G_Performance g_Performance = db.Performances.Find(id);
-            if (g_Performance == null)
+            Performance performance = db.Performances.Find(id);
+            if (performance == null)
             {
                 TempData["msg"] = "<script>alert('Sorry!  No record found to delete.')</script>";
                 return HttpNotFound();
@@ -190,11 +190,11 @@ namespace StudentTrackingSystem3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            G_Performance g_Performance = db.Performances.Find(id);
-            db.Performances.Remove(g_Performance);
+            Performance performance = db.Performances.Find(id);
+            db.Performances.Remove(performance);
             db.SaveChanges();
             TempData["msg"] = "<script>alert('This performance record has been successfully deleted.')</script>";
-            return RedirectToAction("Index", "Performance", new { id = g_Performance.StudentID });
+            return RedirectToAction("Index", "Performance", new { id = performance.StudentID });
         }
 
         protected override void Dispose(bool disposing)

@@ -11,7 +11,7 @@ namespace StudentTrackingSystem3.Models
     //    A, B, C, D, F
     //}
 
-    public class G_Coursework
+    public class Coursework
     {
         public int ID { get; set; }
         public int StudentID { get; set; }
@@ -25,10 +25,10 @@ namespace StudentTrackingSystem3.Models
         public int GradeID { get; set; }
         public string Comments { get; set; }
 
-        public virtual G_CommonFields Semesters { get; set; }
-        public virtual G_Student Student { get; set; }
-        public virtual G_Course Course { get; set; }
-        public virtual G_CommonFields Grade { get; set; }
+        public virtual CommonFields Semesters { get; set; }
+        public virtual Student Student { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual CommonFields Grade { get; set; }
 
 
     }
