@@ -3,7 +3,7 @@ namespace StudentTrackingSystem3.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FixViewPages : DbMigration
+    public partial class NewDbInstance : DbMigration
     {
         public override void Up()
         {

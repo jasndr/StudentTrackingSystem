@@ -222,13 +222,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806291928199_ChangeTableName.cs" />
-    <Compile Include="Migrations\201806291928199_ChangeTableName.Designer.cs">
-      <DependentUpon>201806291928199_ChangeTableName.cs</DependentUpon>
+    <Compile Include="Migrations\201808170256101_Initial.cs" />
+    <Compile Include="Migrations\201808170256101_Initial.Designer.cs">
+      <DependentUpon>201808170256101_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201806300253085_FixViewPages.cs" />
-    <Compile Include="Migrations\201806300253085_FixViewPages.Designer.cs">
-      <DependentUpon>201806300253085_FixViewPages.cs</DependentUpon>
+    <Compile Include="Migrations\201808210000216_Initial1.cs" />
+    <Compile Include="Migrations\201808210000216_Initial1.Designer.cs">
+      <DependentUpon>201808210000216_Initial1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -444,11 +444,11 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806291928199_ChangeTableName.resx">
-      <DependentUpon>201806291928199_ChangeTableName.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808170256101_Initial.resx">
+      <DependentUpon>201808170256101_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201806300253085_FixViewPages.resx">
-      <DependentUpon>201806300253085_FixViewPages.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201808210000216_Initial1.resx">
+      <DependentUpon>201808210000216_Initial1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />
