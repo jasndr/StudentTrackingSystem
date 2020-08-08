@@ -1,0 +1,706 @@
+﻿@model IEnumerable<StudentTrackingSystem3.Models.PostGraduation>
+
+@{
+    ViewBag.Title = "Post-Graduation Student Record";
+}
+
+<h2>Post-Graduation Student Tracking</h2>
+<br />
+
+<h4>Creating post-graduation student record for <strong>@ViewBag.Student_FN @ViewBag.Student_LN</strong></h4>
+<br />
+
+<div class="row menuNav" id="menuNav_postgrad">
+    @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Requirements", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+
+    @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+</div>
+
+<hr />
+<br />
+
+<div class="row">
+
+    <div class="col-offset-3 col-md-4 col-xs-12">
+
+        <div class="form-group">
+            @Html.Label("Student ID#", htmlAttributes: new { @class = "control-label" })
+            <br />
+            <div class="col-md-10">
+                @Html.Editor("StudentNumber", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.StudentNumber } })
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<br />
+
+
+<h4><strong><u>Contact Information</u></strong></h4>
+
+<div class="row">
+
+    <div class="col-md-offset-1 col-md-4 col-xs-12">
+
+        <div class="form-group">
+            @Html.Label("Email", htmlAttributes: new { @class = "control-label" })
+            <br />
+            <div class="col-md-10">
+                @Html.Editor("OtherEmail", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.StudentEmail } })
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-4 col-xs-12">
+
+        <div class="form-group">
+            @Html.Label("Phone", htmlAttributes: new { @class = "control-label" })
+            <br />
+            <div class="col-md-10">
+                @Html.Editor("Phone", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.StudentPhone } })
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<br />
+
+<h4><strong><u>Upload updated CV</u></strong></h4>
+
+<div class="row">
+
+    <div class="col-md-offset-1">
+
+        <div class="form-group">
+
+            <div class="row">
+
+                <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = ViewBag.StudentID }, null)</p>
+
+                @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;
+                    var count = 1;}
+
+                @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).FirstOrDefault(), null))
+                    {
+
+                        foreach (var file in studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).OrderByDescending(g => g.FileId))
+                        {
+
+                            if (count == 1)
+                            {
+
+                                <div class="col-md-offset-1">
+                                    <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                        <em><strong>Current CV</strong></em>
+                                        <ul>
+                                            <li>
+                                                <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <br />
+
+                            }
+                            else
+                            {
+                                if (count == 2)
+                                {
+                                    <p class="col-md-offset-1"><em><strong>CV History</strong></em></p>
+
+                                }
+                                <div class="col-md-offset-1">
+                                    <ul>
+                                        <li>
+
+                                            <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                            <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </a>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            count++;
+                        }
+
+                    }
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<br />
+
+<h4><strong><u>Employment History</u></strong></h4>
+
+<div class="row">
+    <div class="form-group">
+
+        <div class="row">
+            <div class="col-md-offset-1">
+                @Html.ActionLink("Add Employment History", "Create", "PreviousEmployment", new { id = ViewBag.StudentID }, null)
+            </div>
+        </div>
+
+        <div class="col-md-9 row col-md-offset-1">
+            @{ IQueryable<PreviousEmployment> PrevEmployments = ViewBag.StudentPrevEmpl;}
+
+            @{if (!object.ReferenceEquals(PrevEmployments.FirstOrDefault(), null))
+                {
+                    var startMonthName = PrevEmployments.FirstOrDefault().StartMonth.Name;
+                    var endMonthName = PrevEmployments.FirstOrDefault().EndMonth.Name;
+                    count = 1;
+                    <table class="table">
+
+
+                        @foreach (var item in PrevEmployments.OrderByDescending(s => s.EndYear).ThenByDescending(s => s.EndMonth.DisplayOrder))
+                        {
+                            startMonthName = item.StartMonth.Name;
+                            endMonthName = item.EndMonth.Name;
+
+                            if (count == 1)
+                            {
+                                <tr>
+                                    <td class="pull-right"></td>
+                                    <td><u>Position</u></td>
+                                    <td><u>Employer</u></td>
+                                    <td><u>Period</u></td>
+                                    <td></td>
+                                </tr>
+                                <tr class="tableRowHeader">
+                                    <td><strong>Current Employment</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="pull-right">&bull;</td>
+                                    <td><strong>@Html.DisplayFor(modelItem => item.Position)</strong></td>
+                                    <td>@Html.DisplayFor(modelItem => item.Employer)</td>
+                                    <td>@startMonthName @Html.DisplayFor(modelItem => item.StartYear) - Current</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", "PreviousEmployment", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                        <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "PreviousEmployment", new {id = item.ID})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+
+                            }
+                            else
+                            {
+                                if (count == 2)
+                                {
+                                    <tr class="tableRowHeader">
+                                        <td><strong>Previous Employment</strong></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <td class="pull-right">&bull; </td>
+                                    <td><strong>@Html.DisplayFor(modelItem => item.Position)</strong></td>
+                                    <td>@Html.DisplayFor(modelItem => item.Employer)</td>
+                                    <td>@startMonthName @Html.DisplayFor(modelItem => item.StartYear) - @endMonthName @Html.DisplayFor(modelItem => item.EndYear)</td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", "PreviousEmployment", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                        <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "PreviousEmployment", new {id = item.ID})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                            count++;
+                        }
+                    </table>
+                }
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<br />
+
+
+<h4><strong><u>Publications Peer-Reviewed Journal (only Published)</u></strong></h4>
+
+<div class="row">
+    <div class="form-group">
+
+        <div class="row">
+            <div class="col-md-offset-1">
+                @Html.ActionLink("Add Publication", "Create", "Publications", new { id = ViewBag.StudentID }, null)
+            </div>
+        </div>
+
+        <div class="col-md-11 row col-md-offset-1">
+            @{ IQueryable<Publications> Publications = ViewBag.StudentPublications;}
+
+            @{if (!object.ReferenceEquals(Publications.FirstOrDefault(), null))
+                {
+                    var pubMonthName = Publications.FirstOrDefault().PubMonth.Name;
+
+                    <table class="table">
+
+                        @foreach (var item in Publications.OrderByDescending(s => s.PubYear).ThenByDescending(s => s.PubMonth.DisplayOrder))
+                        {
+                            <tr>
+                                <td>&bull;</td>
+                                <td><strong>@Html.DisplayFor(modelItem => item.PublicationInformation)</strong></td>
+                                <td>@Html.DisplayFor(modelItem => item.PubMonth.Name) @Html.DisplayFor(modelItem => item.PubYear)</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", "Publications", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                </td>
+                                <td>
+                                    <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Publications", new {id = item.ID})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<br />
+
+
+<h4><strong><u>Grants</u></strong></h4>
+
+<div class="row">
+    <div class="form-group">
+
+        <div class="row">
+            <div class="col-md-offset-1">
+                @Html.ActionLink("Add Grant", "Create", "Grants", new { id = ViewBag.StudentID }, null)
+            </div>
+        </div>
+
+        <div class="col-md-8 row col-md-offset-1">
+            @{ IQueryable<Grants> Grants = ViewBag.StudentGrants;}
+
+            @{if (!object.ReferenceEquals(Grants.FirstOrDefault(), null))
+                {
+                    <table class="table">
+
+                        @foreach (var item in Grants.OrderByDescending(s => s.GrantYear).ThenByDescending(s => s.GrantMonth.DisplayOrder))
+                        {
+                            <tr>
+                                <td>&bull;</td>
+                                <td><strong>@Html.DisplayFor(modelItem => item.GrantInformation)</strong></td>
+                                <td>@Html.DisplayFor(modelItem => item.GrantMonth.Name) @Html.DisplayFor(modelItem => item.GrantYear)</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", "Grants", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                    <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Grants", new {id = item.ID})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<br />
+
+<h4><strong><u>Honors and Awards</u></strong></h4>
+
+<div class="row">
+    <div class="form-group">
+
+        <div class="row">
+            <div class="col-md-offset-1">
+                @Html.ActionLink("Add Honor or Award", "Create", "Honors", new { id = ViewBag.StudentID }, null)
+            </div>
+        </div>
+
+        <div class="col-md-8 row col-md-offset-1">
+            @{ IQueryable<Honors> Honors = ViewBag.StudentHonors;}
+
+            @{if (!object.ReferenceEquals(Honors.FirstOrDefault(), null))
+                {
+                    <table class="table">
+
+                        @foreach (var item in Honors.OrderByDescending(s => s.HonorYear).ThenByDescending(s => s.HonorMonth.DisplayOrder))
+                        {
+                            <tr>
+                                <td>&bull;</td>
+                                <td><strong>@Html.DisplayFor(modelItem => item.HonorInformation)</strong></td>
+                                <td>@Html.DisplayFor(modelItem => item.HonorMonth.Name) @Html.DisplayFor(modelItem => item.HonorYear)</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", "Honors", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                    <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Honors", new {id = item.ID})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                }
+            }
+
+        </div>
+    </div>
+
+</div>
+
+<br />
+
+<h4><strong><u>Total Number of Publications, Grants, and Honors/Awards </u></strong></h4>
+
+@{
+    @functions{
+        /// <summary>
+        /// Change start semester value to month.
+        /// </summary>
+        /// <param name="semesterVal">semester value</param>
+        /// <returns></returns>
+        public static int startMonthVal(int? semesterVal)
+        {
+            if (semesterVal == 1)
+            {
+                return 01;
+            }
+            else if (semesterVal == 2)
+            {
+                return 06;
+            }
+            else if (semesterVal == 3)
+            {
+                return 08;
+            }
+            else
+            {
+                return 01;
+            }
+        }
+
+        /// <summary>
+        /// Change end semester value to month.
+        /// </summary>
+        /// <param name="semesterVal">semester value</param>
+        /// <returns></returns>
+        public static int endMonthVal(int? semesterVal)
+        {
+            if (semesterVal == 1)
+            {
+                return 05;
+            }
+            else if (semesterVal == 2)
+            {
+                return 08;
+            }
+            else if (semesterVal == 3)
+            {
+                return 12;
+            }
+            else
+            {
+                return 01;
+            }
+        }
+    }
+
+    Student student = ViewBag.Student;
+    Graduation studentGrad = ViewBag.StudentGrad;
+
+    string degreeEndSemName = studentGrad?.DegreeEndSems?.Name;
+    int? degreeEndSemId = studentGrad?.DegreeEndSemsId;
+    int? degreeEndYear = studentGrad?.DegreeEndYear;
+
+
+    int startMonth = startMonthVal(student.DegreeStartSems.DisplayOrder);
+    DateTime startDate = new DateTime(student.DegreeStartYear, startMonth, 30);
+
+    int endMonth = endMonthVal(degreeEndSemId.GetValueOrDefault(01));
+    DateTime endDate = new DateTime(degreeEndYear.GetValueOrDefault(1000), endMonth, 31);
+    string endMonthName2Before = endDate.AddMonths(-1).ToString("MMM");
+    string endMonthName2 = endDate.ToString("MMM");
+}
+
+<div class="row">
+
+    <div class="col-md-4 col-xs-12">
+        <h4><strong>Publications</strong></h4>
+
+        <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+            @{
+
+                var pubBefore = 0;
+                var pubDuring = 0;
+                var year0Val = new DateTime(degreeEndYear.GetValueOrDefault(1000), endMonth, 31);
+                var year1 = 0; var year1Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 1, endMonth, 31);
+                var year2 = 0; var year2Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 2, endMonth, 31);
+                var year3 = 0; var year3Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 3, endMonth, 31);
+                var year4 = 0; var year4Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 4, endMonth, 31);
+                var year5 = 0; var year5Val = new DateTime(degreeEndYear.GetValueOrDefault(1000) + 5, endMonth, 31);
+                var postFuture = false;
+                if (Publications.FirstOrDefault() != null)
+                {
+                    foreach (var item in Publications)
+                    {
+
+                        var pubDate = new DateTime(item.PubYear, item.PubMonth.DisplayOrder, 15);
+                        if (endDate > startDate) //check if endDate is not null (set to 0)
+                        {
+                            postFuture = true;
+                            if (pubDate < startDate)
+                            {
+                                pubBefore++;
+                            }
+                            else if (pubDate >= startDate && pubDate <= endDate)
+                            {
+                                pubDuring++;
+                            }
+                            else if (pubDate > endDate && pubDate < year1Val)
+                            {
+                                year1++;
+                            }
+                            else if (pubDate > year1Val && pubDate < year2Val)
+                            {
+                                year2++;
+                            }
+                            else if (pubDate > year2Val && pubDate < year3Val)
+                            {
+                                year3++;
+                            }
+                            else if (pubDate > year3Val && pubDate < year4Val)
+                            {
+                                year4++;
+                            }
+                            else if (pubDate > year4Val && pubDate < year5Val)
+                            {
+                                year5++;
+                            }
+
+                        }
+                        else if (pubDate < startDate)
+                        {
+                            pubBefore++;
+                        }
+                        else if (pubDate > startDate)
+                        {
+                            pubDuring++;
+                        }
+
+                    }
+                }
+                <tr>
+                    <td>Before Program</td>
+                    <td>@pubBefore</td>
+                </tr>
+                <tr>
+                    <td>During Program</td>
+                    <td>@pubDuring</td>
+                </tr>
+                var total = pubBefore + pubDuring + year1 + year2 + year3 + year4 + year5;
+                if (postFuture == true)
+                {
+                    <tr>
+                        <td>Year 1: @endDate.AddMonths(1).ToString("MMM") @endDate.AddMonths(1).Year &mdash; @endDate.AddYears(1).ToString("MMM") @endDate.AddYears(1).Year</td>
+                        <td>@year1</td>
+                    </tr>
+                    <tr>
+                        <td>Year 2: @endDate.AddMonths(1).AddYears(1).ToString("MMM") @endDate.AddMonths(1).AddYears(1).Year &mdash; @endDate.AddYears(2).ToString("MMM") @endDate.AddYears(2).Year</td>
+                        <td>@year2</td>
+                    </tr>
+                    <tr>
+                        <td>Year 3: @endDate.AddMonths(1).AddYears(2).ToString("MMM") @endDate.AddMonths(1).AddYears(2).Year &mdash; @endDate.AddYears(3).ToString("MMM") @endDate.AddYears(3).Year</td>
+                        <td>@year3</td>
+                    </tr>
+                            <tr>
+                                <td>Year 4: @endDate.AddMonths(1).AddYears(3).ToString("MMM") @endDate.AddMonths(1).AddYears(3).Year &mdash; @endDate.AddYears(4).ToString("MMM") @endDate.AddYears(4).Year</td>
+                                <td>@year4</td>
+                            </tr>
+                            <tr>
+                                <td>Year 5: @endDate.AddMonths(1).AddYears(4).ToString("MMM") @endDate.AddMonths(1).AddYears(4).Year &mdash; @endDate.AddYears(5).ToString("MMM") @endDate.AddYears(5).Year</td>
+                                <td>@year5</td>
+                            </tr>
+                }
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>@total</strong></td>
+                </tr>
+
+            }
+        </table>
+
+    </div>
+
+    <div class="col-md-4 col-xs-12">
+        <h4><strong>Grants</strong></h4>
+
+        <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+            @{
+
+                var grantBefore = 0;
+                var grantDuring = 0;
+                var grantAfter = 0;
+                if (Grants.FirstOrDefault() != null)
+                {
+                    foreach (var item in Grants)
+                    {
+                        var grantDate = new DateTime(item.GrantYear, item.GrantMonth.DisplayOrder, 15);
+                        if (endDate > startDate) //check if endDate is not null (set to 0)
+                        {
+                            if (grantDate < startDate)
+                            {
+                                grantBefore++;
+                            }
+                            else if (grantDate >= startDate && grantDate <= endDate)
+                            {
+                                grantDuring++;
+                            }
+                            else if (grantDate > endDate)
+                            {
+                                grantAfter++;
+                            }
+
+                        }
+                        else if (grantDate < startDate)
+                        {
+                            grantBefore++;
+                        }
+                        else if (grantDate > startDate)
+                        {
+                            grantDuring++;
+                        }
+                    }
+                }
+
+                int grantTotal = grantBefore + grantDuring + grantAfter;
+            }
+
+            <tr>
+                <td>Before Program</td>
+                <td>@grantBefore</td>
+            </tr>
+            <tr>
+                <td>During Program</td>
+                <td>@grantDuring</td>
+            </tr>
+            <tr>
+                <td>After Program</td>
+                <td>@grantAfter</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>@grantTotal</strong></td>
+            </tr>
+        </table>
+
+
+    </div>
+
+    <div class="col-md-4 col-xs-12">
+        <h4><strong>Honors &amp; Awards</strong></h4>
+
+        <table class="table table-bordered table-hover table-striped col-md-offset-0">
+
+            @{
+
+                var honorsBefore = 0;
+                var honorsDuring = 0;
+                var honorsAfter = 0;
+                if (Honors != null)
+                {
+                    foreach (var item in Honors)
+                    {
+                        var honorDate = new DateTime(item.HonorYear, item.HonorMonth.DisplayOrder, 15);
+                        if (endDate > startDate) //check if endDate is not null (set to 0)
+                        {
+                            if (honorDate < startDate)
+                            {
+                                honorsBefore++;
+                            }
+                            else if (honorDate >= startDate && honorDate <= endDate)
+                            {
+                                honorsDuring++;
+                            }
+                            else if (honorDate > endDate)
+                            {
+                                honorsAfter++;
+                            }
+
+                        }
+                        else if (honorDate < startDate)
+                        {
+                            honorsBefore++;
+                        }
+                        else if (honorDate > startDate)
+                        {
+                            honorsDuring++;
+                        }
+                    }
+                }
+
+                int honorTotal = honorsBefore + honorsDuring + honorsAfter;
+            }
+
+            <tr>
+                <td>Before Program</td>
+                <td>@honorsBefore</td>
+            </tr>
+            <tr>
+                <td>During Program</td>
+                <td>@honorsDuring</td>
+            </tr>
+            <tr>
+                <td>After Program</td>
+                <td>@honorsAfter</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td><strong>@honorTotal</strong></td>
+            </tr>
+        </table>
+
+    </div>
+
+</div>
+
+<br />
+
+
+@Html.Raw(TempData["msg"])

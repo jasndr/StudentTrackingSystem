@@ -1,0 +1,238 @@
+﻿html{
+    overflow-y: scroll;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+a{
+    color: #060;
+}
+
+.navigation-entire, .homebtn{
+    background-color: #060;
+    color: white;
+    border: 1px solid #060;
+}
+
+.infoNav{
+    background-color: white;
+    color: #060;
+    border: 1px solid #060;
+    margin-left: 1em;
+    margin-right: 1em;
+    white-space: normal;
+    /*overflow: hidden;*/
+}
+
+.infoNav a:hover, .infoNav a:visited{
+    background-color: #060;
+    color: white;
+    border: 1px solid #060;
+}
+/*Main navigation for Student*/
+#menuNav_background .menuNav_background,
+#menuNav_coursework .menuNav_coursework,
+#menuNav_performance .menuNav_performance,
+#menuNav_graduation .menuNav_graduation,
+#menuNav_postgrad .menuNav_postgrad{
+    background-color: #060;
+    color: white;
+}
+
+#menuNav_background .menuNav_background:hover, .infoNav:hover{
+    background-color: #7D7;
+    color: black;
+}
+
+
+
+.navigation-entire a, .navigation-entire a:visited{
+    color: white !important;
+}
+
+.navigation-entire a:hover, .navbuttons a:hover{
+    color:darkgray !important;
+    background-color: #114020 !important;
+}
+
+.navigation-entire a:active{
+    color: darkgoldenrod !important;
+}
+
+
+.styled_list{
+    margin-left: 15px; 
+    margin-right: 0px; padding: 3px 5px 3px 5px; line-height: 25px;
+}
+
+.list_chkbx{
+    font-weight: normal;
+    margin: 0 15px 0 3px; padding: 0px 5px;
+}
+
+#report{
+    width: 100% !important;
+    height: 60vh !important;
+}
+
+/* Table Row Header for partitioning (like by semester on Coursework Page) */
+.tableRowHeader{
+     background-color: #d3f8d3;
+}
+
+.narrowAlert {
+    padding: 5px 5px 5px 5px;
+    margin-right: 0px;
+    color: darkgreen;
+    background-color: #d6eebe;
+    border-radius: 5px;
+}
+
+/*Sidebar navigation for current/former students*/
+.sidenav{
+    height: 100%;
+    position: relative;
+    /*z-index: 1;*/
+    top: 0;
+    left: 0;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #FFF; /*#B3FFB3*/
+    /*overflow-x: hidden;*/
+    padding-top: 100px;
+    display: block;
+    word-wrap: break-word;
+}
+
+.sidenav a{
+    margin-top: 40px;
+    margin-bottom: 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    color: #030;
+    display: block;
+    border-top: 1px solid #030;
+    border-bottom: 1px solid #030;
+}
+
+.sidenavtext{
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px; /*2.5vw;*/
+    color: #030;
+    display: block;
+}
+
+.sidenav a:hover, #highlight:hover{
+    color: #FFF;
+    background: #CFC;
+    text-shadow: -1px 0 #000, 0, 1px #000, 1px 0 #000, 0, -1px #000;
+}
+
+.highlight,
+#currentStudent .currentStudent,
+#formerStudent .formerStudent{
+    font-weight: bold;
+    color: #030;
+    background: #B3FFB3;
+}
+
+@media screen and (max-height: 450px){
+    .sidenav {padding-top: 15px;}
+    .sidenav a{font-size: 18px;}
+}
+
+/**Split left and right sides of screen*/
+
+.bothSides{
+    overflow: hidden;
+}
+
+.leftSide{
+    float: left;
+    width: 13%; 
+    height: 100%;
+}
+
+.rightSide{
+    /*float: left;*/
+    width: 86%;
+    overflow: hidden;
+}
+
+/** Reponsive table **/
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)
+{
+    /* Force table to not be like tables */
+    table, thead, tbody, th, td, tr{
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr{
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {border-left: 1px solid #CCC;
+        border-right: 1px solid #CCC;}
+
+    td{
+        /*behave like a "row" */
+        border: none;
+        border-bottom: 1px solid #EEE;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top.left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+    /* Hide sidenav*/
+    #cf_sidebar{
+        display: none;
+    }
+
+    /*.rightSide{
+        width: 100%;
+    }*/
+    
+}
+
+
+

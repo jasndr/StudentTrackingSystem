@@ -1,0 +1,17 @@
+﻿@*@model StudentTrackingSystem3.Models.AssignRoleViewModel*@
+@{
+    ViewBag.Title = "Access Denied";
+}
+
+<hgroup class="title">
+    <h1 style="color: red">@ViewBag.Title</h1>
+</hgroup>
+<div>
+    <br />
+    <p style="font-size: 18pt;">
+        You are not authorized to view the contents of this page.  Please return back to the home page. Mahalo!
+    </p>
+    <p>
+        @Html.ActionLink("Back to Database", "Index", "Student")
+    </p>
+</div>

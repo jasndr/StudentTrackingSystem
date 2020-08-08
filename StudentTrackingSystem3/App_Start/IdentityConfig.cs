@@ -54,7 +54,7 @@ namespace StudentTrackingSystem3
             string trackingEmail = System.Configuration.ConfigurationManager.AppSettings["trackingEmail"];
             MailAddress replyTo = new MailAddress(trackingEmail);
 
-            if(!String.Equals(message.Destination, replyTo.Address, StringComparison.OrdinalIgnoreCase))
+            if (!String.Equals(message.Destination, replyTo.Address, StringComparison.OrdinalIgnoreCase))
             {
                 string superAdminEmail = System.Configuration.ConfigurationManager.AppSettings["superAdminEmail"];
                 MailAddress superAdmin = new MailAddress(superAdminEmail);
@@ -87,7 +87,7 @@ namespace StudentTrackingSystem3
     {
 
         public ApplicationUserManager()
-            : base (new UserStore<ApplicationUser>(new ApplicationDbContext()))
+            : base(new UserStore<ApplicationUser>(new ApplicationDbContext()))
         {
         }
 
@@ -96,7 +96,7 @@ namespace StudentTrackingSystem3
         {
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
@@ -115,7 +115,7 @@ namespace StudentTrackingSystem3
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
-            
+
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug it in here.
             manager.RegisterTwoFactorProvider("Phone Code", new PhoneNumberTokenProvider<ApplicationUser>
@@ -138,7 +138,7 @@ namespace StudentTrackingSystem3
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;

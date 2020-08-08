@@ -1,0 +1,18 @@
+﻿@*@model StudentTrackingSystem3.Models.AssignRoleViewModel*@
+@{
+    ViewBag.Title = "New User Assigned";
+}
+
+<hgroup class="title">
+    <h1>@ViewBag.Title</h1>
+</hgroup>
+<div>
+    <br />
+    <p style="font-size: 18pt;">
+        Success! The new user, <em>@ViewBag.Username</em>, has been successfully assigned the role: <strong>@ViewBag.Rolename</strong>.
+        @*Your password has been reset. Please @Html.ActionLink("click here to log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })*@
+    </p>
+    <p>
+        @Html.ActionLink("Back to Database", "Index", "Student")
+    </p>
+</div>

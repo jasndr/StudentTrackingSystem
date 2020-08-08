@@ -21,7 +21,7 @@ namespace StudentTrackingSystem3.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("SchoolContext", throwIfV1Schema: false)
         {
         }
 

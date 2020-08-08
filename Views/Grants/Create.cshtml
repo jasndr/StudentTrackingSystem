@@ -1,0 +1,112 @@
+﻿@model StudentTrackingSystem3.Models.Grants
+
+@{
+    ViewBag.Title = "Adding Grant";
+}
+
+<h2>Post-Graduation Student Tracking</h2>
+<br />
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Adding grant for <strong>@ViewBag.Student_FN @ViewBag.Student_LN</strong></h4>
+        <br />
+
+        <div class="row menuNav" id="menuNav_postgrad">
+            @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Requirements", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+
+            @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+        </div>
+
+        <hr />
+        <br />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group" style="display: none;">
+            @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label" })
+            <br />
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StudentID, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.StudentID } })
+                @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-offset-2 col-md-12">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GrantInformation, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    <div>
+                        @Html.TextAreaFor(model => model.GrantInformation, htmlAttributes: new { @class = "form-control", @style = "max-width: 65%;" })
+                        @Html.ValidationMessageFor(model => model.GrantInformation, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-offset-3 col-md-3 col-xs-12">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GrantMonthId,  htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    <div class="col-md-10">
+                        @Html.DropDownList("GrantMonthId", null, "-- Select Month --", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GrantMonthId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-3 col-xs-12">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GrantYear, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.GrantYear, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.GrantYear, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="form-group">
+                <div class="col-md-offset-1 col-md-10">
+                    <input type="submit" value="Add" class="btn btn-default createOrEditPost2" />
+                </div>
+            </div>
+
+        </div>
+
+        
+
+        
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Post-Graduation Student Record", "Index", "PostGraduation", new { id = ViewBag.StudentID }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

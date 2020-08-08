@@ -1,0 +1,32 @@
+﻿@* Sidebar navigation to distiguish between current and former students *@
+
+@{ 
+    Student student = ViewBag.Student;
+    Graduation studentGrad = student?.Graduation?.FirstOrDefault();
+    int? degreeEndSems = studentGrad?.DegreeEndSemsId;
+    int? degreeEndYear = studentGrad?.DegreeEndYear;
+}
+
+<div class="sidenav" id="cf_sidebar">
+
+    <p class="sidenavtext"><em><strong>Students</strong></em></p>
+
+    @Html.ActionLink("Current", "Index", "Student", null, htmlAttributes: new { @class=
+        (((ViewContext.RouteData.Values["Action"].ToString() == "Index"
+           && ViewContext.RouteData.Values["Controller"].ToString() == "Student")
+           || ((student != null && degreeEndSems == null && degreeEndYear == null)))
+
+           ? "highlight" : "") })
+
+    @Html.ActionLink("Former", "Former", "Student", null, htmlAttributes: new { @class=
+        (((ViewContext.RouteData.Values["Action"].ToString() == "Former"
+           && ViewContext.RouteData.Values["Controller"].ToString() == "Student")
+           || ((student != null && degreeEndSems != null && degreeEndYear != null)))
+
+           ? "highlight" : "") })
+
+
+</div>
+
+
+

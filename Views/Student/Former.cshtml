@@ -1,0 +1,93 @@
+﻿@model PagedList.IPagedList<StudentTrackingSystem3.Models.Student>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Former Students";
+}
+
+<h2>Former Students</h2>
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Former", "Student", FormMethod.Get))
+{
+    <p class="form-inline">
+        Find by name, student ID #, or school email: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
+        <input type="submit" value="Search" class="btn btn-primary btn-sm homebtn" />
+    </p>
+    <br />
+}
+
+<table class="table"  id="formerStudent">
+    <tr>
+        <th>
+            @Html.ActionLink("Student ID #", "Former", new { sortOrder = ViewBag.StudentID_SortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("First Name", "Former", new { sortOrder = ViewBag.FirstName_SortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Last Name", "Former", new { sortOrder = ViewBag.LastName_SortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("School Email", "Former", new { sortOrder = ViewBag.SchoolEmail_SortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Degree Program", "Former", new { sortOrder = ViewBag.DegreeProgramsId_SortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Track", "Former", new { sortOrder = ViewBag.TracksId_SortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Degree Start", "Former", new { sortOrder = ViewBag.DegreeStart_SortParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+        <th>
+            @Html.ActionLink("Degree End", "Former", new {sortOrder = ViewBag.DegreeEnd_SportParm, currentFilter = ViewBag.CurrentFilter })
+        </th>
+
+        <th></th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DegreePrograms.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tracks.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DegreeStartSems.Name) @Html.DisplayFor(modelItem => item.DegreeStartYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Graduation.FirstOrDefault().DegreeEndSems.Name) @Html.DisplayFor(modelItem => item.Graduation.FirstOrDefault().DegreeEndYear)
+            </td>
+            <td>
+                @Html.ActionLink("Information", "Edit", new { id = item.Id }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+            </td>
+           
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Former", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
