@@ -220,13 +220,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007150138071_init.cs" />
-    <Compile Include="Migrations\202007150138071_init.Designer.cs">
-      <DependentUpon>202007150138071_init.cs</DependentUpon>
+    <Compile Include="Migrations\202008140128568_InitialCreate.cs" />
+    <Compile Include="Migrations\202008140128568_InitialCreate.Designer.cs">
+      <DependentUpon>202008140128568_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202007150200449_init1.cs" />
-    <Compile Include="Migrations\202007150200449_init1.Designer.cs">
-      <DependentUpon>202007150200449_init1.cs</DependentUpon>
+    <Compile Include="Migrations\202008140310478_InitialCreate1.cs" />
+    <Compile Include="Migrations\202008140310478_InitialCreate1.Designer.cs">
+      <DependentUpon>202008140310478_InitialCreate1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008140317458_InitialCreate11.cs" />
+    <Compile Include="Migrations\202008140317458_InitialCreate11.Designer.cs">
+      <DependentUpon>202008140317458_InitialCreate11.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -322,6 +326,9 @@
     <Content Include="Scripts\jquery-1.12.4.min.map" />
     <None Include="Properties\PublishProfiles\Laptop-Evqa8urd %28Local%29 Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MEB411-03 %28Local Setup%29 Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Publish - QHSDB Server.pubxml" />
+    <None Include="Properties\PublishProfiles\Publish Web Deploy Package - BQHSPORTAL.pubxml" />
+    <None Include="Properties\PublishProfiles\Publish Web Deploy Package - QHSDB.pubxml" />
     <None Include="Properties\PublishProfiles\StudentTrackingSystem.pubxml" />
     <Content Include="Reports\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
@@ -444,13 +451,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202007150138071_init.resx">
-      <DependentUpon>202007150138071_init.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Migrations\202008140128568_InitialCreate.resx">
+      <DependentUpon>202008140128568_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007150200449_init1.resx">
-      <DependentUpon>202007150200449_init1.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="Migrations\202008140310478_InitialCreate1.resx">
+      <DependentUpon>202008140310478_InitialCreate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008140317458_InitialCreate11.resx">
+      <DependentUpon>202008140317458_InitialCreate11.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />
