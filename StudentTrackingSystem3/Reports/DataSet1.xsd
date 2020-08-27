@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" GeneratorFunctionsComponentClassName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" UserFunctionsComponentName="QueriesTableAdapter" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SchoolContext_DatabasePublish" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SchoolContext_DatabasePublish (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SchoolContext_DatabasePublish.ConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SchoolContext_DatabasePublish" IsAppSettingsProperty="true" Modifier="Assembly" Name="SchoolContext_DatabasePublish (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SchoolContext_DatabasePublish.ConnectionString" Provider="System.Data.SqlClient" />
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="SchoolContext" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SchoolContext (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.SchoolContext.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
@@ -13,39 +13,33 @@
               <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT DISTINCT 
-                         s.Id, s.StudentNumber AS StudentID, s.FirstName, s.MiddleName, s.LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gender.Name AS Gender, 
-                         REPLACE(REPLACE(REPLACE('&lt;' + STUFF
-                             ((SELECT        CASE WHEN pv2.DegreeTypesID IS NULL 
-                                                          THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' ELSE '; -' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward)
-                                                           AS nvarchar(4)) + ')' END AS Expr1
-                                 FROM            G_PrevDegree AS pv2 INNER JOIN
-                                                          G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pv2.StudentID LEFT OUTER JOIN
-                                                          G_CommonFields AS degTypes ON degTypes.ID = pv2.DegreeTypesID FOR XML PATH('')), 1, 1, ''), '&lt;Expr1&gt;', ''), '&lt;/Expr1&gt;', ''), ';', '') 
-                         AS DegreeAtAdmission, REPLACE(REPLACE(REPLACE('&lt;' + STUFF
-                             ((SELECT        CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' ELSE '; -' + r2.Name END AS Expr1
-                                 FROM            G_Races AS r2 INNER JOIN
-                                                          G_PersonRaces AS pr2 ON pr2.RaceID = r2.Id INNER JOIN
-                                                          G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH('')), 1, 1, ''), '&lt;Expr1&gt;', ''), '&lt;/Expr1&gt;', ''), ';', '') AS RaceEthnicity, 
-                         s.RaceOther, degreeProgram.Name AS DegreeProgram, track.Name AS Track, plans.Name AS [Plan], degreeStartSem.Name AS DegreeStartSemester, 
-                         s.DegreeStartYear, gradSem.Name AS DegreeAwardedSemester, grad.DegreeEndYear AS DegreeAwardedYear
-FROM            G_Student AS s LEFT OUTER JOIN
-                         G_PrevDegree AS pd ON pd.StudentID = s.Id INNER JOIN
-                         G_CommonFields AS gender ON gender.ID = s.GendersId INNER JOIN
-                         G_CommonFields AS degreeProgram ON degreeProgram.ID = s.DegreeProgramsId INNER JOIN
-                         G_CommonFields AS track ON track.ID = s.TracksId INNER JOIN
-                         G_CommonFields AS plans ON plans.ID = s.PlansId INNER JOIN
-                         G_CommonFields AS degreeStartSem ON degreeStartSem.ID = s.DegreeStartSemsId LEFT OUTER JOIN
-                         G_Graduation AS grad ON grad.StudentID = s.Id LEFT OUTER JOIN
-                         G_CommonFields AS gradSem ON gradSem.ID = grad.DegreeEndSemsId
-WHERE        ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (DATEFROMPARTS(grad.DegreeEndYear, 1, 1) &lt; @FromDate) OR
-                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND grad.DegreeEndYear IS NULL OR
-                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt;= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt;= @ToDate) AND 
-                         NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt; @ToDate) OR
-                         ISNULL(@FromDate, '') = '' OR
-                         ISNULL(@ToDate, '') = '') AND (s.FirstName + ' ' + s.LastName = @Student OR
-                         ISNULL(@Student, '') = '') AND ((CASE WHEN (gradSem.Name IS NULL AND grad.DegreeEndYear IS NULL) THEN 'Current' ELSE 'Former' END) = @CurrentFormer OR
-                         ISNULL(@CurrentFormer, '') = '')
+                    <CommandText>SELECT DISTINCT s.Id, s.StudentNumber AS StudentID, s.FirstName, s.MiddleName, s.LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gender.Name AS Gender, REPLACE(REPLACE(REPLACE('&lt;' + STUFF
+                      ((SELECT CASE WHEN pv2.DegreeTypesID IS NULL THEN 'N/A' WHEN pv2.DegreeTypesID = '' THEN 'N/A' ELSE '; -' + degTypes.Name + ' in ' + pv2.Title + ' (' + pv2.SchoolName + ', ' + CAST(YEAR(pv2.DateOfAward) AS nvarchar(4)) 
+                                          + ')' END AS Expr1
+                        FROM      PrevDegree AS pv2 INNER JOIN
+                                          Student AS s2 ON s.Id = s2.Id AND s2.Id = pv2.StudentID LEFT OUTER JOIN
+                                          CommonFields AS degTypes ON degTypes.ID = pv2.DegreeTypesID FOR XML PATH('')), 1, 1, ''), '&lt;Expr1&gt;', ''), '&lt;/Expr1&gt;', ''), ';', '') AS DegreeAtAdmission, REPLACE(REPLACE(REPLACE('&lt;' + STUFF
+                      ((SELECT CASE WHEN r2.Name IS NULL THEN 'N/A' WHEN r2.Name = '' THEN 'N/A' ELSE '; -' + r2.Name END AS Expr1
+                        FROM      Races AS r2 INNER JOIN
+                                          PersonRaces AS pr2 ON pr2.RaceID = r2.Id INNER JOIN
+                                          Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH('')), 1, 1, ''), '&lt;Expr1&gt;', ''), '&lt;/Expr1&gt;', ''), ';', '') AS RaceEthnicity, s.RaceOther, degreeProgram.Name AS DegreeProgram, track.Name AS Track, 
+                  plans.Name AS [Plan], degreeStartSem.Name AS DegreeStartSemester, s.DegreeStartYear, gradSem.Name AS DegreeAwardedSemester, grad.DegreeEndYear AS DegreeAwardedYear
+FROM     Student AS s LEFT OUTER JOIN
+                  PrevDegree AS pd ON pd.StudentID = s.Id INNER JOIN
+                  CommonFields AS gender ON gender.ID = s.GendersId INNER JOIN
+                  CommonFields AS degreeProgram ON degreeProgram.ID = s.DegreeProgramsId INNER JOIN
+                  CommonFields AS track ON track.ID = s.TracksId INNER JOIN
+                  CommonFields AS plans ON plans.ID = s.PlansId INNER JOIN
+                  CommonFields AS degreeStartSem ON degreeStartSem.ID = s.DegreeStartSemsId LEFT OUTER JOIN
+                  Graduation AS grad ON grad.StudentID = s.Id LEFT OUTER JOIN
+                  CommonFields AS gradSem ON gradSem.ID = grad.DegreeEndSemsId
+WHERE  ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (DATEFROMPARTS(grad.DegreeEndYear, 1, 1) &lt; @FromDate) OR
+                  DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND grad.DegreeEndYear IS NULL OR
+                  DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt;= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt;= @ToDate) AND NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt; @ToDate) OR
+                  ISNULL(@FromDate, '') = '' OR
+                  ISNULL(@ToDate, '') = '') AND (s.FirstName + ' ' + s.LastName = @Student OR
+                  ISNULL(@Student, '') = '') AND ((CASE WHEN (gradSem.Name IS NULL AND grad.DegreeEndYear IS NULL) THEN 'Current' ELSE 'Former' END) = @CurrentFormer OR
+                  ISNULL(@CurrentFormer, '') = '')
 ORDER BY s.DegreeStartYear DESC</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="FromDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@FromDate" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -82,52 +76,47 @@ ORDER BY s.DegreeStartYear DESC</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CourseworkTableAdapter" GeneratorDataComponentClassName="CourseworkTableAdapter" Name="Coursework" UserDataComponentName="CourseworkTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, NULL AS Grade, NULL AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, NULL AS Grade, NULL AS Credits FROM Student AS s RIGHT OUTER JOIN Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN CommonFields AS grade ON grade.ID = cw.GradeID UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits FROM Student AS s RIGHT OUTER JOIN Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN CommonFields AS grade ON grade.ID = cw.GradeID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) AS nvarchar(10)) AS Credits FROM Student AS s RIGHT OUTER JOIN Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) AS nvarchar(10)) AS Credits FROM Student AS s RIGHT OUTER JOIN Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        StudentID, Name, Semester, Course, Title, Grade, Credits
-FROM            (SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL 
-                                                    AS Course, NULL AS Title, NULL AS Grade, NULL AS Credits
-                          FROM            G_Student AS s RIGHT OUTER JOIN
-                                                    G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
-                                                    G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
-                                                    G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
-                                                    G_CommonFields AS grade ON grade.ID = cw.GradeID
-                          UNION ALL
-                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, 
-                                                   c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, 
-                                                   CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits
-                          FROM            G_Student AS s RIGHT OUTER JOIN
-                                                   G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
-                                                   G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
-                                                   G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
-                                                   G_CommonFields AS grade ON grade.ID = cw.GradeID
-                          UNION
-                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL 
-                                                   AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) 
-                                                   AS nvarchar(10)) AS Credits
-                          FROM            G_Student AS s RIGHT OUTER JOIN
-                                                   G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
-                                                   G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
-                                                   G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
-                                                   G_CommonFields AS grade ON grade.ID = cw.GradeID
-                          GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName
-                          UNION
-                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL 
-                                                   AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) 
-                                                   AS nvarchar(10)) AS Credits
-                          FROM            G_Student AS s RIGHT OUTER JOIN
-                                                   G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
-                                                   G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
-                                                   G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
-                                                   G_CommonFields AS grade ON grade.ID = cw.GradeID
-                          GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName) AS a
-WHERE        (Name = @Student) OR
-                         (ISNULL(@Student, '') = '')
-ORDER BY StudentID, Semester DESC, CASE WHEN [Grade] IS NULL 
-                         THEN 1 WHEN [Grade] = 'Total Number of Credits' THEN 3 WHEN [Grade] = 'Semester GPA' THEN 4 ELSE 2 END</CommandText>
+                    <CommandText>SELECT StudentID, Name, Semester, Course, Title, Grade, Credits
+FROM     (SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, NULL AS Grade, NULL AS Credits
+                  FROM      Student AS s RIGHT OUTER JOIN
+                                    Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
+                                    CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
+                                    Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
+                                    CommonFields AS grade ON grade.ID = cw.GradeID
+                  UNION ALL
+                  SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, 
+                                    CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits
+                  FROM     Student AS s RIGHT OUTER JOIN
+                                    Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
+                                    CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
+                                    Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
+                                    CommonFields AS grade ON grade.ID = cw.GradeID
+                  UNION
+                  SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, 
+                                    CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) AS nvarchar(10)) AS Credits
+                  FROM     Student AS s RIGHT OUTER JOIN
+                                    Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
+                                    CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
+                                    Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
+                                    CommonFields AS grade ON grade.ID = cw.GradeID
+                  GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName
+                  UNION
+                  SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 
+                                    2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) AS nvarchar(10)) AS Credits
+                  FROM     Student AS s RIGHT OUTER JOIN
+                                    Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN
+                                    CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN
+                                    Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN
+                                    CommonFields AS grade ON grade.ID = cw.GradeID
+                  GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName) AS a
+WHERE  (Name = @Student) OR
+                  (ISNULL(@Student, '') = '')
+ORDER BY StudentID, Semester DESC, CASE WHEN [Grade] IS NULL THEN 1 WHEN [Grade] = 'Total Number of Credits' THEN 3 WHEN [Grade] = 'Semester GPA' THEN 4 ELSE 2 END</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="Name" DataSourceName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, NULL AS Grade, NULL AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) AS nvarchar(10)) AS Credits FROM G_Student AS s RIGHT OUTER JOIN G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN G_CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="Name" DataSourceName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, NULL AS Grade, NULL AS Credits FROM Student AS s RIGHT OUTER JOIN Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN CommonFields AS grade ON grade.ID = cw.GradeID UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, CAST(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END AS nvarchar(10)) AS Credits FROM Student AS s RIGHT OUTER JOIN Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN CommonFields AS grade ON grade.ID = cw.GradeID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Total Number of Credits' AS Grade, CAST(SUM(CASE WHEN grade.GradePoint &lt; 2 THEN 0 ELSE c.Credits END) AS nvarchar(10)) AS Credits FROM Student AS s RIGHT OUTER JOIN Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, 'Semester GPA' AS Grade, CAST(CONVERT(DECIMAL(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) AS nvarchar(10)) AS Credits FROM Student AS s RIGHT OUTER JOIN Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN CommonFields AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN CommonFields AS grade ON grade.ID = cw.GradeID GROUP BY sem.Name + ' ' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + ' ' + s.LastName" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -146,56 +135,52 @@ ORDER BY StudentID, Semester DESC, CASE WHEN [Grade] IS NULL
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PerformanceTableAdapter" GeneratorDataComponentClassName="PerformanceTableAdapter" Name="Performance" UserDataComponentName="PerformanceTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID GROUP BY s.StudentNumber, s.FirstName, s.LastName UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON g.ActivityID = a.ID WHERE (g.FileType = 0) UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON g.ActivityID = a.ID WHERE (g.FileType = 0) GROUP BY s.StudentNumber, s.FirstName, s.LastName" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription FROM Performance AS p LEFT OUTER JOIN Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN CommonFields AS teach ON teach.ID = p.TeachingStatsID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription FROM Performance AS p LEFT OUTER JOIN Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN CommonFields AS teach ON teach.ID = p.TeachingStatsID GROUP BY s.StudentNumber, s.FirstName, s.LastName UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription FROM Student AS s RIGHT OUTER JOIN Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN [File] AS g ON g.ActivityId = a.ID WHERE (g.FileType = 0) UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription FROM Student AS s RIGHT OUTER JOIN Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN [File] AS g ON g.ActivityId = a.ID WHERE (g.FileType = 0) GROUP BY s.StudentNumber, s.FirstName, s.LastName" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        StudentID, Name, StatusType, Category, Information, StatusDescription
-FROM            (SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, 
-                                                    p.CategoryInfo AS Information, 
-                                                    CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name
-                                                     WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription
-                          FROM            G_Performance AS p LEFT OUTER JOIN
-                                                    G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN
-                                                    G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN
-                                                    G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN
-                                                    G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN
-                                                    G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN
-                                                    G_CommonFields AS teach ON teach.ID = p.TeachingStatsID
-                          UNION
-                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 
-                                                   'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription
-                          FROM            G_Performance AS p LEFT OUTER JOIN
-                                                   G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN
-                                                   G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN
-                                                   G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN
-                                                   G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN
-                                                   G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN
-                                                   G_CommonFields AS teach ON teach.ID = p.TeachingStatsID
-                          GROUP BY s.StudentNumber, s.FirstName, s.LastName
-                          UNION ALL
-                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, 
-                                                   g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription
-                          FROM            G_Student AS s RIGHT OUTER JOIN
-                                                   G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN
-                                                   G_File AS g ON g.ActivityID = a.ID
-                          WHERE        (g.FileType = 0)
-                          UNION ALL
-                          SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 
-                                                   'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription
-                          FROM            G_Student AS s RIGHT OUTER JOIN
-                                                   G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN
-                                                   G_File AS g ON g.ActivityID = a.ID
-                          WHERE        (g.FileType = 0)
-                          GROUP BY s.StudentNumber, s.FirstName, s.LastName) AS Performance
-WHERE        (Name = @Student) OR
-                         (ISNULL(@Student, '') = '')
-ORDER BY Name, CASE WHEN [StatusType] = 'Performance' THEN 1 WHEN [StatusType] IS NULL AND 
-                         [Information] = 'Number of Performance Items' THEN 2 WHEN [StatusType] = 'Activity Summary' THEN 3 WHEN [StatusType] IS NULL AND 
-                         [Information] = 'Number of Activity Summary Documents' THEN 4 ELSE 5 END, 
-                         CASE WHEN [Category] = 'Performance' THEN 1 WHEN [Category] = 'Publication' THEN 2 WHEN [Category] = 'Abstract' THEN 3 WHEN [Category] = 'Proposal' THEN 4
-                          WHEN [Category] = 'Teaching' THEN 5 WHEN [Category] IS NULL AND [Information] = 'Number of Performance Items' THEN 6 ELSE 7 END</CommandText>
+                    <CommandText>SELECT StudentID, Name, StatusType, Category, Information, StatusDescription
+FROM     (SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, 
+                                    CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription
+                  FROM      Performance AS p LEFT OUTER JOIN
+                                    Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN
+                                    CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN
+                                    CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN
+                                    CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN
+                                    CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN
+                                    CommonFields AS teach ON teach.ID = p.TeachingStatsID
+                  UNION
+                  SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) 
+                                    AS StatusDescription
+                  FROM     Performance AS p LEFT OUTER JOIN
+                                    Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN
+                                    CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN
+                                    CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN
+                                    CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN
+                                    CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN
+                                    CommonFields AS teach ON teach.ID = p.TeachingStatsID
+                  GROUP BY s.StudentNumber, s.FirstName, s.LastName
+                  UNION ALL
+                  SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription
+                  FROM     Student AS s RIGHT OUTER JOIN
+                                    Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN
+                                    [File] AS g ON g.ActivityId = a.ID
+                  WHERE  (g.FileType = 0)
+                  UNION ALL
+                  SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), 
+                                    COUNT(a.ActivitySummaryDesc)) AS StatusDescription
+                  FROM     Student AS s RIGHT OUTER JOIN
+                                    Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN
+                                    [File] AS g ON g.ActivityId = a.ID
+                  WHERE  (g.FileType = 0)
+                  GROUP BY s.StudentNumber, s.FirstName, s.LastName) AS Performance
+WHERE  (Name = @Student) OR
+                  (ISNULL(@Student, '') = '')
+ORDER BY Name, CASE WHEN [StatusType] = 'Performance' THEN 1 WHEN [StatusType] IS NULL AND [Information] = 'Number of Performance Items' THEN 2 WHEN [StatusType] = 'Activity Summary' THEN 3 WHEN [StatusType] IS NULL AND 
+                  [Information] = 'Number of Activity Summary Documents' THEN 4 ELSE 5 END, 
+                  CASE WHEN [Category] = 'Performance' THEN 1 WHEN [Category] = 'Publication' THEN 2 WHEN [Category] = 'Abstract' THEN 3 WHEN [Category] = 'Proposal' THEN 4 WHEN [Category] = 'Teaching' THEN 5 WHEN [Category] IS NULL AND 
+                  [Information] = 'Number of Performance Items' THEN 6 ELSE 7 END</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="Name" DataSourceName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription FROM G_Performance AS p LEFT OUTER JOIN G_Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN G_CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN G_CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN G_CommonFields AS teach ON teach.ID = p.TeachingStatsID GROUP BY s.StudentNumber, s.FirstName, s.LastName UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON g.ActivityID = a.ID WHERE (g.FileType = 0) UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription FROM G_Student AS s RIGHT OUTER JOIN G_Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN G_File AS g ON g.ActivityID = a.ID WHERE (g.FileType = 0) GROUP BY s.StudentNumber, s.FirstName, s.LastName" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="Name" DataSourceName="SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Performance' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Information, CASE WHEN categ.Name = 'Publication' THEN pubs.Name WHEN categ.Name = 'Abstract' THEN abstract.Name WHEN categ.Name = 'Proposal' THEN props.Name WHEN categ.Name = 'Teaching' THEN teach.Name END AS StatusDescription FROM Performance AS p LEFT OUTER JOIN Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN CommonFields AS teach ON teach.ID = p.TeachingStatsID UNION SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Performance Items' AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) AS StatusDescription FROM Performance AS p LEFT OUTER JOIN Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTER JOIN CommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN CommonFields AS teach ON teach.ID = p.TeachingStatsID GROUP BY s.StudentNumber, s.FirstName, s.LastName UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, 'Activity Summary' AS StatusType, NULL AS Category, g.FileName AS Information, a.ActivitySummaryDesc AS StatusDescription FROM Student AS s RIGHT OUTER JOIN Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN [File] AS g ON g.ActivityId = a.ID WHERE (g.FileType = 0) UNION ALL SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, NULL AS StatusType, NULL AS Category, 'Number of Activity Summary Documents' AS Information, CONVERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription FROM Student AS s RIGHT OUTER JOIN Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN [File] AS g ON g.ActivityId = a.ID WHERE (g.FileType = 0) GROUP BY s.StudentNumber, s.FirstName, s.LastName" DataTypeServer="unknown" DbType="String" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -217,41 +202,37 @@ ORDER BY Name, CASE WHEN [StatusType] = 'Performance' THEN 1 WHEN [StatusType] I
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT DISTINCT 
-                         s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, qr.Name + 'ed - ' + CONVERT(CHAR(10), g.DateOfQualification, 101) 
-                         + CASE WHEN qr2.ID IS NULL THEN '' ELSE '; ' + qr2.Name + 'ed - ' + CONVERT(CHAR(10), g.DateOfQualification2, 101) END AS QualifiyingExamination, 
-                         g.Form2Title AS ResearchTopic, fr.Name + 'ed -  ' + CONVERT(CHAR(10), g.Form2Date, 101) AS ProposalPresentation, cer.Name + 'ed - ' + CONVERT(CHAR(10), 
-                         g.DateOfCompExam, 101) + CASE WHEN cer2.ID IS NULL THEN '' ELSE '; ' + cer2.Name + 'ed - ' + CONVERT(CHAR(10), g.DateOfCompExam2, 101) 
-                         END AS ComprehensiveExam, g.AdvisorName + ' - ' + g.AdvisorDepartment + ' (' + g.AdvisorUniversity + ')' AS Advisor, STUFF
-                             ((SELECT DISTINCT '; ' + cm2.Name + ' - ' + cm2.Department + ' (' + cm2.University + ')' AS Expr1
-                                 FROM            G_CommitteeMember AS cm2 LEFT OUTER JOIN
-                                                          G_Student AS s2 ON cm2.StudentID = s2.Id
-                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS CommitteeMembers, g.Form3Title AS FinalDefenseTitle, fdr.Name + 'ed - ' + CONVERT(CHAR(10), 
-                         g.Form3Date, 101) AS FinalDefenseResult, STUFF
-                             ((SELECT DISTINCT '; ' + mFile2.FileName AS Expr1
-                                 FROM            G_File AS mFile2 RIGHT OUTER JOIN
-                                                          G_Manuscript AS m2 ON m2.ID = mFile2.ManuscriptID LEFT OUTER JOIN
-                                                          G_Student AS s2 ON m2.StudentID = s2.Id
-                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS ManuscriptFile, degreeEnd.Name + ' ' + CONVERT(NVARCHAR(4), g.DegreeEndYear) 
-                         AS DegreeAwarded
-FROM            G_Graduation AS g LEFT OUTER JOIN
-                         G_Student AS s ON g.StudentID = s.Id LEFT OUTER JOIN
-                         G_CommonFields AS qr ON g.QualifierResultId = qr.ID LEFT OUTER JOIN
-                         G_CommonFields AS qr2 ON g.Qualifier2ResultId = qr2.ID LEFT OUTER JOIN
-                         G_CommonFields AS fr ON g.Form2ResultId = fr.ID LEFT OUTER JOIN
-                         G_CommonFields AS cer ON g.CompExamResultId = cer.ID LEFT OUTER JOIN
-                         G_CommonFields AS cer2 ON g.CompExam2ResultId = cer2.ID LEFT OUTER JOIN
-                         G_CommonFields AS fdr ON g.Form3ResultId = fdr.ID LEFT OUTER JOIN
-                         G_Manuscript AS m ON m.StudentID = s.Id LEFT OUTER JOIN
-                         G_File AS mFile ON mFile.ManuscriptID = m.ID LEFT OUTER JOIN
-                         G_CommonFields AS degreeEnd ON degreeEnd.ID = g.DegreeEndSemsId
-WHERE        ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (DATEFROMPARTS(g.DegreeEndYear, 1, 1) &lt; @FromDate) OR
-                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND g.DegreeEndYear IS NULL OR
-                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt;= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt;= @ToDate) AND 
-                         NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt; @ToDate) OR
-                         ISNULL(@FromDate, '') = '' OR
-                         ISNULL(@ToDate, '') = '') AND (s.FirstName + ' ' + s.LastName = @Student OR
-                         ISNULL(@Student, '') = '') AND ((CASE WHEN (degreeEnd.Name IS NULL AND g.DegreeEndYear IS NULL) THEN 'Current' ELSE 'Former' END) = @CurrentFormer OR
-                         ISNULL(@CurrentFormer, '') = '')</CommandText>
+                  s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, qr.Name + 'ed - ' + CONVERT(CHAR(10), g.DateOfQualification, 101) + CASE WHEN qr2.ID IS NULL THEN '' ELSE '; ' + qr2.Name + 'ed - ' + CONVERT(CHAR(10), 
+                  g.DateOfQualification2, 101) END AS QualifiyingExamination, g.Form2Title AS ResearchTopic, fr.Name + 'ed -  ' + CONVERT(CHAR(10), g.Form2Date, 101) AS ProposalPresentation, cer.Name + 'ed - ' + CONVERT(CHAR(10), 
+                  g.DateOfCompExam, 101) + CASE WHEN cer2.ID IS NULL THEN '' ELSE '; ' + cer2.Name + 'ed - ' + CONVERT(CHAR(10), g.DateOfCompExam2, 101) END AS ComprehensiveExam, 
+                  g.AdvisorName + ' - ' + g.AdvisorDepartment + ' (' + g.AdvisorUniversity + ')' AS Advisor, STUFF
+                      ((SELECT DISTINCT '; ' + cm2.Name + ' - ' + cm2.Department + ' (' + cm2.University + ')' AS Expr1
+                        FROM      CommitteeMember AS cm2 LEFT OUTER JOIN
+                                          Student AS s2 ON cm2.StudentID = s2.Id
+                        WHERE   (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS CommitteeMembers, g.Form3Title AS FinalDefenseTitle, fdr.Name + 'ed - ' + CONVERT(CHAR(10), g.Form3Date, 101) AS FinalDefenseResult, STUFF
+                      ((SELECT DISTINCT '; ' + mFile2.FileName AS Expr1
+                        FROM      [File] AS mFile2 RIGHT OUTER JOIN
+                                          Manuscript AS m2 ON m2.ID = mFile2.ManuscriptId LEFT OUTER JOIN
+                                          Student AS s2 ON m2.StudentID = s2.Id
+                        WHERE   (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS ManuscriptFile, degreeEnd.Name + ' ' + CONVERT(NVARCHAR(4), g.DegreeEndYear) AS DegreeAwarded
+FROM     Graduation AS g LEFT OUTER JOIN
+                  Student AS s ON g.StudentID = s.Id LEFT OUTER JOIN
+                  CommonFields AS qr ON g.QualifierResultId = qr.ID LEFT OUTER JOIN
+                  CommonFields AS qr2 ON g.Qualifier2ResultId = qr2.ID LEFT OUTER JOIN
+                  CommonFields AS fr ON g.Form2ResultId = fr.ID LEFT OUTER JOIN
+                  CommonFields AS cer ON g.CompExamResultId = cer.ID LEFT OUTER JOIN
+                  CommonFields AS cer2 ON g.CompExam2ResultId = cer2.ID LEFT OUTER JOIN
+                  CommonFields AS fdr ON g.Form3ResultId = fdr.ID LEFT OUTER JOIN
+                  Manuscript AS m ON m.StudentID = s.Id LEFT OUTER JOIN
+                  [File] AS mFile ON mFile.ManuscriptId = m.ID LEFT OUTER JOIN
+                  CommonFields AS degreeEnd ON degreeEnd.ID = g.DegreeEndSemsId
+WHERE  ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (DATEFROMPARTS(g.DegreeEndYear, 1, 1) &lt; @FromDate) OR
+                  DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND g.DegreeEndYear IS NULL OR
+                  DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt;= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt;= @ToDate) AND NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) &gt; @ToDate) OR
+                  ISNULL(@FromDate, '') = '' OR
+                  ISNULL(@ToDate, '') = '') AND (s.FirstName + ' ' + s.LastName = @Student OR
+                  ISNULL(@Student, '') = '') AND ((CASE WHEN (degreeEnd.Name IS NULL AND g.DegreeEndYear IS NULL) THEN 'Current' ELSE 'Former' END) = @CurrentFormer OR
+                  ISNULL(@CurrentFormer, '') = '')</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="FromDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@FromDate" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                       <Parameter AllowDbNull="false" AutogeneratedName="ToDate" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@ToDate" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -283,170 +264,124 @@ WHERE        ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) &lt; @FromDate AND NOT (
               <DbSource ConnectionRef="SchoolContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, s.OtherEmail AS Email, s.Phone, STUFF
-                             ((SELECT DISTINCT '; ' + cvFile2.FileName AS Expr1
-                                 FROM            G_File AS cvFile2 LEFT OUTER JOIN
-                                                          G_CurriculumVitae AS cv2 ON cvFile2.CurriculumVitaeID = cv2.ID LEFT OUTER JOIN
-                                                          G_Student AS s2 ON cv2.StudentID = s2.Id
-                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS CVs, STUFF
-                             ((SELECT DISTINCT 
-                                                          '; ' + pe2.Position + '-' + pe2.Employer + ' (' + sm2.Name + ' ' + CONVERT(nvarchar(4), pe2.StartYear) + '-' + em2.Name + ' ' + CONVERT(nvarchar(4), 
-                                                          pe2.EndYear) + ')' AS Expr1
-                                 FROM            G_PreviousEmployment AS pe2 LEFT OUTER JOIN
-                                                          G_Student AS s2 ON pe2.StudentID = s2.Id LEFT OUTER JOIN
-                                                          G_CommonFields AS sm2 ON pe2.StartMonthId = sm2.ID LEFT OUTER JOIN
-                                                          G_CommonFields AS em2 ON pe2.EndMonthId = em2.ID
-                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS EmploymentHistory, STUFF
-                             ((SELECT DISTINCT '; ' + pub2.PublicationInformation + ' (' + pm2.Name + ' ' + CONVERT(nvarchar(4), pub2.PubYear) + ')' AS Expr1
-                                 FROM            G_Publications AS pub2 LEFT OUTER JOIN
-                                                          G_Student AS s2 ON pub2.StudentID = s2.Id LEFT OUTER JOIN
-                                                          G_CommonFields AS pm2 ON pub2.PubMonthId = pm2.ID
-                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS PublicationsPeerReviewedJournalonlyPublished, publ.TotalNumberofPublications, STUFF
-                             ((SELECT DISTINCT '; ' + grt2.GrantInformation + ' (' + gm2.Name + ' ' + CONVERT(nvarchar(4), grt2.GrantYear) + ')' AS Expr1
-                                 FROM            G_Grants AS grt2 LEFT OUTER JOIN
-                                                          G_CommonFields AS gm2 ON grt2.GrantMonthId = gm2.ID LEFT OUTER JOIN
-                                                          G_Student AS s2 ON grt2.StudentID = s2.Id
-                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS Grants, grants.TotalNumberofGrants, STUFF
-                             ((SELECT DISTINCT '; ' + h2.HonorInformation + ' (' + hm2.Name + ' ' + CONVERT(nvarchar(4), h2.HonorYear) + ')' AS Expr1
-                                 FROM            G_Honors AS h2 LEFT OUTER JOIN
-                                                          G_CommonFields AS hm2 ON h2.HonorMonthId = hm2.ID LEFT OUTER JOIN
-                                                          G_Student AS s2 ON h2.StudentID = s2.Id
-                                 WHERE        (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS HonorsAwards, honors.TotalNumberofHonorsAwards
-FROM            G_Student AS s LEFT OUTER JOIN
-                         G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
-                             (SELECT        s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), 
-                                                         COUNT(before.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), 
-                                                         COUNT(during_2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Year 1 (' + CONVERT(nvarchar(30), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear) + ' - May ' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 1) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), g.DegreeEndYear) 
-                                                         + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) 
-                                                         + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_1.ID)) + CHAR(13) 
-                                                         + '&lt;br /&gt;&lt;br /&gt;Year 2 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) 
-                                                         + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 1) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)
-                                                          + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_2.ID)) + CHAR(13) 
-                                                         + '&lt;br /&gt;&lt;br /&gt;Year 3 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) 
-                                                         + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 2) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)
-                                                          + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_3.ID)) + CHAR(13) 
-                                                         + '&lt;br /&gt;&lt;br /&gt;Year 4 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) 
-                                                         + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 3) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 4)
-                                                          + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_4.ID)) + CHAR(13) 
-                                                         + '&lt;br /&gt;&lt;br /&gt;Year 5 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) 
-                                                         + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 4) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)
-                                                          + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_5.ID))) 
-                                                         ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(during_1.ID)) END AS TotalNumberofPublications
-                               FROM            G_Publications AS pub INNER JOIN
-                                                         G_Student AS s ON pub.StudentID = s.Id LEFT OUTER JOIN
-                                                         G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
-                                                         G_CommonFields AS pubMonth ON pub.PubMonthId = pubMonth.ID LEFT OUTER JOIN
-                                                         G_Publications AS before ON before.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), before.PubYear)) &lt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) LEFT OUTER JOIN
-                                                         G_Publications AS during_1 ON during_1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), during_1.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) LEFT OUTER JOIN
-                                                         G_Publications AS during_2 ON during_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), during_2.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), during_2.PubYear)) 
-                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
-                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear)) LEFT OUTER JOIN
-                                                         G_Publications AS year_1 ON year_1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) 
-                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
-                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 1)) LEFT OUTER JOIN
-                                                         G_Publications AS year_2 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), year_2.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 1)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) 
-                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
-                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)) LEFT OUTER JOIN
-                                                         G_Publications AS year_3 ON year_3.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), year_3.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 2)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_3.PubYear)) 
-                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
-                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)) LEFT OUTER JOIN
-                                                         G_Publications AS year_4 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), year_4.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 4)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_4.PubYear)) 
-                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
-                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)) LEFT OUTER JOIN
-                                                         G_Publications AS year_5 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), year_5.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear + 5)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_5.PubYear)) 
-                                                         &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
-                                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 6))
-                               GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS publ ON publ.Id = s.Id LEFT OUTER JOIN
-                             (SELECT        s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), 
-                                                         COUNT(grBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), 
-                                                         COUNT(grDuring_2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;After Program: ' + CONVERT(nvarchar(4), COUNT(grAfter.ID))) 
-                                                         ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(grDuring_1.ID)) END AS TotalNumberofGrants
-                               FROM            G_Grants AS gr INNER JOIN
-                                                         G_Student AS s ON gr.StudentID = s.Id LEFT OUTER JOIN
-                                                         G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
-                                                         G_CommonFields AS grantMonth ON gr.GrantMonthId = grantMonth.ID LEFT OUTER JOIN
-                                                         G_Grants AS grBefore ON grBefore.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), grBefore.GrantYear)) &lt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) LEFT OUTER JOIN
-                                                         G_Grants AS grDuring_1 ON grDuring_1.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), grDuring_1.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) LEFT OUTER JOIN
-                                                         G_Grants AS grDuring_2 ON grDuring_2.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), grDuring_2.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), 
-                                                         grDuring_2.GrantYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear)) LEFT OUTER JOIN
-                                                         G_Grants AS grAfter ON grAfter.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), 
-                                                         grAfter.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear))
-                               GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS grants ON grants.Id = s.Id LEFT OUTER JOIN
-                             (SELECT        s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), 
-                                                         COUNT(honBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), 
-                                                         COUNT(honDuring_2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;After Program: ' + CONVERT(nvarchar(4), COUNT(honAfter.ID))) 
-                                                         ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(honDuring_1.ID)) END AS TotalNumberofHonorsAwards
-                               FROM            G_Honors AS hon INNER JOIN
-                                                         G_Student AS s ON hon.StudentID = s.Id LEFT OUTER JOIN
-                                                         G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
-                                                         G_CommonFields AS honorMonth ON hon.HonorMonthId = honorMonth.ID LEFT OUTER JOIN
-                                                         G_Honors AS honBefore ON honBefore.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), honBefore.HonorYear)) &lt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) LEFT OUTER JOIN
-                                                         G_Honors AS honDuring_1 ON honDuring_1.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), honDuring_1.HonorYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) LEFT OUTER JOIN
-                                                         G_Honors AS honDuring_2 ON honDuring_2.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), honDuring_2.HonorYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         s.DegreeStartYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), 
-                                                         honDuring_2.HonorYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear)) LEFT OUTER JOIN
-                                                         G_Honors AS honAfter ON honAfter.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) 
-                                                         + '/15/' + CONVERT(nvarchar(4), honAfter.HonorYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
-                                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), 
-                                                         g.DegreeEndYear))
-                               GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS honors ON honors.Id = s.Id
-WHERE        (@Student = s.FirstName + ' ' + s.LastName) OR
-                         (@Student IS NULL)
-GROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastName, s.OtherEmail, s.Phone, g.DegreeEndYear, g.DegreeEndSemsId, publ.TotalNumberofPublications, 
-                         grants.TotalNumberofGrants, honors.TotalNumberofHonorsAwards</CommandText>
+                    <CommandText>SELECT s.StudentNumber AS StudentID, s.FirstName + ' ' + s.LastName AS Name, s.OtherEmail AS Email, s.Phone, STUFF
+                      ((SELECT DISTINCT '; ' + cvFile2.FileName AS Expr1
+                        FROM      [File] AS cvFile2 LEFT OUTER JOIN
+                                          CurriculumVitae AS cv2 ON cvFile2.CurriculumVitaeId = cv2.ID LEFT OUTER JOIN
+                                          Student AS s2 ON cv2.StudentID = s2.Id
+                        WHERE   (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS CVs, STUFF
+                      ((SELECT DISTINCT '; ' + pe2.Position + '-' + pe2.Employer + ' (' + sm2.Name + ' ' + CONVERT(nvarchar(4), pe2.StartYear) + '-' + em2.Name + ' ' + CONVERT(nvarchar(4), pe2.EndYear) + ')' AS Expr1
+                        FROM      PreviousEmployment AS pe2 LEFT OUTER JOIN
+                                          Student AS s2 ON pe2.StudentID = s2.Id LEFT OUTER JOIN
+                                          CommonFields AS sm2 ON pe2.StartMonthId = sm2.ID LEFT OUTER JOIN
+                                          CommonFields AS em2 ON pe2.EndMonthId = em2.ID
+                        WHERE   (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS EmploymentHistory, STUFF
+                      ((SELECT DISTINCT '; ' + pub2.PublicationInformation + ' (' + pm2.Name + ' ' + CONVERT(nvarchar(4), pub2.PubYear) + ')' AS Expr1
+                        FROM      Publications AS pub2 LEFT OUTER JOIN
+                                          Student AS s2 ON pub2.StudentID = s2.Id LEFT OUTER JOIN
+                                          CommonFields AS pm2 ON pub2.PubMonthId = pm2.ID
+                        WHERE   (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS PublicationsPeerReviewedJournalonlyPublished, publ.TotalNumberofPublications, STUFF
+                      ((SELECT DISTINCT '; ' + grt2.GrantInformation + ' (' + gm2.Name + ' ' + CONVERT(nvarchar(4), grt2.GrantYear) + ')' AS Expr1
+                        FROM      Grants AS grt2 LEFT OUTER JOIN
+                                          CommonFields AS gm2 ON grt2.GrantMonthId = gm2.ID LEFT OUTER JOIN
+                                          Student AS s2 ON grt2.StudentID = s2.Id
+                        WHERE   (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS Grants, grants.TotalNumberofGrants, STUFF
+                      ((SELECT DISTINCT '; ' + h2.HonorInformation + ' (' + hm2.Name + ' ' + CONVERT(nvarchar(4), h2.HonorYear) + ')' AS Expr1
+                        FROM      Honors AS h2 LEFT OUTER JOIN
+                                          CommonFields AS hm2 ON h2.HonorMonthId = hm2.ID LEFT OUTER JOIN
+                                          Student AS s2 ON h2.StudentID = s2.Id
+                        WHERE   (s2.Id = s.Id) FOR XML PATH('')), 1, 1, '') AS HonorsAwards, honors.TotalNumberofHonorsAwards
+FROM     Student AS s LEFT OUTER JOIN
+                  Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
+                      (SELECT s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), COUNT(before.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL 
+                                         THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(durin2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Year 1 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), 
+                                         g.DegreeEndYear) + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), g.DegreeEndYear) + ' - August' + CONVERT(nvarchar(4), 
+                                         g.DegreeEndYear + 1) + '): ' ELSE 'January' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_1.ID)) + CHAR(13) 
+                                         + '&lt;br /&gt;&lt;br /&gt;Year 2 (' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) 
+                                         + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + '): ' ELSE 'January' + CONVERT(nvarchar(4), 
+                                         g.DegreeEndYear + 2) + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Year 3 (' + CONVERT(nvarchar(30), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) 
+                                         + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + '): ' ELSE 'January' + CONVERT(nvarchar(4), 
+                                         g.DegreeEndYear + 3) + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_3.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Year 4 (' + CONVERT(nvarchar(30), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) 
+                                         + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + '): ' ELSE 'January' + CONVERT(nvarchar(4), 
+                                         g.DegreeEndYear + 4) + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_4.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Year 5 (' + CONVERT(nvarchar(30), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 'June ' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + ' - May ' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) 
+                                         + '): ' WHEN g.DegreeEndSemsId = 3 THEN 'September' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + ' - August' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) + '): ' ELSE 'January' + CONVERT(nvarchar(4), 
+                                         g.DegreeEndYear + 5) + ' - December' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) + '): ' END) + CONVERT(nvarchar(4), COUNT(year_5.ID))) ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(durin1.ID)) 
+                                         END AS TotalNumberofPublications
+                       FROM      Publications AS pub INNER JOIN
+                                         Student AS s ON pub.StudentID = s.Id LEFT OUTER JOIN
+                                         Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
+                                         CommonFields AS pubMonth ON pub.PubMonthId = pubMonth.ID LEFT OUTER JOIN
+                                         Publications AS before ON before.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), before.PubYear)) &lt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN
+                                         Publications AS durin1 ON durin1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), durin1.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN
+                                         Publications AS durin2 ON durin2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), durin2.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), durin2.PubYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear)) LEFT OUTER JOIN
+                                         Publications AS year_1 ON year_1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 1)) LEFT OUTER JOIN
+                                         Publications AS year_2 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_2.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 1)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_1.PubYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)) LEFT OUTER JOIN
+                                         Publications AS year_3 ON year_3.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_3.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_3.PubYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)) LEFT OUTER JOIN
+                                         Publications AS year_4 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_4.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 4)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_4.PubYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)) LEFT OUTER JOIN
+                                         Publications AS year_5 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_5.PubYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         pubMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), year_5.PubYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) 
+                                         + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear + 6))
+                       GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS publ ON publ.Id = s.Id LEFT OUTER JOIN
+                      (SELECT s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), COUNT(grBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL 
+                                         THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(grDurin2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;After Program: ' + CONVERT(nvarchar(4), COUNT(grAfter.ID))) 
+                                         ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(grDurin1.ID)) END AS TotalNumberofGrants
+                       FROM      Grants AS gr INNER JOIN
+                                         Student AS s ON gr.StudentID = s.Id LEFT OUTER JOIN
+                                         Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
+                                         CommonFields AS grantMonth ON gr.GrantMonthId = grantMonth.ID LEFT OUTER JOIN
+                                         Grants AS grBefore ON grBefore.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), grBefore.GrantYear)) &lt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN
+                                         Grants AS grDurin1 ON grDurin1.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), grDurin1.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN
+                                         Grants AS grDurin2 ON grDurin2.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), grDurin2.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), grDurin2.GrantYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear)) LEFT OUTER JOIN
+                                         Grants AS grAfter ON grAfter.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), grAfter.GrantYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear))
+                       GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS grants ON grants.Id = s.Id LEFT OUTER JOIN
+                      (SELECT s.Id, '&lt;u&gt;Total: &lt;strong&gt;' + CONVERT(nvarchar(4), COUNT(*)) + '&lt;/strong&gt;&lt;/u&gt;' + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;Before Program: ' + CONVERT(nvarchar(4), COUNT(honBefore.ID)) + CHAR(13) 
+                                         + CASE WHEN g.DegreeEndYear IS NOT NULL THEN ('&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(honDurin2.ID)) + CHAR(13) + '&lt;br /&gt;&lt;br /&gt;After Program: ' + CONVERT(nvarchar(4), COUNT(honAfter.ID))) 
+                                         ELSE '&lt;br /&gt;&lt;br /&gt;During Program: ' + CONVERT(nvarchar(4), COUNT(honDurin1.ID)) END AS TotalNumberofHonorsAwards
+                       FROM      Honors AS hon INNER JOIN
+                                         Student AS s ON hon.StudentID = s.Id LEFT OUTER JOIN
+                                         Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN
+                                         CommonFields AS honorMonth ON hon.HonorMonthId = honorMonth.ID LEFT OUTER JOIN
+                                         Honors AS honBefore ON honBefore.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), honBefore.HonorYear)) &lt; CONVERT(DATETIME, 
+                                         CONVERT(nvarchar(2), CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN
+                                         Honors AS honDurin1 ON honDurin1.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), honDurin1.HonorYear)) &gt; CONVERT(DATETIME, 
+                                         CONVERT(nvarchar(2), CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN
+                                         Honors AS honDurin2 ON honDurin2.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), honDurin2.HonorYear)) &gt; CONVERT(DATETIME, 
+                                         CONVERT(nvarchar(2), CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), s.DegreeStartYear)) AND CONVERT(DATETIME, 
+                                         CONVERT(nvarchar(2), honorMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), honDurin2.HonorYear)) &lt;= CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear)) LEFT OUTER JOIN
+                                         Honors AS honAfter ON honAfter.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + '/15/' + CONVERT(nvarchar(4), honAfter.HonorYear)) &gt; CONVERT(DATETIME, CONVERT(nvarchar(2), 
+                                         CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + '/31/' + CONVERT(nvarchar(4), g.DegreeEndYear))
+                       GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS honors ON honors.Id = s.Id
+WHERE  (@Student = s.FirstName + ' ' + s.LastName) OR
+                  (@Student IS NULL)
+GROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastName, s.OtherEmail, s.Phone, g.DegreeEndYear, g.DegreeEndSemsId, publ.TotalNumberofPublications, grants.TotalNumberofGrants, honors.TotalNumberofHonorsAwards</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="Student" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@Student" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
@@ -478,7 +413,7 @@ GROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastName, s.OtherEmail, s.Phone, 
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Background" msprop:Generator_TableClassName="BackgroundDataTable" msprop:Generator_TableVarName="tableBackground" msprop:Generator_RowChangedName="BackgroundRowChanged" msprop:Generator_TablePropName="Background" msprop:Generator_RowDeletingName="BackgroundRowDeleting" msprop:Generator_RowChangingName="BackgroundRowChanging" msprop:Generator_RowEvHandlerName="BackgroundRowChangeEventHandler" msprop:Generator_RowDeletedName="BackgroundRowDeleted" msprop:Generator_RowClassName="BackgroundRow" msprop:Generator_UserTableName="Background" msprop:Generator_RowEvArgName="BackgroundRowChangeEvent">
+        <xs:element name="Background" msprop:Generator_TableClassName="BackgroundDataTable" msprop:Generator_TableVarName="tableBackground" msprop:Generator_TablePropName="Background" msprop:Generator_RowDeletingName="BackgroundRowDeleting" msprop:Generator_RowChangingName="BackgroundRowChanging" msprop:Generator_RowEvHandlerName="BackgroundRowChangeEventHandler" msprop:Generator_RowDeletedName="BackgroundRowDeleted" msprop:Generator_UserTableName="Background" msprop:Generator_RowChangedName="BackgroundRowChanged" msprop:Generator_RowEvArgName="BackgroundRowChangeEvent" msprop:Generator_RowClassName="BackgroundRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -593,7 +528,7 @@ GROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastName, s.OtherEmail, s.Phone, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Coursework" msprop:Generator_TableClassName="CourseworkDataTable" msprop:Generator_TableVarName="tableCoursework" msprop:Generator_RowChangedName="CourseworkRowChanged" msprop:Generator_TablePropName="Coursework" msprop:Generator_RowDeletingName="CourseworkRowDeleting" msprop:Generator_RowChangingName="CourseworkRowChanging" msprop:Generator_RowEvHandlerName="CourseworkRowChangeEventHandler" msprop:Generator_RowDeletedName="CourseworkRowDeleted" msprop:Generator_RowClassName="CourseworkRow" msprop:Generator_UserTableName="Coursework" msprop:Generator_RowEvArgName="CourseworkRowChangeEvent">
+        <xs:element name="Coursework" msprop:Generator_TableClassName="CourseworkDataTable" msprop:Generator_TableVarName="tableCoursework" msprop:Generator_TablePropName="Coursework" msprop:Generator_RowDeletingName="CourseworkRowDeleting" msprop:Generator_RowChangingName="CourseworkRowChanging" msprop:Generator_RowEvHandlerName="CourseworkRowChangeEventHandler" msprop:Generator_RowDeletedName="CourseworkRowDeleted" msprop:Generator_UserTableName="Coursework" msprop:Generator_RowChangedName="CourseworkRowChanged" msprop:Generator_RowEvArgName="CourseworkRowChangeEvent" msprop:Generator_RowClassName="CourseworkRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="StudentID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_UserColumnName="StudentID" type="xs:int" minOccurs="0" />
@@ -642,7 +577,7 @@ GROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastName, s.OtherEmail, s.Phone, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Performance" msprop:Generator_TableClassName="PerformanceDataTable" msprop:Generator_TableVarName="tablePerformance" msprop:Generator_TablePropName="Performance" msprop:Generator_RowDeletingName="PerformanceRowDeleting" msprop:Generator_RowChangingName="PerformanceRowChanging" msprop:Generator_RowEvHandlerName="PerformanceRowChangeEventHandler" msprop:Generator_RowDeletedName="PerformanceRowDeleted" msprop:Generator_UserTableName="Performance" msprop:Generator_RowChangedName="PerformanceRowChanged" msprop:Generator_RowEvArgName="PerformanceRowChangeEvent" msprop:Generator_RowClassName="PerformanceRow">
+        <xs:element name="Performance" msprop:Generator_TableClassName="PerformanceDataTable" msprop:Generator_TableVarName="tablePerformance" msprop:Generator_RowChangedName="PerformanceRowChanged" msprop:Generator_TablePropName="Performance" msprop:Generator_RowDeletingName="PerformanceRowDeleting" msprop:Generator_RowChangingName="PerformanceRowChanging" msprop:Generator_RowEvHandlerName="PerformanceRowChangeEventHandler" msprop:Generator_RowDeletedName="PerformanceRowDeleted" msprop:Generator_RowClassName="PerformanceRow" msprop:Generator_UserTableName="Performance" msprop:Generator_RowEvArgName="PerformanceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="StudentID" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_UserColumnName="StudentID" type="xs:int" minOccurs="0" />
@@ -684,7 +619,7 @@ GROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastName, s.OtherEmail, s.Phone, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Requirements" msprop:Generator_TableClassName="RequirementsDataTable" msprop:Generator_TableVarName="tableRequirements" msprop:Generator_TablePropName="Requirements" msprop:Generator_RowDeletingName="RequirementsRowDeleting" msprop:Generator_RowChangingName="RequirementsRowChanging" msprop:Generator_RowEvHandlerName="RequirementsRowChangeEventHandler" msprop:Generator_RowDeletedName="RequirementsRowDeleted" msprop:Generator_UserTableName="Requirements" msprop:Generator_RowChangedName="RequirementsRowChanged" msprop:Generator_RowEvArgName="RequirementsRowChangeEvent" msprop:Generator_RowClassName="RequirementsRow">
+        <xs:element name="Requirements" msprop:Generator_TableClassName="RequirementsDataTable" msprop:Generator_TableVarName="tableRequirements" msprop:Generator_RowChangedName="RequirementsRowChanged" msprop:Generator_TablePropName="Requirements" msprop:Generator_RowDeletingName="RequirementsRowDeleting" msprop:Generator_RowChangingName="RequirementsRowChanging" msprop:Generator_RowEvHandlerName="RequirementsRowChangeEventHandler" msprop:Generator_RowDeletedName="RequirementsRowDeleted" msprop:Generator_RowClassName="RequirementsRow" msprop:Generator_UserTableName="Requirements" msprop:Generator_RowEvArgName="RequirementsRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_UserColumnName="Name" minOccurs="0">
@@ -768,7 +703,7 @@ GROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastName, s.OtherEmail, s.Phone, 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Postgraduation" msprop:Generator_TableClassName="PostgraduationDataTable" msprop:Generator_TableVarName="tablePostgraduation" msprop:Generator_TablePropName="Postgraduation" msprop:Generator_RowDeletingName="PostgraduationRowDeleting" msprop:Generator_RowChangingName="PostgraduationRowChanging" msprop:Generator_RowEvHandlerName="PostgraduationRowChangeEventHandler" msprop:Generator_RowDeletedName="PostgraduationRowDeleted" msprop:Generator_UserTableName="Postgraduation" msprop:Generator_RowChangedName="PostgraduationRowChanged" msprop:Generator_RowEvArgName="PostgraduationRowChangeEvent" msprop:Generator_RowClassName="PostgraduationRow">
+        <xs:element name="Postgraduation" msprop:Generator_TableClassName="PostgraduationDataTable" msprop:Generator_TableVarName="tablePostgraduation" msprop:Generator_RowChangedName="PostgraduationRowChanged" msprop:Generator_TablePropName="Postgraduation" msprop:Generator_RowDeletingName="PostgraduationRowDeleting" msprop:Generator_RowChangingName="PostgraduationRowChanging" msprop:Generator_RowEvHandlerName="PostgraduationRowChangeEventHandler" msprop:Generator_RowDeletedName="PostgraduationRowDeleted" msprop:Generator_RowClassName="PostgraduationRow" msprop:Generator_UserTableName="Postgraduation" msprop:Generator_RowEvArgName="PostgraduationRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="StudentID" msprop:Generator_ColumnVarNameInTable="columnStudentID" msprop:Generator_ColumnPropNameInRow="StudentID" msprop:Generator_ColumnPropNameInTable="StudentIDColumn" msprop:Generator_UserColumnName="StudentID" type="xs:int" />

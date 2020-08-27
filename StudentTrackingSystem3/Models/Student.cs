@@ -39,12 +39,15 @@ namespace StudentTrackingSystem3.Models
         public int DegreeStartSemsId { get; set; }
         [Required, Range(1000, 9999), Display(Name ="Degree Program Start Year")]
         public int DegreeStartYear { get; set; }
+        [Required, Display(Name ="Citizenship Status")]
+        public int CitizenshipStatsId { get; set; }
 
         public virtual CommonFields Genders { get; set; }
         public virtual CommonFields DegreePrograms { get; set; }
         public virtual CommonFields Tracks { get; set; }
         public virtual CommonFields Plans { get; set; }
         public virtual CommonFields DegreeStartSems { get; set; }
+        public virtual CommonFields CitizenshipStats { get; set; }
         
 
         [Display(Name = "Race/Ethnicity")]

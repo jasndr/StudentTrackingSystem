@@ -37,7 +37,7 @@ namespace StudentTrackingSystem3.Reports {
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public DataSet1() {
             this.BeginInit();
             this.InitClass();
@@ -48,7 +48,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected DataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
@@ -96,7 +96,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public BackgroundDataTable Background {
@@ -106,7 +106,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public CourseworkDataTable Coursework {
@@ -116,7 +116,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public PerformanceDataTable Performance {
@@ -126,7 +126,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public RequirementsDataTable Requirements {
@@ -136,7 +136,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public PostgraduationDataTable Postgraduation {
@@ -146,7 +146,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -159,7 +159,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public new global::System.Data.DataTableCollection Tables {
             get {
@@ -168,7 +168,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public new global::System.Data.DataRelationCollection Relations {
             get {
@@ -177,7 +177,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override void InitializeDerivedDataSet() {
             this.BeginInit();
             this.InitClass();
@@ -185,7 +185,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
             DataSet1 cln = ((DataSet1)(base.Clone()));
             cln.InitVars();
@@ -194,19 +194,19 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override bool ShouldSerializeTables() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override bool ShouldSerializeRelations() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
             if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 this.Reset();
@@ -243,7 +243,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
             this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
@@ -252,13 +252,13 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars() {
             this.InitVars(true);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal void InitVars(bool initTable) {
             this.tableBackground = ((BackgroundDataTable)(base.Tables["Background"]));
             if ((initTable == true)) {
@@ -293,7 +293,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
             this.DataSetName = "DataSet1";
             this.Prefix = "";
@@ -313,37 +313,37 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeBackground() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeCoursework() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializePerformance() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializeRequirements() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private bool ShouldSerializePostgraduation() {
             return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -351,7 +351,7 @@ namespace StudentTrackingSystem3.Reports {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
             DataSet1 ds = new DataSet1();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
@@ -397,19 +397,19 @@ namespace StudentTrackingSystem3.Reports {
             return type;
         }
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void BackgroundRowChangeEventHandler(object sender, BackgroundRowChangeEvent e);
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void CourseworkRowChangeEventHandler(object sender, CourseworkRowChangeEvent e);
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void PerformanceRowChangeEventHandler(object sender, PerformanceRowChangeEvent e);
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void RequirementsRowChangeEventHandler(object sender, RequirementsRowChangeEvent e);
         
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void PostgraduationRowChangeEventHandler(object sender, PostgraduationRowChangeEvent e);
         
         /// <summary>
@@ -458,7 +458,7 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataColumn columnDegreeAwardedYear;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BackgroundDataTable() {
                 this.TableName = "Background";
                 this.BeginInit();
@@ -467,7 +467,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal BackgroundDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
@@ -484,14 +484,14 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected BackgroundDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn IdColumn {
                 get {
                     return this.columnId;
@@ -499,7 +499,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StudentIDColumn {
                 get {
                     return this.columnStudentID;
@@ -507,7 +507,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn FirstNameColumn {
                 get {
                     return this.columnFirstName;
@@ -515,7 +515,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn MiddleNameColumn {
                 get {
                     return this.columnMiddleName;
@@ -523,7 +523,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn LastNameColumn {
                 get {
                     return this.columnLastName;
@@ -531,7 +531,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn SchoolEmailColumn {
                 get {
                     return this.columnSchoolEmail;
@@ -539,7 +539,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn OtherEmailColumn {
                 get {
                     return this.columnOtherEmail;
@@ -547,7 +547,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn PhoneColumn {
                 get {
                     return this.columnPhone;
@@ -555,7 +555,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn GenderColumn {
                 get {
                     return this.columnGender;
@@ -563,7 +563,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DegreeAtAdmissionColumn {
                 get {
                     return this.columnDegreeAtAdmission;
@@ -571,7 +571,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn RaceEthnicityColumn {
                 get {
                     return this.columnRaceEthnicity;
@@ -579,7 +579,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn RaceOtherColumn {
                 get {
                     return this.columnRaceOther;
@@ -587,7 +587,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DegreeProgramColumn {
                 get {
                     return this.columnDegreeProgram;
@@ -595,7 +595,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn TrackColumn {
                 get {
                     return this.columnTrack;
@@ -603,7 +603,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn PlanColumn {
                 get {
                     return this.columnPlan;
@@ -611,7 +611,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DegreeStartSemesterColumn {
                 get {
                     return this.columnDegreeStartSemester;
@@ -619,7 +619,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DegreeStartYearColumn {
                 get {
                     return this.columnDegreeStartYear;
@@ -627,7 +627,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DegreeAwardedSemesterColumn {
                 get {
                     return this.columnDegreeAwardedSemester;
@@ -635,7 +635,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DegreeAwardedYearColumn {
                 get {
                     return this.columnDegreeAwardedYear;
@@ -643,7 +643,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -652,33 +652,33 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BackgroundRow this[int index] {
                 get {
                     return ((BackgroundRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event BackgroundRowChangeEventHandler BackgroundRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event BackgroundRowChangeEventHandler BackgroundRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event BackgroundRowChangeEventHandler BackgroundRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event BackgroundRowChangeEventHandler BackgroundRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void AddBackgroundRow(BackgroundRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BackgroundRow AddBackgroundRow(
                         int StudentID, 
                         string FirstName, 
@@ -725,14 +725,14 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BackgroundRow FindById(int Id) {
                 return ((BackgroundRow)(this.Rows.Find(new object[] {
                             Id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 BackgroundDataTable cln = ((BackgroundDataTable)(base.Clone()));
                 cln.InitVars();
@@ -740,13 +740,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
                 return new BackgroundDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
                 this.columnStudentID = base.Columns["StudentID"];
@@ -770,7 +770,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
                 this.columnId = new global::System.Data.DataColumn("Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnId);
@@ -845,25 +845,25 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BackgroundRow NewBackgroundRow() {
                 return ((BackgroundRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new BackgroundRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(BackgroundRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.BackgroundRowChanged != null)) {
@@ -872,7 +872,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.BackgroundRowChanging != null)) {
@@ -881,7 +881,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.BackgroundRowDeleted != null)) {
@@ -890,7 +890,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.BackgroundRowDeleting != null)) {
@@ -899,13 +899,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void RemoveBackgroundRow(BackgroundRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -990,7 +990,7 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataColumn columnCredits;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CourseworkDataTable() {
                 this.TableName = "Coursework";
                 this.BeginInit();
@@ -999,7 +999,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal CourseworkDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
@@ -1016,14 +1016,14 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected CourseworkDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StudentIDColumn {
                 get {
                     return this.columnStudentID;
@@ -1031,7 +1031,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
@@ -1039,7 +1039,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn SemesterColumn {
                 get {
                     return this.columnSemester;
@@ -1047,7 +1047,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn CourseColumn {
                 get {
                     return this.columnCourse;
@@ -1055,7 +1055,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn TitleColumn {
                 get {
                     return this.columnTitle;
@@ -1063,7 +1063,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn GradeColumn {
                 get {
                     return this.columnGrade;
@@ -1071,7 +1071,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn CreditsColumn {
                 get {
                     return this.columnCredits;
@@ -1079,7 +1079,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1088,33 +1088,33 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CourseworkRow this[int index] {
                 get {
                     return ((CourseworkRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event CourseworkRowChangeEventHandler CourseworkRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event CourseworkRowChangeEventHandler CourseworkRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event CourseworkRowChangeEventHandler CourseworkRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event CourseworkRowChangeEventHandler CourseworkRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void AddCourseworkRow(CourseworkRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CourseworkRow AddCourseworkRow(int StudentID, string Name, string Semester, string Course, string Title, string Grade, string Credits) {
                 CourseworkRow rowCourseworkRow = ((CourseworkRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1131,7 +1131,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 CourseworkDataTable cln = ((CourseworkDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1139,13 +1139,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
                 return new CourseworkDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnStudentID = base.Columns["StudentID"];
                 this.columnName = base.Columns["Name"];
@@ -1157,7 +1157,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
                 this.columnStudentID = new global::System.Data.DataColumn("StudentID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStudentID);
@@ -1189,25 +1189,25 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CourseworkRow NewCourseworkRow() {
                 return ((CourseworkRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new CourseworkRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(CourseworkRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.CourseworkRowChanged != null)) {
@@ -1216,7 +1216,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.CourseworkRowChanging != null)) {
@@ -1225,7 +1225,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.CourseworkRowDeleted != null)) {
@@ -1234,7 +1234,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.CourseworkRowDeleting != null)) {
@@ -1243,13 +1243,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void RemoveCourseworkRow(CourseworkRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -1332,7 +1332,7 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataColumn columnStatusDescription;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PerformanceDataTable() {
                 this.TableName = "Performance";
                 this.BeginInit();
@@ -1341,7 +1341,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal PerformanceDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
@@ -1358,14 +1358,14 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected PerformanceDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StudentIDColumn {
                 get {
                     return this.columnStudentID;
@@ -1373,7 +1373,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
@@ -1381,7 +1381,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn CategoryColumn {
                 get {
                     return this.columnCategory;
@@ -1389,7 +1389,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn InformationColumn {
                 get {
                     return this.columnInformation;
@@ -1397,7 +1397,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StatusTypeColumn {
                 get {
                     return this.columnStatusType;
@@ -1405,7 +1405,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StatusDescriptionColumn {
                 get {
                     return this.columnStatusDescription;
@@ -1413,7 +1413,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1422,33 +1422,33 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PerformanceRow this[int index] {
                 get {
                     return ((PerformanceRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event PerformanceRowChangeEventHandler PerformanceRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event PerformanceRowChangeEventHandler PerformanceRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event PerformanceRowChangeEventHandler PerformanceRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event PerformanceRowChangeEventHandler PerformanceRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void AddPerformanceRow(PerformanceRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PerformanceRow AddPerformanceRow(int StudentID, string Name, string Category, string Information, string StatusType, string StatusDescription) {
                 PerformanceRow rowPerformanceRow = ((PerformanceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1464,7 +1464,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 PerformanceDataTable cln = ((PerformanceDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1472,13 +1472,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
                 return new PerformanceDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnStudentID = base.Columns["StudentID"];
                 this.columnName = base.Columns["Name"];
@@ -1489,7 +1489,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
                 this.columnStudentID = new global::System.Data.DataColumn("StudentID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStudentID);
@@ -1517,25 +1517,25 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PerformanceRow NewPerformanceRow() {
                 return ((PerformanceRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new PerformanceRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(PerformanceRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.PerformanceRowChanged != null)) {
@@ -1544,7 +1544,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.PerformanceRowChanging != null)) {
@@ -1553,7 +1553,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.PerformanceRowDeleted != null)) {
@@ -1562,7 +1562,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.PerformanceRowDeleting != null)) {
@@ -1571,13 +1571,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void RemovePerformanceRow(PerformanceRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -1672,7 +1672,7 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataColumn columnDegreeAwarded;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public RequirementsDataTable() {
                 this.TableName = "Requirements";
                 this.BeginInit();
@@ -1681,7 +1681,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal RequirementsDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
@@ -1698,14 +1698,14 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected RequirementsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
@@ -1713,7 +1713,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn AdvisorColumn {
                 get {
                     return this.columnAdvisor;
@@ -1721,7 +1721,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StudentIDColumn {
                 get {
                     return this.columnStudentID;
@@ -1729,7 +1729,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn QualifiyingExaminationColumn {
                 get {
                     return this.columnQualifiyingExamination;
@@ -1737,7 +1737,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ResearchTopicColumn {
                 get {
                     return this.columnResearchTopic;
@@ -1745,7 +1745,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ProposalPresentationColumn {
                 get {
                     return this.columnProposalPresentation;
@@ -1753,7 +1753,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ComprehensiveExamColumn {
                 get {
                     return this.columnComprehensiveExam;
@@ -1761,7 +1761,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn CommitteeMembersColumn {
                 get {
                     return this.columnCommitteeMembers;
@@ -1769,7 +1769,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn FinalDefenseTitleColumn {
                 get {
                     return this.columnFinalDefenseTitle;
@@ -1777,7 +1777,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn FinalDefenseResultColumn {
                 get {
                     return this.columnFinalDefenseResult;
@@ -1785,7 +1785,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn ManuscriptFileColumn {
                 get {
                     return this.columnManuscriptFile;
@@ -1793,7 +1793,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn DegreeAwardedColumn {
                 get {
                     return this.columnDegreeAwarded;
@@ -1801,7 +1801,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1810,33 +1810,33 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public RequirementsRow this[int index] {
                 get {
                     return ((RequirementsRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event RequirementsRowChangeEventHandler RequirementsRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event RequirementsRowChangeEventHandler RequirementsRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event RequirementsRowChangeEventHandler RequirementsRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event RequirementsRowChangeEventHandler RequirementsRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void AddRequirementsRow(RequirementsRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public RequirementsRow AddRequirementsRow(string Name, string Advisor, int StudentID, string QualifiyingExamination, string ResearchTopic, string ProposalPresentation, string ComprehensiveExam, string CommitteeMembers, string FinalDefenseTitle, string FinalDefenseResult, string ManuscriptFile, string DegreeAwarded) {
                 RequirementsRow rowRequirementsRow = ((RequirementsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1858,7 +1858,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 RequirementsDataTable cln = ((RequirementsDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1866,13 +1866,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
                 return new RequirementsDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnName = base.Columns["Name"];
                 this.columnAdvisor = base.Columns["Advisor"];
@@ -1889,7 +1889,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
                 this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnName);
@@ -1938,25 +1938,25 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public RequirementsRow NewRequirementsRow() {
                 return ((RequirementsRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new RequirementsRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(RequirementsRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.RequirementsRowChanged != null)) {
@@ -1965,7 +1965,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.RequirementsRowChanging != null)) {
@@ -1974,7 +1974,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.RequirementsRowDeleted != null)) {
@@ -1983,7 +1983,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.RequirementsRowDeleting != null)) {
@@ -1992,13 +1992,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void RemoveRequirementsRow(RequirementsRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -2093,7 +2093,7 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataColumn columnTotalNumberofHonorsAwards;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PostgraduationDataTable() {
                 this.TableName = "Postgraduation";
                 this.BeginInit();
@@ -2102,7 +2102,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal PostgraduationDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
@@ -2119,14 +2119,14 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected PostgraduationDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn StudentIDColumn {
                 get {
                     return this.columnStudentID;
@@ -2134,7 +2134,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn NameColumn {
                 get {
                     return this.columnName;
@@ -2142,7 +2142,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn EmailColumn {
                 get {
                     return this.columnEmail;
@@ -2150,7 +2150,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn PhoneColumn {
                 get {
                     return this.columnPhone;
@@ -2158,7 +2158,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn CVsColumn {
                 get {
                     return this.columnCVs;
@@ -2166,7 +2166,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn EmploymentHistoryColumn {
                 get {
                     return this.columnEmploymentHistory;
@@ -2174,7 +2174,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn PublicationsPeerReviewedJournalonlyPublishedColumn {
                 get {
                     return this.columnPublicationsPeerReviewedJournalonlyPublished;
@@ -2182,7 +2182,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn TotalNumberofPublicationsColumn {
                 get {
                     return this.columnTotalNumberofPublications;
@@ -2190,7 +2190,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn GrantsColumn {
                 get {
                     return this.columnGrants;
@@ -2198,7 +2198,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn TotalNumberofGrantsColumn {
                 get {
                     return this.columnTotalNumberofGrants;
@@ -2206,7 +2206,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn HonorsAwardsColumn {
                 get {
                     return this.columnHonorsAwards;
@@ -2214,7 +2214,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn TotalNumberofHonorsAwardsColumn {
                 get {
                     return this.columnTotalNumberofHonorsAwards;
@@ -2222,7 +2222,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2231,33 +2231,33 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PostgraduationRow this[int index] {
                 get {
                     return ((PostgraduationRow)(this.Rows[index]));
                 }
             }
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event PostgraduationRowChangeEventHandler PostgraduationRowChanging;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event PostgraduationRowChangeEventHandler PostgraduationRowChanged;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event PostgraduationRowChangeEventHandler PostgraduationRowDeleting;
             
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public event PostgraduationRowChangeEventHandler PostgraduationRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void AddPostgraduationRow(PostgraduationRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PostgraduationRow AddPostgraduationRow(int StudentID, string Name, string Email, string Phone, string CVs, string EmploymentHistory, string PublicationsPeerReviewedJournalonlyPublished, string TotalNumberofPublications, string Grants, string TotalNumberofGrants, string HonorsAwards, string TotalNumberofHonorsAwards) {
                 PostgraduationRow rowPostgraduationRow = ((PostgraduationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -2279,7 +2279,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 PostgraduationDataTable cln = ((PostgraduationDataTable)(base.Clone()));
                 cln.InitVars();
@@ -2287,13 +2287,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
                 return new PostgraduationDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal void InitVars() {
                 this.columnStudentID = base.Columns["StudentID"];
                 this.columnName = base.Columns["Name"];
@@ -2310,7 +2310,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private void InitClass() {
                 this.columnStudentID = new global::System.Data.DataColumn("StudentID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStudentID);
@@ -2362,25 +2362,25 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PostgraduationRow NewPostgraduationRow() {
                 return ((PostgraduationRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
                 return new PostgraduationRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override global::System.Type GetRowType() {
                 return typeof(PostgraduationRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
                 if ((this.PostgraduationRowChanged != null)) {
@@ -2389,7 +2389,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
                 if ((this.PostgraduationRowChanging != null)) {
@@ -2398,7 +2398,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
                 if ((this.PostgraduationRowDeleted != null)) {
@@ -2407,7 +2407,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
                 if ((this.PostgraduationRowDeleting != null)) {
@@ -2416,13 +2416,13 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void RemovePostgraduationRow(PostgraduationRow row) {
                 this.Rows.Remove(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -2493,14 +2493,14 @@ namespace StudentTrackingSystem3.Reports {
             private BackgroundDataTable tableBackground;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal BackgroundRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableBackground = ((BackgroundDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Id {
                 get {
                     return ((int)(this[this.tableBackground.IdColumn]));
@@ -2511,7 +2511,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int StudentID {
                 get {
                     return ((int)(this[this.tableBackground.StudentIDColumn]));
@@ -2522,7 +2522,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string FirstName {
                 get {
                     return ((string)(this[this.tableBackground.FirstNameColumn]));
@@ -2533,7 +2533,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string MiddleName {
                 get {
                     try {
@@ -2549,7 +2549,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string LastName {
                 get {
                     return ((string)(this[this.tableBackground.LastNameColumn]));
@@ -2560,7 +2560,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string SchoolEmail {
                 get {
                     return ((string)(this[this.tableBackground.SchoolEmailColumn]));
@@ -2571,7 +2571,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string OtherEmail {
                 get {
                     return ((string)(this[this.tableBackground.OtherEmailColumn]));
@@ -2582,7 +2582,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Phone {
                 get {
                     return ((string)(this[this.tableBackground.PhoneColumn]));
@@ -2593,7 +2593,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Gender {
                 get {
                     try {
@@ -2609,7 +2609,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string DegreeAtAdmission {
                 get {
                     try {
@@ -2625,7 +2625,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string RaceEthnicity {
                 get {
                     try {
@@ -2641,7 +2641,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string RaceOther {
                 get {
                     try {
@@ -2657,7 +2657,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string DegreeProgram {
                 get {
                     try {
@@ -2673,7 +2673,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Track {
                 get {
                     try {
@@ -2689,7 +2689,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Plan {
                 get {
                     try {
@@ -2705,7 +2705,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string DegreeStartSemester {
                 get {
                     try {
@@ -2721,7 +2721,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int DegreeStartYear {
                 get {
                     return ((int)(this[this.tableBackground.DegreeStartYearColumn]));
@@ -2732,7 +2732,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string DegreeAwardedSemester {
                 get {
                     try {
@@ -2748,7 +2748,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int DegreeAwardedYear {
                 get {
                     try {
@@ -2764,133 +2764,133 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsMiddleNameNull() {
                 return this.IsNull(this.tableBackground.MiddleNameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetMiddleNameNull() {
                 this[this.tableBackground.MiddleNameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsGenderNull() {
                 return this.IsNull(this.tableBackground.GenderColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetGenderNull() {
                 this[this.tableBackground.GenderColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDegreeAtAdmissionNull() {
                 return this.IsNull(this.tableBackground.DegreeAtAdmissionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDegreeAtAdmissionNull() {
                 this[this.tableBackground.DegreeAtAdmissionColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsRaceEthnicityNull() {
                 return this.IsNull(this.tableBackground.RaceEthnicityColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetRaceEthnicityNull() {
                 this[this.tableBackground.RaceEthnicityColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsRaceOtherNull() {
                 return this.IsNull(this.tableBackground.RaceOtherColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetRaceOtherNull() {
                 this[this.tableBackground.RaceOtherColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDegreeProgramNull() {
                 return this.IsNull(this.tableBackground.DegreeProgramColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDegreeProgramNull() {
                 this[this.tableBackground.DegreeProgramColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTrackNull() {
                 return this.IsNull(this.tableBackground.TrackColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTrackNull() {
                 this[this.tableBackground.TrackColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsPlanNull() {
                 return this.IsNull(this.tableBackground.PlanColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPlanNull() {
                 this[this.tableBackground.PlanColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDegreeStartSemesterNull() {
                 return this.IsNull(this.tableBackground.DegreeStartSemesterColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDegreeStartSemesterNull() {
                 this[this.tableBackground.DegreeStartSemesterColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDegreeAwardedSemesterNull() {
                 return this.IsNull(this.tableBackground.DegreeAwardedSemesterColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDegreeAwardedSemesterNull() {
                 this[this.tableBackground.DegreeAwardedSemesterColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDegreeAwardedYearNull() {
                 return this.IsNull(this.tableBackground.DegreeAwardedYearColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDegreeAwardedYearNull() {
                 this[this.tableBackground.DegreeAwardedYearColumn] = global::System.Convert.DBNull;
             }
@@ -2904,14 +2904,14 @@ namespace StudentTrackingSystem3.Reports {
             private CourseworkDataTable tableCoursework;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal CourseworkRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableCoursework = ((CourseworkDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int StudentID {
                 get {
                     try {
@@ -2927,7 +2927,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Name {
                 get {
                     try {
@@ -2943,7 +2943,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Semester {
                 get {
                     try {
@@ -2959,7 +2959,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Course {
                 get {
                     try {
@@ -2975,7 +2975,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Title {
                 get {
                     try {
@@ -2991,7 +2991,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Grade {
                 get {
                     try {
@@ -3007,7 +3007,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Credits {
                 get {
                     try {
@@ -3023,85 +3023,85 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsStudentIDNull() {
                 return this.IsNull(this.tableCoursework.StudentIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStudentIDNull() {
                 this[this.tableCoursework.StudentIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableCoursework.NameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNameNull() {
                 this[this.tableCoursework.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsSemesterNull() {
                 return this.IsNull(this.tableCoursework.SemesterColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetSemesterNull() {
                 this[this.tableCoursework.SemesterColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsCourseNull() {
                 return this.IsNull(this.tableCoursework.CourseColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetCourseNull() {
                 this[this.tableCoursework.CourseColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTitleNull() {
                 return this.IsNull(this.tableCoursework.TitleColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTitleNull() {
                 this[this.tableCoursework.TitleColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsGradeNull() {
                 return this.IsNull(this.tableCoursework.GradeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetGradeNull() {
                 this[this.tableCoursework.GradeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsCreditsNull() {
                 return this.IsNull(this.tableCoursework.CreditsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetCreditsNull() {
                 this[this.tableCoursework.CreditsColumn] = global::System.Convert.DBNull;
             }
@@ -3115,14 +3115,14 @@ namespace StudentTrackingSystem3.Reports {
             private PerformanceDataTable tablePerformance;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal PerformanceRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablePerformance = ((PerformanceDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int StudentID {
                 get {
                     try {
@@ -3138,7 +3138,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Name {
                 get {
                     try {
@@ -3154,7 +3154,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Category {
                 get {
                     try {
@@ -3170,7 +3170,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Information {
                 get {
                     try {
@@ -3186,7 +3186,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string StatusType {
                 get {
                     try {
@@ -3202,7 +3202,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string StatusDescription {
                 get {
                     try {
@@ -3218,73 +3218,73 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsStudentIDNull() {
                 return this.IsNull(this.tablePerformance.StudentIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStudentIDNull() {
                 this[this.tablePerformance.StudentIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tablePerformance.NameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNameNull() {
                 this[this.tablePerformance.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsCategoryNull() {
                 return this.IsNull(this.tablePerformance.CategoryColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetCategoryNull() {
                 this[this.tablePerformance.CategoryColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsInformationNull() {
                 return this.IsNull(this.tablePerformance.InformationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetInformationNull() {
                 this[this.tablePerformance.InformationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsStatusTypeNull() {
                 return this.IsNull(this.tablePerformance.StatusTypeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStatusTypeNull() {
                 this[this.tablePerformance.StatusTypeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsStatusDescriptionNull() {
                 return this.IsNull(this.tablePerformance.StatusDescriptionColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStatusDescriptionNull() {
                 this[this.tablePerformance.StatusDescriptionColumn] = global::System.Convert.DBNull;
             }
@@ -3298,14 +3298,14 @@ namespace StudentTrackingSystem3.Reports {
             private RequirementsDataTable tableRequirements;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal RequirementsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableRequirements = ((RequirementsDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Name {
                 get {
                     try {
@@ -3321,7 +3321,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Advisor {
                 get {
                     try {
@@ -3337,7 +3337,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int StudentID {
                 get {
                     try {
@@ -3353,7 +3353,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string QualifiyingExamination {
                 get {
                     try {
@@ -3369,7 +3369,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string ResearchTopic {
                 get {
                     try {
@@ -3385,7 +3385,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string ProposalPresentation {
                 get {
                     try {
@@ -3401,7 +3401,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string ComprehensiveExam {
                 get {
                     try {
@@ -3417,7 +3417,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string CommitteeMembers {
                 get {
                     try {
@@ -3433,7 +3433,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string FinalDefenseTitle {
                 get {
                     try {
@@ -3449,7 +3449,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string FinalDefenseResult {
                 get {
                     try {
@@ -3465,7 +3465,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string ManuscriptFile {
                 get {
                     try {
@@ -3481,7 +3481,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string DegreeAwarded {
                 get {
                     try {
@@ -3497,145 +3497,145 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tableRequirements.NameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNameNull() {
                 this[this.tableRequirements.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsAdvisorNull() {
                 return this.IsNull(this.tableRequirements.AdvisorColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetAdvisorNull() {
                 this[this.tableRequirements.AdvisorColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsStudentIDNull() {
                 return this.IsNull(this.tableRequirements.StudentIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetStudentIDNull() {
                 this[this.tableRequirements.StudentIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsQualifiyingExaminationNull() {
                 return this.IsNull(this.tableRequirements.QualifiyingExaminationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetQualifiyingExaminationNull() {
                 this[this.tableRequirements.QualifiyingExaminationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsResearchTopicNull() {
                 return this.IsNull(this.tableRequirements.ResearchTopicColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetResearchTopicNull() {
                 this[this.tableRequirements.ResearchTopicColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsProposalPresentationNull() {
                 return this.IsNull(this.tableRequirements.ProposalPresentationColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetProposalPresentationNull() {
                 this[this.tableRequirements.ProposalPresentationColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsComprehensiveExamNull() {
                 return this.IsNull(this.tableRequirements.ComprehensiveExamColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetComprehensiveExamNull() {
                 this[this.tableRequirements.ComprehensiveExamColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsCommitteeMembersNull() {
                 return this.IsNull(this.tableRequirements.CommitteeMembersColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetCommitteeMembersNull() {
                 this[this.tableRequirements.CommitteeMembersColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsFinalDefenseTitleNull() {
                 return this.IsNull(this.tableRequirements.FinalDefenseTitleColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetFinalDefenseTitleNull() {
                 this[this.tableRequirements.FinalDefenseTitleColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsFinalDefenseResultNull() {
                 return this.IsNull(this.tableRequirements.FinalDefenseResultColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetFinalDefenseResultNull() {
                 this[this.tableRequirements.FinalDefenseResultColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsManuscriptFileNull() {
                 return this.IsNull(this.tableRequirements.ManuscriptFileColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetManuscriptFileNull() {
                 this[this.tableRequirements.ManuscriptFileColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsDegreeAwardedNull() {
                 return this.IsNull(this.tableRequirements.DegreeAwardedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetDegreeAwardedNull() {
                 this[this.tableRequirements.DegreeAwardedColumn] = global::System.Convert.DBNull;
             }
@@ -3649,14 +3649,14 @@ namespace StudentTrackingSystem3.Reports {
             private PostgraduationDataTable tablePostgraduation;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal PostgraduationRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tablePostgraduation = ((PostgraduationDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int StudentID {
                 get {
                     return ((int)(this[this.tablePostgraduation.StudentIDColumn]));
@@ -3667,7 +3667,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Name {
                 get {
                     try {
@@ -3683,7 +3683,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Email {
                 get {
                     return ((string)(this[this.tablePostgraduation.EmailColumn]));
@@ -3694,7 +3694,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Phone {
                 get {
                     return ((string)(this[this.tablePostgraduation.PhoneColumn]));
@@ -3705,7 +3705,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string CVs {
                 get {
                     try {
@@ -3721,7 +3721,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string EmploymentHistory {
                 get {
                     try {
@@ -3737,7 +3737,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string PublicationsPeerReviewedJournalonlyPublished {
                 get {
                     try {
@@ -3754,7 +3754,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TotalNumberofPublications {
                 get {
                     try {
@@ -3771,7 +3771,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Grants {
                 get {
                     try {
@@ -3787,7 +3787,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TotalNumberofGrants {
                 get {
                     try {
@@ -3803,7 +3803,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string HonorsAwards {
                 get {
                     try {
@@ -3819,7 +3819,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TotalNumberofHonorsAwards {
                 get {
                     try {
@@ -3836,109 +3836,109 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsNameNull() {
                 return this.IsNull(this.tablePostgraduation.NameColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNameNull() {
                 this[this.tablePostgraduation.NameColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsCVsNull() {
                 return this.IsNull(this.tablePostgraduation.CVsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetCVsNull() {
                 this[this.tablePostgraduation.CVsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsEmploymentHistoryNull() {
                 return this.IsNull(this.tablePostgraduation.EmploymentHistoryColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetEmploymentHistoryNull() {
                 this[this.tablePostgraduation.EmploymentHistoryColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsPublicationsPeerReviewedJournalonlyPublishedNull() {
                 return this.IsNull(this.tablePostgraduation.PublicationsPeerReviewedJournalonlyPublishedColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetPublicationsPeerReviewedJournalonlyPublishedNull() {
                 this[this.tablePostgraduation.PublicationsPeerReviewedJournalonlyPublishedColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTotalNumberofPublicationsNull() {
                 return this.IsNull(this.tablePostgraduation.TotalNumberofPublicationsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTotalNumberofPublicationsNull() {
                 this[this.tablePostgraduation.TotalNumberofPublicationsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsGrantsNull() {
                 return this.IsNull(this.tablePostgraduation.GrantsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetGrantsNull() {
                 this[this.tablePostgraduation.GrantsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTotalNumberofGrantsNull() {
                 return this.IsNull(this.tablePostgraduation.TotalNumberofGrantsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTotalNumberofGrantsNull() {
                 this[this.tablePostgraduation.TotalNumberofGrantsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsHonorsAwardsNull() {
                 return this.IsNull(this.tablePostgraduation.HonorsAwardsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetHonorsAwardsNull() {
                 this[this.tablePostgraduation.HonorsAwardsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsTotalNumberofHonorsAwardsNull() {
                 return this.IsNull(this.tablePostgraduation.TotalNumberofHonorsAwardsColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetTotalNumberofHonorsAwardsNull() {
                 this[this.tablePostgraduation.TotalNumberofHonorsAwardsColumn] = global::System.Convert.DBNull;
             }
@@ -3947,7 +3947,7 @@ namespace StudentTrackingSystem3.Reports {
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class BackgroundRowChangeEvent : global::System.EventArgs {
             
             private BackgroundRow eventRow;
@@ -3955,14 +3955,14 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BackgroundRowChangeEvent(BackgroundRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public BackgroundRow Row {
                 get {
                     return this.eventRow;
@@ -3970,7 +3970,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
@@ -3981,7 +3981,7 @@ namespace StudentTrackingSystem3.Reports {
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class CourseworkRowChangeEvent : global::System.EventArgs {
             
             private CourseworkRow eventRow;
@@ -3989,14 +3989,14 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CourseworkRowChangeEvent(CourseworkRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public CourseworkRow Row {
                 get {
                     return this.eventRow;
@@ -4004,7 +4004,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
@@ -4015,7 +4015,7 @@ namespace StudentTrackingSystem3.Reports {
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class PerformanceRowChangeEvent : global::System.EventArgs {
             
             private PerformanceRow eventRow;
@@ -4023,14 +4023,14 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PerformanceRowChangeEvent(PerformanceRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PerformanceRow Row {
                 get {
                     return this.eventRow;
@@ -4038,7 +4038,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
@@ -4049,7 +4049,7 @@ namespace StudentTrackingSystem3.Reports {
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class RequirementsRowChangeEvent : global::System.EventArgs {
             
             private RequirementsRow eventRow;
@@ -4057,14 +4057,14 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public RequirementsRowChangeEvent(RequirementsRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public RequirementsRow Row {
                 get {
                     return this.eventRow;
@@ -4072,7 +4072,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
@@ -4083,7 +4083,7 @@ namespace StudentTrackingSystem3.Reports {
         /// <summary>
         ///Row event argument class
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class PostgraduationRowChangeEvent : global::System.EventArgs {
             
             private PostgraduationRow eventRow;
@@ -4091,14 +4091,14 @@ namespace StudentTrackingSystem3.Reports {
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PostgraduationRowChangeEvent(PostgraduationRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public PostgraduationRow Row {
                 get {
                     return this.eventRow;
@@ -4106,7 +4106,7 @@ namespace StudentTrackingSystem3.Reports {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataRowAction Action {
                 get {
                     return this.eventAction;
@@ -4140,13 +4140,13 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public BackgroundTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
@@ -4157,7 +4157,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlConnection Connection {
             get {
                 if ((this._connection == null)) {
@@ -4185,7 +4185,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlTransaction Transaction {
             get {
                 return this._transaction;
@@ -4211,7 +4211,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
@@ -4222,7 +4222,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool ClearBeforeFill {
             get {
                 return this._clearBeforeFill;
@@ -4233,7 +4233,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
@@ -4262,64 +4262,58 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DISTINCT \r\n                         s.Id, s.StudentNumber AS StudentID, s." +
-                "FirstName, s.MiddleName, s.LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gende" +
-                "r.Name AS Gender, \r\n                         REPLACE(REPLACE(REPLACE(\'<\' + STUFF" +
-                "\r\n                             ((SELECT        CASE WHEN pv2.DegreeTypesID IS NU" +
-                "LL \r\n                                                          THEN \'N/A\' WHEN p" +
-                "v2.DegreeTypesID = \'\' THEN \'N/A\' ELSE \'; -\' + degTypes.Name + \' in \' + pv2.Title" +
-                " + \' (\' + pv2.SchoolName + \', \' + CAST(YEAR(pv2.DateOfAward)\r\n                  " +
-                "                                         AS nvarchar(4)) + \')\' END AS Expr1\r\n   " +
-                "                              FROM            G_PrevDegree AS pv2 INNER JOIN\r\n  " +
-                "                                                        G_Student AS s2 ON s.Id " +
-                "= s2.Id AND s2.Id = pv2.StudentID LEFT OUTER JOIN\r\n                             " +
-                "                             G_CommonFields AS degTypes ON degTypes.ID = pv2.Deg" +
-                "reeTypesID FOR XML PATH(\'\')), 1, 1, \'\'), \'<Expr1>\', \'\'), \'</Expr1>\', \'\'), \';\', \'" +
-                "\') \r\n                         AS DegreeAtAdmission, REPLACE(REPLACE(REPLACE(\'<\' " +
-                "+ STUFF\r\n                             ((SELECT        CASE WHEN r2.Name IS NULL " +
-                "THEN \'N/A\' WHEN r2.Name = \'\' THEN \'N/A\' ELSE \'; -\' + r2.Name END AS Expr1\r\n     " +
-                "                            FROM            G_Races AS r2 INNER JOIN\r\n          " +
-                "                                                G_PersonRaces AS pr2 ON pr2.Race" +
-                "ID = r2.Id INNER JOIN\r\n                                                         " +
-                " G_Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.StudentID FOR XML PATH(\'\')), 1," +
-                " 1, \'\'), \'<Expr1>\', \'\'), \'</Expr1>\', \'\'), \';\', \'\') AS RaceEthnicity, \r\n         " +
-                "                s.RaceOther, degreeProgram.Name AS DegreeProgram, track.Name AS " +
-                "Track, plans.Name AS [Plan], degreeStartSem.Name AS DegreeStartSemester, \r\n     " +
-                "                    s.DegreeStartYear, gradSem.Name AS DegreeAwardedSemester, gr" +
-                "ad.DegreeEndYear AS DegreeAwardedYear\r\nFROM            G_Student AS s LEFT OUTER" +
-                " JOIN\r\n                         G_PrevDegree AS pd ON pd.StudentID = s.Id INNER " +
-                "JOIN\r\n                         G_CommonFields AS gender ON gender.ID = s.Genders" +
-                "Id INNER JOIN\r\n                         G_CommonFields AS degreeProgram ON degre" +
-                "eProgram.ID = s.DegreeProgramsId INNER JOIN\r\n                         G_CommonFi" +
-                "elds AS track ON track.ID = s.TracksId INNER JOIN\r\n                         G_Co" +
-                "mmonFields AS plans ON plans.ID = s.PlansId INNER JOIN\r\n                        " +
-                " G_CommonFields AS degreeStartSem ON degreeStartSem.ID = s.DegreeStartSemsId LEF" +
-                "T OUTER JOIN\r\n                         G_Graduation AS grad ON grad.StudentID = " +
-                "s.Id LEFT OUTER JOIN\r\n                         G_CommonFields AS gradSem ON grad" +
-                "Sem.ID = grad.DegreeEndSemsId\r\nWHERE        ((DATEFROMPARTS(s.DegreeStartYear, 0" +
-                "1, 01) < @FromDate AND NOT (DATEFROMPARTS(grad.DegreeEndYear, 1, 1) < @FromDate)" +
-                " OR\r\n                         DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @FromDa" +
-                "te AND grad.DegreeEndYear IS NULL OR\r\n                         DATEFROMPARTS(s.D" +
-                "egreeStartYear, 01, 01) >= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01" +
-                ") <= @ToDate) AND \r\n                         NOT (DATEFROMPARTS(s.DegreeStartYea" +
-                "r, 01, 01) > @ToDate) OR\r\n                         ISNULL(@FromDate, \'\') = \'\' OR" +
-                "\r\n                         ISNULL(@ToDate, \'\') = \'\') AND (s.FirstName + \' \' + s." +
-                "LastName = @Student OR\r\n                         ISNULL(@Student, \'\') = \'\') AND " +
-                "((CASE WHEN (gradSem.Name IS NULL AND grad.DegreeEndYear IS NULL) THEN \'Current\'" +
-                " ELSE \'Former\' END) = @CurrentFormer OR\r\n                         ISNULL(@Curren" +
-                "tFormer, \'\') = \'\')\r\nORDER BY s.DegreeStartYear DESC";
+            this._commandCollection[0].CommandText = "SELECT DISTINCT s.Id, s.StudentNumber AS StudentID, s.FirstName, s.MiddleName, s." +
+                "LastName, s.SchoolEmail, s.OtherEmail, s.Phone, gender.Name AS Gender, REPLACE(R" +
+                "EPLACE(REPLACE(\'<\' + STUFF\r\n                      ((SELECT CASE WHEN pv2.DegreeT" +
+                "ypesID IS NULL THEN \'N/A\' WHEN pv2.DegreeTypesID = \'\' THEN \'N/A\' ELSE \'; -\' + de" +
+                "gTypes.Name + \' in \' + pv2.Title + \' (\' + pv2.SchoolName + \', \' + CAST(YEAR(pv2." +
+                "DateOfAward) AS nvarchar(4)) \r\n                                          + \')\' E" +
+                "ND AS Expr1\r\n                        FROM      PrevDegree AS pv2 INNER JOIN\r\n   " +
+                "                                       Student AS s2 ON s.Id = s2.Id AND s2.Id =" +
+                " pv2.StudentID LEFT OUTER JOIN\r\n                                          Common" +
+                "Fields AS degTypes ON degTypes.ID = pv2.DegreeTypesID FOR XML PATH(\'\')), 1, 1, \'" +
+                "\'), \'<Expr1>\', \'\'), \'</Expr1>\', \'\'), \';\', \'\') AS DegreeAtAdmission, REPLACE(REPL" +
+                "ACE(REPLACE(\'<\' + STUFF\r\n                      ((SELECT CASE WHEN r2.Name IS NUL" +
+                "L THEN \'N/A\' WHEN r2.Name = \'\' THEN \'N/A\' ELSE \'; -\' + r2.Name END AS Expr1\r\n   " +
+                "                     FROM      Races AS r2 INNER JOIN\r\n                         " +
+                "                 PersonRaces AS pr2 ON pr2.RaceID = r2.Id INNER JOIN\r\n          " +
+                "                                Student AS s2 ON s.Id = s2.Id AND s2.Id = pr2.St" +
+                "udentID FOR XML PATH(\'\')), 1, 1, \'\'), \'<Expr1>\', \'\'), \'</Expr1>\', \'\'), \';\', \'\') " +
+                "AS RaceEthnicity, s.RaceOther, degreeProgram.Name AS DegreeProgram, track.Name A" +
+                "S Track, \r\n                  plans.Name AS [Plan], degreeStartSem.Name AS Degree" +
+                "StartSemester, s.DegreeStartYear, gradSem.Name AS DegreeAwardedSemester, grad.De" +
+                "greeEndYear AS DegreeAwardedYear\r\nFROM     Student AS s LEFT OUTER JOIN\r\n       " +
+                "           PrevDegree AS pd ON pd.StudentID = s.Id INNER JOIN\r\n                 " +
+                " CommonFields AS gender ON gender.ID = s.GendersId INNER JOIN\r\n                 " +
+                " CommonFields AS degreeProgram ON degreeProgram.ID = s.DegreeProgramsId INNER JO" +
+                "IN\r\n                  CommonFields AS track ON track.ID = s.TracksId INNER JOIN\r" +
+                "\n                  CommonFields AS plans ON plans.ID = s.PlansId INNER JOIN\r\n   " +
+                "               CommonFields AS degreeStartSem ON degreeStartSem.ID = s.DegreeSta" +
+                "rtSemsId LEFT OUTER JOIN\r\n                  Graduation AS grad ON grad.StudentID" +
+                " = s.Id LEFT OUTER JOIN\r\n                  CommonFields AS gradSem ON gradSem.ID" +
+                " = grad.DegreeEndSemsId\r\nWHERE  ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @Fr" +
+                "omDate AND NOT (DATEFROMPARTS(grad.DegreeEndYear, 1, 1) < @FromDate) OR\r\n       " +
+                "           DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @FromDate AND grad.DegreeE" +
+                "ndYear IS NULL OR\r\n                  DATEFROMPARTS(s.DegreeStartYear, 01, 01) >=" +
+                " @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) <= @ToDate) AND NOT (DAT" +
+                "EFROMPARTS(s.DegreeStartYear, 01, 01) > @ToDate) OR\r\n                  ISNULL(@F" +
+                "romDate, \'\') = \'\' OR\r\n                  ISNULL(@ToDate, \'\') = \'\') AND (s.FirstNa" +
+                "me + \' \' + s.LastName = @Student OR\r\n                  ISNULL(@Student, \'\') = \'\'" +
+                ") AND ((CASE WHEN (gradSem.Name IS NULL AND grad.DegreeEndYear IS NULL) THEN \'Cu" +
+                "rrent\' ELSE \'Former\' END) = @CurrentFormer OR\r\n                  ISNULL(@Current" +
+                "Former, \'\') = \'\')\r\nORDER BY s.DegreeStartYear DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4328,7 +4322,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(DataSet1.BackgroundDataTable dataTable, string FromDate, string ToDate, string Student, string CurrentFormer) {
@@ -4365,7 +4359,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSet1.BackgroundDataTable GetData(string FromDate, string ToDate, string Student, string CurrentFormer) {
@@ -4422,13 +4416,13 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public CourseworkTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
@@ -4439,7 +4433,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlConnection Connection {
             get {
                 if ((this._connection == null)) {
@@ -4467,7 +4461,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlTransaction Transaction {
             get {
                 return this._transaction;
@@ -4493,7 +4487,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
@@ -4504,7 +4498,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool ClearBeforeFill {
             get {
                 return this._clearBeforeFill;
@@ -4515,7 +4509,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
@@ -4532,79 +4526,69 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        StudentID, Name, Semester, Course, Title, Grade, Credits\r\nFROM     " +
-                "       (SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastNa" +
-                "me AS Name, sem.Name + \' \' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL \r\n " +
-                "                                                   AS Course, NULL AS Title, NUL" +
-                "L AS Grade, NULL AS Credits\r\n                          FROM            G_Student" +
-                " AS s RIGHT OUTER JOIN\r\n                                                    G_Co" +
-                "ursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN\r\n                         " +
-                "                           G_CommonFields AS sem ON sem.ID = cw.SemestersID LEFT" +
-                " OUTER JOIN\r\n                                                    G_Course AS c O" +
-                "N c.ID = cw.CourseID LEFT OUTER JOIN\r\n                                          " +
-                "          G_CommonFields AS grade ON grade.ID = cw.GradeID\r\n                    " +
-                "      UNION ALL\r\n                          SELECT        s.StudentNumber AS Stud" +
-                "entID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \' + CONVERT(nvarchar" +
-                "(4), cw.Year) AS Semester, \r\n                                                   " +
-                "c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, \r\n           " +
-                "                                        CAST(CASE WHEN grade.GradePoint < 2 THEN" +
-                " 0 ELSE c.Credits END AS nvarchar(10)) AS Credits\r\n                          FRO" +
-                "M            G_Student AS s RIGHT OUTER JOIN\r\n                                  " +
-                "                 G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN\r\n    " +
-                "                                               G_CommonFields AS sem ON sem.ID =" +
-                " cw.SemestersID LEFT OUTER JOIN\r\n                                               " +
-                "    G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n                       " +
-                "                            G_CommonFields AS grade ON grade.ID = cw.GradeID\r\n  " +
-                "                        UNION\r\n                          SELECT        s.Student" +
-                "Number AS StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \' + CO" +
-                "NVERT(nvarchar(4), cw.Year) AS Semester, NULL \r\n                                " +
-                "                   AS Course, NULL AS Title, \'Total Number of Credits\' AS Grade," +
-                " CAST(SUM(CASE WHEN grade.GradePoint < 2 THEN 0 ELSE c.Credits END) \r\n          " +
-                "                                         AS nvarchar(10)) AS Credits\r\n          " +
-                "                FROM            G_Student AS s RIGHT OUTER JOIN\r\n               " +
-                "                                    G_Coursework AS cw ON cw.StudentID = s.Id LE" +
-                "FT OUTER JOIN\r\n                                                   G_CommonFields" +
-                " AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                            " +
-                "                       G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n    " +
-                "                                               G_CommonFields AS grade ON grade." +
-                "ID = cw.GradeID\r\n                          GROUP BY sem.Name + \' \' + CONVERT(nva" +
-                "rchar(4), cw.Year), s.StudentNumber, s.FirstName + \' \' + s.LastName\r\n           " +
-                "               UNION\r\n                          SELECT        s.StudentNumber AS" +
-                " StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \' + CONVERT(nva" +
-                "rchar(4), cw.Year) AS Semester, NULL \r\n                                         " +
-                "          AS Course, NULL AS Title, \'Semester GPA\' AS Grade, CAST(CONVERT(DECIMA" +
-                "L(10, 2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) \r\n                   " +
-                "                                AS nvarchar(10)) AS Credits\r\n                   " +
-                "       FROM            G_Student AS s RIGHT OUTER JOIN\r\n                        " +
-                "                           G_Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER " +
-                "JOIN\r\n                                                   G_CommonFields AS sem O" +
-                "N sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                                     " +
-                "              G_Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n             " +
-                "                                      G_CommonFields AS grade ON grade.ID = cw.G" +
-                "radeID\r\n                          GROUP BY sem.Name + \' \' + CONVERT(nvarchar(4)," +
-                " cw.Year), s.StudentNumber, s.FirstName + \' \' + s.LastName) AS a\r\nWHERE        (" +
-                "Name = @Student) OR\r\n                         (ISNULL(@Student, \'\') = \'\')\r\nORDER" +
-                " BY StudentID, Semester DESC, CASE WHEN [Grade] IS NULL \r\n                      " +
-                "   THEN 1 WHEN [Grade] = \'Total Number of Credits\' THEN 3 WHEN [Grade] = \'Semest" +
-                "er GPA\' THEN 4 ELSE 2 END";
+            this._commandCollection[0].CommandText = "SELECT StudentID, Name, Semester, Course, Title, Grade, Credits\r\nFROM     (SELECT" +
+                " s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name " +
+                "+ \' \' + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title" +
+                ", NULL AS Grade, NULL AS Credits\r\n                  FROM      Student AS s RIGHT" +
+                " OUTER JOIN\r\n                                    Coursework AS cw ON cw.StudentI" +
+                "D = s.Id LEFT OUTER JOIN\r\n                                    CommonFields AS se" +
+                "m ON sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                                  " +
+                "  Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n                           " +
+                "         CommonFields AS grade ON grade.ID = cw.GradeID\r\n                  UNION" +
+                " ALL\r\n                  SELECT s.StudentNumber AS StudentID, s.FirstName + \' \' +" +
+                " s.LastName AS Name, sem.Name + \' \' + CONVERT(nvarchar(4), cw.Year) AS Semester," +
+                " c.CourseNum AS Course, c.CourseName AS Title, grade.Name AS Grade, \r\n          " +
+                "                          CAST(CASE WHEN grade.GradePoint < 2 THEN 0 ELSE c.Cred" +
+                "its END AS nvarchar(10)) AS Credits\r\n                  FROM     Student AS s RIG" +
+                "HT OUTER JOIN\r\n                                    Coursework AS cw ON cw.Studen" +
+                "tID = s.Id LEFT OUTER JOIN\r\n                                    CommonFields AS " +
+                "sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                                " +
+                "    Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n                         " +
+                "           CommonFields AS grade ON grade.ID = cw.GradeID\r\n                  UNI" +
+                "ON\r\n                  SELECT s.StudentNumber AS StudentID, s.FirstName + \' \' + s" +
+                ".LastName AS Name, sem.Name + \' \' + CONVERT(nvarchar(4), cw.Year) AS Semester, N" +
+                "ULL AS Course, NULL AS Title, \'Total Number of Credits\' AS Grade, \r\n            " +
+                "                        CAST(SUM(CASE WHEN grade.GradePoint < 2 THEN 0 ELSE c.Cr" +
+                "edits END) AS nvarchar(10)) AS Credits\r\n                  FROM     Student AS s " +
+                "RIGHT OUTER JOIN\r\n                                    Coursework AS cw ON cw.Stu" +
+                "dentID = s.Id LEFT OUTER JOIN\r\n                                    CommonFields " +
+                "AS sem ON sem.ID = cw.SemestersID LEFT OUTER JOIN\r\n                             " +
+                "       Course AS c ON c.ID = cw.CourseID LEFT OUTER JOIN\r\n                      " +
+                "              CommonFields AS grade ON grade.ID = cw.GradeID\r\n                  " +
+                "GROUP BY sem.Name + \' \' + CONVERT(nvarchar(4), cw.Year), s.StudentNumber, s.Firs" +
+                "tName + \' \' + s.LastName\r\n                  UNION\r\n                  SELECT s.St" +
+                "udentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, sem.Name + \' \'" +
+                " + CONVERT(nvarchar(4), cw.Year) AS Semester, NULL AS Course, NULL AS Title, \'Se" +
+                "mester GPA\' AS Grade, CAST(CONVERT(DECIMAL(10, \r\n                               " +
+                "     2), SUM(grade.GradePoint) / COUNT(grade.GradePoint)) AS nvarchar(10)) AS Cr" +
+                "edits\r\n                  FROM     Student AS s RIGHT OUTER JOIN\r\n               " +
+                "                     Coursework AS cw ON cw.StudentID = s.Id LEFT OUTER JOIN\r\n  " +
+                "                                  CommonFields AS sem ON sem.ID = cw.SemestersID" +
+                " LEFT OUTER JOIN\r\n                                    Course AS c ON c.ID = cw.C" +
+                "ourseID LEFT OUTER JOIN\r\n                                    CommonFields AS gra" +
+                "de ON grade.ID = cw.GradeID\r\n                  GROUP BY sem.Name + \' \' + CONVERT" +
+                "(nvarchar(4), cw.Year), s.StudentNumber, s.FirstName + \' \' + s.LastName) AS a\r\nW" +
+                "HERE  (Name = @Student) OR\r\n                  (ISNULL(@Student, \'\') = \'\')\r\nORDER" +
+                " BY StudentID, Semester DESC, CASE WHEN [Grade] IS NULL THEN 1 WHEN [Grade] = \'T" +
+                "otal Number of Credits\' THEN 3 WHEN [Grade] = \'Semester GPA\' THEN 4 ELSE 2 END";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(DataSet1.CourseworkDataTable dataTable, string Student) {
@@ -4623,7 +4607,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSet1.CourseworkDataTable GetData(string Student) {
@@ -4662,13 +4646,13 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public PerformanceTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
@@ -4679,7 +4663,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlConnection Connection {
             get {
                 if ((this._connection == null)) {
@@ -4707,7 +4691,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlTransaction Transaction {
             get {
                 return this._transaction;
@@ -4733,7 +4717,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
@@ -4744,7 +4728,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool ClearBeforeFill {
             get {
                 return this._clearBeforeFill;
@@ -4755,7 +4739,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
@@ -4771,85 +4755,76 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        StudentID, Name, StatusType, Category, Information, StatusDescripti" +
-                "on\r\nFROM            (SELECT        s.StudentNumber AS StudentID, s.FirstName + \'" +
-                " \' + s.LastName AS Name, \'Performance\' AS StatusType, categ.Name AS Category, \r\n" +
-                "                                                    p.CategoryInfo AS Informatio" +
-                "n, \r\n                                                    CASE WHEN categ.Name = " +
-                "\'Publication\' THEN pubs.Name WHEN categ.Name = \'Abstract\' THEN abstract.Name WHE" +
-                "N categ.Name = \'Proposal\' THEN props.Name\r\n                                     " +
-                "                WHEN categ.Name = \'Teaching\' THEN teach.Name END AS StatusDescri" +
-                "ption\r\n                          FROM            G_Performance AS p LEFT OUTER J" +
-                "OIN\r\n                                                    G_Student AS s ON s.Id " +
-                "= p.StudentID LEFT OUTER JOIN\r\n                                                 " +
-                "   G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN\r\n         " +
-                "                                           G_CommonFields AS pubs ON pubs.ID = p" +
-                ".PublicationStatsID LEFT OUTER JOIN\r\n                                           " +
-                "         G_CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LEFT OUTE" +
-                "R JOIN\r\n                                                    G_CommonFields AS pr" +
-                "ops ON props.ID = p.ProposalStatsID LEFT OUTER JOIN\r\n                           " +
-                "                         G_CommonFields AS teach ON teach.ID = p.TeachingStatsID" +
-                "\r\n                          UNION\r\n                          SELECT        s.Stu" +
-                "dentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, NULL AS StatusT" +
-                "ype, NULL AS Category, \r\n                                                   \'Num" +
-                "ber of Performance Items\' AS Information, CONVERT(nvarchar(20), COUNT(p.Category" +
-                "Info)) AS StatusDescription\r\n                          FROM            G_Perform" +
-                "ance AS p LEFT OUTER JOIN\r\n                                                   G_" +
-                "Student AS s ON s.Id = p.StudentID LEFT OUTER JOIN\r\n                            " +
-                "                       G_CommonFields AS categ ON categ.ID = p.CategoryID LEFT O" +
-                "UTER JOIN\r\n                                                   G_CommonFields AS " +
-                "pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN\r\n                        " +
-                "                           G_CommonFields AS abstract ON abstract.ID = p.Abstrac" +
-                "tStatsID LEFT OUTER JOIN\r\n                                                   G_C" +
-                "ommonFields AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN\r\n          " +
-                "                                         G_CommonFields AS teach ON teach.ID = p" +
-                ".TeachingStatsID\r\n                          GROUP BY s.StudentNumber, s.FirstNam" +
-                "e, s.LastName\r\n                          UNION ALL\r\n                          SE" +
-                "LECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name" +
-                ", \'Activity Summary\' AS StatusType, NULL AS Category, \r\n                        " +
-                "                           g.FileName AS Information, a.ActivitySummaryDesc AS S" +
-                "tatusDescription\r\n                          FROM            G_Student AS s RIGHT" +
-                " OUTER JOIN\r\n                                                   G_Activity AS a " +
-                "ON s.Id = a.StudentID RIGHT OUTER JOIN\r\n                                        " +
-                "           G_File AS g ON g.ActivityID = a.ID\r\n                          WHERE  " +
-                "      (g.FileType = 0)\r\n                          UNION ALL\r\n                   " +
-                "       SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastNam" +
-                "e AS Name, NULL AS StatusType, NULL AS Category, \r\n                             " +
-                "                      \'Number of Activity Summary Documents\' AS Information, CON" +
-                "VERT(nvarchar(100), COUNT(a.ActivitySummaryDesc)) AS StatusDescription\r\n        " +
-                "                  FROM            G_Student AS s RIGHT OUTER JOIN\r\n             " +
-                "                                      G_Activity AS a ON s.Id = a.StudentID RIGH" +
-                "T OUTER JOIN\r\n                                                   G_File AS g ON " +
-                "g.ActivityID = a.ID\r\n                          WHERE        (g.FileType = 0)\r\n  " +
-                "                        GROUP BY s.StudentNumber, s.FirstName, s.LastName) AS Pe" +
-                "rformance\r\nWHERE        (Name = @Student) OR\r\n                         (ISNULL(@" +
-                "Student, \'\') = \'\')\r\nORDER BY Name, CASE WHEN [StatusType] = \'Performance\' THEN 1" +
-                " WHEN [StatusType] IS NULL AND \r\n                         [Information] = \'Numbe" +
-                "r of Performance Items\' THEN 2 WHEN [StatusType] = \'Activity Summary\' THEN 3 WHE" +
-                "N [StatusType] IS NULL AND \r\n                         [Information] = \'Number of" +
-                " Activity Summary Documents\' THEN 4 ELSE 5 END, \r\n                         CASE " +
-                "WHEN [Category] = \'Performance\' THEN 1 WHEN [Category] = \'Publication\' THEN 2 WH" +
-                "EN [Category] = \'Abstract\' THEN 3 WHEN [Category] = \'Proposal\' THEN 4\r\n         " +
-                "                 WHEN [Category] = \'Teaching\' THEN 5 WHEN [Category] IS NULL AND" +
-                " [Information] = \'Number of Performance Items\' THEN 6 ELSE 7 END";
+            this._commandCollection[0].CommandText = "SELECT StudentID, Name, StatusType, Category, Information, StatusDescription\r\nFRO" +
+                "M     (SELECT s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Na" +
+                "me, \'Performance\' AS StatusType, categ.Name AS Category, p.CategoryInfo AS Infor" +
+                "mation, \r\n                                    CASE WHEN categ.Name = \'Publicatio" +
+                "n\' THEN pubs.Name WHEN categ.Name = \'Abstract\' THEN abstract.Name WHEN categ.Nam" +
+                "e = \'Proposal\' THEN props.Name WHEN categ.Name = \'Teaching\' THEN teach.Name END " +
+                "AS StatusDescription\r\n                  FROM      Performance AS p LEFT OUTER JO" +
+                "IN\r\n                                    Student AS s ON s.Id = p.StudentID LEFT " +
+                "OUTER JOIN\r\n                                    CommonFields AS categ ON categ.I" +
+                "D = p.CategoryID LEFT OUTER JOIN\r\n                                    CommonFiel" +
+                "ds AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN\r\n                  " +
+                "                  CommonFields AS abstract ON abstract.ID = p.AbstractStatsID LE" +
+                "FT OUTER JOIN\r\n                                    CommonFields AS props ON prop" +
+                "s.ID = p.ProposalStatsID LEFT OUTER JOIN\r\n                                    Co" +
+                "mmonFields AS teach ON teach.ID = p.TeachingStatsID\r\n                  UNION\r\n  " +
+                "                SELECT s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastN" +
+                "ame AS Name, NULL AS StatusType, NULL AS Category, \'Number of Performance Items\'" +
+                " AS Information, CONVERT(nvarchar(20), COUNT(p.CategoryInfo)) \r\n                " +
+                "                    AS StatusDescription\r\n                  FROM     Performance" +
+                " AS p LEFT OUTER JOIN\r\n                                    Student AS s ON s.Id " +
+                "= p.StudentID LEFT OUTER JOIN\r\n                                    CommonFields " +
+                "AS categ ON categ.ID = p.CategoryID LEFT OUTER JOIN\r\n                           " +
+                "         CommonFields AS pubs ON pubs.ID = p.PublicationStatsID LEFT OUTER JOIN\r" +
+                "\n                                    CommonFields AS abstract ON abstract.ID = p" +
+                ".AbstractStatsID LEFT OUTER JOIN\r\n                                    CommonFiel" +
+                "ds AS props ON props.ID = p.ProposalStatsID LEFT OUTER JOIN\r\n                   " +
+                "                 CommonFields AS teach ON teach.ID = p.TeachingStatsID\r\n        " +
+                "          GROUP BY s.StudentNumber, s.FirstName, s.LastName\r\n                  U" +
+                "NION ALL\r\n                  SELECT s.StudentNumber AS StudentID, s.FirstName + \'" +
+                " \' + s.LastName AS Name, \'Activity Summary\' AS StatusType, NULL AS Category, g.F" +
+                "ileName AS Information, a.ActivitySummaryDesc AS StatusDescription\r\n            " +
+                "      FROM     Student AS s RIGHT OUTER JOIN\r\n                                  " +
+                "  Activity AS a ON s.Id = a.StudentID RIGHT OUTER JOIN\r\n                        " +
+                "            [File] AS g ON g.ActivityId = a.ID\r\n                  WHERE  (g.File" +
+                "Type = 0)\r\n                  UNION ALL\r\n                  SELECT s.StudentNumber" +
+                " AS StudentID, s.FirstName + \' \' + s.LastName AS Name, NULL AS StatusType, NULL " +
+                "AS Category, \'Number of Activity Summary Documents\' AS Information, CONVERT(nvar" +
+                "char(100), \r\n                                    COUNT(a.ActivitySummaryDesc)) A" +
+                "S StatusDescription\r\n                  FROM     Student AS s RIGHT OUTER JOIN\r\n " +
+                "                                   Activity AS a ON s.Id = a.StudentID RIGHT OUT" +
+                "ER JOIN\r\n                                    [File] AS g ON g.ActivityId = a.ID\r" +
+                "\n                  WHERE  (g.FileType = 0)\r\n                  GROUP BY s.Student" +
+                "Number, s.FirstName, s.LastName) AS Performance\r\nWHERE  (Name = @Student) OR\r\n  " +
+                "                (ISNULL(@Student, \'\') = \'\')\r\nORDER BY Name, CASE WHEN [StatusTyp" +
+                "e] = \'Performance\' THEN 1 WHEN [StatusType] IS NULL AND [Information] = \'Number " +
+                "of Performance Items\' THEN 2 WHEN [StatusType] = \'Activity Summary\' THEN 3 WHEN " +
+                "[StatusType] IS NULL AND \r\n                  [Information] = \'Number of Activity" +
+                " Summary Documents\' THEN 4 ELSE 5 END, \r\n                  CASE WHEN [Category] " +
+                "= \'Performance\' THEN 1 WHEN [Category] = \'Publication\' THEN 2 WHEN [Category] = " +
+                "\'Abstract\' THEN 3 WHEN [Category] = \'Proposal\' THEN 4 WHEN [Category] = \'Teachin" +
+                "g\' THEN 5 WHEN [Category] IS NULL AND \r\n                  [Information] = \'Numbe" +
+                "r of Performance Items\' THEN 6 ELSE 7 END";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student", global::System.Data.SqlDbType.NVarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(DataSet1.PerformanceDataTable dataTable, string Student) {
@@ -4868,7 +4843,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSet1.PerformanceDataTable GetData(string Student) {
@@ -4907,13 +4882,13 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public RequirementsTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
@@ -4924,7 +4899,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlConnection Connection {
             get {
                 if ((this._connection == null)) {
@@ -4952,7 +4927,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlTransaction Transaction {
             get {
                 return this._transaction;
@@ -4978,7 +4953,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
@@ -4989,7 +4964,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool ClearBeforeFill {
             get {
                 return this._clearBeforeFill;
@@ -5000,7 +4975,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
@@ -5022,67 +4997,61 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT DISTINCT \r\n                         s.StudentNumber AS StudentID, s.FirstN" +
-                "ame + \' \' + s.LastName AS Name, qr.Name + \'ed - \' + CONVERT(CHAR(10), g.DateOfQu" +
-                "alification, 101) \r\n                         + CASE WHEN qr2.ID IS NULL THEN \'\' " +
-                "ELSE \'; \' + qr2.Name + \'ed - \' + CONVERT(CHAR(10), g.DateOfQualification2, 101) " +
-                "END AS QualifiyingExamination, \r\n                         g.Form2Title AS Resear" +
-                "chTopic, fr.Name + \'ed -  \' + CONVERT(CHAR(10), g.Form2Date, 101) AS ProposalPre" +
-                "sentation, cer.Name + \'ed - \' + CONVERT(CHAR(10), \r\n                         g.D" +
-                "ateOfCompExam, 101) + CASE WHEN cer2.ID IS NULL THEN \'\' ELSE \'; \' + cer2.Name + " +
-                "\'ed - \' + CONVERT(CHAR(10), g.DateOfCompExam2, 101) \r\n                         E" +
-                "ND AS ComprehensiveExam, g.AdvisorName + \' - \' + g.AdvisorDepartment + \' (\' + g." +
-                "AdvisorUniversity + \')\' AS Advisor, STUFF\r\n                             ((SELECT" +
-                " DISTINCT \'; \' + cm2.Name + \' - \' + cm2.Department + \' (\' + cm2.University + \')\'" +
-                " AS Expr1\r\n                                 FROM            G_CommitteeMember AS" +
-                " cm2 LEFT OUTER JOIN\r\n                                                          " +
-                "G_Student AS s2 ON cm2.StudentID = s2.Id\r\n                                 WHERE" +
-                "        (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS CommitteeMembers, g.Form3" +
-                "Title AS FinalDefenseTitle, fdr.Name + \'ed - \' + CONVERT(CHAR(10), \r\n           " +
-                "              g.Form3Date, 101) AS FinalDefenseResult, STUFF\r\n                  " +
-                "           ((SELECT DISTINCT \'; \' + mFile2.FileName AS Expr1\r\n                  " +
-                "               FROM            G_File AS mFile2 RIGHT OUTER JOIN\r\n              " +
-                "                                            G_Manuscript AS m2 ON m2.ID = mFile2" +
-                ".ManuscriptID LEFT OUTER JOIN\r\n                                                 " +
-                "         G_Student AS s2 ON m2.StudentID = s2.Id\r\n                              " +
-                "   WHERE        (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS ManuscriptFile, d" +
-                "egreeEnd.Name + \' \' + CONVERT(NVARCHAR(4), g.DegreeEndYear) \r\n                  " +
-                "       AS DegreeAwarded\r\nFROM            G_Graduation AS g LEFT OUTER JOIN\r\n    " +
-                "                     G_Student AS s ON g.StudentID = s.Id LEFT OUTER JOIN\r\n     " +
-                "                    G_CommonFields AS qr ON g.QualifierResultId = qr.ID LEFT OUT" +
-                "ER JOIN\r\n                         G_CommonFields AS qr2 ON g.Qualifier2ResultId " +
-                "= qr2.ID LEFT OUTER JOIN\r\n                         G_CommonFields AS fr ON g.For" +
-                "m2ResultId = fr.ID LEFT OUTER JOIN\r\n                         G_CommonFields AS c" +
-                "er ON g.CompExamResultId = cer.ID LEFT OUTER JOIN\r\n                         G_Co" +
-                "mmonFields AS cer2 ON g.CompExam2ResultId = cer2.ID LEFT OUTER JOIN\r\n           " +
-                "              G_CommonFields AS fdr ON g.Form3ResultId = fdr.ID LEFT OUTER JOIN\r" +
-                "\n                         G_Manuscript AS m ON m.StudentID = s.Id LEFT OUTER JOI" +
-                "N\r\n                         G_File AS mFile ON mFile.ManuscriptID = m.ID LEFT OU" +
-                "TER JOIN\r\n                         G_CommonFields AS degreeEnd ON degreeEnd.ID =" +
-                " g.DegreeEndSemsId\r\nWHERE        ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @F" +
-                "romDate AND NOT (DATEFROMPARTS(g.DegreeEndYear, 1, 1) < @FromDate) OR\r\n         " +
-                "                DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @FromDate AND g.Degre" +
-                "eEndYear IS NULL OR\r\n                         DATEFROMPARTS(s.DegreeStartYear, 0" +
-                "1, 01) >= @FromDate AND DATEFROMPARTS(s.DegreeStartYear, 01, 01) <= @ToDate) AND" +
-                " \r\n                         NOT (DATEFROMPARTS(s.DegreeStartYear, 01, 01) > @ToD" +
-                "ate) OR\r\n                         ISNULL(@FromDate, \'\') = \'\' OR\r\n               " +
-                "          ISNULL(@ToDate, \'\') = \'\') AND (s.FirstName + \' \' + s.LastName = @Stude" +
-                "nt OR\r\n                         ISNULL(@Student, \'\') = \'\') AND ((CASE WHEN (degr" +
-                "eeEnd.Name IS NULL AND g.DegreeEndYear IS NULL) THEN \'Current\' ELSE \'Former\' END" +
-                ") = @CurrentFormer OR\r\n                         ISNULL(@CurrentFormer, \'\') = \'\')" +
-                "";
+            this._commandCollection[0].CommandText = "SELECT DISTINCT \r\n                  s.StudentNumber AS StudentID, s.FirstName + \'" +
+                " \' + s.LastName AS Name, qr.Name + \'ed - \' + CONVERT(CHAR(10), g.DateOfQualifica" +
+                "tion, 101) + CASE WHEN qr2.ID IS NULL THEN \'\' ELSE \'; \' + qr2.Name + \'ed - \' + C" +
+                "ONVERT(CHAR(10), \r\n                  g.DateOfQualification2, 101) END AS Qualifi" +
+                "yingExamination, g.Form2Title AS ResearchTopic, fr.Name + \'ed -  \' + CONVERT(CHA" +
+                "R(10), g.Form2Date, 101) AS ProposalPresentation, cer.Name + \'ed - \' + CONVERT(C" +
+                "HAR(10), \r\n                  g.DateOfCompExam, 101) + CASE WHEN cer2.ID IS NULL " +
+                "THEN \'\' ELSE \'; \' + cer2.Name + \'ed - \' + CONVERT(CHAR(10), g.DateOfCompExam2, 1" +
+                "01) END AS ComprehensiveExam, \r\n                  g.AdvisorName + \' - \' + g.Advi" +
+                "sorDepartment + \' (\' + g.AdvisorUniversity + \')\' AS Advisor, STUFF\r\n            " +
+                "          ((SELECT DISTINCT \'; \' + cm2.Name + \' - \' + cm2.Department + \' (\' + cm" +
+                "2.University + \')\' AS Expr1\r\n                        FROM      CommitteeMember A" +
+                "S cm2 LEFT OUTER JOIN\r\n                                          Student AS s2 O" +
+                "N cm2.StudentID = s2.Id\r\n                        WHERE   (s2.Id = s.Id) FOR XML " +
+                "PATH(\'\')), 1, 1, \'\') AS CommitteeMembers, g.Form3Title AS FinalDefenseTitle, fdr" +
+                ".Name + \'ed - \' + CONVERT(CHAR(10), g.Form3Date, 101) AS FinalDefenseResult, STU" +
+                "FF\r\n                      ((SELECT DISTINCT \'; \' + mFile2.FileName AS Expr1\r\n   " +
+                "                     FROM      [File] AS mFile2 RIGHT OUTER JOIN\r\n              " +
+                "                            Manuscript AS m2 ON m2.ID = mFile2.ManuscriptId LEFT" +
+                " OUTER JOIN\r\n                                          Student AS s2 ON m2.Stude" +
+                "ntID = s2.Id\r\n                        WHERE   (s2.Id = s.Id) FOR XML PATH(\'\')), " +
+                "1, 1, \'\') AS ManuscriptFile, degreeEnd.Name + \' \' + CONVERT(NVARCHAR(4), g.Degre" +
+                "eEndYear) AS DegreeAwarded\r\nFROM     Graduation AS g LEFT OUTER JOIN\r\n          " +
+                "        Student AS s ON g.StudentID = s.Id LEFT OUTER JOIN\r\n                  Co" +
+                "mmonFields AS qr ON g.QualifierResultId = qr.ID LEFT OUTER JOIN\r\n               " +
+                "   CommonFields AS qr2 ON g.Qualifier2ResultId = qr2.ID LEFT OUTER JOIN\r\n       " +
+                "           CommonFields AS fr ON g.Form2ResultId = fr.ID LEFT OUTER JOIN\r\n      " +
+                "            CommonFields AS cer ON g.CompExamResultId = cer.ID LEFT OUTER JOIN\r\n" +
+                "                  CommonFields AS cer2 ON g.CompExam2ResultId = cer2.ID LEFT OUT" +
+                "ER JOIN\r\n                  CommonFields AS fdr ON g.Form3ResultId = fdr.ID LEFT " +
+                "OUTER JOIN\r\n                  Manuscript AS m ON m.StudentID = s.Id LEFT OUTER J" +
+                "OIN\r\n                  [File] AS mFile ON mFile.ManuscriptId = m.ID LEFT OUTER J" +
+                "OIN\r\n                  CommonFields AS degreeEnd ON degreeEnd.ID = g.DegreeEndSe" +
+                "msId\r\nWHERE  ((DATEFROMPARTS(s.DegreeStartYear, 01, 01) < @FromDate AND NOT (DAT" +
+                "EFROMPARTS(g.DegreeEndYear, 1, 1) < @FromDate) OR\r\n                  DATEFROMPAR" +
+                "TS(s.DegreeStartYear, 01, 01) < @FromDate AND g.DegreeEndYear IS NULL OR\r\n      " +
+                "            DATEFROMPARTS(s.DegreeStartYear, 01, 01) >= @FromDate AND DATEFROMPA" +
+                "RTS(s.DegreeStartYear, 01, 01) <= @ToDate) AND NOT (DATEFROMPARTS(s.DegreeStartY" +
+                "ear, 01, 01) > @ToDate) OR\r\n                  ISNULL(@FromDate, \'\') = \'\' OR\r\n   " +
+                "               ISNULL(@ToDate, \'\') = \'\') AND (s.FirstName + \' \' + s.LastName = @" +
+                "Student OR\r\n                  ISNULL(@Student, \'\') = \'\') AND ((CASE WHEN (degree" +
+                "End.Name IS NULL AND g.DegreeEndYear IS NULL) THEN \'Current\' ELSE \'Former\' END) " +
+                "= @CurrentFormer OR\r\n                  ISNULL(@CurrentFormer, \'\') = \'\')";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FromDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ToDate", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5091,7 +5060,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(DataSet1.RequirementsDataTable dataTable, string FromDate, string ToDate, string Student, string CurrentFormer) {
@@ -5128,7 +5097,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSet1.RequirementsDataTable GetData(string FromDate, string ToDate, string Student, string CurrentFormer) {
@@ -5185,13 +5154,13 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public PostgraduationTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
             get {
                 if ((this._adapter == null)) {
@@ -5202,7 +5171,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlConnection Connection {
             get {
                 if ((this._connection == null)) {
@@ -5230,7 +5199,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         internal global::System.Data.SqlClient.SqlTransaction Transaction {
             get {
                 return this._transaction;
@@ -5256,7 +5225,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
             get {
                 if ((this._commandCollection == null)) {
@@ -5267,7 +5236,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool ClearBeforeFill {
             get {
                 return this._clearBeforeFill;
@@ -5278,7 +5247,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitAdapter() {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
@@ -5300,331 +5269,274 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolContext"].ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Nam" +
-                "e, s.OtherEmail AS Email, s.Phone, STUFF\r\n                             ((SELECT " +
-                "DISTINCT \'; \' + cvFile2.FileName AS Expr1\r\n                                 FROM" +
-                "            G_File AS cvFile2 LEFT OUTER JOIN\r\n                                 " +
-                "                         G_CurriculumVitae AS cv2 ON cvFile2.CurriculumVitaeID =" +
-                " cv2.ID LEFT OUTER JOIN\r\n                                                       " +
-                "   G_Student AS s2 ON cv2.StudentID = s2.Id\r\n                                 WH" +
-                "ERE        (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS CVs, STUFF\r\n          " +
-                "                   ((SELECT DISTINCT \r\n                                         " +
-                "                 \'; \' + pe2.Position + \'-\' + pe2.Employer + \' (\' + sm2.Name + \' " +
-                "\' + CONVERT(nvarchar(4), pe2.StartYear) + \'-\' + em2.Name + \' \' + CONVERT(nvarcha" +
-                "r(4), \r\n                                                          pe2.EndYear) +" +
-                " \')\' AS Expr1\r\n                                 FROM            G_PreviousEmploy" +
-                "ment AS pe2 LEFT OUTER JOIN\r\n                                                   " +
-                "       G_Student AS s2 ON pe2.StudentID = s2.Id LEFT OUTER JOIN\r\n               " +
-                "                                           G_CommonFields AS sm2 ON pe2.StartMon" +
-                "thId = sm2.ID LEFT OUTER JOIN\r\n                                                 " +
-                "         G_CommonFields AS em2 ON pe2.EndMonthId = em2.ID\r\n                     " +
-                "            WHERE        (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS Employme" +
-                "ntHistory, STUFF\r\n                             ((SELECT DISTINCT \'; \' + pub2.Pub" +
-                "licationInformation + \' (\' + pm2.Name + \' \' + CONVERT(nvarchar(4), pub2.PubYear)" +
-                " + \')\' AS Expr1\r\n                                 FROM            G_Publications" +
-                " AS pub2 LEFT OUTER JOIN\r\n                                                      " +
-                "    G_Student AS s2 ON pub2.StudentID = s2.Id LEFT OUTER JOIN\r\n                 " +
-                "                                         G_CommonFields AS pm2 ON pub2.PubMonthI" +
-                "d = pm2.ID\r\n                                 WHERE        (s2.Id = s.Id) FOR XML" +
-                " PATH(\'\')), 1, 1, \'\') AS PublicationsPeerReviewedJournalonlyPublished, publ.Tota" +
-                "lNumberofPublications, STUFF\r\n                             ((SELECT DISTINCT \'; " +
-                "\' + grt2.GrantInformation + \' (\' + gm2.Name + \' \' + CONVERT(nvarchar(4), grt2.Gr" +
-                "antYear) + \')\' AS Expr1\r\n                                 FROM            G_Gran" +
-                "ts AS grt2 LEFT OUTER JOIN\r\n                                                    " +
-                "      G_CommonFields AS gm2 ON grt2.GrantMonthId = gm2.ID LEFT OUTER JOIN\r\n     " +
-                "                                                     G_Student AS s2 ON grt2.Stu" +
-                "dentID = s2.Id\r\n                                 WHERE        (s2.Id = s.Id) FOR" +
-                " XML PATH(\'\')), 1, 1, \'\') AS Grants, grants.TotalNumberofGrants, STUFF\r\n        " +
-                "                     ((SELECT DISTINCT \'; \' + h2.HonorInformation + \' (\' + hm2.N" +
-                "ame + \' \' + CONVERT(nvarchar(4), h2.HonorYear) + \')\' AS Expr1\r\n                 " +
-                "                FROM            G_Honors AS h2 LEFT OUTER JOIN\r\n                " +
-                "                                          G_CommonFields AS hm2 ON h2.HonorMonth" +
-                "Id = hm2.ID LEFT OUTER JOIN\r\n                                                   " +
-                "       G_Student AS s2 ON h2.StudentID = s2.Id\r\n                                " +
-                " WHERE        (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS HonorsAwards, honor" +
-                "s.TotalNumberofHonorsAwards\r\nFROM            G_Student AS s LEFT OUTER JOIN\r\n   " +
-                "                      G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN\r\n " +
-                "                            (SELECT        s.Id, \'<u>Total: <strong>\' + CONVERT(" +
-                "nvarchar(4), COUNT(*)) + \'</strong></u>\' + CHAR(13) + \'<br /><br />Before Progra" +
-                "m: \' + CONVERT(nvarchar(4), \r\n                                                  " +
-                "       COUNT(before.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN" +
-                " (\'<br /><br />During Program: \' + CONVERT(nvarchar(4), \r\n                      " +
-                "                                   COUNT(during_2.ID)) + CHAR(13) + \'<br /><br /" +
-                ">Year 1 (\' + CONVERT(nvarchar(30), \r\n                                           " +
-                "              CASE WHEN g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4)" +
-                ", g.DegreeEndYear) + \' - May \' + CONVERT(nvarchar(4), \r\n                        " +
-                "                                 g.DegreeEndYear + 1) + \'): \' WHEN g.DegreeEndSe" +
-                "msId = 3 THEN \'September\' + CONVERT(nvarchar(4), g.DegreeEndYear) \r\n            " +
-                "                                             + \' - August\' + CONVERT(nvarchar(4)" +
-                ", g.DegreeEndYear + 1) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.DegreeEnd" +
-                "Year + 1) \r\n                                                         + \' - Decem" +
-                "ber\' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + \'): \' END) + CONVERT(nvarchar" +
-                "(4), COUNT(year_1.ID)) + CHAR(13) \r\n                                            " +
-                "             + \'<br /><br />Year 2 (\' + CONVERT(nvarchar(30), CASE WHEN g.Degree" +
-                "EndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) \r\n       " +
-                "                                                  + \' - May \' + CONVERT(nvarchar" +
-                "(4), g.DegreeEndYear + 2) + \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'September\' + " +
-                "CONVERT(nvarchar(4), \r\n                                                         " +
-                "g.DegreeEndYear + 1) + \' - August\' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) +" +
-                " \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)\r\n             " +
-                "                                             + \' - December\' + CONVERT(nvarchar(" +
-                "4), g.DegreeEndYear + 2) + \'): \' END) + CONVERT(nvarchar(4), COUNT(year_2.ID)) +" +
-                " CHAR(13) \r\n                                                         + \'<br /><b" +
-                "r />Year 3 (\' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN \'June" +
-                " \' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) \r\n                               " +
-                "                          + \' - May \' + CONVERT(nvarchar(4), g.DegreeEndYear + 3" +
-                ") + \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'September\' + CONVERT(nvarchar(4), \r\n " +
-                "                                                        g.DegreeEndYear + 2) + \'" +
-                " - August\' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + \'): \' ELSE \'January\' + " +
-                "CONVERT(nvarchar(4), g.DegreeEndYear + 3)\r\n                                     " +
-                "                     + \' - December\' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)" +
-                " + \'): \' END) + CONVERT(nvarchar(4), COUNT(year_3.ID)) + CHAR(13) \r\n            " +
-                "                                             + \'<br /><br />Year 4 (\' + CONVERT(" +
-                "nvarchar(30), CASE WHEN g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4)" +
-                ", g.DegreeEndYear + 3) \r\n                                                       " +
-                "  + \' - May \' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + \'): \' WHEN g.DegreeE" +
-                "ndSemsId = 3 THEN \'September\' + CONVERT(nvarchar(4), \r\n                         " +
-                "                                g.DegreeEndYear + 3) + \' - August\' + CONVERT(nva" +
-                "rchar(4), g.DegreeEndYear + 4) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.D" +
-                "egreeEndYear + 4)\r\n                                                          + \'" +
-                " - December\' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + \'): \' END) + CONVERT(" +
-                "nvarchar(4), COUNT(year_4.ID)) + CHAR(13) \r\n                                    " +
-                "                     + \'<br /><br />Year 5 (\' + CONVERT(nvarchar(30), CASE WHEN " +
-                "g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) \r" +
-                "\n                                                         + \' - May \' + CONVERT(" +
-                "nvarchar(4), g.DegreeEndYear + 5) + \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'Septe" +
-                "mber\' + CONVERT(nvarchar(4), \r\n                                                 " +
-                "        g.DegreeEndYear + 4) + \' - August\' + CONVERT(nvarchar(4), g.DegreeEndYea" +
-                "r + 5) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)\r\n     " +
-                "                                                     + \' - December\' + CONVERT(n" +
+            this._commandCollection[0].CommandText = "SELECT s.StudentNumber AS StudentID, s.FirstName + \' \' + s.LastName AS Name, s.Ot" +
+                "herEmail AS Email, s.Phone, STUFF\r\n                      ((SELECT DISTINCT \'; \' " +
+                "+ cvFile2.FileName AS Expr1\r\n                        FROM      [File] AS cvFile2" +
+                " LEFT OUTER JOIN\r\n                                          CurriculumVitae AS c" +
+                "v2 ON cvFile2.CurriculumVitaeId = cv2.ID LEFT OUTER JOIN\r\n                      " +
+                "                    Student AS s2 ON cv2.StudentID = s2.Id\r\n                    " +
+                "    WHERE   (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS CVs, STUFF\r\n         " +
+                "             ((SELECT DISTINCT \'; \' + pe2.Position + \'-\' + pe2.Employer + \' (\' +" +
+                " sm2.Name + \' \' + CONVERT(nvarchar(4), pe2.StartYear) + \'-\' + em2.Name + \' \' + C" +
+                "ONVERT(nvarchar(4), pe2.EndYear) + \')\' AS Expr1\r\n                        FROM   " +
+                "   PreviousEmployment AS pe2 LEFT OUTER JOIN\r\n                                  " +
+                "        Student AS s2 ON pe2.StudentID = s2.Id LEFT OUTER JOIN\r\n                " +
+                "                          CommonFields AS sm2 ON pe2.StartMonthId = sm2.ID LEFT " +
+                "OUTER JOIN\r\n                                          CommonFields AS em2 ON pe2" +
+                ".EndMonthId = em2.ID\r\n                        WHERE   (s2.Id = s.Id) FOR XML PAT" +
+                "H(\'\')), 1, 1, \'\') AS EmploymentHistory, STUFF\r\n                      ((SELECT DI" +
+                "STINCT \'; \' + pub2.PublicationInformation + \' (\' + pm2.Name + \' \' + CONVERT(nvar" +
+                "char(4), pub2.PubYear) + \')\' AS Expr1\r\n                        FROM      Publica" +
+                "tions AS pub2 LEFT OUTER JOIN\r\n                                          Student" +
+                " AS s2 ON pub2.StudentID = s2.Id LEFT OUTER JOIN\r\n                              " +
+                "            CommonFields AS pm2 ON pub2.PubMonthId = pm2.ID\r\n                   " +
+                "     WHERE   (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS PublicationsPeerRevi" +
+                "ewedJournalonlyPublished, publ.TotalNumberofPublications, STUFF\r\n               " +
+                "       ((SELECT DISTINCT \'; \' + grt2.GrantInformation + \' (\' + gm2.Name + \' \' + " +
+                "CONVERT(nvarchar(4), grt2.GrantYear) + \')\' AS Expr1\r\n                        FRO" +
+                "M      Grants AS grt2 LEFT OUTER JOIN\r\n                                         " +
+                " CommonFields AS gm2 ON grt2.GrantMonthId = gm2.ID LEFT OUTER JOIN\r\n            " +
+                "                              Student AS s2 ON grt2.StudentID = s2.Id\r\n         " +
+                "               WHERE   (s2.Id = s.Id) FOR XML PATH(\'\')), 1, 1, \'\') AS Grants, gr" +
+                "ants.TotalNumberofGrants, STUFF\r\n                      ((SELECT DISTINCT \'; \' + " +
+                "h2.HonorInformation + \' (\' + hm2.Name + \' \' + CONVERT(nvarchar(4), h2.HonorYear)" +
+                " + \')\' AS Expr1\r\n                        FROM      Honors AS h2 LEFT OUTER JOIN\r" +
+                "\n                                          CommonFields AS hm2 ON h2.HonorMonthI" +
+                "d = hm2.ID LEFT OUTER JOIN\r\n                                          Student AS" +
+                " s2 ON h2.StudentID = s2.Id\r\n                        WHERE   (s2.Id = s.Id) FOR " +
+                "XML PATH(\'\')), 1, 1, \'\') AS HonorsAwards, honors.TotalNumberofHonorsAwards\r\nFROM" +
+                "     Student AS s LEFT OUTER JOIN\r\n                  Graduation AS g ON g.Studen" +
+                "tID = s.Id LEFT OUTER JOIN\r\n                      (SELECT s.Id, \'<u>Total: <stro" +
+                "ng>\' + CONVERT(nvarchar(4), COUNT(*)) + \'</strong></u>\' + CHAR(13) + \'<br /><br " +
+                "/>Before Program: \' + CONVERT(nvarchar(4), COUNT(before.ID)) + CHAR(13) + CASE W" +
+                "HEN g.DegreeEndYear IS NOT NULL \r\n                                         THEN " +
+                "(\'<br /><br />During Program: \' + CONVERT(nvarchar(4), COUNT(durin2.ID)) + CHAR(" +
+                "13) + \'<br /><br />Year 1 (\' + CONVERT(nvarchar(30), CASE WHEN g.DegreeEndSemsId" +
+                " = 1 THEN \'June \' + CONVERT(nvarchar(4), \r\n                                     " +
+                "    g.DegreeEndYear) + \' - May \' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + \'" +
+                "): \' WHEN g.DegreeEndSemsId = 3 THEN \'September\' + CONVERT(nvarchar(4), g.Degree" +
+                "EndYear) + \' - August\' + CONVERT(nvarchar(4), \r\n                                " +
+                "         g.DegreeEndYear + 1) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), g.De" +
+                "greeEndYear + 1) + \' - December\' + CONVERT(nvarchar(4), g.DegreeEndYear + 1) + \'" +
+                "): \' END) + CONVERT(nvarchar(4), COUNT(year_1.ID)) + CHAR(13) \r\n                " +
+                "                         + \'<br /><br />Year 2 (\' + CONVERT(nvarchar(30), CASE W" +
+                "HEN g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4), g.DegreeEndYear + " +
+                "1) + \' - May \' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) \r\n                   " +
+                "                      + \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'September\' + CONV" +
+                "ERT(nvarchar(4), g.DegreeEndYear + 1) + \' - August\' + CONVERT(nvarchar(4), g.Deg" +
+                "reeEndYear + 2) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), \r\n                " +
+                "                         g.DegreeEndYear + 2) + \' - December\' + CONVERT(nvarchar" +
+                "(4), g.DegreeEndYear + 2) + \'): \' END) + CONVERT(nvarchar(4), COUNT(year_2.ID)) " +
+                "+ CHAR(13) + \'<br /><br />Year 3 (\' + CONVERT(nvarchar(30), \r\n                  " +
+                "                       CASE WHEN g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nv" +
+                "archar(4), g.DegreeEndYear + 2) + \' - May \' + CONVERT(nvarchar(4), g.DegreeEndYe" +
+                "ar + 3) \r\n                                         + \'): \' WHEN g.DegreeEndSemsI" +
+                "d = 3 THEN \'September\' + CONVERT(nvarchar(4), g.DegreeEndYear + 2) + \' - August\'" +
+                " + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + \'): \' ELSE \'January\' + CONVERT(nv" +
+                "archar(4), \r\n                                         g.DegreeEndYear + 3) + \' -" +
+                " December\' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + \'): \' END) + CONVERT(nv" +
+                "archar(4), COUNT(year_3.ID)) + CHAR(13) + \'<br /><br />Year 4 (\' + CONVERT(nvarc" +
+                "har(30), \r\n                                         CASE WHEN g.DegreeEndSemsId " +
+                "= 1 THEN \'June \' + CONVERT(nvarchar(4), g.DegreeEndYear + 3) + \' - May \' + CONVE" +
+                "RT(nvarchar(4), g.DegreeEndYear + 4) \r\n                                         " +
+                "+ \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'September\' + CONVERT(nvarchar(4), g.Deg" +
+                "reeEndYear + 3) + \' - August\' + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + \'): " +
+                "\' ELSE \'January\' + CONVERT(nvarchar(4), \r\n                                      " +
+                "   g.DegreeEndYear + 4) + \' - December\' + CONVERT(nvarchar(4), g.DegreeEndYear +" +
+                " 4) + \'): \' END) + CONVERT(nvarchar(4), COUNT(year_4.ID)) + CHAR(13) + \'<br /><b" +
+                "r />Year 5 (\' + CONVERT(nvarchar(30), \r\n                                        " +
+                " CASE WHEN g.DegreeEndSemsId = 1 THEN \'June \' + CONVERT(nvarchar(4), g.DegreeEnd" +
+                "Year + 4) + \' - May \' + CONVERT(nvarchar(4), g.DegreeEndYear + 5) \r\n            " +
+                "                             + \'): \' WHEN g.DegreeEndSemsId = 3 THEN \'September\'" +
+                " + CONVERT(nvarchar(4), g.DegreeEndYear + 4) + \' - August\' + CONVERT(nvarchar(4)" +
+                ", g.DegreeEndYear + 5) + \'): \' ELSE \'January\' + CONVERT(nvarchar(4), \r\n         " +
+                "                                g.DegreeEndYear + 5) + \' - December\' + CONVERT(n" +
                 "varchar(4), g.DegreeEndYear + 5) + \'): \' END) + CONVERT(nvarchar(4), COUNT(year_" +
-                "5.ID))) \r\n                                                         ELSE \'<br /><" +
-                "br />During Program: \' + CONVERT(nvarchar(4), COUNT(during_1.ID)) END AS TotalNu" +
-                "mberofPublications\r\n                               FROM            G_Publication" +
-                "s AS pub INNER JOIN\r\n                                                         G_" +
-                "Student AS s ON pub.StudentID = s.Id LEFT OUTER JOIN\r\n                          " +
-                "                               G_Graduation AS g ON g.StudentID = s.Id LEFT OUTE" +
-                "R JOIN\r\n                                                         G_CommonFields " +
-                "AS pubMonth ON pub.PubMonthId = pubMonth.ID LEFT OUTER JOIN\r\n                   " +
-                "                                      G_Publications AS before ON before.ID = pu" +
-                "b.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n       " +
-                "                                                  + \'/15/\' + CONVERT(nvarchar(4)" +
-                ", before.PubYear)) < CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                  " +
-                "                                       CASE WHEN s.DegreeStartSemsId = 1 THEN 5 " +
-                "WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4)," +
-                " \r\n                                                         s.DegreeStartYear)) " +
-                "LEFT OUTER JOIN\r\n                                                         G_Publ" +
-                "ications AS during_1 ON during_1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarc" +
-                "har(2), pubMonth.DisplayOrder) \r\n                                               " +
-                "          + \'/15/\' + CONVERT(nvarchar(4), during_1.PubYear)) > CONVERT(DATETIME," +
-                " CONVERT(nvarchar(2), \r\n                                                        " +
-                " CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 EL" +
-                "SE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                                   " +
-                "                      s.DegreeStartYear)) LEFT OUTER JOIN\r\n                     " +
-                "                                    G_Publications AS during_2 ON during_2.ID = " +
-                "pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n     " +
-                "                                                    + \'/15/\' + CONVERT(nvarchar(" +
-                "4), during_2.PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n              " +
-                "                                           CASE WHEN s.DegreeStartSemsId = 1 THE" +
-                "N 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar" +
-                "(4), \r\n                                                         s.DegreeStartYea" +
-                "r)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' +" +
-                " CONVERT(nvarchar(4), during_2.PubYear)) \r\n                                     " +
-                "                    <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.Degree" +
-                "EndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n          " +
-                "                                               + \'/31/\' + CONVERT(nvarchar(4), g" +
-                ".DegreeEndYear)) LEFT OUTER JOIN\r\n                                              " +
-                "           G_Publications AS year_1 ON year_1.ID = pub.ID AND CONVERT(DATETIME, " +
-                "CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n                                  " +
-                "                       + \'/15/\' + CONVERT(nvarchar(4), year_1.PubYear)) > CONVER" +
-                "T(DATETIME, CONVERT(nvarchar(2), \r\n                                             " +
-                "            CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 TH" +
-                "EN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                            " +
-                "                             g.DegreeEndYear)) AND CONVERT(DATETIME, CONVERT(nva" +
-                "rchar(2), pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), year_1.PubYear)" +
-                ") \r\n                                                         <= CONVERT(DATETIME" +
-                ", CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSe" +
-                "msId = 3 THEN 8 ELSE 12 END) \r\n                                                 " +
-                "        + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 1)) LEFT OUTER JOIN\r\n " +
-                "                                                        G_Publications AS year_2" +
-                " ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.Displ" +
-                "ayOrder) \r\n                                                         + \'/15/\' + C" +
-                "ONVERT(nvarchar(4), year_2.PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n" +
-                "                                                         CASE WHEN g.DegreeEndSe" +
-                "msId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVER" +
-                "T(nvarchar(4), \r\n                                                         g.Degr" +
-                "eeEndYear + 1)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder" +
-                ") + \'/15/\' + CONVERT(nvarchar(4), year_1.PubYear)) \r\n                           " +
-                "                              <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHE" +
-                "N g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n" +
-                "                                                         + \'/31/\' + CONVERT(nvar" +
-                "char(4), g.DegreeEndYear + 2)) LEFT OUTER JOIN\r\n                                " +
-                "                         G_Publications AS year_3 ON year_3.ID = pub.ID AND CONV" +
-                "ERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n                    " +
-                "                                     + \'/15/\' + CONVERT(nvarchar(4), year_3.PubY" +
-                "ear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                               " +
-                "                          CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEn" +
-                "dSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n              " +
-                "                                           g.DegreeEndYear + 2)) AND CONVERT(DAT" +
-                "ETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4" +
-                "), year_3.PubYear)) \r\n                                                         <" +
-                "= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 " +
-                "WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n                               " +
-                "                          + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)) " +
-                "LEFT OUTER JOIN\r\n                                                         G_Publ" +
-                "ications AS year_4 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(" +
-                "2), pubMonth.DisplayOrder) \r\n                                                   " +
-                "      + \'/15/\' + CONVERT(nvarchar(4), year_4.PubYear)) > CONVERT(DATETIME, CONVE" +
-                "RT(nvarchar(2), \r\n                                                         CASE " +
-                "WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END)" +
-                " + \'/31/\' + CONVERT(nvarchar(4), \r\n                                             " +
-                "            g.DegreeEndYear + 4)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pub" +
-                "Month.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), year_4.PubYear)) \r\n         " +
-                "                                                <= CONVERT(DATETIME, CONVERT(nva" +
+                "5.ID))) ELSE \'<br /><br />During Program: \' + CONVERT(nvarchar(4), COUNT(durin1." +
+                "ID)) \r\n                                         END AS TotalNumberofPublications" +
+                "\r\n                       FROM      Publications AS pub INNER JOIN\r\n             " +
+                "                            Student AS s ON pub.StudentID = s.Id LEFT OUTER JOIN" +
+                "\r\n                                         Graduation AS g ON g.StudentID = s.Id" +
+                " LEFT OUTER JOIN\r\n                                         CommonFields AS pubMo" +
+                "nth ON pub.PubMonthId = pubMonth.ID LEFT OUTER JOIN\r\n                           " +
+                "              Publications AS before ON before.ID = pub.ID AND CONVERT(DATETIME," +
+                " CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), bef" +
+                "ore.PubYear)) < CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                       " +
+                "                  CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSem" +
+                "sId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), s.DegreeStartYear)) " +
+                "LEFT OUTER JOIN\r\n                                         Publications AS durin1" +
+                " ON durin1.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.Displ" +
+                "ayOrder) + \'/15/\' + CONVERT(nvarchar(4), durin1.PubYear)) > CONVERT(DATETIME, CO" +
+                "NVERT(nvarchar(2), \r\n                                         CASE WHEN s.Degree" +
+                "StartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\'" +
+                " + CONVERT(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN\r\n                   " +
+                "                      Publications AS durin2 ON durin2.ID = pub.ID AND CONVERT(D" +
+                "ATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar" +
+                "(4), durin2.PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n               " +
+                "                          CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.Degree" +
+                "StartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), s.DegreeStar" +
+                "tYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                           " +
+                "              pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), durin2.PubY" +
+                "ear)) <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 " +
+                "THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n                        " +
+                "                 + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear)) LEFT OUTER JO" +
+                "IN\r\n                                         Publications AS year_1 ON year_1.ID" +
+                " = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/" +
+                "15/\' + CONVERT(nvarchar(4), year_1.PubYear)) > CONVERT(DATETIME, CONVERT(nvarcha" +
+                "r(2), \r\n                                         CASE WHEN g.DegreeEndSemsId = 1" +
+                " THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarch" +
+                "ar(4), g.DegreeEndYear)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n          " +
+                "                               pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarcha" +
+                "r(4), year_1.PubYear)) <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.Deg" +
+                "reeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n       " +
+                "                                  + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYea" +
+                "r + 1)) LEFT OUTER JOIN\r\n                                         Publications A" +
+                "S year_2 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMon" +
+                "th.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), year_2.PubYear)) > CONVERT(DATE" +
+                "TIME, CONVERT(nvarchar(2), \r\n                                         CASE WHEN " +
+                "g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/" +
+                "31/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 1)) AND CONVERT(DATETIME, CONVERT(" +
+                "nvarchar(2), \r\n                                         pubMonth.DisplayOrder) +" +
+                " \'/15/\' + CONVERT(nvarchar(4), year_1.PubYear)) <= CONVERT(DATETIME, CONVERT(nva" +
                 "rchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN" +
-                " 8 ELSE 12 END) \r\n                                                         + \'/3" +
-                "1/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 5)) LEFT OUTER JOIN\r\n              " +
-                "                                           G_Publications AS year_5 ON year_2.ID" +
-                " = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) \r\n  " +
-                "                                                       + \'/15/\' + CONVERT(nvarch" +
-                "ar(4), year_5.PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n             " +
-                "                                            CASE WHEN g.DegreeEndSemsId = 1 THEN" +
-                " 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4)" +
-                ", \r\n                                                         g.DegreeEndYear + 5" +
-                ")) AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' + " +
-                "CONVERT(nvarchar(4), year_5.PubYear)) \r\n                                        " +
-                "                 <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEnd" +
-                "SemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n             " +
-                "                                            + \'/31/\' + CONVERT(nvarchar(4), g.De" +
-                "greeEndYear + 6))\r\n                               GROUP BY s.Id, s.FirstName, g." +
-                "DegreeEndYear, g.DegreeEndSemsId) AS publ ON publ.Id = s.Id LEFT OUTER JOIN\r\n   " +
-                "                          (SELECT        s.Id, \'<u>Total: <strong>\' + CONVERT(nv" +
-                "archar(4), COUNT(*)) + \'</strong></u>\' + CHAR(13) + \'<br /><br />Before Program:" +
-                " \' + CONVERT(nvarchar(4), \r\n                                                    " +
-                "     COUNT(grBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN" +
-                " (\'<br /><br />During Program: \' + CONVERT(nvarchar(4), \r\n                      " +
-                "                                   COUNT(grDuring_2.ID)) + CHAR(13) + \'<br /><br" +
-                " />After Program: \' + CONVERT(nvarchar(4), COUNT(grAfter.ID))) \r\n               " +
-                "                                          ELSE \'<br /><br />During Program: \' + " +
-                "CONVERT(nvarchar(4), COUNT(grDuring_1.ID)) END AS TotalNumberofGrants\r\n         " +
-                "                      FROM            G_Grants AS gr INNER JOIN\r\n               " +
-                "                                          G_Student AS s ON gr.StudentID = s.Id " +
-                "LEFT OUTER JOIN\r\n                                                         G_Grad" +
-                "uation AS g ON g.StudentID = s.Id LEFT OUTER JOIN\r\n                             " +
-                "                            G_CommonFields AS grantMonth ON gr.GrantMonthId = gr" +
-                "antMonth.ID LEFT OUTER JOIN\r\n                                                   " +
-                "      G_Grants AS grBefore ON grBefore.ID = gr.ID AND CONVERT(DATETIME, CONVERT(" +
-                "nvarchar(2), grantMonth.DisplayOrder) \r\n                                        " +
-                "                 + \'/15/\' + CONVERT(nvarchar(4), grBefore.GrantYear)) < CONVERT(" +
-                "DATETIME, CONVERT(nvarchar(2), \r\n                                               " +
-                "          CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 " +
-                "THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                          " +
-                "                               s.DegreeStartYear)) LEFT OUTER JOIN\r\n            " +
-                "                                             G_Grants AS grDuring_1 ON grDuring_" +
-                "1.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrder)" +
-                " \r\n                                                         + \'/15/\' + CONVERT(n" +
-                "varchar(4), grDuring_1.GrantYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n  " +
-                "                                                       CASE WHEN s.DegreeStartSe" +
-                "msId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONV" +
-                "ERT(nvarchar(4), \r\n                                                         s.De" +
-                "greeStartYear)) LEFT OUTER JOIN\r\n                                               " +
-                "          G_Grants AS grDuring_2 ON grDuring_2.ID = gr.ID AND CONVERT(DATETIME, " +
-                "CONVERT(nvarchar(2), grantMonth.DisplayOrder) \r\n                                " +
-                "                         + \'/15/\' + CONVERT(nvarchar(4), grDuring_2.GrantYear)) " +
-                "> CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                                     " +
-                "                    CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartS" +
-                "emsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                " +
-                "                                         s.DegreeStartYear)) AND CONVERT(DATETIM" +
-                "E, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4)," +
-                " \r\n                                                         grDuring_2.GrantYear" +
-                ")) <= CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                                 " +
-                "                        CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndS" +
-                "emsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                " +
-                "                                         g.DegreeEndYear)) LEFT OUTER JOIN\r\n    " +
-                "                                                     G_Grants AS grAfter ON grAf" +
-                "ter.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrde" +
-                "r) + \'/15/\' + CONVERT(nvarchar(4), \r\n                                           " +
-                "              grAfter.GrantYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n   " +
-                "                                                      CASE WHEN g.DegreeEndSemsI" +
-                "d = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(n" +
-                "varchar(4), \r\n                                                         g.DegreeE" +
-                "ndYear))\r\n                               GROUP BY s.Id, s.FirstName, g.DegreeEnd" +
-                "Year, g.DegreeEndSemsId) AS grants ON grants.Id = s.Id LEFT OUTER JOIN\r\n        " +
-                "                     (SELECT        s.Id, \'<u>Total: <strong>\' + CONVERT(nvarcha" +
-                "r(4), COUNT(*)) + \'</strong></u>\' + CHAR(13) + \'<br /><br />Before Program: \' + " +
-                "CONVERT(nvarchar(4), \r\n                                                         " +
-                "COUNT(honBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT NULL THEN (\'<" +
-                "br /><br />During Program: \' + CONVERT(nvarchar(4), \r\n                          " +
-                "                               COUNT(honDuring_2.ID)) + CHAR(13) + \'<br /><br />" +
-                "After Program: \' + CONVERT(nvarchar(4), COUNT(honAfter.ID))) \r\n                 " +
-                "                                        ELSE \'<br /><br />During Program: \' + CO" +
-                "NVERT(nvarchar(4), COUNT(honDuring_1.ID)) END AS TotalNumberofHonorsAwards\r\n    " +
-                "                           FROM            G_Honors AS hon INNER JOIN\r\n         " +
-                "                                                G_Student AS s ON hon.StudentID " +
-                "= s.Id LEFT OUTER JOIN\r\n                                                        " +
-                " G_Graduation AS g ON g.StudentID = s.Id LEFT OUTER JOIN\r\n                      " +
-                "                                   G_CommonFields AS honorMonth ON hon.HonorMont" +
-                "hId = honorMonth.ID LEFT OUTER JOIN\r\n                                           " +
-                "              G_Honors AS honBefore ON honBefore.ID = hon.ID AND CONVERT(DATETIM" +
-                "E, CONVERT(nvarchar(2), honorMonth.DisplayOrder) \r\n                             " +
-                "                            + \'/15/\' + CONVERT(nvarchar(4), honBefore.HonorYear)" +
-                ") < CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                                   " +
-                "                      CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStar" +
-                "tSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), \r\n              " +
-                "                                           s.DegreeStartYear)) LEFT OUTER JOIN\r\n" +
-                "                                                         G_Honors AS honDuring_1" +
-                " ON honDuring_1.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMont" +
-                "h.DisplayOrder) \r\n                                                         + \'/1" +
-                "5/\' + CONVERT(nvarchar(4), honDuring_1.HonorYear)) > CONVERT(DATETIME, CONVERT(n" +
-                "varchar(2), \r\n                                                         CASE WHEN" +
-                " s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END)" +
-                " + \'/31/\' + CONVERT(nvarchar(4), \r\n                                             " +
-                "            s.DegreeStartYear)) LEFT OUTER JOIN\r\n                               " +
-                "                          G_Honors AS honDuring_2 ON honDuring_2.ID = hon.ID AND" +
-                " CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) \r\n             " +
-                "                                            + \'/15/\' + CONVERT(nvarchar(4), honD" +
-                "uring_2.HonorYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                 " +
-                "                                        CASE WHEN s.DegreeStartSemsId = 1 THEN 5" +
-                " WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4)" +
-                ", \r\n                                                         s.DegreeStartYear))" +
-                " AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + \'/15/\' + " +
-                "CONVERT(nvarchar(4), \r\n                                                         " +
-                "honDuring_2.HonorYear)) <= CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n            " +
-                "                                             CASE WHEN g.DegreeEndSemsId = 1 THE" +
-                "N 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4" +
-                "), \r\n                                                         g.DegreeEndYear)) " +
-                "LEFT OUTER JOIN\r\n                                                         G_Hono" +
-                "rs AS honAfter ON honAfter.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2)" +
-                ", honorMonth.DisplayOrder) \r\n                                                   " +
-                "      + \'/15/\' + CONVERT(nvarchar(4), honAfter.HonorYear)) > CONVERT(DATETIME, C" +
-                "ONVERT(nvarchar(2), \r\n                                                         C" +
-                "ASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 " +
-                "END) + \'/31/\' + CONVERT(nvarchar(4), \r\n                                         " +
-                "                g.DegreeEndYear))\r\n                               GROUP BY s.Id," +
-                " s.FirstName, g.DegreeEndYear, g.DegreeEndSemsId) AS honors ON honors.Id = s.Id\r" +
-                "\nWHERE        (@Student = s.FirstName + \' \' + s.LastName) OR\r\n                  " +
-                "       (@Student IS NULL)\r\nGROUP BY s.Id, s.StudentNumber, s.FirstName, s.LastNa" +
-                "me, s.OtherEmail, s.Phone, g.DegreeEndYear, g.DegreeEndSemsId, publ.TotalNumbero" +
-                "fPublications, \r\n                         grants.TotalNumberofGrants, honors.Tot" +
-                "alNumberofHonorsAwards";
+                " 8 ELSE 12 END) \r\n                                         + \'/31/\' + CONVERT(nv" +
+                "archar(4), g.DegreeEndYear + 2)) LEFT OUTER JOIN\r\n                              " +
+                "           Publications AS year_3 ON year_3.ID = pub.ID AND CONVERT(DATETIME, CO" +
+                "NVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), year_3" +
+                ".PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                          " +
+                "               CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3" +
+                " THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 2)) AND C" +
+                "ONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                                        " +
+                " pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), year_3.PubYear)) <= CONV" +
+                "ERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g" +
+                ".DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n                                     " +
+                "    + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 3)) LEFT OUTER JOIN\r\n     " +
+                "                                    Publications AS year_4 ON year_2.ID = pub.ID" +
+                " AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.DisplayOrder) + \'/15/\' + CO" +
+                "NVERT(nvarchar(4), year_4.PubYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n " +
+                "                                        CASE WHEN g.DegreeEndSemsId = 1 THEN 5 W" +
+                "HEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), g." +
+                "DegreeEndYear + 4)) AND CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n               " +
+                "                          pubMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4)," +
+                " year_4.PubYear)) <= CONVERT(DATETIME, CONVERT(nvarchar(2), CASE WHEN g.DegreeEn" +
+                "dSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) \r\n            " +
+                "                             + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear + 5" +
+                ")) LEFT OUTER JOIN\r\n                                         Publications AS yea" +
+                "r_5 ON year_2.ID = pub.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), pubMonth.Di" +
+                "splayOrder) + \'/15/\' + CONVERT(nvarchar(4), year_5.PubYear)) > CONVERT(DATETIME," +
+                " CONVERT(nvarchar(2), \r\n                                         CASE WHEN g.Deg" +
+                "reeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' " +
+                "+ CONVERT(nvarchar(4), g.DegreeEndYear + 5)) AND CONVERT(DATETIME, CONVERT(nvarc" +
+                "har(2), \r\n                                         pubMonth.DisplayOrder) + \'/15" +
+                "/\' + CONVERT(nvarchar(4), year_5.PubYear)) <= CONVERT(DATETIME, CONVERT(nvarchar" +
+                "(2), CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 EL" +
+                "SE 12 END) \r\n                                         + \'/31/\' + CONVERT(nvarcha" +
+                "r(4), g.DegreeEndYear + 6))\r\n                       GROUP BY s.Id, s.FirstName, " +
+                "g.DegreeEndYear, g.DegreeEndSemsId) AS publ ON publ.Id = s.Id LEFT OUTER JOIN\r\n " +
+                "                     (SELECT s.Id, \'<u>Total: <strong>\' + CONVERT(nvarchar(4), C" +
+                "OUNT(*)) + \'</strong></u>\' + CHAR(13) + \'<br /><br />Before Program: \' + CONVERT" +
+                "(nvarchar(4), COUNT(grBefore.ID)) + CHAR(13) + CASE WHEN g.DegreeEndYear IS NOT " +
+                "NULL \r\n                                         THEN (\'<br /><br />During Progra" +
+                "m: \' + CONVERT(nvarchar(4), COUNT(grDurin2.ID)) + CHAR(13) + \'<br /><br />After " +
+                "Program: \' + CONVERT(nvarchar(4), COUNT(grAfter.ID))) \r\n                        " +
+                "                 ELSE \'<br /><br />During Program: \' + CONVERT(nvarchar(4), COUN" +
+                "T(grDurin1.ID)) END AS TotalNumberofGrants\r\n                       FROM      Gra" +
+                "nts AS gr INNER JOIN\r\n                                         Student AS s ON g" +
+                "r.StudentID = s.Id LEFT OUTER JOIN\r\n                                         Gra" +
+                "duation AS g ON g.StudentID = s.Id LEFT OUTER JOIN\r\n                            " +
+                "             CommonFields AS grantMonth ON gr.GrantMonthId = grantMonth.ID LEFT " +
+                "OUTER JOIN\r\n                                         Grants AS grBefore ON grBef" +
+                "ore.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMonth.DisplayOrde" +
+                "r) + \'/15/\' + CONVERT(nvarchar(4), grBefore.GrantYear)) < CONVERT(DATETIME, CONV" +
+                "ERT(nvarchar(2), \r\n                                         CASE WHEN s.DegreeSt" +
+                "artSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' +" +
+                " CONVERT(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN\r\n                     " +
+                "                    Grants AS grDurin1 ON grDurin1.ID = gr.ID AND CONVERT(DATETI" +
+                "ME, CONVERT(nvarchar(2), grantMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4)" +
+                ", grDurin1.GrantYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n              " +
+                "                           CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.Degre" +
+                "eStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), s.DegreeSta" +
+                "rtYear)) LEFT OUTER JOIN\r\n                                         Grants AS grD" +
+                "urin2 ON grDurin2.ID = gr.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), grantMon" +
+                "th.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), grDurin2.GrantYear)) > CONVERT(" +
+                "DATETIME, CONVERT(nvarchar(2), \r\n                                         CASE W" +
+                "HEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 E" +
+                "ND) + \'/31/\' + CONVERT(nvarchar(4), s.DegreeStartYear)) AND CONVERT(DATETIME, CO" +
+                "NVERT(nvarchar(2), \r\n                                         grantMonth.Display" +
+                "Order) + \'/15/\' + CONVERT(nvarchar(4), grDurin2.GrantYear)) <= CONVERT(DATETIME," +
+                " CONVERT(nvarchar(2), \r\n                                         CASE WHEN g.Deg" +
+                "reeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' " +
+                "+ CONVERT(nvarchar(4), g.DegreeEndYear)) LEFT OUTER JOIN\r\n                      " +
+                "                   Grants AS grAfter ON grAfter.ID = gr.ID AND CONVERT(DATETIME," +
+                " CONVERT(nvarchar(2), grantMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), g" +
+                "rAfter.GrantYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n                  " +
+                "                       CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSe" +
+                "msId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYear))\r\n" +
+                "                       GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.DegreeEndS" +
+                "emsId) AS grants ON grants.Id = s.Id LEFT OUTER JOIN\r\n                      (SEL" +
+                "ECT s.Id, \'<u>Total: <strong>\' + CONVERT(nvarchar(4), COUNT(*)) + \'</strong></u>" +
+                "\' + CHAR(13) + \'<br /><br />Before Program: \' + CONVERT(nvarchar(4), COUNT(honBe" +
+                "fore.ID)) + CHAR(13) \r\n                                         + CASE WHEN g.De" +
+                "greeEndYear IS NOT NULL THEN (\'<br /><br />During Program: \' + CONVERT(nvarchar(" +
+                "4), COUNT(honDurin2.ID)) + CHAR(13) + \'<br /><br />After Program: \' + CONVERT(nv" +
+                "archar(4), COUNT(honAfter.ID))) \r\n                                         ELSE " +
+                "\'<br /><br />During Program: \' + CONVERT(nvarchar(4), COUNT(honDurin1.ID)) END A" +
+                "S TotalNumberofHonorsAwards\r\n                       FROM      Honors AS hon INNE" +
+                "R JOIN\r\n                                         Student AS s ON hon.StudentID =" +
+                " s.Id LEFT OUTER JOIN\r\n                                         Graduation AS g " +
+                "ON g.StudentID = s.Id LEFT OUTER JOIN\r\n                                         " +
+                "CommonFields AS honorMonth ON hon.HonorMonthId = honorMonth.ID LEFT OUTER JOIN\r\n" +
+                "                                         Honors AS honBefore ON honBefore.ID = h" +
+                "on.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + \'/15" +
+                "/\' + CONVERT(nvarchar(4), honBefore.HonorYear)) < CONVERT(DATETIME, \r\n          " +
+                "                               CONVERT(nvarchar(2), CASE WHEN s.DegreeStartSemsI" +
+                "d = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT" +
+                "(nvarchar(4), s.DegreeStartYear)) LEFT OUTER JOIN\r\n                             " +
+                "            Honors AS honDurin1 ON honDurin1.ID = hon.ID AND CONVERT(DATETIME, C" +
+                "ONVERT(nvarchar(2), honorMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), hon" +
+                "Durin1.HonorYear)) > CONVERT(DATETIME, \r\n                                       " +
+                "  CONVERT(nvarchar(2), CASE WHEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeSta" +
+                "rtSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), s.DegreeStartYe" +
+                "ar)) LEFT OUTER JOIN\r\n                                         Honors AS honDuri" +
+                "n2 ON honDurin2.ID = hon.ID AND CONVERT(DATETIME, CONVERT(nvarchar(2), honorMont" +
+                "h.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4), honDurin2.HonorYear)) > CONVERT(" +
+                "DATETIME, \r\n                                         CONVERT(nvarchar(2), CASE W" +
+                "HEN s.DegreeStartSemsId = 1 THEN 5 WHEN s.DegreeStartSemsId = 3 THEN 8 ELSE 12 E" +
+                "ND) + \'/31/\' + CONVERT(nvarchar(4), s.DegreeStartYear)) AND CONVERT(DATETIME, \r\n" +
+                "                                         CONVERT(nvarchar(2), honorMonth.Display" +
+                "Order) + \'/15/\' + CONVERT(nvarchar(4), honDurin2.HonorYear)) <= CONVERT(DATETIME" +
+                ", CONVERT(nvarchar(2), \r\n                                         CASE WHEN g.De" +
+                "greeEndSemsId = 1 THEN 5 WHEN g.DegreeEndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\'" +
+                " + CONVERT(nvarchar(4), g.DegreeEndYear)) LEFT OUTER JOIN\r\n                     " +
+                "                    Honors AS honAfter ON honAfter.ID = hon.ID AND CONVERT(DATET" +
+                "IME, CONVERT(nvarchar(2), honorMonth.DisplayOrder) + \'/15/\' + CONVERT(nvarchar(4" +
+                "), honAfter.HonorYear)) > CONVERT(DATETIME, CONVERT(nvarchar(2), \r\n             " +
+                "                            CASE WHEN g.DegreeEndSemsId = 1 THEN 5 WHEN g.Degree" +
+                "EndSemsId = 3 THEN 8 ELSE 12 END) + \'/31/\' + CONVERT(nvarchar(4), g.DegreeEndYea" +
+                "r))\r\n                       GROUP BY s.Id, s.FirstName, g.DegreeEndYear, g.Degre" +
+                "eEndSemsId) AS honors ON honors.Id = s.Id\r\nWHERE  (@Student = s.FirstName + \' \' " +
+                "+ s.LastName) OR\r\n                  (@Student IS NULL)\r\nGROUP BY s.Id, s.Student" +
+                "Number, s.FirstName, s.LastName, s.OtherEmail, s.Phone, g.DegreeEndYear, g.Degre" +
+                "eEndSemsId, publ.TotalNumberofPublications, grants.TotalNumberofGrants, honors.T" +
+                "otalNumberofHonorsAwards";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Student", global::System.Data.SqlDbType.VarChar, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
         public virtual int Fill(DataSet1.PostgraduationDataTable dataTable, string Student) {
@@ -5643,7 +5555,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DataSet1.PostgraduationDataTable GetData(string Student) {
@@ -5677,7 +5589,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         private global::System.Data.IDbConnection _connection;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public UpdateOrderOption UpdateOrder {
             get {
                 return this._updateOrder;
@@ -5688,7 +5600,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -5699,7 +5611,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         public global::System.Data.IDbConnection Connection {
             get {
@@ -5714,7 +5626,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         public int TableAdapterInstanceCount {
             get {
@@ -5727,7 +5639,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         ///Update rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateUpdatedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
@@ -5737,7 +5649,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         ///Insert rows in top-down order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateInsertedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
@@ -5747,7 +5659,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         ///Delete rows in bottom-up order.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private int UpdateDeletedRows(DataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
@@ -5757,7 +5669,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         ///Remove inserted rows that become updated rows after calling TableAdapter.Update(inserted rows) first
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private global::System.Data.DataRow[] GetRealUpdatedRows(global::System.Data.DataRow[] updatedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             if (((updatedRows == null) 
                         || (updatedRows.Length < 1))) {
@@ -5781,7 +5693,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         ///Update all changes to the dataset.
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public virtual int UpdateAll(DataSet1 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
@@ -5892,13 +5804,13 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected virtual void SortSelfReferenceRows(global::System.Data.DataRow[] rows, global::System.Data.DataRelation relation, bool childFirst) {
             global::System.Array.Sort<global::System.Data.DataRow>(rows, new SelfReferenceComparer(relation, childFirst));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         protected virtual bool MatchTableAdapterConnection(global::System.Data.IDbConnection inputConnection) {
             if ((this._connection != null)) {
                 return true;
@@ -5916,7 +5828,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         /// <summary>
         ///Update Order Option
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public enum UpdateOrderOption {
             
             InsertUpdateDelete = 0,
@@ -5927,7 +5839,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
         /// <summary>
         ///Used to sort self-referenced table's rows
         ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private class SelfReferenceComparer : object, global::System.Collections.Generic.IComparer<global::System.Data.DataRow> {
             
             private global::System.Data.DataRelation _relation;
@@ -5935,7 +5847,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             private int _childFirst;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             internal SelfReferenceComparer(global::System.Data.DataRelation relation, bool childFirst) {
                 this._relation = relation;
                 if (childFirst) {
@@ -5947,7 +5859,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             private global::System.Data.DataRow GetRoot(global::System.Data.DataRow row, out int distance) {
                 global::System.Diagnostics.Debug.Assert((row != null));
                 global::System.Data.DataRow root = row;
@@ -5986,7 +5898,7 @@ namespace StudentTrackingSystem3.Reports.DataSet1TableAdapters {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int Compare(global::System.Data.DataRow row1, global::System.Data.DataRow row2) {
                 if (object.ReferenceEquals(row1, row2)) {
                     return 0;

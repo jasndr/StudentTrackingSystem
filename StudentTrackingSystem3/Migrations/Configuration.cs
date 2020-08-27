@@ -8,6 +8,15 @@ namespace StudentTrackingSystem3.Migrations
     using System.Data.Entity.Validation;
     using System.Linq;
     using System.Text;
+    /// <summary>
+    /// Configuration to set up database options.
+    /// ------------------------------------------
+    /// [Edit History]
+    /// DATE      -   NAME             - COMMENTS
+    /// -------------------------------------------
+    /// 2020AUG08 - Jason Delos Reyes  - Removed setting up sample student entries to accommodate 
+    ///                                  live data collection. 
+    /// </summary>
     internal sealed class Configuration : DbMigrationsConfiguration<StudentTrackingSystem3.DAL.SchoolContext>
     {
         public Configuration()
@@ -97,7 +106,10 @@ namespace StudentTrackingSystem3.Migrations
                 new CommonFields {ID=63, Name="September", Category="Months", DisplayOrder=9 },
                 new CommonFields {ID=64, Name="October", Category="Months", DisplayOrder=10 },
                 new CommonFields {ID=65, Name="November", Category="Months", DisplayOrder=11 },
-                new CommonFields {ID=66, Name="December", Category="Months", DisplayOrder=12 }
+                new CommonFields {ID=66, Name="December", Category="Months", DisplayOrder=12 },
+                new CommonFields{ID=67, Name="US", Category="CitizenshipStatus", DisplayOrder=1},
+                new CommonFields{ID=68, Name="Visa", Category="CitizenshipStatus", DisplayOrder=2},
+                new CommonFields{ID=69, Name="Permanent Resident", Category="CitizenshipStatus", DisplayOrder=3}
 
             };
             //commonfields.ForEach(s => context.CommonFields.Add(s));
@@ -148,69 +160,70 @@ namespace StudentTrackingSystem3.Migrations
             courses.ForEach(s => context.Courses.AddOrUpdate(p => p.ID, s));
             SaveChanges(context);
 
-            var students = new List<Student>
-            {
-                new Student {Id=1, StudentNumber=10000001, FirstName="Carson", MiddleName="John", LastName="Alexander", SchoolEmail="carsonja@hawaii.edu", OtherEmail="carson_alexander@gmail.com", Phone="(808) 546-2455", GendersId=31, DegreeProgramsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2009 },
-                new Student {Id=2, StudentNumber=10000002, FirstName="Meredith", MiddleName="Mary", LastName="Alonso", SchoolEmail="alonsomm@hawaii.edu", OtherEmail="mereditha@yahoo.com", Phone="(808) 942-3333", GendersId=32, DegreeProgramsId=18, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2002},
-                new Student {Id=3, StudentNumber=10000003, FirstName="Arturo", MiddleName="Javier", LastName="Anand", SchoolEmail="arturoja@hawaii.edu", OtherEmail="anand_arturo@outlook.com", Phone="(919) 546-7562", GendersId=31, DegreeProgramsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2003},
-                new Student {Id=4, StudentNumber=10000004, FirstName="Magdalena", MiddleName="Ochorro", LastName="Butelera", SchoolEmail="butelera@hawaii.edu", OtherEmail="lenny_butelera@outlook.com", Phone="(510) 268-5272", GendersId=32, DegreeProgramsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2004 },
-                new Student {Id=5, StudentNumber=10000005, FirstName="Angela", MiddleName="Zara", LastName="Amaranda", SchoolEmail="amaranda@hawaii.edu", OtherEmail="angela_amaranda@outlook.com", Phone="(919) 546-7562", GendersId=31, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2005 },
-                new Student {Id=6, StudentNumber=10000006, FirstName="Faith", MiddleName="Mae", LastName="Ping", SchoolEmail="fmaeping@hawaii.edu", OtherEmail="faithMaePing@outlook.com", Phone="(929) 526-2051", GendersId=32, DegreeProgramsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2004},
-                new Student {Id=7, StudentNumber=10000007, FirstName="Marcus", MiddleName="Wyatt", LastName="O'Neil", SchoolEmail="oneilmw@hawaii.edu", OtherEmail="markoneil@outlook.com", Phone="(285) 456-7683", GendersId=31, DegreeProgramsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=2, DegreeStartYear=2003},
-                new Student {Id=8, StudentNumber=10000008, FirstName="Michael", MiddleName="Gravy", LastName="MacDonald", SchoolEmail="mikemac@hawaii.edu", OtherEmail="gravy@gmail.com", Phone="(808) 649-7632", GendersId=31, DegreeProgramsId=18, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2012},
-                new Student {Id=9, StudentNumber=10000009, FirstName="Barry", MiddleName="Christoff", LastName="Smith", SchoolEmail="barrycsm@hawaii.edu", OtherEmail="barrysmith@gmail.com", Phone="(808) 686-8532", GendersId=31, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2013},
-                new Student {Id=10, StudentNumber=10000010, FirstName="Chuck", MiddleName="Charles", LastName="Churchill", SchoolEmail="chuckcc@hawaii.edu", OtherEmail="chuckcharles@church.com", Phone="(808) 482-2852", GendersId=31, DegreeProgramsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2016},
-                new Student {Id=11, StudentNumber=10000011, FirstName="Rodolfo", MiddleName="Portrero", LastName="Santos", SchoolEmail="portrero@hawaii.edu", OtherEmail="rodolfo_santos@yahoo.com", Phone="(919) 356-4124", GendersId=31, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2015},
-                new Student {Id=12, StudentNumber=10000012, FirstName="Jacques", MiddleName="Jean", LastName="Bordereaux", SchoolEmail="jacquesb@hawaii.edu", OtherEmail="bordereaux@gmail.com", Phone="(919) 620-2647", GendersId=31, DegreeProgramsId=18, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2017},
-                new Student {Id=13, StudentNumber=10000013, FirstName="Oliver", MiddleName="Quincy", LastName="Potter", SchoolEmail="oqpotter@hawaii.edu", OtherEmail="olipotter@yahoo.com", Phone="(853) 371-4224", GendersId=31, DegreeProgramsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2015},
-                new Student {Id=14, StudentNumber=10000014, FirstName="Fanasa", MiddleName="Borda", LastName="Marta", SchoolEmail="borda@hawaii.edu", OtherEmail="fanasia_bordamarta@outlook.com", Phone="(415) 654-3718", GendersId=32, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2016},
-                new Student {Id=15, StudentNumber=10000015, FirstName="Amy", MiddleName="Kiya", LastName="Novikov", SchoolEmail="amykiyan@hawaii.edu", OtherEmail="amykia@gmail.com", Phone="(808) 421-5284", GendersId=32, DegreeProgramsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2018},
-                new Student {Id=16, StudentNumber=10000016, FirstName="Mary", MiddleName="Margarette", LastName="Marchentero", SchoolEmail="marchente@hawaii.edu", OtherEmail="mmm@ymail.com", Phone="(825) 213-3547", GendersId=32, DegreeProgramsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2017},
-                new Student {Id=17, StudentNumber=10000017, FirstName="Ying", MiddleName="Jie", LastName="Xong", SchoolEmail="yingjiex@hawaii.edu", OtherEmail="yingjie@outlook.com", Phone="(459) 210-5241", GendersId=32, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2016},
-                new Student {Id=18, StudentNumber=10000018, FirstName="Sakura", MiddleName="Noburi", LastName="Ichiyama", SchoolEmail="sakurani@hawaii.edu", OtherEmail="noburi@yahoo.co.jp", Phone="(509) 824-4212", GendersId=32, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2014},
-                new Student {Id=19, StudentNumber=10000019, FirstName="Sayuri", MiddleName="Misa", LastName="Katsumoto", SchoolEmail="sayurimk@hawaii.edu", OtherEmail="katsumoto.sayuri@yahoo.co.jp", Phone="(210) 518-8961", GendersId=32, DegreeProgramsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2013},
-                new Student {Id=20, StudentNumber=10000020, FirstName="Ton", MiddleName="Ton", LastName="Balatong", SchoolEmail="tontonb@hawaii.edu", OtherEmail="ton2balatong@gmail.com.com", Phone="(329) 283-4822", GendersId=31, DegreeProgramsId=17, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2012},
-                new Student {Id=21, StudentNumber=10000021, FirstName="Laura", MiddleName="Windham", LastName="Correa", SchoolEmail="lwcorrea@hawaii.edu", OtherEmail="laura_correa@yahoo.com", Phone="(348) 283-2384", GendersId=31, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2010},
-                new Student {Id=22, StudentNumber=10000022, FirstName="Xi", MiddleName="Xang", LastName="Xu", SchoolEmail="xxx@hawaii.edu", OtherEmail="xixangxu@wechat.ch", Phone="(516) 278-5295", GendersId=32, DegreeProgramsId=17, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2010}
-            };
-            students.ForEach(s => context.Students.AddOrUpdate(p => p.StudentNumber, s));
-            SaveChanges(context);
+            /****/
+            //var students = new List<Student>
+            //{
+            //    new Student {Id=1, StudentNumber=10000001, FirstName="Carson", MiddleName="John", LastName="Alexander", SchoolEmail="carsonja@hawaii.edu", OtherEmail="carson_alexander@gmail.com", Phone="(808) 546-2455", GendersId=31, DegreeProgramsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2009, CitizenshipStatsId=1 },
+            //    new Student {Id=2, StudentNumber=10000002, FirstName="Meredith", MiddleName="Mary", LastName="Alonso", SchoolEmail="alonsomm@hawaii.edu", OtherEmail="mereditha@yahoo.com", Phone="(808) 942-3333", GendersId=32, DegreeProgramsId=18, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2002, CitizenshipStatsId=2},
+            //    /*new Student {Id=3, StudentNumber=10000003, FirstName="Arturo", MiddleName="Javier", LastName="Anand", SchoolEmail="arturoja@hawaii.edu", OtherEmail="anand_arturo@outlook.com", Phone="(919) 546-7562", GendersId=31, DegreeProgramsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2003},
+            //    new Student {Id=4, StudentNumber=10000004, FirstName="Magdalena", MiddleName="Ochorro", LastName="Butelera", SchoolEmail="butelera@hawaii.edu", OtherEmail="lenny_butelera@outlook.com", Phone="(510) 268-5272", GendersId=32, DegreeProgramsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2004 },
+            //    new Student {Id=5, StudentNumber=10000005, FirstName="Angela", MiddleName="Zara", LastName="Amaranda", SchoolEmail="amaranda@hawaii.edu", OtherEmail="angela_amaranda@outlook.com", Phone="(919) 546-7562", GendersId=31, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2005 },
+            //    new Student {Id=6, StudentNumber=10000006, FirstName="Faith", MiddleName="Mae", LastName="Ping", SchoolEmail="fmaeping@hawaii.edu", OtherEmail="faithMaePing@outlook.com", Phone="(929) 526-2051", GendersId=32, DegreeProgramsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2004},
+            //    new Student {Id=7, StudentNumber=10000007, FirstName="Marcus", MiddleName="Wyatt", LastName="O'Neil", SchoolEmail="oneilmw@hawaii.edu", OtherEmail="markoneil@outlook.com", Phone="(285) 456-7683", GendersId=31, DegreeProgramsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=2, DegreeStartYear=2003},
+            //    new Student {Id=8, StudentNumber=10000008, FirstName="Michael", MiddleName="Gravy", LastName="MacDonald", SchoolEmail="mikemac@hawaii.edu", OtherEmail="gravy@gmail.com", Phone="(808) 649-7632", GendersId=31, DegreeProgramsId=18, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2012},
+            //    new Student {Id=9, StudentNumber=10000009, FirstName="Barry", MiddleName="Christoff", LastName="Smith", SchoolEmail="barrycsm@hawaii.edu", OtherEmail="barrysmith@gmail.com", Phone="(808) 686-8532", GendersId=31, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2013},
+            //    new Student {Id=10, StudentNumber=10000010, FirstName="Chuck", MiddleName="Charles", LastName="Churchill", SchoolEmail="chuckcc@hawaii.edu", OtherEmail="chuckcharles@church.com", Phone="(808) 482-2852", GendersId=31, DegreeProgramsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2016},
+            //    new Student {Id=11, StudentNumber=10000011, FirstName="Rodolfo", MiddleName="Portrero", LastName="Santos", SchoolEmail="portrero@hawaii.edu", OtherEmail="rodolfo_santos@yahoo.com", Phone="(919) 356-4124", GendersId=31, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2015},
+            //    new Student {Id=12, StudentNumber=10000012, FirstName="Jacques", MiddleName="Jean", LastName="Bordereaux", SchoolEmail="jacquesb@hawaii.edu", OtherEmail="bordereaux@gmail.com", Phone="(919) 620-2647", GendersId=31, DegreeProgramsId=18, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2017},
+            //    new Student {Id=13, StudentNumber=10000013, FirstName="Oliver", MiddleName="Quincy", LastName="Potter", SchoolEmail="oqpotter@hawaii.edu", OtherEmail="olipotter@yahoo.com", Phone="(853) 371-4224", GendersId=31, DegreeProgramsId=17, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2015},
+            //    new Student {Id=14, StudentNumber=10000014, FirstName="Fanasa", MiddleName="Borda", LastName="Marta", SchoolEmail="borda@hawaii.edu", OtherEmail="fanasia_bordamarta@outlook.com", Phone="(415) 654-3718", GendersId=32, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2016},
+            //    new Student {Id=15, StudentNumber=10000015, FirstName="Amy", MiddleName="Kiya", LastName="Novikov", SchoolEmail="amykiyan@hawaii.edu", OtherEmail="amykia@gmail.com", Phone="(808) 421-5284", GendersId=32, DegreeProgramsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2018},
+            //    new Student {Id=16, StudentNumber=10000016, FirstName="Mary", MiddleName="Margarette", LastName="Marchentero", SchoolEmail="marchente@hawaii.edu", OtherEmail="mmm@ymail.com", Phone="(825) 213-3547", GendersId=32, DegreeProgramsId=17, TracksId=19, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2017},
+            //    new Student {Id=17, StudentNumber=10000017, FirstName="Ying", MiddleName="Jie", LastName="Xong", SchoolEmail="yingjiex@hawaii.edu", OtherEmail="yingjie@outlook.com", Phone="(459) 210-5241", GendersId=32, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2016},
+            //    new Student {Id=18, StudentNumber=10000018, FirstName="Sakura", MiddleName="Noburi", LastName="Ichiyama", SchoolEmail="sakurani@hawaii.edu", OtherEmail="noburi@yahoo.co.jp", Phone="(509) 824-4212", GendersId=32, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=2, DegreeStartYear=2014},
+            //    new Student {Id=19, StudentNumber=10000019, FirstName="Sayuri", MiddleName="Misa", LastName="Katsumoto", SchoolEmail="sayurimk@hawaii.edu", OtherEmail="katsumoto.sayuri@yahoo.co.jp", Phone="(210) 518-8961", GendersId=32, DegreeProgramsId=17, TracksId=20, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2013},
+            //    new Student {Id=20, StudentNumber=10000020, FirstName="Ton", MiddleName="Ton", LastName="Balatong", SchoolEmail="tontonb@hawaii.edu", OtherEmail="ton2balatong@gmail.com.com", Phone="(329) 283-4822", GendersId=31, DegreeProgramsId=17, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2012},
+            //    new Student {Id=21, StudentNumber=10000021, FirstName="Laura", MiddleName="Windham", LastName="Correa", SchoolEmail="lwcorrea@hawaii.edu", OtherEmail="laura_correa@yahoo.com", Phone="(348) 283-2384", GendersId=31, DegreeProgramsId=18, TracksId=19, PlansId=29, DegreeStartSemsId=1, DegreeStartYear=2010},
+            //    new Student {Id=22, StudentNumber=10000022, FirstName="Xi", MiddleName="Xang", LastName="Xu", SchoolEmail="xxx@hawaii.edu", OtherEmail="xixangxu@wechat.ch", Phone="(516) 278-5295", GendersId=32, DegreeProgramsId=17, TracksId=20, PlansId=30, DegreeStartSemsId=1, DegreeStartYear=2010}*/
+            //};
+            //students.ForEach(s => context.Students.AddOrUpdate(p => p.StudentNumber, s));
+            //SaveChanges(context);
 
-            var prevdegree = new List<PrevDegree>
-            {
-                new PrevDegree {StudentID = 1, DegreeTypesID=22, Title="Biology", CumulativeGPA=3.32M, SchoolName="Ohio State University", Major="Biology", DateOfAward=Convert.ToDateTime("11/12/2009") },
-                new PrevDegree {StudentID = 2, DegreeTypesID=24, Title="Agriculture", CumulativeGPA=3.95M, SchoolName="University of Central Florida", Major="Agricultural Sciences", DateOfAward=Convert.ToDateTime("05/17/2017") }
-            };
-            prevdegree.ForEach(s => context.PreviousDegrees.AddOrUpdate(p => p.Id, s));
-            SaveChanges(context);
+            //var prevdegree = new List<PrevDegree>
+            //{
+            //    new PrevDegree {StudentID = 2, DegreeTypesID=22, Title="Biology", CumulativeGPA=3.32M, SchoolName="Ohio State University", Major="Biology", DateOfAward=Convert.ToDateTime("11/12/2009") },
+            //    new PrevDegree {StudentID = 3, DegreeTypesID=24, Title="Agriculture", CumulativeGPA=3.95M, SchoolName="University of Central Florida", Major="Agricultural Sciences", DateOfAward=Convert.ToDateTime("05/17/2017") }
+            //};
+            //prevdegree.ForEach(s => context.PreviousDegrees.AddOrUpdate(p => p.Id, s));
+            //SaveChanges(context);
 
-            var coursework = new List<Coursework>
-            {
-                new Coursework {StudentID=1, SemestersID=1, Year=2005, CourseID=15, GradeID=4},
-                new Coursework {StudentID=1, SemestersID=2, Year=2006, CourseID=26, GradeID=7},
-                new Coursework {StudentID=1, SemestersID=1, Year=2006, CourseID=1,  GradeID=10},
-                new Coursework {StudentID=1, SemestersID=2, Year=2007, CourseID=23, GradeID=8},
-                new Coursework {StudentID=1, SemestersID=1, Year=2007, CourseID=16, GradeID=5},
-                new Coursework {StudentID=2, SemestersID=1, Year=2002, CourseID=20, GradeID=5},
-                new Coursework {StudentID=2, SemestersID=2, Year=2003, CourseID=15, GradeID=7},
-                new Coursework {StudentID=2, SemestersID=1, Year=2003, CourseID=10, GradeID=4},
-                new Coursework {StudentID=3, SemestersID=1, Year=2003, CourseID=30, GradeID=9},
-                new Coursework {StudentID=3, SemestersID=2, Year=2003, CourseID=1,  GradeID=12},
-                new Coursework {StudentID=3, SemestersID=1, Year=2003, CourseID=15, GradeID=13},
-                new Coursework {StudentID=3, SemestersID=2, Year=2004, CourseID=31, GradeID=16}
+            //var coursework = new List<Coursework>
+            //{
+            //    //new Coursework {StudentID=1, SemestersID=1, Year=2005, CourseID=15, GradeID=4},
+            //    //new Coursework {StudentID=1, SemestersID=2, Year=2006, CourseID=26, GradeID=7},
+            //    //new Coursework {StudentID=1, SemestersID=1, Year=2006, CourseID=1,  GradeID=10},
+            //    //new Coursework {StudentID=1, SemestersID=2, Year=2007, CourseID=23, GradeID=8},
+            //    //new Coursework {StudentID=1, SemestersID=1, Year=2007, CourseID=16, GradeID=5},
+            //    new Coursework {StudentID=2, SemestersID=1, Year=2002, CourseID=20, GradeID=5},
+            //    new Coursework {StudentID=2, SemestersID=2, Year=2003, CourseID=15, GradeID=7},
+            //    new Coursework {StudentID=2, SemestersID=1, Year=2003, CourseID=10, GradeID=4},
+            //    new Coursework {StudentID=3, SemestersID=1, Year=2003, CourseID=30, GradeID=9},
+            //    new Coursework {StudentID=3, SemestersID=2, Year=2003, CourseID=1,  GradeID=12},
+            //    new Coursework {StudentID=3, SemestersID=1, Year=2003, CourseID=15, GradeID=13},
+            //    new Coursework {StudentID=3, SemestersID=2, Year=2004, CourseID=31, GradeID=16}
 
 
-            };
-            foreach (Coursework c in coursework)
-            {
-                var courseworkInDataBase = context.Coursework.Where(s => s.Student.Id == c.StudentID && s.Course.ID == c.CourseID).SingleOrDefault();
-                if (courseworkInDataBase == null)
-                {
-                    context.Coursework.Add(c);
-                }
-            }
-            SaveChanges(context);
-
+            //};
+            //foreach (Coursework c in coursework)
+            //{
+            //    var courseworkInDataBase = context.Coursework.Where(s => s.Student.Id == c.StudentID && s.Course.ID == c.CourseID).SingleOrDefault();
+            //    if (courseworkInDataBase == null)
+            //    {
+            //        context.Coursework.Add(c);
+            //    }
+            //}
+            //SaveChanges(context);
+            /****/
 
             var races = new List<Races>
             {
@@ -231,44 +244,48 @@ namespace StudentTrackingSystem3.Migrations
             races.ForEach(s => context.Races.AddOrUpdate(p => p.Name, s));
             SaveChanges(context);
 
-            var personRaces = new List<PersonRaces>
-            {
-                new PersonRaces {ID=1, StudentID=1, RaceID=3, IsSelectedPR=true},
-                new PersonRaces {ID=2, StudentID=1, RaceID=1, IsSelectedPR=true},
-                new PersonRaces {ID=3, StudentID=1, RaceID=7, IsSelectedPR=true},
-                new PersonRaces {ID=4, StudentID=2, RaceID=10, IsSelectedPR=true},
-                new PersonRaces {ID=5, StudentID=3, RaceID=4, IsSelectedPR=true},
-                new PersonRaces {ID=6, StudentID=3, RaceID=2, IsSelectedPR=true},
-                new PersonRaces {ID=7, StudentID=4, RaceID=12, IsSelectedPR=true},
-                new PersonRaces {ID=8, StudentID=5, RaceID=4, IsSelectedPR=true},
-                new PersonRaces {ID=9, StudentID=6, RaceID=5, IsSelectedPR=true},
-                new PersonRaces {ID=10, StudentID=7, RaceID=6, IsSelectedPR=true},
-                new PersonRaces {ID=11, StudentID=8, RaceID=7, IsSelectedPR=true},
-                new PersonRaces {ID=12, StudentID=9, RaceID=5, IsSelectedPR=true},
-                new PersonRaces {ID=13, StudentID=10, RaceID=1, IsSelectedPR=true},
-                new PersonRaces {ID=14, StudentID=11, RaceID=2, IsSelectedPR=true},
-                new PersonRaces {ID=15, StudentID=12, RaceID=5, IsSelectedPR=true},
-                new PersonRaces {ID=16, StudentID=13, RaceID=7, IsSelectedPR=true},
-                new PersonRaces {ID=17, StudentID=14, RaceID=9, IsSelectedPR=true},
-                new PersonRaces {ID=18, StudentID=15, RaceID=10, IsSelectedPR=true},
-                new PersonRaces {ID=19, StudentID=16, RaceID=11, IsSelectedPR=true},
-                new PersonRaces {ID=20, StudentID=17, RaceID=4, IsSelectedPR=true},
-                new PersonRaces {ID=21, StudentID=18, RaceID=1, IsSelectedPR=true},
-                new PersonRaces {ID=22, StudentID=19, RaceID=12, IsSelectedPR=true},
-                new PersonRaces {ID=23, StudentID=20, RaceID=8, IsSelectedPR=true},
-                new PersonRaces {ID=24, StudentID=21, RaceID=4, IsSelectedPR=true},
-                new PersonRaces {ID=25, StudentID=22, RaceID=8, IsSelectedPR=true}
-            };
+            //var personRaces = new List<PersonRaces>
+            //    {
+            //        //new PersonRaces {ID=1, StudentID=1, RaceID=3, IsSelectedPR=true},
+            //        //new PersonRaces {ID=2, StudentID=1, RaceID=1, IsSelectedPR=true},
+            //        //new PersonRaces {ID=3, StudentID=1, RaceID=7, IsSelectedPR=true},
+            //        new PersonRaces {ID=4, StudentID=2, RaceID=10, IsSelectedPR=true},
+            //        new PersonRaces {ID=5, StudentID=3, RaceID=4, IsSelectedPR=true},
+            //        new PersonRaces {ID=6, StudentID=3, RaceID=2, IsSelectedPR=true},
+            //        //new PersonRaces {ID=7, StudentID=4, RaceID=12, IsSelectedPR=true},
+            //        //new PersonRaces {ID=8, StudentID=5, RaceID=4, IsSelectedPR=true},
+            //        //new PersonRaces {ID=9, StudentID=6, RaceID=5, IsSelectedPR=true},
+            //        //new PersonRaces {ID=10, StudentID=7, RaceID=6, IsSelectedPR=true},
+            //        //new PersonRaces {ID=11, StudentID=8, RaceID=7, IsSelectedPR=true},
+            //        //new PersonRaces {ID=12, StudentID=9, RaceID=5, IsSelectedPR=true},
+            //        //new PersonRaces {ID=13, StudentID=10, RaceID=1, IsSelectedPR=true},
+            //        //new PersonRaces {ID=14, StudentID=11, RaceID=2, IsSelectedPR=true},
+            //        //new PersonRaces {ID=15, StudentID=12, RaceID=5, IsSelectedPR=true},
+            //        //new PersonRaces {ID=16, StudentID=13, RaceID=7, IsSelectedPR=true},
+            //        //new PersonRaces {ID=17, StudentID=14, RaceID=9, IsSelectedPR=true},
+            //        //new PersonRaces {ID=18, StudentID=15, RaceID=10, IsSelectedPR=true},
+            //        //new PersonRaces {ID=19, StudentID=16, RaceID=11, IsSelectedPR=true},
+            //        //new PersonRaces {ID=20, StudentID=17, RaceID=4, IsSelectedPR=true},
+            //        //new PersonRaces {ID=21, StudentID=18, RaceID=1, IsSelectedPR=true},
+            //        //new PersonRaces {ID=22, StudentID=19, RaceID=12, IsSelectedPR=true},
+            //        //new PersonRaces {ID=23, StudentID=20, RaceID=8, IsSelectedPR=true},
+            //        //new PersonRaces {ID=24, StudentID=21, RaceID=4, IsSelectedPR=true},
+            //        //new PersonRaces {ID=25, StudentID=22, RaceID=8, IsSelectedPR=true}
+            //    };
 
-            foreach (PersonRaces pr in personRaces)
-            {
-                var personRacesInDataBase = context.PersonRaces.Where(s => s.Student.Id == pr.StudentID && s.Race.Id == pr.RaceID).SingleOrDefault();
-                if (personRacesInDataBase == null)
-                {
-                    context.PersonRaces.Add(pr);
-                }
-            }
-            SaveChanges(context);
+            
+
+            //foreach (PersonRaces pr in personRaces)
+            //{
+            //    var personRacesInDataBase = context.PersonRaces.Where(s => s.Student.Id == pr.StudentID && s.Race.Id == pr.RaceID).SingleOrDefault();
+            //    if (personRacesInDataBase == null)
+            //    {
+            //        context.PersonRaces.Add(pr);
+            //    }
+            //}
+            //SaveChanges(context);
+
+            /****/
         }
 
         /// <summary>

@@ -20,6 +20,7 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<Student> ReturnTrack { get; set; }
         public virtual ICollection<Student> ReturnPlan { get; set; }
         public virtual ICollection<Student> ReturnDegreeStartSem { get; set; }
+        public virtual ICollection<Student> ReturnCitizenshipStat { get; set; }
         public virtual ICollection<PrevDegree> ReturnDegreeType { get; set; }
         public virtual ICollection<Coursework> ReturnSemester { get; set; }
         public virtual ICollection<Coursework> ReturnGrade { get; set; }
@@ -43,6 +44,7 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<Publications> ReturnPubMonth { get; set; }
         public virtual ICollection<Grants> ReturnGrantMonth { get; set; }
         public virtual ICollection<Honors> ReturnHonorMonth { get; set; }
+        
 
     }
 }

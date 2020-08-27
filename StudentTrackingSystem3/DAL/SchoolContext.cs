@@ -92,6 +92,44 @@ namespace StudentTrackingSystem3.DAL
                 .HasForeignKey(d => d.GrantMonthId)
                 .WillCascadeOnDelete(false);
 
+            /*****/
+            //modelBuilder.Entity<Performance>()
+            //     .HasRequired(c => c.Student)
+            //     .WithMany()
+            //     .HasForeignKey(d => d.StudentID)
+            //     .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<PostGraduation>()
+            //    .HasRequired(c => c.Student)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.StudentID)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<PrevDegree>()
+            //    .HasRequired(c => c.Student)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.StudentID)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<PreviousEmployment>()
+            //    .HasRequired(c => c.Student)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.StudentID)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Coursework>()
+            //    .HasRequired(c => c.Student)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.StudentID)
+            //    .WillCascadeOnDelete(false);
+
+            //modelBuilder.Entity<Honors>()
+            //    .HasRequired(c => c.Student)
+            //    .WithMany()
+            //    .HasForeignKey(d => d.StudentID)
+            //    .WillCascadeOnDelete(false);
+           /*****/
+
             //modelBuilder.Entity<G_File>()
             //    .HasRequired(c => c.Manuscript)
             //    .WithMany()
@@ -112,8 +150,8 @@ namespace StudentTrackingSystem3.DAL
 
         }
 
-        
 
-       
+
+
     }
 }

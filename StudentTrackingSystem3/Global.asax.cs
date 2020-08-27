@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Microsoft.SqlServer;
 
 namespace StudentTrackingSystem3
 {
@@ -19,6 +20,8 @@ namespace StudentTrackingSystem3
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //throw new Exception(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+            //SqlServerTypes.Utilities.LoadNativeAssemblies(Server.MapPath("~/bin"));
 
         }
     }
