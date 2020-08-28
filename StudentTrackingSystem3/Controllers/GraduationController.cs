@@ -59,7 +59,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Student_LN = db.Students.Find(id).LastName;
             int degreeProgramId = db.Students.Find(id).DegreeProgramsId;
             ViewBag.DegreeProgramName = db.CommonFields.Find(degreeProgramId).Name;
-            int planId = db.Students.Find(id).PlansId;
+            int? planId = db.Students.Find(id).PlansId; //== null ? 0 : db.Students.Find(id).PlansId;
             ViewBag.Plan = db.CommonFields.Find(planId).Name;
             ViewBag.StudentManuscripts = db.Files.Where(g => g.Manuscript.StudentID == id);
             

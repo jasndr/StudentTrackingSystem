@@ -29,18 +29,25 @@ namespace StudentTrackingSystem3.Models
         public int GendersId { get; set; }
         [Display(Name ="Race Other")]
         public string RaceOther { get; set; }
-        [Required, Display(Name ="Degree Program")]//[ForeignKey()]
+        [Required, Display(Name ="Program")]//[ForeignKey()]
         public int DegreeProgramsId { get; set; }
-        [Required, Display(Name ="Track")]//[ForeignKey()]
-        public int TracksId { get; set; }
-        [Required, Display(Name ="Plan")]//[ForeignKey()]
-        public int PlansId { get; set; }
-        [Required, Display(Name ="Degree Program Start Semester")]//[ForeignKey()]
+        [Display(Name ="Track")]//[ForeignKey()]
+        public Nullable<int> TracksId { get; set; }
+        [Display(Name ="Plan")]//[ForeignKey()]
+        public Nullable<int> PlansId { get; set; }
+        [Required, Display(Name ="Program Start Semester")]//[ForeignKey()]
         public int DegreeStartSemsId { get; set; }
-        [Required, Range(1000, 9999), Display(Name ="Degree Program Start Year")]
+        [Required, Range(1000, 9999), Display(Name ="Program Start Year")]
         public int DegreeStartYear { get; set; }
-        [Required, Display(Name ="Citizenship Status")]
+        [Required, Display(Name ="Citizenship Status")]//[ForeignKey()]
         public int CitizenshipStatsId { get; set; }
+        [Required, Display(Name ="Current Status of Employment")]
+        public int EmploymentStatsId { get; set; }
+        [Display(Name ="Interim Advisor")]
+        public Nullable<int> InterimAdvisorsId { get; set; }
+        [Display(Name = "Permanent Advisor")]
+        public Nullable<int> PermanentAdvisorsId { get; set; }
+
 
         public virtual CommonFields Genders { get; set; }
         public virtual CommonFields DegreePrograms { get; set; }
@@ -48,6 +55,10 @@ namespace StudentTrackingSystem3.Models
         public virtual CommonFields Plans { get; set; }
         public virtual CommonFields DegreeStartSems { get; set; }
         public virtual CommonFields CitizenshipStats { get; set; }
+        public virtual CommonFields EmploymentStats { get; set; }
+        public virtual CommonFields InterimAdvisors { get; set; }
+        public virtual CommonFields PermanentAdvisors { get; set; }
+
         
 
         [Display(Name = "Race/Ethnicity")]

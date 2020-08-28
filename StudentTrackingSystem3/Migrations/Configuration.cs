@@ -22,6 +22,8 @@ namespace StudentTrackingSystem3.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "StudentTrackingSystem3.DAL.SchoolContext";
+
         }
 
         protected override void Seed(StudentTrackingSystem3.DAL.SchoolContext context)
@@ -58,7 +60,7 @@ namespace StudentTrackingSystem3.Migrations
                 new CommonFields {ID=15, Name="D-", Category="Grade", DisplayOrder=12, GradePoint=Decimal.Parse("0.70")},
                 new CommonFields {ID=16, Name="F", Category="Grade", DisplayOrder=13, GradePoint=Decimal.Parse("0.00")},
                 new CommonFields {ID=17, Name="MS", Category="DegreeProgram", DisplayOrder=1 },
-                new CommonFields {ID=18, Name="PhD", Category="DegreeProgram", DisplayOrder=2 },
+                new CommonFields {ID=18, Name="GCERT", Category="DegreeProgram", DisplayOrder=2 },
                 new CommonFields {ID=19, Name="Clinical Research (CR)", Category="Track", DisplayOrder=1 },
                 new CommonFields {ID=20, Name="Quantitative Health Sciences (QHS)", Category="Track", DisplayOrder=2 },
                 new CommonFields {ID=21, Name="BA", Category="DegreeType", DisplayOrder=1 },
@@ -109,7 +111,21 @@ namespace StudentTrackingSystem3.Migrations
                 new CommonFields {ID=66, Name="December", Category="Months", DisplayOrder=12 },
                 new CommonFields{ID=67, Name="US", Category="CitizenshipStatus", DisplayOrder=1},
                 new CommonFields{ID=68, Name="Visa", Category="CitizenshipStatus", DisplayOrder=2},
-                new CommonFields{ID=69, Name="Permanent Resident", Category="CitizenshipStatus", DisplayOrder=3}
+                new CommonFields{ID=69, Name="Permanent Resident", Category="CitizenshipStatus", DisplayOrder=3},
+                new CommonFields{ID=70, Name="Full-Time", Category="EmploymentStatus", DisplayOrder=1},
+                new CommonFields{ID=71, Name="Part-Time", Category="EmploymentStatus", DisplayOrder=2},
+                new CommonFields{ID=72, Name="Unemployed", Category="EmploymentStatus", DisplayOrder=3},
+                new CommonFields{ID=73, Name="Unknown", Category="EmploymentStatus", DisplayOrder=4},
+                new CommonFields{ID=74, Name="Hyeong Jun Ahn", Category="MsctrFaculty", DisplayOrder=1},
+                new CommonFields{ID=75, Name="Amy Brown", Category="MsctrFaculty", DisplayOrder=2},
+                new CommonFields{ID=76, Name="John Chen", Category="MsctrFaculty", DisplayOrder=3},
+                new CommonFields{ID=77, Name="Katalin Csiszar", Category="MsctrFaculty", DisplayOrder=4},
+                new CommonFields{ID=78, Name="ames Davis", Category="MsctrFaculty", DisplayOrder=5},
+                new CommonFields{ID=79, Name="Youping Deng", Category="MsctrFaculty", DisplayOrder=6},
+                new CommonFields{ID=80, Name="Vedbar Khadka", Category="MsctrFaculty", DisplayOrder=7},
+                new CommonFields{ID=81, Name="Eunjung Lim", Category="MsctrFaculty", DisplayOrder=8},
+                new CommonFields{ID=82, Name="Chathura Siriwardhana", Category="MsctrFaculty", DisplayOrder=9}
+
 
             };
             //commonfields.ForEach(s => context.CommonFields.Add(s));
@@ -273,7 +289,7 @@ namespace StudentTrackingSystem3.Migrations
             //        //new PersonRaces {ID=25, StudentID=22, RaceID=8, IsSelectedPR=true}
             //    };
 
-            
+
 
             //foreach (PersonRaces pr in personRaces)
             //{

@@ -226,9 +226,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008270131597_init.cs" />
-    <Compile Include="Migrations\202008270131597_init.Designer.cs">
-      <DependentUpon>202008270131597_init.cs</DependentUpon>
+    <Compile Include="Migrations\202008280042089_MakeTracksPlanNullable.cs" />
+    <Compile Include="Migrations\202008280042089_MakeTracksPlanNullable.Designer.cs">
+      <DependentUpon>202008280042089_MakeTracksPlanNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008280335168_AddMoreProfileFields.cs" />
+    <Compile Include="Migrations\202008280335168_AddMoreProfileFields.Designer.cs">
+      <DependentUpon>202008280335168_AddMoreProfileFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008280421055_AddMoreProfileFields1.cs" />
+    <Compile Include="Migrations\202008280421055_AddMoreProfileFields1.Designer.cs">
+      <DependentUpon>202008280421055_AddMoreProfileFields1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -267,10 +275,12 @@
     <Compile Include="ViewModels\UltimateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap-select.css" />
     <Content Include="Content\bootstrap-select.min.css" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fcf0ba_1x400.png" />
     <Content Include="Content\themes\base\images\ui-bg_gloss-wave_100_ece8da_500x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_highlight-hard_100_f5f3e5_1x100.png" />
@@ -322,6 +332,14 @@
     <Content Include="Scripts\InputMask.js" />
     <Content Include="Scripts\JavaScript.js" />
     <Content Include="Scripts\jquery-1.12.4.min.map" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\Laptop-Evqa8urd %28Local%29 Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MEB411-03 %28Local Setup%29 Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Publish - QHSDB Server.pubxml" />
@@ -439,9 +457,6 @@
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
@@ -449,8 +464,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008270131597_init.resx">
-      <DependentUpon>202008270131597_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008280042089_MakeTracksPlanNullable.resx">
+      <DependentUpon>202008280042089_MakeTracksPlanNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008280335168_AddMoreProfileFields.resx">
+      <DependentUpon>202008280335168_AddMoreProfileFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008280421055_AddMoreProfileFields1.resx">
+      <DependentUpon>202008280421055_AddMoreProfileFields1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />

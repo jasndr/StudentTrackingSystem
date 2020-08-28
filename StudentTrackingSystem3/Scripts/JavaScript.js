@@ -81,6 +81,45 @@
         });
     });
 
+    //Profile - Show Track and Plan options *only if* DegreeProgram = "MS"
+    $('#Student_TracksId').closest('.form-group').hide();
+    $('#Student_PlansId').closest('.form-group').hide();
+
+    /*$('#Student_PlansId').css({"background-color": "blue" });*/
+
+    $('#Student_DegreeProgramsId option:selected').each(function () {
+        if ($(this).val() == 17) {
+            $('#Student_TracksId').closest('.form-group').show();
+            $('#Student_PlansId').closest('.form-group').show();
+            /*$('#Student_PlansId').css({"background-color": "blue" });*/
+        } else if ($(this).val() == 18) {
+            $('#Student_TracksId').closest('.form-group').hide();
+            $('#Student_PlansId').closest('.form-group').hide();
+        }
+    });
+
+    $("#Student_DegreeProgramsId").change(function () {
+
+        $('#Student_TracksId').closest('.form-group').hide();
+        $('#Student_PlansId').closest('.form-group').hide();
+
+        $('#Student_DegreeProgramsId option:selected').each(function () {
+            if ($(this).val() == 17) {
+                $('#Student_TracksId').closest('.form-group').show();
+                $('#Student_PlansId').closest('.form-group').show();
+                /*$('#Student_PlansId').css({"background-color": "green" });*/
+            } else if ($(this).val() == 18) {
+                $('#Student_TracksId option:eq(0)').prop('selected', true);
+                $('#Student_TracksId').closest('.form-group').hide();
+                $('#Student_PlansId option:eq(0)').prop('selected', true);
+                $('#Student_PlansId').closest('.form-group').hide();
+                
+            }
+        });
+
+
+    });
+
 
     //Form 1 - Qualifying Exam passed fields show/display based on value
     $('.dateOfQualificationPassed1').hide();
