@@ -7,6 +7,6 @@ namespace StudentTrackingSystem3.Models
 {
     public enum FileType
     {
-        ActivitySummaryFile, CurriculumVitae, Manuscript
+        ActivitySummaryFile, CurriculumVitae, Manuscript, CvResume
     }
 }

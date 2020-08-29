@@ -18,11 +18,11 @@
         <div class="row menuNav" id="menuNav_background">
             @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12", @onclick = "javascript:return false;", @disabled = true })
 
-            @Html.ActionLink("Performance & Activity", "Index", "Performance" , new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Requirements", "Index", "Graduation", new { id = ViewBag.StudentID}, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+            @Html.ActionLink("Requirements", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
 
             @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
         </div>

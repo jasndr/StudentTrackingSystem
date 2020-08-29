@@ -510,6 +510,8 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.EmploymentStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "EmploymentStatus"), "Id", "Name");
             ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty"), "Id", "Name");
             ViewBag.Student = student;
+            ViewBag.StudentID = student.Id;
+            ViewBag.StudentCVs = db.Files.Where(g => g.CurriculumVitae.StudentID == id);
 
             //Initialize selectedRaces
             var racesToPost = new List<Races>();

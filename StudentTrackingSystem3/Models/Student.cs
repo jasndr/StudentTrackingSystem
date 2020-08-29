@@ -59,6 +59,7 @@ namespace StudentTrackingSystem3.Models
         public virtual CommonFields InterimAdvisors { get; set; }
         public virtual CommonFields PermanentAdvisors { get; set; }
 
+
         
 
         [Display(Name = "Race/Ethnicity")]
@@ -77,6 +78,7 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<Grants> Grants { get; set; }
         public virtual ICollection<Honors> Honors { get; set; }
         public virtual ICollection<Manuscript> Manuscripts { get; set; }
+
         //public virtual ICollection<G_File> Files { get; set; }
 
     }

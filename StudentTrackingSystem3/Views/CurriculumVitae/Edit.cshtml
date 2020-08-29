@@ -2,9 +2,14 @@
 
 @{
     ViewBag.Title = "Editing Curriculum Vitae";
+    string pageTitle = ViewBag.PageFrom == 1 ? "Graduate Student Profile" : "Post-Graduation Student Tracking";
+    string pageReturnTo = ViewBag.PageFrom == 1 ? "Back to Graduate Student Profile" : "Back to Post-Graduation Student Record";
+    string returnClass = ViewBag.PageFrom == 1 ? "Student" : "PostGraduation";
+    string returnPage = ViewBag.PageFrom == 1 ? "Edit" : "Index";
+    string labelType = ViewBag.PageFrom == 1 ? "CV/Resume" : "curriculum vitae";
 }
 
-<h2>Post-Graduation Student Tracking</h2>
+<h2>@pageTitle</h2>
 <br />
 
 @using (Html.BeginForm("Edit", "CurriculumVitae", new { id = ViewBag.FileID }, FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -12,13 +17,13 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Editing curriculum vitae file for <strong>@Model.Student.FirstName @Model.Student.LastName</strong></h4>
+        <h4>Editing @labelType file for <strong>@Model.Student.FirstName @Model.Student.LastName</strong></h4>
         <br />
 
         <div class="row menuNav" id="menuNav_postgrad">
             @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12", @onclick = "javascript:return false;", @disabled = true })
 
             @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
@@ -98,7 +103,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to Post-Graduation Student Record", "Index", "PostGraduation", new { id = Model.StudentID }, null)
+    @Html.ActionLink(pageReturnTo, returnPage, returnClass, new { id = Model.StudentID }, null)
 </div>
 
 @section Scripts {

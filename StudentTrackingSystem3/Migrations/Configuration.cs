@@ -120,7 +120,7 @@ namespace StudentTrackingSystem3.Migrations
                 new CommonFields{ID=75, Name="Amy Brown", Category="MsctrFaculty", DisplayOrder=2},
                 new CommonFields{ID=76, Name="John Chen", Category="MsctrFaculty", DisplayOrder=3},
                 new CommonFields{ID=77, Name="Katalin Csiszar", Category="MsctrFaculty", DisplayOrder=4},
-                new CommonFields{ID=78, Name="ames Davis", Category="MsctrFaculty", DisplayOrder=5},
+                new CommonFields{ID=78, Name="James Davis", Category="MsctrFaculty", DisplayOrder=5},
                 new CommonFields{ID=79, Name="Youping Deng", Category="MsctrFaculty", DisplayOrder=6},
                 new CommonFields{ID=80, Name="Vedbar Khadka", Category="MsctrFaculty", DisplayOrder=7},
                 new CommonFields{ID=81, Name="Eunjung Lim", Category="MsctrFaculty", DisplayOrder=8},

@@ -18,7 +18,7 @@
         <div class="row menuNav" id="menuNav_postgrad">
             @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
-            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12", @onclick = "javascript:return false;", @disabled = true })
 
             @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
@@ -103,7 +103,7 @@
 
                     <div class="row">
 
-                        <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = ViewBag.StudentID }, null)</p>
+                        <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = ViewBag.StudentID, pageFrom = 5 }, null)</p>
 
                         @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;}
 
@@ -122,7 +122,7 @@
                                                 <ul>
                                                     <li>
                                                         <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 5 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
                                                     </li>
                                                 </ul>
                                             </div>
@@ -142,7 +142,7 @@
                                                 <li>
 
                                                     <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 5}, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
 
                                                 </li>
                                             </ul>

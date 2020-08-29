@@ -38,10 +38,11 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: CurriculumVitae/Create
-        public ActionResult Create(int? id)
+        public ActionResult Create(int? id, int? pageFrom)
         {
             var student = db.Students.Find(id);
 
+            ViewBag.PageFrom = pageFrom;
             ViewBag.Student = student;
             ViewBag.StudentID = student.Id;
             ViewBag.Student_FN = student.FirstName;
@@ -90,7 +91,7 @@ namespace StudentTrackingSystem3.Controllers
         }
 
         // GET: CurriculumVitae/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int? pageFrom)
         {
             if (id == null)
             {
@@ -107,6 +108,7 @@ namespace StudentTrackingSystem3.Controllers
 
             Student student = curriculumVitae.Student;
 
+            ViewBag.PageFrom = pageFrom;
             ViewBag.Student = student;
             ViewBag.StudentID = student.Id;
             ViewBag.FileID = id;
@@ -159,6 +161,9 @@ namespace StudentTrackingSystem3.Controllers
                 curriculumVitae.Student = student;
                 db.Entry(curriculumVitae).State = EntityState.Modified;
                 db.SaveChanges();
+                
+
+                
                 return RedirectToAction("Index", "PostGraduation", new {id = curriculumVitae.StudentID });
             }
             ViewBag.Student = curriculumVitae.Student;

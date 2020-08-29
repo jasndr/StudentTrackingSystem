@@ -103,7 +103,7 @@
 
                     <div class="row">
 
-                        <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = Model.StudentID }, null)</p>
+                        <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = Model.StudentID, pageFrom = 5}, null)</p>
 
                         @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;}
 
@@ -120,7 +120,7 @@
                                                 <ul>
                                                     <li>
                                                         <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom=5}, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
                                                     </li>
                                                 </ul>
                                             </div>
@@ -138,7 +138,7 @@
                                                 <li>
 
                                                     <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom=5 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
 
                                                 </li>
                                             </ul>

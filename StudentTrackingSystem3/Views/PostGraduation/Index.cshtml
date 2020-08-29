@@ -11,9 +11,9 @@
 <br />
 
 <div class="row menuNav" id="menuNav_postgrad">
-    @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+    @Html.ActionLink("Profile", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
-    @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+    @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12", @onclick = "javascript:return false;", @disabled = true })
 
     @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
@@ -86,7 +86,7 @@
 
             <div class="row">
 
-                <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = ViewBag.StudentID }, null)</p>
+                <p>@Html.ActionLink("Add Curriculum Vitae", "Create", "CurriculumVitae", new { id = ViewBag.StudentID, pageFrom=5 }, null)</p>
 
                 @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;
                     var count = 1;}
@@ -106,7 +106,7 @@
                                         <ul>
                                             <li>
                                                 <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                                @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom=5 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
                                                 <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </a>
@@ -129,7 +129,7 @@
                                         <li>
 
                                             <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom=5 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
                                             <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </a>

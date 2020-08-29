@@ -3,10 +3,10 @@
 @model StudentTrackingSystem3.ViewModels.UltimateViewModel
 
 @{
-    ViewBag.Title = "Student Background";
+    ViewBag.Title = "Student Profile";
 }
 
-<h2>Graduate Student Background</h2>
+<h2>Graduate Student Profile</h2>
 <br />
 
 @using (Html.BeginForm())
@@ -21,7 +21,7 @@
             <div class="row menuNav" id="menuNav_background">
                 @Html.ActionLink("Profile", "Edit", "Student", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
-                @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
+                @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12", @onclick = "javascript:return false;", @disabled = true })
 
                 @Html.ActionLink("Performance and Activity", "Index", "Performance", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
@@ -227,7 +227,7 @@
             <br />
 
             <div class="row">
-                <div class="col-md-4 col-xs-12">
+                <div class="col-md-2 col-xs-12">
                     <div class="form-group">
                         <div class="row">
                             @Html.LabelFor(model => model.Student.CitizenshipStatsId, htmlAttributes: new { @class = "control-label col-md-5" })
@@ -238,15 +238,70 @@
                         </div>
                     </div>
                 </div>
-                @*<div class="col-md-4 col-xs-12"></div> /** RESERVED for CV/Resume **/ *@
-                <div class="col-md-6 col-xs-12">
+                @*/** RESERVED for CV/Resume **/ *@
+            <div class="col-md-5 col-xs-12">
+                <div class="form-group">
+
+                    <div class="row">
+
+                        <p>@Html.ActionLink("Add CV/Resume", "Create", "CurriculumVitae", new { id = Model.Student.Id, pageFrom = 1 }, null)</p>
+
+                        @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;}
+
+                        @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).FirstOrDefault(), null))
+                            {
+                                var count = 1;
+                                foreach (var file in studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).OrderByDescending(g => g.FileId))
+                                {
+                                    if (count == 1)
+                                    {
+                                        <div class="col-md-offset-1">
+                                            <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                                <em><strong>Current CV/Resume</strong></em>
+                                                <ul>
+                                                    <li>
+                                                        <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <br />
+                                    }
+                                    else
+                                    {
+                                        if (count == 2)
+                                        {
+                                            <p class="col-md-offset-1"><em><strong>CV/Resume History</strong></em></p>
+                                        }
+                                        <div class="col-md-offset-1">
+                                            <ul>
+                                                <li>
+
+                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    }
+                                    count++;
+                                }
+                            }
+                        }
+
+
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model=>model.Student.EmploymentStatsId, htmlAttributes: new { @class="control-label col-md-5"})
+                            @Html.LabelFor(model => model.Student.EmploymentStatsId, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-12 row">
-                            @Html.DropDownListFor(m=>m.Student.EmploymentStatsId, (SelectList)ViewBag.EmploymentStatsIdBag, "-- Select Employment Status--", new { @class = "form-control guestDisabled" })
-                            @Html.ValidationMessageFor(model=>model.Student.EmploymentStatsId, "", new { @class="text-danger"})
+                            @Html.DropDownListFor(m => m.Student.EmploymentStatsId, (SelectList)ViewBag.EmploymentStatsIdBag, "-- Select Employment Status--", new { @class = "form-control guestDisabled" })
+                            @Html.ValidationMessageFor(model => model.Student.EmploymentStatsId, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
