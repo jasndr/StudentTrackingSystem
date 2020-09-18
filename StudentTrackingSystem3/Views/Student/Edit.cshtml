@@ -34,13 +34,13 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.Student.Id)
 
-           
+
 
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.StudentNumber, htmlAttributes: new { @class = "control-label col-md-5"})
+                            @Html.LabelFor(model => model.Student.StudentNumber, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.StudentNumber, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
@@ -70,7 +70,7 @@
                             @Html.LabelFor(model => model.Student.MiddleName, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.EditorFor(model => model.Student.MiddleName, new { htmlAttributes = new { @class = "form-control guestReadOnly" } }) 
+                            @Html.EditorFor(model => model.Student.MiddleName, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
                             @Html.ValidationMessageFor(model => model.Student.MiddleName, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                             @Html.LabelFor(model => model.Student.Phone, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.EditorFor(model => model.Student.Phone, new { htmlAttributes = new { @class = "form-control phoneNum guestReadOnly"} })
+                            @Html.EditorFor(model => model.Student.Phone, new { htmlAttributes = new { @class = "form-control phoneNum guestReadOnly" } })
                             @Html.ValidationMessageFor(model => model.Student.Phone, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                             @Html.LabelFor(model => model.Student.GendersId, htmlAttributes: new { @class = "control-label col-md-5" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.DropDownListFor(m => m.Student.GendersId, (SelectList)ViewBag.GendersIdBag, "-- Select Gender --", new { @class = "form-control guestDisabled"})
+                            @Html.DropDownListFor(m => m.Student.GendersId, (SelectList)ViewBag.GendersIdBag, "-- Select Gender --", new { @class = "form-control guestDisabled" })
                             @Html.ValidationMessageFor(model => model.Student.GendersId, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                         <div class="row">
                             @Html.LabelFor(model => model.Student.PreviousDegrees, htmlAttributes: new { @class = "control-label col-md-5" })
                             <div class="text-center">
-                                @Html.ActionLink("Add Degree", "Create", "PrevDegree", new { id = Model.Student.Id }, htmlAttributes: new { @class="guestHidden" })
+                                @Html.ActionLink("Add Degree", "Create", "PrevDegree", new { id = Model.Student.Id }, htmlAttributes: new { @class = "guestHidden" })
                             </div>
                         </div>
 
@@ -164,8 +164,11 @@
                                                 <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
                                                 <td>@Convert.ToString(string.Format("{0:yyyy}", item.DateOfAward))</td>
                                                 <td>@Html.ActionLink("Edit", "Edit", "PrevDegree", new { id = item.Id }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF;" })</td>
-                                                <td><a title="Delete" href="@Url.Action("Delete", "PrevDegree", new {id = item.Id})"  class="guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
-                                                        <span class="glyphicon glyphicon-trash"></span></a></td>
+                                                <td>
+                                                    <a title="Delete" href="@Url.Action("Delete", "PrevDegree", new {id = item.Id})" class="guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         }
                                     </table>
@@ -200,7 +203,7 @@
                                                                race => race.Name,
                                                               model => model.RacesViewModel.SelectedRaces,
                                                               htmlListInfo, x => new { @class = "list_chkbx guestDisabled" })
-                                
+
 
                             }
                         </div>
@@ -222,6 +225,31 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.Student.RaceAsianOther, htmlAttributes: new { @class = "control-label col-md-5 raceAsianOther" })
+                        </div>
+                        <div class="col-md-10 row">
+                            @Html.EditorFor(model => model.Student.RaceAsianOther, new { htmlAttributes = new { @class = "form-control raceAsianOther guestReadOnly" } })
+                            @Html.ValidationMessageFor(model => model.Student.RaceAsianOther, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.Student.RacePacIsleOther, htmlAttributes: new { @class = "control-label col-md-5 racePacIsleOther" })
+                        </div>
+                        <div class="col-md-10 row">
+                            @Html.EditorFor(model => model.Student.RacePacIsleOther, new { htmlAttributes = new { @class = "form-control racePacIsleOther guestReadOnly" } })
+                            @Html.ValidationMessageFor(model => model.Student.RacePacIsleOther, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <br />
@@ -239,59 +267,64 @@
                     </div>
                 </div>
                 @*/** RESERVED for CV/Resume **/ *@
-            <div class="col-md-5 col-xs-12">
-                <div class="form-group">
+                <div class="col-md-5 col-xs-12">
+                    <div class="form-group">
 
-                    <div class="row">
+                        <div class="row">
 
-                        <p>@Html.ActionLink("Add CV/Resume", "Create", "CurriculumVitae", new { id = Model.Student.Id, pageFrom = 1 }, null)</p>
+                            <p>@Html.ActionLink("Add CV/Resume", "Create", "CurriculumVitae", new { id = Model.Student.Id, pageFrom = 1 }, null)</p>
 
-                        @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;}
+                            @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;}
 
-                        @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).FirstOrDefault(), null))
-                            {
-                                var count = 1;
-                                foreach (var file in studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).OrderByDescending(g => g.FileId))
+                            @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).FirstOrDefault(), null))
                                 {
-                                    if (count == 1)
+                                    var count = 1;
+                                    foreach (var file in studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).OrderByDescending(g => g.FileId))
                                     {
-                                        <div class="col-md-offset-1">
-                                            <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
-                                                <em><strong>Current CV/Resume</strong></em>
+                                        if (count == 1)
+                                        {
+                                            <div class="col-md-offset-1">
+                                                <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                                    <em><strong>Current CV/Resume</strong></em>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                            <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                                <span class="glyphicon glyphicon-trash"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <br />
+                                        }
+                                        else
+                                        {
+                                            if (count == 2)
+                                            {
+                                                <p class="col-md-offset-1"><em><strong>CV/Resume History</strong></em></p>
+                                            }
+                                            <div class="col-md-offset-1">
                                                 <ul>
                                                     <li>
+
                                                         <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
                                                         @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                        <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                            <span class="glyphicon glyphicon-trash"></span>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </div>
-                                        <br />
-                                    }
-                                    else
-                                    {
-                                        if (count == 2)
-                                        {
-                                            <p class="col-md-offset-1"><em><strong>CV/Resume History</strong></em></p>
                                         }
-                                        <div class="col-md-offset-1">
-                                            <ul>
-                                                <li>
-
-                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                                    @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        count++;
                                     }
-                                    count++;
                                 }
                             }
-                        }
 
 
-                    </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-5 col-xs-12">
@@ -302,6 +335,11 @@
                         <div class="col-md-12 row">
                             @Html.DropDownListFor(m => m.Student.EmploymentStatsId, (SelectList)ViewBag.EmploymentStatsIdBag, "-- Select Employment Status--", new { @class = "form-control guestDisabled" })
                             @Html.ValidationMessageFor(model => model.Student.EmploymentStatsId, "", new { @class = "text-danger" })
+                        </div>
+                        <br /><br />
+                        <div class="col-md-10 row">
+                            @Html.EditorFor(model => model.Student.EmploymentStatsOther, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
+                            @Html.ValidationMessageFor(model => model.Student.EmploymentStatsOther, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -354,7 +392,7 @@
                             @Html.LabelFor(model => model.Student.InterimAdvisorsId, htmlAttributes: new { @class = "control-label col-md-10" })
                         </div>
                         <div class="col-md-10 row">
-                            @Html.DropDownListFor(m => m.Student.InterimAdvisorsId, (SelectList)ViewBag.MsctrFacultyIdBag, "-- Select MSCTR Faculty --", new { @class = "form-control guestDisabled" })
+                            @Html.DropDownListFor(m => m.Student.InterimAdvisorsId, (SelectList)ViewBag.MsctrFacultyIdBag2, "-- Select MSCTR Faculty --", new { @class = "form-control guestDisabled" })
                             @Html.ValidationMessageFor(model => model.Student.InterimAdvisorsId, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -367,6 +405,17 @@
                         <div class="col-md-10 row">
                             @Html.DropDownListFor(m => m.Student.PermanentAdvisorsId, (SelectList)ViewBag.MsctrFacultyIdBag, "-- Select MSCTR Faculty --", new { @class = "form-control guestDisabled" })
                             @Html.ValidationMessageFor(model => model.Student.PermanentAdvisorsId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.Student.PermanentAdvisorOther, htmlAttributes: new { @class = "control-label col-md-10" })
+                        </div>
+                        <div class="col-md-10 row">
+                            @Html.EditorFor(model => model.Student.PermanentAdvisorOther, new { htmlAttributes = new { @class = "form-control guestReadOnly permanentAdvisorOther" } })
+                            @Html.ValidationMessageFor(model => model.Student.PermanentAdvisorOther, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -453,7 +502,7 @@
 
         </form>
     </div>
-                }
+}
 @*<br />
     <div>
         @Html.ActionLink("Back to List of Students", "Index", new { id = Model.Student.Id })

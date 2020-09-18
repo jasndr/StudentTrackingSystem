@@ -411,7 +411,7 @@ namespace StudentTrackingSystem3.Controllers
         [Authorize(Roles ="Super, Admin, Biostat")]
         public ActionResult Create()
         {
-            //View Bags for Dropdowns
+            //View Bags for DropdownsViewBag.MsctrFacultyIdBag
             ViewBag.GendersIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Gender"), "Id", "Name");
             ViewBag.DegreeProgramsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "DegreeProgram"), "Id", "Name");
             ViewBag.TracksIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Track"), "Id", "Name");
@@ -420,6 +420,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.CitizenshipStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "CitizenshipStatus"), "Id", "Name");
             ViewBag.EmploymentStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "EmploymentStatus"), "Id", "Name");
             ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty"), "Id", "Name");
+            ViewBag.MsctrFacultyIdBag2 = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty" && o.Name != "Other"), "Id", "Name");
 
             return View(GetRacesInitialModel());
         }
@@ -474,6 +475,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.CitizenshipStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "CitizenshipStatus"), "Id", "Name");
             ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty"), "Id", "Name");
+            ViewBag.MsctrFacultyIdBag2 = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty" && o.Name != "Other"), "Id", "Name");
 
 
             return View(GetRacesModel(ultimate));
@@ -509,6 +511,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.CitizenshipStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "CitizenshipStatus"), "Id", "Name");
             ViewBag.EmploymentStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "EmploymentStatus"), "Id", "Name");
             ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty"), "Id", "Name");
+            ViewBag.MsctrFacultyIdBag2 = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty" && o.Name != "Other"), "Id", "Name");
             ViewBag.Student = student;
             ViewBag.StudentID = student.Id;
             ViewBag.StudentCVs = db.Files.Where(g => g.CurriculumVitae.StudentID == id);
@@ -613,6 +616,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.CitizenshipStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "CitizenshipStatus"), "Id", "Name");
             ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty"), "Id", "Name");
+            ViewBag.MsctrFacultyIdBag2 = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty" && o.Name=="Other"), "Id", "Name");
 
             return View(GetRacesModel(ultimate, postedRaces));
         }

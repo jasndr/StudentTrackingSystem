@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using StudentTrackingSystem3.DAL;
 using StudentTrackingSystem3.Models;
 
@@ -59,8 +60,10 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Student_LN = db.Students.Find(id).LastName;
             int degreeProgramId = db.Students.Find(id).DegreeProgramsId;
             ViewBag.DegreeProgramName = db.CommonFields.Find(degreeProgramId).Name;
+            int? trackId = db.Students.Find(id).TracksId;
+            ViewBag.Track = trackId.Equals(null) || trackId == 0 ? "N/A" : db.CommonFields.Find(trackId).Name;
             int? planId = db.Students.Find(id).PlansId; //== null ? 0 : db.Students.Find(id).PlansId;
-            ViewBag.Plan = db.CommonFields.Find(planId).Name;
+            ViewBag.Plan = planId.Equals(null) || planId == 0 ? "N/A" : db.CommonFields.Find(planId).Name;
             ViewBag.StudentManuscripts = db.Files.Where(g => g.Manuscript.StudentID == id);
             
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category=="Season"), "ID", "Name");
@@ -124,6 +127,12 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Student_FN = student.FirstName;
             ViewBag.Student_LN = student.LastName;
             ViewBag.StudentManuscripts = db.Files.Where(g => g.Manuscript.StudentID == student.Id);
+            int degreeProgramId = db.Students.Find(student.Id).DegreeProgramsId;
+            ViewBag.DegreeProgramName = db.CommonFields.Find(degreeProgramId).Name;
+            int? trackId = db.Students.Find(student.Id).TracksId;
+            ViewBag.Track = db.CommonFields.Find(trackId).Name;
+            int? planId = db.Students.Find(student.Id).PlansId;
+            ViewBag.Plan = db.CommonFields.Find(planId).Name;
 
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", graduation.DegreeEndSemsId);
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.QualifierResultId);

@@ -11,737 +11,785 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="form-horizontal">
 
-        <h4>Editing graduation requirements record for <strong>@ViewBag.Student_FN @ViewBag.Student_LN</strong></h4>
+    <h4>Editing graduation requirements record for <strong>@ViewBag.Student_FN @ViewBag.Student_LN</strong></h4>
+    <br />
+
+    <div class="row menuNav" id="menuNav_graduation">
+        @Html.ActionLink("Profile", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+
+        @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12", @onclick = "javascript:return false;", @disabled = true })
+
+        @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
+
+        @Html.ActionLink("Requirements", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
+
+        @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+    </div>
+
+    <hr />
+    <br />
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.ID)
+
+
+    <div class="form-group" style="display: none;">
+        @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label" })
         <br />
-
-        <div class="row menuNav" id="menuNav_graduation">
-            @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
-
-            @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12", @onclick = "javascript:return false;", @disabled = true })
-
-            @Html.ActionLink("Performance & Activity", "Index", "Performance", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
-
-            @Html.ActionLink("Requirements", "Index", "Graduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_graduation col-md-2 col-xs-12" })
-
-            @Html.ActionLink("Post-Graduation", "Index", "PostGraduation", new { id = ViewBag.StudentID }, new { @class = "btn btn-primary infoNav menuNav_postgrad col-md-2 col-xs-12" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.StudentID, new { Value = ViewBag.StudentID, htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <hr />
-        <br />
+    <h4><strong><u>Degree Information</u></strong></h4>
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model=>model.ID)
-      
+    <div class="row">
 
-        <div class="form-group" style="display: none;">
-            @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label" })
-            <br />
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StudentID, new { Value = ViewBag.StudentID, htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <h4 class="alert alert-success text-center">
-            <strong>
-                <span>Pre-Candidacy Progress (Form I)</span>
-            </strong>
-        </h4>
-
-        <div class="row">
-
-            <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-                <strong>Qualifying Examination</strong>
-            </h5>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-offset-1 col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.QualifierResultId, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.DropDownList("QualifierResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
-                        @Html.ValidationMessageFor(model => model.QualifierResultId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed1 control-label" })
-                    @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed1 control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DateOfQualification, new { @Value = Model.DateOfQualification?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
-                        @Html.ValidationMessageFor(model => model.DateOfQualification, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-offset-1 col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Qualifier2ResultId, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.DropDownList("Qualifier2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
-                        @Html.ValidationMessageFor(model => model.Qualifier2ResultId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed2 control-label" })
-                    @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed2 control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DateOfQualification2, new { @Value = Model.DateOfQualification2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
-                        @Html.ValidationMessageFor(model => model.DateOfQualification2, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <h4 class="alert alert-success text-center">
-            <strong>
-                <span>Advance to Candidacy (Form II)</span>
-            </strong>
-        </h4>
-
-
-
-        @{
-            if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
-                 || Model.Student.DegreePrograms.Name == "PhD")
-            {
-                <div class="row">
-                    <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-                        <strong>
-                            <span class="msPlanA dissertation">Proposal Presentation</span>
-                        </strong>
-                    </h5>
-                </div>
-                <div class="col-md-offset-1 col-md-4 col-xs-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Form2ResultId, htmlAttributes: new { @class = "control-label" })
-                        <br />
-                        <div class="col-md-10">
-                            @Html.DropDownList("Form2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
-                            @Html.ValidationMessageFor(model => model.Form2ResultId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Form2Date, htmlAttributes: new { @class = "control-label" })
-                            <br />
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.Form2Date, new { @Value = Model.Form2Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly" })
-                                @Html.ValidationMessageFor(model => model.Form2Date, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br />
-            }
-
-
-
-            if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
-                 || Model.Student.DegreePrograms.Name == "PhD")
-            {
-                <div class="row">
-                    <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-                        <strong>
-                            <span class="msPlanB dissertation">Comprehensive Exam</span>
-                        </strong>
-                    </h5>
-                </div>
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CompExamResultId, htmlAttributes: new { @class = "control-label" })
-                            <br />
-                            <div class="col-md-10">
-                                @Html.DropDownList("CompExamResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestReadOnly biostatReadOnly" })
-                                @Html.ValidationMessageFor(model => model.CompExamResultId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Passed", htmlAttributes: new { @class = "dateOfCompExamPassed1 control-label" })
-                            @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed1 control-label" })
-                            <br />
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.DateOfCompExam, new { @Value = Model.DateOfCompExam?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
-                                @Html.ValidationMessageFor(model => model.DateOfCompExam, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-offset-1 col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CompExam2ResultId, htmlAttributes: new { @class = "control-label" })
-                            <br />
-                            <div class="col-md-10">
-                                @Html.DropDownList("CompExam2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
-                                @Html.ValidationMessageFor(model => model.CompExam2ResultId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Passed", htmlAttributes: new { @class = "dateOfCompExamPassed2 control-label" })
-                            @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed2 control-label" })
-                            <br />
-                            <div class="col-md-10">
-                                @Html.TextBoxFor(model => model.DateOfCompExam2, new { @Value = Model.DateOfCompExam2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
-                                @Html.ValidationMessageFor(model => model.DateOfCompExam2, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-
-            }
-        }
-        <div class="row">
-
-            <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-                <strong>
-                    @{
-                        if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
-                             || Model.Student.DegreePrograms.Name == "PhD")
-                        {
-                            <spam class="msPlanA dissertation">Research Topic</spam>
-                        }
-                        else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
-                        {
-                            <span class="msPlanB">Capstone Project Topic</span>
-                        }
-                        else
-                        {
-                            <span class="noPlan">Research Topic</span>
-                        }
-                    }
-                </strong>
-            </h5>
-
-        </div>
-
-
-        <div class="row">
-
-            <div class="col-md-offset-1 col-md-6 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Form2Title, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @style = "max-width: 480px;" } })
-                        @Html.ValidationMessageFor(model => model.Form2Title, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <br />
-
-        <div class="row">
-
-            <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
-                <strong>
-                    @{
-                        if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
-                        {
-                            <spam class="msPlanA">Appointment of Thesis Committee Members</spam>
-                        }
-                        else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
-                        {
-                            <span class="msPlanB">Appointment of Program Committee Members</span>
-                        }
-                        else if (Model.Student.DegreePrograms.Name == "PhD")
-                        {
-                            <span class="dissertation">Appointment of Dissertation Committee Members</span>
-                        }
-                        else
-                        {
-                            <span class="noPlan">Research Topic</span>
-                        }
-                    }
-                </strong>
-            </h5>
-
-        </div>
-
-
-        <h4 class="col-md-offset-1"><strong>Advisor</strong></h4>
-
-        <div class="row">
-
-            <div class="col-md-offset-2 col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.AdvisorName, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorName, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
-                        @Html.ValidationMessageFor(model => model.AdvisorName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.AdvisorEmail, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorEmail, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
-                        @Html.ValidationMessageFor(model => model.AdvisorEmail, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-offset-2 col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.AdvisorDepartment, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorDepartment, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
-                        @Html.ValidationMessageFor(model => model.AdvisorDepartment, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-4 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @Value = "University of Hawaii at Manoa" } })
-                        @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <h4 class="col-md-offset-1"><strong>Committee Members</strong></h4>
-
-        <div class="row">
-
-            <div class="col-md-8 col-xs-12">
-                <div class="form-group">
-
-                    <div class="col-md-offset-2 row col-md-10">
-                        @Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID },
-                                                                                                    htmlAttributes: new {
-                                                                                                        @class = "guestHidden",
-                                                                                                        data_toggle = "tooltip",
-                                                                                                        title = "NOTE: If you have entered data on this page, please dont forget to click 'Save' before proceeding.",
-                                                                                                        onclick="return confirm('NOTE: You must save this page first to prevent losing newly entered data.\\n\\nDo you wish to proceed?')"})
-                    </div>
-
-                    <div class="col-md-offset-2 col-md-10 row">
-
-                        @{IQueryable<CommitteeMember> studentCMs = ViewBag.StudentCMs;}
-
-                        @{if (!object.ReferenceEquals(studentCMs.FirstOrDefault(), null))
-                            {
-                                <table class="table">
-
-                                    @foreach (var item in studentCMs)
-                                    {
-                                        <tr>
-                                            <td>&bull;</td>
-                                            <td></td>
-                                            <td><strong>@Html.DisplayFor(modelItem => item.Name)</strong></td>
-                                            <td>@Html.DisplayFor(modelItem => item.Department)</td>
-                                            <td>@Html.DisplayFor(modelItem => item.University)</td>
-                                            <td>
-                                                @Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
-                                            </td>
-                                            <td>
-                                                <a style="margin-left: 5px;" title="Delete" href="@Url.Action("Delete", "CommitteeMember", new {id = item.ID})" class="btn-btn-warning guestHidden biostatHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    }
-                                </table>
-                            }
-                        }
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <h4 class="alert alert-success text-center">
-            <strong>
-
-                @{
-                    if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
-                    {
-                        <span class="msPlanA">Thesis Evaluation (Form III)</span>
-                    }
-                    else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
-                    {
-                        <span class="msPlanB">Capstone Project/Final Examination (Form III)</span>
-                    }
-                    else if (Model.Student.DegreePrograms.Name == "PhD")
-                    {
-                        <span class="dissertation">Dissertation Evaluation (Form III)</span>
-                    }
-                    else
-                    {
-                        <span class="noPlan">Form III</span>
-                    }
-                }
-            </strong>
-        </h4>
-
-        <div class="row">
-
-            <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
-                <strong>
-                    @{
-                        if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
-                        {
-                            <spam class="msPlanA">Thesis Defense</spam>
-                        }
-                        else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
-                        {
-                            <span class="msPlanB">Capstone Project Presentation</span>
-                        }
-                        else if (Model.Student.DegreePrograms.Name == "PhD")
-                        {
-                            <span class="dissertation">Dissertation Defense</span>
-                        }
-                        else
-                        {
-                            <span class="noPlan">Final Presentation</span>
-                        }
-                    }
-                </strong>
-            </h5>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-offset-1 col-md-6 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Form3Title, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Form3Title, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @style = "max-width: 480px;" } })
-                        @Html.ValidationMessageFor(model => model.Form3Title, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-2 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Form3Date, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Form3Date, new { @Value = Model.Form3Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly" })
-                        @Html.ValidationMessageFor(model => model.Form3Date, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-3 col-xs-12">
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Form3ResultId, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.DropDownList("Form3ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
-                        @Html.ValidationMessageFor(model => model.Form3Result, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-        <br />
-
-        @{
-            if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
-            {
-                <div class="row">
-                    <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-                        <strong>Final Examination</strong>
-                    </h5>
-                </div>
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.FinalExamResultId, htmlAttributes: new { @class = "control-label" })
-                            <br />
-                            <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.FinalExamResultId, (SelectList)ViewBag.FinalExamResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
-                                @Html.ValidationMessageFor(model => model.FinalExamResultId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed1 control-label" })
-                            @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed1 control-label" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.DateOfFinalExam, new { htmlAttributes = new { @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" } })
-                                @Html.ValidationMessageFor(model => model.DateOfFinalExam, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-offset-2 col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.FinalExam2ResultId, htmlAttributes: new { @class = "control-label" })
-                            <div class="col-md-10">
-                                @Html.DropDownListFor(model => model.FinalExam2ResultId, (SelectList)ViewBag.FinalExam2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
-                                @Html.ValidationMessageFor(model => model.FinalExam2ResultId, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed2 control-label" })
-                            @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed2 control-label" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.DateOfFinalExam2, new { htmlAttributes = new { @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" } })
-                                @Html.ValidationMessageFor(model => model.DateOfFinalExam2, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <br />
-
-
-            }
-        }
-
-        <h4 class="alert alert-success text-center">
-            <strong>
-
-                @{
-                    if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
-                    {
-                        <span class="msPlanA">Thesis Submission (Form IV)</span>
-                    }
-                    else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
-                    {
-                        <span class="msPlanB">Capstone Project Paper Submission (Form IV)</span>
-                    }
-                    else if (Model.Student.DegreePrograms.Name == "PhD")
-                    {
-                        <span class="dissertation">Dissertation Submission  (Form IV)</span>
-                    }
-                    else
-                    {
-                        <span class="noPlan">Form IV</span>
-                    }
-                }
-
-
-            </strong>
-        </h4>
-
-        <div class="row">
-
-            <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
-                <strong>
-                    @{
-                        if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
-                        {
-                            <span class="msPlanA">Copy of Manuscript (Thesis)</span>
-                        }
-                        else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
-                        {
-                            <span class="msPlanB">Copy of Capstone Project Paper</span>
-                        }
-                        else if (Model.Student.DegreePrograms.Name == "PhD")
-                        {
-                            <span class="dissertation">Copy of Manuscript</span>
-                        }
-                        else
-                        {
-                            <span class="noPlan">Copy of Paper</span>
-                        }
-                    }
-                </strong>
-            </h5>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-offset-2">
-
-                <div class="form-group">
-
-                    <div class="row">
-
-                        <p>@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = Model.StudentID },
-                                                                                            htmlAttributes: new {
-                                                                                                @class = "guestHidden",
-                                                                                                data_toggle = "tooltip",
-                                                                                                title = "NOTE: If you have entered data on this page, please dont forget to click 'Save' before proceeding.",
-                                                                                                onclick = "return confirm('NOTE: You must save this page first to prevent losing newly entered data.\\n\\nDo you wish to proceed?')"
-                                                                                            })</p>
-                        @{IQueryable<StudentTrackingSystem3.Models.File> studentManuscripts = ViewBag.StudentManuscripts; }
-
-                        @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == FileType.Manuscript).FirstOrDefault(), null))
-                            {
-                                var count = 1;
-                                foreach (var file in studentManuscripts.Where(g => g.FileType == FileType.Manuscript).OrderByDescending(g => g.FileId))
-                                {
-                                    if (count == 1)
-                                    {
-                                        <div class="col-md-offset-1">
-                                            <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
-                                                <em><strong>Current Manuscript</strong></em>
-                                                <ul>
-                                                    <li>
-                                                        <a href="~/File?id=@file.FileId">@file.FileName</a> <span class="guestHidden biostatHidden">&mdash;</span>
-                                                        @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
-                                                        <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Manuscript", new {id = file.FileId})" class="btn-btn-warning guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
-                                                            <span class="glyphicon glyphicon-trash"></span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                            <br />
-                                    }
-                                    else
-                                    {
-                                        if (count == 2)
-                                        {
-                                            <p class="col-md-offset-1"><em><strong>Manuscript History</strong></em></p>
-                                        }
-                                        <div class="col-md-offset-1">
-                                            <ul>
-                                                <li>
-                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  <span class="guestHidden biostatHidden">&mdash;</span>
-                                                    @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
-                                                    <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Manuscript", new {id = file.FileId})" class="btn-btn-warning guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    }
-                                    count++;
-                                }
-
-                            }
-
-                        }
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <br />
-
-        <div class="row">
-
-            <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-                <strong>Degree Awarded</strong>
-            </h5>
-
-        </div>
-
-        <div class="row">
-
-            <div class="col-md-offset-1 col-md-4 col-xs-12">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DegreeEndSemsId, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.DropDownList("DegreeEndSemsId", null, "-- Select Semester --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
-                        @Html.ValidationMessageFor(model => model.DegreeEndSemsId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 cold-xs-12">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DegreeEndYear, htmlAttributes: new { @class = "control-label" })
-                    <br />
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.DegreeEndYear, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
-                        @Html.ValidationMessageFor(model => model.DegreeEndYear, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <br />
-
-        <div class="row">
+        <div class="col-md-offset-1 col-md-4 col-xs-12">
 
             <div class="form-group">
-                <div class="col-md-offset-1 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default createOrEditPost2 guestHidden biostatHidden" />
+                @Html.Label("Program", htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.Editor("Program", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.DegreeProgramName } })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.Label("Track", htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.Editor("Track", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.Track } })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-xs-12">
+
+            <div class="form-group">
+                @Html.Label("Plan", htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.Editor("Plan", new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.Plan } })
                 </div>
             </div>
 
         </div>
 
     </div>
+
+    <br />
+
+    <h4 class="alert alert-success text-center">
+        <strong>
+            <span>Pre-Candidacy Progress (Form I)</span>
+        </strong>
+    </h4>
+
+    <div class="row">
+
+        <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+            <strong>Qualifying Examination</strong>
+        </h5>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-offset-1 col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.QualifierResultId, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.DropDownList("QualifierResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
+                    @Html.ValidationMessageFor(model => model.QualifierResultId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed1 control-label" })
+                @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed1 control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.DateOfQualification, new { @Value = Model.DateOfQualification?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
+                    @Html.ValidationMessageFor(model => model.DateOfQualification, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-offset-1 col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Qualifier2ResultId, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.DropDownList("Qualifier2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
+                    @Html.ValidationMessageFor(model => model.Qualifier2ResultId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed2 control-label" })
+                @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed2 control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.DateOfQualification2, new { @Value = Model.DateOfQualification2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
+                    @Html.ValidationMessageFor(model => model.DateOfQualification2, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <h4 class="alert alert-success text-center">
+        <strong>
+            <span>Advance to Candidacy (Form II)</span>
+        </strong>
+    </h4>
+
+
+
+    @{
+        if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+             || Model.Student.DegreePrograms.Name == "PhD")
+        {
+            <div class="row">
+                <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="msPlanA dissertation">Proposal Presentation</span>
+                    </strong>
+                </h5>
+            </div>
+            <div class="col-md-offset-1 col-md-4 col-xs-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Form2ResultId, htmlAttributes: new { @class = "control-label" })
+                    <br />
+                    <div class="col-md-10">
+                        @Html.DropDownList("Form2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
+                        @Html.ValidationMessageFor(model => model.Form2ResultId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Form2Date, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Form2Date, new { @Value = Model.Form2Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly" })
+                            @Html.ValidationMessageFor(model => model.Form2Date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+        }
+
+
+
+        if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+             || Model.Student.DegreePrograms.Name == "PhD")
+        {
+            <div class="row">
+                <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="msPlanB dissertation">Comprehensive Exam</span>
+                    </strong>
+                </h5>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CompExamResultId, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownList("CompExamResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestReadOnly biostatReadOnly" })
+                            @Html.ValidationMessageFor(model => model.CompExamResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Passed", htmlAttributes: new { @class = "dateOfCompExamPassed1 control-label" })
+                        @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed1 control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.DateOfCompExam, new { @Value = Model.DateOfCompExam?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
+                            @Html.ValidationMessageFor(model => model.DateOfCompExam, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-1 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CompExam2ResultId, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownList("CompExam2ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
+                            @Html.ValidationMessageFor(model => model.CompExam2ResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Passed", htmlAttributes: new { @class = "dateOfCompExamPassed2 control-label" })
+                        @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed2 control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.DateOfCompExam2, new { @Value = Model.DateOfCompExam2?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" })
+                            @Html.ValidationMessageFor(model => model.DateOfCompExam2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+        }
+    }
+    <div class="row">
+
+        <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+            <strong>
+                @{
+                    if ((Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                         || Model.Student.DegreePrograms.Name == "PhD")
+                    {
+                        <spam class="msPlanA dissertation">Research Topic</spam>
+                    }
+                    else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                    {
+                        <span class="msPlanB">Capstone Project Topic</span>
+                    }
+                    else
+                    {
+                        <span class="noPlan">Research Topic</span>
+                    }
+                }
+            </strong>
+        </h5>
+
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-offset-1 col-md-6 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Form2Title, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @style = "max-width: 480px;" } })
+                    @Html.ValidationMessageFor(model => model.Form2Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="row">
+
+        <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+            <strong>
+                @{
+                    if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                    {
+                        <spam class="msPlanA">Appointment of Thesis Committee Members</spam>
+                    }
+                    else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                    {
+                        <span class="msPlanB">Appointment of Program Committee Members</span>
+                    }
+                    else if (Model.Student.DegreePrograms.Name == "PhD")
+                    {
+                        <span class="dissertation">Appointment of Dissertation Committee Members</span>
+                    }
+                    else
+                    {
+                        <span class="noPlan">Research Topic</span>
+                    }
+                }
+            </strong>
+        </h5>
+
+    </div>
+
+
+    <h4 class="col-md-offset-1"><strong>Advisor</strong></h4>
+
+    <div class="row">
+
+        <div class="col-md-offset-2 col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdvisorName, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdvisorName, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
+                    @Html.ValidationMessageFor(model => model.AdvisorName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdvisorEmail, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdvisorEmail, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
+                    @Html.ValidationMessageFor(model => model.AdvisorEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-offset-2 col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdvisorDepartment, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdvisorDepartment, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
+                    @Html.ValidationMessageFor(model => model.AdvisorDepartment, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-4 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @Value = "University of Hawaii at Manoa" } })
+                    @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <h4 class="col-md-offset-1"><strong>Committee Members</strong></h4>
+
+    <div class="row">
+
+        <div class="col-md-8 col-xs-12">
+            <div class="form-group">
+
+                <div class="col-md-offset-2 row col-md-10">
+                    @Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID },
+                                                                                                htmlAttributes: new
+                                                                                                     {
+                                                                                                    @class = "guestHidden",
+                                                                                                    data_toggle = "tooltip",
+                                                                                                    title = "NOTE: If you have entered data on this page, please dont forget to click 'Save' before proceeding.",
+                                                                                                    onclick = "return confirm('NOTE: You must save this page first to prevent losing newly entered data.\\n\\nDo you wish to proceed?')"
+                                                                                                     })
+                </div>
+
+                <div class="col-md-offset-2 col-md-10 row">
+
+                    @{IQueryable<CommitteeMember> studentCMs = ViewBag.StudentCMs;}
+
+                    @{if (!object.ReferenceEquals(studentCMs.FirstOrDefault(), null))
+                        {
+                            <table class="table">
+
+                                @foreach (var item in studentCMs)
+                                {
+                                    <tr>
+                                        <td>&bull;</td>
+                                        <td></td>
+                                        <td><strong>@Html.DisplayFor(modelItem => item.Name)</strong></td>
+                                        <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.University)</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
+                                        </td>
+                                        <td>
+                                            <a style="margin-left: 5px;" title="Delete" href="@Url.Action("Delete", "CommitteeMember", new {id = item.ID})" class="btn-btn-warning guestHidden biostatHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <h4 class="alert alert-success text-center">
+        <strong>
+
+            @{
+                if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                {
+                    <span class="msPlanA">Thesis Evaluation (Form III)</span>
+                }
+                else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                {
+                    <span class="msPlanB">Capstone Project/Final Examination (Form III)</span>
+                }
+                else if (Model.Student.DegreePrograms.Name == "PhD")
+                {
+                    <span class="dissertation">Dissertation Evaluation (Form III)</span>
+                }
+                else
+                {
+                    <span class="noPlan">Form III</span>
+                }
+            }
+        </strong>
+    </h4>
+
+    <div class="row">
+
+        <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+            <strong>
+                @{
+                    if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                    {
+                        <spam class="msPlanA">Thesis Defense</spam>
+                    }
+                    else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                    {
+                        <span class="msPlanB">Capstone Project Presentation</span>
+                    }
+                    else if (Model.Student.DegreePrograms.Name == "PhD")
+                    {
+                        <span class="dissertation">Dissertation Defense</span>
+                    }
+                    else
+                    {
+                        <span class="noPlan">Final Presentation</span>
+                    }
+                }
+            </strong>
+        </h5>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-offset-1 col-md-6 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Form3Title, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Form3Title, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly", @style = "max-width: 480px;" } })
+                    @Html.ValidationMessageFor(model => model.Form3Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Form3Date, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Form3Date, new { @Value = Model.Form3Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly" })
+                    @Html.ValidationMessageFor(model => model.Form3Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-xs-12">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Form3ResultId, htmlAttributes: new { @class = "control-label" })
+                <br />
+                <div class="col-md-10">
+                    @Html.DropDownList("Form3ResultId", null, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
+                    @Html.ValidationMessageFor(model => model.Form3Result, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br />
+
+    @{
+        if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+        {
+            <div class="row">
+                <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                    <strong>Final Examination</strong>
+                </h5>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FinalExamResultId, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.FinalExamResultId, (SelectList)ViewBag.FinalExamResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
+                            @Html.ValidationMessageFor(model => model.FinalExamResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed1 control-label" })
+                        @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed1 control-label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfFinalExam, new { htmlAttributes = new { @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" } })
+                            @Html.ValidationMessageFor(model => model.DateOfFinalExam, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-offset-2 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.FinalExam2ResultId, htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.FinalExam2ResultId, (SelectList)ViewBag.FinalExam2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
+                            @Html.ValidationMessageFor(model => model.FinalExam2ResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed2 control-label" })
+                        @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed2 control-label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfFinalExam2, new { htmlAttributes = new { @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" } })
+                            @Html.ValidationMessageFor(model => model.DateOfFinalExam2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+
+        }
+    }
+
+    <h4 class="alert alert-success text-center">
+        <strong>
+
+            @{
+                if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                {
+                    <span class="msPlanA">Thesis Submission (Form IV)</span>
+                }
+                else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                {
+                    <span class="msPlanB">Capstone Project Paper Submission (Form IV)</span>
+                }
+                else if (Model.Student.DegreePrograms.Name == "PhD")
+                {
+                    <span class="dissertation">Dissertation Submission  (Form IV)</span>
+                }
+                else
+                {
+                    <span class="noPlan">Form IV</span>
+                }
+            }
+
+
+        </strong>
+    </h4>
+
+    <div class="row">
+
+        <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+            <strong>
+                @{
+                    if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan A")
+                    {
+                        <span class="msPlanA">Copy of Manuscript (Thesis)</span>
+                    }
+                    else if (Model.Student.DegreePrograms.Name == "MS" && Model.Student.Plans.Name == "Plan B")
+                    {
+                        <span class="msPlanB">Copy of Capstone Project Paper</span>
+                    }
+                    else if (Model.Student.DegreePrograms.Name == "PhD")
+                    {
+                        <span class="dissertation">Copy of Manuscript</span>
+                    }
+                    else
+                    {
+                        <span class="noPlan">Copy of Paper</span>
+                    }
+                }
+            </strong>
+        </h5>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-offset-2">
+
+            <div class="form-group">
+
+                <div class="row">
+
+                    <p>
+                        @Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = Model.StudentID },
+                                                                                     htmlAttributes: new
+                                                                                              {
+                                                                                         @class = "guestHidden",
+                                                                                         data_toggle = "tooltip",
+                                                                                         title = "NOTE: If you have entered data on this page, please dont forget to click 'Save' before proceeding.",
+                                                                                         onclick = "return confirm('NOTE: You must save this page first to prevent losing newly entered data.\\n\\nDo you wish to proceed?')"
+                                                                                     })
+                </p>
+                @{IQueryable<StudentTrackingSystem3.Models.File> studentManuscripts = ViewBag.StudentManuscripts; }
+
+                @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == FileType.Manuscript).FirstOrDefault(), null))
+                    {
+                        var count = 1;
+                        foreach (var file in studentManuscripts.Where(g => g.FileType == FileType.Manuscript).OrderByDescending(g => g.FileId))
+                        {
+                            if (count == 1)
+                            {
+                                <div class="col-md-offset-1">
+                                    <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                        <em><strong>Current Manuscript</strong></em>
+                                        <ul>
+                                            <li>
+                                                <a href="~/File?id=@file.FileId">@file.FileName</a> <span class="guestHidden biostatHidden">&mdash;</span>
+                                                @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
+                                                <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Manuscript", new {id = file.FileId})" class="btn-btn-warning guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <br />
+                            }
+                            else
+                            {
+                                if (count == 2)
+                                {
+                                    <p class="col-md-offset-1"><em><strong>Manuscript History</strong></em></p>
+                                }
+                                <div class="col-md-offset-1">
+                                    <ul>
+                                        <li>
+                                            <a href="~/File?id=@file.FileId">@file.FileName</a>  <span class="guestHidden biostatHidden">&mdash;</span>
+                                            @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF" })
+                                            <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "Manuscript", new {id = file.FileId})" class="btn-btn-warning guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                            count++;
+                        }
+
+                    }
+
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<br />
+
+<div class="row">
+
+    <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+        <strong>Degree Awarded</strong>
+    </h5>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-offset-1 col-md-4 col-xs-12">
+        <div class="form-group">
+            @Html.LabelFor(model => model.DegreeEndSemsId, htmlAttributes: new { @class = "control-label" })
+            <br />
+            <div class="col-md-10">
+                @Html.DropDownList("DegreeEndSemsId", null, "-- Select Semester --", htmlAttributes: new { @class = "form-control guestDisabled biostatDisabled" })
+                @Html.ValidationMessageFor(model => model.DegreeEndSemsId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 cold-xs-12">
+        <div class="form-group">
+            @Html.LabelFor(model => model.DegreeEndYear, htmlAttributes: new { @class = "control-label" })
+            <br />
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DegreeEndYear, new { htmlAttributes = new { @class = "form-control guestReadOnly biostatReadOnly" } })
+                @Html.ValidationMessageFor(model => model.DegreeEndYear, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<br />
+
+<div class="row">
+
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default createOrEditPost2 guestHidden biostatHidden" />
+        </div>
+    </div>
+
+</div>
+
+</div>
 
                             }
 

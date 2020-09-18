@@ -29,6 +29,11 @@ namespace StudentTrackingSystem3.Models
         public int GendersId { get; set; }
         [Display(Name ="Race Other")]
         public string RaceOther { get; set; }
+        [Display(Name = "Other Asian")]
+        public string RaceAsianOther { get; set; }
+        [Display(Name ="Other Pacific Islander")]
+        public string RacePacIsleOther { get; set; }
+
         [Required, Display(Name ="Program")]//[ForeignKey()]
         public int DegreeProgramsId { get; set; }
         [Display(Name ="Track")]//[ForeignKey()]
@@ -43,10 +48,13 @@ namespace StudentTrackingSystem3.Models
         public int CitizenshipStatsId { get; set; }
         [Required, Display(Name ="Current Status of Employment")]
         public int EmploymentStatsId { get; set; }
-        [Display(Name ="Interim Advisor")]
+        public string EmploymentStatsOther { get; set; }
+        [Display(Name ="Interim Academic Advisor")]
         public Nullable<int> InterimAdvisorsId { get; set; }
-        [Display(Name = "Permanent Advisor")]
+        [Display(Name = "Permanent Academic Advisor")]
         public Nullable<int> PermanentAdvisorsId { get; set; }
+        [Display(Name = "Other Permanent Academic Advisor")]
+        public string PermanentAdvisorOther { get; set; }
 
 
         public virtual CommonFields Genders { get; set; }

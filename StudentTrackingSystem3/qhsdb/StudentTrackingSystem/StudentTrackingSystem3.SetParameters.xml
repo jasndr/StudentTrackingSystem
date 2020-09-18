@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
   <setParameter name="IIS Web Application Name" value="StudentTrackingSystem" />
-  <setParameter name="SchoolContext-Web.config Connection String" value="Data Source=qhsdb;Initial Catalog=MSCTR;Integrated Security=True" />
-  <setParameter name="ApplicationDbContext-Web.config Connection String" value="Data Source=qhsdb;Initial Catalog=MSCTR;Integrated Security=True" />
+  <setParameter name="SchoolContext-Web.config Connection String" value="Data Source=qhsdb;Initial Catalog=MSCTR;user id=qhsdb_user;password=BecomeAkamai(_now_);" />
+  <setParameter name="ApplicationDbContext-Web.config Connection String" value="Data Source=qhsdb;Initial Catalog=MSCTR;user id=qhsdb_user;password=BecomeAkamai(_now_);" />
+  <setParameter name="SchoolContext_DatabasePublish-Web.config Connection String" value="SchoolContext_DatabasePublish.ConnetionString" />
 </parameters>

@@ -387,7 +387,7 @@
     });
     
 
-    //Hide other "Other Race" checkbox is "other" is unchecked
+    //Hide other "Other Race" textbox field if "other" is unchecked
     var checkedOther = $(":checkbox[value=13]");
     var raceOtherField = $(".raceOther");
     if (!checkedOther.is(':checked')) {
@@ -402,6 +402,71 @@
         }
 
     });
+
+    //Hide other "Other Asian" textbox field if "other Asian" is unchecked
+    var checkedOtherAsian = $(":checkbox[value=12]");
+    var raceAsianOtherField = $(".raceAsianOther");
+    if (!checkedOtherAsian.is(':checked')) {
+        raceAsianOtherField.hide();
+    }
+    //raceAsianOtherField.hide();
+    checkedOtherAsian.on('click', function () {
+        if ($(this).is(':checked')) {
+            raceAsianOtherField.show();
+        } else {
+            raceAsianOtherField.hide();
+        }
+
+    });
+
+    //Hide other "Other Pacific Islander" textbox field if "other Pacific Islander" is unchecked
+    var checkedPacIsleOther = $(":checkbox[value=5]");
+    var racePacIsleOtherField = $(".racePacIsleOther");
+    if (!checkedPacIsleOther.is(':checked')) {
+        racePacIsleOtherField.hide();
+    }
+    //racePacIsleOtherField.hide();
+    checkedPacIsleOther.on('click', function () {
+        if ($(this).is(':checked')) {
+            racePacIsleOtherField.show();
+        } else {
+            racePacIsleOtherField.hide();
+        }
+
+    });
+
+
+    // Hides/shows "Other Permanent Academic Advisor" text field if "Other" is selected for "Other Permanent Academic Advisor"
+
+    // [During page load]
+    $('.permanentAdvisorOther').closest('.col-md-4').hide();
+
+    $('#Student_PermanentAdvisorsId option:selected').each(function () {
+        if ($(this).val() == 83) {
+            $('.permanentAdvisorOther').closest('.col-md-4').show();
+        } else {
+            $('.permanentAdvisorOther').closest('.col-md-4').hide();
+        }
+    });
+    // [During option change]
+    $('#Student_PermanentAdvisorsId').change(function () {
+
+        $('.permanentAdvisorOther').closest('.col-md-4').hide();
+
+        $('#Student_PermanentAdvisorsId option:selected').each(function () {
+            if ($(this).val() == 83) {
+                $('.permanentAdvisorOther').closest('.col-md-4').show();
+                /*alert("hello " + $(this).val());*/
+            } else {
+                $('.permanentAdvisorOther').closest('.col-md-4').hide();
+                /*alert("goodbye " + $(this).val());*/
+            }
+        });
+    });
+
+
+
+   
 
 
     // If "Current" checkbox checked, applies today's month and year. 

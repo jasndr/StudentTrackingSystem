@@ -48,17 +48,8 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
@@ -226,17 +217,21 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008280042089_MakeTracksPlanNullable.cs" />
-    <Compile Include="Migrations\202008280042089_MakeTracksPlanNullable.Designer.cs">
-      <DependentUpon>202008280042089_MakeTracksPlanNullable.cs</DependentUpon>
+    <Compile Include="Migrations\202008290428109_MoveToProd.cs" />
+    <Compile Include="Migrations\202008290428109_MoveToProd.Designer.cs">
+      <DependentUpon>202008290428109_MoveToProd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008280335168_AddMoreProfileFields.cs" />
-    <Compile Include="Migrations\202008280335168_AddMoreProfileFields.Designer.cs">
-      <DependentUpon>202008280335168_AddMoreProfileFields.cs</DependentUpon>
+    <Compile Include="Migrations\202008290429520_MoveToProd2.cs" />
+    <Compile Include="Migrations\202008290429520_MoveToProd2.Designer.cs">
+      <DependentUpon>202008290429520_MoveToProd2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008280421055_AddMoreProfileFields1.cs" />
-    <Compile Include="Migrations\202008280421055_AddMoreProfileFields1.Designer.cs">
-      <DependentUpon>202008280421055_AddMoreProfileFields1.cs</DependentUpon>
+    <Compile Include="Migrations\202008290451473_MoveToProd21.cs" />
+    <Compile Include="Migrations\202008290451473_MoveToProd21.Designer.cs">
+      <DependentUpon>202008290451473_MoveToProd21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009170345324_AddProfileFields.cs" />
+    <Compile Include="Migrations\202009170345324_AddProfileFields.Designer.cs">
+      <DependentUpon>202009170345324_AddProfileFields.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -350,6 +345,8 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\VED-HP %28Local Setup%29 Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Web Deploy - BQHSPORTAL.pubxml" />
+    <None Include="Properties\PublishProfiles\Web Deploy - QHSDB.pubxml" />
     <None Include="Properties\PublishProfiles\YONGJUN-HP %28Sandbox%29 Web Deploy.pubxml" />
     <None Include="Reports\DataSet1.xsd">
       <SubType>Designer</SubType>
@@ -464,14 +461,17 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008280042089_MakeTracksPlanNullable.resx">
-      <DependentUpon>202008280042089_MakeTracksPlanNullable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008290428109_MoveToProd.resx">
+      <DependentUpon>202008290428109_MoveToProd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008280335168_AddMoreProfileFields.resx">
-      <DependentUpon>202008280335168_AddMoreProfileFields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008290429520_MoveToProd2.resx">
+      <DependentUpon>202008290429520_MoveToProd2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008280421055_AddMoreProfileFields1.resx">
-      <DependentUpon>202008280421055_AddMoreProfileFields1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008290451473_MoveToProd21.resx">
+      <DependentUpon>202008290451473_MoveToProd21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009170345324_AddProfileFields.resx">
+      <DependentUpon>202009170345324_AddProfileFields.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />
