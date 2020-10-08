@@ -474,6 +474,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.PlansIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Plan"), "Id", "Name");
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.CitizenshipStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "CitizenshipStatus"), "Id", "Name");
+            ViewBag.EmploymentStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "EmploymentStatus"), "Id", "Name");
             ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty"), "Id", "Name");
             ViewBag.MsctrFacultyIdBag2 = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty" && o.Name != "Other"), "Id", "Name");
 
