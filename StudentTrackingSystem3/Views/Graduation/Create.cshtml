@@ -85,93 +85,97 @@
     <br />
 
 
-    <h4 class="alert alert-success text-center">
-        <strong>
-            <span>Pre-Candidacy Progress (Form I)</span>
-        </strong>
-    </h4>
 
-    <div class="row">
-
-        <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-            <strong>Qualifying Examination</strong>
-        </h5>
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-offset-2 col-md-4 col-xs-12">
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.QualifierResultId, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.QualifierResultId, (SelectList)ViewBag.QualifierResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.QualifierResultId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-md-4 col-xs-12">
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed1 control-label" })
-                @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed1 control-label" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DateOfQualification, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
-                    @Html.ValidationMessageFor(model => model.DateOfQualification, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-offset-2 col-md-4 col-xs-12">
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Qualifier2ResultId, htmlAttributes: new { @class = "control-label" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Qualifier2ResultId, (SelectList)ViewBag.Qualifier2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Qualifier2ResultId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-md-4 col-xs-12">
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed2 control-label" })
-                @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed2 control-label" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DateOfQualification2, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
-                    @Html.ValidationMessageFor(model => model.DateOfQualification2, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <h4 class="alert alert-success text-center">
-        <strong>
-            <span>Advance to Candidacy (Form II)</span>
-        </strong>
-    </h4>
 
     @{
 
         string degreeProgram = ViewBag.DegreeProgramName;
         string plan = ViewBag.Plan;
 
-        if ((degreeProgram == "MS" && plan == "Plan A")
-                     || degreeProgram == "PhD")
+        if ((degreeProgram == "MS" && plan == "Plan A"))
         {
+
+
+            <h4 class="alert alert-success text-center">
+                <strong>
+                    <span>Form I - Pre-Candidacy Progress</span>
+                </strong>
+            </h4>
+
+            <div class="row">
+
+                <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                    <strong>Qualifying Examination</strong>
+                </h5>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.QualifierResultId, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.QualifierResultId, (SelectList)ViewBag.QualifierResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.QualifierResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed1 control-label" })
+                        @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed1 control-label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfQualification, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                            @Html.ValidationMessageFor(model => model.DateOfQualification, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Qualifier2ResultId, htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Qualifier2ResultId, (SelectList)ViewBag.Qualifier2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Qualifier2ResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed2 control-label" })
+                        @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed2 control-label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfQualification2, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                            @Html.ValidationMessageFor(model => model.DateOfQualification2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h4 class="alert alert-success text-center">
+                <strong>
+                    <span>Form II - Advance to Candidacy</span>
+                </strong>
+            </h4>
+
+
             <div class="row">
                 <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
                     <strong>
@@ -202,360 +206,564 @@
                 </div>
             </div>
             <br />
-        }
 
-        if ((degreeProgram == "MS" && plan == "Plan B")
-             || degreeProgram == "PhD")
-        {
             <div class="row">
+
                 <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
                     <strong>
-                        <span class="msPlanB dissertation">Comprehensive Exam</span>
+                        <span class="msPlanA">Research Topic</span>
                     </strong>
                 </h5>
+
             </div>
+
+
             <div class="row">
-                <div class="col-md-offset-2 col-md-4 col-xs-12">
+
+                <div class="col-md-offset-2 col-md-6 col-xs-12">
+
                     <div class="form-group">
-                        @Html.LabelFor(model => model.CompExamResultId, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.Form2Title, htmlAttributes: new { @class = "control-label" })
                         <br />
                         <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.CompExamResultId, (SelectList)ViewBag.CompExamResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.CompExamResultId, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
+                            @Html.ValidationMessageFor(model => model.Form2Title, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
                 </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Passed", htmlAttributes: new { @class = "dateOfCompExamPassed1 control-label" })
-                        @Html.LabelFor(model => model.DateOfCompExam, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed1 control-label" })
-                        <br />
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DateOfCompExam, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
-                            @Html.ValidationMessageFor(model => model.DateOfCompExam, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
+
             </div>
-            <div class="row">
-                <div class="col-md-offset-2 col-md-4 col-xs-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.CompExam2ResultId, htmlAttributes: new { @class = "control-label" })
-                        <br />
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.CompExam2ResultId, (SelectList)ViewBag.CompExam2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.CompExam2ResultId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Passed", htmlAttributes: new { @class = "dateOfCompExamPassed2 control-label" })
-                        @Html.LabelFor(model => model.DateOfCompExam2, "Date of Comprehensive Exam Failed", htmlAttributes: new { @class = "dateOfCompExamFailed2 control-label" })
-                        <br />
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DateOfCompExam2, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
-                            @Html.ValidationMessageFor(model => model.DateOfCompExam2, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <br />
-        }
-    }
-
-    <div class="row">
-
-        <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-            <strong>
-                @{
-
-                    if ((degreeProgram == "MS" && plan == "Plan A")
-                                     || degreeProgram == "PhD")
-                    {
-                        <spam class="msPlanA dissertation">Research Topic</spam>
-                    }
-                    else if (degreeProgram == "MS" && plan == "Plan B")
-                    {
-                        <span class="msPlanB">Capstone Project Topic</span>
-                    }
-                    else
-                    {
-                        <span class="noPlan">Research Topic</span>
-                    }
-                }
-            </strong>
-        </h5>
-
-    </div>
 
 
-    <div class="row">
+            <div class="row">
 
-        <div class="col-md-offset-2 col-md-6 col-xs-12">
+                <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="msPlanA">Appointment of Thesis Committee Members</span>
+                    </strong>
+                </h5>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Form2Title, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
-                    @Html.ValidationMessageFor(model => model.Form2Title, "", new { @class = "text-danger" })
-                </div>
             </div>
 
-        </div>
+            <h4 class="col-md-offset-2"><strong>Advisor</strong></h4>
 
-    </div>
+            <div class="row">
 
-    <br />
+                <div class="col-md-offset-3 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorName, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-    <div class="row">
-
-        <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
-            <strong>
-                @{
-                    if (degreeProgram == "MS" && plan == "Plan A")
-                    {
-                        <spam class="msPlanA">Appointment of Thesis Committee Members</spam>
-                    }
-                    else if (degreeProgram == "MS" && plan == "Plan B")
-                    {
-                        <span class="msPlanB">Appointment of Program Committee Members</span>
-                    }
-                    else if (degreeProgram == "PhD")
-                    {
-                        <span class="dissertation">Appointment of Dissertation Committee Members</span>
-                    }
-                    else
-                    {
-                        <span class="noPlan">Research Topic</span>
-                    }
-                }
-            </strong>
-        </h5>
-
-    </div>
-
-    <h4 class="col-md-offset-2"><strong>Advisor</strong></h4>
-
-    <div class="row">
-
-        <div class="col-md-offset-3 col-md-4 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.AdvisorName, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.AdvisorName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AdvisorName, "", new { @class = "text-danger" })
                 </div>
+
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorEmail, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorEmail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
-        </div>
 
+            <div class="row">
 
-        <div class="col-md-4 col-xs-12">
+                <div class="col-md-offset-3 col-md-4 col-xs-12">
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.AdvisorEmail, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.AdvisorEmail, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AdvisorEmail, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorDepartment, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorDepartment, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorDepartment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
                 </div>
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control", @Value = "University of Hawaii at Manoa" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
 
-        </div>
+            <h4 class="col-md-offset-2"><strong>Committee Members</strong></h4>
 
-    </div>
+            <div class="row">
 
+                <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
 
-    <div class="row">
+                        <div class="col-md-10 row col-md-offset-3">
+                            @*@Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })*@
+                            <a data-toggle="tooltip" title="Note: In order to prevent the loss of previously entered data, you must save this page before continuing in order to start adding committee members.">Add Committee Member</a>
+                        </div>
 
-        <div class="col-md-offset-3 col-md-4 col-xs-12">
+                        <div class="col-md-10 row col-md-offset-3">
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.AdvisorDepartment, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.AdvisorDepartment, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AdvisorDepartment, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                            @{IQueryable<CommitteeMember> studentCMs = ViewBag.StudentCMs;}
 
-        </div>
-
-        <div class="col-md-4 col-xs-12">
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control", @Value = "University of Hawaii at Manoa" } })
-                    @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <h4 class="col-md-offset-2"><strong>Committee Members</strong></h4>
-
-    <div class="row">
-
-        <div class="col-md-8 col-xs-12">
-            <div class="form-group">
-
-                <div class="col-md-10 row col-md-offset-3">
-                    @*@Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })*@
-                    <a data-toggle="tooltip" title="Note: In order to prevent the loss of previously entered data, you must save this page before continuing in order to start adding committee members.">Add Committee Member</a>
-                </div>
-
-                <div class="col-md-10 row col-md-offset-3">
-
-                    @{IQueryable<CommitteeMember> studentCMs = ViewBag.StudentCMs;}
-
-                    @{if (!object.ReferenceEquals(studentCMs.FirstOrDefault(), null))
-                        {
-                            <table class="table">
-
-                                @foreach (var item in studentCMs)
+                            @{if (!object.ReferenceEquals(studentCMs.FirstOrDefault(), null))
                                 {
-                                    <tr>
-                                        <td>&bull;</td>
-                                        <td></td>
-                                        <td><strong>@Html.DisplayFor(modelItem => item.Name)</strong></td>
-                                        <td>@Html.DisplayFor(modelItem => item.Department)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.University)</td>
-                                        <td>@Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
-                                    </tr>
+                                    <table class="table">
+
+                                        @foreach (var item in studentCMs)
+                                        {
+                                            <tr>
+                                                <td>&bull;</td>
+                                                <td></td>
+                                                <td><strong>@Html.DisplayFor(modelItem => item.Name)</strong></td>
+                                                <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.University)</td>
+                                                <td>@Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                            </tr>
+                                        }
+                                    </table>
                                 }
-                            </table>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+            <h4 class="alert alert-success text-center">
+                <strong>
+                    <span class="msPlanA">Form III - Thesis Evaluation</span>
+                </strong>
+            </h4>
+
+            <div class="row">
+
+                <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="msPlanA">Thesis Defense</span>
+                    </strong>
+                </h5>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-offset-1 col-md-6 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Form3Title, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Form3Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
+                            @Html.ValidationMessageFor(model => model.Form3Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Form3Date, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Form3Date, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                            @Html.ValidationMessageFor(model => model.Form3Date, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Form3ResultId, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Form3ResultId, (SelectList)ViewBag.Form3ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Form3ResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <br />
+
+
+            <h4 class="alert alert-success text-center">
+                <strong>
+                    <span class="msPlanA">Form IV - Thesis Submission</span>
+                </strong>
+            </h4>
+
+            <div class="row">
+
+                <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="msPlanA">Copy of Manuscript (Thesis)</span>
+                    </strong>
+                </h5>
+
+            </div>
+
+            <div class="row col-md-offset-2">
+
+                <div class="form-group">
+
+                    <div class="row">
+
+                        <p>
+                            @*@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })*@
+                            @*@Html.ActionLink("Add Manuscript", null, null, null, htmlAttributes: new { data_toggle = "tooltip", title = "Note: You must save this page before continuing in order to start adding committee members." })*@
+                            <a data-toggle="tooltip" title="Note: In order to prevent the loss of previously entered data, you must save this page before continuing in order to start adding manuscripts.">Add Manuscript</a>
+                        </p>
+
+                        @{ IQueryable<StudentTrackingSystem3.Models.File> studentManuscripts = ViewBag.StudentManuscripts;}
+
+                        @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == FileType.Manuscript).FirstOrDefault(), null))
+                            {
+                                var count = 1;
+                                foreach (var file in studentManuscripts.Where(g => g.FileType == FileType.Manuscript).OrderByDescending(g => g.FileId))
+                                {
+                                    if (count == 1)
+                                    {
+                                        <div class="col-md-offset-1">
+                                            <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                                <em><strong>Current Manuscript</strong></em>
+                                                <ul>
+                                                    <li>
+                                                        <a href="~/File?id=@file.FileId">@file.FileName</a> &mdash;
+                                                        @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                    }
+                                    else
+                                    {
+                                        if (count == 2)
+                                        {
+                                            <p class="col-md-offset-1"><em><strong>Manuscript History</strong></em></p>
+                                        }
+
+                                        <div class="col-md-offset-1">
+                                            <ul>
+                                                <li>
+                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                    @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    }
+                                    count++;
+                                }
+
+                            }
+
                         }
-                    }
+
+                    </div>
 
                 </div>
+
             </div>
-        </div>
+
+            <br />
 
 
-
-    </div>
-
-    <h4 class="alert alert-success text-center">
-        <strong>
-
-            @{
-
-                if (degreeProgram == "MS" && plan == "Plan A")
-                {
-                    <span class="msPlanA">Thesis Evaluation (Form III)</span>
-                }
-                else if (degreeProgram == "MS" && plan == "Plan B")
-                {
-                    <span class="msPlanB">Capstone Project Presentation &amp; Final Examination (Form III)</span>
-                }
-                else if (degreeProgram == "PhD")
-                {
-                    <span class="dissertation">Dissertation Evaluation (Form III)</span>
-                }
-                else
-                {
-                    <span class="noPlan">Form III</span>
-                }
-            }
-        </strong>
-    </h4>
-
-    <div class="row">
-
-        <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
-            <strong>
-                @{
-                    if (degreeProgram == "MS" && plan == "Plan A")
-                    {
-                        <spam class="msPlanA">Thesis Defense</spam>
-                    }
-                    else if (degreeProgram == "MS" && plan == "Plan B")
-                    {
-                        <span class="msPlanB">Capstone Project Presentation</span>
-                    }
-                    else if (degreeProgram == "PhD")
-                    {
-                        <span class="dissertation">Dissertation Defense</span>
-                    }
-                    else
-                    {
-                        <span class="noPlan">Final Presentation</span>
-                    }
-                }
-            </strong>
-        </h5>
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-offset-1 col-md-6 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Form3Title, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Form3Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
-                    @Html.ValidationMessageFor(model => model.Form3Title, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-2 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Form3Date, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Form3Date, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
-                    @Html.ValidationMessageFor(model => model.Form3Date, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-xs-12">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Form3ResultId, htmlAttributes: new { @class = "control-label" })
-                <br />
-                <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.Form3ResultId, (SelectList)ViewBag.Form3ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Form3ResultId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <br />
-
-    @{
-        if (degreeProgram == "MS" && plan == "Plan B")
+        }
+        else if ((degreeProgram == "MS" && plan == "Plan B"))
         {
+            /* [MS Plan B]
+
+            •  Form I - Pre-Candidacy Progress
+
+            •	MSCTR Master Plan B Pre-Candidacy Form
+            o	Capstone Topic
+            o	Capstone Committee Chair (Change from “Advisor”)
+            o	Capstone Committee Member 1
+            o	Capstone Committee Member 2
+
+            •	MSCTR Plan B Internal Evaluation Form
+            o	Presentation Title + Date  (Remove Capstone Result)
+            o	Date of Final Oral Exam/ Defense (rename)
+            o	Copy of Capstone Paper
+
+            */
+
+
+            <h4 class="alert alert-success text-center">
+                <strong>
+                    <span>Form I - Pre-Candidacy Progress</span>
+                </strong>
+            </h4>
+
+            <div class="row">
+
+                <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                    <strong>Qualifying Examination</strong>
+                </h5>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.QualifierResultId, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.QualifierResultId, (SelectList)ViewBag.QualifierResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.QualifierResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed1 control-label" })
+                        @Html.LabelFor(model => model.DateOfQualification, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed1 control-label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfQualification, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                            @Html.ValidationMessageFor(model => model.DateOfQualification, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Qualifier2ResultId, htmlAttributes: new { @class = "control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Qualifier2ResultId, (SelectList)ViewBag.Qualifier2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Qualifier2ResultId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Passed", htmlAttributes: new { @class = "dateOfQualificationPassed2 control-label" })
+                        @Html.LabelFor(model => model.DateOfQualification2, "Date of Qualification Failed", htmlAttributes: new { @class = "dateOfQualificationFailed2 control-label" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfQualification2, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
+                            @Html.ValidationMessageFor(model => model.DateOfQualification2, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <h4 class="alert alert-success text-center">
+                <strong>
+                    <span>MSCTR Plan B Pre-Candidacy Form</span>
+                </strong>
+            </h4>
+
+
+
+            <div class="row">
+
+                <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="msPlanB">Capstone Topic</span>
+                    </strong>
+                </h5>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-offset-2 col-md-6 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Form2Title, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
+                            @Html.ValidationMessageFor(model => model.Form2Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br />
+
+
+            <div class="row">
+
+                <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="msPlanB">Appointment of Capstone Committee Members</span>
+                    </strong>
+                </h5>
+
+            </div>
+
+            <h4 class="col-md-offset-2"><strong>Capstone Committee Chair</strong></h4>
+
+            <div class="row">
+
+                <div class="col-md-offset-3 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorName, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorEmail, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorEmail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-offset-3 col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorDepartment, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorDepartment, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorDepartment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control", @Value = "University of Hawaii at Manoa" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h4 class="col-md-offset-2"><strong>Capstone Committee Members</strong></h4>
+
+            <div class="row">
+
+                <div class="col-md-8 col-xs-12">
+                    <div class="form-group">
+
+                        <div class="col-md-10 row col-md-offset-3">
+                            @*@Html.ActionLink("Add Committee Member", "Create", "CommitteeMember", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })*@
+                            <a data-toggle="tooltip" title="Note: In order to prevent the loss of previously entered data, you must save this page before continuing in order to start adding committee members.">Add Committee Member</a>
+                        </div>
+
+                        <div class="col-md-10 row col-md-offset-3">
+
+                            @{IQueryable<CommitteeMember> studentCMs = ViewBag.StudentCMs;}
+
+                            @{if (!object.ReferenceEquals(studentCMs.FirstOrDefault(), null))
+                                {
+                                    <table class="table">
+
+                                        @foreach (var item in studentCMs)
+                                        {
+                                            <tr>
+                                                <td>&bull;</td>
+                                                <td></td>
+                                                <td><strong>@Html.DisplayFor(modelItem => item.Name)</strong></td>
+                                                <td>@Html.DisplayFor(modelItem => item.Department)</td>
+                                                <td>@Html.DisplayFor(modelItem => item.University)</td>
+                                                <td>@Html.ActionLink("Edit", "Edit", "CommitteeMember", new { id = item.ID }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <br />
+
+            <h4 class="alert alert-success text-center">
+                <strong>
+                    <span class="msPlanB">MSCTR Internal Evaluation Form</span>
+                </strong>
+            </h4>
+
             <div class="row">
                 <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
-                    <strong>Final Examination</strong>
+                    <strong>Final Oral Exam/Defense</strong>
                 </h5>
             </div>
             <div class="row">
                 <div class="col-md-offset-2 col-md-4 col-xs-12">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.FinalExamResultId, htmlAttributes: new { @class = "control-label" })
-                        <br />
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.FinalExamResultId, (SelectList)ViewBag.FinalExamResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.FinalExamResultId, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed1 control-label" })
-                        @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed1 control-label" })
+                        @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Oral Exam/Defense", htmlAttributes: new { @class = "dateOfFinalExamPassed1 control-label" })
+
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.DateOfFinalExam, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
                             @Html.ValidationMessageFor(model => model.DateOfFinalExam, "", new { @class = "text-danger" })
@@ -563,154 +771,297 @@
                     </div>
                 </div>
             </div>
+
+            <br />
+
+
             <div class="row">
-                <div class="col-md-offset-2 col-md-4 col-xs-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.FinalExam2ResultId, htmlAttributes: new { @class = "control-label" })
-                        <div class="col-md-10">
-                            @Html.DropDownListFor(model => model.FinalExam2ResultId, (SelectList)ViewBag.FinalExam2ResultId, "-- Select Result --", htmlAttributes: new { @class = "form-control" })
-                            @Html.ValidationMessageFor(model => model.FinalExam2ResultId, "", new { @class = "text-danger" })
-                        </div>
+
+                <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="msPlanB">Copy of Capstone Paper</span>
+                    </strong>
+                </h5>
+
+            </div>
+
+            <div class="row col-md-offset-2">
+
+                <div class="form-group">
+
+                    <div class="row">
+
+                        <p>
+                            @*@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })*@
+                            @*@Html.ActionLink("Add Manuscript", null, null, null, htmlAttributes: new { data_toggle = "tooltip", title = "Note: You must save this page before continuing in order to start adding committee members." })*@
+                            <a data-toggle="tooltip" title="Note: In order to prevent the loss of previously entered data, you must save this page before continuing in order to start adding capstone papers.">Add Capstone Paper</a>
+                        </p>
+
+                        @{ IQueryable<StudentTrackingSystem3.Models.File> studentManuscripts = ViewBag.StudentManuscripts;}
+
+                        @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == FileType.Manuscript).FirstOrDefault(), null))
+                            {
+                                var count = 1;
+                                foreach (var file in studentManuscripts.Where(g => g.FileType == FileType.Manuscript).OrderByDescending(g => g.FileId))
+                                {
+                                    if (count == 1)
+                                    {
+                                        <div class="col-md-offset-1">
+                                            <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                                <em><strong>Current Capstone Paper</strong></em>
+                                                <ul>
+                                                    <li>
+                                                        <a href="~/File?id=@file.FileId">@file.FileName</a> &mdash;
+                                                        @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                    }
+                                    else
+                                    {
+                                        if (count == 2)
+                                        {
+                                            <p class="col-md-offset-1"><em><strong>Capstone Paper History</strong></em></p>
+                                        }
+
+                                        <div class="col-md-offset-1">
+                                            <ul>
+                                                <li>
+                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                    @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    }
+                                    count++;
+                                }
+
+                            }
+
+                        }
+
                     </div>
+
                 </div>
-                <div class="col-md-4 col-xs-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Passed", htmlAttributes: new { @class = "dateOfFinalExamPassed2 control-label" })
-                        @Html.LabelFor(model => model.DateOfFinalExam2, "Date of Final Exam Failed", htmlAttributes: new { @class = "dateOfFinalExamFailed2 control-label" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.DateOfFinalExam2, new { htmlAttributes = new { @class = "form-control datepicker", placeholder = "MM/DD/YYYY" } })
-                            @Html.ValidationMessageFor(model => model.DateOfFinalExam2, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <br />
 
 
         }
-    }
+        else if ((degreeProgram == "GCERT"))
+        {
+            /* [GCERT]
 
-    <h4 class="alert alert-success text-center">
-        <strong>
-
-            @{
-                if (degreeProgram == "MS" && plan == "Plan A")
-                {
-                    <span class="msPlanA">Thesis Submission (Form IV)</span>
-                }
-                else if (degreeProgram == "MS" && plan == "Plan B")
-                {
-                    <span class="msPlanB">Capstone Project Paper Submission (Form IV)</span>
-                }
-                else if (degreeProgram == "PhD")
-                {
-                    <span class="dissertation">Dissertation Submission (Form IV)</span>
-                }
-                else
-                {
-                    <span class="noPlan">Form IV</span>
-                }
-            }
+            • Advisor
+            • Capstone Project Title
+            • File upload
 
 
-        </strong>
-    </h4>
-
-    <div class="row">
-
-        <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
-            <strong>
-                @{
-                    if (degreeProgram == "MS" && plan == "Plan A")
-                    {
-                        <span class="msPlanA">Copy of Manuscript (Thesis)</span>
-                    }
-                    else if (degreeProgram == "MS" && plan == "Plan B")
-                    {
-                        <span class="msPlanB">Copy of Capstone Project Paper</span>
-                    }
-                    else if (degreeProgram == "PhD")
-                    {
-                        <span class="dissertation">Copy of Manuscript</span>
-                    }
-                    else
-                    {
-                        <span class="noPlan">Copy of Paper</span>
-                    }
-                }
-            </strong>
-        </h5>
-
-    </div>
-
-    <div class="row col-md-offset-2">
-
-        <div class="form-group">
+            */
 
             <div class="row">
 
-                <p>
-                    @*@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })*@
-                    @*@Html.ActionLink("Add Manuscript", null, null, null, htmlAttributes: new { data_toggle = "tooltip", title = "Note: You must save this page before continuing in order to start adding committee members." })*@
-                    <a data-toggle="tooltip" title="Note: In order to prevent the loss of previously entered data, you must save this page before continuing in order to start adding committee members.">Add Manuscript</a>
-                </p>
-
-                @{ IQueryable<StudentTrackingSystem3.Models.File> studentManuscripts = ViewBag.StudentManuscripts;}
-
-                @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == FileType.Manuscript).FirstOrDefault(), null))
-                    {
-                        var count = 1;
-                        foreach (var file in studentManuscripts.Where(g => g.FileType == FileType.Manuscript).OrderByDescending(g => g.FileId))
-                        {
-                            if (count == 1)
-                            {
-                                <div class="col-md-offset-1">
-                                    <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
-                                        <em><strong>Current Manuscript</strong></em>
-                                        <ul>
-                                            <li>
-                                                <a href="~/File?id=@file.FileId">@file.FileName</a> &mdash;
-                                                @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <br />
-
-                            }
-                            else
-                            {
-                                if (count == 2)
-                                {
-                                    <p class="col-md-offset-1"><em><strong>Manuscript History</strong></em></p>
-                                }
-
-                                <div class="col-md-offset-1">
-                                    <ul>
-                                        <li>
-                                            <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                            @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-
-                                        </li>
-                                    </ul>
-
-                                </div>
-                            }
-                            count++;
-                        }
-
-                    }
-
-                }
+                <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="gCERT">Capstone Project Title</span>
+                    </strong>
+                </h5>
 
             </div>
 
-        </div>
 
-    </div>
+            <div class="row">
 
-    <br />
+                <div class="col-md-offset-2 col-md-6 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Form2Title, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Form2Title, new { htmlAttributes = new { @class = "form-control", @style = "max-width: 480px;" } })
+                            @Html.ValidationMessageFor(model => model.Form2Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br />
+
+
+            <div class="row">
+
+                <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="gCERT">Advisor</span>
+                    </strong>
+                </h5>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-offset-3 col-md-4 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorName, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorEmail, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorEmail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-md-offset-3 col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorDepartment, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorDepartment, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorDepartment, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-xs-12">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AdvisorUniversity, htmlAttributes: new { @class = "control-label" })
+                        <br />
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.AdvisorUniversity, new { htmlAttributes = new { @class = "form-control", @Value = "University of Hawaii at Manoa" } })
+                            @Html.ValidationMessageFor(model => model.AdvisorUniversity, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                    <strong>
+                        <span class="gCERT">Upload Form</span>
+                    </strong>
+                </h5>
+
+            </div>
+
+            <div class="row col-md-offset-2">
+
+                <div class="form-group">
+
+                    <div class="row">
+
+                        <p>
+                            @*@Html.ActionLink("Add Manuscript", "Create", "Manuscript", new { id = ViewBag.StudentID }, htmlAttributes: new { data_toggle = "tooltip", title = "Note: Please save this page before continuing to prevent loss of newly-entered data on this page." })*@
+                            @*@Html.ActionLink("Add Manuscript", null, null, null, htmlAttributes: new { data_toggle = "tooltip", title = "Note: You must save this page before continuing in order to start adding committee members." })*@
+                            <a data-toggle="tooltip" title="Note: In order to prevent the loss of previously entered data, you must save this page before continuing in order to start uploading forms.">Upload Form</a>
+                        </p>
+
+                        @{ IQueryable<StudentTrackingSystem3.Models.File> studentManuscripts = ViewBag.StudentManuscripts;}
+
+                        @{ if (!object.ReferenceEquals(studentManuscripts.Where(g => g.FileType == FileType.Manuscript).FirstOrDefault(), null))
+                            {
+                                var count = 1;
+                                foreach (var file in studentManuscripts.Where(g => g.FileType == FileType.Manuscript).OrderByDescending(g => g.FileId))
+                                {
+                                    if (count == 1)
+                                    {
+                                        <div class="col-md-offset-1">
+                                            <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                                <em><strong>Current Uploaded Form</strong></em>
+                                                <ul>
+                                                    <li>
+                                                        <a href="~/File?id=@file.FileId">@file.FileName</a> &mdash;
+                                                        @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <br />
+
+                                    }
+                                    else
+                                    {
+                                        if (count == 2)
+                                        {
+                                            <p class="col-md-offset-1"><em><strong>Uploaded Forms History</strong></em></p>
+                                        }
+
+                                        <div class="col-md-offset-1">
+                                            <ul>
+                                                <li>
+                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                                                    @Html.ActionLink("Edit", "Edit", "Manuscript", new { id = file.FileId }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    }
+                                    count++;
+                                }
+
+                            }
+
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <br />
+
+
+        }
+
+
+
+
+
+    }
+
+
+
+
+
+
+    <hr />
 
 
     <div class="row">
@@ -765,7 +1116,7 @@
 
 </div>
 
-                        }
+}
 
 
 @section Scripts {
