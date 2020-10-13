@@ -806,13 +806,16 @@
             </div>
             <div class="row">
                 <div class="col-md-offset-2 col-md-4 col-xs-12">
+
                     <div class="form-group">
-                        @Html.LabelFor(model => model.DateOfFinalExam, "Date of Final Oral Exam/Defense", htmlAttributes: new { @class = "dateOfFinalExamPassed1 control-label" })
+                        @Html.LabelFor(model => model.Form3Date, "Date of Final Oral/Defense", htmlAttributes: new { @class = "control-label" })
+                        <br />
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.DateOfFinalExam, new { htmlAttributes = new { @class = "form-control datepicker guestReadOnly biostatReadOnly", placeholder = "MM/DD/YYYY" } })
-                            @Html.ValidationMessageFor(model => model.DateOfFinalExam, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(model => model.Form3Date, new { @Value = Model.Form3Date?.ToString("MM/dd/yyyy"), @class = "form-control datepicker guestReadOnly biostatReadOnly" })
+                            @Html.ValidationMessageFor(model => model.Form3Date, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
                 </div>
             </div>
 
@@ -821,7 +824,7 @@
 
             <div class="row">
 
-                <h5 class="col-md-offset-1 col-md-4 col-xs-12 text-center narrowAlert">
+                <h5 class="col-md-offset-1 col-md-2 col-xs-12 text-center narrowAlert">
                     <strong>
                         <span class="msPlanB">Copy of Capstone Paper</span>
                     </strong>

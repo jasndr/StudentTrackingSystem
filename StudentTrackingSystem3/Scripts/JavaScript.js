@@ -298,93 +298,93 @@
         }
     });
 
-    //Form 3 - (MS Plan B only) Final Exam passed fields show/display based on value
-    $('.dateOfFinalExamPassed1').hide();
-    $('.dateOfFinalExamFailed1').hide();
-    $('#DateOfFinalExam').closest('.col-md-4').css('display', 'none');
-    $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'none');
-    $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
+    //Form 3 - (MS Plan B only) Final Exam passed fields show/display based on value [Canceled Form III final exam passage]
+    //$('.dateOfFinalExamPassed1').hide();
+    //$('.dateOfFinalExamFailed1').hide();
+    //$('#DateOfFinalExam').closest('.col-md-4').css('display', 'none');
+    //$('#FinalExam2ResultId').closest('.col-md-4').css('display', 'none');
+    //$('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
 
-    $('#FinalExamResultId option:selected').each(function () {
-        if ($(this).val() == 46) {
-            $('#DateOfFinalExam').closest('.col-md-4').css('display', 'block');
-            $('.dateOfFinalExamPassed1').show();
-            $('.dateOfFinalExamFailed1').hide();
-        } else if ($(this).val() == 47) {
-            $('#DateOfFinalExam').closest('.col-md-4').css('display', 'block');
-            $('.dateOfFinalExamFailed1').show();
-            $('.dateOfFinalExamPassed1').hide();
-            $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'block');
-            $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'block');
+    //$('#FinalExamResultId option:selected').each(function () {
+    //    if ($(this).val() == 46 /* OR the value of "Plan = Plan B*/ || $('#Plan').val().Equals("Plan B")) {
+    //        $('#DateOfFinalExam').closest('.col-md-4').css('display', 'block');
+    //        $('.dateOfFinalExamPassed1').show();
+    //        $('.dateOfFinalExamFailed1').hide();
+    //    } else if ($(this).val() == 47) {
+    //        $('#DateOfFinalExam').closest('.col-md-4').css('display', 'block');
+    //        $('.dateOfFinalExamFailed1').show();
+    //        $('.dateOfFinalExamPassed1').hide();
+    //        $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'block');
+    //        $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'block');
 
-            $('#FinalExam2ResultId option:selected').each(function () {
-                if ($(this).val() == 46) {
-                    $('.dateOfFinalExamPassed2').show();
-                    $('.dateOfFinalExamFailed2').hide();
-                } else if ($(this).val() == 47) {
-                    $('.dateOfFinalExamPassed2').hide();
-                    $('.dateOfFinalExamFailed2').show();
-                } else {
-                    $('.dateOfFinalExamPassed2').hide();
-                    $('.dateOfFinalExamFailed2').hide();
-                }
+    //        $('#FinalExam2ResultId option:selected').each(function () {
+    //            if ($(this).val() == 46) {
+    //                $('.dateOfFinalExamPassed2').show();
+    //                $('.dateOfFinalExamFailed2').hide();
+    //            } else if ($(this).val() == 47) {
+    //                $('.dateOfFinalExamPassed2').hide();
+    //                $('.dateOfFinalExamFailed2').show();
+    //            } else {
+    //                $('.dateOfFinalExamPassed2').hide();
+    //                $('.dateOfFinalExamFailed2').hide();
+    //            }
 
-            });
+    //        });
 
-        } else {
-            $('.dateOfFinalExamPassed1').hide();
-            $('.dateOfFinalExamFailed1').hide();
-            $('#DateOfFinalExam').closest('.col-md-4').css('display', 'none');
-            $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'none');
-            $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
-        }
-    });
+    //    } else {
+    //        $('.dateOfFinalExamPassed1').hide();
+    //        $('.dateOfFinalExamFailed1').hide();
+    //        $('#DateOfFinalExam').closest('.col-md-4').css('display', 'none');
+    //        $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'none');
+    //        $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
+    //    }
+    //});
 
-    $("#FinalExamResultId").change(function () {
-        $('.dateOfFinalExamPassed1').hide();
-        $('.dateOfFinalExamFailed1').hide();
-        $('#DateOfFinalExam').closest('.col-md-4').css('display', 'none');
-        $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'none');
-        $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
+    //$("#FinalExamResultId").change(function () {
+    //    $('.dateOfFinalExamPassed1').hide();
+    //    $('.dateOfFinalExamFailed1').hide();
+    //    $('#DateOfFinalExam').closest('.col-md-4').css('display', 'none');
+    //    $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'none');
+    //    $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
 
 
-        $('#FinalExamResultId option:selected').each(function () {
-            if ($(this).val() == 46) {
-                $('#DateOfFinalExam').closest('.col-md-4').css('display', 'block');
-                $('.dateOfFinalExamPassed1').show();
-                $('.dateOfFinalExamFailed1').hide();
-            } else if ($(this).val() == 47) {
-                $('#DateOfFinalExam').closest('.col-md-4').css('display', 'block');
-                $('.dateOfFinalExamFailed1').show();
-                $('.dateOfFinalExamPassed1').hide();
-                $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'block');
-            } else {
-                $('#DateOfFinalExam').closest('.col-md-4').css('display', 'none');
-                $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'none');
-                $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
-            }
-        });
+    //    $('#FinalExamResultId option:selected').each(function () {
+    //        if ($(this).val() == 46 || $('#Plan').val().Equals("Plan B")) {
+    //            $('#DateOfFinalExam').closest('.col-md-4').css('display', 'block');
+    //            $('.dateOfFinalExamPassed1').show();
+    //            $('.dateOfFinalExamFailed1').hide();
+    //        } else if ($(this).val() == 47) {
+    //            $('#DateOfFinalExam').closest('.col-md-4').css('display', 'block');
+    //            $('.dateOfFinalExamFailed1').show();
+    //            $('.dateOfFinalExamPassed1').hide();
+    //            $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'block');
+    //        } else {
+    //            $('#DateOfFinalExam').closest('.col-md-4').css('display', 'none');
+    //            $('#FinalExam2ResultId').closest('.col-md-4').css('display', 'none');
+    //            $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
+    //        }
+    //    });
 
-    });
+    //});
 
-    $("#FinalExam2ResultId").change(function () {
-        $('.dateOfFinalExamPassed2').hide();
-        $('.dateOfFinalExamFailed2').hide();
+    //$("#FinalExam2ResultId").change(function () {
+    //    $('.dateOfFinalExamPassed2').hide();
+    //    $('.dateOfFinalExamFailed2').hide();
 
-        if ($(this).val() == 46) {
-            $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'block');
-            $('.dateOfFinalExamPassed2').show();
-            $('.dateOfFinalExamFailed2').hide();
-        } else if ($(this).val() == 47) {
-            $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'block');
-            $('.dateOfFinalExamPassed2').hide();
-            $('.dateOfFinalExamFailed2').show();
-        } else {
-            $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
-            $('.dateOfFinalExamPassed2').hide();
-            $('.dateOfFinalExamFailed2').hide();
-        }
-    });
+    //    if ($(this).val() == 46) {
+    //        $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'block');
+    //        $('.dateOfFinalExamPassed2').show();
+    //        $('.dateOfFinalExamFailed2').hide();
+    //    } else if ($(this).val() == 47) {
+    //        $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'block');
+    //        $('.dateOfFinalExamPassed2').hide();
+    //        $('.dateOfFinalExamFailed2').show();
+    //    } else {
+    //        $('#DateOfFinalExam2').closest('.col-md-4').css('display', 'none');
+    //        $('.dateOfFinalExamPassed2').hide();
+    //        $('.dateOfFinalExamFailed2').hide();
+    //    }
+    //});
     
 
     //Hide other "Other Race" textbox field if "other" is unchecked

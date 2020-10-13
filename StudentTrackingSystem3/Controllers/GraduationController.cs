@@ -130,9 +130,9 @@ namespace StudentTrackingSystem3.Controllers
             int degreeProgramId = db.Students.Find(student.Id).DegreeProgramsId;
             ViewBag.DegreeProgramName = db.CommonFields.Find(degreeProgramId).Name;
             int? trackId = db.Students.Find(student.Id).TracksId;
-            ViewBag.Track = db.CommonFields.Find(trackId).Name;
+            ViewBag.Track = trackId == 0 || trackId == null ? "N/A" : db.CommonFields.Find(trackId).Name;
             int? planId = db.Students.Find(student.Id).PlansId;
-            ViewBag.Plan = db.CommonFields.Find(planId).Name;
+            ViewBag.Plan = planId == 0 || planId == null ? "N/A" : db.CommonFields.Find(planId).Name;
 
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", graduation.DegreeEndSemsId);
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.QualifierResultId);

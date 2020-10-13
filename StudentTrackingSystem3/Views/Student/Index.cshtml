@@ -42,6 +42,9 @@
             @Html.ActionLink("Track", "Index", new { sortOrder = ViewBag.TracksId_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
         <th>
+            @Html.ActionLink("Plan", "Index", new { sortOrder = ViewBag.PlansId_SortParm, currentFilter = ViewBag.CurrentFilter}) 
+        </th>
+        <th>
             @Html.ActionLink("Degree Start", "Index", new { sortOrder = ViewBag.DegreeStart_SortParm, currentFilter = ViewBag.CurrentFilter })
         </th>
        
@@ -69,6 +72,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tracks.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Plans.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DegreeStartSems.Name) @Html.DisplayFor(modelItem => item.DegreeStartYear)

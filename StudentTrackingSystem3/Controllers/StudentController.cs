@@ -28,20 +28,33 @@ namespace StudentTrackingSystem3.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
 
-            //if sortOrder is empty, then (sort by student num asc), otherwise (sort by student num desc)
-            ViewBag.StudentID_SortParm = String.IsNullOrEmpty(sortOrder) ? "studentID_desc" : "";
-            //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
-            //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
-            //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
+
+            //if sortOrder is emply, then (sort by date new->old), otherwise (sort by date old->new)
+            ViewBag.DegreeStart_SortParm = String.IsNullOrEmpty(sortOrder) || sortOrder == "DegreeStart" ?  "DegreeStart_desc" : "DegreeStart";
+
             //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
             ViewBag.DegreeProgramsId_SortParm = sortOrder == "DegreeProgramsId" ? "DegreeProgramsId_desc" : "DegreeProgramsId";
+
             //if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
             ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
-            //if sortOrder = DegreeStartSem then (sort by date new->old), otherwise (sort by date old-new, should be default)
-            ViewBag.DegreeStart_SortParm = sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
+
+            //if sortOrder = PlansId then (sort by PlansId desc), otherwise (sort by PlansId, should be default)
+            ViewBag.PlansId_SortParm = sortOrder == "PlansId" ? "PlansId_desc" : "PlansId";
+
+            //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+
+            //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+
+            //if sortOrder = StudentId, then (sort by student num asc), otherwise (sort by student num desc)
+            ViewBag.StudentID_SortParm = sortOrder == "StudentId" ? "studentID_desc" : "studentID";
+
+            //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
+
+            //if sortOrder = DegreeStartEnd then (sort by date new->old), otherwise (sort by date old-new, should be default)
+            ViewBag.DegreeEnd_SportParm = sortOrder == "DegreeEnd" ? "DegreeEnd_desc" : "DegreeEnd";
 
 
             if (searchString != null)
@@ -76,6 +89,9 @@ namespace StudentTrackingSystem3.Controllers
 
             switch (sortOrder)
             {
+                case "studentID":
+                    students = students.OrderBy(s => s.StudentNumber);
+                    break;
                 case "studentID_desc":
                     students = students.OrderByDescending(s => s.StudentNumber);
                     break;
@@ -109,6 +125,12 @@ namespace StudentTrackingSystem3.Controllers
                 case "TracksId_desc":
                     students = students.OrderByDescending(s => s.TracksId);
                     break;
+                case "PlansId":
+                    students = students.OrderBy(s => s.PlansId);
+                    break;
+                case "PlansId_desc":
+                    students = students.OrderByDescending(s => s.PlansId);
+                    break;
                 case "DegreeStart":
                     students = students.OrderBy(s => s.DegreeStartYear).ThenBy(s => s.DegreeStartSems.DisplayOrder);
                     break;
@@ -131,20 +153,30 @@ namespace StudentTrackingSystem3.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
 
-            //if sortOrder is empty, then (sort by student num asc), otherwise (sort by student num desc)
-            ViewBag.StudentID_SortParm = String.IsNullOrEmpty(sortOrder) ? "studentID_desc" : "";
-            //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
-            //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
-            //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
+            //if sortOrder is emply, then (sort by date new->old), otherwise (sort by date old->new)
+            ViewBag.DegreeStart_SortParm = String.IsNullOrEmpty(sortOrder) || sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
+
             //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
             ViewBag.DegreeProgramsId_SortParm = sortOrder == "DegreeProgramsId" ? "DegreeProgramsId_desc" : "DegreeProgramsId";
+
             //if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
             ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
-            //if sortOrder = DegreeStartSem then (sort by date new->old), otherwise (sort by date old-new, should be default)
-            ViewBag.DegreeStart_SortParm = sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
+
+            //if sortOrder = PlansId then (sort by PlansId desc), otherwise (sort by PlansId, should be default)
+            ViewBag.PlansId_SortParm = sortOrder == "PlansId" ? "PlansId_desc" : "PlansId";
+
+            //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+
+            //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+
+            //if sortOrder = StudentId, then (sort by student num asc), otherwise (sort by student num desc)
+            ViewBag.StudentID_SortParm = sortOrder == "StudentId" ? "studentID_desc" : "studentID";
+
+            //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
+
             //if sortOrder = DegreeStartEnd then (sort by date new->old), otherwise (sort by date old-new, should be default)
             ViewBag.DegreeEnd_SportParm = sortOrder == "DegreeEnd" ? "DegreeEnd_desc" : "DegreeEnd";
 
@@ -180,6 +212,9 @@ namespace StudentTrackingSystem3.Controllers
 
             switch (sortOrder)
             {
+                case "studentID":
+                    formerStudents = formerStudents.OrderBy(s => s.StudentNumber);
+                    break;
                 case "studentID_desc":
                     formerStudents = formerStudents.OrderByDescending(s => s.StudentNumber);
                     break;
@@ -212,6 +247,12 @@ namespace StudentTrackingSystem3.Controllers
                     break;
                 case "TracksId_desc":
                     formerStudents = formerStudents.OrderByDescending(s => s.TracksId);
+                    break;
+                case "PlansId":
+                    formerStudents = formerStudents.OrderBy(s => s.PlansId);
+                    break;
+                case "PlansId_desc":
+                    formerStudents = formerStudents.OrderByDescending(s => s.PlansId);
                     break;
                 case "DegreeStart":
                     formerStudents = formerStudents.OrderBy(s => s.DegreeStartYear).ThenBy(s => s.DegreeStartSems.DisplayOrder);
