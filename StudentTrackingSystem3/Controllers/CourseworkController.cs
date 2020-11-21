@@ -35,22 +35,25 @@ namespace StudentTrackingSystem3.Controllers
             // [Pull courses related to Graduate Student Program (e.g., MS Plan A, CR Track)]
 
             // If MS Plan A, CR Track --> Pull Courses with (Track = Both && Plan = Both)
-            //                                           or (Track = CR)  or   (Plan = A) 
+            //                                           or (Track = CR && Plan = A) 
             //                                           or (Track = Elective)
-            //var coursesA1 = db.Courses
-            //    .Join(db.CommonFields,
-            //        course => course.CourseTrackID,
-            //        track => track.ID,
-            //        (course, track) => new {course, track})
-            //    .Where(tr=>tr.track.CourseTrack)
-            //    .Join(db.CommonFields,
-            //        course2 => course2.course.CoursePlanID,
-            //        plan => plan.ID,
-            //        (course2, plan)=>new {course2, plan})
-            //    .Where(tr=>tr.)
+            var coursesA1 = db.Courses
+                .Join(db.CommonFields,
+                    course => course.CourseTrackID,
+                    track => track.ID,
+                    (course, track) => new { course, track })
+                //.Where(tr => tr.course.CourseTrack.Name.Equals("CR"))
+                .Join(db.CommonFields,
+                    course2 => course2.course.CoursePlanID,
+                    plan => plan.ID,
+                    (course2, plan) => new { course2, plan })
+                .Where(tr => (tr.course2.course.CourseTrack.Name.Equals("CR") && tr.course2.course.CoursePlan.Name.Equals("Plan A"))
+                            || ((tr.course2.course.CourseTrack.Name.Equals("CR")) 
+                                    && (tr.course2.course.CourseTrack.Name.Equals("Elective"))) 
+                            || (tr.course2.course.CoursePlan.Name.Equals("Plan A")));
 
             // If MS Plan A, QHS Track --> Pull Courses with (Track = Both && Plan = Both)
-            //                                            or (Track = QHS && Plan = A) 
+            //                                            or (Track = QHS && Plan = A) ;
             //                                            or (Track = Elective)
             // If MS Plan B, CR Track --> Pull Courses with (Track = Both && Plan = Both)
             //                                            or (Track = CR && Plan = B) 
