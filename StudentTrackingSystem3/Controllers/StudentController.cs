@@ -84,7 +84,8 @@ namespace StudentTrackingSystem3.Controllers
             {
                 students = students.Where(s => s.LastName.Contains(searchString)
                                             || s.FirstName.Contains(searchString)
-                                            || s.SchoolEmail.Contains(searchString));
+                                            || s.SchoolEmail.Contains(searchString)
+                                            || s.StudentNumber.ToString().Contains(searchString));
             }
 
             switch (sortOrder)
@@ -207,7 +208,8 @@ namespace StudentTrackingSystem3.Controllers
             {
                 formerStudents = formerStudents.Where(s => s.LastName.Contains(searchString)
                                             || s.FirstName.Contains(searchString)
-                                            || s.SchoolEmail.Contains(searchString));
+                                            || s.SchoolEmail.Contains(searchString)
+                                            || s.StudentNumber.ToString().Contains(searchString));
             }
 
             switch (sortOrder)

@@ -21,7 +21,7 @@ namespace StudentTrackingSystem3.Models
         public string LastName { get; set; }
         [Required, EmailAddress, Display(Name = "School Email")]
         public string SchoolEmail { get; set; }
-        [Required, EmailAddress, Display(Name = "Other Email")]
+        [EmailAddress, Display(Name = "Other Email")]
         public string OtherEmail { get; set; }
         [Required, Phone]
         public string Phone { get; set; }
@@ -55,7 +55,12 @@ namespace StudentTrackingSystem3.Models
         public Nullable<int> PermanentAdvisorsId { get; set; }
         [Display(Name = "Other Permanent Academic Advisor")]
         public string PermanentAdvisorOther { get; set; }
-
+        [Display(Name = "Name")]
+        public string EmergencyContactName { get; set; }
+        [EmailAddress, Display(Name = "Email")]
+        public string EmergencyContactEmail { get; set; }
+        [Phone, Display(Name = "Phone")]
+        public string EmergencyContactPhone { get; set; }
 
         public virtual CommonFields Genders { get; set; }
         public virtual CommonFields DegreePrograms { get; set; }
@@ -67,8 +72,7 @@ namespace StudentTrackingSystem3.Models
         public virtual CommonFields InterimAdvisors { get; set; }
         public virtual CommonFields PermanentAdvisors { get; set; }
 
-
-        
+   
 
         [Display(Name = "Race/Ethnicity")]
         public virtual ICollection<PersonRaces> PersonRaces { get; set; }

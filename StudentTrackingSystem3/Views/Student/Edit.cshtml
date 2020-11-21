@@ -40,7 +40,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.StudentNumber, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.StudentNumber, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.StudentNumber, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
@@ -56,7 +56,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.FirstName, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.FirstName, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.FirstName, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
@@ -78,7 +78,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.LastName, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.LastName, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.LastName, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
@@ -94,7 +94,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.SchoolEmail, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.SchoolEmail, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.SchoolEmail, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
@@ -116,7 +116,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.Phone, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.Phone, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.Phone, new { htmlAttributes = new { @class = "form-control phoneNum guestReadOnly" } })
@@ -132,7 +132,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.GendersId, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.GendersId, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.DropDownListFor(m => m.Student.GendersId, (SelectList)ViewBag.GendersIdBag, "-- Select Gender --", new { @class = "form-control guestDisabled" })
@@ -191,7 +191,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.PersonRaces, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.PersonRaces, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="row">
 
@@ -217,7 +217,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.RaceOther, htmlAttributes: new { @class = "control-label col-md-5 raceOther" })
+                            @Html.LabelFor(model => model.Student.RaceOther, htmlAttributes: new { @class = "control-label col-md-5 raceOther requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.RaceOther, new { htmlAttributes = new { @class = "form-control raceOther guestReadOnly" } })
@@ -229,7 +229,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.RaceAsianOther, htmlAttributes: new { @class = "control-label col-md-5 raceAsianOther" })
+                            @Html.LabelFor(model => model.Student.RaceAsianOther, htmlAttributes: new { @class = "control-label col-md-5 raceAsianOther requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.RaceAsianOther, new { htmlAttributes = new { @class = "form-control raceAsianOther guestReadOnly" } })
@@ -241,7 +241,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.RacePacIsleOther, htmlAttributes: new { @class = "control-label col-md-5 racePacIsleOther" })
+                            @Html.LabelFor(model => model.Student.RacePacIsleOther, htmlAttributes: new { @class = "control-label col-md-5 racePacIsleOther requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.RacePacIsleOther, new { htmlAttributes = new { @class = "form-control racePacIsleOther guestReadOnly" } })
@@ -258,7 +258,7 @@
                 <div class="col-md-2 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.CitizenshipStatsId, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.CitizenshipStatsId, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.DropDownListFor(m => m.Student.CitizenshipStatsId, (SelectList)ViewBag.CitizenshipStatsIdBag, "-- Select Citizenship Status --", new { @class = "form-control guestDisabled" })
@@ -330,7 +330,7 @@
                 <div class="col-md-5 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.EmploymentStatsId, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.EmploymentStatsId, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-12 row">
                             @Html.DropDownListFor(m => m.Student.EmploymentStatsId, (SelectList)ViewBag.EmploymentStatsIdBag, "-- Select Employment Status--", new { @class = "form-control guestDisabled" })
@@ -346,12 +346,50 @@
 
             </div>
             <br />
+            <div class="row">@Html.Label("Emergency Point of Contact")</div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.Student.EmergencyContactName, htmlAttributes: new { @class = "control-label col-md-5" })
+                        </div>
+                        <div class="col-md-10 row">
+                            @Html.EditorFor(model => model.Student.EmergencyContactName, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
+                            @Html.ValidationMessageFor(model => model.Student.EmergencyContactName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.Student.EmergencyContactEmail, htmlAttributes: new { @class = "control-label col-md-5" })
+                        </div>
+                        <div class="col-md-10 row">
+                            @Html.EditorFor(model => model.Student.EmergencyContactEmail, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })
+                            @Html.ValidationMessageFor(model => model.Student.EmergencyContactEmail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group">
+                        <div class="row">
+                            @Html.LabelFor(model => model.Student.EmergencyContactPhone, htmlAttributes: new { @class = "control-label col-md-5" })
+                        </div>
+                        <div class="col-md-10 row">
+                            @Html.EditorFor(model => model.Student.EmergencyContactPhone, new { htmlAttributes = new { @class = "form-control guestReadOnly phoneNum" } })
+                            @Html.ValidationMessageFor(model => model.Student.EmergencyContactPhone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
 
             <div class="row">
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.DegreeProgramsId, htmlAttributes: new { @class = "control-label col-md-5" })
+                            @Html.LabelFor(model => model.Student.DegreeProgramsId, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.DropDownListFor(m => m.Student.DegreeProgramsId, (SelectList)ViewBag.DegreeProgramsIdBag, "-- Select Program --", new { @class = "form-control guestDisabled" })
@@ -427,7 +465,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.DegreeStartSemsId, htmlAttributes: new { @class = "control-label col-md-10" })
+                            @Html.LabelFor(model => model.Student.DegreeStartSemsId, htmlAttributes: new { @class = "control-label col-md-10 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.DropDownListFor(m => m.Student.DegreeStartSemsId, (SelectList)ViewBag.DegreeStartSemsIdBag, "-- Select Semester --", new { @class = "form-control guestDisabled" })
@@ -438,7 +476,7 @@
                 <div class="col-md-4 col-xs-12">
                     <div class="form-group">
                         <div class="row">
-                            @Html.LabelFor(model => model.Student.DegreeStartYear, htmlAttributes: new { @class = "control-label col-md-10" })
+                            @Html.LabelFor(model => model.Student.DegreeStartYear, htmlAttributes: new { @class = "control-label col-md-10 requiredLabel" })
                         </div>
                         <div class="col-md-10 row">
                             @Html.EditorFor(model => model.Student.DegreeStartYear, new { htmlAttributes = new { @class = "form-control guestReadOnly" } })

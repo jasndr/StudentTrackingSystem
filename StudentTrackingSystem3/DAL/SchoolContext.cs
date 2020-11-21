@@ -69,10 +69,10 @@ namespace StudentTrackingSystem3.DAL
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Coursework>()
-               .HasRequired(c => c.Semesters)
+               /*.HasRequired(c => c.Semesters)
                .WithMany()
                .HasForeignKey(d => d.SemestersID)
-               .WillCascadeOnDelete(false);
+               .WillCascadeOnDelete(false)*/;
 
             modelBuilder.Entity<PreviousEmployment>()
                 .HasRequired(c => c.StartMonth)

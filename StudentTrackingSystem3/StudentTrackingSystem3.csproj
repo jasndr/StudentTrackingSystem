@@ -233,6 +233,22 @@
     <Compile Include="Migrations\202009170345324_AddProfileFields.Designer.cs">
       <DependentUpon>202009170345324_AddProfileFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010310052372_PushChanges.cs" />
+    <Compile Include="Migrations\202010310052372_PushChanges.Designer.cs">
+      <DependentUpon>202010310052372_PushChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011022206220_AddEmergencyContact.cs" />
+    <Compile Include="Migrations\202011022206220_AddEmergencyContact.Designer.cs">
+      <DependentUpon>202011022206220_AddEmergencyContact.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011210441586_ReviseCourseworkStructure.cs" />
+    <Compile Include="Migrations\202011210441586_ReviseCourseworkStructure.Designer.cs">
+      <DependentUpon>202011210441586_ReviseCourseworkStructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011210445410_ReviseCourseworkStructure1.cs" />
+    <Compile Include="Migrations\202011210445410_ReviseCourseworkStructure1.Designer.cs">
+      <DependentUpon>202011210445410_ReviseCourseworkStructure1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommitteeMember.cs" />
@@ -472,6 +488,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009170345324_AddProfileFields.resx">
       <DependentUpon>202009170345324_AddProfileFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010310052372_PushChanges.resx">
+      <DependentUpon>202010310052372_PushChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011022206220_AddEmergencyContact.resx">
+      <DependentUpon>202011022206220_AddEmergencyContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011210441586_ReviseCourseworkStructure.resx">
+      <DependentUpon>202011210441586_ReviseCourseworkStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011210445410_ReviseCourseworkStructure1.resx">
+      <DependentUpon>202011210445410_ReviseCourseworkStructure1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />

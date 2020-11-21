@@ -1,7 +1,7 @@
 ﻿@model StudentTrackingSystem3.Models.Manuscript
 
 @{
-    ViewBag.Title = "Editing Manuscript";
+    ViewBag.Title = "Editing Thesis/Capstone Document";
 }
 
 <h2>Graduation Program Requirements</h2>
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Editing manuscript document for <strong>@Model.Student.FirstName @Model.Student.LastName</strong></h4>
+        <h4>Editing Thesis/Capstone Project document for <strong>@Model.Student.FirstName @Model.Student.LastName</strong></h4>
         <br />
 
         <div class="row menuNav" id="menuNav_postgrad">
@@ -47,7 +47,7 @@
             <div class="col-md-offset-1 col-md-4 col-xs-12">
 
                 <div class="form-group">
-                    @Html.Label("Current Manuscript", new { @class = "control-label" })
+                    @Html.Label("Current Thesis/Capstone Project", new { @class = "control-label" })
                     <br />
 
                     <div class="col-md-10">
@@ -60,7 +60,7 @@
             <div class="col-md-4 col-xs-12">
 
                 <div class="form-group">
-                    @Html.Label("Upload New Manuscript", new {@class="control-label" })
+                    @Html.Label("Upload New Document", new {@class="control-label" })
                     <br />
                     <div class="col-md-10">
                         <input type="file" id="Manuscript" name="upload" />
