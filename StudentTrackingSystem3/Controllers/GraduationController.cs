@@ -67,6 +67,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentManuscripts = db.Files.Where(g => g.Manuscript.StudentID == id);
             
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category=="Season"), "ID", "Name");
+            ViewBag.TakenQHS601Id = new SelectList(db.CommonFields.Where(s => s.Category == "YesNo"), "ID", "Name");
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
             ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
             ViewBag.CompExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
@@ -95,6 +96,7 @@ namespace StudentTrackingSystem3.Controllers
             }
             ViewBag.Student = graduation.Student;
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name");
+            ViewBag.TakenQHS601Id = new SelectList(db.CommonFields.Where(s => s.Category == "YesNo"), "ID", "Name");
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
             ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
             ViewBag.CompExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name");
@@ -135,6 +137,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.Plan = planId == 0 || planId == null ? "N/A" : db.CommonFields.Find(planId).Name;
 
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", graduation.DegreeEndSemsId);
+            ViewBag.TakenQHS601Id = new SelectList(db.CommonFields.Where(s => s.Category == "YesNo"), "ID", "Name", graduation.TakenQHS601Id);
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.QualifierResultId);
             ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.Qualifier2ResultId);
             ViewBag.CompExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.CompExamResultId);
@@ -151,7 +154,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,StudentID,DegreeEndSemsId,DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification, DateofQualification2,Form2Title,Form2Date,Form2ResultId,CompExamResultId, DateOfCompExam, CompExam2ResultId, DateOfCompExam2,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId, FinalExamResultId, DateOfFinalExam,  FinalExam2ResultId, DateOfFinalExam2")] Graduation graduation)
+        public ActionResult Edit([Bind(Include = "ID,StudentID,DegreeEndSemsId, TakenQHS601Id, DegreeEndYear,QualifierResultId,Qualifier2ResultId,DateOfQualification, DateofQualification2,Form2Title,Form2Date,Form2ResultId,CompExamResultId, DateOfCompExam, CompExam2ResultId, DateOfCompExam2,AdvisorName,AdvisorEmail,AdvisorDepartment,AdvisorUniversity,Form3Title,Form3Date,Form3ResultId, FinalExamResultId, DateOfFinalExam,  FinalExam2ResultId, DateOfFinalExam2")] Graduation graduation)
         {
             if (ModelState.IsValid)
             {
@@ -161,6 +164,7 @@ namespace StudentTrackingSystem3.Controllers
             }
             ViewBag.Student = graduation.Student;
             ViewBag.DegreeEndSemsId = new SelectList(db.CommonFields.Where(s => s.Category == "Season"), "ID", "Name", graduation.DegreeEndSemsId);
+            ViewBag.TakenQHS601Id = new SelectList(db.CommonFields.Where(s => s.Category == "YesNo"), "ID", "Name", graduation.TakenQHS601Id);
             ViewBag.QualifierResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.QualifierResultId);
             ViewBag.Qualifier2ResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.Qualifier2ResultId);
             ViewBag.CompExamResultId = new SelectList(db.CommonFields.Where(s => s.Category == "QualifierResult"), "ID", "Name", graduation.CompExamResultId);

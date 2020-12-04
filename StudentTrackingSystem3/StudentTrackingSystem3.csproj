@@ -42,6 +42,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <LegacyPublishPropertiesPageEnabled>true</LegacyPublishPropertiesPageEnabled>
+    <DeployEncryptKey>
+    </DeployEncryptKey>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -217,37 +221,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008290428109_MoveToProd.cs" />
-    <Compile Include="Migrations\202008290428109_MoveToProd.Designer.cs">
-      <DependentUpon>202008290428109_MoveToProd.cs</DependentUpon>
+    <Compile Include="Migrations\202012022243251_PublishToExternalLive.cs" />
+    <Compile Include="Migrations\202012022243251_PublishToExternalLive.Designer.cs">
+      <DependentUpon>202012022243251_PublishToExternalLive.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008290429520_MoveToProd2.cs" />
-    <Compile Include="Migrations\202008290429520_MoveToProd2.Designer.cs">
-      <DependentUpon>202008290429520_MoveToProd2.cs</DependentUpon>
+    <Compile Include="Migrations\202012030212439_PublishToExternalLive2.cs" />
+    <Compile Include="Migrations\202012030212439_PublishToExternalLive2.Designer.cs">
+      <DependentUpon>202012030212439_PublishToExternalLive2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008290451473_MoveToProd21.cs" />
-    <Compile Include="Migrations\202008290451473_MoveToProd21.Designer.cs">
-      <DependentUpon>202008290451473_MoveToProd21.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009170345324_AddProfileFields.cs" />
-    <Compile Include="Migrations\202009170345324_AddProfileFields.Designer.cs">
-      <DependentUpon>202009170345324_AddProfileFields.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010310052372_PushChanges.cs" />
-    <Compile Include="Migrations\202010310052372_PushChanges.Designer.cs">
-      <DependentUpon>202010310052372_PushChanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011022206220_AddEmergencyContact.cs" />
-    <Compile Include="Migrations\202011022206220_AddEmergencyContact.Designer.cs">
-      <DependentUpon>202011022206220_AddEmergencyContact.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011210441586_ReviseCourseworkStructure.cs" />
-    <Compile Include="Migrations\202011210441586_ReviseCourseworkStructure.Designer.cs">
-      <DependentUpon>202011210441586_ReviseCourseworkStructure.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202011210445410_ReviseCourseworkStructure1.cs" />
-    <Compile Include="Migrations\202011210445410_ReviseCourseworkStructure1.Designer.cs">
-      <DependentUpon>202011210445410_ReviseCourseworkStructure1.cs</DependentUpon>
+    <Compile Include="Migrations\202012032330067_PublishToExternalLive21.cs" />
+    <Compile Include="Migrations\202012032330067_PublishToExternalLive21.Designer.cs">
+      <DependentUpon>202012032330067_PublishToExternalLive21.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -275,6 +259,11 @@
     <Compile Include="Models\Races.cs" />
     <Compile Include="Models\RaceRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Reports\DataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -334,7 +323,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Logo_cim-01.png" />
-    <Content Include="ReportViewerWebForm.aspx" />
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -364,6 +352,10 @@
     <None Include="Properties\PublishProfiles\Web Deploy - BQHSPORTAL.pubxml" />
     <None Include="Properties\PublishProfiles\Web Deploy - QHSDB.pubxml" />
     <None Include="Properties\PublishProfiles\YONGJUN-HP %28Sandbox%29 Web Deploy.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Reports\DataSet1.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -477,29 +469,14 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008290428109_MoveToProd.resx">
-      <DependentUpon>202008290428109_MoveToProd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012022243251_PublishToExternalLive.resx">
+      <DependentUpon>202012022243251_PublishToExternalLive.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008290429520_MoveToProd2.resx">
-      <DependentUpon>202008290429520_MoveToProd2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012030212439_PublishToExternalLive2.resx">
+      <DependentUpon>202012030212439_PublishToExternalLive2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008290451473_MoveToProd21.resx">
-      <DependentUpon>202008290451473_MoveToProd21.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009170345324_AddProfileFields.resx">
-      <DependentUpon>202009170345324_AddProfileFields.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010310052372_PushChanges.resx">
-      <DependentUpon>202010310052372_PushChanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011022206220_AddEmergencyContact.resx">
-      <DependentUpon>202011022206220_AddEmergencyContact.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011210441586_ReviseCourseworkStructure.resx">
-      <DependentUpon>202011210441586_ReviseCourseworkStructure.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202011210445410_ReviseCourseworkStructure1.resx">
-      <DependentUpon>202011210445410_ReviseCourseworkStructure1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202012032330067_PublishToExternalLive21.resx">
+      <DependentUpon>202012032330067_PublishToExternalLive21.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\Rpt1-Background.rdlc" />
     <EmbeddedResource Include="Reports\Rpt2-Coursework.rdlc" />

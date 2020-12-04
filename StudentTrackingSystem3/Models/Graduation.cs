@@ -59,6 +59,9 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Date of Final Exam Passed/Failed (Attempt 2)")]
         public Nullable<System.DateTime> DateOfFinalExam2 { get; set; }
 
+        [Display(Name = "Has student taken QHS 601?")]
+        public Nullable<int> TakenQHS601Id { get; set; }
+
 
         public virtual Student Student { get; set; }
         public virtual CommonFields DegreeEndSems { get; set; }
@@ -71,6 +74,7 @@ namespace StudentTrackingSystem3.Models
         public virtual CommonFields Form2Type { get; set; }
         public virtual CommonFields Form2Result { get; set; }
         public virtual CommonFields Form3Result { get; set; }
+        public virtual CommonFields TakenQHS601 { get; set; }
 
 
     }

@@ -234,11 +234,9 @@ only screen and (max-width: 760px),
     
 }
 
-
-
 .requiredLabel::after{
-    content:" *";
-    font-weight: bold;
-    color: red;
-
+content:" *"; 
+font-weight: bold;
+color: red;
 }
+

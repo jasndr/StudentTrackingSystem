@@ -17,12 +17,12 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Title")]
         public string CourseName { get; set; }
         [Display(Name = "Track")]
-        public Nullable<int> CourseTrackID { get; set; }
-        [Display(Name = "Plan")]
-        public Nullable<int> CoursePlanID { get; set; }
+        //public Nullable<int> CourseTrackID { get; set; }
+        //[Display(Name = "Plan")]
+        //public Nullable<int> CoursePlanID { get; set; }
 
-        public virtual CommonFields CourseTrack { get; set; }
-        public virtual CommonFields CoursePlan { get; set; }
+        //public virtual CommonFields CourseTrack { get; set; }
+        //public virtual CommonFields CoursePlan { get; set; }
 
         public virtual ICollection<Coursework> Coursework { get; set; }
 

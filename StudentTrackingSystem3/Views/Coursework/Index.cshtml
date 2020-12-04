@@ -11,7 +11,7 @@
 <br />
 
 <div class="row menuNav" id="menuNav_coursework">
-    @Html.ActionLink("Profile", "Edit", "Student", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
+    @Html.ActionLink("Background", "Edit", "Student", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
     @Html.ActionLink("Coursework", "Index", "Coursework", new { id = ViewBag.CurrentStudent_Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
 
@@ -25,13 +25,40 @@
 <hr />
 <br />
 
-<h4 style="border: 1px #000 solid; background-color: lightgreen;">@ViewBag.GradStudentProgram</h4>
-
-@*<p>
+<p>
     @Html.ActionLink("Add Course", "Create", new { id = ViewBag.CurrentStudent_Id }, htmlAttributes: new {@class="guestHidden" })
-</p>*@
+</p>
+
+@if (!object.ReferenceEquals(Model.FirstOrDefault(), null))
+{
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.ActionLink("Semester", "Index", new { sortOrder = ViewBag.Semester_SortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Course", "Index", new { sortOrder = ViewBag.Course_SortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Title", "Index", new { sortOrder = ViewBag.Title_SortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Grade", "Index", new { sortOrder = ViewBag.Grade_SortParm })
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
 
 
+
+    </table>
+
+            }
+            else
+            {
+    <p style="font-style: italic; margin-left: 20pt;">No courses entered for @ViewBag.CurrentStudent_FirstName @ViewBag.CurrentStudent_LastName.  <span class="guestHidden">Please add a course.</span></p>
+}
 
 
 

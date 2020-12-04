@@ -25,9 +25,8 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<Student> ReturnInterimAdvisor { get; set; }
         public virtual ICollection<Student> ReturnPermanentAdvisor { get; set; }
         public virtual ICollection<PrevDegree> ReturnDegreeType { get; set; }
-        public virtual ICollection<Coursework> ReturnPassFail { get; set; }
-        public virtual ICollection<Course> ReturnCourseTrack { get; set; }
-        public virtual ICollection<Course> ReturnCoursePlan { get; set; }
+        public virtual ICollection<Coursework> ReturnSemester { get; set; }
+        public virtual ICollection<Coursework> ReturnGrade { get; set; }
         public virtual ICollection<Performance> ReturnPublicationStat { get; set; }
         public virtual ICollection<Performance> ReturnAbstractStat { get; set; }
         public virtual ICollection<Performance> ReturnProposalStat { get; set; }
@@ -48,7 +47,8 @@ namespace StudentTrackingSystem3.Models
         public virtual ICollection<Publications> ReturnPubMonth { get; set; }
         public virtual ICollection<Grants> ReturnGrantMonth { get; set; }
         public virtual ICollection<Honors> ReturnHonorMonth { get; set; }
-        
+
+        public virtual ICollection<Graduation> ReturnTakenQHS601 { get; set; }
 
     }
 }
