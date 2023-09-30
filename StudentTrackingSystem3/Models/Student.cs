@@ -38,17 +38,7 @@ namespace StudentTrackingSystem3.Models
         [Display(Name ="Other Pacific Islander")]
         public string RacePacIsleOther { get; set; }
 
-        [Required, Display(Name ="Program")]//[ForeignKey()]
-        public int DegreeProgramsId { get; set; }
-        [Display(Name ="Track")]//[ForeignKey()]
-        public Nullable<int> TracksId { get; set; }
-        [Display(Name ="Plan")]//[ForeignKey()]
-        public Nullable<int> PlansId { get; set; }
-        [Required, Display(Name ="Program Start Semester")]//[ForeignKey()]
-        public int DegreeStartSemsId { get; set; }
-        [Required, Range(1000, 9999), Display(Name ="Program Start Year")]
-        public int DegreeStartYear { get; set; }
-        [Required, Display(Name ="Citizenship Status")]//[ForeignKey()]
+        [Required, Display(Name = "Citizenship Status")]//[ForeignKey()]
         public int CitizenshipStatsId { get; set; }
         [Required, Display(Name ="Current Status of Employment")]
         public int EmploymentStatsId { get; set; }
@@ -60,38 +50,18 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Other Permanent Academic Advisor")]
         public string PermanentAdvisorOther { get; set; }
 
-
         public virtual CommonFields Genders { get; set; }
-        public virtual CommonFields DegreePrograms { get; set; }
-        public virtual CommonFields Tracks { get; set; }
-        public virtual CommonFields Plans { get; set; }
-        public virtual CommonFields DegreeStartSems { get; set; }
         public virtual CommonFields CitizenshipStats { get; set; }
         public virtual CommonFields EmploymentStats { get; set; }
         public virtual CommonFields InterimAdvisors { get; set; }
         public virtual CommonFields PermanentAdvisors { get; set; }
 
 
-        
-
         [Display(Name = "Race/Ethnicity")]
         public virtual ICollection<PersonRaces> PersonRaces { get; set; }
-        public virtual ICollection<Coursework> Coursework { get; set; }
         [Display(Name = "Degree(s) at Admission")]
         public virtual ICollection<PrevDegree> PreviousDegrees { get; set; }
-        public virtual ICollection<Performance> Performances { get; set; }
-        public virtual ICollection<Activity> Activity { get; set; }
-        public virtual ICollection<Graduation> Graduation { get; set; }
-        public virtual ICollection<CommitteeMember> CommitteeMembers { get; set; }
-        public virtual ICollection<PostGraduation> PostGraduation { get; set; }
-        public virtual ICollection<CurriculumVitae> CurriculumVitae { get; set; }
-        public virtual ICollection<PreviousEmployment> PreviousEmployment { get; set; }
-        public virtual ICollection<Publications> Publications { get; set; }
-        public virtual ICollection<Grants> Grants { get; set; }
-        public virtual ICollection<Honors> Honors { get; set; }
-        public virtual ICollection<Manuscript> Manuscripts { get; set; }
-
-        //public virtual ICollection<G_File> Files { get; set; }
+        public virtual ICollection<StudentDegreeProgram> StudentDegreePrograms { get; set; }
 
     }
 }

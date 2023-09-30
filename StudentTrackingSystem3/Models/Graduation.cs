@@ -9,7 +9,7 @@ namespace StudentTrackingSystem3.Models
     public class Graduation
     {
         public int ID { get; set; }
-        public int StudentID { get; set; }
+        public int StudentDegreeProgramID { get; set; }
         [Display(Name = "Degree Awarded Semester")]
         public Nullable<int> DegreeEndSemsId { get; set; }
         [Range(1000, 9999), Display(Name = "Degree Awarded Year")]
@@ -63,7 +63,7 @@ namespace StudentTrackingSystem3.Models
         public Nullable<int> TakenQHS601Id { get; set; }
 
 
-        public virtual Student Student { get; set; }
+        public virtual StudentDegreeProgram StudentDegreeProgram { get; set; }
         public virtual CommonFields DegreeEndSems { get; set; }
         public virtual CommonFields QualifierResult { get; set; }
         public virtual CommonFields Qualifier2Result { get; set; }

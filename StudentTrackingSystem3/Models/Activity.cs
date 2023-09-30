@@ -11,12 +11,12 @@ namespace StudentTrackingSystem3.Models
     {
         public int ID { get; set; }
         [Required]
-        public int StudentID { get; set; }
+        public int StudentDegreeProgramID { get; set; }
          
         [Required, Display(Name = "Description")]
         public string ActivitySummaryDesc { get; set; }
 
-        public virtual Student Student { get; set; }
+        public virtual StudentDegreeProgram StudentDegreeProgram { get; set; }
         public virtual ICollection<File> Files { get; set; }
 
     }

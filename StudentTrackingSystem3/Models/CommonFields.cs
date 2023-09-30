@@ -16,15 +16,15 @@ namespace StudentTrackingSystem3.Models
 
         public virtual ICollection<Student> ReturnGender { get; set; }
         public virtual ICollection<Student> ReturnPrevDeg { get; set; }
-        public virtual ICollection<Student> ReturnConcentration { get; set; }
-        public virtual ICollection<Student> ReturnTrack { get; set; }
-        public virtual ICollection<Student> ReturnPlan { get; set; }
-        public virtual ICollection<Student> ReturnDegreeStartSem { get; set; }
         public virtual ICollection<Student> ReturnCitizenshipStat { get; set; }
         public virtual ICollection<Student> ReturnEmploymentStat { get; set; }
         public virtual ICollection<Student> ReturnInterimAdvisor { get; set; }
         public virtual ICollection<Student> ReturnPermanentAdvisor { get; set; }
         public virtual ICollection<PrevDegree> ReturnDegreeType { get; set; }
+        public virtual ICollection <StudentDegreeProgram> ReturnDegreeProgramsType { get; set; }
+        public virtual ICollection<StudentDegreeProgram> ReturnTrack { get; set; }
+        public virtual ICollection<StudentDegreeProgram> ReturnPlan { get; set; }
+        public virtual ICollection<StudentDegreeProgram> ReturnDegreeStartSem { get; set; }
         public virtual ICollection<Coursework> ReturnSemester { get; set; }
         public virtual ICollection<Coursework> ReturnGrade { get; set; }
         public virtual ICollection<Performance> ReturnPublicationStat { get; set; }

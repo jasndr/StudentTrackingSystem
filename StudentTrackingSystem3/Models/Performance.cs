@@ -9,7 +9,7 @@ namespace StudentTrackingSystem3.Models
     public class Performance
     {
         public int ID { get; set; }
-        public int StudentID { get; set; }
+        public int StudentDegreeProgramID { get; set; }
         [Required, Display(Name ="Category")]
         public int CategoryID { get; set; }
         [Required, Display(Name = "Information")]
@@ -23,7 +23,7 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Teaching Status")]
         public Nullable<int> TeachingStatsID { get; set; }
 
-        public virtual Student Student { get; set; }
+        public virtual StudentDegreeProgram StudentDegreeProgram { get; set; }
         public virtual CommonFields Category { get; set; }
         public virtual CommonFields PublicationStats { get; set; }
         public virtual CommonFields AbstractStats { get; set; }

@@ -10,7 +10,7 @@ namespace StudentTrackingSystem3.Models
     {
         public int ID { get; set; }
         [Required]
-        public int StudentID { get; set; }
+        public int StudentDegreeProgramID { get; set; }
         [Required, Display(Name ="Position")]
         public string CurrentPosition { get; set; }
         [Required, Display(Name ="Start Month")]
@@ -18,7 +18,7 @@ namespace StudentTrackingSystem3.Models
         [Required, Display(Name = "Start Year")]
         public int CurrentStartYear { get; set; }
 
-        public virtual Student Student { get; set; }
+        public virtual StudentDegreeProgram StudentDegreeProgram { get; set; }
         public virtual CommonFields CurrentStartMonth { get; set; }
 
     }
