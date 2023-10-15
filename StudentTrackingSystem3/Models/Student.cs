@@ -62,6 +62,11 @@ namespace StudentTrackingSystem3.Models
         [Display(Name = "Degree(s) at Admission")]
         public virtual ICollection<PrevDegree> PreviousDegrees { get; set; }
         public virtual ICollection<StudentDegreeProgram> StudentDegreePrograms { get; set; }
-
+        public virtual ICollection<PostGraduation> PostGraduation { get; set; }
+        public virtual ICollection<CurriculumVitae> CurriculumVitae { get; set; }
+        public virtual ICollection<PreviousEmployment> PreviousEmployment { get; set; }
+        public virtual ICollection<Publications> Publications { get; set; }
+        public virtual ICollection<Grants> Grants { get; set; }
+        public virtual ICollection<Honors> Honors { get; set; }
     }
 }

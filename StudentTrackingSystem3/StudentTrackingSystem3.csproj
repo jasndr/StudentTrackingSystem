@@ -253,7 +253,7 @@
     <Compile Include="Models\PrevDegree.cs" />
     <Compile Include="Models\PreviousEmployment.cs" />
     <Compile Include="Models\Publications.cs" />
-    <Compile Include="Models\DegreeProgram.cs" />
+    <Compile Include="Models\StudentDegreeProgram.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />

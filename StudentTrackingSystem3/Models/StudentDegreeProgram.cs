@@ -31,18 +31,13 @@ namespace StudentTrackingSystem3.Models
         public virtual CommonFields Tracks { get; set; }
         public virtual CommonFields Plans { get; set; }
         public virtual CommonFields DegreeStartSems { get; set; }
+        public virtual Student Student { get; set; }
 
         public virtual ICollection<Coursework> Coursework { get; set; }
         public virtual ICollection<Performance> Performances { get; set; }
         public virtual ICollection<Activity> Activity { get; set; }
         public virtual ICollection<Graduation> Graduation { get; set; }
         public virtual ICollection<CommitteeMember> CommitteeMembers { get; set; }
-        public virtual ICollection<PostGraduation> PostGraduation { get; set; }
-        public virtual ICollection<CurriculumVitae> CurriculumVitae { get; set; }
-        public virtual ICollection<PreviousEmployment> PreviousEmployment { get; set; }
-        public virtual ICollection<Publications> Publications { get; set; }
-        public virtual ICollection<Grants> Grants { get; set; }
-        public virtual ICollection<Honors> Honors { get; set; }
         public virtual ICollection<Manuscript> Manuscripts { get; set; }
 
         //public virtual ICollection<G_File> Files { get; set; }
