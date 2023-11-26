@@ -2336,12 +2336,9 @@ namespace StudentTrackingSystem3.Reports {
                 base.Columns.Add(this.columnHonorsAwards);
                 this.columnTotalNumberofHonorsAwards = new global::System.Data.DataColumn("TotalNumberofHonorsAwards", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalNumberofHonorsAwards);
-                this.columnStudentID.AllowDBNull = false;
                 this.columnName.ReadOnly = true;
                 this.columnName.MaxLength = 2147483647;
-                this.columnEmail.AllowDBNull = false;
                 this.columnEmail.MaxLength = 2147483647;
-                this.columnPhone.AllowDBNull = false;
                 this.columnPhone.MaxLength = 2147483647;
                 this.columnCVs.ReadOnly = true;
                 this.columnCVs.MaxLength = 2147483647;
@@ -3659,7 +3656,12 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int StudentID {
                 get {
-                    return ((int)(this[this.tablePostgraduation.StudentIDColumn]));
+                    try {
+                        return ((int)(this[this.tablePostgraduation.StudentIDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StudentID\' in table \'Postgraduation\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablePostgraduation.StudentIDColumn] = value;
@@ -3670,11 +3672,11 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Name {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.NameColumn]));
+                    if (this.IsNameNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Postgraduation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.NameColumn]));
                     }
                 }
                 set {
@@ -3686,7 +3688,12 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Email {
                 get {
-                    return ((string)(this[this.tablePostgraduation.EmailColumn]));
+                    if (this.IsEmailNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tablePostgraduation.EmailColumn]));
+                    }
                 }
                 set {
                     this[this.tablePostgraduation.EmailColumn] = value;
@@ -3697,7 +3704,12 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Phone {
                 get {
-                    return ((string)(this[this.tablePostgraduation.PhoneColumn]));
+                    if (this.IsPhoneNull()) {
+                        return null;
+                    }
+                    else {
+                        return ((string)(this[this.tablePostgraduation.PhoneColumn]));
+                    }
                 }
                 set {
                     this[this.tablePostgraduation.PhoneColumn] = value;
@@ -3708,11 +3720,11 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string CVs {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.CVsColumn]));
+                    if (this.IsCVsNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CVs\' in table \'Postgraduation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.CVsColumn]));
                     }
                 }
                 set {
@@ -3724,11 +3736,11 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string EmploymentHistory {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.EmploymentHistoryColumn]));
+                    if (this.IsEmploymentHistoryNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'EmploymentHistory\' in table \'Postgraduation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.EmploymentHistoryColumn]));
                     }
                 }
                 set {
@@ -3740,12 +3752,11 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string PublicationsPeerReviewedJournalonlyPublished {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.PublicationsPeerReviewedJournalonlyPublishedColumn]));
+                    if (this.IsPublicationsPeerReviewedJournalonlyPublishedNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PublicationsPeerReviewedJournalonlyPublished\' in table \'Pos" +
-                                "tgraduation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.PublicationsPeerReviewedJournalonlyPublishedColumn]));
                     }
                 }
                 set {
@@ -3757,12 +3768,11 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TotalNumberofPublications {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.TotalNumberofPublicationsColumn]));
+                    if (this.IsTotalNumberofPublicationsNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalNumberofPublications\' in table \'Postgraduation\' is DBN" +
-                                "ull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.TotalNumberofPublicationsColumn]));
                     }
                 }
                 set {
@@ -3774,11 +3784,11 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string Grants {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.GrantsColumn]));
+                    if (this.IsGrantsNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Grants\' in table \'Postgraduation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.GrantsColumn]));
                     }
                 }
                 set {
@@ -3790,11 +3800,11 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TotalNumberofGrants {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.TotalNumberofGrantsColumn]));
+                    if (this.IsTotalNumberofGrantsNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalNumberofGrants\' in table \'Postgraduation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.TotalNumberofGrantsColumn]));
                     }
                 }
                 set {
@@ -3806,11 +3816,11 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string HonorsAwards {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.HonorsAwardsColumn]));
+                    if (this.IsHonorsAwardsNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'HonorsAwards\' in table \'Postgraduation\' is DBNull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.HonorsAwardsColumn]));
                     }
                 }
                 set {
@@ -3822,17 +3832,28 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string TotalNumberofHonorsAwards {
                 get {
-                    try {
-                        return ((string)(this[this.tablePostgraduation.TotalNumberofHonorsAwardsColumn]));
+                    if (this.IsTotalNumberofHonorsAwardsNull()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalNumberofHonorsAwards\' in table \'Postgraduation\' is DBN" +
-                                "ull.", e);
+                    else {
+                        return ((string)(this[this.tablePostgraduation.TotalNumberofHonorsAwardsColumn]));
                     }
                 }
                 set {
                     this[this.tablePostgraduation.TotalNumberofHonorsAwardsColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsStudentIDNull() {
+                return this.IsNull(this.tablePostgraduation.StudentIDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetStudentIDNull() {
+                this[this.tablePostgraduation.StudentIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3845,6 +3866,30 @@ namespace StudentTrackingSystem3.Reports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SetNameNull() {
                 this[this.tablePostgraduation.NameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsEmailNull() {
+                return this.IsNull(this.tablePostgraduation.EmailColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetEmailNull() {
+                this[this.tablePostgraduation.EmailColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsPhoneNull() {
+                return this.IsNull(this.tablePostgraduation.PhoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetPhoneNull() {
+                this[this.tablePostgraduation.PhoneColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

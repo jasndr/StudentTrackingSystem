@@ -396,6 +396,7 @@ namespace StudentTrackingSystem3.Controllers
                     paramsArray[0] = new ReportParameter("Student", ListOfStudents.ToString());
 
                     PostgraduationTableAdapter pgta = new PostgraduationTableAdapter();
+
                     pgta.Fill(ds.Postgraduation, ListOfStudents);
 
                     reportViewer.LocalReport.DataSources.Clear();

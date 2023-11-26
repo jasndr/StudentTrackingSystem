@@ -350,7 +350,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Total Numberof Publications</Value>
+                                  <Value>Total Number of Publications</Value>
                                   <Style>
                                     <TextDecoration>Underline</TextDecoration>
                                   </Style>
@@ -632,9 +632,9 @@
                                 <TextRun>
                                   <Value>=IIF(Fields!CVs.Value IS NOTHING,
 	 Fields!CVs.Value,
-	 (IIF(LEFT(Fields!CVs.Value, 8) = "Expr1&gt;; ",
+	 IIF(Fields!CVs.Value = "#Error", "None", (IIF(LEFT(Fields!CVs.Value, 8) = "Expr1&gt;; ",
 	 RIGHT(Fields!CVs.Value, LEN(Fields!CVs.Value) -8),
-	 Fields!CVs.Value)))</Value>
+	 Fields!CVs.Value))))</Value>
                                   <MarkupType>HTML</MarkupType>
                                   <Style />
                                 </TextRun>
@@ -665,7 +665,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!EmploymentHistory.Value</Value>
+                                  <Value>=IIF(Fields!EmploymentHistory.Value IS NOTHING,
+	 Fields!EmploymentHistory.Value,
+	 (IIF(LEFT(Fields!EmploymentHistory.Value, 8) = "Expr1&gt;; ",
+	 RIGHT(Fields!EmploymentHistory.Value, LEN(Fields!EmploymentHistory.Value) -8),
+	 Fields!EmploymentHistory.Value)))</Value>
                                   <MarkupType>HTML</MarkupType>
                                   <Style />
                                 </TextRun>

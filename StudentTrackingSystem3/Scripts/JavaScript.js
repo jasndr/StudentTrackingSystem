@@ -613,6 +613,14 @@
             e.preventDefault();
         }
         $("input:radio[name='ReportType']:checked").each(function () {
+            if ($(this).val() == 'Coursework') {
+                e.preventDefault();
+                e.stopPropagation();
+                alert('This section is currently under construction.');
+
+            }
+        });
+        $("input:radio[name='ReportType']:checked").each(function () {
             if ($(this).val() == 'PostGraduation' && ($('#ListOfStudents').val() == ''
                                                       || $('#ListOfStudents').val() == null)) {
                 e.preventDefault();
