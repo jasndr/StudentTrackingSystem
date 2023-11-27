@@ -29,7 +29,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.CurrentSort = sortOrder;
 
 
-            //if sortOrder is emply, then (sort by date new->old), otherwise (sort by date old->new)
+            //if sortOrder is empty, then (sort by date new->old), otherwise (sort by date old->new)
             ViewBag.DegreeStart_SortParm = String.IsNullOrEmpty(sortOrder) || sortOrder == "DegreeStart" ?  "DegreeStart_desc" : "DegreeStart";
 
             //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
@@ -138,7 +138,7 @@ namespace StudentTrackingSystem3.Controllers
                     students = students.OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSems.DisplayOrder);
                     break;
                 default:
-                    students = students.OrderBy(s => s.StudentNumber);
+                    students = students.OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSemsId).ThenBy(s => s.LastName).ThenBy(s => s.FirstName);
                     break;
 
             }
@@ -267,7 +267,8 @@ namespace StudentTrackingSystem3.Controllers
                     formerStudents = formerStudents.OrderByDescending(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenByDescending(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
                     break;
                 default:
-                    formerStudents = formerStudents.OrderBy(s => s.StudentNumber);
+                    formerStudents = formerStudents.OrderByDescending(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenByDescending(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder).OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSemsId).ThenBy(s => s.LastName).ThenBy(s => s.FirstName);
+                    
                     break;
 
             }
@@ -284,8 +285,10 @@ namespace StudentTrackingSystem3.Controllers
                 db.Students.AsEnumerable().Select(s => new
                 {
                     //ID = s.Id,
-                    FullName = string.Format("{0} {1}", s.FirstName, s.LastName)
-                }).OrderBy(s => s.FullName).ToList();
+                    FullName = string.Format("{0} {1}", s.FirstName, s.LastName),
+                    s.DegreeStartYear,
+                    s.DegreeStartSemsId
+                }).OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSemsId).ThenBy(s => s.FullName).ToList();
             ViewBag.ListOfStudents = new SelectList(students, "FullName", "FullName");
             ViewBag.ReportViewer = new ReportViewer();
 
