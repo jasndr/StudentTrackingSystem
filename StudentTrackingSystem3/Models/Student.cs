@@ -50,7 +50,7 @@ namespace StudentTrackingSystem3.Models
         public int DegreeStartYear { get; set; }
         [Required, Display(Name ="Citizenship Status")]//[ForeignKey()]
         public int CitizenshipStatsId { get; set; }
-        [Required, Display(Name ="Current Status of Employment")]
+        [Required, Display(Name ="Current Status of Employment")]//[ForeignKey()]
         public int EmploymentStatsId { get; set; }
         public string EmploymentStatsOther { get; set; }
         [Display(Name ="Interim Academic Advisor")]

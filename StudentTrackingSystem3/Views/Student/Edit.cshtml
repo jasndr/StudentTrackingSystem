@@ -151,32 +151,31 @@
                         </div>
 
                         <div class="col-md-10 row">
-                            @{if (!object.ReferenceEquals(Model.Student.PreviousDegrees.FirstOrDefault(), null))
-                                {
-                                    <table class="table">
+                            @if (Model.Student.PreviousDegrees != null)
+                            {
+                            <table class="table">
 
-                                        @foreach (var item in Model.Student.PreviousDegrees.OrderByDescending(s => s.DateOfAward))
-                                        {
-                                            <tr>
-                                                <td>&bull;</td>
-                                                <td></td>
-                                                <td><strong>@Html.DisplayFor(modelItem => item.DegreeTypes.Name)</strong>   @Html.DisplayFor(modelItem => item.Title)</td>
-                                                <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
-                                                <td>@Convert.ToString(string.Format("{0:yyyy}", item.DateOfAward))</td>
-                                                <td>@Html.ActionLink("Edit", "Edit", "PrevDegree", new { id = item.Id }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF;" })</td>
-                                                <td>
-                                                    <a title="Delete" href="@Url.Action("Delete", "PrevDegree", new {id = item.Id})" class="guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
-                                                        <span class="glyphicon glyphicon-trash"></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </table>
-                                }
-                                else
+                                @foreach (var item in Model.Student.PreviousDegrees.OrderByDescending(s => s.DateOfAward))
                                 {
-                                    <p><em>No degrees listed.  <span class="guestHidden">Please add a degree.</span></em></p>
+                                    <tr>
+                                        <td>&bull;</td>
+                                        <td></td>
+                                        <td><strong>@Html.DisplayFor(modelItem => item.DegreeTypes.Name)</strong>   @Html.DisplayFor(modelItem => item.Title)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.SchoolName)</td>
+                                        <td>@Convert.ToString(string.Format("{0:yyyy}", item.DateOfAward))</td>
+                                        <td>@Html.ActionLink("Edit", "Edit", "PrevDegree", new { id = item.Id }, new { @class = "btn btn-xs navbuttons guestHidden biostatHidden", @style = "background-color: #060; color: #FFF;" })</td>
+                                        <td>
+                                            <a title="Delete" href="@Url.Action("Delete", "PrevDegree", new {id = item.Id})" class="guestHidden biostatHidden adminHidden" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 }
+                            </table>
+                            }
+                            else
+                            {
+                                <p><em>No degrees listed.  <span class="guestHidden">Please add a degree.</span></em></p>
                             }
 
                         </div>
@@ -293,33 +292,34 @@
 
                             @{IQueryable<StudentTrackingSystem3.Models.File> studentCVs = ViewBag.StudentCVs;}
 
-                            @{if (!object.ReferenceEquals(studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).FirstOrDefault(), null))
+                            @if (studentCVs != null &&  studentCVs.Where(g => g.FileType == FileType.CurriculumVitae) != null && studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).Count() > 0)
+                            { 
                                 {
                                     var count = 1;
                                     foreach (var file in studentCVs.Where(g => g.FileType == FileType.CurriculumVitae).OrderByDescending(g => g.FileId))
                                     {
                                         if (count == 1)
                                         {
-                                            <div class="col-md-offset-1">
-                                                <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
-                                                    <em><strong>Current CV/Resume</strong></em>
-                                                    <ul>
-                                                        <li>
-                                                            <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-                                                            <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
-                                                                <span class="glyphicon glyphicon-trash"></span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <br />
-                                        }
-                                        else
-                                        {
-                                            if (count == 2)
-                                            {
+                                    <div class="col-md-offset-1">
+                                        <div style="border: 1px solid #000; border-radius: 5px; display: inline-block; padding: 5px;">
+                                            <em><strong>Current CV/Resume</strong></em>
+                                            <ul>
+                                                <li>
+                                                    <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
+                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                                                    <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br />
+                                }
+                                else
+                            {
+                                if (count == 2)
+                                {
                                                 <p class="col-md-offset-1"><em><strong>CV/Resume History</strong></em></p>
                                             }
                                             <div class="col-md-offset-1">
@@ -327,13 +327,18 @@
                                                     <li>
 
                                                         <a href="~/File?id=@file.FileId">@file.FileName</a>  &mdash;
-                                                        @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
-                                                        <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
-                                                            <span class="glyphicon glyphicon-trash"></span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                            @Html.ActionLink("Edit", "Edit", "CurriculumVitae", new { id = file.FileId, pageFrom = 1 }, new { @class = "btn btn-xs navbuttons", @style = "background-color: #060; color: #FFF" })
+                            <a style="margin-left: 5px" title="Delete" href="@Url.Action("Delete", "CurriculumVitae", new {id = file.FileId})" class="btn-btn-warning" onclick="return confirm('Are you sure you want to delete this entry?');">
+
+                                <span class="glyphicon glyphicon-trash"></span>
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
                                         }
                                         count++;
                                     }
@@ -350,6 +355,7 @@
                             @Html.LabelFor(model => model.Student.EmploymentStatsId, htmlAttributes: new { @class = "control-label col-md-5 requiredLabel" })
                         </div>
                         <div class="col-md-12 row">
+                            @*@Html.DropDownListFor(m => m.Student.DegreeProgramsId, (SelectList)ViewBag.DegreeProgramsIdBag, "-- Select Program --", new { @class = "form-control guestDisabled" })*@
                             @Html.DropDownListFor(m => m.Student.EmploymentStatsId, (SelectList)ViewBag.EmploymentStatsIdBag, "-- Select Employment Status--", new { @class = "form-control guestDisabled" })
                             @Html.ValidationMessageFor(model => model.Student.EmploymentStatsId, "", new { @class = "text-danger" })
                         </div>
