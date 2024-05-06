@@ -12,13 +12,13 @@ namespace StudentTrackingSystem3.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PostGraduation
+    public partial class Honor
     {
         public int ID { get; set; }
         public int StudentID { get; set; }
-        public string CurrentPosition { get; set; }
-        public int CurrentStartMonthId { get; set; }
-        public int CurrentStartYear { get; set; }
+        public string HonorInformation { get; set; }
+        public int HonorMonthId { get; set; }
+        public int HonorYear { get; set; }
     
         public virtual CommonField CommonField { get; set; }
         public virtual Student Student { get; set; }

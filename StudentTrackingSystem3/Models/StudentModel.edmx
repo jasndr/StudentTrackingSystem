@@ -1,0 +1,3241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SchoolContext2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="ActivitySummaryDesc" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommitteeMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Department" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="University" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CommonFields">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="DisplayOrder" Type="int" Nullable="false" />
+          <Property Name="GradePoint" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Credits" Type="int" Nullable="false" />
+          <Property Name="CourseNum" Type="nvarchar(max)" />
+          <Property Name="CourseName" Type="nvarchar(max)" />
+          <Property Name="CourseTrackID" Type="int" />
+          <Property Name="CoursePlanID" Type="int" />
+        </EntityType>
+        <EntityType Name="Coursework">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="CourseID" Type="int" Nullable="false" />
+          <Property Name="PassFailID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurriculumVitae">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="ReceivedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DegreeProgram">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="GraduationID" Type="int" Nullable="false" />
+          <Property Name="DegreeProgramTypeId" Type="int" Nullable="false" />
+          <Property Name="DegreeStartYear" Type="int" Nullable="false" />
+          <Property Name="DegreeStartSemsId" Type="int" Nullable="false" />
+          <Property Name="PlansId" Type="int" Nullable="false" />
+          <Property Name="TracksId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="255" />
+          <Property Name="ContentType" Type="nvarchar" MaxLength="100" />
+          <Property Name="Content" Type="varbinary(max)" />
+          <Property Name="FileType" Type="int" Nullable="false" />
+          <Property Name="ManuscriptId" Type="int" />
+          <Property Name="ActivityId" Type="int" />
+          <Property Name="CurriculumVitaeId" Type="int" />
+        </EntityType>
+        <EntityType Name="Graduation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="DegreeEndSemsId" Type="int" />
+          <Property Name="DegreeEndYear" Type="int" />
+          <Property Name="QualifierResultId" Type="int" />
+          <Property Name="Qualifier2ResultId" Type="int" />
+          <Property Name="DateOfQualification" Type="datetime" />
+          <Property Name="DateOfQualification2" Type="datetime" />
+          <Property Name="Form2Title" Type="nvarchar(max)" />
+          <Property Name="Form2Date" Type="datetime" />
+          <Property Name="Form2ResultId" Type="int" />
+          <Property Name="CompExamResultId" Type="int" />
+          <Property Name="DateOfCompExam" Type="datetime" />
+          <Property Name="CompExam2ResultId" Type="int" />
+          <Property Name="DateOfCompExam2" Type="datetime" />
+          <Property Name="AdvisorName" Type="nvarchar(max)" />
+          <Property Name="AdvisorEmail" Type="nvarchar(max)" />
+          <Property Name="AdvisorDepartment" Type="nvarchar(max)" />
+          <Property Name="AdvisorUniversity" Type="nvarchar(max)" />
+          <Property Name="Form3Title" Type="nvarchar(max)" />
+          <Property Name="Form3Date" Type="datetime" />
+          <Property Name="Form3ResultId" Type="int" />
+          <Property Name="FinalExamResultId" Type="int" />
+          <Property Name="DateOfFinalExam" Type="datetime" />
+          <Property Name="FinalExam2ResultId" Type="int" />
+          <Property Name="DateOfFinalExam2" Type="datetime" />
+          <Property Name="Form2Type_ID" Type="int" />
+          <Property Name="TakenQHS601Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Grants">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="GrantInformation" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GrantMonthId" Type="int" Nullable="false" />
+          <Property Name="GrantYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Honors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="HonorInformation" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="HonorMonthId" Type="int" Nullable="false" />
+          <Property Name="HonorYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Manuscript">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="ReceivedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Performance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="CategoryInfo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PublicationStatsID" Type="int" />
+          <Property Name="AbstractStatsID" Type="int" />
+          <Property Name="ProposalStatsID" Type="int" />
+          <Property Name="TeachingStatsID" Type="int" />
+          <Property Name="CommonFields_ID" Type="int" />
+          <Property Name="CommonFields_ID1" Type="int" />
+          <Property Name="CommonFields_ID2" Type="int" />
+          <Property Name="CommonFields_ID3" Type="int" />
+        </EntityType>
+        <EntityType Name="PersonRaces">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="RaceID" Type="int" Nullable="false" />
+          <Property Name="IsSelectedPR" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PostGraduation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="CurrentPosition" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CurrentStartMonthId" Type="int" Nullable="false" />
+          <Property Name="CurrentStartYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrevDegree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="DegreeTypesID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="CumulativeGPA" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SchoolName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Major" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SecondMajor" Type="nvarchar(max)" />
+          <Property Name="Minor" Type="nvarchar(max)" />
+          <Property Name="DateOfAward" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreviousEmployment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="Position" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Employer" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="StartMonthId" Type="int" Nullable="false" />
+          <Property Name="StartYear" Type="int" Nullable="false" />
+          <Property Name="EndMonthId" Type="int" Nullable="false" />
+          <Property Name="EndYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Publications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="PublicationInformation" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PubMonthId" Type="int" Nullable="false" />
+          <Property Name="PubYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Races">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentNumber" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SchoolEmail" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="OtherEmail" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="GendersId" Type="int" Nullable="false" />
+          <Property Name="RaceOther" Type="nvarchar(max)" />
+          <Property Name="CitizenshipStatsId" Type="int" Nullable="false" />
+          <Property Name="EmploymentStatsId" Type="int" Nullable="false" />
+          <Property Name="InterimAdvisorsId" Type="int" />
+          <Property Name="PermanentAdvisorsId" Type="int" />
+          <Property Name="RaceAsianOther" Type="nvarchar(max)" />
+          <Property Name="RacePacIsleOther" Type="nvarchar(max)" />
+          <Property Name="EmploymentStatsOther" Type="nvarchar(max)" />
+          <Property Name="PermanentAdvisorOther" Type="nvarchar(max)" />
+          <Property Name="Age" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__Course__CoursePl__4A4E069C">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="CoursePlanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__CourseTr__4959E263">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="CourseTrackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Degre__42ACE4D4">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="DegreeProgramTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Degre__43A1090D">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="DegreeStartSemsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Gradu__41B8C09B">
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="GraduationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Plans__44952D46">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="PlansId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Stude__40C49C62">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Track__4589517F">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="TracksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Activity_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CommitteeMember_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CommitteeMember" Type="Self.CommitteeMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommitteeMember">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Coursework_dbo_CommonFields_GradeID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Coursework" Type="Self.Coursework" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coursework">
+              <PropertyRef Name="PassFailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Coursework_dbo_Course_CourseID">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Coursework" Type="Self.Coursework" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coursework">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Coursework_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Coursework" Type="Self.Coursework" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Coursework">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CurriculumVitae_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurriculumVitae" Type="Self.CurriculumVitae" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurriculumVitae">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_File_dbo_Activity_ActivityId">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="File" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="File">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId">
+          <End Role="CurriculumVitae" Type="Self.CurriculumVitae" Multiplicity="0..1" />
+          <End Role="File" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurriculumVitae">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="File">
+              <PropertyRef Name="CurriculumVitaeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_File_dbo_Manuscript_ManuscriptId">
+          <End Role="Manuscript" Type="Self.Manuscript" Multiplicity="0..1" />
+          <End Role="File" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manuscript">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="File">
+              <PropertyRef Name="ManuscriptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="CompExam2ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_CompExamResultId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="CompExamResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="DegreeEndSemsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="FinalExam2ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="FinalExamResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_Form2ResultId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="Form2ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="Form2Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_Form3ResultId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="Form3ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="Qualifier2ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_QualifierResultId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="QualifierResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="TakenQHS601Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Grants_dbo_CommonFields_GrantMonthId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1" />
+          <End Role="Grants" Type="Self.Grants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Grants">
+              <PropertyRef Name="GrantMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Grants_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Grants" Type="Self.Grants" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grants">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Honors_dbo_CommonFields_HonorMonthId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Honors" Type="Self.Honors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Honors">
+              <PropertyRef Name="HonorMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Honors_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Honors" Type="Self.Honors" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Honors">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Manuscript_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Manuscript" Type="Self.Manuscript" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Manuscript">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_AbstractStatsID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="AbstractStatsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CategoryID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CommonFields_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CommonFields_ID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CommonFields_ID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CommonFields_ID3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_ProposalStatsID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="ProposalStatsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_PublicationStatsID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="PublicationStatsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_TeachingStatsID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="TeachingStatsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PersonRaces_dbo_Races_RaceID">
+          <End Role="Races" Type="Self.Races" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonRaces" Type="Self.PersonRaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Races">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonRaces">
+              <PropertyRef Name="RaceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PersonRaces_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonRaces" Type="Self.PersonRaces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonRaces">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PostGraduation" Type="Self.PostGraduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PostGraduation">
+              <PropertyRef Name="CurrentStartMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PostGraduation_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="PostGraduation" Type="Self.PostGraduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostGraduation">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrevDegree" Type="Self.PrevDegree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PrevDegree">
+              <PropertyRef Name="DegreeTypesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrevDegree_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="PrevDegree" Type="Self.PrevDegree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrevDegree">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PreviousEmployment" Type="Self.PreviousEmployment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PreviousEmployment">
+              <PropertyRef Name="EndMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1" />
+          <End Role="PreviousEmployment" Type="Self.PreviousEmployment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PreviousEmployment">
+              <PropertyRef Name="StartMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PreviousEmployment_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="PreviousEmployment" Type="Self.PreviousEmployment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreviousEmployment">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Publications_dbo_CommonFields_PubMonthId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1" />
+          <End Role="Publications" Type="Self.Publications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Publications">
+              <PropertyRef Name="PubMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Publications_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Publications" Type="Self.Publications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publications">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CitizenshipStatsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Student_dbo_CommonFields_GendersId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="GendersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="InterimAdvisorsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="PermanentAdvisorsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SchoolContext2ModelStoreContainer">
+          <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommitteeMember" EntityType="Self.CommitteeMember" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommonFields" EntityType="Self.CommonFields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coursework" EntityType="Self.Coursework" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurriculumVitae" EntityType="Self.CurriculumVitae" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DegreeProgram" EntityType="Self.DegreeProgram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="File" EntityType="Self.File" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Graduation" EntityType="Self.Graduation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Grants" EntityType="Self.Grants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Honors" EntityType="Self.Honors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manuscript" EntityType="Self.Manuscript" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Performance" EntityType="Self.Performance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonRaces" EntityType="Self.PersonRaces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostGraduation" EntityType="Self.PostGraduation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrevDegree" EntityType="Self.PrevDegree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreviousEmployment" EntityType="Self.PreviousEmployment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Publications" EntityType="Self.Publications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Races" EntityType="Self.Races" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Course__CoursePl__4A4E069C" Association="Self.FK__Course__CoursePl__4A4E069C">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__CourseTr__4959E263" Association="Self.FK__Course__CourseTr__4959E263">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Course" EntitySet="Course" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Degre__42ACE4D4" Association="Self.FK__DegreePro__Degre__42ACE4D4">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="DegreeProgram" EntitySet="DegreeProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Degre__43A1090D" Association="Self.FK__DegreePro__Degre__43A1090D">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="DegreeProgram" EntitySet="DegreeProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Gradu__41B8C09B" Association="Self.FK__DegreePro__Gradu__41B8C09B">
+            <End Role="Graduation" EntitySet="Graduation" />
+            <End Role="DegreeProgram" EntitySet="DegreeProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Plans__44952D46" Association="Self.FK__DegreePro__Plans__44952D46">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="DegreeProgram" EntitySet="DegreeProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Stude__40C49C62" Association="Self.FK__DegreePro__Stude__40C49C62">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="DegreeProgram" EntitySet="DegreeProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Track__4589517F" Association="Self.FK__DegreePro__Track__4589517F">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="DegreeProgram" EntitySet="DegreeProgram" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Activity_dbo_Student_StudentID" Association="Self.FK_dbo_Activity_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Activity" EntitySet="Activity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CommitteeMember_dbo_Student_StudentID" Association="Self.FK_dbo_CommitteeMember_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="CommitteeMember" EntitySet="CommitteeMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Coursework_dbo_CommonFields_GradeID" Association="Self.FK_dbo_Coursework_dbo_CommonFields_GradeID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Coursework" EntitySet="Coursework" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Coursework_dbo_Course_CourseID" Association="Self.FK_dbo_Coursework_dbo_Course_CourseID">
+            <End Role="Course" EntitySet="Course" />
+            <End Role="Coursework" EntitySet="Coursework" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Coursework_dbo_Student_StudentID" Association="Self.FK_dbo_Coursework_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Coursework" EntitySet="Coursework" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CurriculumVitae_dbo_Student_StudentID" Association="Self.FK_dbo_CurriculumVitae_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="CurriculumVitae" EntitySet="CurriculumVitae" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_File_dbo_Activity_ActivityId" Association="Self.FK_dbo_File_dbo_Activity_ActivityId">
+            <End Role="Activity" EntitySet="Activity" />
+            <End Role="File" EntitySet="File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId" Association="Self.FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId">
+            <End Role="CurriculumVitae" EntitySet="CurriculumVitae" />
+            <End Role="File" EntitySet="File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_File_dbo_Manuscript_ManuscriptId" Association="Self.FK_dbo_File_dbo_Manuscript_ManuscriptId">
+            <End Role="Manuscript" EntitySet="Manuscript" />
+            <End Role="File" EntitySet="File" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_CompExamResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_CompExamResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_Form2ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_Form2ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID" Association="Self.FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_Form3ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_Form3ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_QualifierResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_QualifierResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id" Association="Self.FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_Student_StudentID" Association="Self.FK_dbo_Graduation_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Graduation" EntitySet="Graduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Grants_dbo_CommonFields_GrantMonthId" Association="Self.FK_dbo_Grants_dbo_CommonFields_GrantMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Grants" EntitySet="Grants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Grants_dbo_Student_StudentID" Association="Self.FK_dbo_Grants_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Grants" EntitySet="Grants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Honors_dbo_CommonFields_HonorMonthId" Association="Self.FK_dbo_Honors_dbo_CommonFields_HonorMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Honors" EntitySet="Honors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Honors_dbo_Student_StudentID" Association="Self.FK_dbo_Honors_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Honors" EntitySet="Honors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Manuscript_dbo_Student_StudentID" Association="Self.FK_dbo_Manuscript_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Manuscript" EntitySet="Manuscript" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_AbstractStatsID" Association="Self.FK_dbo_Performance_dbo_CommonFields_AbstractStatsID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CategoryID" Association="Self.FK_dbo_Performance_dbo_CommonFields_CategoryID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID" Association="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1" Association="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2" Association="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3" Association="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_ProposalStatsID" Association="Self.FK_dbo_Performance_dbo_CommonFields_ProposalStatsID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_PublicationStatsID" Association="Self.FK_dbo_Performance_dbo_CommonFields_PublicationStatsID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_TeachingStatsID" Association="Self.FK_dbo_Performance_dbo_CommonFields_TeachingStatsID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_Student_StudentID" Association="Self.FK_dbo_Performance_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Performance" EntitySet="Performance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PersonRaces_dbo_Races_RaceID" Association="Self.FK_dbo_PersonRaces_dbo_Races_RaceID">
+            <End Role="Races" EntitySet="Races" />
+            <End Role="PersonRaces" EntitySet="PersonRaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PersonRaces_dbo_Student_StudentID" Association="Self.FK_dbo_PersonRaces_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="PersonRaces" EntitySet="PersonRaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId" Association="Self.FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="PostGraduation" EntitySet="PostGraduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PostGraduation_dbo_Student_StudentID" Association="Self.FK_dbo_PostGraduation_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="PostGraduation" EntitySet="PostGraduation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID" Association="Self.FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="PrevDegree" EntitySet="PrevDegree" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrevDegree_dbo_Student_StudentID" Association="Self.FK_dbo_PrevDegree_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="PrevDegree" EntitySet="PrevDegree" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId" Association="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="PreviousEmployment" EntitySet="PreviousEmployment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId" Association="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="PreviousEmployment" EntitySet="PreviousEmployment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PreviousEmployment_dbo_Student_StudentID" Association="Self.FK_dbo_PreviousEmployment_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="PreviousEmployment" EntitySet="PreviousEmployment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Publications_dbo_CommonFields_PubMonthId" Association="Self.FK_dbo_Publications_dbo_CommonFields_PubMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Publications" EntitySet="Publications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Publications_dbo_Student_StudentID" Association="Self.FK_dbo_Publications_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Publications" EntitySet="Publications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" Association="Self.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Student_dbo_CommonFields_GendersId" Association="Self.FK_dbo_Student_dbo_CommonFields_GendersId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" Association="Self.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" Association="Self.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SchoolContext2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activity">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="ActivitySummaryDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Activity_dbo_Student_StudentID" FromRole="Activity" ToRole="Student" />
+          <NavigationProperty Name="Files" Relationship="Self.FK_dbo_File_dbo_Activity_ActivityId" FromRole="Activity" ToRole="File" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="CommitteeMember">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="University" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_CommitteeMember_dbo_Student_StudentID" FromRole="CommitteeMember" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="CommonField">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+          <Property Name="GradePoint" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="Courses" Relationship="Self.FK__Course__CoursePl__4A4E069C" FromRole="CommonFields" ToRole="Course" />
+          <NavigationProperty Name="Courses1" Relationship="Self.FK__Course__CourseTr__4959E263" FromRole="CommonFields" ToRole="Course" />
+          <NavigationProperty Name="DegreePrograms" Relationship="Self.FK__DegreePro__Degre__42ACE4D4" FromRole="CommonFields" ToRole="DegreeProgram" />
+          <NavigationProperty Name="DegreePrograms1" Relationship="Self.FK__DegreePro__Degre__43A1090D" FromRole="CommonFields" ToRole="DegreeProgram" />
+          <NavigationProperty Name="DegreePrograms2" Relationship="Self.FK__DegreePro__Plans__44952D46" FromRole="CommonFields" ToRole="DegreeProgram" />
+          <NavigationProperty Name="DegreePrograms3" Relationship="Self.FK__DegreePro__Track__4589517F" FromRole="CommonFields" ToRole="DegreeProgram" />
+          <NavigationProperty Name="Courseworks" Relationship="Self.FK_dbo_Coursework_dbo_CommonFields_GradeID" FromRole="CommonFields" ToRole="Coursework" />
+          <NavigationProperty Name="Graduations" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations1" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_CompExamResultId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations2" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations3" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations4" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations5" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_Form2ResultId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations6" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations7" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_Form3ResultId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations8" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations9" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_QualifierResultId" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Graduations10" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id" FromRole="CommonFields" ToRole="Graduation" />
+          <NavigationProperty Name="Grants" Relationship="Self.FK_dbo_Grants_dbo_CommonFields_GrantMonthId" FromRole="CommonFields" ToRole="Grants" />
+          <NavigationProperty Name="Honors" Relationship="Self.FK_dbo_Honors_dbo_CommonFields_HonorMonthId" FromRole="CommonFields" ToRole="Honors" />
+          <NavigationProperty Name="Performances" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_AbstractStatsID" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="Performances1" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CategoryID" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="Performances2" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="Performances3" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="Performances4" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="Performances5" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="Performances6" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_ProposalStatsID" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="Performances7" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_PublicationStatsID" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="Performances8" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_TeachingStatsID" FromRole="CommonFields" ToRole="Performance" />
+          <NavigationProperty Name="PostGraduations" Relationship="Self.FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId" FromRole="CommonFields" ToRole="PostGraduation" />
+          <NavigationProperty Name="PrevDegrees" Relationship="Self.FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID" FromRole="CommonFields" ToRole="PrevDegree" />
+          <NavigationProperty Name="PreviousEmployments" Relationship="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId" FromRole="CommonFields" ToRole="PreviousEmployment" />
+          <NavigationProperty Name="PreviousEmployments1" Relationship="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId" FromRole="CommonFields" ToRole="PreviousEmployment" />
+          <NavigationProperty Name="Publications" Relationship="Self.FK_dbo_Publications_dbo_CommonFields_PubMonthId" FromRole="CommonFields" ToRole="Publications" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students1" Relationship="Self.FK_dbo_Student_dbo_CommonFields_GendersId" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students2" Relationship="Self.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students3" Relationship="Self.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" FromRole="CommonFields" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Credits" Type="Int32" Nullable="false" />
+          <Property Name="CourseNum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CourseTrackID" Type="Int32" />
+          <Property Name="CoursePlanID" Type="Int32" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK__Course__CoursePl__4A4E069C" FromRole="Course" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField1" Relationship="Self.FK__Course__CourseTr__4959E263" FromRole="Course" ToRole="CommonFields" />
+          <NavigationProperty Name="Courseworks" Relationship="Self.FK_dbo_Coursework_dbo_Course_CourseID" FromRole="Course" ToRole="Coursework" />
+        </EntityType>
+        <EntityType Name="Coursework">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="CourseID" Type="Int32" Nullable="false" />
+          <Property Name="PassFailID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Coursework_dbo_CommonFields_GradeID" FromRole="Coursework" ToRole="CommonFields" />
+          <NavigationProperty Name="Course" Relationship="Self.FK_dbo_Coursework_dbo_Course_CourseID" FromRole="Coursework" ToRole="Course" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Coursework_dbo_Student_StudentID" FromRole="Coursework" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="CurriculumVitae">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_CurriculumVitae_dbo_Student_StudentID" FromRole="CurriculumVitae" ToRole="Student" />
+          <NavigationProperty Name="Files" Relationship="Self.FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId" FromRole="CurriculumVitae" ToRole="File" />
+        </EntityType>
+        <EntityType Name="DegreeProgram">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="GraduationID" Type="Int32" Nullable="false" />
+          <Property Name="DegreeProgramTypeId" Type="Int32" Nullable="false" />
+          <Property Name="DegreeStartYear" Type="Int32" Nullable="false" />
+          <Property Name="DegreeStartSemsId" Type="Int32" Nullable="false" />
+          <Property Name="PlansId" Type="Int32" Nullable="false" />
+          <Property Name="TracksId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK__DegreePro__Degre__42ACE4D4" FromRole="DegreeProgram" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField1" Relationship="Self.FK__DegreePro__Degre__43A1090D" FromRole="DegreeProgram" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField2" Relationship="Self.FK__DegreePro__Plans__44952D46" FromRole="DegreeProgram" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField3" Relationship="Self.FK__DegreePro__Track__4589517F" FromRole="DegreeProgram" ToRole="CommonFields" />
+          <NavigationProperty Name="Graduation" Relationship="Self.FK__DegreePro__Gradu__41B8C09B" FromRole="DegreeProgram" ToRole="Graduation" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__DegreePro__Stude__40C49C62" FromRole="DegreeProgram" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="File">
+          <Key>
+            <PropertyRef Name="FileId" />
+          </Key>
+          <Property Name="FileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FileName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ContentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Content" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="FileType" Type="Int32" Nullable="false" />
+          <Property Name="ManuscriptId" Type="Int32" />
+          <Property Name="ActivityId" Type="Int32" />
+          <Property Name="CurriculumVitaeId" Type="Int32" />
+          <NavigationProperty Name="Activity" Relationship="Self.FK_dbo_File_dbo_Activity_ActivityId" FromRole="File" ToRole="Activity" />
+          <NavigationProperty Name="CurriculumVitae" Relationship="Self.FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId" FromRole="File" ToRole="CurriculumVitae" />
+          <NavigationProperty Name="Manuscript" Relationship="Self.FK_dbo_File_dbo_Manuscript_ManuscriptId" FromRole="File" ToRole="Manuscript" />
+        </EntityType>
+        <EntityType Name="Graduation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="DegreeEndSemsId" Type="Int32" />
+          <Property Name="DegreeEndYear" Type="Int32" />
+          <Property Name="QualifierResultId" Type="Int32" />
+          <Property Name="Qualifier2ResultId" Type="Int32" />
+          <Property Name="DateOfQualification" Type="DateTime" Precision="3" />
+          <Property Name="DateOfQualification2" Type="DateTime" Precision="3" />
+          <Property Name="Form2Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Form2Date" Type="DateTime" Precision="3" />
+          <Property Name="Form2ResultId" Type="Int32" />
+          <Property Name="CompExamResultId" Type="Int32" />
+          <Property Name="DateOfCompExam" Type="DateTime" Precision="3" />
+          <Property Name="CompExam2ResultId" Type="Int32" />
+          <Property Name="DateOfCompExam2" Type="DateTime" Precision="3" />
+          <Property Name="AdvisorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdvisorEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdvisorDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdvisorUniversity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Form3Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Form3Date" Type="DateTime" Precision="3" />
+          <Property Name="Form3ResultId" Type="Int32" />
+          <Property Name="FinalExamResultId" Type="Int32" />
+          <Property Name="DateOfFinalExam" Type="DateTime" Precision="3" />
+          <Property Name="FinalExam2ResultId" Type="Int32" />
+          <Property Name="DateOfFinalExam2" Type="DateTime" Precision="3" />
+          <Property Name="Form2Type_ID" Type="Int32" />
+          <Property Name="TakenQHS601Id" Type="Int32" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField1" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_CompExamResultId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField2" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField3" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField4" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField5" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_Form2ResultId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField6" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField7" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_Form3ResultId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField8" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField9" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_QualifierResultId" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField10" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id" FromRole="Graduation" ToRole="CommonFields" />
+          <NavigationProperty Name="DegreePrograms" Relationship="Self.FK__DegreePro__Gradu__41B8C09B" FromRole="Graduation" ToRole="DegreeProgram" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Graduation_dbo_Student_StudentID" FromRole="Graduation" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Grant">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="GrantInformation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GrantMonthId" Type="Int32" Nullable="false" />
+          <Property Name="GrantYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Grants_dbo_CommonFields_GrantMonthId" FromRole="Grants" ToRole="CommonFields" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Grants_dbo_Student_StudentID" FromRole="Grants" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Honor">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="HonorInformation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HonorMonthId" Type="Int32" Nullable="false" />
+          <Property Name="HonorYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Honors_dbo_CommonFields_HonorMonthId" FromRole="Honors" ToRole="CommonFields" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Honors_dbo_Student_StudentID" FromRole="Honors" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Manuscript">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Files" Relationship="Self.FK_dbo_File_dbo_Manuscript_ManuscriptId" FromRole="Manuscript" ToRole="File" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Manuscript_dbo_Student_StudentID" FromRole="Manuscript" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Performance">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="CategoryInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PublicationStatsID" Type="Int32" />
+          <Property Name="AbstractStatsID" Type="Int32" />
+          <Property Name="ProposalStatsID" Type="Int32" />
+          <Property Name="TeachingStatsID" Type="Int32" />
+          <Property Name="CommonFields_ID" Type="Int32" />
+          <Property Name="CommonFields_ID1" Type="Int32" />
+          <Property Name="CommonFields_ID2" Type="Int32" />
+          <Property Name="CommonFields_ID3" Type="Int32" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_AbstractStatsID" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField1" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CategoryID" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField2" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField3" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField4" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField5" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField6" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_ProposalStatsID" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField7" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_PublicationStatsID" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField8" Relationship="Self.FK_dbo_Performance_dbo_CommonFields_TeachingStatsID" FromRole="Performance" ToRole="CommonFields" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Performance_dbo_Student_StudentID" FromRole="Performance" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="PersonRace">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="RaceID" Type="Int32" Nullable="false" />
+          <Property Name="IsSelectedPR" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Race" Relationship="Self.FK_dbo_PersonRaces_dbo_Races_RaceID" FromRole="PersonRaces" ToRole="Races" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_PersonRaces_dbo_Student_StudentID" FromRole="PersonRaces" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="PostGraduation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="CurrentPosition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrentStartMonthId" Type="Int32" Nullable="false" />
+          <Property Name="CurrentStartYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId" FromRole="PostGraduation" ToRole="CommonFields" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_PostGraduation_dbo_Student_StudentID" FromRole="PostGraduation" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="PrevDegree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="DegreeTypesID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CumulativeGPA" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SchoolName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Major" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecondMajor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Minor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfAward" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID" FromRole="PrevDegree" ToRole="CommonFields" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_PrevDegree_dbo_Student_StudentID" FromRole="PrevDegree" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="PreviousEmployment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Employer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartMonthId" Type="Int32" Nullable="false" />
+          <Property Name="StartYear" Type="Int32" Nullable="false" />
+          <Property Name="EndMonthId" Type="Int32" Nullable="false" />
+          <Property Name="EndYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId" FromRole="PreviousEmployment" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField1" Relationship="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId" FromRole="PreviousEmployment" ToRole="CommonFields" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_PreviousEmployment_dbo_Student_StudentID" FromRole="PreviousEmployment" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Publication">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="PublicationInformation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PubMonthId" Type="Int32" Nullable="false" />
+          <Property Name="PubYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Publications_dbo_CommonFields_PubMonthId" FromRole="Publications" ToRole="CommonFields" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Publications_dbo_Student_StudentID" FromRole="Publications" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Race">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PersonRaces" Relationship="Self.FK_dbo_PersonRaces_dbo_Races_RaceID" FromRole="Races" ToRole="PersonRaces" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentNumber" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SchoolEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OtherEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GendersId" Type="Int32" Nullable="false" />
+          <Property Name="RaceOther" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CitizenshipStatsId" Type="Int32" Nullable="false" />
+          <Property Name="EmploymentStatsId" Type="Int32" Nullable="false" />
+          <Property Name="InterimAdvisorsId" Type="Int32" />
+          <Property Name="PermanentAdvisorsId" Type="Int32" />
+          <Property Name="RaceAsianOther" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RacePacIsleOther" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EmploymentStatsOther" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PermanentAdvisorOther" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <NavigationProperty Name="Activities" Relationship="Self.FK_dbo_Activity_dbo_Student_StudentID" FromRole="Student" ToRole="Activity" />
+          <NavigationProperty Name="CommitteeMembers" Relationship="Self.FK_dbo_CommitteeMember_dbo_Student_StudentID" FromRole="Student" ToRole="CommitteeMember" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField1" Relationship="Self.FK_dbo_Student_dbo_CommonFields_GendersId" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField2" Relationship="Self.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField3" Relationship="Self.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="Courseworks" Relationship="Self.FK_dbo_Coursework_dbo_Student_StudentID" FromRole="Student" ToRole="Coursework" />
+          <NavigationProperty Name="CurriculumVitaes" Relationship="Self.FK_dbo_CurriculumVitae_dbo_Student_StudentID" FromRole="Student" ToRole="CurriculumVitae" />
+          <NavigationProperty Name="DegreePrograms" Relationship="Self.FK__DegreePro__Stude__40C49C62" FromRole="Student" ToRole="DegreeProgram" />
+          <NavigationProperty Name="Graduations" Relationship="Self.FK_dbo_Graduation_dbo_Student_StudentID" FromRole="Student" ToRole="Graduation" />
+          <NavigationProperty Name="Grants" Relationship="Self.FK_dbo_Grants_dbo_Student_StudentID" FromRole="Student" ToRole="Grants" />
+          <NavigationProperty Name="Honors" Relationship="Self.FK_dbo_Honors_dbo_Student_StudentID" FromRole="Student" ToRole="Honors" />
+          <NavigationProperty Name="Manuscripts" Relationship="Self.FK_dbo_Manuscript_dbo_Student_StudentID" FromRole="Student" ToRole="Manuscript" />
+          <NavigationProperty Name="Performances" Relationship="Self.FK_dbo_Performance_dbo_Student_StudentID" FromRole="Student" ToRole="Performance" />
+          <NavigationProperty Name="PersonRaces" Relationship="Self.FK_dbo_PersonRaces_dbo_Student_StudentID" FromRole="Student" ToRole="PersonRaces" />
+          <NavigationProperty Name="PostGraduations" Relationship="Self.FK_dbo_PostGraduation_dbo_Student_StudentID" FromRole="Student" ToRole="PostGraduation" />
+          <NavigationProperty Name="PrevDegrees" Relationship="Self.FK_dbo_PrevDegree_dbo_Student_StudentID" FromRole="Student" ToRole="PrevDegree" />
+          <NavigationProperty Name="PreviousEmployments" Relationship="Self.FK_dbo_PreviousEmployment_dbo_Student_StudentID" FromRole="Student" ToRole="PreviousEmployment" />
+          <NavigationProperty Name="Publications" Relationship="Self.FK_dbo_Publications_dbo_Student_StudentID" FromRole="Student" ToRole="Publications" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Activity_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Activity" Type="Self.Activity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activity">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_File_dbo_Activity_ActivityId">
+          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
+          <End Role="File" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activity">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="File">
+              <PropertyRef Name="ActivityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CommitteeMember_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CommitteeMember" Type="Self.CommitteeMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommitteeMember">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__CoursePl__4A4E069C">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="CoursePlanID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Course__CourseTr__4959E263">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Course" Type="Self.Course" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="CourseTrackID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Degre__42ACE4D4">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="DegreeProgramTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Degre__43A1090D">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="DegreeStartSemsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Plans__44952D46">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="PlansId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Track__4589517F">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="TracksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Coursework_dbo_CommonFields_GradeID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Coursework" Type="Self.Coursework" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coursework">
+              <PropertyRef Name="PassFailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="CompExam2ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_CompExamResultId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="CompExamResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="DegreeEndSemsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="FinalExam2ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="FinalExamResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_Form2ResultId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="Form2ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="Form2Type_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_Form3ResultId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="Form3ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="Qualifier2ResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_QualifierResultId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="QualifierResultId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="TakenQHS601Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Grants_dbo_CommonFields_GrantMonthId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1" />
+          <End Role="Grants" Type="Self.Grant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Grants">
+              <PropertyRef Name="GrantMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Honors_dbo_CommonFields_HonorMonthId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Honors" Type="Self.Honor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Honors">
+              <PropertyRef Name="HonorMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_AbstractStatsID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="AbstractStatsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CategoryID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CommonFields_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CommonFields_ID1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CommonFields_ID2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="CommonFields_ID3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_ProposalStatsID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="ProposalStatsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_PublicationStatsID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="PublicationStatsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_CommonFields_TeachingStatsID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="TeachingStatsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PostGraduation" Type="Self.PostGraduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PostGraduation">
+              <PropertyRef Name="CurrentStartMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PrevDegree" Type="Self.PrevDegree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PrevDegree">
+              <PropertyRef Name="DegreeTypesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PreviousEmployment" Type="Self.PreviousEmployment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PreviousEmployment">
+              <PropertyRef Name="EndMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1" />
+          <End Role="PreviousEmployment" Type="Self.PreviousEmployment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PreviousEmployment">
+              <PropertyRef Name="StartMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Publications_dbo_CommonFields_PubMonthId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1" />
+          <End Role="Publications" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Publications">
+              <PropertyRef Name="PubMonthId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CitizenshipStatsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Student_dbo_CommonFields_GendersId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="GendersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="InterimAdvisorsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="PermanentAdvisorsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Coursework_dbo_Course_CourseID">
+          <End Role="Course" Type="Self.Course" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Coursework" Type="Self.Coursework" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Coursework">
+              <PropertyRef Name="CourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Coursework_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Coursework" Type="Self.Coursework" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Coursework">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CurriculumVitae_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CurriculumVitae" Type="Self.CurriculumVitae" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CurriculumVitae">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId">
+          <End Role="CurriculumVitae" Type="Self.CurriculumVitae" Multiplicity="0..1" />
+          <End Role="File" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurriculumVitae">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="File">
+              <PropertyRef Name="CurriculumVitaeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Gradu__41B8C09B">
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduation">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="GraduationID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DegreePro__Stude__40C49C62">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="DegreeProgram" Type="Self.DegreeProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DegreeProgram">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_File_dbo_Manuscript_ManuscriptId">
+          <End Role="Manuscript" Type="Self.Manuscript" Multiplicity="0..1" />
+          <End Role="File" Type="Self.File" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Manuscript">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="File">
+              <PropertyRef Name="ManuscriptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Graduation_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Graduation" Type="Self.Graduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduation">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Grants_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Grants" Type="Self.Grant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Grants">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Honors_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Honors" Type="Self.Honor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Honors">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Manuscript_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Manuscript" Type="Self.Manuscript" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Manuscript">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Performance_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Performance" Type="Self.Performance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Performance">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PersonRaces_dbo_Races_RaceID">
+          <End Role="Races" Type="Self.Race" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonRaces" Type="Self.PersonRace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Races">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonRaces">
+              <PropertyRef Name="RaceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PersonRaces_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PersonRaces" Type="Self.PersonRace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PersonRaces">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PostGraduation_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="PostGraduation" Type="Self.PostGraduation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostGraduation">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PrevDegree_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="PrevDegree" Type="Self.PrevDegree" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PrevDegree">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_PreviousEmployment_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="PreviousEmployment" Type="Self.PreviousEmployment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PreviousEmployment">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Publications_dbo_Student_StudentID">
+          <End Role="Student" Type="Self.Student" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Publications" Type="Self.Publication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Publications">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SchoolContext2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activities" EntityType="Self.Activity" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="CommitteeMembers" EntityType="Self.CommitteeMember" />
+          <EntitySet Name="CommonFields" EntityType="Self.CommonField" />
+          <EntitySet Name="Courses" EntityType="Self.Course" />
+          <EntitySet Name="Courseworks" EntityType="Self.Coursework" />
+          <EntitySet Name="CurriculumVitaes" EntityType="Self.CurriculumVitae" />
+          <EntitySet Name="DegreePrograms" EntityType="Self.DegreeProgram" />
+          <EntitySet Name="Files" EntityType="Self.File" />
+          <EntitySet Name="Graduations" EntityType="Self.Graduation" />
+          <EntitySet Name="Grants" EntityType="Self.Grant" />
+          <EntitySet Name="Honors" EntityType="Self.Honor" />
+          <EntitySet Name="Manuscripts" EntityType="Self.Manuscript" />
+          <EntitySet Name="Performances" EntityType="Self.Performance" />
+          <EntitySet Name="PersonRaces" EntityType="Self.PersonRace" />
+          <EntitySet Name="PostGraduations" EntityType="Self.PostGraduation" />
+          <EntitySet Name="PrevDegrees" EntityType="Self.PrevDegree" />
+          <EntitySet Name="PreviousEmployments" EntityType="Self.PreviousEmployment" />
+          <EntitySet Name="Publications" EntityType="Self.Publication" />
+          <EntitySet Name="Races" EntityType="Self.Race" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_dbo_Activity_dbo_Student_StudentID" Association="Self.FK_dbo_Activity_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Activity" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_File_dbo_Activity_ActivityId" Association="Self.FK_dbo_File_dbo_Activity_ActivityId">
+            <End Role="Activity" EntitySet="Activities" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CommitteeMember_dbo_Student_StudentID" Association="Self.FK_dbo_CommitteeMember_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="CommitteeMember" EntitySet="CommitteeMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__CoursePl__4A4E069C" Association="Self.FK__Course__CoursePl__4A4E069C">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Course__CourseTr__4959E263" Association="Self.FK__Course__CourseTr__4959E263">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Course" EntitySet="Courses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Degre__42ACE4D4" Association="Self.FK__DegreePro__Degre__42ACE4D4">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="DegreeProgram" EntitySet="DegreePrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Degre__43A1090D" Association="Self.FK__DegreePro__Degre__43A1090D">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="DegreeProgram" EntitySet="DegreePrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Plans__44952D46" Association="Self.FK__DegreePro__Plans__44952D46">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="DegreeProgram" EntitySet="DegreePrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Track__4589517F" Association="Self.FK__DegreePro__Track__4589517F">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="DegreeProgram" EntitySet="DegreePrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Coursework_dbo_CommonFields_GradeID" Association="Self.FK_dbo_Coursework_dbo_CommonFields_GradeID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Coursework" EntitySet="Courseworks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_CompExamResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_CompExamResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_Form2ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_Form2ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID" Association="Self.FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_Form3ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_Form3ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_QualifierResultId" Association="Self.FK_dbo_Graduation_dbo_CommonFields_QualifierResultId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id" Association="Self.FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Grants_dbo_CommonFields_GrantMonthId" Association="Self.FK_dbo_Grants_dbo_CommonFields_GrantMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Grants" EntitySet="Grants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Honors_dbo_CommonFields_HonorMonthId" Association="Self.FK_dbo_Honors_dbo_CommonFields_HonorMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Honors" EntitySet="Honors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_AbstractStatsID" Association="Self.FK_dbo_Performance_dbo_CommonFields_AbstractStatsID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CategoryID" Association="Self.FK_dbo_Performance_dbo_CommonFields_CategoryID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID" Association="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1" Association="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2" Association="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3" Association="Self.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_ProposalStatsID" Association="Self.FK_dbo_Performance_dbo_CommonFields_ProposalStatsID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_PublicationStatsID" Association="Self.FK_dbo_Performance_dbo_CommonFields_PublicationStatsID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_CommonFields_TeachingStatsID" Association="Self.FK_dbo_Performance_dbo_CommonFields_TeachingStatsID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId" Association="Self.FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="PostGraduation" EntitySet="PostGraduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID" Association="Self.FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="PrevDegree" EntitySet="PrevDegrees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId" Association="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="PreviousEmployment" EntitySet="PreviousEmployments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId" Association="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="PreviousEmployment" EntitySet="PreviousEmployments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Publications_dbo_CommonFields_PubMonthId" Association="Self.FK_dbo_Publications_dbo_CommonFields_PubMonthId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Publications" EntitySet="Publications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" Association="Self.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Student_dbo_CommonFields_GendersId" Association="Self.FK_dbo_Student_dbo_CommonFields_GendersId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" Association="Self.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" Association="Self.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Coursework_dbo_Course_CourseID" Association="Self.FK_dbo_Coursework_dbo_Course_CourseID">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Coursework" EntitySet="Courseworks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Coursework_dbo_Student_StudentID" Association="Self.FK_dbo_Coursework_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Coursework" EntitySet="Courseworks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CurriculumVitae_dbo_Student_StudentID" Association="Self.FK_dbo_CurriculumVitae_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="CurriculumVitae" EntitySet="CurriculumVitaes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId" Association="Self.FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId">
+            <End Role="CurriculumVitae" EntitySet="CurriculumVitaes" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Gradu__41B8C09B" Association="Self.FK__DegreePro__Gradu__41B8C09B">
+            <End Role="Graduation" EntitySet="Graduations" />
+            <End Role="DegreeProgram" EntitySet="DegreePrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DegreePro__Stude__40C49C62" Association="Self.FK__DegreePro__Stude__40C49C62">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="DegreeProgram" EntitySet="DegreePrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_File_dbo_Manuscript_ManuscriptId" Association="Self.FK_dbo_File_dbo_Manuscript_ManuscriptId">
+            <End Role="Manuscript" EntitySet="Manuscripts" />
+            <End Role="File" EntitySet="Files" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Graduation_dbo_Student_StudentID" Association="Self.FK_dbo_Graduation_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Graduation" EntitySet="Graduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Grants_dbo_Student_StudentID" Association="Self.FK_dbo_Grants_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Grants" EntitySet="Grants" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Honors_dbo_Student_StudentID" Association="Self.FK_dbo_Honors_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Honors" EntitySet="Honors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Manuscript_dbo_Student_StudentID" Association="Self.FK_dbo_Manuscript_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Manuscript" EntitySet="Manuscripts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Performance_dbo_Student_StudentID" Association="Self.FK_dbo_Performance_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Performance" EntitySet="Performances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PersonRaces_dbo_Races_RaceID" Association="Self.FK_dbo_PersonRaces_dbo_Races_RaceID">
+            <End Role="Races" EntitySet="Races" />
+            <End Role="PersonRaces" EntitySet="PersonRaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PersonRaces_dbo_Student_StudentID" Association="Self.FK_dbo_PersonRaces_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="PersonRaces" EntitySet="PersonRaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PostGraduation_dbo_Student_StudentID" Association="Self.FK_dbo_PostGraduation_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="PostGraduation" EntitySet="PostGraduations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PrevDegree_dbo_Student_StudentID" Association="Self.FK_dbo_PrevDegree_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="PrevDegree" EntitySet="PrevDegrees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_PreviousEmployment_dbo_Student_StudentID" Association="Self.FK_dbo_PreviousEmployment_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="PreviousEmployment" EntitySet="PreviousEmployments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Publications_dbo_Student_StudentID" Association="Self.FK_dbo_Publications_dbo_Student_StudentID">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Publications" EntitySet="Publications" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SchoolContext2ModelStoreContainer" CdmEntityContainer="SchoolContext2Entities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Activity">
+              <MappingFragment StoreEntitySet="Activity">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ActivitySummaryDesc" ColumnName="ActivitySummaryDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="SchoolContext2Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="SchoolContext2Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="SchoolContext2Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="SchoolContext2Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommitteeMembers">
+            <EntityTypeMapping TypeName="SchoolContext2Model.CommitteeMember">
+              <MappingFragment StoreEntitySet="CommitteeMember">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="University" ColumnName="University" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CommonFields">
+            <EntityTypeMapping TypeName="SchoolContext2Model.CommonField">
+              <MappingFragment StoreEntitySet="CommonFields">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="GradePoint" ColumnName="GradePoint" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Course">
+              <MappingFragment StoreEntitySet="Course">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="CourseNum" ColumnName="CourseNum" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseTrackID" ColumnName="CourseTrackID" />
+                <ScalarProperty Name="CoursePlanID" ColumnName="CoursePlanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courseworks">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Coursework">
+              <MappingFragment StoreEntitySet="Coursework">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="PassFailID" ColumnName="PassFailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurriculumVitaes">
+            <EntityTypeMapping TypeName="SchoolContext2Model.CurriculumVitae">
+              <MappingFragment StoreEntitySet="CurriculumVitae">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DegreePrograms">
+            <EntityTypeMapping TypeName="SchoolContext2Model.DegreeProgram">
+              <MappingFragment StoreEntitySet="DegreeProgram">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="GraduationID" ColumnName="GraduationID" />
+                <ScalarProperty Name="DegreeProgramTypeId" ColumnName="DegreeProgramTypeId" />
+                <ScalarProperty Name="DegreeStartYear" ColumnName="DegreeStartYear" />
+                <ScalarProperty Name="DegreeStartSemsId" ColumnName="DegreeStartSemsId" />
+                <ScalarProperty Name="PlansId" ColumnName="PlansId" />
+                <ScalarProperty Name="TracksId" ColumnName="TracksId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Files">
+            <EntityTypeMapping TypeName="SchoolContext2Model.File">
+              <MappingFragment StoreEntitySet="File">
+                <ScalarProperty Name="FileId" ColumnName="FileId" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="FileType" ColumnName="FileType" />
+                <ScalarProperty Name="ManuscriptId" ColumnName="ManuscriptId" />
+                <ScalarProperty Name="ActivityId" ColumnName="ActivityId" />
+                <ScalarProperty Name="CurriculumVitaeId" ColumnName="CurriculumVitaeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Graduations">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Graduation">
+              <MappingFragment StoreEntitySet="Graduation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="DegreeEndSemsId" ColumnName="DegreeEndSemsId" />
+                <ScalarProperty Name="DegreeEndYear" ColumnName="DegreeEndYear" />
+                <ScalarProperty Name="QualifierResultId" ColumnName="QualifierResultId" />
+                <ScalarProperty Name="Qualifier2ResultId" ColumnName="Qualifier2ResultId" />
+                <ScalarProperty Name="DateOfQualification" ColumnName="DateOfQualification" />
+                <ScalarProperty Name="DateOfQualification2" ColumnName="DateOfQualification2" />
+                <ScalarProperty Name="Form2Title" ColumnName="Form2Title" />
+                <ScalarProperty Name="Form2Date" ColumnName="Form2Date" />
+                <ScalarProperty Name="Form2ResultId" ColumnName="Form2ResultId" />
+                <ScalarProperty Name="CompExamResultId" ColumnName="CompExamResultId" />
+                <ScalarProperty Name="DateOfCompExam" ColumnName="DateOfCompExam" />
+                <ScalarProperty Name="CompExam2ResultId" ColumnName="CompExam2ResultId" />
+                <ScalarProperty Name="DateOfCompExam2" ColumnName="DateOfCompExam2" />
+                <ScalarProperty Name="AdvisorName" ColumnName="AdvisorName" />
+                <ScalarProperty Name="AdvisorEmail" ColumnName="AdvisorEmail" />
+                <ScalarProperty Name="AdvisorDepartment" ColumnName="AdvisorDepartment" />
+                <ScalarProperty Name="AdvisorUniversity" ColumnName="AdvisorUniversity" />
+                <ScalarProperty Name="Form3Title" ColumnName="Form3Title" />
+                <ScalarProperty Name="Form3Date" ColumnName="Form3Date" />
+                <ScalarProperty Name="Form3ResultId" ColumnName="Form3ResultId" />
+                <ScalarProperty Name="FinalExamResultId" ColumnName="FinalExamResultId" />
+                <ScalarProperty Name="DateOfFinalExam" ColumnName="DateOfFinalExam" />
+                <ScalarProperty Name="FinalExam2ResultId" ColumnName="FinalExam2ResultId" />
+                <ScalarProperty Name="DateOfFinalExam2" ColumnName="DateOfFinalExam2" />
+                <ScalarProperty Name="Form2Type_ID" ColumnName="Form2Type_ID" />
+                <ScalarProperty Name="TakenQHS601Id" ColumnName="TakenQHS601Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grants">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Grant">
+              <MappingFragment StoreEntitySet="Grants">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="GrantInformation" ColumnName="GrantInformation" />
+                <ScalarProperty Name="GrantMonthId" ColumnName="GrantMonthId" />
+                <ScalarProperty Name="GrantYear" ColumnName="GrantYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Honors">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Honor">
+              <MappingFragment StoreEntitySet="Honors">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="HonorInformation" ColumnName="HonorInformation" />
+                <ScalarProperty Name="HonorMonthId" ColumnName="HonorMonthId" />
+                <ScalarProperty Name="HonorYear" ColumnName="HonorYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manuscripts">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Manuscript">
+              <MappingFragment StoreEntitySet="Manuscript">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Performances">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Performance">
+              <MappingFragment StoreEntitySet="Performance">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryInfo" ColumnName="CategoryInfo" />
+                <ScalarProperty Name="PublicationStatsID" ColumnName="PublicationStatsID" />
+                <ScalarProperty Name="AbstractStatsID" ColumnName="AbstractStatsID" />
+                <ScalarProperty Name="ProposalStatsID" ColumnName="ProposalStatsID" />
+                <ScalarProperty Name="TeachingStatsID" ColumnName="TeachingStatsID" />
+                <ScalarProperty Name="CommonFields_ID" ColumnName="CommonFields_ID" />
+                <ScalarProperty Name="CommonFields_ID1" ColumnName="CommonFields_ID1" />
+                <ScalarProperty Name="CommonFields_ID2" ColumnName="CommonFields_ID2" />
+                <ScalarProperty Name="CommonFields_ID3" ColumnName="CommonFields_ID3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonRaces">
+            <EntityTypeMapping TypeName="SchoolContext2Model.PersonRace">
+              <MappingFragment StoreEntitySet="PersonRaces">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="RaceID" ColumnName="RaceID" />
+                <ScalarProperty Name="IsSelectedPR" ColumnName="IsSelectedPR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostGraduations">
+            <EntityTypeMapping TypeName="SchoolContext2Model.PostGraduation">
+              <MappingFragment StoreEntitySet="PostGraduation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="CurrentPosition" ColumnName="CurrentPosition" />
+                <ScalarProperty Name="CurrentStartMonthId" ColumnName="CurrentStartMonthId" />
+                <ScalarProperty Name="CurrentStartYear" ColumnName="CurrentStartYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrevDegrees">
+            <EntityTypeMapping TypeName="SchoolContext2Model.PrevDegree">
+              <MappingFragment StoreEntitySet="PrevDegree">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="DegreeTypesID" ColumnName="DegreeTypesID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CumulativeGPA" ColumnName="CumulativeGPA" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="SecondMajor" ColumnName="SecondMajor" />
+                <ScalarProperty Name="Minor" ColumnName="Minor" />
+                <ScalarProperty Name="DateOfAward" ColumnName="DateOfAward" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreviousEmployments">
+            <EntityTypeMapping TypeName="SchoolContext2Model.PreviousEmployment">
+              <MappingFragment StoreEntitySet="PreviousEmployment">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Employer" ColumnName="Employer" />
+                <ScalarProperty Name="StartMonthId" ColumnName="StartMonthId" />
+                <ScalarProperty Name="StartYear" ColumnName="StartYear" />
+                <ScalarProperty Name="EndMonthId" ColumnName="EndMonthId" />
+                <ScalarProperty Name="EndYear" ColumnName="EndYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publications">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Publication">
+              <MappingFragment StoreEntitySet="Publications">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="PublicationInformation" ColumnName="PublicationInformation" />
+                <ScalarProperty Name="PubMonthId" ColumnName="PubMonthId" />
+                <ScalarProperty Name="PubYear" ColumnName="PubYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Races">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Race">
+              <MappingFragment StoreEntitySet="Races">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="SchoolContext2Model.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="StudentNumber" ColumnName="StudentNumber" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SchoolEmail" ColumnName="SchoolEmail" />
+                <ScalarProperty Name="OtherEmail" ColumnName="OtherEmail" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="GendersId" ColumnName="GendersId" />
+                <ScalarProperty Name="RaceOther" ColumnName="RaceOther" />
+                <ScalarProperty Name="CitizenshipStatsId" ColumnName="CitizenshipStatsId" />
+                <ScalarProperty Name="EmploymentStatsId" ColumnName="EmploymentStatsId" />
+                <ScalarProperty Name="InterimAdvisorsId" ColumnName="InterimAdvisorsId" />
+                <ScalarProperty Name="PermanentAdvisorsId" ColumnName="PermanentAdvisorsId" />
+                <ScalarProperty Name="RaceAsianOther" ColumnName="RaceAsianOther" />
+                <ScalarProperty Name="RacePacIsleOther" ColumnName="RacePacIsleOther" />
+                <ScalarProperty Name="EmploymentStatsOther" ColumnName="EmploymentStatsOther" />
+                <ScalarProperty Name="PermanentAdvisorOther" ColumnName="PermanentAdvisorOther" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SchoolContext2Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="SchoolContext2Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -12,15 +12,22 @@ namespace StudentTrackingSystem3.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PostGraduation
+    public partial class DegreeProgram
     {
         public int ID { get; set; }
         public int StudentID { get; set; }
-        public string CurrentPosition { get; set; }
-        public int CurrentStartMonthId { get; set; }
-        public int CurrentStartYear { get; set; }
+        public int GraduationID { get; set; }
+        public int DegreeProgramTypeId { get; set; }
+        public int DegreeStartYear { get; set; }
+        public int DegreeStartSemsId { get; set; }
+        public int PlansId { get; set; }
+        public int TracksId { get; set; }
     
         public virtual CommonField CommonField { get; set; }
+        public virtual CommonField CommonField1 { get; set; }
+        public virtual CommonField CommonField2 { get; set; }
+        public virtual CommonField CommonField3 { get; set; }
+        public virtual Graduation Graduation { get; set; }
         public virtual Student Student { get; set; }
     }
 }

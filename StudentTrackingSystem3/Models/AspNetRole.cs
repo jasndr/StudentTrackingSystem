@@ -12,20 +12,18 @@ namespace StudentTrackingSystem3.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Activity
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Activity()
+        public AspNetRole()
         {
-            this.Files = new HashSet<File>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public int ID { get; set; }
-        public int StudentID { get; set; }
-        public string ActivitySummaryDesc { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual Student Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<File> Files { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

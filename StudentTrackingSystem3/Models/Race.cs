@@ -12,20 +12,19 @@ namespace StudentTrackingSystem3.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Activity
+    public partial class Race
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Activity()
+        public Race()
         {
-            this.Files = new HashSet<File>();
+            this.PersonRaces = new HashSet<PersonRace>();
         }
     
-        public int ID { get; set; }
-        public int StudentID { get; set; }
-        public string ActivitySummaryDesc { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public bool IsSelected { get; set; }
     
-        public virtual Student Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<File> Files { get; set; }
+        public virtual ICollection<PersonRace> PersonRaces { get; set; }
     }
 }

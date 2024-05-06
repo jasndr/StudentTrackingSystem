@@ -12,15 +12,12 @@ namespace StudentTrackingSystem3.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class PostGraduation
+    public partial class sysdiagram
     {
-        public int ID { get; set; }
-        public int StudentID { get; set; }
-        public string CurrentPosition { get; set; }
-        public int CurrentStartMonthId { get; set; }
-        public int CurrentStartYear { get; set; }
-    
-        public virtual CommonField CommonField { get; set; }
-        public virtual Student Student { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

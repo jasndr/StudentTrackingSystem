@@ -29,7 +29,7 @@
     @Html.ActionLink("Add Course", "Create", new { id = ViewBag.CurrentStudent_Id }, htmlAttributes: new {@class="guestHidden" })
 </p>
 
-@if (!object.ReferenceEquals(Model.FirstOrDefault(), null))
+@if (Model != null)
 {
 
     <table class="table">

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="17110b167f024049bc32c06b87842432" Name="Diagram1">
+        <EntityTypeShape EntityType="SchoolContext2Model.Activity" Width="1.5" PointX="5.25" PointY="70.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.AspNetUser" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.CommitteeMember" Width="1.5" PointX="5.25" PointY="72.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.CommonField" Width="1.5" PointX="0.75" PointY="28.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Course" Width="1.5" PointX="3" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Coursework" Width="1.5" PointX="5.25" PointY="51.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.CurriculumVitae" Width="1.5" PointX="5.25" PointY="76" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.DegreeProgram" Width="1.5" PointX="5.25" PointY="55.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.File" Width="1.5" PointX="7.5" PointY="73.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Graduation" Width="1.5" PointX="11.25" PointY="49.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Grant" Width="1.5" PointX="8.25" PointY="52.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Honor" Width="1.5" PointX="8.25" PointY="56.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Manuscript" Width="1.5" PointX="5.25" PointY="78.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Performance" Width="1.5" PointX="8.25" PointY="46.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.PersonRace" Width="1.5" PointX="8.25" PointY="70.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.PostGraduation" Width="1.5" PointX="5.25" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.PrevDegree" Width="1.5" PointX="11.25" PointY="59.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.PreviousEmployment" Width="1.5" PointX="11.25" PointY="45.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Publication" Width="1.5" PointX="5.25" PointY="59.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Race" Width="1.5" PointX="6" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.Student" Width="1.5" PointX="3" PointY="71.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolContext2Model.sysdiagram" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Activity_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_File_dbo_Activity_ActivityId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_CommitteeMember_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK__Course__CoursePl__4A4E069C" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK__Course__CourseTr__4959E263" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK__DegreePro__Degre__42ACE4D4" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK__DegreePro__Degre__43A1090D" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK__DegreePro__Plans__44952D46" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK__DegreePro__Track__4589517F" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Coursework_dbo_CommonFields_GradeID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_CompExamResultId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_DegreeEndSemsId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_FinalExam2ResultId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_FinalExamResultId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_Form2ResultId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_Form2Type_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_Form3ResultId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_Qualifier2ResultId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_QualifierResultId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_CommonFields_TakenQHS601Id" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Grants_dbo_CommonFields_GrantMonthId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Honors_dbo_CommonFields_HonorMonthId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_AbstractStatsID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_CategoryID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID1" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID2" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_CommonFields_ID3" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_ProposalStatsID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_PublicationStatsID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_CommonFields_TeachingStatsID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PostGraduation_dbo_CommonFields_CurrentStartMonthId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Publications_dbo_CommonFields_PubMonthId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Student_dbo_CommonFields_GendersId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Coursework_dbo_Course_CourseID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Coursework_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_CurriculumVitae_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK__DegreePro__Gradu__41B8C09B" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK__DegreePro__Stude__40C49C62" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_File_dbo_Manuscript_ManuscriptId" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Graduation_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Grants_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Honors_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Manuscript_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Performance_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PersonRaces_dbo_Races_RaceID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PersonRaces_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PostGraduation_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PrevDegree_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_PreviousEmployment_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.FK_dbo_Publications_dbo_Student_StudentID" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolContext2Model.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

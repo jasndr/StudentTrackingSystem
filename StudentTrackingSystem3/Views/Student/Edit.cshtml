@@ -21,7 +21,7 @@
             <div class="row menuNav" id="menuNav_background">
                 @Html.ActionLink("Profile", "Edit", "Student", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_background col-md-2 col-xs-12" })
 
-                @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12", @onclick = "javascript:return false;", @disabled = true })
+                @Html.ActionLink("Coursework", "Index", "Coursework", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_coursework col-md-2 col-xs-12" })
 
                 @Html.ActionLink("Performance and Activity", "Index", "Performance", new { id = Model.Student.Id }, new { @class = "btn btn-primary infoNav menuNav_performance col-md-2 col-xs-12" })
 
