@@ -19,8 +19,8 @@ namespace StudentTrackingSystem3.DAL
         public DbSet<Course> Courses { get; set; }
         public DbSet<CommonFields> CommonFields { get; set; }
         public DbSet<PrevDegree> PreviousDegrees { get; set; }
-        public DbSet<Races> Races { get; set; }
-        public DbSet<PersonRaces> PersonRaces { get; set; }
+        public DbSet<Race> Races { get; set; }
+        public DbSet<PersonRace> PersonRaces { get; set; }
         public DbSet<Activity> Activities { get; set; }
         public DbSet<Performance> Performances { get; set; }
         public DbSet<File> Files { get; set; }
@@ -39,13 +39,13 @@ namespace StudentTrackingSystem3.DAL
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Entity<Student>()
-                .HasRequired(c => c.DegreeStartSems)
+                .HasRequired(c => c.DegreePrograms.FirstOrDefault().CommonField1)
                 .WithMany()
-                .HasForeignKey(d => d.DegreeStartSemsId)
+                .HasForeignKey(d => d.DegreePrograms.FirstOrDefault().CommonField1.ID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Student>()
-                .HasRequired(c => c.Genders)
+                .HasRequired(c => c.CommonField)
                 .WithMany()
                 .HasForeignKey(d => d.GendersId)
                 .WillCascadeOnDelete(false);
@@ -53,19 +53,19 @@ namespace StudentTrackingSystem3.DAL
             modelBuilder.Entity<Student>()
                 .HasRequired(c => c.DegreePrograms)
                 .WithMany()
-                .HasForeignKey(d => d.DegreeProgramsId)
+                .HasForeignKey(d => d.DegreePrograms.FirstOrDefault().DegreeProgramTypeId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Student>()
-                .HasRequired(c => c.Tracks)
+                .HasRequired(c => c.DegreePrograms.FirstOrDefault().CommonField3)
                 .WithMany()
-                .HasForeignKey(d => d.TracksId)
+                .HasForeignKey(d => d.DegreePrograms.FirstOrDefault().CommonField3.ID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Student>()
-                .HasRequired(c => c.Plans)
+                .HasRequired(c => c.DegreePrograms.FirstOrDefault().CommonField2)
                 .WithMany()
-                .HasForeignKey(d => d.PlansId)
+                .HasForeignKey(d => d.DegreePrograms.FirstOrDefault().CommonField2.ID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Coursework>()
@@ -75,7 +75,7 @@ namespace StudentTrackingSystem3.DAL
                .WillCascadeOnDelete(false)*/;
 
             modelBuilder.Entity<PreviousEmployment>()
-                .HasRequired(c => c.StartMonth)
+                .HasRequired(c => c.CommonField)
                 .WithMany()
                 .HasForeignKey(d => d.StartMonthId)
                 .WillCascadeOnDelete(false);

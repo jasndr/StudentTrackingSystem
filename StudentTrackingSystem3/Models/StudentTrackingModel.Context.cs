@@ -13,10 +13,10 @@ namespace StudentTrackingSystem3.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SchoolContext2Entities : DbContext
+    public partial class SchoolContext2Entities1 : DbContext
     {
-        public SchoolContext2Entities()
-            : base("name=SchoolContext2Entities")
+        public SchoolContext2Entities1()
+            : base("name=SchoolContext2Entities1")
         {
         }
     

@@ -228,29 +228,106 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\CommitteeMember.cs" />
+    <Compile Include="Models\Activity.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommitteeMember.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommonField.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CommonFields.cs" />
-    <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Coursework.cs" />
-    <Compile Include="Models\Manuscript.cs" />
-    <Compile Include="Models\CurriculumVitae.cs" />
-    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\Course.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Coursework.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CurriculumVitae.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DegreeProgram.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\File.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FileType.cs" />
-    <Compile Include="Models\Graduation.cs" />
+    <Compile Include="Models\Graduation.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Grant.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Grants.cs" />
+    <Compile Include="Models\Honor.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Honors.cs" />
-    <Compile Include="Models\Performance.cs" />
-    <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\Manuscript.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Performance.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PersonRace.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PersonRaces.cs" />
-    <Compile Include="Models\PostGraduation.cs" />
-    <Compile Include="Models\PrevDegree.cs" />
-    <Compile Include="Models\PreviousEmployment.cs" />
+    <Compile Include="Models\PostGraduation.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrevDegree.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PreviousEmployment.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Publication.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Publications.cs" />
-    <Compile Include="Models\Student.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Race.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Races.cs" />
     <Compile Include="Models\RaceRepository.cs" />
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudentModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>StudentModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -316,6 +393,16 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Logo_cim-01.png" />
+    <Content Include="Models\StudentModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudentModel.edmx</DependentUpon>
+      <LastGenOutput>StudentModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\StudentModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StudentModel.edmx</DependentUpon>
+      <LastGenOutput>StudentModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -332,6 +419,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\StudentModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StudentModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\StudentModel.edmx.diagram">
+      <DependentUpon>StudentModel.edmx</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\Laptop-Evqa8urd %28Local%29 Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\MEB411-03 %28Local Setup%29 Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Publish - QHSDB Server.pubxml" />
@@ -460,6 +554,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202404150708343_InitialCreate.resx">

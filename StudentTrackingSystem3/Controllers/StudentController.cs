@@ -30,130 +30,6 @@ namespace StudentTrackingSystem3.Controllers
 
 
             //if sortOrder is empty, then (sort by date new->old), otherwise (sort by date old->new)
-            ViewBag.DegreeStart_SortParm = String.IsNullOrEmpty(sortOrder) || sortOrder == "DegreeStart" ?  "DegreeStart_desc" : "DegreeStart";
-
-            //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
-            ViewBag.DegreeProgramsId_SortParm = sortOrder == "DegreeProgramsId" ? "DegreeProgramsId_desc" : "DegreeProgramsId";
-
-            //if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
-            ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
-
-            //if sortOrder = PlansId then (sort by PlansId desc), otherwise (sort by PlansId, should be default)
-            ViewBag.PlansId_SortParm = sortOrder == "PlansId" ? "PlansId_desc" : "PlansId";
-
-            //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
-
-            //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
-
-            //if sortOrder = StudentId, then (sort by student num asc), otherwise (sort by student num desc)
-            ViewBag.StudentID_SortParm = sortOrder == "StudentId" ? "studentID_desc" : "studentID";
-
-            //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
-            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
-
-            //if sortOrder = DegreeStartEnd then (sort by date new->old), otherwise (sort by date old-new, should be default)
-            ViewBag.DegreeEnd_SportParm = sortOrder == "DegreeEnd" ? "DegreeEnd_desc" : "DegreeEnd";
-
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-
-            var students = from s in db.Students
-                           where s.Graduation.FirstOrDefault() == null
-                                 || (s.Graduation.FirstOrDefault() != null && s.Graduation.FirstOrDefault().DegreeEndYear == null)
-                                 || (s.Graduation.FirstOrDefault() != null && s.Graduation.FirstOrDefault().DegreeEndYear != null
-                                     && s.Graduation.FirstOrDefault().DegreeEndYear > DateTime.Now.Year)
-                                 || (s.Graduation.FirstOrDefault() != null
-                                      && s.Graduation.FirstOrDefault().DegreeEndYear != null && s.Graduation.FirstOrDefault().DegreeEndSems != null
-                                      && (s.Graduation.FirstOrDefault().DegreeEndYear > DateTime.Now.Year
-                                           || s.Graduation.FirstOrDefault().DegreeEndYear == DateTime.Now.Year &&
-                                          s.Graduation.FirstOrDefault().DegreeEndSemsId * 4 > DateTime.Now.Month))
-                           select s;
-
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                students = students.Where(s => s.LastName.Contains(searchString)
-                                            || s.FirstName.Contains(searchString)
-                                            || s.SchoolEmail.Contains(searchString));
-            }
-
-            switch (sortOrder)
-            {
-                case "studentID":
-                    students = students.OrderBy(s => s.StudentNumber);
-                    break;
-                case "studentID_desc":
-                    students = students.OrderByDescending(s => s.StudentNumber);
-                    break;
-                case "FirstName":
-                    students = students.OrderBy(s => s.FirstName);
-                    break;
-                case "FirstName_desc":
-                    students = students.OrderByDescending(s => s.FirstName);
-                    break;
-                case "LastName":
-                    students = students.OrderBy(s => s.LastName);
-                    break;
-                case "LastName_desc":
-                    students = students.OrderByDescending(s => s.LastName);
-                    break;
-                case "SchoolEmail":
-                    students = students.OrderBy(s => s.SchoolEmail);
-                    break;
-                case "SchoolEmail_desc":
-                    students = students.OrderByDescending(s => s.SchoolEmail);
-                    break;
-                case "DegreeProgramsId":
-                    students = students.OrderBy(s => s.DegreeProgramsId);
-                    break;
-                case "DegreeProgramsId_desc":
-                    students = students.OrderByDescending(s => s.DegreeProgramsId);
-                    break;
-                case "TracksId":
-                    students = students.OrderBy(s => s.TracksId);
-                    break;
-                case "TracksId_desc":
-                    students = students.OrderByDescending(s => s.TracksId);
-                    break;
-                case "PlansId":
-                    students = students.OrderBy(s => s.PlansId);
-                    break;
-                case "PlansId_desc":
-                    students = students.OrderByDescending(s => s.PlansId);
-                    break;
-                case "DegreeStart":
-                    students = students.OrderBy(s => s.DegreeStartYear).ThenBy(s => s.DegreeStartSems.DisplayOrder);
-                    break;
-                case "DegreeStart_desc":
-                    students = students.OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSems.DisplayOrder);
-                    break;
-                default:
-                    students = students.OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSemsId).ThenBy(s => s.LastName).ThenBy(s => s.FirstName);
-                    break;
-
-            }
-
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(students.ToPagedList(pageNumber, pageSize));
-        }
-
-        // GET: Former (Students)
-        public ActionResult Former(string sortOrder, string currentFilter, string searchString, int? page)
-        {
-            ViewBag.CurrentSort = sortOrder;
-
-            //if sortOrder is emply, then (sort by date new->old), otherwise (sort by date old->new)
             ViewBag.DegreeStart_SortParm = String.IsNullOrEmpty(sortOrder) || sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
 
             //if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
@@ -192,14 +68,149 @@ namespace StudentTrackingSystem3.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
+            var students = from s in db.Students
+                           where s.Graduations.FirstOrDefault() == null
+                                 || (s.Graduations.FirstOrDefault() != null && s.Graduations.FirstOrDefault().DegreeEndYear == null)
+                                 || (s.Graduations.FirstOrDefault() != null && s.Graduations.FirstOrDefault().DegreeEndYear != null
+                                     && s.Graduations.FirstOrDefault().DegreeEndYear > DateTime.Now.Year)
+                                 || (s.Graduations.FirstOrDefault() != null
+                                      && s.Graduations.FirstOrDefault().DegreeEndYear != null && s.Graduations.FirstOrDefault().DegreeEndSemsId != null
+                                      && (s.Graduations.FirstOrDefault().DegreeEndYear > DateTime.Now.Year
+                                           || s.Graduations.FirstOrDefault().DegreeEndYear == DateTime.Now.Year &&
+                                          s.Graduations.FirstOrDefault().DegreeEndSemsId * 4 > DateTime.Now.Month))
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.LastName.Contains(searchString)
+                                            || s.FirstName.Contains(searchString)
+                                            || s.SchoolEmail.Contains(searchString));
+            }
+
+            var degreePrograms = students.FirstOrDefault().DegreePrograms;
+            var degreeStartSems = degreePrograms.Join(db.CommonFields,
+                                                        dp => dp.DegreeStartSemsId,
+                                                        cf => cf.ID,
+                                                        (dp, cf) => new { DegreeProgram = dp, CommonField = cf });
+
+            //var a = db.Chapters;
+            //var b = db.Pages
+            //.Select(p => new { page = p, chapter = a.FirstOrDefault(q => q.Title == p.Caption) })
+            //.OrderBy(p => p.chapter.order).ThenBy(p => p.page.order).Select(p => p.page).ToList();
+
+            switch (sortOrder)
+            {
+                case "studentID":
+                    students = students.OrderBy(s => s.StudentNumber);
+                    break;
+                case "studentID_desc":
+                    students = students.OrderByDescending(s => s.StudentNumber);
+                    break;
+                case "FirstName":
+                    students = students.OrderBy(s => s.FirstName);
+                    break;
+                case "FirstName_desc":
+                    students = students.OrderByDescending(s => s.FirstName);
+                    break;
+                case "LastName":
+                    students = students.OrderBy(s => s.LastName);
+                    break;
+                case "LastName_desc":
+                    students = students.OrderByDescending(s => s.LastName);
+                    break;
+                case "SchoolEmail":
+                    students = students.OrderBy(s => s.SchoolEmail);
+                    break;
+                case "SchoolEmail_desc":
+                    students = students.OrderByDescending(s => s.SchoolEmail);
+                    break;
+                case "DegreeProgramsId":
+                    students = students.OrderBy(s => s.DegreePrograms.FirstOrDefault().ID);
+                    break;
+                case "DegreeProgramsId_desc":
+                    students = students.OrderByDescending(s => s.DegreePrograms.FirstOrDefault().ID);
+                    break;
+                case "TracksId":
+                    students = students.OrderBy(s => s.DegreePrograms.FirstOrDefault().TracksId);
+                    break;
+                case "TracksId_desc":
+                    students = students.OrderByDescending(s => s.DegreePrograms.FirstOrDefault().TracksId);
+                    break;
+                case "PlansId":
+                    students = students.OrderBy(s => s.DegreePrograms.FirstOrDefault().PlansId);
+                    break;
+                case "PlansId_desc":
+                    students = students.OrderByDescending(s => s.DegreePrograms.FirstOrDefault().PlansId);
+                    break;
+                case "DegreeStart":
+                    students = students.OrderBy(s => s.DegreePrograms.FirstOrDefault().DegreeStartYear).ThenBy(s => s.DegreePrograms.FirstOrDefault().CommonField1.DisplayOrder);
+                    break;
+                case "DegreeStart_desc":
+                    students = students.OrderByDescending(s => s.DegreePrograms.FirstOrDefault().DegreeStartYear).ThenByDescending(s => s.DegreePrograms.FirstOrDefault().CommonField1.DisplayOrder);
+                    break;
+                default:
+                    students = students.OrderByDescending(s => s.DegreePrograms.FirstOrDefault().DegreeStartYear).ThenByDescending(s => s.DegreePrograms.FirstOrDefault().CommonField1.DisplayOrder).ThenBy(s => s.LastName).ThenBy(s => s.FirstName);
+                    break;
+
+            }
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
+        }
+
+        // GET: Former (Students)
+        public ActionResult Former(string sortOrder, string currentFilter, string searchString, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+
+            ////if sortOrder is emply, then (sort by date new->old), otherwise (sort by date old->new)
+            //ViewBag.DegreeStart_SortParm = String.IsNullOrEmpty(sortOrder) || sortOrder == "DegreeStart" ? "DegreeStart_desc" : "DegreeStart";
+
+            ////if sortOrder = DegreeProgramsId then (sort by degreeprogramsid desc), otherwise (sort by degreeprogramsid asc, should be default)
+            //ViewBag.DegreeProgramsId_SortParm = sortOrder == "DegreeProgramsId" ? "DegreeProgramsId_desc" : "DegreeProgramsId";
+
+            ////if sortOrder = TracksId then (sort by Tracksid desc), otherwise (sort by Tracksid, should be default)
+            //ViewBag.TracksId_SortParm = sortOrder == "TracksId" ? "TracksId_desc" : "TracksId";
+
+            ////if sortOrder = PlansId then (sort by PlansId desc), otherwise (sort by PlansId, should be default)
+            //ViewBag.PlansId_SortParm = sortOrder == "PlansId" ? "PlansId_desc" : "PlansId";
+
+            //if sortOrder = LastName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.LastName_SortParm = sortOrder == "LastName" ? "LastName_desc" : "LastName";
+
+            //if sortOrder = FirstName, then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.FirstName_SortParm = sortOrder == "FirstName" ? "FirstName_desc" : "FirstName";
+
+            //if sortOrder = StudentId, then (sort by student num asc), otherwise (sort by student num desc)
+            ViewBag.StudentID_SortParm = sortOrder == "StudentId" ? "studentID_desc" : "studentID";
+
+            //if sortOrder = SchoolEmail = then (sort z->a), otherwise (sort a->z, should be default)
+            ViewBag.SchoolEmail_SortParm = sortOrder == "SchoolEmail" ? "SchoolEmail_desc" : "SchoolEmail";
+
+            ////if sortOrder = DegreeStartEnd then (sort by date new->old), otherwise (sort by date old-new, should be default)
+            //ViewBag.DegreeEnd_SportParm = sortOrder == "DegreeEnd" ? "DegreeEnd_desc" : "DegreeEnd";
+
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
 
             var formerStudents = from s in db.Students
-                                 where s.Graduation.FirstOrDefault() != null
-                                    && s.Graduation.FirstOrDefault().DegreeEndSems != null
-                                    && s.Graduation.FirstOrDefault().DegreeEndYear != null
-                                    && (s.Graduation.FirstOrDefault().DegreeEndYear < DateTime.Now.Year
-                                       || s.Graduation.FirstOrDefault().DegreeEndYear == DateTime.Now.Year &&
-                                          s.Graduation.FirstOrDefault().DegreeEndSemsId * 4 < DateTime.Now.Month)
+                                 where s.Graduations.FirstOrDefault() != null
+                                    && s.Graduations.FirstOrDefault().DegreeEndSemsId != null
+                                    && s.Graduations.FirstOrDefault().DegreeEndYear != null
+                                    && (s.Graduations.FirstOrDefault().DegreeEndYear < DateTime.Now.Year
+                                       || s.Graduations.FirstOrDefault().DegreeEndYear == DateTime.Now.Year &&
+                                          s.Graduations.FirstOrDefault().DegreeEndSemsId * 4 < DateTime.Now.Month)
                                  select s;
 
 
@@ -236,39 +247,39 @@ namespace StudentTrackingSystem3.Controllers
                 case "SchoolEmail_desc":
                     formerStudents = formerStudents.OrderByDescending(s => s.SchoolEmail);
                     break;
-                case "DegreeProgramsId":
-                    formerStudents = formerStudents.OrderBy(s => s.DegreeProgramsId);
-                    break;
-                case "DegreeProgramsId_desc":
-                    formerStudents = formerStudents.OrderByDescending(s => s.DegreeProgramsId);
-                    break;
-                case "TracksId":
-                    formerStudents = formerStudents.OrderBy(s => s.TracksId);
-                    break;
-                case "TracksId_desc":
-                    formerStudents = formerStudents.OrderByDescending(s => s.TracksId);
-                    break;
-                case "PlansId":
-                    formerStudents = formerStudents.OrderBy(s => s.PlansId);
-                    break;
-                case "PlansId_desc":
-                    formerStudents = formerStudents.OrderByDescending(s => s.PlansId);
-                    break;
-                case "DegreeStart":
-                    formerStudents = formerStudents.OrderBy(s => s.DegreeStartYear).ThenBy(s => s.DegreeStartSems.DisplayOrder);
-                    break;
-                case "DegreeStart_desc":
-                    formerStudents = formerStudents.OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSems.DisplayOrder);
-                    break;
-                case "DegreeEnd":
-                    formerStudents = formerStudents.OrderBy(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenBy(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
-                    break;
-                case "DegreeEnd_desc":
-                    formerStudents = formerStudents.OrderByDescending(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenByDescending(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
-                    break;
+                //case "DegreeProgramsId":
+                //    formerStudents = formerStudents.OrderBy(s => s.DegreeProgramsId);
+                //    break;
+                //case "DegreeProgramsId_desc":
+                //    formerStudents = formerStudents.OrderByDescending(s => s.DegreeProgramsId);
+                //    break;
+                //case "TracksId":
+                //    formerStudents = formerStudents.OrderBy(s => s.TracksId);
+                //    break;
+                //case "TracksId_desc":
+                //    formerStudents = formerStudents.OrderByDescending(s => s.TracksId);
+                //    break;
+                //case "PlansId":
+                //    formerStudents = formerStudents.OrderBy(s => s.PlansId);
+                //    break;
+                //case "PlansId_desc":
+                //    formerStudents = formerStudents.OrderByDescending(s => s.PlansId);
+                //    break;
+                //case "DegreeStart":
+                //    formerStudents = formerStudents.OrderBy(s => s.DegreeStartYear).ThenBy(s => s.DegreeStartSems.DisplayOrder);
+                //    break;
+                //case "DegreeStart_desc":
+                //    formerStudents = formerStudents.OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSems.DisplayOrder);
+                //    break;
+                //case "DegreeEnd":
+                //    formerStudents = formerStudents.OrderBy(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenBy(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
+                //    break;
+                //case "DegreeEnd_desc":
+                //    formerStudents = formerStudents.OrderByDescending(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenByDescending(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder);
+                //    break;
                 default:
-                    formerStudents = formerStudents.OrderByDescending(s => s.Graduation.FirstOrDefault().DegreeEndYear).ThenByDescending(s => s.Graduation.FirstOrDefault().DegreeEndSems.DisplayOrder).OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSemsId).ThenBy(s => s.LastName).ThenBy(s => s.FirstName);
-                    
+                    formerStudents = formerStudents.OrderBy(s => s.LastName).ThenBy(s => s.FirstName);
+
                     break;
 
             }
@@ -286,8 +297,8 @@ namespace StudentTrackingSystem3.Controllers
                 {
                     //ID = s.Id,
                     FullName = string.Format("{0} {1}", s.FirstName, s.LastName),
-                    s.DegreeStartYear,
-                    s.DegreeStartSemsId
+                    s.DegreePrograms.FirstOrDefault().DegreeStartYear,
+                    s.DegreePrograms.FirstOrDefault().DegreeStartSemsId
                 }).OrderByDescending(s => s.DegreeStartYear).ThenByDescending(s => s.DegreeStartSemsId).ThenBy(s => s.FullName).ToList();
             ViewBag.ListOfStudents = new SelectList(students, "FullName", "FullName");
             ViewBag.ReportViewer = new ReportViewer();
@@ -378,7 +389,7 @@ namespace StudentTrackingSystem3.Controllers
                     paramsArray[1] = new ReportParameter("CurrentFormer", CurrentFormer.ToString());
                     paramsArray[2] = new ReportParameter("FromDateParam", FromDateParam.ToString());
                     paramsArray[3] = new ReportParameter("ToDateParam", ToDateParam.ToString());
-                    
+
 
                     RequirementsTableAdapter rta = new RequirementsTableAdapter();
                     rta.Fill(ds.Requirements, FromDateParam, ToDateParam, ListOfStudents, CurrentFormer);
@@ -453,7 +464,7 @@ namespace StudentTrackingSystem3.Controllers
 
 
         // GET: Student/Create
-        [Authorize(Roles ="Super, Admin, Biostat")]
+        [Authorize(Roles = "Super, Admin, Biostat")]
         public ActionResult Create()
         {
             //View Bags for DropdownsViewBag.MsctrFacultyIdBag
@@ -464,7 +475,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.CitizenshipStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "CitizenshipStatus"), "Id", "Name");
             ViewBag.EmploymentStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "EmploymentStatus"), "Id", "Name");
-            ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty").OrderBy(o=> o.DisplayOrder), "Id", "Name");
+            ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty").OrderBy(o => o.DisplayOrder), "Id", "Name");
             ViewBag.MsctrFacultyIdBag2 = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty" && o.Name != "Other").OrderBy(o => o.DisplayOrder), "Id", "Name");
 
             return View(GetRacesInitialModel());
@@ -491,7 +502,7 @@ namespace StudentTrackingSystem3.Controllers
                     //For current student, add to personRaceTable, student id number and postedRace number
                     foreach (var item in ultimate.RacesViewModel.PostedRaces.RaceIDs)
                     {
-                        var personRace = new PersonRaces();
+                        var personRace = new PersonRace();
                         int raceId = Int32.Parse(item);
                         var race = db.Races.Where(s => s.Id == raceId).ToList().Single();
                         personRace.Student = ultimate.Student;
@@ -499,7 +510,7 @@ namespace StudentTrackingSystem3.Controllers
                         personRace.IsSelectedPR = true;
                         db.PersonRaces.Add(personRace);
                         db.SaveChanges();
-                        
+
                     }
                     db.SaveChanges();
                     return RedirectToAction("Edit", "Student", new { id = ultimate.Student.Id });
@@ -540,7 +551,7 @@ namespace StudentTrackingSystem3.Controllers
 
             UltimateViewModel ultimate = new UltimateViewModel();
             var rvm = new RacesViewModel();
-            rvm.SelectedRaces = new List<Races>();
+            rvm.SelectedRaces = new List<Race>();
 
             Student student = db.Students.Find(id);
             if (student == null)
@@ -564,7 +575,7 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.StudentCVs = db.Files.Where(g => g.CurriculumVitae.StudentID == id);
 
             //Initialize selectedRaces
-            var racesToPost = new List<Races>();
+            var racesToPost = new List<Race>();
             foreach (var item in student.PersonRaces.Where(x => x.StudentID == id && x.IsSelectedPR.Equals(true)))
             {
                 racesToPost.Add(item.Race);
@@ -583,7 +594,7 @@ namespace StudentTrackingSystem3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost, ActionName("Edit")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles ="Admin, Super")]
+        [Authorize(Roles = "Admin, Super")]
         public ActionResult Edit(/*[Bind(Include = "Id,StudentNumber,FirstName,MiddleName,LastName,SchoolEmail,OtherEmail,Phone,GendersId,RaceOther,DegreeProgramsId,TracksId,DegreeStart,DegreeEnd")] Student student*/UltimateViewModel ultimate, PostedRaces postedRaces)
         {
             try
@@ -597,14 +608,14 @@ namespace StudentTrackingSystem3.Controllers
 
                     //Create current/previously-checked race list
                     var currPRList = db.PersonRaces.Where(s => s.StudentID == ultimate.Student.Id && s.IsSelectedPR.Equals(true)).ToList();
-                    var currRaceList = new List<Races>();
+                    var currRaceList = new List<Race>();
                     foreach (var item in currPRList)
                     {
                         currRaceList.Add(item.Race);
 
                     }
                     //Create new checked race list
-                    var newList = new List<Races>();
+                    var newList = new List<Race>();
                     foreach (var item in postedRaces.RaceIDs)
                     {
                         int raceId = Int32.Parse(item);
@@ -617,7 +628,7 @@ namespace StudentTrackingSystem3.Controllers
                     {
                         if (!currRaceList.Contains(nItem))
                         {
-                            var personRace = new PersonRaces();
+                            var personRace = new PersonRace();
                             int raceId = nItem.Id;
                             var race = db.Races.Where(s => s.Id == raceId).ToList().Single();
                             personRace.Student = ultimate.Student;
@@ -663,12 +674,12 @@ namespace StudentTrackingSystem3.Controllers
             ViewBag.DegreeStartSemsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "Season"), "Id", "Name");
             ViewBag.CitizenshipStatsIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "CitizenshipStatus"), "Id", "Name");
             ViewBag.MsctrFacultyIdBag = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty").OrderBy(o => o.DisplayOrder), "Id", "Name");
-            ViewBag.MsctrFacultyIdBag2 = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty" && o.Name=="Other").OrderBy(o => o.DisplayOrder), "Id", "Name");
+            ViewBag.MsctrFacultyIdBag2 = new SelectList(db.CommonFields.Where(o => o.Category == "MsctrFaculty" && o.Name == "Other").OrderBy(o => o.DisplayOrder), "Id", "Name");
 
             return View(GetRacesModel(ultimate, postedRaces));
         }
 
-        
+
         // GET: Student/Delete/5
         [Authorize]
         public ActionResult Delete(int? id)
@@ -783,7 +794,7 @@ namespace StudentTrackingSystem3.Controllers
             //setup properties
             var model = new UltimateViewModel();
             var rvm = new RacesViewModel();
-            var selectedRaces = new List<Races>();
+            var selectedRaces = new List<Race>();
 
             //setup view model
             rvm.AvailableRaces = RaceRepository.GetAll().ToList();

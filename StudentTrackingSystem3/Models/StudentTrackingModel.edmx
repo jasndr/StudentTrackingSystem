@@ -305,6 +305,35 @@
           <Property Name="EmploymentStatsOther" Type="nvarchar(max)" />
           <Property Name="PermanentAdvisorOther" Type="nvarchar(max)" />
           <Property Name="Age" Type="int" />
+          <Property Name="JabsomOrientationId" Type="int" />
+          <Property Name="DqhsOrientationId" Type="int" />
+          <Property Name="DayExtensionId" Type="int" />
+          <Property Name="CourseRegFallSemId" Type="int" />
+          <Property Name="PermanentAdvisorOtherName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PermanentAdvisorFirstMeetingDate" Type="datetime" />
+          <Property Name="JabsomAccessCardId" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="4000" />
+          <Property Name="InterimAdvisorOtherName" Type="nvarchar" MaxLength="100" />
+          <Property Name="InterimAdvisorCategoryId" Type="int" />
+          <Property Name="InterimAdvisorDepartment" Type="nvarchar" MaxLength="100" />
+          <Property Name="InterimAdvisorCategoryOther" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsGradAssistantship" Type="bit" />
+          <Property Name="DegreeStartDate" Type="datetime" />
+          <Property Name="DegreeEndDate" Type="datetime" />
+          <Property Name="CitizenshipStatsOther" Type="nvarchar" MaxLength="100" />
+          <Property Name="ApplicationDate" Type="datetime" />
+          <Property Name="UhmEvalFormId" Type="int" />
+          <Property Name="PersonalStatementId" Type="int" />
+          <Property Name="CvOrResumeId" Type="int" />
+          <Property Name="TranscriptId" Type="int" />
+          <Property Name="ReferencesCountId" Type="int" />
+          <Property Name="GradSchoolEntranceExamId" Type="int" />
+          <Property Name="GradSchoolEntranceExamOther" Type="nvarchar" MaxLength="400" />
+          <Property Name="EnglishProficiencyExamId" Type="int" />
+          <Property Name="StatusAcceptedId" Type="int" />
+          <Property Name="AdmissionLetterId" Type="int" />
+          <Property Name="IntentToRegisterDeadlineDate" Type="datetime" />
+          <Property Name="IntentToRegisterDeadlineDecisionId" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -409,6 +438,198 @@
             </Principal>
             <Dependent Role="DegreeProgram">
               <PropertyRef Name="TracksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Admissi__5A846E65">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="AdmissionLetterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__CourseR__4E1E9780">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CourseRegFallSemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__CvOrRes__54CB950F">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CvOrResumeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__DayExte__4D2A7347">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="DayExtensionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__DqhsOri__4C364F0E">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="DqhsOrientationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__English__589C25F3">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="EnglishProficiencyExamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__GradSch__57A801BA">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="GradSchoolEntranceExamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__IntentT__5B78929E">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IntentToRegisterDeadlineDecisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Interim__5006DFF2">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="InterimAdvisorCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__JabsomA__4F12BBB9">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="JabsomAccessCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__JabsomO__4B422AD5">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="JabsomOrientationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Persona__53D770D6">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="PersonalStatementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Referen__56B3DD81">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ReferencesCountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__StatusA__59904A2C">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="StatusAcceptedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Transcr__55BFB948">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="TranscriptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__UhmEval__52E34C9D">
+          <End Role="CommonFields" Type="Self.CommonFields" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UhmEvalFormId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1173,6 +1394,70 @@
             <End Role="CommonFields" EntitySet="CommonFields" />
             <End Role="DegreeProgram" EntitySet="DegreeProgram" />
           </AssociationSet>
+          <AssociationSet Name="FK__Student__Admissi__5A846E65" Association="Self.FK__Student__Admissi__5A846E65">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__CourseR__4E1E9780" Association="Self.FK__Student__CourseR__4E1E9780">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__CvOrRes__54CB950F" Association="Self.FK__Student__CvOrRes__54CB950F">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__DayExte__4D2A7347" Association="Self.FK__Student__DayExte__4D2A7347">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__DqhsOri__4C364F0E" Association="Self.FK__Student__DqhsOri__4C364F0E">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__English__589C25F3" Association="Self.FK__Student__English__589C25F3">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__GradSch__57A801BA" Association="Self.FK__Student__GradSch__57A801BA">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__IntentT__5B78929E" Association="Self.FK__Student__IntentT__5B78929E">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Interim__5006DFF2" Association="Self.FK__Student__Interim__5006DFF2">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__JabsomA__4F12BBB9" Association="Self.FK__Student__JabsomA__4F12BBB9">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__JabsomO__4B422AD5" Association="Self.FK__Student__JabsomO__4B422AD5">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Persona__53D770D6" Association="Self.FK__Student__Persona__53D770D6">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Referen__56B3DD81" Association="Self.FK__Student__Referen__56B3DD81">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__StatusA__59904A2C" Association="Self.FK__Student__StatusA__59904A2C">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Transcr__55BFB948" Association="Self.FK__Student__Transcr__55BFB948">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__UhmEval__52E34C9D" Association="Self.FK__Student__UhmEval__52E34C9D">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Activity_dbo_Student_StudentID" Association="Self.FK_dbo_Activity_dbo_Student_StudentID">
             <End Role="Student" EntitySet="Student" />
             <End Role="Activity" EntitySet="Activity" />
@@ -1450,7 +1735,7 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
-          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
@@ -1485,6 +1770,22 @@
           <NavigationProperty Name="DegreePrograms1" Relationship="Self.FK__DegreePro__Degre__43A1090D" FromRole="CommonFields" ToRole="DegreeProgram" />
           <NavigationProperty Name="DegreePrograms2" Relationship="Self.FK__DegreePro__Plans__44952D46" FromRole="CommonFields" ToRole="DegreeProgram" />
           <NavigationProperty Name="DegreePrograms3" Relationship="Self.FK__DegreePro__Track__4589517F" FromRole="CommonFields" ToRole="DegreeProgram" />
+          <NavigationProperty Name="Students" Relationship="Self.FK__Student__Admissi__5A846E65" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students1" Relationship="Self.FK__Student__CourseR__4E1E9780" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students2" Relationship="Self.FK__Student__CvOrRes__54CB950F" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students3" Relationship="Self.FK__Student__DayExte__4D2A7347" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students4" Relationship="Self.FK__Student__DqhsOri__4C364F0E" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students5" Relationship="Self.FK__Student__English__589C25F3" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students6" Relationship="Self.FK__Student__GradSch__57A801BA" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students7" Relationship="Self.FK__Student__IntentT__5B78929E" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students8" Relationship="Self.FK__Student__Interim__5006DFF2" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students9" Relationship="Self.FK__Student__JabsomA__4F12BBB9" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students10" Relationship="Self.FK__Student__JabsomO__4B422AD5" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students11" Relationship="Self.FK__Student__Persona__53D770D6" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students12" Relationship="Self.FK__Student__Referen__56B3DD81" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students13" Relationship="Self.FK__Student__StatusA__59904A2C" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students14" Relationship="Self.FK__Student__Transcr__55BFB948" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students15" Relationship="Self.FK__Student__UhmEval__52E34C9D" FromRole="CommonFields" ToRole="Student" />
           <NavigationProperty Name="Courseworks" Relationship="Self.FK_dbo_Coursework_dbo_CommonFields_GradeID" FromRole="CommonFields" ToRole="Coursework" />
           <NavigationProperty Name="Graduations" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId" FromRole="CommonFields" ToRole="Graduation" />
           <NavigationProperty Name="Graduations1" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_CompExamResultId" FromRole="CommonFields" ToRole="Graduation" />
@@ -1513,10 +1814,10 @@
           <NavigationProperty Name="PreviousEmployments" Relationship="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_EndMonthId" FromRole="CommonFields" ToRole="PreviousEmployment" />
           <NavigationProperty Name="PreviousEmployments1" Relationship="Self.FK_dbo_PreviousEmployment_dbo_CommonFields_StartMonthId" FromRole="CommonFields" ToRole="PreviousEmployment" />
           <NavigationProperty Name="Publications" Relationship="Self.FK_dbo_Publications_dbo_CommonFields_PubMonthId" FromRole="CommonFields" ToRole="Publications" />
-          <NavigationProperty Name="Students" Relationship="Self.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" FromRole="CommonFields" ToRole="Student" />
-          <NavigationProperty Name="Students1" Relationship="Self.FK_dbo_Student_dbo_CommonFields_GendersId" FromRole="CommonFields" ToRole="Student" />
-          <NavigationProperty Name="Students2" Relationship="Self.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" FromRole="CommonFields" ToRole="Student" />
-          <NavigationProperty Name="Students3" Relationship="Self.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students16" Relationship="Self.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students17" Relationship="Self.FK_dbo_Student_dbo_CommonFields_GendersId" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students18" Relationship="Self.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" FromRole="CommonFields" ToRole="Student" />
+          <NavigationProperty Name="Students19" Relationship="Self.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" FromRole="CommonFields" ToRole="Student" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -1550,7 +1851,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StudentID" Type="Int32" Nullable="false" />
-          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Student" Relationship="Self.FK_dbo_CurriculumVitae_dbo_Student_StudentID" FromRole="CurriculumVitae" ToRole="Student" />
           <NavigationProperty Name="Files" Relationship="Self.FK_dbo_File_dbo_CurriculumVitae_CurriculumVitaeId" FromRole="CurriculumVitae" ToRole="File" />
         </EntityType>
@@ -1599,26 +1900,26 @@
           <Property Name="DegreeEndYear" Type="Int32" />
           <Property Name="QualifierResultId" Type="Int32" />
           <Property Name="Qualifier2ResultId" Type="Int32" />
-          <Property Name="DateOfQualification" Type="DateTime" Precision="3" />
-          <Property Name="DateOfQualification2" Type="DateTime" Precision="3" />
+          <Property Name="DateOfQualification" Type="DateTime" />
+          <Property Name="DateOfQualification2" Type="DateTime" />
           <Property Name="Form2Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Form2Date" Type="DateTime" Precision="3" />
+          <Property Name="Form2Date" Type="DateTime" />
           <Property Name="Form2ResultId" Type="Int32" />
           <Property Name="CompExamResultId" Type="Int32" />
-          <Property Name="DateOfCompExam" Type="DateTime" Precision="3" />
+          <Property Name="DateOfCompExam" Type="DateTime" />
           <Property Name="CompExam2ResultId" Type="Int32" />
-          <Property Name="DateOfCompExam2" Type="DateTime" Precision="3" />
+          <Property Name="DateOfCompExam2" Type="DateTime" />
           <Property Name="AdvisorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AdvisorEmail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AdvisorDepartment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AdvisorUniversity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Form3Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Form3Date" Type="DateTime" Precision="3" />
+          <Property Name="Form3Date" Type="DateTime" />
           <Property Name="Form3ResultId" Type="Int32" />
           <Property Name="FinalExamResultId" Type="Int32" />
-          <Property Name="DateOfFinalExam" Type="DateTime" Precision="3" />
+          <Property Name="DateOfFinalExam" Type="DateTime" />
           <Property Name="FinalExam2ResultId" Type="Int32" />
-          <Property Name="DateOfFinalExam2" Type="DateTime" Precision="3" />
+          <Property Name="DateOfFinalExam2" Type="DateTime" />
           <Property Name="Form2Type_ID" Type="Int32" />
           <Property Name="TakenQHS601Id" Type="Int32" />
           <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Graduation_dbo_CommonFields_CompExam2ResultId" FromRole="Graduation" ToRole="CommonFields" />
@@ -1665,7 +1966,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StudentID" Type="Int32" Nullable="false" />
-          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ReceivedDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Files" Relationship="Self.FK_dbo_File_dbo_Manuscript_ManuscriptId" FromRole="Manuscript" ToRole="File" />
           <NavigationProperty Name="Student" Relationship="Self.FK_dbo_Manuscript_dbo_Student_StudentID" FromRole="Manuscript" ToRole="Student" />
         </EntityType>
@@ -1732,7 +2033,7 @@
           <Property Name="Major" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SecondMajor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Minor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="DateOfAward" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateOfAward" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_PrevDegree_dbo_CommonFields_DegreeTypesID" FromRole="PrevDegree" ToRole="CommonFields" />
           <NavigationProperty Name="Student" Relationship="Self.FK_dbo_PrevDegree_dbo_Student_StudentID" FromRole="PrevDegree" ToRole="Student" />
         </EntityType>
@@ -1796,12 +2097,57 @@
           <Property Name="EmploymentStatsOther" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="PermanentAdvisorOther" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Age" Type="Int32" />
+          <Property Name="JabsomOrientationId" Type="Int32" />
+          <Property Name="DqhsOrientationId" Type="Int32" />
+          <Property Name="DayExtensionId" Type="Int32" />
+          <Property Name="CourseRegFallSemId" Type="Int32" />
+          <Property Name="PermanentAdvisorOtherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PermanentAdvisorFirstMeetingDate" Type="DateTime" />
+          <Property Name="JabsomAccessCardId" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="InterimAdvisorOtherName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InterimAdvisorCategoryId" Type="Int32" />
+          <Property Name="InterimAdvisorDepartment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InterimAdvisorCategoryOther" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsGradAssistantship" Type="Boolean" />
+          <Property Name="DegreeStartDate" Type="DateTime" />
+          <Property Name="DegreeEndDate" Type="DateTime" />
+          <Property Name="CitizenshipStatsOther" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationDate" Type="DateTime" />
+          <Property Name="UhmEvalFormId" Type="Int32" />
+          <Property Name="PersonalStatementId" Type="Int32" />
+          <Property Name="CvOrResumeId" Type="Int32" />
+          <Property Name="TranscriptId" Type="Int32" />
+          <Property Name="ReferencesCountId" Type="Int32" />
+          <Property Name="GradSchoolEntranceExamId" Type="Int32" />
+          <Property Name="GradSchoolEntranceExamOther" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishProficiencyExamId" Type="Int32" />
+          <Property Name="StatusAcceptedId" Type="Int32" />
+          <Property Name="AdmissionLetterId" Type="Int32" />
+          <Property Name="IntentToRegisterDeadlineDate" Type="DateTime" />
+          <Property Name="IntentToRegisterDeadlineDecisionId" Type="Int32" />
           <NavigationProperty Name="Activities" Relationship="Self.FK_dbo_Activity_dbo_Student_StudentID" FromRole="Student" ToRole="Activity" />
           <NavigationProperty Name="CommitteeMembers" Relationship="Self.FK_dbo_CommitteeMember_dbo_Student_StudentID" FromRole="Student" ToRole="CommitteeMember" />
-          <NavigationProperty Name="CommonField" Relationship="Self.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" FromRole="Student" ToRole="CommonFields" />
-          <NavigationProperty Name="CommonField1" Relationship="Self.FK_dbo_Student_dbo_CommonFields_GendersId" FromRole="Student" ToRole="CommonFields" />
-          <NavigationProperty Name="CommonField2" Relationship="Self.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" FromRole="Student" ToRole="CommonFields" />
-          <NavigationProperty Name="CommonField3" Relationship="Self.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField" Relationship="Self.FK__Student__Admissi__5A846E65" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField1" Relationship="Self.FK__Student__CourseR__4E1E9780" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField2" Relationship="Self.FK__Student__CvOrRes__54CB950F" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField3" Relationship="Self.FK__Student__DayExte__4D2A7347" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField4" Relationship="Self.FK__Student__DqhsOri__4C364F0E" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField5" Relationship="Self.FK__Student__English__589C25F3" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField6" Relationship="Self.FK__Student__GradSch__57A801BA" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField7" Relationship="Self.FK__Student__IntentT__5B78929E" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField8" Relationship="Self.FK__Student__Interim__5006DFF2" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField9" Relationship="Self.FK__Student__JabsomA__4F12BBB9" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField10" Relationship="Self.FK__Student__JabsomO__4B422AD5" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField11" Relationship="Self.FK__Student__Persona__53D770D6" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField12" Relationship="Self.FK__Student__Referen__56B3DD81" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField13" Relationship="Self.FK__Student__StatusA__59904A2C" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField14" Relationship="Self.FK__Student__Transcr__55BFB948" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField15" Relationship="Self.FK__Student__UhmEval__52E34C9D" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField16" Relationship="Self.FK_dbo_Student_dbo_CommonFields_CitizenshipStatsId" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField17" Relationship="Self.FK_dbo_Student_dbo_CommonFields_GendersId" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField18" Relationship="Self.FK_dbo_Student_dbo_CommonFields_InterimAdvisorsId" FromRole="Student" ToRole="CommonFields" />
+          <NavigationProperty Name="CommonField19" Relationship="Self.FK_dbo_Student_dbo_CommonFields_PermanentAdvisorsId" FromRole="Student" ToRole="CommonFields" />
           <NavigationProperty Name="Courseworks" Relationship="Self.FK_dbo_Coursework_dbo_Student_StudentID" FromRole="Student" ToRole="Coursework" />
           <NavigationProperty Name="CurriculumVitaes" Relationship="Self.FK_dbo_CurriculumVitae_dbo_Student_StudentID" FromRole="Student" ToRole="CurriculumVitae" />
           <NavigationProperty Name="DegreePrograms" Relationship="Self.FK__DegreePro__Stude__40C49C62" FromRole="Student" ToRole="DegreeProgram" />
@@ -1963,6 +2309,198 @@
             </Principal>
             <Dependent Role="DegreeProgram">
               <PropertyRef Name="TracksId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Admissi__5A846E65">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="AdmissionLetterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__CourseR__4E1E9780">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CourseRegFallSemId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__CvOrRes__54CB950F">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="CvOrResumeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__DayExte__4D2A7347">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="DayExtensionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__DqhsOri__4C364F0E">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="DqhsOrientationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__English__589C25F3">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="EnglishProficiencyExamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__GradSch__57A801BA">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="GradSchoolEntranceExamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__IntentT__5B78929E">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="IntentToRegisterDeadlineDecisionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Interim__5006DFF2">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="InterimAdvisorCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__JabsomA__4F12BBB9">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="JabsomAccessCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__JabsomO__4B422AD5">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="JabsomOrientationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Persona__53D770D6">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="PersonalStatementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Referen__56B3DD81">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="ReferencesCountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__StatusA__59904A2C">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="StatusAcceptedId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__Transcr__55BFB948">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="TranscriptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Student__UhmEval__52E34C9D">
+          <End Role="CommonFields" Type="Self.CommonField" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CommonFields">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="UhmEvalFormId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2600,7 +3138,7 @@
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="SchoolContext2Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="SchoolContext2Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activities" EntityType="Self.Activity" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
@@ -2669,6 +3207,70 @@
           <AssociationSet Name="FK__DegreePro__Track__4589517F" Association="Self.FK__DegreePro__Track__4589517F">
             <End Role="CommonFields" EntitySet="CommonFields" />
             <End Role="DegreeProgram" EntitySet="DegreePrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Admissi__5A846E65" Association="Self.FK__Student__Admissi__5A846E65">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__CourseR__4E1E9780" Association="Self.FK__Student__CourseR__4E1E9780">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__CvOrRes__54CB950F" Association="Self.FK__Student__CvOrRes__54CB950F">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__DayExte__4D2A7347" Association="Self.FK__Student__DayExte__4D2A7347">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__DqhsOri__4C364F0E" Association="Self.FK__Student__DqhsOri__4C364F0E">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__English__589C25F3" Association="Self.FK__Student__English__589C25F3">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__GradSch__57A801BA" Association="Self.FK__Student__GradSch__57A801BA">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__IntentT__5B78929E" Association="Self.FK__Student__IntentT__5B78929E">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Interim__5006DFF2" Association="Self.FK__Student__Interim__5006DFF2">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__JabsomA__4F12BBB9" Association="Self.FK__Student__JabsomA__4F12BBB9">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__JabsomO__4B422AD5" Association="Self.FK__Student__JabsomO__4B422AD5">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Persona__53D770D6" Association="Self.FK__Student__Persona__53D770D6">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Referen__56B3DD81" Association="Self.FK__Student__Referen__56B3DD81">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__StatusA__59904A2C" Association="Self.FK__Student__StatusA__59904A2C">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__Transcr__55BFB948" Association="Self.FK__Student__Transcr__55BFB948">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Student__UhmEval__52E34C9D" Association="Self.FK__Student__UhmEval__52E34C9D">
+            <End Role="CommonFields" EntitySet="CommonFields" />
+            <End Role="Student" EntitySet="Students" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Coursework_dbo_CommonFields_GradeID" Association="Self.FK_dbo_Coursework_dbo_CommonFields_GradeID">
             <End Role="CommonFields" EntitySet="CommonFields" />
@@ -2880,7 +3482,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SchoolContext2ModelStoreContainer" CdmEntityContainer="SchoolContext2Entities">
+        <EntityContainerMapping StorageEntityContainer="SchoolContext2ModelStoreContainer" CdmEntityContainer="SchoolContext2Entities1">
           <EntitySetMapping Name="Activities">
             <EntityTypeMapping TypeName="SchoolContext2Model.Activity">
               <MappingFragment StoreEntitySet="Activity">
@@ -3193,6 +3795,35 @@
                 <ScalarProperty Name="EmploymentStatsOther" ColumnName="EmploymentStatsOther" />
                 <ScalarProperty Name="PermanentAdvisorOther" ColumnName="PermanentAdvisorOther" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="JabsomOrientationId" ColumnName="JabsomOrientationId" />
+                <ScalarProperty Name="DqhsOrientationId" ColumnName="DqhsOrientationId" />
+                <ScalarProperty Name="DayExtensionId" ColumnName="DayExtensionId" />
+                <ScalarProperty Name="CourseRegFallSemId" ColumnName="CourseRegFallSemId" />
+                <ScalarProperty Name="PermanentAdvisorOtherName" ColumnName="PermanentAdvisorOtherName" />
+                <ScalarProperty Name="PermanentAdvisorFirstMeetingDate" ColumnName="PermanentAdvisorFirstMeetingDate" />
+                <ScalarProperty Name="JabsomAccessCardId" ColumnName="JabsomAccessCardId" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="InterimAdvisorOtherName" ColumnName="InterimAdvisorOtherName" />
+                <ScalarProperty Name="InterimAdvisorCategoryId" ColumnName="InterimAdvisorCategoryId" />
+                <ScalarProperty Name="InterimAdvisorDepartment" ColumnName="InterimAdvisorDepartment" />
+                <ScalarProperty Name="InterimAdvisorCategoryOther" ColumnName="InterimAdvisorCategoryOther" />
+                <ScalarProperty Name="IsGradAssistantship" ColumnName="IsGradAssistantship" />
+                <ScalarProperty Name="DegreeStartDate" ColumnName="DegreeStartDate" />
+                <ScalarProperty Name="DegreeEndDate" ColumnName="DegreeEndDate" />
+                <ScalarProperty Name="CitizenshipStatsOther" ColumnName="CitizenshipStatsOther" />
+                <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+                <ScalarProperty Name="UhmEvalFormId" ColumnName="UhmEvalFormId" />
+                <ScalarProperty Name="PersonalStatementId" ColumnName="PersonalStatementId" />
+                <ScalarProperty Name="CvOrResumeId" ColumnName="CvOrResumeId" />
+                <ScalarProperty Name="TranscriptId" ColumnName="TranscriptId" />
+                <ScalarProperty Name="ReferencesCountId" ColumnName="ReferencesCountId" />
+                <ScalarProperty Name="GradSchoolEntranceExamId" ColumnName="GradSchoolEntranceExamId" />
+                <ScalarProperty Name="GradSchoolEntranceExamOther" ColumnName="GradSchoolEntranceExamOther" />
+                <ScalarProperty Name="EnglishProficiencyExamId" ColumnName="EnglishProficiencyExamId" />
+                <ScalarProperty Name="StatusAcceptedId" ColumnName="StatusAcceptedId" />
+                <ScalarProperty Name="AdmissionLetterId" ColumnName="AdmissionLetterId" />
+                <ScalarProperty Name="IntentToRegisterDeadlineDate" ColumnName="IntentToRegisterDeadlineDate" />
+                <ScalarProperty Name="IntentToRegisterDeadlineDecisionId" ColumnName="IntentToRegisterDeadlineDecisionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3232,7 +3863,6 @@
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

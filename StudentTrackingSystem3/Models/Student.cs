@@ -53,6 +53,35 @@ namespace StudentTrackingSystem3.Models
         public string EmploymentStatsOther { get; set; }
         public string PermanentAdvisorOther { get; set; }
         public Nullable<int> Age { get; set; }
+        public Nullable<int> JabsomOrientationId { get; set; }
+        public Nullable<int> DqhsOrientationId { get; set; }
+        public Nullable<int> DayExtensionId { get; set; }
+        public Nullable<int> CourseRegFallSemId { get; set; }
+        public string PermanentAdvisorOtherName { get; set; }
+        public Nullable<System.DateTime> PermanentAdvisorFirstMeetingDate { get; set; }
+        public Nullable<int> JabsomAccessCardId { get; set; }
+        public string Notes { get; set; }
+        public string InterimAdvisorOtherName { get; set; }
+        public Nullable<int> InterimAdvisorCategoryId { get; set; }
+        public string InterimAdvisorDepartment { get; set; }
+        public string InterimAdvisorCategoryOther { get; set; }
+        public Nullable<bool> IsGradAssistantship { get; set; }
+        public Nullable<System.DateTime> DegreeStartDate { get; set; }
+        public Nullable<System.DateTime> DegreeEndDate { get; set; }
+        public string CitizenshipStatsOther { get; set; }
+        public Nullable<System.DateTime> ApplicationDate { get; set; }
+        public Nullable<int> UhmEvalFormId { get; set; }
+        public Nullable<int> PersonalStatementId { get; set; }
+        public Nullable<int> CvOrResumeId { get; set; }
+        public Nullable<int> TranscriptId { get; set; }
+        public Nullable<int> ReferencesCountId { get; set; }
+        public Nullable<int> GradSchoolEntranceExamId { get; set; }
+        public string GradSchoolEntranceExamOther { get; set; }
+        public Nullable<int> EnglishProficiencyExamId { get; set; }
+        public Nullable<int> StatusAcceptedId { get; set; }
+        public Nullable<int> AdmissionLetterId { get; set; }
+        public Nullable<System.DateTime> IntentToRegisterDeadlineDate { get; set; }
+        public Nullable<int> IntentToRegisterDeadlineDecisionId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activity> Activities { get; set; }
@@ -62,6 +91,22 @@ namespace StudentTrackingSystem3.Models
         public virtual CommonField CommonField1 { get; set; }
         public virtual CommonField CommonField2 { get; set; }
         public virtual CommonField CommonField3 { get; set; }
+        public virtual CommonField CommonField4 { get; set; }
+        public virtual CommonField CommonField5 { get; set; }
+        public virtual CommonField CommonField6 { get; set; }
+        public virtual CommonField CommonField7 { get; set; }
+        public virtual CommonField CommonField8 { get; set; }
+        public virtual CommonField CommonField9 { get; set; }
+        public virtual CommonField CommonField10 { get; set; }
+        public virtual CommonField CommonField11 { get; set; }
+        public virtual CommonField CommonField12 { get; set; }
+        public virtual CommonField CommonField13 { get; set; }
+        public virtual CommonField CommonField14 { get; set; }
+        public virtual CommonField CommonField15 { get; set; }
+        public virtual CommonField CommonField16 { get; set; }
+        public virtual CommonField CommonField17 { get; set; }
+        public virtual CommonField CommonField18 { get; set; }
+        public virtual CommonField CommonField19 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Coursework> Courseworks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
